@@ -123,7 +123,7 @@
 
 						}
 						// disable tags
-						disable_items(response?.data?.disable_terms, $(".param-box") );
+						disable_items(response?.data?.disable_terms);
 					}
 				},
 				complete:function(){
@@ -169,14 +169,14 @@
 		/**
 		 * Disable item
 		 * @param {*} disable_terms 
-		 * @param {*} disable_div 
 		 */
-		function disable_items(disable_terms, disable_div) {
-			disable_div.removeClass("disable");
-			$.each(disable_terms, function(key,value){
-				for (let index = 0; index < value.length; index++) {
-					let $currItem = $('.radio-item[data-term_id=' + value[index] + ']');
-					$currItem.addClass('disable');
+		function disable_items(terms) {
+			$(".param-box div").removeClass('disable')
+			$.each(terms, function(key,value){
+				if ( value.length > 0 ) {
+					for (let index = 0; index < value.length; index++) {
+						$('.radio-item[data-term_id=' + value[index] + ']').addClass('disable');
+					}
 				}
 			});
 		}
