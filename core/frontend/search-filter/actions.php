@@ -61,7 +61,7 @@ class Actions {
 		);
 
 		$get_products   = \FilterPlus\Utils\Helper::get_products( $args );
-		error_log($get_products['total']);
+
 		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id, 'filter_param' => $filter_param ) );
 		$message = $get_products['total'] == 0  ? esc_html__( 'No Product Found', 'filter-plus' ) : '';
 
