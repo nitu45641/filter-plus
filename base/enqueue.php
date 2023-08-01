@@ -88,7 +88,7 @@ class Enqueue {
                 $form_data                          = array();
                 $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
                 
-                wp_localize_script( 'search-plus-data', 'admin_data', [ $form_data ] );
+                wp_localize_script( 'filter-plus-data', 'admin_data', [ $form_data ] );
         }
 
     }

@@ -1,6 +1,6 @@
 
 <div class="sidebar-row categories-wrap">
-	<h4 class="sidebar-label"><?php esc_html_e('Categories','search-plus');?></h4>
+	<h4 class="sidebar-label"><?php esc_html_e('Categories','filter-plus');?></h4>
 	<ul class="category-list">
 		<?php 
 			$get_categories = \FilterPlus\Utils\Helper::get_categories($categories);

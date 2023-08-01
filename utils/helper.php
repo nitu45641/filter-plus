@@ -435,7 +435,7 @@ class Helper {
 					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'medium', '', '' );
 				} else {
 					$image_url = wc_placeholder_img_src( 'woocommerce_single' );
-					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','search-plus').'">';
+					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
 				}
 				$product_instance = wc_get_product($post->ID);
 
@@ -445,7 +445,7 @@ class Helper {
 				$products[$key]['post_permalink'] = get_permalink( $post->ID );
 				$products[$key]['post_description'] = $product_instance->get_short_description();
 				$products[$key]['post_image'] = $image;
-				$products[$key]['post_image_alt'] = esc_html__('product image', 'search-plus');
+				$products[$key]['post_image_alt'] = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price'] = $product_instance->get_price_html();
 				$products[$key]['cart_btn'] = self::cart_btn_html( $product_instance , $template );
 
