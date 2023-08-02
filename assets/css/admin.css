@@ -1,5 +1,4 @@
 /* Admin css */
-
 h2.content-header{
 	font-weight: bold !important;
     margin-top: 2% !important;
@@ -107,4 +106,9 @@ input[type="checkbox"].filter-ui-toggle:checked:after {
 input[type="checkbox"].filter-ui-toggle:checked:after {
     content: 'ON';
     background-color: #2271b1;
+}
+option.disable,
+.disable{
+	opacity: 0.5;
+    pointer-events: none;
 }
