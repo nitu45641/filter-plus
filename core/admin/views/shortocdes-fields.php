@@ -18,7 +18,7 @@ function checkbox_field($args){
 function select_field($args){
 	$options_html = "";
 	$disable      = !empty($args['disable']) ? 'disable' : '';
-	$template_disable = !empty($args['template_disable']) ? $args['template_disable'] : null;
+	$template_disable = !empty($args['template_disable']) ? $args['template_disable'] : count($args['options']) + 1;
 	$select_type  = "multiple";
 
 	if (!empty($args['type']) && "attributes" == $args['type'] ) {
