@@ -207,6 +207,9 @@
 }
 .ratings {
 	margin-bottom: 25px;
+	padding: 15px;
+	border: 1px solid rgba(23, 198, 170, 0.34);
+	border-radius: 6px;
 }
 
 /* Product Css */
