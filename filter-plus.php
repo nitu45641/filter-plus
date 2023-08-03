@@ -61,20 +61,13 @@ final class FilterPlus {
      */
     private function __construct() {
         // Load modules
-		add_action( 'plugins_loaded', array( $this, 'initialize_modules' ), 999 );
-
+		add_action( 'plugins_loaded', array( $this, 'load_text_domain' ));
+		$this->initialize_modules();
+		// de active
+		add_action( 'admin_init' , array( $this, 'deactivate' ) );
     }
 	
-	/**
-	 * Call on plugin active
-	 *
-	 * @return void
-	 */
-	public function activate() {
-		// Install require plugin.
-		$activator = new \FilterPlus\Base\PluginActivator();
-		$activator->activate();
-	}
+
 
 	/**
 	 * Initialize Modules
@@ -86,15 +79,19 @@ final class FilterPlus {
 
 		require_once plugin_dir_path( __FILE__ ) . 'autoloader.php';
 		require_once plugin_dir_path( __FILE__ ) . 'bootstrap.php';
-		
-		// Localization.
-		$this->load_text_domain();
+
 		// required plugin check
 		$this->required_plugin();
 		// Load Plugin modules and classes
 		\FilterPlus\Bootstrap::instance();
-
 		do_action( 'filter-plus/after_load' );
+	}
+
+	public function deactivate() {
+
+	}
+	public function my_plugin_activation_failed() {
+		?><div class="notice notice-error"><p><strong>My Plugin</strong> could not be activated because of something.</p><p>Do the thing and activate the plugin.</p></div><?php
 	}
 	
 	/**
@@ -112,6 +109,7 @@ final class FilterPlus {
 			}
 		}
 	}
+
 
 	/**
      * Load on plugin

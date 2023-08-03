@@ -33,7 +33,6 @@ function select_field($args){
 		if ( !empty( $args['options'] ) ) :
 			foreach($args['options'] as $item):
 				$disabled = (int) $item > $template_disable ? 'disabled' : '';
-				error_log($disabled );
 				$options_html .= '<option '.$disabled.' value="'.$item.'">'.esc_html__('Template','filter-plus')."-".$item.'</option>';
 			endforeach; 
 		endif;
