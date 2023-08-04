@@ -70,7 +70,18 @@
 			checkbox_field($args);
 			
 		?>
-
+		<h1><?php esc_html_e("Product List:","filter-plus"); ?></h1>
+		
+		<?php
+			// show tags
+			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'product_tags','data_label' => 'product_tags',
+			'disable' => $disable );
+			checkbox_field($args);
+			// show product categories
+			$args = array('label'=>esc_html__("Display Categories:","filter-plus"),'id' => 'product_categories',
+			'data_label' => 'product_categories', 'disable' => $disable );
+			checkbox_field($args);
+		?>
 		<div class="generate-section">
 			<div class="generate-block"><button class="button button-primary admin-button"><?php esc_html_e("Copy Filer Shortcodes","filter-plus");?></button></div>
 			<input type="text" class="full_input" id="result_shortcode" value="">

@@ -37,6 +37,7 @@ class Actions {
 	 */
 	public function get_filtered_data() {
 		$post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
+		error_log(json_encode($post_data));
 		$post_arr     = ! empty( $post_data['params'] ) ? $post_data['params'] : [];
 		$search_value = ! empty( $post_arr['search_value'] ) ? $post_arr['search_value'] : '';
 		$cat_id       = ! empty( $post_arr['cat_id'] ) ? $post_arr['cat_id'] : '';
@@ -46,8 +47,8 @@ class Actions {
 		$min          = ! empty( $post_arr['min'] ) ? $post_arr['min'] : '';
 		$filter_param = ! empty( $post_arr['filter_param'] ) ? $post_arr['filter_param'] : array();
 		$template     = ! empty( $post_data['template'] ) ? $post_data['template'] : 1;
-		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : [];
-		$product_tags = ! empty( $post_data['product_tags'] ) ? $post_data['product_tags'] : [];
+		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : 'yes';
+		$product_tags = ! empty( $post_data['product_tags'] ) ? $post_data['product_tags'] : 'yes';
 		$offset       = ! empty( $post_arr['offset'] ) ? $post_arr['offset'] : 1;
 
 		$args = array(
@@ -67,7 +68,6 @@ class Actions {
 		$get_products   = \FilterPlus\Utils\Helper::get_products( $args );
 		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id, 'filter_param' => $filter_param ) );
 		$message = $get_products['total'] == 0  ? esc_html__( 'No Product Found', 'filter-plus' ) : '';
-
 		$response = array(
 			'success'        => true,
 			'message'        => $message,

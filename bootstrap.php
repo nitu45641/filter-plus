@@ -13,6 +13,7 @@ Class Bootstrap{
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+
 		// Load autoload method.
 		Autoloader::run();
 		

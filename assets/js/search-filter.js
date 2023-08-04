@@ -87,7 +87,9 @@
 					products_wrap.addClass("loader_box")
 				},
 				success: function (response) {
-					products_wrap.removeClass("loader_box")
+					console.log(response?.success);
+
+					products_wrap.removeClass("loader_box");
 					if ( response?.success  ) {
 						var products = response?.data?.data?.products;
 						let total    = response?.data?.data?.total;
