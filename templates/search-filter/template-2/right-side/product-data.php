@@ -8,9 +8,9 @@
 				</div>
 				<div class="product-meta">
 					{{#each tags}}
-						{{#if name }}
+						{{#each this}}
 						<div class="offer"><span>{{{ name }}}</span></div>
-						{{/if}}
+						{{/each}}
 					{{/each}}
 					<div class="quickview-and-wishlist">
 						<ul>
@@ -32,9 +32,13 @@
 				</div>
 			</div>
 			<div class="product-content">
-				<div class="cat">
-					<a href="#">Women</a>
-				</div>
+				{{#each categories }}
+					{{#each this}}
+						<div class="cat">
+							<a href="#">{{{ name }}}</a>
+						</div>	
+					{{/each}}
+				{{/each}}
 				<div class="product-name">
 					<a href="#">{{{ post_title }}}</a>
 				</div>

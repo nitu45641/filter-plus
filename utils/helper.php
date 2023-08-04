@@ -447,8 +447,8 @@ class Helper {
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price']       = $product_instance->get_price_html();
 				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $template );
-				$products[$key]['categories']       = [];
-				$products[$key]['tags']             = [ 'name' => '' ];
+				$products[$key]['categories']       = [get_the_terms ( $post->ID , 'product_cat')];
+				$products[$key]['tags']             = [ get_the_terms ( $post->ID , 'product_tag'  ) ];
 
 			endforeach;
 		}
