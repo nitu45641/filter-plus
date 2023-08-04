@@ -37,7 +37,6 @@ class Actions {
 	 */
 	public function get_filtered_data() {
 		$post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
-		error_log(json_encode($post_data));
 		$post_arr     = ! empty( $post_data['params'] ) ? $post_data['params'] : [];
 		$search_value = ! empty( $post_arr['search_value'] ) ? $post_arr['search_value'] : '';
 		$cat_id       = ! empty( $post_arr['cat_id'] ) ? $post_arr['cat_id'] : '';
