@@ -182,6 +182,10 @@ a {
 	-webkit-transition: all 0.2s linear;
 	transition: all 0.2s linear;
 }
+
+.shop-sidebar .search-form button svg {
+	fill: #c4c4c4;
+}
 .shop-sidebar .sidebar-label {
 	font-weight: 600;
 	line-height: 28px;
@@ -321,6 +325,7 @@ a {
 
 .shop-sidebar .sidebar-row {
 	margin-bottom: 60px;
+	position: relative;
 }
 
 .shop-sidebar .search-wrap .search-form {
@@ -873,6 +878,24 @@ a.added_to_cart.wc-forward {
 	.product-content
 	.product-price
 	del {
+	color: #cccccc !important;
+	font-weight: 400 !important;
+}
+
+.product-style-two
+	.vartical-prod-card-container
+	.product-content
+	.product-price
+	del
+	bdi {
+	color: #cccccc !important;
+	font-weight: 400 !important;
+}
+.product-style-two
+	.vartical-prod-card-container
+	.product-content
+	.product-price
+	del {
 	color: #ccc;
 	margin-left: 6px;
 }
@@ -1016,12 +1039,29 @@ a.added_to_cart.wc-forward {
 	font-weight: 700;
 	text-align: center;
 	line-height: 50px;
+	cursor: pointer;
 }
 
-.pagination li:not(:first-child):not(:last-child) {
+.pagination li.current,
+.pagination li:hover {
 	background-color: #11152c;
 	color: #fff;
 	border-radius: 5px;
+}
+
+.pagination li:hover svg {
+	fill: #fff;
+}
+
+.down-arrow {
+	display: inline-block;
+	position: absolute;
+	top: 2px;
+	right: 5px;
+}
+
+.down-arrow svg {
+	fill: #b3b3b3;
 }
 
 /*# sourceMappingURL=public.css.map */
