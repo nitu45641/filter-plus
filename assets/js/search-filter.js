@@ -106,7 +106,7 @@
 								}
 							}
 							// pagination
-							pagination_html(response?.data?.data?.pages);
+							pagination_html(response?.data?.data?.pages , params?.offset );
 							let first_page = $(".pagination li.first-page");
 							let last_page = $(".pagination li.last-page");
 							if (params.offset == response?.data?.data?.pages ) {
@@ -148,13 +148,17 @@
 		 * Pagination
 		 * @param {*} pages 
 		 */
-		function pagination_html(pages) {
-			let pagination = $(".pagination");
+		function pagination_html(pages , offset ) {
+			let current_page = offset ? offset : 1;
+			let pagination   = $(".pagination");
+			
 			if (pages>0) {
 				pagination.html("");
 				pagination.append(`<li class="first-page"> < </li>`);
 				for (var i = 1; i <= pages ; i++) {
-					pagination.append(`<li>`+i+`</li>`);
+					let current_class = current_page == i ? ' class="current"' : ''; 
+
+					pagination.append(`<li `+current_class+`>`+i+`</li>`);
 				}
 				pagination.append(`<li class="last-page"> > </li>`);
 			}
