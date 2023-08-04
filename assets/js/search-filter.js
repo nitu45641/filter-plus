@@ -67,7 +67,16 @@
 			var prod_list_wrap  = $(".prods-list-view");
 			var message_info    = $(".message");
 			var template        = $(".shopContainer").data("template");
-			var data            = { action : 'get_filtered_data' , template: template , params : selected_param(params) };
+			var product_categories = $(".shopContainer").data("product_categories");
+			var product_tags    = $(".shopContainer").data("product_categories");
+			var data            = 
+			{ 
+				action : 'get_filtered_data' , 
+				template: template ,
+				product_categories: product_categories ,
+				product_tags: product_tags ,
+			 	params : selected_param(params)
+			};
 			var live_search     = false;
 			$.ajax({
 				url: client_data.ajax_url,

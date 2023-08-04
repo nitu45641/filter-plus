@@ -428,7 +428,6 @@ class Helper {
 	 */
 	public static function process_product_data( $posts  , $template ) {
 		$products = array();
-		
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
 				if(has_post_thumbnail($post->ID)){
@@ -440,14 +439,16 @@ class Helper {
 				$product_instance = wc_get_product($post->ID);
 
 				$products[$key]['id'] = $post->ID;
-				$products[$key]['post_title'] = get_the_title( $post->ID );
-				$products[$key]['rating']     = class_exists('FilterPlusPro') ? self::rating_html( $product_instance ) : "";
-				$products[$key]['post_permalink'] = get_permalink( $post->ID );
+				$products[$key]['post_title']       = get_the_title( $post->ID );
+				$products[$key]['rating']           = class_exists('FilterPlusPro') ? self::rating_html( $product_instance ) : "";
+				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 				$products[$key]['post_description'] = $product_instance->get_short_description();
-				$products[$key]['post_image'] = $image;
-				$products[$key]['post_image_alt'] = esc_html__('product image', 'filter-plus');
-				$products[$key]['post_price'] = $product_instance->get_price_html();
-				$products[$key]['cart_btn'] = self::cart_btn_html( $product_instance , $template );
+				$products[$key]['post_image']       = $image;
+				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
+				$products[$key]['post_price']       = $product_instance->get_price_html();
+				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $template );
+				$products[$key]['categories']       = [];
+				$products[$key]['tags']             = [ 'name' => '' ];
 
 			endforeach;
 		}

@@ -7,9 +7,11 @@
 					{{{ post_image }}}
 				</div>
 				<div class="product-meta">
-					<div class="offer">
-						<span>15% Off</span>
-					</div>
+					{{#each tags}}
+						{{#if name }}
+						<div class="offer"><span>{{{ name }}}</span></div>
+						{{/if}}
+					{{/each}}
 					<div class="quickview-and-wishlist">
 						<ul>
 							<li>

@@ -46,6 +46,8 @@ class Actions {
 		$min          = ! empty( $post_arr['min'] ) ? $post_arr['min'] : '';
 		$filter_param = ! empty( $post_arr['filter_param'] ) ? $post_arr['filter_param'] : array();
 		$template     = ! empty( $post_data['template'] ) ? $post_data['template'] : 1;
+		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : [];
+		$product_tags = ! empty( $post_data['product_tags'] ) ? $post_data['product_tags'] : [];
 		$offset       = ! empty( $post_arr['offset'] ) ? $post_arr['offset'] : 1;
 
 		$args = array(
@@ -58,10 +60,11 @@ class Actions {
 			'min'           => $min,
 			'max'           => $max,
 			'star'          => $star,
+			'product_tags'  => $product_tags,
+			'product_categories'  => $product_categories,
 		);
 
 		$get_products   = \FilterPlus\Utils\Helper::get_products( $args );
-
 		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id, 'filter_param' => $filter_param ) );
 		$message = $get_products['total'] == 0  ? esc_html__( 'No Product Found', 'filter-plus' ) : '';
 

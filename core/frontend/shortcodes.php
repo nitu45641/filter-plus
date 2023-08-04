@@ -56,6 +56,8 @@ class Shortcodes {
 					'show_attributes'  => '',
 					'show_reviews'     => '',
 					'show_price_range' => '',
+					'product_categories' => '',
+					'product_tags'       => '',
 				), $atts )
 		);
 
@@ -63,7 +65,11 @@ class Shortcodes {
 
 		if ( file_exists( \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 		?>
-			<div class="shopContainer" data-template="<?php esc_attr_e($template)?>">
+			<div class="shopContainer" 
+			data-template="<?php esc_attr_e($template)?>"
+			data-product_categories="<?php esc_attr_e($product_categories)?>"
+			data-product_tags="<?php esc_attr_e($product_tags)?>"
+			>
 				<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php";?>
 			</div>
 		<?php
