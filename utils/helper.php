@@ -201,7 +201,7 @@ class Helper {
 		$args = self::product_reviews( $param , $args );
 		
 		$posts      = get_posts( $args );
-		$products   = self::process_product_data( $posts , $param['template'] );
+		$products   = self::process_product_data( $posts , $param );
 
 		$prod       = wc_get_products( $args );
 		$total      = $prod->total;
@@ -426,7 +426,7 @@ class Helper {
 	 * @param [type] $args
 	 * @return void
 	 */
-	public static function process_product_data( $posts  , $template ) {
+	public static function process_product_data( $posts  , $param ) {
 		$products = array();
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
@@ -446,9 +446,9 @@ class Helper {
 				$products[$key]['post_image']       = $image;
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price']       = $product_instance->get_price_html();
-				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $template );
-				$products[$key]['categories']       = [get_the_terms ( $post->ID , 'product_cat')];
-				$products[$key]['tags']             = [ get_the_terms ( $post->ID , 'product_tag'  ) ];
+				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] );
+				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? get_the_terms ( $post->ID , 'product_cat') : [];
+				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? get_the_terms ( $post->ID , 'product_tag'  ) : [];
 
 			endforeach;
 		}
