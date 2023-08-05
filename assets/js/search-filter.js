@@ -44,15 +44,24 @@
 		// price range
 		price_range();
 		function price_range() {
-			let price_range = $('.price-range');
-			$(price_range).on('change', function () {
-				let $this = $(this);
-				let max = $this.val();
-				$(".max").html("").html(max);
-				get_products({ search_value: "", max: max, min: $this.attr("min") });
-				// reset block
-				reset_block($this.parents(".sidebar-row"));
-			})
+			let price_range = $('.range-slider');
+			price_range.jRange({
+				from: price_range.data("min"),
+				to: price_range.data("max"),
+				step: 1,
+				format: '%s',
+				width: 238,
+				showLabels: true,
+				isRange : true,
+				onstatechange: function(val){
+					let prices = val.split(',');
+					if ( prices[1] ) {
+						get_products({ search_value: "", min: prices[0], max: prices[1] });
+						// reset block
+						reset_block(price_range.parents(".sidebar-row"));
+					}
+				}
+			});
 		}
 
 		//default call
@@ -87,8 +96,6 @@
 					products_wrap.addClass("loader_box")
 				},
 				success: function (response) {
-					console.log(response?.success);
-
 					products_wrap.removeClass("loader_box");
 					if (response?.success) {
 						var products = response?.data?.data?.products;
