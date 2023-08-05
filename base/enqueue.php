@@ -33,7 +33,7 @@ class Enqueue {
                 'src'     => \FilterPlus::assets_url() . 'js/admin.js',
                 'version' => \FilterPlus::get_version(),
                 'deps'    => ['jquery','select2'],
-            ),
+            )
 		);
         
         return $script_arr;
@@ -53,7 +53,7 @@ class Enqueue {
 			'select2' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/select2.css',
                 'version' => \FilterPlus::get_version(),
-            ),
+            )
         );
     }
 
@@ -110,6 +110,11 @@ class Enqueue {
                 'version'   => \FilterPlus::get_version(),
                 'deps'      => ['jquery'],
             ),
+			'jquery.range-min'     => array(
+                'src'     => \FilterPlus::assets_url() . 'js/jquery.range-min.js',
+                'version' => \FilterPlus::get_version(),
+                'deps'    => ['jquery'],
+            )
         );
 
         return $script_arr;
@@ -128,6 +133,10 @@ class Enqueue {
                 'src'     => \FilterPlus::assets_url() . 'css/search-filter.css',
                 'version' => \FilterPlus::get_version(),
             ),
+			'jquery.range-min' => array(
+                'src'     => \FilterPlus::assets_url() . 'css/jquery.range.css',
+                'version' => \FilterPlus::get_version(),
+            )
         );
 
         return $enqueue;
