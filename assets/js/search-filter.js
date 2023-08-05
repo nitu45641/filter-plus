@@ -161,7 +161,11 @@
 		function selected_param(params) {
 			// category
 			params['cat_id'] = $(".category-list li.active").data('cat_id');
+			params['star']   = $("ul.ratings").attr("id");
 			params['taxonomies'] = get_tags(true);
+			let prices = $(".range-slider").val().split(',');
+			params['min']    = prices[0];
+			params['max']    = prices[1];
 			return params
 		}
 
@@ -229,10 +233,10 @@
 		 */
 		ratings();
 		function ratings() {
-			$(".ratings").on("click", ".rating_block", function () {
+			$("ul.ratings").on("click", ".rating_block", function () {
 				let $this = $(this);
-				let star = $this.data("star");
-				get_products({ star: star });
+				$(".ratings").attr('id',$this.data('star'));
+				get_products();
 				// reset block
 				reset_block($this,$this.parents(".ratings"));
 			})
@@ -246,7 +250,11 @@
 			let reset_button = $this.find(".reset");
 			reset_button.fadeIn();
 			reset_button.on('click', function () {
-				$parent.removeClass('active');
+				if ($this.hasClass('ratings')) {
+					$this.attr('id','');
+				}else{
+					$parent.removeClass('active');
+				}
 				get_products();
 				reset_button.fadeOut();
 			})
