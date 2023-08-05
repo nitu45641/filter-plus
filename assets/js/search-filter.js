@@ -18,7 +18,7 @@
 			});
 
 			// reset block
-			reset_block(_this.parents(".sidebar-row"));
+			reset_block(_this,_this.parents(".sidebar-row"));
 		});
 
 		//search product
@@ -37,7 +37,7 @@
 					_this.addClass("active");
 					get_products();
 					// reset block
-					reset_block(_this.parents(".sidebar-row"));
+					reset_block(_this,_this.parents(".sidebar-row"));
 				});
 			})
 		}
@@ -58,7 +58,7 @@
 					if ( prices[1] ) {
 						get_products({ search_value: "", min: prices[0], max: prices[1] });
 						// reset block
-						reset_block(price_range.parents(".sidebar-row"));
+						reset_block(price_range,price_range.parents(".sidebar-row"));
 					}
 				}
 			});
@@ -68,9 +68,12 @@
 		if ($(".prods-grid-view").length > 0) {
 			get_products();
 		}
-
+		
+		/**
+		 * Fetch products
+		 * @param {*} params 
+		 */
 		function get_products(params = {}) {
-
 			var products_wrap = $(".products-wrap");
 			var prod_grid_wrap = $(".prods-grid-view");
 			var prod_list_wrap = $(".prods-list-view");
@@ -157,7 +160,7 @@
 		 */
 		function selected_param(params) {
 			// category
-			params['cat_id'] = $(".category-list .active").data('cat_id');
+			params['cat_id'] = $(".category-list li.active").data('cat_id');
 			params['taxonomies'] = get_tags(true);
 			return params
 		}
@@ -231,7 +234,7 @@
 				let star = $this.data("star");
 				get_products({ star: star });
 				// reset block
-				reset_block($this.parents(".ratings"));
+				reset_block($this,$this.parents(".ratings"));
 			})
 		}
 
@@ -239,10 +242,12 @@
 		 * reset
 		 * @param {*} $this 
 		 */
-		function reset_block($this) {
+		function reset_block($parent , $this) {
 			let reset_button = $this.find(".reset");
 			reset_button.fadeIn();
 			reset_button.on('click', function () {
+				$parent.removeClass('active');
+				get_products();
 				reset_button.fadeOut();
 			})
 		}

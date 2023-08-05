@@ -33,7 +33,8 @@
 					<?php }
 				}
 			?>
-		</div>	
+		</div>
+		<span class="reset d-none"><?php esc_html_e('Reset');?></span>		
 	</div>
 <?php
 }
