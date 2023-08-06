@@ -1019,6 +1019,10 @@ a.added_to_cart.wc-forward {
 	opacity: 0.5;
 	pointer-events: none;
 }
+.rating_disable{
+	opacity: 0.4;
+    pointer-events: none;
+}
 
 .woocommerce .star-rating::before,
 .woocommerce .star-rating span::before {

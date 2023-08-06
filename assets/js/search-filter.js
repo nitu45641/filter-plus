@@ -23,7 +23,9 @@
 
 		//search product
 		$(".sidebar-input").on('keyup', function () {
+			let _this = $(this);
 			get_products({ search_value: $(this).val() });
+			reset_block(_this,_this.parents(".sidebar-row"));
 		});
 
 		//attribute click
@@ -238,8 +240,10 @@
 		 */
 		ratings();
 		function ratings() {
-			$("ul.ratings").on("click", ".rating_block", function () {
+			$("ul.ratings").on("click", "li", function () {
 				let $this = $(this);
+				$('.ratings li').not($this).addClass('rating_disable');
+
 				$(".ratings").attr('id',$this.data('star'));
 				get_products();
 				// reset block
@@ -257,11 +261,15 @@
 			reset_button.on('click', function () {
 				if ($this.hasClass('ratings')) {
 					$this.attr('id','');
+					$('.ratings li').removeClass('rating_disable');
 				}
 				else if ($parent.hasClass('range-slider')) {
 					let min = $parent.data('min');
 					let max = $parent.data('max');
 					$parent.val(min+","+max);
+				}
+				else if ($parent.hasClass('sidebar-input')) {
+					$parent.val("");
 				}
 				else{
 					$parent.removeClass('active');
