@@ -45,9 +45,11 @@
 		price_range();
 		function price_range() {
 			let price_range = $('.range-slider');
+			let min = price_range.data("min");
+			let max = price_range.data("max");
 			price_range.jRange({
-				from: price_range.data("min"),
-				to: price_range.data("max"),
+				from: min,
+				to: max,
 				step: 1,
 				scale: [10,90],
 				format: '%s',
@@ -63,6 +65,8 @@
 					}
 				}
 			});
+			price_range.jRange('setValue', min+','+max);
+
 		}
 
 		//default call
