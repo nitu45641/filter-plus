@@ -49,11 +49,12 @@
 				from: price_range.data("min"),
 				to: price_range.data("max"),
 				step: 1,
+				scale: [10,90],
 				format: '%s',
 				width: 238,
 				showLabels: true,
 				isRange : true,
-				onstatechange: function(val){
+				ondragend: function(val){
 					let prices = val.split(',');
 					if ( prices[1] ) {
 						get_products({ search_value: "", min: prices[0], max: prices[1] });
@@ -246,13 +247,19 @@
 		 * reset
 		 * @param {*} $this 
 		 */
-		function reset_block($parent , $this) {
+		function reset_block($parent , $this ) {
 			let reset_button = $this.find(".reset");
 			reset_button.fadeIn();
 			reset_button.on('click', function () {
 				if ($this.hasClass('ratings')) {
 					$this.attr('id','');
-				}else{
+				}
+				else if ($parent.hasClass('range-slider')) {
+					let min = $parent.data('min');
+					let max = $parent.data('max');
+					$parent.val(min+","+max);
+				}
+				else{
 					$parent.removeClass('active');
 				}
 				get_products();
