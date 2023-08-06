@@ -15,5 +15,5 @@
 			endif;
 		?>
 	</ul>
-	<span class="reset d-none"><?php esc_html_e('Reset');?></span>
+	<span class="reset d-none"><?php esc_html_e('Reset','filter-plus');?></span>
 </div>
