@@ -193,7 +193,7 @@ a {
 	margin-bottom: 15px;
 	color: #333;
 }
-.sidebar-style-two .category-list {
+.sidebar-style-2 .category-list {
 	margin: 0;
 	padding: 10px 15px;
 	border: 1px solid rgba(23, 198, 170, 0.34);
@@ -201,31 +201,31 @@ a {
 	height: 150px;
 	overflow-y: auto;
 }
-.sidebar-style-two .category-list li {
+.sidebar-style-2 .category-list li {
 	list-style-type: none;
 	cursor: pointer;
 	color: #666666;
 }
-.sidebar-style-two .category-list li:hover,
-.sidebar-style-two .category-list li.active {
+.sidebar-style-2 .category-list li:hover,
+.sidebar-style-2 .category-list li.active {
 	color: #17c6aa;
 }
-.sidebar-style-two .category-list::-webkit-scrollbar {
+.sidebar-style-2 .category-list::-webkit-scrollbar {
 	width: 6px;
 }
-.sidebar-style-two .category-list::-webkit-scrollbar-thumb {
+.sidebar-style-2 .category-list::-webkit-scrollbar-thumb {
 	background: #17c6aa;
 	border-radius: 2px;
 }
-.sidebar-style-two .price-range {
+.sidebar-style-2 .price-range {
 	position: relative;
 }
-.sidebar-style-two .price-range .range-container {
+.sidebar-style-2 .price-range .range-container {
 	position: relative;
 	width: 100%;
 	margin: 10px 0 25px 0;
 }
-.sidebar-style-two .shop-sidebar .price-range input[type="range"] {
+.sidebar-style-2 .shop-sidebar .price-range input[type="range"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -240,12 +240,12 @@ a {
 	-webkit-transform: translateY(-100%);
 	transform: translateY(-100%);
 }
-.sidebar-style-two .shop-sidebar .price-range .slider-track {
+.sidebar-style-2 .shop-sidebar .price-range .slider-track {
 	width: 100%;
 	height: 5px;
 	border-radius: 5px;
 }
-.sidebar-style-two
+.sidebar-style-2
 	.shop-sidebar
 	.price-range
 	input[type="range"]::-webkit-slider-runnable-track {
