@@ -24,8 +24,8 @@
   }
   .slider-container .back-bar .pointer-label {
 	position: absolute;
-	top: -17px;
-	font-size: 8px;
+	top: -21px;
+	font-size: 12px;
 	background: white;
 	white-space: nowrap;
 	line-height: 1;
@@ -51,13 +51,13 @@
 	font-size: 0;
   }
   .slider-container .scale ins {
-	font-size: 9px;
-	text-decoration: none;
-	position: absolute;
-	left: 0;
-	top: 5px;
-	color: #999;
-	line-height: 1;
+	font-size: 12px;
+    text-decoration: none;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: inherit;
+    line-height: 1;
   }
   .slider-container.slider-readonly .clickable-dummy,
   .slider-container.slider-readonly .pointer {

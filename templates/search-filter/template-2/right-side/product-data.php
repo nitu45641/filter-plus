@@ -7,9 +7,11 @@
 					{{{ post_image }}}
 				</div>
 				<div class="product-meta">
-					{{#each tags}}
-						<div class="offer"><span>{{ name }}</span></div>
-					{{/each}}
+					<div class="offer">
+						{{#each tags}}
+							<span>{{ name }}</span>
+						{{/each}}
+					</div>
 					<div class="quickview-and-wishlist">
 						<ul>
 							<li>
