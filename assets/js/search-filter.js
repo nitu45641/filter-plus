@@ -53,7 +53,7 @@
 				from: min,
 				to: max,
 				step: 1,
-				scale: [10,90],
+				scale: [min,max],
 				format: '%s',
 				width: 238,
 				showLabels: true,
