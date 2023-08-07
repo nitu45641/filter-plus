@@ -170,7 +170,7 @@
 			params['cat_id'] = $(".category-list li.active").data('cat_id');
 			params['star']   = $("ul.ratings").attr("id");
 			params['taxonomies'] = get_tags(true);
-			if ( $(".range-slider") ) {
+			if ( $(".range-slider").length>0 ) {
 				let prices = $(".range-slider").val().split(',');
 				params['min']    = prices[0];
 				params['max']    = prices[1];
