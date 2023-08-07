@@ -186,13 +186,7 @@ a {
 .shop-sidebar .search-form button svg {
 	fill: #c4c4c4;
 }
-.shop-sidebar .sidebar-label {
-	font-weight: 600;
-	line-height: 28px;
-	font-size: 18px;
-	margin-bottom: 15px;
-	color: #333;
-}
+
 .sidebar-style-2 .category-list {
 	margin: 0;
 	padding: 10px 15px;
@@ -1078,4 +1072,3 @@ a.added_to_cart.wc-forward {
 	color: #cccccc;
 }
 
-/*# sourceMappingURL=public.css.map */

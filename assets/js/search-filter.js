@@ -307,5 +307,16 @@
 			}
 			return obj;
 		}
+		
+		/**
+		 * Slider
+		 */
+		 sidebar_slider();
+		function sidebar_slider() {
+			let $handle = $(".sidebar-label");
+			$handle.on('click',function(){
+				$(this).siblings(".panel").slideToggle();
+			});
+		}
 	});
 })(jQuery);
