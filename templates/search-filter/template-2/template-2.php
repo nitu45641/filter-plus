@@ -1,4 +1,4 @@
-<div class="shop-sidebar">
+<div class="shop-sidebar sidebar-style-two">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/product-search.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/categories.php"; ?>
 	<?php 
