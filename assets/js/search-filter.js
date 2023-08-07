@@ -171,7 +171,7 @@
 			params['star']   = $("ul.ratings").attr("id");
 			params['taxonomies'] = get_tags(true);
 			if ( $(".range-slider") ) {
-				let prices = $(".range-slider").val() ? $(".range-slider").val().split(',') : [0,1];
+				let prices = $(".range-slider").val().split(',');
 				params['min']    = prices[0];
 				params['max']    = prices[1];
 			}
