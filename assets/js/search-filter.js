@@ -166,6 +166,9 @@
 		 * @returns 
 		 */
 		function selected_param(params) {
+			if (params?.clear_all) {
+				return params;
+			}
 			// category
 			params['cat_id'] = $(".category-list li.active").data('cat_id');
 			params['star']   = $("ul.ratings").attr("id");
@@ -246,8 +249,7 @@
 			$("ul.ratings").on("click", "li", function () {
 				let $this = $(this);
 				$('.ratings li').not($this).addClass('rating_disable');
-
-				$(".ratings").attr('id',$this.data('star'));
+				$("ul.ratings").attr('id',$this.data('star'));
 				get_products();
 				// reset block
 				reset_block($this,$this.parents(".ratings"));
@@ -307,7 +309,21 @@
 			}
 			return obj;
 		}
-		
+
+		/**
+		 * Clear all
+		 */
+		 clear_all()
+		function clear_all() {
+			let clear_all = $(".clear_all");
+			if ( clear_all.length > 0 ) {
+				clear_all.on('click',function(){
+					// reset block
+					reset_block($('.shop-sidebar'),$(".sidebar-row"));
+					get_products({clear_all:true});
+				})
+			}
+		}
 		/**
 		 * Slider
 		 */
@@ -318,5 +334,6 @@
 				$(this).siblings(".panel").slideToggle();
 			});
 		}
+
 	});
 })(jQuery);
