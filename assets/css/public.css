@@ -733,7 +733,7 @@ a.added_to_cart.wc-forward {
 	-webkit-box-align: start;
 	-ms-flex-align: start;
 	align-items: start;
-	justify-content: flex-end;
+	justify-content: space-between;
 	width: calc(100% - 20px);
 	left: 20px;
 	opacity: 0;
