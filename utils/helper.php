@@ -186,10 +186,12 @@ class Helper {
 	 * @return void
 	 */
     public static function get_products( $param = array() ) {
+		$limit = 9;
 		$args = array(
-			'status'                => 'publish',
+			'post_type'             => 'product',
+			'post_status'           => 'publish',
 			'paged'                 => $param['offset'],
-			'limit'                 => '9',
+			'posts_per_page'        => $limit,
 			'paginate'              => true,
 			'order'                 => 'DESC'
 		);
@@ -198,11 +200,13 @@ class Helper {
 		$args = self::product_min_max_price( $param , $args );
 		$args = self::product_filter( $param , $args );
 		$args = self::product_reviews( $param , $args );
-		
-		$posts      = wc_get_products( $args );
-		$products   = self::process_product_data( $posts->products , $param );
+		$posts = get_posts( $args );
+		// total products
+		$args['posts_per_page'] = -1;
+		$posts_count            = count(get_posts($args));
+		$products   = self::process_product_data( $posts , $param );
 
-		return array( 'products' => $products , 'total' => $posts->total , 'pages' => $posts->max_num_pages );
+		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $limit) );
 	}
 
 	/**
@@ -217,9 +221,9 @@ class Helper {
 			$args['meta_query'] =array(
                 array(
                    'key'     => '_wc_average_rating',
-                   'value'   => intval($param['star']),
+                   'value'   => $param['star'],
                    'compare' => '=',
-				   'type'    => 'numeric'
+				   'type'    => 'NUMERIC'
                 )
 			);
 		}
@@ -424,29 +428,26 @@ class Helper {
 	public static function process_product_data( $posts  , $param ) {
 		$products = array();
 		if ( !empty($posts) ) {
-			foreach ( $posts as $key => $item ):
-				$post = $item->get_data();
-				error_log(json_encode($post));
-
-				if(has_post_thumbnail($post['id'])){
-					$image = wp_get_attachment_image( get_post_thumbnail_id( $post['id'] ), 'medium', '', '' );
+			foreach ( $posts as $key => $post ):
+				if(has_post_thumbnail($post->ID)){
+					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'medium', '', '' );
 				} else {
 					$image_url = wc_placeholder_img_src( 'woocommerce_single' );
 					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
 				}
-				$product_instance = wc_get_product($post['id']);
+				$product_instance = wc_get_product($post->ID);
 
-				$products[$key]['id'] = $post['id'];
-				$products[$key]['post_title']       = get_the_title( $post['id'] );
+				$products[$key]['id'] = $post->ID;
+				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$products[$key]['rating']           = class_exists('FilterPlusPro') ? self::rating_html( $product_instance ) : "";
-				$products[$key]['post_permalink']   = get_permalink( $post['id'] );
+				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 				$products[$key]['post_description'] = $product_instance->get_short_description();
 				$products[$key]['post_image']       = $image;
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price']       = $product_instance->get_price_html();
 				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] );
-				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? get_the_terms ( $post['id'] , 'product_cat') : [];
-				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? get_the_terms ( $post['id'] , 'product_tag'  ) : [];
+				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? get_the_terms ( $post->ID , 'product_cat') : [];
+				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? get_the_terms ( $post->ID , 'product_tag'  ) : [];
 
 			endforeach;
 		}
