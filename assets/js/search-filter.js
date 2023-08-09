@@ -260,7 +260,7 @@
 		 * reset
 		 * @param {*} $this 
 		 */
-		function reset_block($parent , $this ) {
+		function reset_block($parent , $this , clear_all = false ) {
 			let reset_button = $this.find(".reset");
 			reset_button.fadeIn();
 			reset_button.on('click', function () {
@@ -279,7 +279,9 @@
 				else{
 					$parent.removeClass('active');
 				}
-				get_products();
+				if ( !clear_all ) {
+					get_products();
+				}
 				reset_button.fadeOut();
 			})
 		}
@@ -313,13 +315,32 @@
 		/**
 		 * Clear all
 		 */
-		 clear_all()
+		 clear_all();
 		function clear_all() {
 			let clear_all = $(".clear_all");
 			if ( clear_all.length > 0 ) {
 				clear_all.on('click',function(){
 					// reset block
-					reset_block($('.shop-sidebar'),$(".sidebar-row"));
+					let sidebar = $(".sidebar-row");
+					let param_box = $(".param-box");
+					let ratings = $(".ratings");
+					let category = $(".category-list li");
+					let search = $(".sidebar-input");
+					let price_range = $('.range-slider');
+
+					category.removeClass("active");
+					search.val("");
+					param_box.find('.radio-item').removeClass("active");
+
+					if ( ratings.length > 0) {
+						ratings.attr('id','');
+						$('.ratings li').removeClass('rating_disable');	
+					}
+					if (price_range.length>0) {
+						price_range.jRange('setValue', price_range.data('min')+','+ price_range.data('max'));
+					}
+
+					sidebar.find('.reset').fadeOut();
 					get_products({clear_all:true});
 				})
 			}
