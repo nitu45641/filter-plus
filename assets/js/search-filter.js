@@ -28,7 +28,7 @@
 			reset_block(_this,_this.parents(".sidebar-row"));
 		});
 
-		//attribute click
+		//attribute/tag click
 		var sidebar_row = $('.sidebar-row');
 		if (sidebar_row.length > 0) {
 			$.each(sidebar_row, function (index, value) {
@@ -37,7 +37,7 @@
 					let _this = $(this);
 					param_box.find('.radio-item').removeClass("active");
 					_this.addClass("active");
-					get_products();
+					get_products({filter_param:get_tags()});
 					// reset block
 					reset_block(_this,_this.parents(".sidebar-row"));
 				});
@@ -352,7 +352,11 @@
 		function sidebar_slider() {
 			let $handle = $(".sidebar-label");
 			$handle.on('click',function(){
-				$(this).siblings(".panel").slideToggle();
+				let _this = $(this);
+				_this.siblings(".panel").slideToggle(500, function() {
+					_this.siblings('.down-arrow').toggle();
+					_this.siblings('.up-arrow').toggle();
+				  });
 			});
 		}
 

@@ -1072,14 +1072,14 @@ a.added_to_cart.wc-forward {
 	fill: #fff;
 }
 
-.down-arrow {
+.down-arrow,.up-arrow {
 	display: inline-block;
 	position: absolute;
 	top: 2px;
 	right: 5px;
 }
 
-.down-arrow svg {
+.down-arrow svg,.up-arrow svg {
 	fill: #b3b3b3;
 }
 
