@@ -183,6 +183,25 @@ a {
 	transition: all 0.2s linear;
 }
 
+.title-and-clean-area {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	border-bottom: 1px solid #dce5e5;
+	padding-bottom: 20px;
+}
+.title-and-clean-area h2,
+.title-and-clean-area p {
+	margin-bottom: 0;
+}
+
+.title-and-clean-area p {
+	cursor: pointer;
+	color: #17c6aa;
+	font-size: 14px;
+}
+
 .shop-sidebar .search-form button svg {
 	fill: #c4c4c4;
 }
@@ -714,7 +733,7 @@ a.added_to_cart.wc-forward {
 	-webkit-box-align: start;
 	-ms-flex-align: start;
 	align-items: start;
-	justify-content: flex-end;
+	justify-content: space-between;
 	width: calc(100% - 20px);
 	left: 20px;
 	opacity: 0;
@@ -1071,4 +1090,3 @@ a.added_to_cart.wc-forward {
 .woocommerce .woocommerce-product-rating {
 	color: #cccccc;
 }
-

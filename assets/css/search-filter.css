@@ -168,7 +168,7 @@
 }
 .shop-sidebar .search-wrap .search-form {
 	position: relative;
-	width: calc(100% - 20px);
+	width: 100%;
 }
 .shop-sidebar .search-wrap .search-form .sidebar-input {
 	padding-right: 25%;
@@ -206,12 +206,16 @@
 .active {
 	color: #2e74e8;
 }
-.ratings {
+.sidebar-style-2 .ratings {
 	padding: 15px;
 	border: 1px solid rgba(23, 198, 170, 0.34);
 	border-radius: 6px;
 	margin: 0 0 45px;
 	list-style: none;
+}
+
+.ratings {
+	margin: 0;
 }
 
 .ratings li {
@@ -220,7 +224,7 @@
 	color: #666666;
 }
 
-.ratings li svg {
+.sidebar-style-2 .ratings li svg {
 	fill: #e3a405;
 }
 
