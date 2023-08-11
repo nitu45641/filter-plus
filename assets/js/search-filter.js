@@ -10,12 +10,7 @@
 			let _this = $(this);
 			$(".category-list li").removeClass("active");
 			_this.addClass("active");
-			let filter_param = get_tags();
-
-			get_products({
-				search_value: $(".sidebar-input").val(),
-				filter_param: filter_param
-			});
+			get_products();
 
 			// reset block
 			reset_block(_this,_this.parents(".sidebar-row"));
@@ -24,7 +19,7 @@
 		//search product
 		$(".sidebar-input").on('keyup', function () {
 			let _this = $(this);
-			get_products({ search_value: $(this).val() });
+			get_products();
 			reset_block(_this,_this.parents(".sidebar-row"));
 		});
 
@@ -61,7 +56,7 @@
 				ondragend: function(val){
 					let prices = val.split(',');
 					if ( prices[1] ) {
-						get_products({ search_value: "", min: prices[0], max: prices[1] });
+						get_products();
 						// reset block
 						reset_block(price_range,price_range.parents(".sidebar-row"));
 					}
@@ -73,7 +68,7 @@
 
 		//default call
 		if ($(".prods-grid-view").length > 0) {
-			get_products();
+			get_products({default_call:true});
 		}
 		
 		/**
@@ -169,10 +164,14 @@
 			if (params?.clear_all) {
 				return params;
 			}
+			let default_call = params?.default ? params?.default : false;
 			// category
 			params['cat_id'] = $(".category-list li.active").data('cat_id');
 			params['star']   = $("ul.ratings").attr("id");
-			params['taxonomies'] = get_tags(true);
+			params['taxonomies']    = get_tags(true);
+			params['filter_param']  = get_tags(false);
+			params['search_value']  = $(".sidebar-input").val();
+
 			if ( $(".range-slider").length>0 ) {
 				let prices = $(".range-slider").val().split(',');
 				params['min']    = prices[0];
@@ -298,17 +297,18 @@
 		 * Get tags
 		 * @returns 
 		 */
-		function get_tags(selected = "") {
+		function get_tags(selected = false ) {
 			let obj = {};
 			let attribute = $(".param-box");
 			if (attribute.length > 0) {
 				attribute.each(function (i, value) {
 					let single_attr = $(value).find('div');
-					if (selected == "") {
+					if (!selected) {
 						obj[single_attr.data('taxonomy')] = single_attr.map(function () {
 							return $(this).data('term_id');
 						}).get();
-					} else {
+					}
+					else {
 						let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');
 						if (active_tag.data("term_id")) {
 							obj[single_attr.data('taxonomy')] = active_tag.data("term_id");
@@ -317,6 +317,12 @@
 
 				});
 			}
+			if (!selected && $(".category-list").length>0) {
+				obj['product_cat'] = $(".category-list li").map(function () {
+					return $(this).data('cat_id');
+				}).get();
+			}
+
 			return obj;
 		}
 

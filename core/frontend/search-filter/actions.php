@@ -78,4 +78,6 @@ class Actions {
 
 		wp_die();
 	}
+
+
 }

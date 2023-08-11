@@ -278,15 +278,19 @@ class Helper {
 	 * @return void
 	 */
 	public static function product_filter( $param , $args ) {
-		if ( ! empty( $param['cat_id'] ) ) {
-			$args['tax_query'] = array(
-				array(
-					'taxonomy' => 'product_cat',
-					'field'    => 'id',
-					'terms'    => $param['cat_id'],
-				),
-			);
+		if ( ! empty($param['cat_id']) ) {
+			$cat_id = $param['cat_id'];
+		}else{
+			$cat_id = $param['filter_param']['product_cat'];
 		}
+		
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'id',
+				'terms'    => $cat_id,
+			),
+		);
 
 		// filter by attributes
 
@@ -430,7 +434,8 @@ class Helper {
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
 				if(has_post_thumbnail($post->ID)){
-					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'medium', '', '' );
+					$size  = self::product_size($param['template']);
+					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
 				} else {
 					$image_url = wc_placeholder_img_src( 'woocommerce_single' );
 					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
@@ -453,6 +458,28 @@ class Helper {
 		}
 
 		return $products;
+	}
+
+	/**
+	 * Product imageize
+	 *
+	 * @param [type] $template
+	 * @return void
+	 */
+	public static function product_size($template){
+		switch ($template) {
+			case 1:
+				$size = array(300,300);
+				break;
+			case 2:
+				$size = array(255,315);
+				break;
+			default:
+				$size = array(300,300);
+			break;
+		}
+
+		return $size;
 	}
 	
 	/**
