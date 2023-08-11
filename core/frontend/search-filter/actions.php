@@ -49,6 +49,7 @@ class Actions {
 		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : 'yes';
 		$product_tags = ! empty( $post_data['product_tags'] ) ? $post_data['product_tags'] : 'yes';
 		$offset       = ! empty( $post_arr['offset'] ) ? $post_arr['offset'] : 1;
+		$default_call = ! empty( $post_arr['default_call'] ) ? $post_arr['default_call'] : false;
 
 		$args = array(
 			'template'      => $template,
@@ -65,7 +66,7 @@ class Actions {
 		);
 
 		$get_products   = \FilterPlus\Utils\Helper::get_products( $args );
-		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id, 'filter_param' => $filter_param ) );
+		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id, 'filter_param' => $filter_param ,'default_call' =>$default_call) );
 		$message = $get_products['total'] == 0  ? esc_html__( 'No Product Found', 'filter-plus' ) : '';
 		$response = array(
 			'success'        => true,

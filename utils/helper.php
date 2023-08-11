@@ -281,7 +281,7 @@ class Helper {
 		if ( ! empty($param['cat_id']) ) {
 			$cat_id = $param['cat_id'];
 		}else{
-			$cat_id = $param['filter_param']['product_cat'];
+			$cat_id = !empty($param['filter_param']) ? $param['filter_param']['product_cat'] : [];
 		}
 		
 		$args['tax_query'] = array(
@@ -324,6 +324,10 @@ class Helper {
 	 * @return void
 	 */
 	public static function get_single_product_tags($param) {
+		if ($param['default_call']) {
+			return array();
+		}
+
 		$args = array(
 			'post_type'             => 'product',
 			'post_status'           => 'publish',
@@ -346,8 +350,8 @@ class Helper {
 				}
 			}
 		}
-		$result        = self::get_product_term( $param['filter_param'] , $all_terms );
 
+		$result        = self::get_product_term( $param['filter_param'] , $all_terms );
 		return $result;
 	}
 	
