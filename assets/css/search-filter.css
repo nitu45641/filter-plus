@@ -239,11 +239,6 @@
 /* Product Css */
 
 /* Grid view css start*/
-.prods-grid-view {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-	gap: 50px 20px;
-}
 /* .vartical-prod-card-container {
 	background: #fff;
 	text-align: center;
@@ -348,11 +343,7 @@
 .vartical-prod-card-container:hover .card-action-btn-container {
 	height: 70px;
 }
-.prods-grid-view {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-	gap: 50px 20px;
-}
+
 /* Grid view css end*/
 
 /* List view css start */
