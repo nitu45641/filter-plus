@@ -1,6 +1,6 @@
 
 <script id="search_products_grid" type="text/x-handlebars-template">
-	<div class="prods-grid-view product-style-two">
+	<div class="product-style-two">
 		<div class="vartical-prod-card-container">
 			<div class="product-thumbnail">
 				<div class="vpcc-image">
