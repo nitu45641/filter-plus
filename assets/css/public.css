@@ -1059,6 +1059,7 @@ a.added_to_cart.wc-forward {
 	text-transform: uppercase;
 	font-weight: 500;
 	padding-left: 11px;
+	cursor: pointer;
 }
 
 .categories-wrapper .cat-group input[type="checkbox"]:checked {

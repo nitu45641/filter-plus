@@ -58,6 +58,7 @@ class Shortcodes {
 					'show_price_range' => '',
 					'product_categories' => '',
 					'product_tags'       => '',
+					'sorting'          => 'no',
 				), $atts )
 		);
 
