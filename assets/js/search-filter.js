@@ -52,7 +52,7 @@
 				step: 1,
 				scale: [min,max],
 				format: '%s',
-				width: 238,
+				width: '100%',
 				showLabels: true,
 				isRange : true,
 				ondragend: function(val){
