@@ -30,8 +30,7 @@
 
 <div class="row products-wrap">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/right-side/sort-bar.php"; ?>
-	<div class="prods-grid-view"></div>
-	<div class="prods-list-view"></div>
+	<div class="prods-grid-view grid-view-<?php esc_attr_e($template)?>"></div>
 	<div class="message"></div>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/right-side/product-data.php"; ?>
 	<!-- pagination -->

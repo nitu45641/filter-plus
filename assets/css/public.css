@@ -493,12 +493,7 @@ a {
 	height: 70px;
 }
 
-.prods-grid-view {
-	display: -ms-grid;
-	display: grid;
-	grid-template: auto / 255px 255px 255px;
-	gap: 30px 30px;
-}
+
 
 /* Grid view css end*/
 /* List view css start */

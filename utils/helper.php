@@ -490,13 +490,13 @@ class Helper {
 	public static function product_size($template){
 		switch ($template) {
 			case 1:
-				$size = array(300,300);
+				$size = array(255,255);
 				break;
 			case 2:
 				$size = array(255,315);
 				break;
 			default:
-				$size = array(300,300);
+				$size = array(255,255);
 			break;
 		}
 

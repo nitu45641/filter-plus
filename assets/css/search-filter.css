@@ -203,12 +203,19 @@
 }
 .category-list {
 	list-style-type: square;
-	margin-left: 0;
+	margin: 0 !important;
+    padding: 0 !important;
 	cursor: pointer;
+}
+.category-list li {
+	margin-top: 5px;
 }
 .category-list li:hover,
 .active {
-	color: #2e74e8;
+	color: #333333;
+}
+.sidebar-style-1 .categories-wrap ul{
+    padding-left: 18px !important;
 }
 .sidebar-style-2 .ratings {
 	padding: 15px;
@@ -242,7 +249,17 @@ ul.ratings {
 }
 
 /* Product Css */
-
+.grid-view-2 {
+	display: -ms-grid;
+	display: grid;
+	grid-template: auto / 255px 255px 255px;
+	gap: 30px 30px;
+}
+.grid-view-1{
+	display: grid;
+    grid-template: auto / 255px 255px 255px 255px;
+    gap: 30px 13px;
+}
 .vartical-prod-card-container {
 	background: #fff;
 	text-align: center;
