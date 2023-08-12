@@ -10,8 +10,10 @@
 			let _this = $(this);
 			$(".category-list li").removeClass("active");
 			_this.addClass("active");
-			get_products();
+			let active_li = $("#cat_li_"+_this.data("cat_id"));
+			$('input[type=checkbox]').not(active_li).removeAttr('checked');      
 
+			get_products();
 			// reset block
 			reset_block(_this,_this.parents(".sidebar-row"));
 		});

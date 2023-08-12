@@ -7,8 +7,8 @@
 			if ( !empty( $get_categories ) ) :
 				foreach($get_categories as $item): ?>
 						<li class="cat-group" data-cat_id="<?php  echo esc_attr($item->term_id)?>">
-							<input type="checkbox" value="<?php  echo esc_attr($item->term_id)?>" id="<?php  echo esc_attr($item->term_id)?>">
-							<label for="<?php  echo esc_attr($item->term_id)?>"><?php  echo esc_html($item->name)  ;?></label>
+							<input type="checkbox" value="<?php  echo esc_attr($item->term_id)?>" id="<?php  echo esc_attr("cat_li_".$item->term_id)?>">
+							<label for="<?php  echo esc_attr("cat_li_".$item->term_id)?>"><?php  echo esc_html($item->name)  ;?></label>
 						</li>
 				<?php 
 				endforeach; 
