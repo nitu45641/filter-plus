@@ -321,11 +321,6 @@ a {
 	background-color: #17c6aa;
 }
 
-.shop-sidebar .sidebar-row {
-	margin-bottom: 28%;
-	position: relative;
-}
-
 .shop-sidebar .search-wrap .search-form {
 	position: relative;
 	width: calc(100% - 20px);
@@ -365,10 +360,6 @@ a {
 	flex: 1;
 }
 
-.category-list li:hover,
-.active {
-	color: #2e74e8;
-}
 
 /* Product Css */
 

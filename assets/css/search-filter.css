@@ -203,7 +203,7 @@
 }
 .category-list {
 	list-style-type: square;
-	margin-left: 15px;
+	margin-left: 0;
 	cursor: pointer;
 }
 .category-list li:hover,

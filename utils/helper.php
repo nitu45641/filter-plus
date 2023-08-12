@@ -415,14 +415,31 @@ class Helper {
 	 */
 	public static function get_min_max_price() {
 		$price  = array( 'min' => '' , 'max'=> '' );
-		global $wpdb;
-		$sql    = "SELECT MAX(meta_value) as max ,MIN(meta_value) as min from {$wpdb->prefix}postmeta where meta_key = '_price'";
-		$result = $wpdb->get_results($sql);
 
-		if ( !empty($result) ) {
-			$price = array( 'min' => $result[0]->min , 'max'=> $result[0]->max );
+		$min = PHP_FLOAT_MAX;
+		$max = 0.00;
+		 
+		$all_ids = get_posts( array(
+		   'post_type' => 'product',
+		   'numberposts' => -1,
+		   'post_status' => 'publish',
+		   'fields' => 'ids',
+		) );
+		 
+		foreach ( $all_ids as $id ) {
+		   $product = wc_get_product( $id );
+		   if ( $product->is_type( 'simple' ) ) {
+			  $min = $product->get_price() < $min ? $product->get_price() : $min;
+			  $max = $product->get_price() > $max ? $product->get_price() : $max;
+		   } elseif ( $product->is_type( 'variable' ) ) {
+			  $prices = $product->get_variation_prices();
+			  $min = current( $prices['price'] ) < $min ? current( $prices['price'] ) : $min;
+			  $max = end( $prices['price'] ) > $max ? end( $prices['price'] ) : $max;
+		   } 
 		}
-
+		 
+		// return ' (' . wc_format_price_range( $min, $max ) . ')';
+		$price  = array( 'min' => $min , 'max'=> $max );
 		return $price;
 	}
 
