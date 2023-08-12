@@ -54,6 +54,7 @@
 }
 .shop-sidebar .sidebar-row {
 	margin-bottom: 56px;
+	position: relative;
 }
 .shop-sidebar .sidebar-label {
 	font-weight: bold;
