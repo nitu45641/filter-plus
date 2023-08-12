@@ -368,9 +368,13 @@
 		function sidebar_slider($handle) {
 			$handle.on('click',function(){
 				let _this = $(this);
+				console.log(_this);
 				_this.siblings(".panel").slideToggle(700, function() {
-					_this.siblings('.down-arrow').toggle();
-					_this.siblings('.up-arrow').toggle();
+					if (_this.hasClass('closed')) {
+						_this.removeClass('closed').addClass('open');
+					} else {
+						_this.removeClass('open').addClass('closed');
+					}
 				  });
 			});
 		}

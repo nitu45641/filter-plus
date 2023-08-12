@@ -206,30 +206,12 @@ a {
 	fill: #c4c4c4;
 }
 
-.sidebar-style-2 .category-list {
-	margin: 0;
-	padding: 10px 15px;
-	border: 1px solid rgba(23, 198, 170, 0.34);
-	border-radius: 6px;
-	height: 150px;
-	overflow-y: auto;
-}
 .sidebar-style-2 .category-list li {
 	list-style-type: none;
 	cursor: pointer;
 	color: #666666;
 }
-.sidebar-style-2 .category-list li:hover,
-.sidebar-style-2 .category-list li.active {
-	color: #17c6aa;
-}
-.sidebar-style-2 .category-list::-webkit-scrollbar {
-	width: 6px;
-}
-.sidebar-style-2 .category-list::-webkit-scrollbar-thumb {
-	background: #17c6aa;
-	border-radius: 2px;
-}
+
 .sidebar-style-2 .price-range {
 	position: relative;
 }
@@ -1119,4 +1101,21 @@ a.added_to_cart.wc-forward {
 	left: 30%;
 	bottom: 30px;
 	position: absolute;
+}
+
+.dropdown-label::after{
+	background-size: 100% auto;
+    content: '';
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 15px;
+	top: 13px;
+	width: 10px;
+}
+.dropdown-label.closed:after {
+    background-image: url(../../assets/images/arrow-down.svg);
+}
+.dropdown-label.open:after {
+    background-image: url(../../assets/images/arrow-up.svg);
 }
