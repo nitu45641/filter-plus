@@ -290,7 +290,7 @@ ul.ratings {
 }
 
 .vpcc-image {
-	height: 209px;
+	height: 207px;
 	object-fit: cover;
 	display: flex;
 	align-items: center;
@@ -471,7 +471,7 @@ a.added_to_cart.wc-forward {
 	transition: all 0.6s ease-in-out;
 }
 
-.pagination {
+ul.pagination {
 	padding: 0;
 	margin: 40px 0 0 -20px;
 	list-style-type: none;
