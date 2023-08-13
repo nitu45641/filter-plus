@@ -21,7 +21,7 @@ foreach ($attributes as $key => $item ) {
 			}
 		?>
 	</div>
-	<span class="reset d-none"><?php esc_html_e('Reset','filter-plus');?></span>	
+	<span class="reset d-none reset-<?php esc_attr_e($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>	
 </div>
 <?php } ?>
 

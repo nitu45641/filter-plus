@@ -324,7 +324,7 @@ class Helper {
 	 * @return void
 	 */
 	public static function get_single_product_tags($param) {
-		if ($param['default_call']) {
+		if (empty($param['cat_id'])) {
 			return array();
 		}
 
