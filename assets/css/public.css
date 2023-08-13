@@ -3,6 +3,12 @@ a {
 	outline: none !important;
 }
 
+input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, input[type="checkbox"]:hover:checked, input[type="checkbox"]:focus:checked, input[type=range]::-webkit-slider-thumb {
+	border-color: #333333 !important;
+    background-color: #333333 !important;
+    box-shadow: none;
+}
+
 .shopContainer {
 	-ms-grid-columns: 3fr 2rem 10fr;
 	grid-template-columns: 3fr 10fr;
