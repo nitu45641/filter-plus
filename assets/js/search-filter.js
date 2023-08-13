@@ -54,7 +54,7 @@
 				to: max,
 				step: 1,
 				scale: [min,max],
-				width: '270',
+				width: '250',
 				showLabels: true,
 				isRange : true,
 				ondragend: function(val){
