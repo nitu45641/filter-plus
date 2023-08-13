@@ -6,16 +6,22 @@
 		* Get Product dat from filter
 		*/
 		//list click
-		$(".category-list li").on('change', function () {
+		$(".category-list li").on('click', function () {
 			let _this = $(this);
 			$(".category-list li").removeClass("active");
 			let active_li = $("#cat_li_"+_this.data("cat_id"));
-			if(active_li.is(":checked")) {
-				_this.addClass("active");
-				$('input[type=checkbox]').not(active_li).removeAttr('checked');      
+
+			if ( active_li.length > 0 ) {
+				if(active_li.is(":checked")) {
+					_this.addClass("active");
+					$('input[type=checkbox]').not(active_li).removeAttr('checked');      
+				} else {
+					_this.removeClass("active");
+				}
 			} else {
-				_this.removeClass("active");
+				_this.addClass("active");
 			}
+
 			get_products();
 			// reset block
 			reset_block(_this,_this.parents(".sidebar-row"));
