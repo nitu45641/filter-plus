@@ -184,6 +184,24 @@
 	outline-style: none;
 	color: #fff !important;
 }
+.radio-wrap .radio-item.active {
+	background: #17c6aa;
+	border: 5px solid #17c6aa;
+	outline: 1px solid #17c6aa;
+	color: #fff !important;
+}
+.radio-wrap .taxonomy-item-1.active {
+	background: #2d73e7;
+	border: 5px solid #2d73e7;
+	outline: 1px solid #2d73e7;
+	color: #fff !important;
+}
+.shop-sidebar .radio-wrap .taxonomy-item-1:hover {
+	background: #2d73e7;
+	border-color: #2d73e7;
+	outline-style: none;
+	color: #fff !important;
+}
 .shop-sidebar .color-wrap .radio-item {
 	padding: 12px 12px;
 }
@@ -308,7 +326,7 @@ ul.ratings {
 	line-height: 130%;
 	margin: 10px 0 5px;
 	font-weight: bold;
-	color: #0c6adf;
+	color: #2d73e7;
 }
 .vpcc-name:hover {
 	color: #2d73e7;

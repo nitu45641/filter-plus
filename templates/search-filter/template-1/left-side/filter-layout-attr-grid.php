@@ -10,7 +10,7 @@ foreach ($attributes as $key => $item ) {
 			foreach ($get_attr['terms'] as $key => $term) {
 				if (!empty( $term ) ) {
 					?>
-						<div class="radio-item" 
+						<div class="radio-item taxonomy-item-<?php esc_attr_e($template);?>" 
 						data-taxonomy="<?php esc_attr_e($term->taxonomy); ?>"
 						data-term_id="<?php esc_attr_e($term->term_id); ?>"
 						>

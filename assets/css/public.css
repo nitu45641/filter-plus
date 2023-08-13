@@ -107,12 +107,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	font-weight: 500;
 	cursor: pointer;
 }
-.radio-wrap .radio-item.active {
-	background: #17c6aa;
-	border: 5px solid #17c6aa;
-	outline: 1px solid #17c6aa;
-	color: #fff !important;
-}
+
 .radio-wrap .radio-item.color-item {
 	border-radius: 40px;
 	width: 30px;
@@ -127,12 +122,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	border-color: transparent !important;
 	outline: 1px solid #d7d7d7 !important;
 }
-.radio-wrap .radio-item:hover {
-	background: #17c6aa;
-	border-color: #17c6aa;
-	outline-style: none;
-	color: #fff !important;
-}
+
 
 .shop-sidebar {
 	padding: 0 15px;

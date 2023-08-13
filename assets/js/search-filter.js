@@ -5,8 +5,14 @@
 		/*
 		* Get Product dat from filter
 		*/
-		//list click
-		$(".category-list li").on('click', function () {
+		//list click/change
+		let category_li = $(".category-list li");
+		let action = 'click';
+		if ( category_li.find('input[type="checkbox"]').length ){
+			 action = 'change';
+		}
+
+		category_li.on(action, function () {
 			let _this = $(this);
 			$(".category-list li").removeClass("active");
 			let active_li = $("#cat_li_"+_this.data("cat_id"));
@@ -86,6 +92,7 @@
 		 * @param {*} params 
 		 */
 		function get_products(params = {}) {
+			console.log(params);
 			var products_wrap = $(".products-wrap");
 			var prod_grid_wrap = $(".prods-grid-view");
 			var prod_list_wrap = $(".prods-list-view");
