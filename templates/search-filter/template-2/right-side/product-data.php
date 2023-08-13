@@ -34,11 +34,11 @@
 				</div>
 			</div>
 			<div class="product-content">
-				{{#each categories }}
-					<div class="cat">
+				<div class="cat">
+					{{#each categories }}
 						<a href="#">{{ name }}</a>
-					</div>	
-				{{/each}}
+					{{/each}}
+				</div>	
 				<div class="product-name">
 					<a href="#">{{{ post_title }}}</a>
 				</div>

@@ -6,12 +6,16 @@
 		* Get Product dat from filter
 		*/
 		//list click
-		$(".category-list li").on('click', function () {
+		$(".category-list li").on('change', function () {
 			let _this = $(this);
 			$(".category-list li").removeClass("active");
-			_this.addClass("active");
 			let active_li = $("#cat_li_"+_this.data("cat_id"));
-			$('input[type=checkbox]').not(active_li).removeAttr('checked');      
+			if(active_li.is(":checked")) {
+				_this.addClass("active");
+				$('input[type=checkbox]').not(active_li).removeAttr('checked');      
+			} else {
+				_this.removeClass("active");
+			}
 			get_products();
 			// reset block
 			reset_block(_this,_this.parents(".sidebar-row"));
@@ -50,8 +54,7 @@
 				to: max,
 				step: 1,
 				scale: [min,max],
-				format: '%s',
-				width: '100%',
+				width: '270',
 				showLabels: true,
 				isRange : true,
 				ondragend: function(val){
