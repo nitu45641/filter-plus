@@ -369,12 +369,17 @@
 		/**
 		 * Slider
 		 */
-		 $(".rating-section .panel").css("display","none")
+		 $(".rating-section .panel").css("display","none");
+		 $(".down-arrow").css("display","none");
 		 sidebar_slider($(".sidebar-label"));
 		 sidebar_slider($(".dropdown-label"));
 		function sidebar_slider($handle) {
 			$handle.on('click',function(){
 				let _this = $(this);
+
+				_this.siblings(".down-arrow").slideToggle();
+				_this.siblings(".up-arrow").slideToggle();
+
 				_this.siblings(".panel").slideToggle(700, function() {
 					if (_this.hasClass('closed')) {
 						_this.removeClass('closed').addClass('open');

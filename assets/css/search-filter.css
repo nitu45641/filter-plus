@@ -458,6 +458,9 @@ a.added_to_cart.wc-forward {
 	padding: 0 7px;
 	border-radius: 3.5px;
 }
+li.first-page{
+	margin-left: 0 !important;
+}
 .pagination li {
 	display: inline-block;
 	margin: 0 8px;
