@@ -2,7 +2,7 @@
 <?php
 	if ( "yes" == $size ) {
 		$attrs      = \FilterPlus\Utils\Helper::get_attributes("pa_size");
-		$title      = esc_html__("Filter By Size","filter-plus");
+		$title      = esc_html__("Best Match Item","filter-plus");
 		$get_attr   = array();
 		foreach ($attrs['terms'] as $key => $value) {
 			$get_attr[$key]  = $value->term_id;

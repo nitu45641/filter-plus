@@ -14,7 +14,7 @@
 			}
 			// custom tags
 			if ( 'yes'== $show_tags ) {
-				$title = esc_html__("Filter By Brand","filter-plus");
+				$title = esc_html__("Find Favorite Item","filter-plus");
 				$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
 				include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-grid.php";
 			}
