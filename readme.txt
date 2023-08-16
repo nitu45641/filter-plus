@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce filter, filtering plugin, search, product filter
 Requires at least: 4.7
 Tested up to: 5.4
-Stable tag: 4.3
+Stable tag: 1.0.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,8 @@ Ever wanted to provide better WooCommerce filtering on your WordPress eCommerce 
 ##Current Feature##
 
 👉 Filter by Category
+👉 Filter by Size
+👉 Filter by Color
 👉 Product Search
 
 More features are on the way!
