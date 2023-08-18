@@ -92,7 +92,6 @@
 		 * @param {*} params 
 		 */
 		function get_products(params = {}) {
-			console.log(params);
 			var products_wrap = $(".products-wrap");
 			var prod_grid_wrap = $(".prods-grid-view");
 			var prod_list_wrap = $(".prods-list-view");
