@@ -67,7 +67,6 @@ class Enqueue {
         $pages  = \FilterPlus\Utils\Helper::admin_pages_id();
 
         // load js in specific pages
-
         if ( is_admin() && ( in_array( $screen->id , $pages ) ) ) {
 
                 foreach ( $this->admin_get_scripts() as $key => $value ) {
