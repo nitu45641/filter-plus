@@ -33,6 +33,8 @@
 	<div class="prods-list-view"></div>
 	<div class="message"></div>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/right-side/product-data.php"; ?>
+	<!-- pagination -->
+	<ul class="pagination"></ul>
 </div>
 
 
