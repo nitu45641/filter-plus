@@ -479,6 +479,8 @@ a.added_to_cart.wc-forward {
 	padding: 0 7px;
 	border-radius: 3.5px;
 }
+
+/* pagination */
 li.first-page{
 	margin-left: 0 !important;
 }
@@ -494,6 +496,16 @@ li.first-page{
 	cursor: pointer;
 	transition: all 0.6s ease-in-out;
 }
+.pagination-1 li{
+	background: var(--bg_color);
+    border: 1px solid;
+    border-radius: 50%;
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    width: 35px;
+}
 
 ul.pagination {
 	padding: 0;
@@ -504,7 +516,6 @@ ul.pagination {
 .pagination li:hover {
 	background-color: #11152c;
 	color: #fff;
-	border-radius: 5px;
 }
 
 .pagination li:hover svg {
