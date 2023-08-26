@@ -3,14 +3,14 @@ h2.content-header{
 	font-weight: bold !important;
     margin-top: 2% !important;
 }
+.font_bold {
+	font-weight: bold !important;
+}
 .admin-button,.field{
 	padding: 6px !important;
 }
 .input_width{
 	width: 350px;
-}
-.content-wrapper{
-	margin: 3% 0px;
 }
 .shortcode-block{
 	width: 600px;
@@ -19,7 +19,7 @@ h2.content-header{
 	display: flex;
 	column-gap: 40px;
 	align-items: center;
-	padding: 7px;
+	padding: 7px 0;
 }
 .shortcode-label{
     font-size: 15px;

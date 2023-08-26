@@ -68,9 +68,14 @@
 			$args = array('label'=>esc_html__("Display Price Range:","filter-plus"),'id' => 'show_price_range','data_label' => 'show_price_range',
 			'disable' => $disable );
 			checkbox_field($args);
+
+			// show sorting
+			$args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting',
+			'disable' => $disable );
+			checkbox_field($args);
 			
 		?>
-		<h1><?php esc_html_e("Product List:","filter-plus"); ?></h1>
+		<h1 class="font_bold"><?php esc_html_e("Product List:","filter-plus"); ?></h1>
 		
 		<?php
 			// show tags
