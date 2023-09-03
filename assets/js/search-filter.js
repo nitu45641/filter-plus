@@ -186,7 +186,7 @@
 			params['taxonomies']    = get_tags(true);
 			params['filter_param']  = get_tags(false);
 			params['search_value']  = $(".sidebar-input").val();
-
+			params['order_by']      = $("#filter-sort-by option:selected").val()
 			if ( $(".range-slider").length>0 ) {
 				let prices = $(".range-slider").val().split(',');
 				params['min']    = prices[0];
@@ -401,5 +401,17 @@
 				  });
 			});
 		}
+		/**
+		 * Sorting
+		 */
+
+		sorting();
+		function sorting() {
+			let filter_by = $("#filter-sort-by");
+			filter_by.on('change',function(){
+				get_products();
+			})
+		}
+
 	});
 })(jQuery);

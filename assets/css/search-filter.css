@@ -6,7 +6,7 @@
 	grid-gap: 2rem;
 }
 .products-wrap{
-	display: flow-root !important;
+	max-width: 825px;
 }
 .font_14 {
 	font-size: 14px;

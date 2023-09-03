@@ -192,22 +192,66 @@ class Helper {
 			'post_status'           => 'publish',
 			'paged'                 => $param['offset'],
 			'posts_per_page'        => $limit,
-			'paginate'              => true,
-			'order'                 => 'DESC'
+			'paginate'              => true
 		);
-
+		$args = self::product_order_by( $param , $args );
 		$args = self::add_search_value( $param , $args );
 		$args = self::product_min_max_price( $param , $args );
 		$args = self::product_filter( $param , $args );
 		$args = self::product_reviews( $param , $args );
+		
 		$posts = get_posts( $args );
 		// total products
 		$args['posts_per_page'] = -1;
 		$posts_count            = count(get_posts($args));
 		$products   = self::process_product_data( $posts , $param );
 
+
 		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $limit) );
 	}
+
+	/**
+	 * Product order by
+	 *
+	 * @param [type] $args
+	 * @param [type] $param
+	 * @return void
+	 */
+	public static function product_order_by( $param , $args ) {
+		if(!empty($param['order_by'])){
+			switch ($param['order_by']) {
+				case 'date':
+					$args['order']      = 'DESC';
+					$args['orderby']    = $param['order_by'];
+					break;
+				case 'price':
+					$args['order']      = 'ASC';
+					$args['orderby']    = 'meta_value_num';
+					$args['meta_key']   = '_price';
+					break;
+				case 'price-desc':
+					$args['order']      = 'DESC';
+					$args['orderby']    = 'meta_value_num';
+					$args['meta_key']   = '_price';
+					break;
+				case 'rating':
+					$args['order']      = 'DESC';
+					$args['orderby']    = 'rating';
+					break;
+				case 'popularity':
+					$args['orderby']  = ['menu_order' => 'DESC', 'meta_value_num' => 'DESC'];
+					$args['meta_key'] = 'total_sales';
+					break;
+				default:
+					$args['order']      = 'DESC';
+					$args['orderby']    = $param['order_by'];
+					break;
+			}
+		}
+
+		return $args;
+	}
+	
 
 	/**
 	 * Product review

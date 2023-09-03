@@ -32,6 +32,7 @@ class Shortcodes {
 				add_shortcode( $key, [$this, $value] );
 			}
 		}
+
 	}
 
 	/**
