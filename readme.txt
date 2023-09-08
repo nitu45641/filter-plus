@@ -3,7 +3,7 @@ Contributors: markutos987, galib96
 Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce filter, filtering plugin, search, product filter
 Requires at least: 4.7
-Tested up to: 5.4
+Tested up to: 6.3.1
 Stable tag: 1.0.0
 Requires PHP: 7.0
 License: GPLv2 or later
