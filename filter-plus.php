@@ -101,7 +101,6 @@ final class FilterPlus {
 		}
 	}
 
-
 	/**
      * Load on plugin
      *

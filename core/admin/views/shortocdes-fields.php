@@ -16,9 +16,10 @@ function checkbox_field($args){
 }
 
 function select_field($args){
+	$count_option = is_array($args['options']) ? count($args['options']) : 0 ;
 	$options_html = "";
 	$disable      = !empty($args['disable']) ? 'disable' : '';
-	$template_disable = !empty($args['template_disable']) ? $args['template_disable'] : count($args['options']) + 1;
+	$template_disable = !empty($args['template_disable']) && is_array($args['options']) ? $args['template_disable'] : $count_option + 1;
 	$select_type  = "multiple";
 
 	if (!empty($args['type']) && "attributes" == $args['type'] ) {
@@ -38,6 +39,9 @@ function select_field($args){
 		endif;
 	}
 	else{
+		if( !class_exists('WooCommerce')){
+			return;
+		}
 		if ( !empty( $args['options'] ) ) :
 			foreach($args['options'] as $item): 
 				$options_html .= '<option value="'.$item->term_id.'">'.$item->name.'</option>';

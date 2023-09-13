@@ -11,7 +11,7 @@ class Helper {
 
 	use Singleton;
 
-		/**
+	/**
 	 * Show Notices
 	 */
 	public static function push( $notice ) {
@@ -119,6 +119,9 @@ class Helper {
 	 * @return void
 	 */
 	public static function get_product_tags( $tag ) {
+		if( !class_exists('WooCommerce')){
+			return array();
+		}
 		$terms      = get_terms( array(
 			'taxonomy'   => $tag,
 			'hide_empty' => false,

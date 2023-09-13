@@ -53,7 +53,7 @@
 
 			// get attributes list
 			global $product;
-			$get_attributes = wc_get_attribute_taxonomies();
+			$get_attributes     = class_exists('WooCommerce') ? wc_get_attribute_taxonomies() : array();
 			$args               = array('label'=>esc_html__("Attribute List:","filter-plus"),'id' => 'woo_pro_attributes',
 			'data_label' => 'attributes','options'=>$get_attributes , 'condition_class' => "show_attributes" , 'type'=>'attributes',
 			'disable' => $disable );
