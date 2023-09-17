@@ -67,7 +67,6 @@
 		 * Toggle Show/Hide
 		 *  
 		 * */
-		
 		 var ids = ["show_tags","show_attributes"];
 		 $.each(ids,function(index,data){
 			let value = $("#"+data);
