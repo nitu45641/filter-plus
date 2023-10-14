@@ -68,9 +68,9 @@ class Shortcodes {
 		if ( file_exists( \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 		?>
 			<div class="shopContainer" 
-			data-template="<?php esc_attr_e($template)?>"
-			data-product_categories="<?php esc_attr_e($product_categories)?>"
-			data-product_tags="<?php esc_attr_e($product_tags)?>"
+			data-template="<?php echo esc_attr($template)?>"
+			data-product_categories="<?php echo esc_attr($product_categories)?>"
+			data-product_tags="<?php echo esc_attr($product_tags)?>"
 			>
 				<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php";?>
 			</div>
