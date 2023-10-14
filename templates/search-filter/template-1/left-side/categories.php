@@ -1,4 +1,8 @@
+<?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+?>
 <div class="sidebar-row categories-wrap">
 	<h4 class="sidebar-label"><?php esc_html_e('Categories','filter-plus');?></h4>
 	<ul class="category-list">

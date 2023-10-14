@@ -632,4 +632,15 @@ class Helper {
 
 		return $cart_html;
 	}
+
+	/**
+	 * Render html.
+	 */
+	public static function render( $content ) {
+		if ( $content == "" ) {
+			return "";
+		}
+
+		return $content;
+	}
 }

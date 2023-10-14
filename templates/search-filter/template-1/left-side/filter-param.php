@@ -1,5 +1,8 @@
 <!-- Filter By Size -->
 <?php
+
+	if ( ! defined( 'ABSPATH' ) ) exit;
+
 	if ( "yes" == $size ) {
 		$attrs      = \FilterPlus\Utils\Helper::get_attributes("pa_size");
 		$title      = esc_html__("Filter By Size","filter-plus");
@@ -18,7 +21,7 @@
 	$get_attr = \FilterPlus\Utils\Helper::get_attributes("pa_color");
 ?>
 	<div class="sidebar-row radio-wrap">
-		<h4 class="sidebar-label"><?php echo esc_html__("Filter By") ." ".$get_attr['label'] ;?></h4>
+		<h4 class="sidebar-label"><?php echo esc_html__("Filter By") ." ".esc_html($get_attr['label']) ;?></h4>
 		<div class="panel">
 			<div class="param-box">
 				<?php

@@ -1,4 +1,8 @@
+<?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+?>
 <script id="search_products_grid" type="text/x-handlebars-template">
 	<div class="product-style-two">
 		<div class="vartical-prod-card-container">

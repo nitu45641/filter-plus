@@ -1,6 +1,10 @@
+<?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+?>
 <div class="sidebar-row radio-wrap">
-	<h4 class="sidebar-label"><?php echo ($title); ?></h4>
+	<h4 class="sidebar-label"><?php echo esc_html($title); ?></h4>
 	<div class="param-box">
 		<?php
 			foreach ($get_attr as $key => $term_id) {

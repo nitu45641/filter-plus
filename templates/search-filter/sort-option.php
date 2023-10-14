@@ -1,3 +1,8 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+?>
 <div class="sort-by">
 	<select name="sort-by" id="filter-sort-by">
 		<option value="menu_order"><?php esc_html_e('Default Sorting','filter-plus')?></option>

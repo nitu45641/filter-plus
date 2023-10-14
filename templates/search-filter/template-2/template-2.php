@@ -1,3 +1,8 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+?>
 <div class="shop-sidebar sidebar-style-<?php esc_attr_e($template);?>">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/title.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/product-search.php"; ?>

@@ -1,3 +1,8 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+?>
 <div class="sidebar-row search-wrap">
 	<!-- Product Search -->
 	<div class="search-form">
