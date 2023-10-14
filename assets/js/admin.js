@@ -18,6 +18,7 @@
 					let parent_block = _this.parents(".shortcode-block");
 					var shortcode_name = parent_block.data("name");
 					let input_value = findInputValue(parent_block.find(".shortcode-section"));
+
 					let shortcode = `[${shortcode_name} ${input_value}]`; 
 					results.val("").val(shortcode);
 					copyTextData(results);

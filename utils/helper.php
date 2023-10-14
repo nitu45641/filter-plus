@@ -12,6 +12,164 @@ class Helper {
 	use Singleton;
 
 	/**
+	 * Html markup validation
+	 */
+	public static function filter_plus_kses( $raw ) {
+		$allowed_tags = [
+			'a'                             => [
+				'class'  => [],
+				'href'   => [],
+				'rel'    => [],
+				'title'  => [],
+				'target' => [],
+			],
+			'input'                         => [
+				'value'       => [],
+				'type'        => [],
+				'size'        => [],
+				'name'        => [],
+				'checked'     => [],
+				'placeholder' => [],
+				'id'          => [],
+				'class'       => [],
+				'data-label'  => []
+			],
+
+			'select'                        => [
+				'value'       => [],
+				'type'        => [],
+				'size'        => [],
+				'name'        => [],
+				'placeholder' => [],
+				'id'          => [],
+				'class'       => [],
+				'multiple'    => [],
+				'data-option' => []							
+			],
+			'option'      => [
+				'value'   => [],
+				'disabled'    => []
+			],
+			'textarea'                      => [
+				'value'       => [],
+				'type'        => [],
+				'size'        => [],
+				'name'        => [],
+				'rows'        => [],
+				'cols'        => [],
+				'placeholder' => [],
+				'id'          => [],
+				'class'       => [],
+			],
+			'abbr'                          => [
+				'title' => [],
+			],
+			'b'                             => [],
+			'blockquote'                    => [
+				'cite' => [],
+			],
+			'cite'                          => [
+				'title' => [],
+			],
+			'code'                          => [],
+			'del'                           => [
+				'datetime' => [],
+				'title'    => [],
+			],
+			'dd'                            => [],
+			'div'                           => [
+				'data'  => [],
+				'class' => [],
+				'title' => [],
+				'style' => [],
+			],
+			'dl'                            => [],
+			'dt'                            => [],
+			'em'                            => [],
+			'h1'                            => [
+				'class' => [],
+			],
+			'h2'                            => [
+				'class' => [],
+			],
+			'h3'                            => [
+				'class' => [],
+			],
+			'h4'                            => [
+				'class' => [],
+			],
+			'h5'                            => [
+				'class' => [],
+			],
+			'h6'                            => [
+				'class' => [],
+			],
+			'i'                             => [
+				'class' => [],
+			],
+			'img'                           => [
+				'alt'    => [],
+				'class'  => [],
+				'height' => [],
+				'src'    => [],
+				'width'  => [],
+			],
+			'li'                            => [
+				'class' => [],
+			],
+			'ol'                            => [
+				'class' => [],
+			],
+			'p'                             => [
+				'class' => [],
+			],
+			'q'                             => [
+				'cite'  => [],
+				'title' => [],
+			],
+			'span'                          => [
+				'class' => [],
+				'title' => [],
+				'style' => [],
+			],
+			'small'                          => [
+				'class' => [],
+				'title' => [],
+				'style' => [],
+			],
+			'iframe'                        => [
+				'width'       => [],
+				'height'      => [],
+				'scrolling'   => [],
+				'frameborder' => [],
+				'allow'       => [],
+				'src'         => [],
+			],
+			'strike'                        => [],
+			'br'                            => [],
+			'strong'                        => [],
+			'data-wow-duration'             => [],
+			'data-wow-delay'                => [],
+			'data-wallpaper-options'        => [],
+			'data-stellar-background-ratio' => [],
+			'ul'                            => [
+				'class' => [],
+			],
+			'label'                         => [
+				'class' => [],
+				'for' => [],
+			],
+		];
+
+		if ( function_exists( 'wp_kses' ) ) { // WP is here
+			return wp_kses( $raw, $allowed_tags );
+		} else {
+			return $raw;
+		}
+
+	}
+
+	/**
 	 * Show Notices
 	 */
 	public static function push( $notice ) {

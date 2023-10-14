@@ -11,12 +11,12 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 				<div class="shortcode-label">'.$args['label'].'</div>
 				<div class="shortcode-section '.$disable.'">
 					<input type="checkbox" class="filter-ui-toggle" id="'.$args['id'].'" data-label="'.$args['data_label'].'"
-					name="'.$args['id'].'" value="" '.esc_attr('checked').' >
+					name="'.esc_attr($args['id']).'" value="" '.esc_attr('checked').' sdfsdf/>
 				</div>
 			</div>
 		';
 
-		echo wp_kses_post($html);
+		echo FilterPlus\Utils\Helper::filter_plus_kses($html);
 	}
 }
 
@@ -65,7 +65,7 @@ if ( !function_exists('filter_plus_select_field') ) {
 				</div>
 			</div>
 		';
-	
-		echo wp_kses_post($html);
+
+		echo FilterPlus\Utils\Helper::filter_plus_kses($html);
 	}
 }
