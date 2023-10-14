@@ -20,8 +20,8 @@ foreach ($attributes as $key => $item ) {
 					if (!empty( $term ) ) {
 						?>
 							<div class="radio-item" 
-							data-taxonomy="<?php esc_attr_e($term->taxonomy); ?>"
-							data-term_id="<?php esc_attr_e($term->term_id); ?>"
+							data-taxonomy="<?php echo esc_attr($term->taxonomy); ?>"
+							data-term_id="<?php echo esc_attr($term->term_id); ?>"
 							>
 								<?php echo esc_html($term->name); ?>
 							</div>
@@ -30,7 +30,7 @@ foreach ($attributes as $key => $item ) {
 				}
 			?>
 		</div>
-		<span class="reset d-none reset-<?php esc_attr_e($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>	
+		<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>	
 	</div>
 </div>
 <?php } ?>

@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 ?>
-<div class="shop-sidebar sidebar-style-<?php esc_attr_e($template);?>">
+<div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/title.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/product-search.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/categories.php"; ?>
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 <div class="row products-wrap">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/right-side/sort-bar.php"; ?>
-	<div class="prods-grid-view grid-view-<?php esc_attr_e($template)?>"></div>
+	<div class="prods-grid-view grid-view-<?php echo esc_attr($template)?>"></div>
 	<div class="message"></div>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/right-side/product-data.php"; ?>
 	<!-- pagination -->

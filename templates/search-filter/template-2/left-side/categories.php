@@ -20,5 +20,5 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			endif;
 		?>
 	</ul>
-	<span class="reset d-none reset-<?php esc_attr_e($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
+	<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
 </div>

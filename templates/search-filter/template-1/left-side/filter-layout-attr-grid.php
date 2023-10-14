@@ -13,9 +13,9 @@ foreach ($attributes as $key => $item ) {
 			foreach ($get_attr['terms'] as $key => $term) {
 				if (!empty( $term ) ) {
 					?>
-						<div class="radio-item taxonomy-item-<?php esc_attr_e($template);?>" 
-						data-taxonomy="<?php esc_attr_e($term->taxonomy); ?>"
-						data-term_id="<?php esc_attr_e($term->term_id); ?>"
+						<div class="radio-item taxonomy-item-<?php echo esc_attr($template);?>" 
+						data-taxonomy="<?php echo esc_attr($term->taxonomy); ?>"
+						data-term_id="<?php echo esc_attr($term->term_id); ?>"
 						>
 							<?php echo esc_html($term->name); ?>
 						</div>
@@ -24,7 +24,7 @@ foreach ($attributes as $key => $item ) {
 			}
 		?>
 	</div>
-	<span class="reset d-none reset-<?php esc_attr_e($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>	
+	<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>	
 </div>
 <?php } ?>
 

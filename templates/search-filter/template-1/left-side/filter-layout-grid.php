@@ -10,14 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			foreach ($get_attr as $key => $term_id) {
 				if (!empty( get_term( $term_id ) ) ) {
 					?>
-						<div class="radio-item taxonomy-item-<?php esc_attr_e($template);?>" 
-						data-term_id="<?php esc_attr_e($term_id); ?>"
-						data-taxonomy="<?php esc_attr_e(get_term( $term_id )->taxonomy ); ?>"
+						<div class="radio-item taxonomy-item-<?php echo esc_attr($template);?>" 
+						data-term_id="<?php echo esc_attr($term_id); ?>"
+						data-taxonomy="<?php echo esc_attr(get_term( $term_id )->taxonomy ); ?>"
 						><?php echo esc_html( get_term( $term_id )->name ); ?></div>
 					<?php
 				}
 			}
 		?>
 	</div>
-	<span class="reset d-none reset-<?php esc_attr_e($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>	
+	<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>	
 </div>

@@ -28,14 +28,14 @@
 					if (!empty( $get_attr['terms'] ) ) {
 						foreach ( $get_attr['terms'] as $key => $value) { ?>
 							<div class="radio-item color-item" 
-							data-term_id="<?php esc_attr_e($value->term_id); ?>"
-							data-taxonomy="<?php esc_attr_e($value->taxonomy); ?>"
-							style="background-color: <?php esc_attr_e(strtolower($value->name))?>"></div>
+							data-term_id="<?php echo esc_attr($value->term_id); ?>"
+							data-taxonomy="<?php echo esc_attr($value->taxonomy); ?>"
+							style="background-color: <?php echo esc_attr(strtolower($value->name))?>"></div>
 						<?php }
 					}
 				?>
 			</div>
-			<span class="reset d-none reset-<?php esc_attr_e($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
+			<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
 		</div>		
 	</div>
 <?php
