@@ -46,7 +46,8 @@ We have tested all the popular themes. And we believe, it will work with your th
 
 == Changelog ==
 
-= 1.0.0 (June 23, 2023)=
+= 1.0.0 (October 24, 2023)=
+
 – initial release
 
 == Upgrade Notice ==
