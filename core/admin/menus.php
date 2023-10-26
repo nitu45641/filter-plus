@@ -85,7 +85,31 @@ class Menus
 	 * @param [type] $cb_function
 	 */
 	public function sub_menu_pages() {
-		$sub_pages  = array();
+		$sub_pages  = array(
+			array(
+				"parent_slug" => 'filter_plus',
+				"page_title"  => esc_html__('Settings','filter-plus'),
+				"menu_title"  => esc_html__('Settings','filter-plus'),
+				"capability"  => 'read',
+				"menu_slug"   => 'settings',
+				"cb_function" => array($this,'filter_plus_view'),
+				"position"    => 11
+			)
+		);
+
+		if ( !class_exists('FilterPlusPro') ) {
+			$premium_link = array(
+				"parent_slug" => 'filter_plus',
+				"page_title"  => '',
+				"menu_title"  => esc_html__('Upgrade To Premium','filter-plus'),
+				"capability"  => 'read',
+				"menu_slug"   => 'https://woooplugin.com/filter-plus/',
+				"cb_function" => null,
+				"position"    => 11
+			);
+
+			array_push($sub_pages, $premium_link );
+		}
 
 		return $sub_pages;
 	}

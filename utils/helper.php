@@ -265,7 +265,7 @@ class Helper {
 	 * @return void
 	 */
 	public static function admin_pages_id( ) {
-		$admin_pages =  array('toplevel_page_filter_plus');
+		$admin_pages =  array('filter-plus_page_settings','toplevel_page_filter_plus');
 
 		return $admin_pages;
 	}
