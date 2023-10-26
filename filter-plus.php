@@ -2,11 +2,11 @@
 /**
  * Plugin Name:       Filter Plus
  * Plugin URI:        https://product.woooplugin.com/filter-plus
- * Description:       Advanced filter plugin for WooCommerce that allows users to add multiple filters like filter by category, product search, etc.
+ * Description:       Advanced Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website. It allows users to filter anything based on different taxonomies.
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.3
- * Author:            Filter Plus
+ * Author:            Wooplugin
  * Author URI:        https://woooplugin.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html

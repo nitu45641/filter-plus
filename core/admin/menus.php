@@ -36,13 +36,13 @@ class Menus
 
     public function register_admin_menu() {
         $capability = 'read';
-        $slug       = 'woo_plugins';
+        $slug       = 'filter_plus';
 
 		// Add main page
 		if ( empty ( $GLOBALS['admin_page_hooks'][$slug] ) ) {
 			add_menu_page(
 				esc_html__('Shortcodes', 'filter-plus'),
-				esc_html__('Woo Plugins', 'filter-plus'),
+				esc_html__('Filter Plus', 'filter-plus'),
 				$capability,
 				$slug,
 				array($this,'filter_plus_view'),
@@ -85,17 +85,7 @@ class Menus
 	 * @param [type] $cb_function
 	 */
 	public function sub_menu_pages() {
-		$sub_pages  = array(
-			array(
-				"parent_slug" => 'woo_plugins',
-				"page_title"  => esc_html__('Filter Plus', 'filter-plus'),
-				"menu_title"  => esc_html__('Filter Plus', 'filter-plus'),
-				"capability"  => 'manage_options',
-				"menu_slug"   => 'filter_plus',
-				"cb_function" => array($this,'filter_plus_view'),
-				"position"    => 11
-			)
-		);
+		$sub_pages  = array();
 
 		return $sub_pages;
 	}
