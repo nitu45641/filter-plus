@@ -75,7 +75,7 @@ class Menus
 		}
 
 		if ( !empty ( $GLOBALS['admin_page_hooks'][$slug] ) ) {
-			unset($GLOBALS['submenu']['woo_plugins'][0]);
+			unset($GLOBALS['submenu']['filter_plus'][0]);
 		}
 
     }
