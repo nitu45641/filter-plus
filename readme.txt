@@ -15,21 +15,22 @@ Filter Plus is WordPress and WooComerce Product Filter plugin that enable filter
 
 **[Filter Plus](https://woooplugin.com/filter-plus/)** is a **WordPress and WooComerce Product Filter Plugin** that allows users to add multiple filtering features like filter by Ratings, Tags, Price Range etc.
 
-Ever wanted to provide a better WooCommerce filtering experience on your WordPress eCommerce site? Now you can do that with the **[Filter Plus](https://woooplugin.com/filter-plus/)** plugin. This will allow the store admin to add different filter options to the store. And by using the advanced filter, customers can easily get the desired products. 
+Ever wanted to provide a better WooCommerce filtering experience and **product filter** on your WordPress eCommerce site? Now you can do that with the **[Filter Plus](https://woooplugin.com/filter-plus/)** plugin. This will allow the store admin to add different filter options to the store. And by using the advanced filter, customers can easily get the desired products. 
 
-It will help users shorten the products quickly and order from the prioritized product list. Filter Plus will help you to improve the user experience, and conversion rate while also helping the store owner reduce the bounce rate.
+It will help users shorten the products quickly and order from the prioritized product list. Filter Plus will help you to improve the user experience, and conversion rate while also helping the store owner reduce the bounce rate. Filter Plus as **Woocommerce Filter** plugin will help you making users more comfortable with shoping on the store.
 
-**Helpful links 👉 [Filter Plus Pro](https://woooplugin.com/filter-plus/) | [Live Demo](https://product.woooplugin.com/filter-plus/)**
+**Helpful links 👇**
 
-**Need help adding filter in your WooCommerce website? 👉 [Contact Us](https://woooplugin.com/support/).**
-
-**⭐️ [Filter Plus Demo 1](https://product.woooplugin.com/filter-plus/)**
-**⭐️ [Filter Plus Demo 2](https://product.woooplugin.com/filter-products-tempate-1/)**
-**⭐️ [Documentation](https://docs.woooplugin.com/?docs=filter-plus)**
+**⭐️ Check Premeium Features 👉 [Filter Plus Pro](https://woooplugin.com/filter-plus/)**
+**⭐️ Need Any Help? 👉 [Contact Us](https://woooplugin.com/support/).**
+**⭐️ Check Live Demo 👉 [Filter Plus Sample 1](https://product.woooplugin.com/filter-plus/)**
+**⭐️ Check Live Demo 👉 [Filter Plus Sample 2](https://product.woooplugin.com/filter-products-tempate-1/)**
+**⭐️ Know How It Works 👉 [Documentation](https://docs.woooplugin.com/?docs=filter-plus)**
 
 📌 [Before writing any review, Please be aware that, Filter Plus is still in its initial stage]
 
 ##Current Feature##
+
 Add advanced filtering features with Filter Plus WooCommerce plugin
 
 **👉 [Filter by Price Range](https://woooplugin.com/filter-plus/)** - It enables users to narrow down search results by specifying a minimum and maximum price. This is particularly useful in eCommerce website, as it simplifies the process of finding products within a specific budget. It enhances user experience and can boost conversion rates by helping visitors discover cost-effective options.
