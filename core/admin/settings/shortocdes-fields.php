@@ -9,10 +9,11 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 		$html = '
 			<div class="single-block">
 				<div class="form-label">'.$args['label'].'</div>
-				<div class="input-section'.$disable.'">
-					<input type="checkbox" class="filter-ui-toggle" id="'.$args['id'].'" data-label="'.$args['data_label'].'"
-					name="'.esc_attr($args['id']).'" value="" '.esc_attr('checked').' sdfsdf/>
-				</div>
+				<label class="input-section custom-switcher'.$disable.'">
+					<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'" data-label="'.$args['data_label'].'"
+					name="'.esc_attr($args['id']).'" value="" '.esc_attr('checked').'/>
+					<span class="slider round"></span>
+				</label>
 			</div>
 		';
 

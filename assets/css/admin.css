@@ -62,7 +62,7 @@ h1.font_20{
 /**
  * Checkbox Toggle UI
  */
-input[type="checkbox"].filter-ui-toggle {
+input[type="checkbox"].switcher-ui-toggle {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -78,10 +78,10 @@ input[type="checkbox"].filter-ui-toggle {
 	background: none;
 	box-shadow: none;
 }
-input[type="checkbox"].filter-ui-toggle:focus {
+input[type="checkbox"].switcher-ui-toggle:focus {
 	box-shadow: none;
 }
-input[type="checkbox"].filter-ui-toggle:after {
+input[type="checkbox"].switcher-ui-toggle:after {
 	content: "";
 	font-size: 8px;
 	font-weight: 400;
@@ -95,7 +95,7 @@ input[type="checkbox"].filter-ui-toggle:after {
 	border-radius: 72px;
 	box-shadow: 0 0 12px rgb(0 0 0 / 15%) inset;
 }
-input[type="checkbox"].filter-ui-toggle:before {
+input[type="checkbox"].switcher-ui-toggle:before {
 	content: "";
 	width: 14px;
 	height: 14px;
@@ -107,19 +107,19 @@ input[type="checkbox"].filter-ui-toggle:before {
 	border-radius: 50%;
 	background-color: #ffffff;
 }
-input[type="checkbox"].filter-ui-toggle:checked:before {
+input[type="checkbox"].switcher-ui-toggle:checked:before {
 	left: 20px;
 	margin: 0;
 	background-color: #ffffff;
 }
-input[type="checkbox"].filter-ui-toggle,
-input[type="checkbox"].filter-ui-toggle:before,
-input[type="checkbox"].filter-ui-toggle:after,
-input[type="checkbox"].filter-ui-toggle:checked:before,
-input[type="checkbox"].filter-ui-toggle:checked:after {
+input[type="checkbox"].switcher-ui-toggle,
+input[type="checkbox"].switcher-ui-toggle:before,
+input[type="checkbox"].switcher-ui-toggle:after,
+input[type="checkbox"].switcher-ui-toggle:checked:before,
+input[type="checkbox"].switcher-ui-toggle:checked:after {
 	transition: ease 0.15s;
 }
-input[type="checkbox"].filter-ui-toggle:checked:after {
+input[type="checkbox"].switcher-ui-toggle:checked:after {
 	content: "ON";
 	background-color: #2271b1;
 }
@@ -293,15 +293,15 @@ button.button-primary:focus {
 	transition: all 0.5s ease-in-out;
   }
   
-.shortcode-block .custom-switcher input:checked + .slider {
+.custom-switcher input:checked + .slider {
 	background: linear-gradient(180deg, #254ec8 0%, #3263f8 100%) !important;
 	-webkit-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 }
   
-.shortcode-block .custom-switcher  input:focus + .slider {
+.custom-switcher  input:focus + .slider {
 	box-shadow: 0 0 1px #2196F3 !important;
-  }
+}
   
 .shortcode-block .custom-switcher  input:checked + .slider:before {
 	-webkit-transform: translateX(20px) !important;
