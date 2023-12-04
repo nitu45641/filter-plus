@@ -4,6 +4,9 @@ h2.content-header {
 	margin-top: 2% !important;
 	font-size: 24px !important;
 }
+h1.font_20{
+	font-size: 20px ;
+}
 .font_bold {
 	font-weight: bold !important;
 }
@@ -38,7 +41,7 @@ h2.content-header {
 	cursor: pointer;
 }
 .form-label {
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: bold;
 	width: 250px;
 	padding: 10px 0px;
@@ -141,11 +144,10 @@ option.disable,
 }
 
 .settings_tab li {
-	padding: 10px 0;
 	background: #fff;
 	cursor: pointer;
 	font-weight: 500;
-	font-size: 15px;
+	font-size: 14px;
 	margin: 0 30px 0 0;
 	transition: all 0.5s ease-in-out;
 	position: relative;
@@ -205,25 +207,24 @@ button.button-primary:focus {
 	line-height: 25px !important;
 }
 
-/* Discount CSS */
-.discount-form .input-section input {
+/* Tab CSS */
+.shortcode-block .input-section input {
     padding: 3px 10px;
-    border: 1px solid #c7c7c7;
-    font-size: 16px !important;
+    font-size: 14px !important;
     font-weight: 600;
     border-radius: 5px !important;
 }
 
-.discount-form .input-section select, .wp-core-ui select {
+.shortcode-block .input-section select, .wp-core-ui select {
     padding: 3px 30px 3px 20px !important;
     border: 1px solid #c7c7c7 !important;
-    font-size: 16px !important;
+    font-size: 14px !important;
     font-weight: 600;
     border-radius: 5px !important;
     width: 220px !important;
 }
 
-.discount-form .input-section .select2-selection {
+.shortcode-block .input-section .select2-selection {
     padding: 7px 15px 8px 15px !important;
     border: 1px solid #c7c7c7 !important;
     font-size: 16px !important;
@@ -231,30 +232,30 @@ button.button-primary:focus {
     border-radius: 5px !important;
 }
 
-.discount-form .input-section input:focus {
+.shortcode-block .input-section input:focus {
     outline: none;
     box-shadow: 0 0 0 1px #3263f8;
     border: 1px solid #3263f8;
     
 }
 
-.discount-form .input-section select:focus, .wp-core-ui select:focus {
+.shortcode-block .input-section select:focus, .wp-core-ui select:focus {
     outline: none;
     box-shadow: 0 0 0 1px #3263f8 !important;
     border: 1px solid #3263f8 !important;
 }
 
-.discount-form .input-section .select2-selection:focus, .wp-core-ui select:focus {
+.shortcode-block .input-section .select2-selection:focus, .wp-core-ui select:focus {
     outline: none;
     box-shadow: 0 0 0 1px #3263f8 !important;
     border: 1px solid #3263f8 !important;
 }
 
-.discount-form .input-section select:hover , .wp-core-ui select:hover{
+.shortcode-block .input-section select:hover , .wp-core-ui select:hover{
    color: #3c434a !important;
 }
 
-.discount-form .custom-switcher {
+.shortcode-block .custom-switcher {
 	position: relative;
 	display: inline-block;
 	width: 50px !important;
@@ -262,13 +263,13 @@ button.button-primary:focus {
 	transition: all 0.5s ease-in-out;
   }
   
-.discount-form .custom-switcher input { 
+.shortcode-block .custom-switcher input { 
 	opacity: 0 !important;
 	width: 0 !important;
 	height: 0 !important;
   }
   
-.discount-form .custom-switcher .slider {
+.shortcode-block .custom-switcher .slider {
 	position: absolute;
 	cursor: pointer;
 	top: 0;
@@ -280,7 +281,7 @@ button.button-primary:focus {
 	transition: all 0.5s ease-in-out;
   }
   
-.discount-form .custom-switcher .slider:before {
+.shortcode-block .custom-switcher .slider:before {
 	position: absolute;
 	content: "";
 	height: 20px !important;
@@ -292,38 +293,41 @@ button.button-primary:focus {
 	transition: all 0.5s ease-in-out;
   }
   
-.discount-form .custom-switcher input:checked + .slider {
+.shortcode-block .custom-switcher input:checked + .slider {
 	background: linear-gradient(180deg, #254ec8 0%, #3263f8 100%) !important;
 	-webkit-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 }
   
-.discount-form .custom-switcher  input:focus + .slider {
+.shortcode-block .custom-switcher  input:focus + .slider {
 	box-shadow: 0 0 1px #2196F3 !important;
   }
   
-.discount-form .custom-switcher  input:checked + .slider:before {
+.shortcode-block .custom-switcher  input:checked + .slider:before {
 	-webkit-transform: translateX(20px) !important;
 	-ms-transform: translateX(20px) !important;
 	transform: translateX(20px) !important;
 }
 
-.discount-form .custom-switcher .slider.round {
+.shortcode-block .custom-switcher .slider.round {
 	border-radius: 34px;
 }
   
-.discount-form .custom-switcher .slider.round:before {
+.shortcode-block .custom-switcher .slider.round:before {
 	border-radius: 50%;
 }
 
 /* #select2-filter_by_products-container li  */
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
+.select2-container--default .select2-search--inline .select2-search__field{
+	width: 0 !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
     background-color: #EEF0F4 !important;
     border: 1px solid transparent !important;
     border-radius: 4px !important;
     color: #0D165E !important;
-	padding: 8px 5px 8px 35px !important;
-    font-size: 15px;
+	padding: 8px 5px 8px 30px !important;
+    font-size: 14px;
     font-weight: 600;
 }
 
@@ -331,12 +335,12 @@ button.button-primary:focus {
     background: linear-gradient(180deg, #254ec8 0%, #3263f8 100%) !important;
 	border-radius: 5px !important;
 	color: #fff !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
     font-weight: 600 !important;
     padding: 0 4px !important;
 	line-height: 15px !important;
-    height: 18px;
-    width: 18px;
+    /* height: 18px;
+    width: 18px; */
     position: absolute;
     left: 8px !important;; 
     top: 8px !important;

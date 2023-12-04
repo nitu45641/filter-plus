@@ -69,7 +69,7 @@
 			filter_plus_checkbox_field($args);
 			
 		?>
-		<h1 class="font_bold"><?php esc_html_e("Product List:","filter-plus"); ?></h1>
+		<h1 class="font_bold font_20"><?php esc_html_e("Product List:","filter-plus"); ?></h1>
 		
 		<?php
 			// show tags
