@@ -5,12 +5,12 @@
 	$settings 		= \FilterPlus\Utils\Helper::get_settings();
 
 	$tabs = array(
-		'short_codes' => esc_html__( 'Shortcodes', 'discountify' ),
+		'short_codes' => esc_html__( 'Shortcodes', 'filter-plus' ),
     );
 ?>
 <div class="settings_message"></div>
 <form id="save_settings">
-    <h2 class="content-header"><?php esc_html_e("Settings","discountify");?></h2>
+    <h2 class="content-header"><?php esc_html_e("Settings","filter-plus");?></h2>
     <div class="content-wrapper">
         <div class="settings_tab">
             <ul class="settings_tab_pan">
