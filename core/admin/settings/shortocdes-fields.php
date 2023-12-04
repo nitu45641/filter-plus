@@ -8,8 +8,8 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 		$disable      = !empty($args['disable']) ? "disable" : "";
 		$html = '
 			<div class="single-block">
-				<div class="shortcode-label">'.$args['label'].'</div>
-				<div class="shortcode-section '.$disable.'">
+				<div class="form-label">'.$args['label'].'</div>
+				<div class="input-section'.$disable.'">
 					<input type="checkbox" class="filter-ui-toggle" id="'.$args['id'].'" data-label="'.$args['data_label'].'"
 					name="'.esc_attr($args['id']).'" value="" '.esc_attr('checked').' sdfsdf/>
 				</div>
@@ -59,8 +59,8 @@ if ( !function_exists('filter_plus_select_field') ) {
 		$condition_class = !empty($args['condition_class']) ? $args['condition_class'] : "";
 		$html = '
 			<div class="single-block '.$condition_class.'">
-				<div class="shortcode-label">'.$args['label'].'</div>
-				<div class="shortcode-section '.$disable.'">
+				<div class="form-label">'.$args['label'].'</div>
+				<div class="input-section'.$disable.'">
 					<select id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
 				</div>
 			</div>

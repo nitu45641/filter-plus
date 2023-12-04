@@ -260,6 +260,17 @@ class Helper {
 	}
 
 	/**
+	 * Admin settings array
+	 *
+	 * @return void
+	 */
+	public static function get_settings() {
+		$settings = array();
+
+		return $settings;
+	}
+
+	/**
 	 * Admin pages array
 	 *
 	 * @return void

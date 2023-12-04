@@ -119,7 +119,7 @@ class Menus
     public function filter_plus_view() {
 	?>
         <div class="wrap">
-			<?php include_once \FilterPlus::core_dir() . "admin/views/shortcodes.php"; ?>
+			<?php include_once \FilterPlus::core_dir() . "admin/settings/settings.php"; ?>
 		</div>
 	<?php
     }

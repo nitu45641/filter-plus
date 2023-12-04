@@ -14,7 +14,8 @@
 			var results = $("#result_shortcode");
 			$(".generate-block").each(function(index,value){
 				let _this = $(this);
-				_this.on('click',function(){
+				_this.on('click',function(e){
+					e.preventDefault();
 					let parent_block = _this.parents(".shortcode-block");
 					var shortcode_name = parent_block.data("name");
 					let input_value = findInputValue(parent_block.find(".shortcode-section"));

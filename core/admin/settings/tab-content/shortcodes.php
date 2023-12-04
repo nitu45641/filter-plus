@@ -1,9 +1,3 @@
-<?php 
-	include_once \FilterPlus::core_dir() . "admin/views/shortocdes-fields.php"; 
-	$disable = class_exists('FilterPlusPro') ? false : true;
-?>
-
-<h2 class="content-header"><?php esc_html_e("ShortCodes","filter-plus");?></h2>
 
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="filter_products">
@@ -87,7 +81,7 @@
 			'data_label' => 'product_categories', 'disable' => $disable );
 			filter_plus_checkbox_field($args);
 		?>
-		<div class="generate-section">
+		<div class="single-block">
 			<div class="generate-block"><button class="button button-primary admin-button"><?php esc_html_e("Copy Filer Shortcodes","filter-plus");?></button></div>
 			<input type="text" class="full_input" id="result_shortcode" value="">
 		</div>

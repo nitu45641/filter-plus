@@ -1,114 +1,389 @@
 /* Admin css */
-h2.content-header{
-	font-weight: bold !important;
-    margin-top: 2% !important;
+h2.content-header {
+	font-weight: 700 !important;
+	margin-top: 2% !important;
+	font-size: 24px !important;
 }
 .font_bold {
 	font-weight: bold !important;
 }
-.admin-button,.field{
+.admin-button,
+.field {
 	padding: 6px !important;
 }
-.input_width{
+.input_width {
 	width: 350px;
 }
-.shortcode-block{
-	width: 600px;
+.repeat-wrapper {
+	padding: 20px 5px;
+	border: 1px solid #d5d5d5;
 }
-.single-block{
+.single-block {
 	display: flex;
 	column-gap: 40px;
 	align-items: center;
 	padding: 7px 0;
 }
-.shortcode-label{
-    font-size: 15px;
-    font-weight: bold;
-    width: 250px;
-    padding: 10px 0px;
+.repeat-section {
+	display: flex;
+	flex-direction: row;
+	column-gap: 11px;
 }
-.shortcode-section{
+.repeat-block {
+	flex-direction: column;
+}
+.action_rows {
+	display: flex;
+	padding-top: 22px;
+	cursor: pointer;
+}
+.form-label {
+	font-size: 15px;
+	font-weight: bold;
+	width: 250px;
+	padding: 10px 0px;
+}
+.input-section {
 	width: 300px;
 }
-.generate-section{
-	display: flex;
-	flex-direction: row-reverse;
-	padding: 5% 0;
-}
-.generate-block{
-	margin-left: 7px;
-}
-.full_input{
+
+.full_input {
 	width: 100%;
+}
+.pt_3 {
+	padding-top: 3%;
+}
+.mt_3 {
+	margin-top: 3% !important;
 }
 /**
  * Checkbox Toggle UI
  */
- input[type="checkbox"].filter-ui-toggle {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    -webkit-tap-highlight-color: transparent;
-
-    width: auto;
-    height: auto;
-    vertical-align: middle;
-    position: relative;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    margin: 0 4px;
-    background: none;
-    box-shadow: none;
+input[type="checkbox"].filter-ui-toggle {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-tap-highlight-color: transparent;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+	position: relative;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	margin: 0 4px;
+	background: none;
+	box-shadow: none;
 }
 input[type="checkbox"].filter-ui-toggle:focus {
-    box-shadow: none;
+	box-shadow: none;
 }
 input[type="checkbox"].filter-ui-toggle:after {
-    content: '';
-    font-size: 8px;
-    font-weight: 400;
-    line-height: 18px;
-    text-indent: -14px;
-    color: #ffffff;
-    width: 36px;
-    height: 18px;
-    display: inline-block;
-    background-color: #a7aaad;
-    border-radius: 72px;
-    box-shadow: 0 0 12px rgb(0 0 0 / 15%) inset;
+	content: "";
+	font-size: 8px;
+	font-weight: 400;
+	line-height: 18px;
+	text-indent: -14px;
+	color: #ffffff;
+	width: 36px;
+	height: 18px;
+	display: inline-block;
+	background-color: #a7aaad;
+	border-radius: 72px;
+	box-shadow: 0 0 12px rgb(0 0 0 / 15%) inset;
 }
 input[type="checkbox"].filter-ui-toggle:before {
-    content: '';
-    width: 14px;
-    height: 14px;
-    display: block;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    margin: 0;
-    border-radius: 50%;
-    background-color: #ffffff;
+	content: "";
+	width: 14px;
+	height: 14px;
+	display: block;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	margin: 0;
+	border-radius: 50%;
+	background-color: #ffffff;
 }
 input[type="checkbox"].filter-ui-toggle:checked:before {
-    left: 20px;
-    margin: 0;
-    background-color: #ffffff;
+	left: 20px;
+	margin: 0;
+	background-color: #ffffff;
 }
 input[type="checkbox"].filter-ui-toggle,
 input[type="checkbox"].filter-ui-toggle:before,
 input[type="checkbox"].filter-ui-toggle:after,
 input[type="checkbox"].filter-ui-toggle:checked:before,
 input[type="checkbox"].filter-ui-toggle:checked:after {
-    transition: ease .15s;
+	transition: ease 0.15s;
 }
 input[type="checkbox"].filter-ui-toggle:checked:after {
-    content: 'ON';
-    background-color: #2271b1;
+	content: "ON";
+	background-color: #2271b1;
 }
 option.disable,
-.disable{
+.disable {
 	opacity: 0.5;
-    pointer-events: none;
+	pointer-events: none;
+}
+
+/* Setting Tab Style */
+.tab-content {
+	background: #ffffff;
+	padding: 2%;
+	border-radius: 5px;
+}
+
+.settings_tab ul {
+	display: flex;
+	background: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+}
+
+.settings_tab li {
+	padding: 10px 0;
+	background: #fff;
+	cursor: pointer;
+	font-weight: 500;
+	font-size: 15px;
+	margin: 0 30px 0 0;
+	transition: all 0.5s ease-in-out;
+	position: relative;
+}
+
+.settings_tab li::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	width: 0%;
+	height: 3px;
+	background: #3263f8;
+	transition: all 0.3s ease-in-out;
+}
+
+.settings_tab li.active {
+	font-size: 15px;
+	font-weight: 600;
+	position: relative;
+	color: #3263f8;
+}
+.settings_tab li.active::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background: #3263f8;
+}
+.tab-content > div:not(.active) {
+	display: none;
+}
+.d-none {
+	display: none !important;
+}
+
+
+button.button-primary {
+	padding: 5px 20px !important;
+	font-size: 15px !important;
+	line-height: 25px !important;
+	background: linear-gradient(180deg, #3263f8 0%, #254ec8 100%) !important;
+	border: 1px solid transparent !important;
+	border-radius: 5px !important;
+	font-weight: 500;
+}
+
+button.button-primary:hover {
+	background: linear-gradient(180deg, #254ec8 0%, #3263f8 100%) !important;
+}
+
+button.button-primary:focus {
+	outline: none !important;
+	box-shadow: none !important;
+	line-height: 25px !important;
+}
+
+/* Discount CSS */
+.discount-form .input-section input {
+    padding: 3px 10px;
+    border: 1px solid #c7c7c7;
+    font-size: 16px !important;
+    font-weight: 600;
+    border-radius: 5px !important;
+}
+
+.discount-form .input-section select, .wp-core-ui select {
+    padding: 3px 30px 3px 20px !important;
+    border: 1px solid #c7c7c7 !important;
+    font-size: 16px !important;
+    font-weight: 600;
+    border-radius: 5px !important;
+    width: 220px !important;
+}
+
+.discount-form .input-section .select2-selection {
+    padding: 7px 15px 8px 15px !important;
+    border: 1px solid #c7c7c7 !important;
+    font-size: 16px !important;
+    font-weight: 600;
+    border-radius: 5px !important;
+}
+
+.discount-form .input-section input:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #3263f8;
+    border: 1px solid #3263f8;
+    
+}
+
+.discount-form .input-section select:focus, .wp-core-ui select:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #3263f8 !important;
+    border: 1px solid #3263f8 !important;
+}
+
+.discount-form .input-section .select2-selection:focus, .wp-core-ui select:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #3263f8 !important;
+    border: 1px solid #3263f8 !important;
+}
+
+.discount-form .input-section select:hover , .wp-core-ui select:hover{
+   color: #3c434a !important;
+}
+
+.discount-form .custom-switcher {
+	position: relative;
+	display: inline-block;
+	width: 50px !important;
+	height: 30px !important;
+	transition: all 0.5s ease-in-out;
+  }
+  
+.discount-form .custom-switcher input { 
+	opacity: 0 !important;
+	width: 0 !important;
+	height: 0 !important;
+  }
+  
+.discount-form .custom-switcher .slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+  }
+  
+.discount-form .custom-switcher .slider:before {
+	position: absolute;
+	content: "";
+	height: 20px !important;
+	width: 20px !important;
+	left: 5px !important;
+	bottom: 5px !important;
+	background-color: #fff;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+  }
+  
+.discount-form .custom-switcher input:checked + .slider {
+	background: linear-gradient(180deg, #254ec8 0%, #3263f8 100%) !important;
+	-webkit-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+  
+.discount-form .custom-switcher  input:focus + .slider {
+	box-shadow: 0 0 1px #2196F3 !important;
+  }
+  
+.discount-form .custom-switcher  input:checked + .slider:before {
+	-webkit-transform: translateX(20px) !important;
+	-ms-transform: translateX(20px) !important;
+	transform: translateX(20px) !important;
+}
+
+.discount-form .custom-switcher .slider.round {
+	border-radius: 34px;
+}
+  
+.discount-form .custom-switcher .slider.round:before {
+	border-radius: 50%;
+}
+
+/* #select2-filter_by_products-container li  */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #EEF0F4 !important;
+    border: 1px solid transparent !important;
+    border-radius: 4px !important;
+    color: #0D165E !important;
+	padding: 8px 5px 8px 35px !important;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    background: linear-gradient(180deg, #254ec8 0%, #3263f8 100%) !important;
+	border-radius: 5px !important;
+	color: #fff !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    padding: 0 4px !important;
+	line-height: 15px !important;
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    left: 8px !important;; 
+    top: 8px !important;
+    border: 1px solid transparent!important;
+    margin-right: 10px!important;
+    padding: 0 3px!important;
+}
+
+/* Table CSS */
+.alternate, .striped>tbody>:nth-child(odd), ul.striped>:nth-child(odd) {
+    background-color: #3263f814 !important;
+}
+
+td.enable_rules.column-enable_rules span {
+    padding: 4px 20px 6px;
+    background: rgba(50, 99, 248, 0.3);
+    border-radius: 20px;
+    font-size: 13px;
+    text-transform: capitalize;
+    color: #0D165E;
+}
+
+td.rules_type.column-rules_type.has-row-actions.column-primary {
+    text-transform: capitalize;
+}
+
+.widefat td {
+    line-height: 36px;
+	color: #0D165E !important;
+}
+
+button.button.button-primary.update-rules {
+    font-weight: 600 !important;
+    font-size: 13px !important;
+}
+
+button.button.button-danger.delete-rules {
+    padding: 4px 15px;
+    margin-left: 10px;
+    background: linear-gradient(180deg, #eb1d3a 0%, #ff1414 100%) !important;
+    color: #fff;
+    border: none !important;
+    font-weight: 600 !important;
+	transition: all 0.5s ease-in-out;
+	border-radius: 5px;
+}
+
+button.button.button-danger.delete-rules:hover {
+	background: linear-gradient(180deg, #ff1414 0%, #eb1d3a 100%) !important;
 }
