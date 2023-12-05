@@ -3,11 +3,11 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( !function_exists('pro_tag_markup') ) {
-	function pro_tag_markup($disable) {
+	function pro_tag_markup($disable,$class="") {
 		$pro_only     = !empty($disable) ? "pro-fr" : "";
 		$pro		  = "";
 		if ( $pro_only !== "" ) {
-			$pro .= '<span class="'.esc_attr($pro_only).'">'. esc_html__( 'Pro', 'filter-plus' ) .'</span>';
+			$pro .= '<span class="'.esc_attr($pro_only." ".$class).'">'. esc_html__( 'Pro', 'filter-plus' ) .'</span>';
 		}
 
 		return $pro;
@@ -75,8 +75,8 @@ if ( !function_exists('filter_plus_select_field') ) {
 				<div class="form-label">'.$args['label'].'</div>
 				<div class="input-section '.$disable.'">
 					<select id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
+					'.pro_tag_markup($disable,"ml-2").'
 				</div>
-				'.pro_tag_markup($disable).'
 			</div>
 		';
 
