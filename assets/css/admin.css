@@ -209,21 +209,26 @@ button.button-primary:focus {
 }
 
 /* Tab CSS */
-.shortcode-block .input-section input, 
+.input-section input, 
 .single-block .full_input{
     padding: 3px 10px;
     font-size: 14px !important;
     font-weight: 600;
     border-radius: 5px !important;
 }
-
+.full_input{
+	height: 40px;
+}
+.select2-container{
+    width: 240px !important;
+}
 .shortcode-block .input-section select, .wp-core-ui select {
     padding: 3px 30px 3px 20px !important;
     border: 1px solid #c7c7c7 !important;
     font-size: 14px !important;
     font-weight: 600;
     border-radius: 5px !important;
-    width: 220px !important;
+    width: 240px !important;
 }
 
 .input-section .select2-selection {
@@ -248,25 +253,25 @@ button.button-primary:focus {
     border: 1px solid #3263f8 !important;
 }
 
-.shortcode-block .input-section .select2-selection:focus, .wp-core-ui select:focus {
+.input-section .select2-selection:focus, .wp-core-ui select:focus {
     outline: none;
     box-shadow: 0 0 0 1px #3263f8 !important;
     border: 1px solid #3263f8 !important;
 }
 
-.shortcode-block .input-section select:hover , .wp-core-ui select:hover{
+.input-section select:hover , .wp-core-ui select:hover{
    color: #3c434a !important;
 }
 
-.shortcode-block .custom-switcher {
+.custom-switcher {
 	position: relative;
 	display: inline-block;
-	width: 50px !important;
-	height: 30px !important;
+    width: 45px !important;
+    height: 25px !important;
 	transition: all 0.5s ease-in-out;
   }
   
-.shortcode-block .custom-switcher input { 
+.custom-switcher input { 
 	opacity: 0 !important;
 	width: 0 !important;
 	height: 0 !important;
@@ -287,10 +292,10 @@ button.button-primary:focus {
 .shortcode-block .custom-switcher .slider:before {
 	position: absolute;
 	content: "";
-	height: 20px !important;
-	width: 20px !important;
+    height: 18px !important;
+    width: 18px !important;
 	left: 5px !important;
-	bottom: 5px !important;
+	bottom: 4px !important;
 	background-color: #fff;
 	-webkit-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
