@@ -2,6 +2,17 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( !function_exists('pro_tag_markup') ) {
+	function pro_tag_markup($disable) {
+		$pro_only     = !empty($disable) ? "pro-fr" : "";
+		$pro		  = "";
+		if ( $pro_only !== "" ) {
+			$pro .= '<span class="'.esc_attr($pro_only).'">'. esc_html__( 'Pro', 'filter-plus' ) .'</span>';
+		}
+
+		return $pro;
+	}
+}
 if ( !function_exists('filter_plus_checkbox_field') ) {
 
 	function filter_plus_checkbox_field($args){
@@ -9,11 +20,12 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 		$html = '
 			<div class="single-block">
 				<div class="form-label">'.$args['label'].'</div>
-				<label class="input-section custom-switcher'.$disable.'">
+				<label class="input-section custom-switcher '.$disable.'">
 					<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'" data-label="'.$args['data_label'].'"
 					name="'.esc_attr($args['id']).'" value="" '.esc_attr('checked').'/>
 					<span class="slider round"></span>
 				</label>
+				'.pro_tag_markup($disable).'
 			</div>
 		';
 
@@ -61,9 +73,10 @@ if ( !function_exists('filter_plus_select_field') ) {
 		$html = '
 			<div class="single-block '.$condition_class.'">
 				<div class="form-label">'.$args['label'].'</div>
-				<div class="input-section'.$disable.'">
+				<div class="input-section '.$disable.'">
 					<select id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
 				</div>
+				'.pro_tag_markup($disable).'
 			</div>
 		';
 

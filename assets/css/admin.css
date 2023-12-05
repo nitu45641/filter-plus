@@ -347,8 +347,6 @@ button.button-primary:focus {
     font-weight: 600 !important;
     padding: 0 4px !important;
 	line-height: 15px !important;
-    /* height: 18px;
-    width: 18px; */
     position: absolute;
     left: 8px !important;; 
     top: 8px !important;
@@ -398,4 +396,13 @@ button.button.button-danger.delete-rules {
 
 button.button.button-danger.delete-rules:hover {
 	background: linear-gradient(180deg, #ff1414 0%, #eb1d3a 100%) !important;
+}
+
+.pro-fr {
+    display: inline-block;
+    padding: 4px 20px 6px;
+    border: 1px solid rgba(50, 99, 248, 0.3);
+    border-radius: 20px;
+    font-size: 13px;
+    color: #0D165E;
 }
