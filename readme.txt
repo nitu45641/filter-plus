@@ -21,10 +21,14 @@ It will help users shorten the products quickly and order from the prioritized p
 
 **Helpful links 👇**
 
-**⭐️ Check Premeium Features 👉 [Filter Plus Pro](https://woooplugin.com/filter-plus/)**
+**⭐️ Check [Filter Plus Pro](https://woooplugin.com/filter-plus/)**
+
 **⭐️ Need Any Help? 👉 [Contact Us](https://woooplugin.com/support/).**
+
 **⭐️ Check Live Demo 👉 [Filter Plus Sample 1](https://product.woooplugin.com/filter-plus/)**
+
 **⭐️ Check Live Demo 👉 [Filter Plus Sample 2](https://product.woooplugin.com/filter-products-tempate-1/)**
+
 **⭐️ Know How It Works 👉 [Documentation](https://docs.woooplugin.com/?docs=filter-plus)**
 
 📌 [Before writing any review, Please be aware that, Filter Plus is still in its initial stage]
@@ -50,6 +54,8 @@ Add advanced filtering features with Filter Plus WooCommerce plugin
 **👉 [Filter by Size](https://woooplugin.com/filter-plus/)** - The feature enables users to narrow down product search results based on size preferences. It's a commonly used feature in e-commerce websites, particularly for apparel and accessories. Users can select a specific size (e.g., small, medium, large) or measurements (e.g., dimensions) to filter and display only products available in that particular size.
 
 **👉 [Filter Anything](https://woooplugin.com/filter-plus/)** - The feature allows users to filter and refine search results based on a wide range of criteria or attributes. This can include any specific parameters, such as price, color, size, category, tags, ratings, and more, depending on the website's content or products. The "Filter Anything" feature provides users with the flexibility to tailor their search to their specific needs and preferences, making it a powerful tool for improving the user experience on websites with diverse content offerings. It enhances usability and engagement by ensuring that visitors can find exactly what they're looking for within the website's content or product catalog.
+
+**Updated UI/UX:** Latest release of filter plus bring some updated on the product design page. Now. it's more easy to add filters on your WooCommerce and WordPress website.
 
 More features are on the way!
 
