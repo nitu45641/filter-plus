@@ -132,34 +132,24 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
-const apiFetch = wp.apiFetch;
-const {
-  addQueryArgs
-} = wp.url;
-const productCategories = queryArgs => {
-  return apiFetch({
-    path: addQueryArgs(`wc/store/products/categories`, {
-      per_page: 0,
-      ...queryArgs
-    })
-  });
-};
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('filter-plus/woo-filter', {
   title: 'WooCommerce Product Filter',
-  icon: 'dashicons-menu-alt2',
+  icon: 'image-filter',
   category: 'text',
   attributes: {
     colors: {
-      type: 'string'
+      type: 'boolean'
     },
     size: {
-      type: 'string'
+      type: 'boolean'
     },
     template: {
-      type: 'string'
+      type: 'integer',
+      default: 1
     },
     categories: {
-      type: 'array'
+      type: 'array',
+      default: []
     }
   },
   edit({
@@ -195,12 +185,9 @@ const productCategories = queryArgs => {
     }
     function getCategories() {
       const options = [];
-      const postCategory = wp.data.select('core').getEntityRecords('taxonomy', 'product_cat', {
-        per_page: '-1'
-      });
-      postCategory?.forEach(cat => {
+      tsGlobal?.woo_categories?.forEach(cat => {
         options.push({
-          value: cat.id,
+          value: cat.term_id,
           label: cat.name
         });
       });
@@ -212,8 +199,11 @@ const productCategories = queryArgs => {
       label: __('Select Template:', 'filter-plus'),
       value: template,
       options: [{
-        value: '1',
+        value: 1,
         label: __('Template-1', 'filter-plus')
+      }, {
+        value: 2,
+        label: __('Template-2', 'filter-plus')
       }],
       onChange: onChangeTemplate
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
@@ -243,7 +233,6 @@ const productCategories = queryArgs => {
       template,
       categories
     } = attributes;
-    console.log(attributes);
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
