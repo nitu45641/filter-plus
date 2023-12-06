@@ -175,6 +175,16 @@ __webpack_require__.r(__webpack_exports__);
         content: newContent
       });
     }
+    function onChangeCheckboxField(newValue) {
+      setAttributes({
+        checkboxField: newValue
+      });
+    }
+    function onChangeRadioField(newValue) {
+      setAttributes({
+        radioField: newValue
+      });
+    }
     function onChangeTextField(newValue) {
       setAttributes({
         textField: newValue
@@ -191,8 +201,25 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-      title: wp.i18n.__('Settings', 'filter-plus')
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      title: wp.i18n.__('Settings')
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
+      heading: "Checkbox Field",
+      label: "Tick Me",
+      help: "Additional help text",
+      checked: checkboxField,
+      onChange: onChangeCheckboxField
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RadioControl, {
+      label: "Radio Field",
+      selected: radioField,
+      options: [{
+        label: 'Yes',
+        value: 'yes'
+      }, {
+        label: 'No',
+        value: 'no'
+      }],
+      onChange: onChangeRadioField
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
       label: "Text Field",
       help: "Additional help text",
       value: textField,
@@ -215,7 +242,13 @@ __webpack_require__.r(__webpack_exports__);
         label: 'Option C'
       }],
       onChange: onChangeSelectField
-    }))));
+    }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      ...blockProps,
+      key: "editable",
+      tagName: "p",
+      onChange: onChangeContent,
+      value: content
+    }));
   },
   save({
     attributes
@@ -229,10 +262,12 @@ __webpack_require__.r(__webpack_exports__);
       selectField
     } = attributes;
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
-    console.log(blockProps);
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Inspector Control Fields"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Checkbox Field: ", checkboxField), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Radio Field: ", radioField), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Text Field: ", textField), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Toggle Field: ", toggleField), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Select Field: ", selectField)));
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      value: content,
+      tagName: "p"
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Inspector Control Fields"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Checkbox Field: ", checkboxField), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Radio Field: ", radioField), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Text Field: ", textField), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Toggle Field: ", toggleField), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Select Field: ", selectField)));
   }
 });
 })();
