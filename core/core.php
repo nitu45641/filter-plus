@@ -21,10 +21,18 @@ class Core {
      * @return void
      */
     public function init() {
-		// Load admin menus
-		\FilterPlus\Core\Admin\Menus::instance()->init();
-		
-		// Load frontend shortcodes
-		\FilterPlus\Core\Frontend\Shortcodes::instance()->init();
+      if ( is_admin() ) {
+          // Load admin menus
+		      \FilterPlus\Core\Admin\Menus::instance()->init();
+      } 
+
+      \FilterPlus\Core\Frontend\Shortcodes::instance()->init();
+
+      //register gutenberg blocks.
+      if ( file_exists( \FilterPlus::plugin_dir() . 'core/gutenburg-block/init.php' ) ) {
+      	include_once \FilterPlus::plugin_dir() . 'core/gutenburg-block/init.php';
+      }
+
     }
+
 }

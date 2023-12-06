@@ -51,6 +51,10 @@ Add advanced filtering features with Filter Plus WooCommerce plugin
 
 **👉 [Filter Anything](https://woooplugin.com/filter-plus/)** - The feature allows users to filter and refine search results based on a wide range of criteria or attributes. This can include any specific parameters, such as price, color, size, category, tags, ratings, and more, depending on the website's content or products. The "Filter Anything" feature provides users with the flexibility to tailor their search to their specific needs and preferences, making it a powerful tool for improving the user experience on websites with diverse content offerings. It enhances usability and engagement by ensuring that visitors can find exactly what they're looking for within the website's content or product catalog.
 
+**⭐️ WooComerce Filter Elementor Widget** - The latest release bring Elementor widgets for adding filtering fnctionality on your WordPress and WooCommerce site. So now you can use filter plus more easily in your Elementor based website.
+
+**⭐️ WooComerce Filter Gutenberg Block** - Gutenberg blocks for filter options also available now. You can add filter by price, tags and similar feature from block section while editing the page.
+
 More features are on the way!
 
 Filter Plus is the ultimate plugin for WordPress and WooCommerce product filtering. Allow the users to filter and shortlist the products in the store easily and effortlessly.
@@ -76,6 +80,10 @@ We have tested all the popular themes. And we believe, it will work with your th
 2. screenshot-3
 
 == Changelog ==
+
+= 1.0.3 (December 06, 2023)=
+
+Added : Gutenberg Block added
 
 = 1.0.2 (December 05, 2023)=
 
