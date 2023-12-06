@@ -2,5 +2,5 @@
 README.md
 package-lock.json
 package.json
-src/index.js
+src
 node_modules
