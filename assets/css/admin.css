@@ -401,7 +401,7 @@ button.button.button-danger.delete-rules {
 button.button.button-danger.delete-rules:hover {
 	background: linear-gradient(180deg, #ff1414 0%, #eb1d3a 100%) !important;
 }
-
+/* Pro Tag */
 .pro-fr {
     padding: 4px 13px 4px;
     border: 1px solid rgba(50, 99, 248, 0.3);

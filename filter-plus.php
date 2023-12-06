@@ -151,6 +151,15 @@ final class FilterPlus {
 	}
 
 	/**
+	 * Build Directory Url
+	 *
+	 * @return void
+	 */
+	public static function build_url() {
+		return trailingslashit( self::plugin_url() . 'build' );
+	}
+
+	/**
 	 * Assets Folder Directory Path
 	 *
 	 * @since 1.0.0
