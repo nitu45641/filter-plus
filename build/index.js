@@ -132,9 +132,21 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
+const apiFetch = wp.apiFetch;
+const {
+  addQueryArgs
+} = wp.url;
+const productCategories = queryArgs => {
+  return apiFetch({
+    path: addQueryArgs(`wc/store/products/categories`, {
+      per_page: 0,
+      ...queryArgs
+    })
+  });
+};
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('filter-plus/woo-filter', {
   title: 'WooCommerce Product Filter',
-  icon: 'list',
+  icon: 'dashicons-menu-alt2',
   category: 'text',
   attributes: {
     colors: {
@@ -176,10 +188,23 @@ const {
         categories: newValue
       });
     }
-    function onChangeTamplate(newValue) {
+    function onChangeTemplate(newValue) {
       setAttributes({
         template: newValue
       });
+    }
+    function getCategories() {
+      const options = [];
+      const postCategory = wp.data.select('core').getEntityRecords('taxonomy', 'product_cat', {
+        per_page: '-1'
+      });
+      postCategory?.forEach(cat => {
+        options.push({
+          value: cat.id,
+          label: cat.name
+        });
+      });
+      return options;
     }
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
       title: __('Settings', 'filter-plus')
@@ -190,14 +215,12 @@ const {
         value: '1',
         label: __('Template-1', 'filter-plus')
       }],
-      onChange: onChangeTamplate
+      onChange: onChangeTemplate
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+      multiple: true,
       label: __('Category List:', 'filter-plus'),
       value: categories,
-      options: [{
-        value: '1',
-        label: __('Template-1', 'filter-plus')
-      }],
+      options: getCategories(),
       onChange: onChangeCatList
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
       label: __('Display Colors:', 'filter-plus'),
@@ -220,6 +243,7 @@ const {
       template,
       categories
     } = attributes;
+    console.log(attributes);
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
