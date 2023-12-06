@@ -16,10 +16,10 @@ add_action( 'init', 'woo_filter_block' );
 
 
 function woo_filter_callback( $settings ) {
-    $template           = '1';
-    $categories         = '';
-    $colors             = 'yes';
-    $size               = 'yes';
+    $template           = !empty($settings['template']) ? $settings['template'] : '1';
+    $categories         = !empty($settings['categories']) ? $settings['categories'] : '';
+    $colors             = !empty($settings['colors']) && $settings['colors'] == true  ? 'yes' : 'no';
+    $size               = !empty($settings['size']) && $settings['size'] == true ? 'yes' : 'no';
     $tags               = '';
     $attributes         = '';
     $show_tags          = '';
@@ -29,7 +29,7 @@ function woo_filter_callback( $settings ) {
     $product_categories = '';
     $product_tags       = '';
     $sorting            = 'no';
-    //[filter_products  template="1" categories="" tags="" attributes="" colors="no" size="no" show_tags="no" show_attributes="no" show_reviews="no" show_price_range="no" sorting="no" product_tags="no" product_categories="no"]
+
     ob_start();
     ?>
 	<div class="woo-filter">
