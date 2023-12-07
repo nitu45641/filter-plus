@@ -55,6 +55,10 @@ Add advanced filtering features with Filter Plus WooCommerce plugin
 
 **⭐️ WooComerce Filter Gutenberg Block** - Gutenberg blocks for filter options also available now. You can add filter by price, tags and similar feature from block section while editing the page.
 
+**👉 WPML Compatible** Filter Plus is now WPML compatible. So, you can use this plugin in translatable website. If you have a website in local language, still you can use **Filter Plus WordPress Filter Plugin.** If you use WPML in your site, you are now good to use Filter Plus on the site.
+
+**👉 RTL Support** If you have any WordPress site that has right to lfet language, you can use the plugin. Filter Plus is now RTL compatible plugin.
+
 More features are on the way!
 
 Filter Plus is the ultimate plugin for WordPress and WooCommerce product filtering. Allow the users to filter and shortlist the products in the store easily and effortlessly.
@@ -81,9 +85,9 @@ We have tested all the popular themes. And we believe, it will work with your th
 
 == Changelog ==
 
-= 1.0.4 (December 06, 2023)=
-
-Tweak : PHP script optimization
+= 1.0.4 (December 07, 2023)=
+Added : RTL support
+Added : WPML compatibility
 
 = 1.0.3 (December 06, 2023)=
 
