@@ -79,7 +79,23 @@ if ( !function_exists('filter_plus_select_field') ) {
 				</div>
 			</div>
 		';
+		
+		$docs ="";
+		if ( !empty( $args['docs'] ) ) {
+			$docs = doc_html( $args['docs'] );
+		}
+		echo FilterPlus\Utils\Helper::filter_plus_kses($html . $docs );
+	}
+}
 
-		echo FilterPlus\Utils\Helper::filter_plus_kses($html);
+if ( !function_exists('doc_html') ) {
+	function doc_html($text){
+		$html = '
+			<div class="single-block">
+				'.$text.'
+			</div>
+		';
+
+		echo $html;
 	}
 }

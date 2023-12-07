@@ -4,8 +4,12 @@
 
 		<?php
 			// templates
-			$args = array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
-			'data_label' => 'template','options'=>[1,2],'type'=>'template' );
+			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/?docs=filter-plus/gutenburg-block-elementor-widget-woocommercce-product-filter"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
+			$docs 		= '<i class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</i>';
+
+			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
+			'data_label' => 'template','options'=>[1,2],'type'=>'template' , 'docs' => $docs );
+
 			if ( $disable ) {
 				$args['template_disable'] = 1;
 			}
