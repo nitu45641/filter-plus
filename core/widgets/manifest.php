@@ -49,8 +49,6 @@ Class Manifest {
      */
 	public function add_elementor_widget_categories( $elements_manager ) {
         foreach ( $this->categories as $k => $v ) {
-            error_log(json_encode($k));
-            //error_log(json_encode($v));
             $elements_manager->add_category(
                 'filter-' . $k,
                 [

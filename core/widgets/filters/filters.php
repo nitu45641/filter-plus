@@ -113,7 +113,7 @@ class Filters extends Widget_Base {
 			[
 				'label' => esc_html__('Tags', 'filter-plus'),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_categories('','assoc'),
+				'options' => \FilterPlus\Utils\Helper::get_product_tags('product_tag','assoc'),
 				'multiple' => true,
 			]
 		);
@@ -135,7 +135,7 @@ class Filters extends Widget_Base {
 			[
 				'label' => esc_html__('Attributes', 'filter-plus'),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_categories('','assoc'),
+				'options' => \FilterPlus\Utils\Helper::get_attributes('product_attributes','assoc'),
 				'multiple' => true,
 			]
 		);
@@ -468,6 +468,7 @@ class Filters extends Widget_Base {
 		$settings   = $this->get_settings();
         extract($settings);
 		$categories = is_array($categories) ? implode(',',$categories) : '';
+		$tags 		= is_array($tags) ? implode(',',$tags) : '';
 
         echo do_shortcode("[filter_products template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");
 

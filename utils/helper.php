@@ -297,9 +297,8 @@ class Helper {
 	 * Get product tags 
 	 *
 	 * @param [type] $taxonomy
-	 * @return void
 	 */
-	public static function get_product_tags( $tag ) {
+	public static function get_product_tags( $tag , $type = "" ) {
 		if( !class_exists('WooCommerce')){
 			return array();
 		}
@@ -307,8 +306,25 @@ class Helper {
 			'taxonomy'   => $tag,
 			'hide_empty' => false,
 		) );
+		
+		$result_terms = array();
+		foreach ($terms as $key => $value) {
+			if ($type == "assoc" ) {
+				$result_terms[$value->term_id] = $value->name;
+			}
+			else if ($type == "label_value" ) {
+				$result_terms[$key]['label'] = $value->term_id;
+				$result_terms[$key]['value'] = $value->name;
+			}
+		}
 
-		return $terms;
+		if ( $type == "" ) {
+			$result_terms = $terms;
+		} 
+		
+
+		return $result_terms;
+
 	}
 
 	/**
@@ -332,9 +348,9 @@ class Helper {
 	 * Get attributes 
 	 *
 	 * @param [type] $taxonomy
-	 * @return void
+	 * @return array
 	 */
-	public static function get_attributes( $taxonomy = "" ) {
+	public static function get_attributes( $taxonomy = "" , $type="" ) {
 		$data       = array();
 		$terms      = self::get_product_tags( $taxonomy );
 		$data['label'] = wc_attribute_label( $taxonomy );
@@ -346,9 +362,8 @@ class Helper {
 	/**
 	 * Get categories
 	 *
-	 * @return void
 	 */
-	public static function get_categories( $categories = "" , $assoc = false ) {
+	public static function get_categories( $categories = "" , $type = false ) {
 
 		$args_cat = array(
 			'taxonomy'     => "product_cat",
@@ -358,27 +373,24 @@ class Helper {
 		if ( !empty($categories)) {
 			$args_cat['include'] = explode(",",$categories);
 		}
-		$cat = get_categories( $args_cat );
-		if ($assoc == "assoc" ) {
-			$categories = array();
-			foreach ($cat as $key => $value) {
-				$categories[$value->term_id] = $value->name;
-			}
-			return $categories;
-		} 
-		else if ($assoc == "label_value" ) {
-			$categories = array();
-			foreach ($cat as $key => $value) {
-				$categories[$key]['label'] = $value->term_id;
-				$categories[$key]['value'] = $value->name;
-			}
 
-			return $categories;
-		} 
-		else {
-			return $cat;
+		$cat = get_categories( $args_cat );
+		$result_cat = array();
+		foreach ($cat as $key => $value) {
+			if ($type == "assoc" ) {
+				$result_cat[$value->term_id] = $value->name;
+			} 
+			else if ($type == "label_value" ) {
+				$result_cat[$key]['label'] = $value->term_id;
+				$result_cat[$key]['value'] = $value->name;
+			} 
 		}
-		
+
+		if ( $type == "" ) {
+			$result_cat = $cat;
+		} 
+
+		return $result_cat;
 	}
 
 	/**
