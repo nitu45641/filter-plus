@@ -55,9 +55,9 @@ class Filters extends Widget_Base {
 			[
 				'label' => esc_html__('Category Style', 'filter-plus'),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'template-1',
+				'default' => '1',
 				'options' => [
-					'template-1'  => esc_html__('Template 1', 'filter-plus'),
+					'1'  => esc_html__('Template 1', 'filter-plus'),
 				],
 			]
 		);
@@ -96,110 +96,114 @@ class Filters extends Widget_Base {
 			]
 		);
 		// Pro
-		$this->add_control(
-			'show_tags',
-			[
-				'label' => esc_html__('Show Tags', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+		if (class_exists('FilterPlusPro')) {
 
-		$this->add_control(
-			'tags',
-			[
-				'label' => esc_html__('Tags', 'filter-plus'),
-				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_product_tags('product_tag','assoc'),
-				'multiple' => true,
-			]
-		);
+			$this->add_control(
+				'show_tags',
+				[
+					'label' => esc_html__('Show Tags', 'filter-plus'),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => esc_html__('Show', 'filter-plus'),
+					'label_off' => esc_html__('Hide', 'filter-plus'),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
 
-		$this->add_control(
-			'show_attributes',
-			[
-				'label' => esc_html__('Show Attributes', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+			$this->add_control(
+				'tags',
+				[
+					'label' => esc_html__('Tags', 'filter-plus'),
+					'type' => Controls_Manager::SELECT2,
+					'options' => \FilterPlus\Utils\Helper::get_product_tags('product_tag','assoc'),
+					'multiple' => true,
+					'condition' => ['show_tags' => 'yes']
+				]
+			);
 
-		$this->add_control(
-			'attributes',
-			[
-				'label' => esc_html__('Attributes', 'filter-plus'),
-				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_attributes('product_attributes','assoc'),
-				'multiple' => true,
-			]
-		);
+			$this->add_control(
+				'show_attributes',
+				[
+					'label' => esc_html__('Show Attributes', 'filter-plus'),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => esc_html__('Show', 'filter-plus'),
+					'label_off' => esc_html__('Hide', 'filter-plus'),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
 
-		$this->add_control(
-			'show_reviews',
-			[
-				'label' => esc_html__('Show Reviews', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+			$this->add_control(
+				'attributes',
+				[
+					'label' => esc_html__('Attributes', 'filter-plus'),
+					'type' => Controls_Manager::SELECT2,
+					'options' => \FilterPlus\Utils\Helper::get_attributes('product_attributes','assoc'),
+					'multiple' => true,
+					'condition' => ['show_attributes' => 'yes']
+				]
+			);
 
-		$this->add_control(
-			'show_price_range',
-			[
-				'label' => esc_html__('Display Price Range', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+			$this->add_control(
+				'show_reviews',
+				[
+					'label' => esc_html__('Show Reviews', 'filter-plus'),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => esc_html__('Show', 'filter-plus'),
+					'label_off' => esc_html__('Hide', 'filter-plus'),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
 
-		$this->add_control(
-			'sorting',
-			[
-				'label' => esc_html__('Display Price Range', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-		// Right Side
-		$this->add_control(
-			'product_categories',
-			[
-				'label' => esc_html__('Display Categories', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+			$this->add_control(
+				'show_price_range',
+				[
+					'label' => esc_html__('Display Price Range', 'filter-plus'),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => esc_html__('Show', 'filter-plus'),
+					'label_off' => esc_html__('Hide', 'filter-plus'),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
 
-		$this->add_control(
-			'product_tags',
-			[
-				'label' => esc_html__('Display Tags', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+			$this->add_control(
+				'sorting',
+				[
+					'label' => esc_html__('Display Price Range', 'filter-plus'),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => esc_html__('Show', 'filter-plus'),
+					'label_off' => esc_html__('Hide', 'filter-plus'),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
+			// Right Side
+			$this->add_control(
+				'product_categories',
+				[
+					'label' => esc_html__('Display Categories', 'filter-plus'),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => esc_html__('Show', 'filter-plus'),
+					'label_off' => esc_html__('Hide', 'filter-plus'),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
 
+			$this->add_control(
+				'product_tags',
+				[
+					'label' => esc_html__('Display Tags', 'filter-plus'),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => esc_html__('Show', 'filter-plus'),
+					'label_off' => esc_html__('Hide', 'filter-plus'),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
+		}
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -410,7 +414,7 @@ class Filters extends Widget_Base {
 		);
 
 		$this->add_control(
-			'wpc_box_bg_color',
+			'box_bg_color',
 			[
 				'label'         => esc_html__('Box Bacground Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
@@ -422,7 +426,7 @@ class Filters extends Widget_Base {
 		);
 
 		$this->add_control(
-			'wpc_box_bg_hover_color',
+			'box_bg_hover_color',
 			[
 				'label'         => esc_html__('Box Hover Bacground Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
@@ -468,7 +472,16 @@ class Filters extends Widget_Base {
 		$settings   = $this->get_settings();
         extract($settings);
 		$categories = is_array($categories) ? implode(',',$categories) : '';
-		$tags 		= is_array($tags) ? implode(',',$tags) : '';
+		$tags 		= !empty($tags) && is_array($tags) ? implode(',',$tags) : '';
+		$show_tags 			= !empty($show_tags) ? $show_tags : '';
+		$product_categories = !empty($product_categories) ? $product_categories : '';
+		$attributes			= !empty($attributes) ? implode(',',$attributes) : '';
+		$show_attributes	= !empty($show_attributes) ? $show_attributes : '';
+		$show_reviews 		= !empty($show_reviews) ? $show_reviews : '';
+		$show_price_range 	= !empty($show_price_range) ? $show_price_range : '';
+		$sorting 			= !empty($sorting) ? $sorting : '';
+		$product_tags 		= !empty($product_tags) ? $product_tags : '';
+		$product_categories = !empty($product_categories) ? $product_categories : '';
 
         echo do_shortcode("[filter_products template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");
 

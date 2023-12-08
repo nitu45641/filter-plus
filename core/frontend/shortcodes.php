@@ -62,7 +62,7 @@ class Shortcodes {
 					'sorting'          => 'no',
 				), $atts )
 		);
-
+		
 		ob_start();
 
 		if ( file_exists( \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php" ) ) {

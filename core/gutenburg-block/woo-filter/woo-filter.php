@@ -29,7 +29,9 @@ function woo_filter_callback( $settings ) {
     $product_categories = '';
     $product_tags       = '';
     $sorting            = 'no';
-    $categories         =  join(", ",$categories);
+    if ( is_array($categories) ) {
+        $categories     =  join(", ",$categories);
+    }
 
     ob_start();
     ?>
