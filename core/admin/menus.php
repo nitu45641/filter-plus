@@ -12,8 +12,7 @@ use FilterPlus\Utils\Singleton;
 /**
  * Class Menu
  */
-class Menus
-{
+class Menus {
 
     use Singleton;
 
@@ -22,8 +21,7 @@ class Menus
      *
      * @return void
      */
-    public function init()
-    {
+    public function init() {
         add_action('admin_menu', array($this, 'register_admin_menu'));
     }
 
@@ -85,6 +83,15 @@ class Menus
 		$sub_pages  = array(
 			array(
 				"parent_slug" => 'filter_plus',
+				"page_title"  => esc_html__('Overview','filter-plus'),
+				"menu_title"  => esc_html__('Overview','filter-plus'),
+				"capability"  => 'read',
+				"menu_slug"   => 'overview',
+				"cb_function" => array($this,'over_view'),
+				"position"    => 11
+			),
+			array(
+				"parent_slug" => 'filter_plus',
 				"page_title"  => esc_html__('Settings','filter-plus'),
 				"menu_title"  => esc_html__('Settings','filter-plus'),
 				"capability"  => 'read',
@@ -109,6 +116,15 @@ class Menus
 		}
 
 		return $sub_pages;
+	}
+
+	/**
+     * OverView
+     *
+     * @return void
+     */
+    public function over_view() {
+		include_once \FilterPlus::core_dir() . "admin/overview.php"; 
 	}
 
     /**

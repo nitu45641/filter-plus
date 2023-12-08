@@ -144,6 +144,7 @@ option.disable,.disable {
 	background: #fff;
 	padding: 10px 15px;
 	border-radius: 5px;
+	margin-bottom: 1%;
 }
 
 .settings_tab_pan li {
@@ -410,4 +411,49 @@ button.button.button-danger.delete-rules:hover {
     color: #0D165E;
     height: 17px;
     width: 17px;
+}
+
+/* Overview page */
+#wpcontent{
+	padding-left: 0;
+}
+.menu{
+	padding: 1% 2%;
+	background: #ffffff;
+	border-radius: 5px;
+}
+.menu .logo {
+    background-image: url(../../assets/images/logo.svg);
+}
+.menu h1{
+	font-weight: 800;
+}
+.over-view-wrapper{
+	background: #ffffff;
+	padding: 2%;
+	margin: 2%;
+	border-radius: 5px;
+}
+.first-block{
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: space-between;
+	background-color: #3263f8;
+    border-radius: 4px;
+    min-height: 250px;
+    padding-left: 50px;
+	color: #fff;
+}
+.left-block{
+	flex-direction: column;
+}
+.left-block h1{
+	font-size: 40px;
+    font-weight: 800;
+	color: #fff;
+}
+.left-block p{
+	font-size: 18px;
 }
