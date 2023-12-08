@@ -3,6 +3,7 @@
 namespace FilterPlus\Core;
 
 use FilterPlus\Utils\Singleton;
+use FilterPlus\Core\Widgets\Manifest as Manifest;
 
 /**
  * Base Class
@@ -22,9 +23,9 @@ class Core {
      */
     public function init() {
       if ( is_admin() ) {
-          // Load admin menus
-		      \FilterPlus\Core\Admin\Menus::instance()->init();
-      } 
+        // Load admin menus
+        \FilterPlus\Core\Admin\Menus::instance()->init();
+      }
 
       \FilterPlus\Core\Frontend\Shortcodes::instance()->init();
 
@@ -33,6 +34,23 @@ class Core {
       	include_once \FilterPlus::plugin_dir() . 'core/gutenburg-block/init.php';
       }
 
+      // load elementor
+      add_action( 'elementor/frontend/before_enqueue_scripts', array( $this, 'element_js' ) );
+      Manifest::instance()->init();
+
     }
+
+    public function element_js() {
+      
+    }
+
+    /**
+	 * Enqueue Elementor Assets
+	 *
+	 * @return void
+	 */
+	public function elementor_js() {
+		wp_enqueue_script( 'etn-elementor-inputs', \FilterPlus::assets_url() . 'js/elementor.js', array( 'elementor-frontend' ), \Wpeventin::version(), true );
+	}
 
 }

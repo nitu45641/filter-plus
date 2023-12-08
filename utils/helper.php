@@ -14,7 +14,7 @@ class Helper {
 	/**
 	 * Html markup validation
 	 */
-	public static function filter_plus_kses( $raw ) {
+	public static function kses( $raw ) {
 		$allowed_tags = [
 			'a'                             => [
 				'class'  => [],
@@ -167,6 +167,18 @@ class Helper {
 			return $raw;
 		}
 
+	}
+
+	/**
+	 * Auto generate classname from path.
+	 */
+	public static function make_classname( $dirname ) {
+		$dirname    = pathinfo( $dirname, PATHINFO_FILENAME );
+		$class_name = explode( '-', $dirname );
+		$class_name = array_map( 'ucfirst', $class_name );
+		$class_name = implode( '_', $class_name );
+
+		return $class_name;
 	}
 
 	/**
@@ -336,7 +348,7 @@ class Helper {
 	 *
 	 * @return void
 	 */
-	public static function get_categories( $categories = "" ) {
+	public static function get_categories( $categories = "" , $assoc = false ) {
 
 		$args_cat = array(
 			'taxonomy'     => "product_cat",
@@ -346,11 +358,28 @@ class Helper {
 		if ( !empty($categories)) {
 			$args_cat['include'] = explode(",",$categories);
 		}
+		$cat = get_categories( $args_cat );
+		if ($assoc == "assoc" ) {
+			$categories = array();
+			foreach ($cat as $key => $value) {
+				$categories[$value->term_id] = $value->name;
+			}
+			return $categories;
+		} 
+		else if ($assoc == "label_value" ) {
+			$categories = array();
+			foreach ($cat as $key => $value) {
+				$categories[$key]['label'] = $value->term_id;
+				$categories[$key]['value'] = $value->name;
+			}
 
-		return get_categories( $args_cat );
+			return $categories;
+		} 
+		else {
+			return $cat;
+		}
+		
 	}
-
-	
 
 	/**
 	 * Get products

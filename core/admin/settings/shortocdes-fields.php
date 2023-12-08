@@ -29,7 +29,7 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 			</div>
 		';
 
-		echo FilterPlus\Utils\Helper::filter_plus_kses($html);
+		echo FilterPlus\Utils\Helper::kses($html);
 	}
 }
 
@@ -84,7 +84,7 @@ if ( !function_exists('filter_plus_select_field') ) {
 		if ( !empty( $args['docs'] ) ) {
 			$docs = doc_html( $args['docs'] );
 		}
-		echo FilterPlus\Utils\Helper::filter_plus_kses($html . $docs );
+		echo FilterPlus\Utils\Helper::kses($html . $docs );
 	}
 }
 

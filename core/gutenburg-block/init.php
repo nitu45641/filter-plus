@@ -45,7 +45,7 @@ function filter_plus_block_assets() {
         'filter-plus-block-js',
         'tsGlobal',
         [
-            'woo_categories' => \FilterPlus\Utils\Helper::get_categories(),
+            'woo_categories' => \FilterPlus\Utils\Helper::get_categories('','label_value'),
 			'is_pro_active' => (( class_exists( 'FilterPlusPro' ) ) ? true : false),
         ]
     );
