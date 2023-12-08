@@ -1059,9 +1059,9 @@ a.added_to_cart.wc-forward {
 	top: 13px;
 	width: 10px;
 }
-.dropdown-label.closed:after {
+/* .dropdown-label.closed:after {
     background-image: url(../../assets/images/arrow-down.svg);
 }
 .dropdown-label.open:after {
     background-image: url(../../assets/images/arrow-up.svg);
-}
+} */
