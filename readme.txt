@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce Filter, Filtering Plugin, Price Range, Product Filter
 Requires at least: 4.7
 Tested up to: 6.4.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -84,6 +84,9 @@ We have tested all the popular themes. And we believe, it will work with your th
 2. screenshot-3
 
 == Changelog ==
+
+= 1.0.5 (December 08, 2023)=
+Added : Elementor widgets to show products with filter option
 
 = 1.0.4 (December 07, 2023)=
 Added : RTL support
