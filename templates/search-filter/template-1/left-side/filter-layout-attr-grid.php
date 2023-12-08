@@ -4,7 +4,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 foreach ($attributes as $key => $item ) { 
-	echo $item;
 	$get_attr = \FilterPlus\Utils\Helper::get_attributes( !empty( wc_get_attribute( $item ) ) ? wc_get_attribute( $item )->slug : '' );
 ?>
 <div class="sidebar-row radio-wrap">

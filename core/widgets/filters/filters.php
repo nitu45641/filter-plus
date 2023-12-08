@@ -49,16 +49,19 @@ class Filters extends Widget_Base {
 				'label' => esc_html__('Category List', 'filter-plus'),
 			]
 		);
-
+		$templates = [
+			1  => esc_html__('Template 1', 'filter-plus'),
+		];
+		if ( class_exists('FilterPlusPro') ) {
+			$templates[2] = esc_html__('Template 2', 'filter-plus');
+		}
 		$this->add_control(
 			'template',
 			[
 				'label' => esc_html__('Category Style', 'filter-plus'),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
-				'options' => [
-					'1'  => esc_html__('Template 1', 'filter-plus'),
-				],
+				'options' => $templates,
 			]
 		);
 
@@ -171,7 +174,7 @@ class Filters extends Widget_Base {
 			$this->add_control(
 				'sorting',
 				[
-					'label' => esc_html__('Display Price Range', 'filter-plus'),
+					'label' => esc_html__('Display Sorting:', 'filter-plus'),
 					'type' => \Elementor\Controls_Manager::SWITCHER,
 					'label_on' => esc_html__('Show', 'filter-plus'),
 					'label_off' => esc_html__('Hide', 'filter-plus'),
