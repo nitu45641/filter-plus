@@ -53,7 +53,7 @@
 			global $product;
 			$get_attributes     = class_exists('WooCommerce') ? wc_get_attribute_taxonomies() : array();
 			$args               = array('label'=>esc_html__("Attribute List:","filter-plus"),'id' => 'woo_pro_attributes',
-			'data_label' => 'attributes','options'=>$get_attributes , 'condition_class' => "show_attributes" , 'type'=>'attributes',
+			'data_label' => 'attributes', 'options'=>$get_attributes , 'condition_class' => "show_attributes" , 'type'=>'attributes',
 			'disable' => $disable );
 			filter_plus_select_field($args);
 

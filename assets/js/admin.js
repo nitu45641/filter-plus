@@ -5,7 +5,7 @@
 		// load select 2
 		var ids = ["#woo_pro_categories","#woo_pro_tags","#woo_pro_attributes"];
 		$.each(ids,function(index,value){
-			$(value).select2( { allowClear: true, width: '100%'} );
+			$(value).select2( { width: '100%'} );
 		});
 
 		// shortcode generator

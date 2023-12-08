@@ -4,7 +4,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 foreach ($attributes as $key => $item ) { 
-	$get_attr = \FilterPlus\Utils\Helper::get_attributes( wc_get_attribute( $item )->slug );
+	echo $item;
+	$get_attr = \FilterPlus\Utils\Helper::get_attributes( !empty( wc_get_attribute( $item ) ) ? wc_get_attribute( $item )->slug : '' );
 ?>
 <div class="sidebar-row radio-wrap">
 	<h4 class="sidebar-label"><?php echo esc_html__('Filter By ') .esc_html($get_attr['label']); ?></h4>

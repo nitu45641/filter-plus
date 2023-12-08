@@ -327,11 +327,30 @@ class Helper {
 
 	}
 
+	public static function woo_attribute_list($type=""){
+		$result = array();
+		foreach ( wc_get_attribute_taxonomies()  as $key => $value) {
+			if ($type == "assoc" ) {
+				$result[$value->attribute_id] = $value->attribute_name;
+			}
+			else if ($type == "label_value" ) {
+				$result[$key]['label'] = $value->attribute_id;
+				$result[$key]['value'] = $value->attribute_name;
+			}
+		}
+
+		if ( $type == "" ) {
+			$result = wc_get_attribute_taxonomies();
+		}
+
+		return $result;
+	}
+
 	/**
 	 * String to array
 	 *
 	 * @param [type] $tags
-	 * @return void
+	 * @return array
 	 */
 	public static function array_data( $data ){
 		$tag_arr = array();

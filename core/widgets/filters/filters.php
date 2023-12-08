@@ -136,10 +136,10 @@ class Filters extends Widget_Base {
 			$this->add_control(
 				'attributes',
 				[
-					'label' => esc_html__('Attributes', 'filter-plus'),
-					'type' => Controls_Manager::SELECT2,
-					'options' => \FilterPlus\Utils\Helper::get_attributes('product_attributes','assoc'),
-					'multiple' => true,
+					'label' 	=> esc_html__('Attributes', 'filter-plus'),
+					'type' 		=> Controls_Manager::SELECT2,
+					'options' 	=> \FilterPlus\Utils\Helper::woo_attribute_list("assoc"),
+					'multiple' 	=> true,
 					'condition' => ['show_attributes' => 'yes']
 				]
 			);
