@@ -1,5 +1,12 @@
 <header class="menu">
-    <div class="logo"><h1><?php esc_html_e('Filter Plus','filter-plus');?></h1></div>
+    <div class="logo">
+        <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-logo.png' ?>"
+            alt="filter-plus-banner" 
+            width="50px"
+            height="50px"
+        />
+        <h1><?php esc_html_e('Filter Plus','filter-plus');?></h1>
+    </div>
 </header>
 
 <?php
@@ -82,7 +89,7 @@
             <?php } ?>
         </div>
     </div>
-    <div class="block cta-block p-7">
+    <div class="block cta-block p-7 mb-5">
         <div class="left-block">
             <h1 class="features-header"><?php esc_html_e('Features','filter-plus');?></h1>
             <p><?php esc_html_e('description','filter-plus');?></p>

@@ -423,7 +423,12 @@ button.button.button-danger.delete-rules:hover {
 	border-radius: 5px;
 }
 .menu .logo {
-    background-image: url(../../assets/images/logo.svg);
+    background: no-repeat;
+    display: flex;
+    width: fit-content;
+}
+.logo img{
+	margin-right: 6px;
 }
 .menu h1{
 	font-weight: 800;
