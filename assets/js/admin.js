@@ -74,9 +74,9 @@
 			let value = $("#"+data);
 			value.on('change',function(){
 				if (value.is(":checked")) {
-					$("."+data).fadeIn();
+					$("."+data).removeClass("d-none");
 				}else{
-				   $("."+data).fadeOut();
+				   $("."+data).addClass("d-none");
 				}
 			 })
 
