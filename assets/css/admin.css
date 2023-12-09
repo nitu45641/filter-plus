@@ -25,7 +25,7 @@ h1.font_20{
 	border: 1px solid #d5d5d5;
 }
 .single-block {
-	display: flex;
+	display: grid;
 	column-gap: 40px;
 	align-items: center;
 	padding: 7px 0;
@@ -476,7 +476,7 @@ button.button.button-danger.delete-rules:hover {
 .left-block p{
 	font-size: 18px;
 }
-.features-header{
+.block-header{
 	color: #291c63;
     font-size: 34px; 
     font-weight: 700;
@@ -487,19 +487,31 @@ button.button.button-danger.delete-rules:hover {
     flex-flow: row wrap;
     min-width: 0;
 }
-.feature-block{
+.block-wrapper{
 	display: grid;
 	grid-template-columns: auto auto auto;
-	padding: 10px;
 }
-.fr-single-block {
+.card-wrapper{
+	display: flex;
+    flex-wrap:wrap;
+}
+.card-block{
+	width: 44%;
+	margin-right: 5%;
+    border: 1px solid #f4ecec;
+    border-radius: 15px;
+}
+.card-block:last-child{
+	margin-right: 0;
+}
+.single-item,.card-block {
 	padding: 15px;
 	text-align: center;
 }
-.fr-single-block h3{
+.single-item h3,.card-block h3{
     font-weight: 800;
 }
-.fr-single-block span{
+.single-item span,.card-block span{
     position: relative;
     font-size: 25px;
     padding: 16px;
@@ -530,6 +542,16 @@ button.button.button-danger.delete-rules:hover {
 .pb-2{
 	padding-bottom: 2%;
 }
+.mt-5{
+	margin-top: 5%;
+}
 .mb-5{
 	margin-bottom: 5%;
+}
+.description p{
+	margin: 0;
+	float: left;
+}
+.description a{
+	text-decoration: none;
 }
