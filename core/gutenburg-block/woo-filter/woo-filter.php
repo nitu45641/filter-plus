@@ -20,17 +20,24 @@ function woo_filter_callback( $settings ) {
     $categories         = !empty($settings['categories']) ? $settings['categories'] : '';
     $colors             = !empty($settings['colors']) && $settings['colors'] == true  ? 'yes' : 'no';
     $size               = !empty($settings['size']) && $settings['size'] == true ? 'yes' : 'no';
-    $tags               = '';
-    $attributes         = '';
-    $show_tags          = '';
-    $show_attributes    = '';
-    $show_reviews       = '';
-    $show_price_range   = '';
-    $product_categories = '';
-    $product_tags       = '';
-    $sorting            = 'no';
+    $show_tags          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
+    $tags               = !empty($settings['tags']) ? $settings['tags'] : '';
+    $show_attributes    = !empty($settings['show_attributes']) && $settings['show_attributes'] == true ? 'yes' : 'no';
+    $attributes         = !empty($settings['attribute_list']) ? $settings['attribute_list'] : '';
+    $show_reviews       = !empty($settings['show_reviews']) && $settings['show_reviews'] == true ? 'yes' : 'no';
+    $show_price_range   = !empty($settings['show_price_range']) && $settings['show_price_range'] == true ? 'yes' : 'no';
+    $sorting            = !empty($settings['sorting']) && $settings['sorting'] == true ? 'yes' : 'no';
+    $product_categories = !empty($settings['product_categories']) && $settings['product_categories'] == true ? 'yes' : 'no';
+    $product_tags       = !empty($settings['product_tags']) && $settings['product_tags'] == true ? 'yes' : 'no';
+    
     if ( is_array($categories) ) {
         $categories     =  join(", ",$categories);
+    }
+    if ( is_array($tags) ) {
+        $tags     =  join(", ",$tags);
+    }
+    if ( is_array($attributes) ) {
+        $attributes     =  join(", ",$attributes);
     }
 
     ob_start();

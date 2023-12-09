@@ -43,10 +43,12 @@ function filter_plus_block_assets() {
     // WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
     wp_localize_script(
         'filter-plus-block-js',
-        'tsGlobal',
+        'filterPlus',
         [
-            'woo_categories' => \FilterPlus\Utils\Helper::get_categories('','label_value'),
-			'is_pro_active' => (( class_exists( 'FilterPlusPro' ) ) ? true : false),
+            'woo_categories'    => \FilterPlus\Utils\Helper::get_categories('','label_value'),
+            'tags'              => \FilterPlus\Utils\Helper::get_product_tags('product_tag','label_value'),
+            'attributes'        => \FilterPlus\Utils\Helper::woo_attribute_list('label_value'),
+			'is_pro_active'     => (( class_exists( 'FilterPlusPro' ) ) ? true : false),
         ]
     );
 

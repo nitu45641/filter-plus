@@ -144,12 +144,41 @@ const {
       type: 'boolean'
     },
     template: {
-      type: 'integer',
-      default: 1
+      type: 'string',
+      default: '1'
     },
     categories: {
       type: 'array',
       default: []
+    },
+    show_tags: {
+      type: 'boolean'
+    },
+    tags: {
+      type: 'array',
+      default: []
+    },
+    show_attributes: {
+      type: 'boolean'
+    },
+    attribute_list: {
+      type: 'array',
+      default: []
+    },
+    show_reviews: {
+      type: 'boolean'
+    },
+    show_price_range: {
+      type: 'boolean'
+    },
+    sorting: {
+      type: 'boolean'
+    },
+    product_tags: {
+      type: 'boolean'
+    },
+    product_categories: {
+      type: 'boolean'
     }
   },
   edit({
@@ -161,7 +190,16 @@ const {
       colors,
       size,
       template,
-      categories
+      categories,
+      show_tags,
+      tags,
+      show_attributes,
+      attribute_list,
+      show_reviews,
+      show_price_range,
+      sorting,
+      product_tags,
+      product_categories
     } = attributes;
     function onChangeDisplayColor(newValue) {
       setAttributes({
@@ -183,34 +221,72 @@ const {
         template: newValue
       });
     }
-    function getCategories() {
-      const options = [];
-      tsGlobal?.woo_categories?.forEach(cat => {
-        options.push({
-          value: cat.term_id,
-          label: cat.name
-        });
+    function onChangeDisplayTags(newValue) {
+      setAttributes({
+        show_tags: newValue
       });
-      return options;
     }
+    function onChangeTagist(newValue) {
+      setAttributes({
+        tags: newValue
+      });
+    }
+    function onChangeDisplayAttr(newValue) {
+      setAttributes({
+        show_attributes: newValue
+      });
+    }
+    function onChangeAttr(newValue) {
+      setAttributes({
+        attribute_list: newValue
+      });
+    }
+    function onChangeShowReviews(newValue) {
+      setAttributes({
+        show_reviews: newValue
+      });
+    }
+    function onChangeSorting(newValue) {
+      setAttributes({
+        sorting: newValue
+      });
+    }
+    function onChangeProductTag(newValue) {
+      setAttributes({
+        product_tags: newValue
+      });
+    }
+    function onChangeProductCat(newValue) {
+      setAttributes({
+        product_categories: newValue
+      });
+    }
+    function getTemplates() {
+      let templates = [{
+        value: 1,
+        label: __('Template-1', 'filter-plus')
+      }];
+      if (filterPlus?.is_pro_active == true) {
+        templates.push({
+          value: 2,
+          label: __('Template-2', 'filter-plus')
+        });
+      }
+      return templates;
+    }
+    console.log(attributes);
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
       title: __('Settings', 'filter-plus')
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
       label: __('Select Template:', 'filter-plus'),
       value: template,
-      options: [{
-        value: 1,
-        label: __('Template-1', 'filter-plus')
-      }, {
-        value: 2,
-        label: __('Template-2', 'filter-plus')
-      }],
+      options: getTemplates(),
       onChange: onChangeTemplate
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
       multiple: true,
       label: __('Category List:', 'filter-plus'),
       value: categories,
-      options: getCategories(),
+      options: filterPlus?.woo_categories,
       onChange: onChangeCatList
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
       label: __('Display Colors:', 'filter-plus'),
@@ -220,7 +296,43 @@ const {
       label: __('Display Size:', 'filter-plus'),
       checked: size,
       onChange: onChangeDisplaySize
-    }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }), filterPlus?.is_pro_active == true && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: __('Display Tags:', 'filter-plus'),
+      checked: show_tags,
+      onChange: onChangeDisplayTags
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+      multiple: true,
+      label: __('Tags:', 'filter-plus'),
+      value: tags,
+      options: filterPlus?.tags,
+      onChange: onChangeTagist
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: __('Display Attributes:', 'filter-plus'),
+      checked: show_attributes,
+      onChange: onChangeDisplayAttr
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+      multiple: true,
+      label: __('Attributes:', 'filter-plus'),
+      value: attribute_list,
+      options: filterPlus?.attributes,
+      onChange: onChangeAttr
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: __('Display Reviews:', 'filter-plus'),
+      checked: show_reviews,
+      onChange: onChangeShowReviews
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: __('Display Sorting:', 'filter-plus'),
+      checked: sorting,
+      onChange: onChangeSorting
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: __('Display Tags in Filter Result:', 'filter-plus'),
+      checked: product_tags,
+      onChange: onChangeProductTag
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: __('Display Categories in Filter Result:', 'filter-plus'),
+      checked: product_categories,
+      onChange: onChangeProductCat
+    })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
     }, "This is the editor text!"));
   },
@@ -231,7 +343,16 @@ const {
       colors,
       size,
       template,
-      categories
+      categories,
+      show_tags,
+      tags,
+      show_attributes,
+      attribute_list,
+      show_reviews,
+      show_price_range,
+      sorting,
+      product_tags,
+      product_categories
     } = attributes;
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

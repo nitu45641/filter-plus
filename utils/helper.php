@@ -274,7 +274,7 @@ class Helper {
 	/**
 	 * Admin settings array
 	 *
-	 * @return void
+	 * @return array
 	 */
 	public static function get_settings() {
 		$settings = array();
@@ -287,7 +287,7 @@ class Helper {
 	 *
 	 * @return array
 	 */
-	public static function admin_pages_id( ) {
+	public static function admin_unique_id( ) {
 		$admin_pages =  array(
 			'filter-plus_page_settings',
 			'toplevel_page_filter_plus',
@@ -317,8 +317,8 @@ class Helper {
 				$result_terms[$value->term_id] = $value->name;
 			}
 			else if ($type == "label_value" ) {
-				$result_terms[$key]['label'] = $value->term_id;
-				$result_terms[$key]['value'] = $value->name;
+				$result_terms[$key]['value'] = $value->term_id;
+				$result_terms[$key]['label'] = $value->name;
 			}
 		}
 
@@ -338,8 +338,8 @@ class Helper {
 				$result[$value->attribute_id] = $value->attribute_name;
 			}
 			else if ($type == "label_value" ) {
-				$result[$key]['label'] = $value->attribute_id;
-				$result[$key]['value'] = $value->attribute_name;
+				$result[$key]['value'] = $value->attribute_id;
+				$result[$key]['label'] = $value->attribute_name;
 			}
 		}
 
@@ -387,7 +387,6 @@ class Helper {
 	 *
 	 */
 	public static function get_categories( $categories = "" , $type = false ) {
-
 		$args_cat = array(
 			'taxonomy'     => "product_cat",
 			'number'       => 50,
@@ -404,8 +403,8 @@ class Helper {
 				$result_cat[$value->term_id] = $value->name;
 			} 
 			else if ($type == "label_value" ) {
-				$result_cat[$key]['label'] = $value->term_id;
-				$result_cat[$key]['value'] = $value->name;
+				$result_cat[$key]['value'] = $value->term_id;
+				$result_cat[$key]['label'] = $value->name;
 			} 
 		}
 

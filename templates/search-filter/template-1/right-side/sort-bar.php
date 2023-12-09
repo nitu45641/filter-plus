@@ -7,6 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <div class="showing">
 	<p><?php esc_html_e('Showing','filter-plus')?> <span class="pages">1</span><span><?php esc_html_e(' of','filter-plus')?> </span><span class="total"></span> <?php esc_html_e('Products','filter-plus')?></p>
 </div>
+<?php
+$show_sort_bar = true;
+if( class_exists('FilterPlusPro') && $sorting == "no" ){
+	$show_sort_bar = false;
+}
+if ( $show_sort_bar == false ) {
+	return;
+}
+?>
 <div class="sort-bar">
 	<div class="sort-bar-left">
 		<div class="product-grid">
