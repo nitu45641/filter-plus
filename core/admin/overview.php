@@ -73,7 +73,7 @@
             <h1 class="features-header"><?php esc_html_e('Features','filter-plus');?></h1>
             <p><?php esc_html_e('description','filter-plus');?></p>
         </div>
-        <div class="feature-block">
+        <div class="feature-block mb-5">
             <?php foreach ($features as $key => $value) { ?>
                 <div class="fr-single-block">
                         <?php echo FilterPlus\Utils\Helper::kses($value['icon']); ?>  
