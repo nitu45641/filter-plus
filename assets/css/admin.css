@@ -464,9 +464,15 @@ button.button.button-danger.delete-rules:hover {
     font-size: 15px;
     font-weight: 800;
     border-radius: 10px;
-    background: #fff;
-    color: #291c63;
     border: 1px solid #291c63;
+}
+.feature-cta{
+	background: #fff;
+	color: #291c63;
+}
+.first-block .ctn-button {
+	background: #ff5d8f;
+	color: #fff;
 }
 .left-block h1{
 	font-size: 40px;

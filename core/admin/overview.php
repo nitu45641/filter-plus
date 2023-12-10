@@ -81,6 +81,9 @@
         <div class="left-block">
             <h1 class="first-header"><?php esc_html_e('1st Line','filter-plus');?></h1>
             <p><?php esc_html_e('description','filter-plus');?></p>
+            <div class="cta">
+            <a target="_blank" href="https://www.woooplugin.com/filter-plus/"><button class="btn ctn-button"><?php esc_html_e('Go to Premium','filter-plus');?></button></a>
+        </div>
         </div>
         <div class="right-block p-2">
             <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-banner.png' ?>"
@@ -109,7 +112,9 @@
             <p><?php esc_html_e('description','filter-plus');?></p>
         </div>
         <div class="right-block">
-            <a target="_blank" href="https://www.woooplugin.com/filter-plus/"><button class="btn ctn-button"><?php esc_html_e('Go to Pro','filter-plus');?></button></a>
+            <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
+                <button class="btn feature-cta ctn-button"><?php esc_html_e('Go to Pro','filter-plus');?></button>
+            </a>
         </div>
     </div>
     <div class="more-products-section">
