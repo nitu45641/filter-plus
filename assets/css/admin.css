@@ -1,4 +1,10 @@
 /* Admin css */
+#wpcontent {
+    padding: 0;
+}
+.wrap {
+    padding: 0 20px;
+}
 h2.content-header {
 	font-weight: 700 !important;
 	margin-top: 2% !important;
@@ -26,6 +32,7 @@ h1.font_20{
 }
 .single-block {
 	display: grid;
+	grid-template-columns: 175px auto;
 	column-gap: 40px;
 	align-items: center;
 	padding: 7px 0;
@@ -244,7 +251,7 @@ button.button-primary:focus {
     border-radius: 5px !important;
 }
 
-.shortcode-block .input-section input:focus,
+.input-section input:focus,
 .single-block input:focus {
     outline: none;
     box-shadow: 0 0 0 1px #3263f8;
@@ -414,9 +421,6 @@ button.button.button-danger.delete-rules:hover {
 }
 
 /* Overview page */
-#wpcontent{
-	padding-left: 0;
-}
 .menu{
 	padding: 1% 2%;
 	background: #ffffff;
@@ -550,6 +554,9 @@ button.button.button-danger.delete-rules:hover {
 }
 .mt-5{
 	margin-top: 5%;
+}
+.mb-1{
+	margin-bottom: 1%;
 }
 .mb-5{
 	margin-bottom: 5%;
