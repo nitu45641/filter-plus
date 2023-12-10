@@ -57,45 +57,49 @@
         ),
         array(
             'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-            'title' =>esc_html__('Many More Features','filter-plus')
+            'title' =>esc_html__('+16 More Features','filter-plus')
         ),
     );
     $more_products = array(
         array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-            'url' => 'https://woooplugin.com/discountify/',
-            'title' =>esc_html__('Discountify','filter-plus'),
-            'desc' =>esc_html__('description','filter-plus')
+            'icon'  =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
+            'url'   => 'https://woooplugin.com/discountify/',
+            'title' =>esc_html__('Discount and Coupon Plugin','filter-plus'),
+            'logo'   => 'discountify-logo.png',
+            'cta'   =>esc_html__('Explore The Plugin','filter-plus')
         ),
         array(
             'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
             'url' => 'https://woooplugin.com/quicker/',
-            'title' =>esc_html__('Quicker','filter-plus'),
-            'desc' =>esc_html__('description','filter-plus')
+            'title' =>esc_html__('Quick Checkout Plugin','filter-plus'),
+            'logo'   => 'quicker-logo.png',
+            'cta' =>esc_html__('Explore The Plugin','filter-plus')
         ),
     );
 ?>
 
 <div class="over-view-wrapper">
     <div class="block first-block">
-        <div class="left-block">
-            <h1 class="first-header"><?php esc_html_e('1st Line','filter-plus');?></h1>
-            <p><?php esc_html_e('description','filter-plus');?></p>
+        <div class="left-block mb-5">
+            <h1 class="first-header"><?php esc_html_e('Powerful Filtering Features for WordPress and WooCommerce','filter-plus');?></h1>
+            <p><?php esc_html_e('Filter Plus is the WordPress and WooCommerce Product Filter Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. The plugin comes with WordPress filter anything functionality that increases the user experience.','filter-plus');?></p>
             <div class="cta">
-            <a target="_blank" href="https://www.woooplugin.com/filter-plus/"><button class="btn ctn-button"><?php esc_html_e('Go to Premium','filter-plus');?></button></a>
+            <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
+                <button class="btn ctn-button"><?php esc_html_e('Explore Filter Plus Pro','filter-plus');?></button>
+            </a>
         </div>
         </div>
         <div class="right-block p-2">
             <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-banner.png' ?>"
                 alt="filter-plus-banner" 
-                width="600px"
+                width="500px"
             />
         </div>
     </div>
     <div class="features-section mt-5">
         <div class="text-center pt-5 pb-2">
-            <h1 class="block-header"><?php esc_html_e('Features','filter-plus');?></h1>
-            <p><?php esc_html_e('description','filter-plus');?></p>
+            <h1 class="block-header"><?php esc_html_e('Advanced Filtering Features','filter-plus');?></h1>
+            <p><?php esc_html_e('Available at Filter Plus Pro','filter-plus');?></p>
         </div>
         <div class="block-wrapper mb-5">
             <?php foreach ($features as $key => $value) { ?>
@@ -108,27 +112,30 @@
     </div>
     <div class="block cta-block p-7 mb-5">
         <div class="left-block">
-            <h1 class="block-header"><?php esc_html_e('Features','filter-plus');?></h1>
-            <p><?php esc_html_e('description','filter-plus');?></p>
+            <h1 class="block-header"><?php esc_html_e('Explore the premium version to experience our countless advanced features.','filter-plus');?></h1>
         </div>
         <div class="right-block">
             <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
-                <button class="btn feature-cta ctn-button"><?php esc_html_e('Go to Pro','filter-plus');?></button>
+                <button class="btn feature-cta ctn-button"><?php esc_html_e('Look Into Pro','filter-plus');?></button>
             </a>
         </div>
     </div>
     <div class="more-products-section">
         <div class="text-center pt-5 pb-2">
-            <h1 class="block-header"><?php esc_html_e('More Products','filter-plus');?></h1>
-            <p><?php esc_html_e('description','filter-plus');?></p>
+            <h1 class="block-header"><?php esc_html_e('More Plugins By The Same Team','filter-plus');?></h1>
+            <p><?php esc_html_e('We also have other solutions for growing your store conversion.','filter-plus');?></p>
         </div>
         <div class="card-wrapper mb-5">
             <?php foreach ($more_products as $key => $value) { ?>
                 <div class="card-block">
-                        <?php echo FilterPlus\Utils\Helper::kses($value['icon']); ?>  
+                        <img src="<?php echo esc_url(FilterPlus::assets_url().'images/'.$value['logo']); ?> " 
+                        alt="<?php echo esc_html($value['title']);?>"
+                        width="50px"
+                        height="50px"
+                        />
                         <div class="description">
                             <a href="<?php echo esc_url($value['url']); ?>"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3> </a>  
-                            <p><?php esc_html_e($value['desc'],'filter-plus'); ?></p>   
+                            <button class="btn bg-color ctn-button"><?php esc_html_e($value['cta'],'filter-plus'); ?></button>  
                         </div>
 
                 </div>

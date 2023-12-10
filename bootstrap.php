@@ -62,12 +62,4 @@ Class Bootstrap{
 		return self::$instance;
 	}
 	
-	/**
-	 * Plugin start menus
-	 *
-	 * @return void
-	 */
-	public function initial_menus() {
-		
-	}
 }

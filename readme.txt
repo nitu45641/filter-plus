@@ -85,6 +85,9 @@ We have tested all the popular themes. And we believe, it will work with your th
 
 == Changelog ==
 
+= 1.0.7 (December 10, 2023)=
+Added : Overview page 
+
 = 1.0.6 (December 08, 2023)=
 Tweak : PHP script optimization
 

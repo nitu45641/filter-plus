@@ -5,6 +5,9 @@
 .wrap {
     padding: 0 20px;
 }
+.btn{
+	cursor: pointer;
+}
 h2.content-header {
 	font-weight: 700 !important;
 	margin-top: 2% !important;
@@ -421,6 +424,10 @@ button.button.button-danger.delete-rules:hover {
 }
 
 /* Overview page */
+.bg-color{
+	background-color: #3263f8;
+	color: #fff;
+}
 .menu{
 	padding: 1% 2%;
 	background: #ffffff;
@@ -458,33 +465,37 @@ button.button.button-danger.delete-rules:hover {
 	min-height: 250px;
 }
 .cta-block{
-	gap: 50%;;
+	gap: 20%;
 	background-color: #ff5d8f;;
 }
 .ctn-button{
 	cursor: pointer;
-	padding: 8%;
-    width: 215px;
+    padding: 3% 4%;
     font-size: 15px;
     font-weight: 800;
-    border-radius: 10px;
     border: 1px solid #291c63;
 }
 .feature-cta{
-	background: #fff;
-	color: #291c63;
+    background: #fff;
+    color: #291c63;
+    width: 190px;
+    padding: 12% 0;
 }
 .first-block .ctn-button {
 	background: #ff5d8f;
 	color: #fff;
 }
+.first-block p{
+	margin-bottom: 5%;
+}
 .left-block h1{
-	font-size: 40px;
+    font-size: 33px;
     font-weight: 800;
-	color: #fff;
+    color: #fff;
+    line-height: 1.2;
 }
 .left-block p{
-	font-size: 18px;
+	font-size: 15px;
 }
 .block-header{
 	color: #291c63;
@@ -499,7 +510,7 @@ button.button.button-danger.delete-rules:hover {
 }
 .block-wrapper{
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: auto auto auto auto;
 }
 .card-wrapper{
 	display: flex;
