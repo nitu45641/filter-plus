@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce Filter, Filtering Plugin, Price Range, Product Filter , ajax filter
 Requires at least: 4.7
 Tested up to: 6.4.1
-Stable tag: 1.0.7
+Stable tag: 1.0.6
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -29,9 +29,20 @@ It will help users shorten the products quickly and order from the prioritized p
 
 📌 [Before writing any review, Please be aware that, Filter Plus is still in its initial stage]
 
+##Use of Filter Plus Plugin##
+
+* **Filter Plugin**
+* **Filter Products WordPress Plugin**
+* **Filter Everything in WordPress**
+* **Food Menu Filtering**
+* **WooCommerce Product Filtering**
+* **Filter By Price Range**
+* **Filter By Ratings**
+* **Filter By Tag**
+
 ##Current Feature##
 
-Add advanced filtering features with Filter Plus WooCommerce plugin
+You can add advanced filtering features with Filter Plus WooCommerce plugin. The following features available at this time for your WooCommerce Filter and Shorting option.
 
 **👉 [Filter by Price Range](https://woooplugin.com/filter-plus/)** - It enables users to narrow down search results by specifying a minimum and maximum price. This is particularly useful in eCommerce website, as it simplifies the process of finding products within a specific budget. It enhances user experience and can boost conversion rates by helping visitors discover cost-effective options.
 
@@ -55,9 +66,9 @@ Add advanced filtering features with Filter Plus WooCommerce plugin
 
 **⭐️ WooComerce Filter Gutenberg Block** - Gutenberg blocks for filter options also available now. You can add filter by price, tags and similar feature from block section while editing the page.
 
-**👉 WPML Compatible** Filter Plus is now WPML compatible. So, you can use this plugin in translatable website. If you have a website in local language, still you can use **Filter Plus WordPress Filter Plugin.** If you use WPML in your site, you are now good to use Filter Plus on the site.
+**👉 WPML Compatible** - Filter Plus is now WPML compatible. So, you can use this plugin in translatable website. If you have a website in local language, still you can use **Filter Plus WordPress Filter Plugin.** If you use WPML in your site, you are now good to use Filter Plus on the site.
 
-**👉 RTL Support** If you have any WordPress site that has right to lfet language, you can use the plugin. Filter Plus is now RTL compatible plugin.
+**👉 RTL Support** - If you have any WordPress site that has right to lfet language, you can use the plugin. Filter Plus is now RTL compatible plugin.
 
 More features are on the way!
 
