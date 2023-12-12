@@ -35,7 +35,7 @@ h1.font_20{
 }
 .single-block {
 	display: grid;
-	grid-template-columns: 175px auto;
+	grid-template-columns: 175px auto auto;
 	column-gap: 40px;
 	align-items: center;
 	padding: 7px 0;
@@ -137,6 +137,7 @@ input[type="checkbox"].switcher-ui-toggle:checked:after {
 	background-color: #2271b1;
 }
 option.disable,.disable {
+	position: relative;
 	opacity: 0.5;
 	pointer-events: none;
 	display: flex;
@@ -413,6 +414,11 @@ button.button.button-danger.delete-rules:hover {
 	background: linear-gradient(180deg, #ff1414 0%, #eb1d3a 100%) !important;
 }
 /* Pro Tag */
+a.pr-tag{
+	position: absolute;
+    left: 28%;
+	text-decoration: none;
+}
 .pro-fr {
     padding: 4px 13px 4px;
     border: 1px solid rgba(50, 99, 248, 0.3);
