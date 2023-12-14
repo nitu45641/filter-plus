@@ -7,7 +7,7 @@ if ( !function_exists('pro_tag_markup') ) {
 		$pro_only     = !empty($disable) ? "pro-fr" : "";
 		$pro		  = "";
 		if ( $pro_only !== "" ) {
-			$pro .= '<a class="pr-tag" href="'.esc_url('https://woooplugin.com/quicker/').'"><span class="'.esc_attr($pro_only." ".$class).'">'. esc_html__( 'Go to Pro', 'filter-plus' ) .'</span></a>';
+			$pro .= '<a class="pr-tag" href="'.esc_url('https://woooplugin.com/quicker/').'"><span class="'.esc_attr($pro_only." ".$class).'">'. esc_html__( 'Go Pro', 'filter-plus' ) .'</span></a>';
 
 		}
 

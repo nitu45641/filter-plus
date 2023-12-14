@@ -36,7 +36,7 @@ h1.font_20{
 .single-block {
 	display: grid;
 	grid-template-columns: 175px auto auto;
-	column-gap: 40px;
+	column-gap: 35px;
 	align-items: center;
 	padding: 7px 0;
 }
