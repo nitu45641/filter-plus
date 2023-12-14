@@ -70,6 +70,8 @@
 				showLabels: true,
 				isRange : true,
 				ondragend: function(val){
+					price_range.attr('data-action', true );
+
 					let prices = val.split(',');
 					if ( prices[1] ) {
 						get_products();
@@ -78,6 +80,7 @@
 					}
 				},
 				onbarclicked : function(val){
+					price_range.attr('data-action', true );
 					let prices = val.split(',');
 					if ( prices[1] ) {
 						get_products();
@@ -107,13 +110,15 @@
 			var template = $(".shopContainer").data("template");
 			var product_categories = $(".shopContainer").data("product_categories");
 			var product_tags = $(".shopContainer").data("product_categories");
+			let selected_data = selected_param(params);
+			show_selected_data(selected_data);
 			var data =
 			{
 				action: 'get_filtered_data',
 				template: template,
 				product_categories: product_categories,
 				product_tags: product_tags,
-				params: selected_param(params)
+				params: selected_data
 			};
 			var live_search = false;
 			$.ajax({
@@ -180,6 +185,37 @@
 		}
 
 		/**
+		 * Show selected data
+		 * @param {*} selected_data 
+		 */
+		function show_selected_data( selected_data ) {
+
+			let selected_html = "";
+			for (const [key, value] of Object.entries(selected_data)) {
+				if( ! selected_data['default_call'] ){
+					if ( key == "price_range" && value == true ) {
+						selected_html += `<div class='filter-tag'>Price</div>`
+					}
+					if ( key == "star" && value !== "" ) {
+						selected_html += `<div class='filter-tag'>Rating</div>`
+					}
+					if ( key == "cat_name" && value !== "" ) {
+						selected_html += `<div class='filter-tag'>${value}</div>`
+					}
+					if ( key == "search_value" && value !== "" ) {
+						selected_html += `<div class='filter-tag'>Search</div>`
+					}
+					if ( key == "taxonomies_name" ) {
+						for (const [name, data] of Object.entries(value)) {
+							selected_html += `<div class='filter-tag'>${data}</div>`
+						}
+					}
+				}
+			}
+			$(".selected-filter").html( "" ).html(selected_html);
+		}
+
+		/**
 		 * Get data
 		 * @param {*} params 
 		 * @returns 
@@ -188,17 +224,21 @@
 			if (params?.clear_all) {
 				return params;
 			}
+			let price_range = $(".range-slider");
 			// category
-			params['cat_id'] = $(".category-list li.active").data('cat_id');
-			params['star']   = $("ul.ratings").attr("id");
-			params['taxonomies']    = get_tags(true);
-			params['filter_param']  = get_tags(false);
-			params['search_value']  = $(".sidebar-input").val();
-			params['order_by']      = $("#filter-sort-by option:selected").val()
-			if ( $(".range-slider").length>0 ) {
-				let prices = $(".range-slider").val().split(',');
-				params['min']    = prices[0];
-				params['max']    = prices[1];
+			params['cat_id'] 				= $(".category-list li.active").data('cat_id');
+			params['cat_name'] 				= $(".category-list li.active").text();
+			params['star']   				= $("ul.ratings").attr("id");
+			params['taxonomies']    		= get_tags(true);
+			params['taxonomies_name']    	= get_tags('name');
+			params['filter_param']  		= get_tags(false);
+			params['search_value']  		= $(".sidebar-input").val();
+			params['order_by']      		= $("#filter-sort-by option:selected").val()
+			if ( price_range.length>0 ) {
+				let prices = price_range.val().split(',');
+				params['min']    		= prices[0];
+				params['max']    		= prices[1];
+				params['price_range']  	= price_range.data('action');
 			}
 
 			return params
@@ -303,6 +343,7 @@
 					$('.rating-label').html('');
 				}
 				else if ($parent.hasClass('range-slider')) {
+					price_range.attr('data-action', false );
 					let min = $parent.data('min');
 					let max = $parent.data('max');
 					$parent.val(min+","+max);
@@ -336,6 +377,12 @@
 						obj[single_attr.data('taxonomy')] = single_attr.map(function () {
 							return $(this).data('term_id');
 						}).get();
+					}
+					else if ( selected == 'name' ) {
+						let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');
+						if (active_tag.data("term_id")) {
+							obj[single_attr.data('taxonomy')] = active_tag.text();
+						}
 					}
 					else {
 						let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');

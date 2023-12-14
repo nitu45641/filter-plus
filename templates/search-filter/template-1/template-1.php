@@ -33,6 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 </div>
 
 <div class="row products-wrap">
+	<div class="selected-filter"></div>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/right-side/sort-bar.php"; ?>
 	<div class="prods-grid-view grid-view-<?php echo esc_attr($template)?>"></div>
 	<div class="prods-list-view"></div>
