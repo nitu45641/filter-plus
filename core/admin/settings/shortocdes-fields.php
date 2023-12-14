@@ -68,7 +68,8 @@ if ( !function_exists('filter_plus_select_field') ) {
 			if ( !empty( $args['options'] ) ) :
 				foreach($args['options'] as $item):
 					$disabled = (int) $item > $template_disable ? 'disabled' : '';
-					$options_html .= '<option '.$disabled.' value="'.$item.'">'.esc_html__('Template','filter-plus')."-".$item.'</option>';
+					$pro_text = !empty($disabled) ? ' ('.esc_html__('Pro','filter-plus').')' : '';
+					$options_html .= '<option '.$disabled.' value="'.$item.'">'.esc_html__('Template','filter-plus')."-". $item . $pro_text.'</option>';
 				endforeach; 
 			endif;
 		}

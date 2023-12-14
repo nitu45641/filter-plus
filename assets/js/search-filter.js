@@ -76,6 +76,14 @@
 						// reset block
 						reset_block(price_range,price_range.parents(".sidebar-row"));
 					}
+				},
+				onbarclicked : function(val){
+					let prices = val.split(',');
+					if ( prices[1] ) {
+						get_products();
+						// reset block
+						reset_block(price_range,price_range.parents(".sidebar-row"));
+					}
 				}
 			});
 			price_range.jRange('setValue', min+','+max);
@@ -284,6 +292,9 @@
 		 */
 		function reset_block($parent , $this , clear_all = false ) {
 			let reset_button = $this.find(".reset");
+			if (reset_button.hasClass('d-none')) {
+				reset_button.removeClass('d-none');
+			}
 			reset_button.fadeIn();
 			reset_button.on('click', function () {
 				if ($this.hasClass('ratings')) {
@@ -295,6 +306,7 @@
 					let min = $parent.data('min');
 					let max = $parent.data('max');
 					$parent.val(min+","+max);
+					$parent.jRange('setValue', min+","+max)
 				}
 				else if ($parent.hasClass('sidebar-input')) {
 					$parent.val("");
