@@ -1,7 +1,7 @@
 
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="filter_products">
-
+		<h1 class="font_bold font_20 mt-1 mb-1"><?php esc_html_e("Available Filter Section","filter-plus"); ?></h1>
 		<?php
 			// templates
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/?docs=filter-plus/gutenburg-block-elementor-widget-woocommercce-product-filter"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
@@ -68,15 +68,17 @@
 			'disable' => $disable );
 			filter_plus_checkbox_field($args);
 
+		?>
+
+		<h1 class="font_bold font_20 mt-1 mb-1"><?php esc_html_e("Filter Result Products","filter-plus"); ?></h1>
+		
+		<?php
+
 			// show sorting
 			$args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting',
 			'disable' => $disable );
 			filter_plus_checkbox_field($args);
-			
-		?>
-		<h1 class="font_bold font_20"><?php esc_html_e("Product List:","filter-plus"); ?></h1>
-		
-		<?php
+
 			// show tags
 			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'product_tags','data_label' => 'product_tags',
 			'disable' => $disable );

@@ -7,26 +7,40 @@ if ( !function_exists('pro_tag_markup') ) {
 		$pro_only     = !empty($disable) ? "pro-fr" : "";
 		$pro		  = "";
 		if ( $pro_only !== "" ) {
-			$pro .= '<a class="pr-tag" href="'.esc_url('https://woooplugin.com/quicker/').'"><span class="'.esc_attr($pro_only." ".$class).'">'. esc_html__( 'Go Pro', 'filter-plus' ) .'</span></a>';
+			$pro .= '<a href="'.esc_url('https://woooplugin.com/filter-plus/').'" class="pr-tag"><span class="'.esc_attr($pro_only." ".$class).'">'. esc_html__( 'Pro', 'filter-plus' ) .'</span></a>';
 
 		}
 
 		return $pro;
 	}
 }
+if ( !function_exists('pro_link_markup') ) {
+	function pro_link_markup($disable,$class="") {
+		$pro_link_start	= '';
+		$pro_link_end	= '';
+		if (!empty($disable)) {
+			$pro_link_start	= '<a class="pro-link" target="_blank" href="'.esc_url('https://woooplugin.com/filter-plus/').'">';
+			$pro_link_end	= '</a>';
+		}
+
+		return array('pro_link_start' => $pro_link_start , 'pro_link_end'=>$pro_link_end);
+	}
+}
 if ( !function_exists('filter_plus_checkbox_field') ) {
 
 	function filter_plus_checkbox_field($args){
-		$disable      = !empty($args['disable']) ? "disable" : "";
+		$disable    	= !empty($args['disable']) ? 'disable' : '';
+		extract(pro_link_markup($disable));
 		$html = '
 			<div class="single-block">
 				<div class="form-label">'.$args['label'].'</div>
+				'.$pro_link_start.'
 				<label class="input-section custom-switcher '.$disable.'">
 					<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'" data-label="'.$args['data_label'].'"
 					name="'.esc_attr($args['id']).'" value="" '.esc_attr('checked').'/>
 					<span class="slider round"></span>
 				</label>
-				'.pro_tag_markup($disable).'
+				'.pro_tag_markup($disable).$pro_link_end.'
 			</div>
 		';
 
@@ -39,9 +53,9 @@ if ( !function_exists('filter_plus_select_field') ) {
 		$count_option = is_array($args['options']) ? count($args['options']) : 0 ;
 		$options_html = "";
 		$disable      = !empty($args['disable']) ? 'disable' : '';
-		$template_disable = !empty($args['template_disable']) && is_array($args['options']) ? $args['template_disable'] : $count_option + 1;
-		$select_type  = "multiple";
-	
+		$template_disable 	= !empty($args['template_disable']) && is_array($args['options']) ? $args['template_disable'] : $count_option + 1;
+		$select_type  		= "multiple";
+
 		if (!empty($args['type']) && "attributes" == $args['type'] ) {
 			if ( !empty( $args['options'] ) ) :
 				foreach($args['options'] as $item): 

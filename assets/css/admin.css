@@ -585,3 +585,12 @@ a.pr-tag{
 .description a{
 	text-decoration: none;
 }
+.mt-1{
+	margin-top: 1% !important;
+}
+.mb-1{
+	margin-bottom: 1% !important;
+}
+a.pro-link:focus{
+	box-shadow:none
+}
