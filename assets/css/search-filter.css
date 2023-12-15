@@ -5,6 +5,15 @@
 	grid-template-columns: 3fr 10fr;
 	grid-gap: 2rem;
 }
+.filter-tag{
+	border: 1px solid var(--filter-secondary-color, #d3d3d3);
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+}
 .products-wrap{
 	max-width: 825px;
 }
@@ -523,4 +532,19 @@ ul.pagination {
 
 .pagination li:hover svg {
 	fill: #fff;
+}
+/* Reset */
+.reset-1{
+	color: #2d73e7;
+	border-bottom: 1px solid #2d73e7;
+}
+.reset-2{
+	color: #17c6aa;
+	border-bottom: 1px solid #17c6aa;
+}
+.reset {
+	float: right;
+	cursor: pointer;
+	margin-top: 10px;
+	line-height: 18px;
 }

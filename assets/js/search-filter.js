@@ -192,11 +192,12 @@
 
 			let selected_html = "";
 			for (const [key, value] of Object.entries(selected_data)) {
-				if( ! selected_data['default_call'] ){
+				if( ! selected_data['default_call'] && typeof value !== "undefined" ){
 					if ( key == "price_range" && value == true ) {
 						selected_html += `<div class='filter-tag'>Price</div>`
 					}
 					if ( key == "star" && value !== "" ) {
+						console.log(value);
 						selected_html += `<div class='filter-tag'>Rating</div>`
 					}
 					if ( key == "cat_name" && value !== "" ) {
