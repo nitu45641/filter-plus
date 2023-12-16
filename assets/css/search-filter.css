@@ -550,13 +550,12 @@ ul.pagination {
 	display: flex;
 	align-items: center;
     margin-bottom: 2%;
+	cursor: pointer;
 	color: var(--secondary-color,#2d73e7);
 }
-
 .filter-tag span{
 	font-size: 12px;
     padding: 5px 10px;
-    cursor: pointer;
 }
 .selected-filter .clear_all{
 	font-size: 14px;
