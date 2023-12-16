@@ -69,7 +69,7 @@ class Actions {
 
 		$get_products   = \FilterPlus\Utils\Helper::get_products( $args );
 		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id, 'filter_param' => $filter_param ,'default_call' =>$default_call) );
-		$message = $get_products['total'] == 0  ? esc_html__( 'No Product Found', 'filter-plus' ) : '';
+		$message = $get_products['total'] == 0  ? esc_html__( 'No Matching Product Found', 'filter-plus' ) : '';
 		$response = array(
 			'success'        => true,
 			'message'        => $message,

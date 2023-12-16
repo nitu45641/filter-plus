@@ -15,6 +15,7 @@
 }
 .products-wrap{
 	max-width: 825px;
+	z-index: 9999;
 }
 .font_14 {
 	font-size: 14px;
@@ -301,9 +302,9 @@ ul.ratings {
 	gap: 30px 30px;
 }
 .grid-view-1{
-	display: grid;
-	grid-template: auto / auto auto auto auto;
-	gap: 30px 13px;
+    display: grid;
+    grid-template: auto / 24% 24% 24% 24%;
+    gap: 15px 11px;
 }
 .vartical-prod-card-container {
 	background: #fff;
@@ -565,3 +566,4 @@ ul.pagination {
 	display: flex;
 	justify-content: space-between;
 }
+

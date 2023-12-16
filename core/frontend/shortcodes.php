@@ -32,7 +32,6 @@ class Shortcodes {
 				add_shortcode( $key, [$this, $value] );
 			}
 		}
-
 	}
 
 	/**
@@ -62,8 +61,9 @@ class Shortcodes {
 					'sorting'          => 'no',
 				), $atts )
 		);
-		
+
 		ob_start();
+		$this->custom_css($template);
 
 		if ( file_exists( \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 		?>
@@ -78,5 +78,25 @@ class Shortcodes {
 		}
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Custom css
+	 *
+	 * @param string $template
+	 * @return void
+	 */
+	public function custom_css($template = "1") {
+		global $custom_css;
+		if ( $template == "2" ) {
+			$custom_css = '
+			:root {
+				--secondary-color: #17c6aa;
+			}
+			';
+		}
+		wp_register_style( 'filter-plus-custom-css', false );
+		wp_enqueue_style( 'filter-plus-custom-css' );
+		wp_add_inline_style('filter-plus-custom-css',$custom_css);
 	}
 }

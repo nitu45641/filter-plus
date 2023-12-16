@@ -2,20 +2,21 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Filter Plus 1.0.4\n"
+"Project-Id-Version: Filter Plus 1.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/filter-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-12-07T06:27:21+00:00\n"
+"POT-Creation-Date: 2023-12-16T09:42:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: filter-plus\n"
 
 #. Plugin Name of the plugin
-#: core/admin/menus.php:45
+#: core/admin/menus.php:43
+#: core/admin/overview.php:8
 #: core/gutenburg-block/init.php:18
 msgid "Filter Plus"
 msgstr ""
@@ -37,12 +38,12 @@ msgid "https://woooplugin.com/"
 msgstr ""
 
 #: bootstrap.php:43
-#: core/admin/menus.php:88
-#: core/admin/menus.php:89
+#: core/admin/menus.php:95
+#: core/admin/menus.php:96
 #: core/admin/settings/settings.php:13
-#: build/index.js:197
-#: src/index.js:70
-#: build/index.js:123
+#: build/index.js:279
+#: src/index.js:132
+#: build/index.js:185
 msgid "Settings"
 msgstr ""
 
@@ -50,21 +51,108 @@ msgstr ""
 msgid "Go To Premium"
 msgstr ""
 
-#: core/admin/menus.php:44
+#: core/admin/menus.php:42
 #: core/admin/settings/settings.php:8
 msgid "Shortcodes"
 msgstr ""
 
-#: core/admin/menus.php:101
+#: core/admin/menus.php:86
+#: core/admin/menus.php:87
+msgid "Overview"
+msgstr ""
+
+#: core/admin/menus.php:108
 msgid "Upgrade To Premium"
 msgstr ""
 
+#: core/admin/overview.php:36
+msgid "Filter by Ratings"
+msgstr ""
+
+#: core/admin/overview.php:40
+msgid "Filter by Attributes"
+msgstr ""
+
+#: core/admin/overview.php:44
+msgid "Filter by Tags"
+msgstr ""
+
+#: core/admin/overview.php:48
+msgid "Filter by Stock"
+msgstr ""
+
+#: core/admin/overview.php:52
+msgid "Filter by Post"
+msgstr ""
+
+#: core/admin/overview.php:56
+msgid "Gutenburg Block"
+msgstr ""
+
+#: core/admin/overview.php:60
+msgid "+16 More Features"
+msgstr ""
+
+#: core/admin/overview.php:67
+msgid "Discount and Coupon Plugin"
+msgstr ""
+
+#: core/admin/overview.php:69
+#: core/admin/overview.php:76
+msgid "Explore The Plugin"
+msgstr ""
+
+#: core/admin/overview.php:74
+msgid "Quick Checkout Plugin"
+msgstr ""
+
+#: core/admin/overview.php:84
+msgid "Powerful Filtering Features for WordPress and WooCommerce"
+msgstr ""
+
+#: core/admin/overview.php:85
+msgid "Filter Plus is the WordPress and WooCommerce Product Filter Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. The plugin comes with WordPress filter anything functionality that increases the user experience."
+msgstr ""
+
+#: core/admin/overview.php:88
+msgid "Explore Filter Plus Pro"
+msgstr ""
+
+#: core/admin/overview.php:101
+msgid "Advanced Filtering Features"
+msgstr ""
+
+#: core/admin/overview.php:102
+msgid "Available at Filter Plus Pro"
+msgstr ""
+
+#: core/admin/overview.php:115
+msgid "Explore the premium version to experience our countless advanced features."
+msgstr ""
+
+#: core/admin/overview.php:119
+msgid "Look Into Pro"
+msgstr ""
+
+#: core/admin/overview.php:125
+msgid "More Plugins By The Same Team"
+msgstr ""
+
+#: core/admin/overview.php:126
+msgid "We also have other solutions for growing your store conversion."
+msgstr ""
+
 #: core/admin/settings/shortocdes-fields.php:10
+#: core/admin/settings/shortocdes-fields.php:71
 msgid "Pro"
 msgstr ""
 
-#: core/admin/settings/shortocdes-fields.php:56
+#: core/admin/settings/shortocdes-fields.php:72
 msgid "Template"
+msgstr ""
+
+#: core/admin/settings/tab-content/shortcodes.php:4
+msgid "Available Filter Section"
 msgstr ""
 
 #: core/admin/settings/tab-content/shortcodes.php:7
@@ -75,77 +163,255 @@ msgstr ""
 msgid "Gutenberg Block , Elementor widget is available for filter features. "
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:10
-#: build/index.js:199
-#: src/index.js:72
-#: build/index.js:125
+#: core/admin/settings/tab-content/shortcodes.php:11
+#: build/index.js:281
+#: src/index.js:134
+#: build/index.js:187
 msgid "Select Template:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:21
-#: build/index.js:211
-#: src/index.js:82
-#: build/index.js:135
+#: core/admin/settings/tab-content/shortcodes.php:22
+#: build/index.js:287
+#: src/index.js:141
+#: build/index.js:194
 msgid "Category List:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:26
-#: build/index.js:216
-#: src/index.js:88
-#: build/index.js:141
+#: core/admin/settings/tab-content/shortcodes.php:27
+#: build/index.js:292
+#: src/index.js:147
+#: build/index.js:200
 msgid "Display Colors:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:30
-#: build/index.js:220
-#: src/index.js:93
-#: build/index.js:146
+#: core/admin/settings/tab-content/shortcodes.php:31
+#: build/index.js:296
+#: src/index.js:152
+#: build/index.js:205
 msgid "Display Size:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:34
-#: core/admin/settings/tab-content/shortcodes.php:80
+#: core/admin/settings/tab-content/shortcodes.php:35
+#: core/admin/settings/tab-content/shortcodes.php:83
+#: build/index.js:300
+#: src/index.js:160
+#: build/index.js:213
 msgid "Display Tags:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:41
+#: core/admin/settings/tab-content/shortcodes.php:42
 msgid "Tag List:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:48
+#: core/admin/settings/tab-content/shortcodes.php:49
+#: build/index.js:310
+#: src/index.js:172
+#: build/index.js:225
 msgid "Display Attributes:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:55
+#: core/admin/settings/tab-content/shortcodes.php:56
 msgid "Attribute List:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:61
+#: core/admin/settings/tab-content/shortcodes.php:62
+#: build/index.js:320
+#: src/index.js:184
+#: build/index.js:237
 msgid "Display Reviews:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:66
+#: core/admin/settings/tab-content/shortcodes.php:67
 msgid "Display Price Range:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:71
+#: core/admin/settings/tab-content/shortcodes.php:73
+msgid "Filter Result Products"
+msgstr ""
+
+#: core/admin/settings/tab-content/shortcodes.php:78
+#: core/widgets/filters/filters.php:177
+#: build/index.js:324
+#: src/index.js:189
+#: build/index.js:242
 msgid "Display Sorting:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:76
-msgid "Product List:"
-msgstr ""
-
-#: core/admin/settings/tab-content/shortcodes.php:84
+#: core/admin/settings/tab-content/shortcodes.php:87
 msgid "Display Categories:"
 msgstr ""
 
-#: core/admin/settings/tab-content/shortcodes.php:89
+#: core/admin/settings/tab-content/shortcodes.php:92
 msgid "Copy Filer Shortcodes"
 msgstr ""
 
 #: core/frontend/search-filter/actions.php:72
-msgid "No Product Found"
+msgid "No Matching Product Found"
+msgstr ""
+
+#: core/widgets/filters/filters.php:25
+msgid "Filter Woo Products"
+msgstr ""
+
+#: core/widgets/filters/filters.php:49
+msgid "Category List"
+msgstr ""
+
+#: core/widgets/filters/filters.php:53
+msgid "Template 1"
+msgstr ""
+
+#: core/widgets/filters/filters.php:56
+msgid "Template 2"
+msgstr ""
+
+#: core/widgets/filters/filters.php:61
+msgid "Category Style"
+msgstr ""
+
+#: core/widgets/filters/filters.php:71
+#: templates/search-filter/template-1/left-side/categories.php:7
+#: templates/search-filter/template-2/left-side/categories.php:9
+msgid "Categories"
+msgstr ""
+
+#: core/widgets/filters/filters.php:81
+msgid "Show Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:83
+#: core/widgets/filters/filters.php:95
+#: core/widgets/filters/filters.php:109
+#: core/widgets/filters/filters.php:132
+#: core/widgets/filters/filters.php:155
+#: core/widgets/filters/filters.php:167
+#: core/widgets/filters/filters.php:179
+#: core/widgets/filters/filters.php:191
+#: core/widgets/filters/filters.php:203
+msgid "Show"
+msgstr ""
+
+#: core/widgets/filters/filters.php:84
+#: core/widgets/filters/filters.php:96
+#: core/widgets/filters/filters.php:110
+#: core/widgets/filters/filters.php:133
+#: core/widgets/filters/filters.php:156
+#: core/widgets/filters/filters.php:168
+#: core/widgets/filters/filters.php:180
+#: core/widgets/filters/filters.php:192
+#: core/widgets/filters/filters.php:204
+msgid "Hide"
+msgstr ""
+
+#: core/widgets/filters/filters.php:93
+msgid "Show Size"
+msgstr ""
+
+#: core/widgets/filters/filters.php:107
+msgid "Show Tags"
+msgstr ""
+
+#: core/widgets/filters/filters.php:119
+msgid "Tags"
+msgstr ""
+
+#: core/widgets/filters/filters.php:130
+msgid "Show Attributes"
+msgstr ""
+
+#: core/widgets/filters/filters.php:142
+msgid "Attributes"
+msgstr ""
+
+#: core/widgets/filters/filters.php:153
+msgid "Show Reviews"
+msgstr ""
+
+#: core/widgets/filters/filters.php:165
+msgid "Display Price Range"
+msgstr ""
+
+#: core/widgets/filters/filters.php:189
+msgid "Display Categories"
+msgstr ""
+
+#: core/widgets/filters/filters.php:201
+msgid "Display Tags"
+msgstr ""
+
+#: core/widgets/filters/filters.php:215
+msgid "Title Style"
+msgstr ""
+
+#: core/widgets/filters/filters.php:222
+msgid "Title Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:234
+msgid "Title BG Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:245
+#: core/widgets/filters/filters.php:317
+msgid "Typography"
+msgstr ""
+
+#: core/widgets/filters/filters.php:252
+msgid "Padding"
+msgstr ""
+
+#: core/widgets/filters/filters.php:265
+msgid "Button Style"
+msgstr ""
+
+#: core/widgets/filters/filters.php:273
+msgid "Button Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:284
+msgid "Button Hover Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:296
+msgid "Button BG Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:306
+msgid "Button BG Hover Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:324
+#: core/widgets/filters/filters.php:373
+msgid "Width"
+msgstr ""
+
+#: core/widgets/filters/filters.php:346
+#: core/widgets/filters/filters.php:394
+msgid "Height"
+msgstr ""
+
+#: core/widgets/filters/filters.php:365
+msgid "Thumbnail Style"
+msgstr ""
+
+#: core/widgets/filters/filters.php:414
+msgid "Advance Style"
+msgstr ""
+
+#: core/widgets/filters/filters.php:422
+msgid "Box Bacground Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:434
+msgid "Box Hover Bacground Color"
+msgstr ""
+
+#: core/widgets/filters/filters.php:446
+msgid "Border Radius"
+msgstr ""
+
+#: core/widgets/filters/filters.php:458
+msgid "Margin"
 msgstr ""
 
 #: filter-plus.php:116
@@ -184,17 +450,12 @@ msgstr ""
 msgid "Sort by price: high to low"
 msgstr ""
 
-#: templates/search-filter/template-1/left-side/categories.php:7
-#: templates/search-filter/template-2/left-side/categories.php:8
-msgid "Categories"
-msgstr ""
-
 #: templates/search-filter/template-1/left-side/categories.php:19
 #: templates/search-filter/template-1/left-side/filter-layout-attr-grid.php:27
 #: templates/search-filter/template-1/left-side/filter-layout-grid.php:22
 #: templates/search-filter/template-1/left-side/filter-param.php:38
 #: templates/search-filter/template-1/left-side/product-search.php:18
-#: templates/search-filter/template-2/left-side/categories.php:23
+#: templates/search-filter/template-2/left-side/categories.php:24
 #: templates/search-filter/template-2/left-side/filter-layout-attr-grid.php:33
 #: templates/search-filter/template-2/left-side/filter-layout-grid.php:29
 #: templates/search-filter/template-2/left-side/filter-param.php:44
@@ -211,18 +472,18 @@ msgstr ""
 msgid "Search Products"
 msgstr ""
 
-#: templates/search-filter/template-1/right-side/sort-bar.php:8
-#: templates/search-filter/template-2/right-side/sort-bar.php:8
+#: templates/search-filter/template-1/right-side/filter-top.php:4
+#: templates/search-filter/template-2/right-side/filter-top.php:3
 msgid "Showing"
 msgstr ""
 
-#: templates/search-filter/template-1/right-side/sort-bar.php:8
-#: templates/search-filter/template-2/right-side/sort-bar.php:8
+#: templates/search-filter/template-1/right-side/filter-top.php:4
+#: templates/search-filter/template-2/right-side/filter-top.php:3
 msgid " of"
 msgstr ""
 
-#: templates/search-filter/template-1/right-side/sort-bar.php:8
-#: templates/search-filter/template-2/right-side/sort-bar.php:8
+#: templates/search-filter/template-1/right-side/filter-top.php:4
+#: templates/search-filter/template-2/right-side/filter-top.php:3
 msgid "Products"
 msgstr ""
 
@@ -246,26 +507,50 @@ msgstr ""
 msgid "Find Favorite Item"
 msgstr ""
 
-#: utils/helper.php:678
+#: utils/helper.php:746
 msgid "single image blank"
 msgstr ""
 
-#: utils/helper.php:688
+#: utils/helper.php:756
 msgid "product image"
 msgstr ""
 
-#: utils/helper.php:734
+#: utils/helper.php:802
 msgid "Add to cart"
 msgstr ""
 
-#: build/index.js:203
-#: src/index.js:75
-#: build/index.js:128
+#: build/index.js:267
+#: src/index.js:121
+#: build/index.js:174
 msgid "Template-1"
 msgstr ""
 
-#: build/index.js:206
-#: src/index.js:76
-#: build/index.js:129
+#: build/index.js:272
+#: src/index.js:123
+#: build/index.js:176
 msgid "Template-2"
+msgstr ""
+
+#: build/index.js:305
+#: src/index.js:166
+#: build/index.js:219
+msgid "Tags:"
+msgstr ""
+
+#: build/index.js:315
+#: src/index.js:178
+#: build/index.js:231
+msgid "Attributes:"
+msgstr ""
+
+#: build/index.js:328
+#: src/index.js:194
+#: build/index.js:247
+msgid "Display Tags in Filter Result:"
+msgstr ""
+
+#: build/index.js:332
+#: src/index.js:199
+#: build/index.js:252
+msgid "Display Categories in Filter Result:"
 msgstr ""
