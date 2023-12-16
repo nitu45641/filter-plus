@@ -15,7 +15,6 @@
 }
 .products-wrap{
 	max-width: 825px;
-	z-index: 9999;
 }
 .font_14 {
 	font-size: 14px;
@@ -495,6 +494,15 @@ a.added_to_cart.wc-forward {
 li.first-page{
 	margin-left: 0 !important;
 }
+.first-page svg{
+	position: relative;
+    right: 2px;
+    top: 1px;
+}
+.last-page svg{
+	position: relative;
+    top: 1px;
+}
 .pagination li {
 	display: inline-block;
 	margin: 0 8px;
@@ -520,7 +528,7 @@ li.first-page{
 
 ul.pagination {
 	padding: 0;
-	margin: 40px 0 0 -20px;
+	margin: 40px 0 0 0;
 	list-style-type: none;
 }
 .pagination li.current,
