@@ -415,7 +415,7 @@
 		/**
 		 * Clear all
 		 */
-		 $(".clear_all").on('click',function(e){
+		 $('.shopContainer').on('click','.selected-filter .clear_all',function(e){
 			e.preventDefault();
 			clear_all($(this));
 		 });
