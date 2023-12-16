@@ -30,6 +30,7 @@
 							<div class="radio-item color-item" 
 							data-term_id="<?php echo esc_attr($value->term_id); ?>"
 							data-taxonomy="<?php echo esc_attr($value->taxonomy); ?>"
+							data-name="<?php echo esc_attr($value->name); ?>"
 							style="background-color: <?php echo esc_attr(strtolower($value->name))?>"></div>
 						<?php }
 					}

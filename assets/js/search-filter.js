@@ -384,9 +384,15 @@
 					}
 					else if ( selected == 'name' ) {
 						let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');
-						if (active_tag.data("term_id")) {
+						if ( typeof active_tag.data("term_id") === "undefined" ) {
+							return
+						}
+						if ( active_tag.data("taxonomy") == "pa_color" ) {
+							obj[single_attr.data('taxonomy')] = active_tag.data('name');
+						} else {
 							obj[single_attr.data('taxonomy')] = active_tag.text();
 						}
+						
 					}
 					else {
 						let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');
