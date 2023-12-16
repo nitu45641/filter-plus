@@ -18,9 +18,10 @@ class Enqueue {
      */
     public function init() {
         // backend asset
-        add_action( 'admin_enqueue_scripts', [$this, 'admin_enqueue_assets'] );
+        add_action( 'admin_enqueue_scripts', array($this, 'admin_enqueue_assets') );
+        add_action('wp_head', array($this,'add_color_style'));
         // frontend asset
-        add_action( 'wp_enqueue_scripts', [$this, 'frontend_enqueue_assets'] );
+        add_action( 'wp_enqueue_scripts', array($this, 'frontend_enqueue_assets') );
     }
   
 
@@ -168,6 +169,17 @@ class Enqueue {
         $form_data['ajax_url']        = admin_url( 'admin-ajax.php' );
 
         wp_localize_script( 'filter-js', 'client_data', $form_data  ); 
+    }
+
+    /**
+     * Add inline style
+     *
+     * @return void
+     */
+    public function add_color_style() {
+        $settings = \Quicker\Utils\Helper::get_settings();
+        echo "<style></style>";
+
     }
 
 }

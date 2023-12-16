@@ -395,6 +395,11 @@ class Helper {
 		if ( !empty($categories)) {
 			$args_cat['include'] = explode(",",$categories);
 		}
+		if ( $type == "" ) {
+			$category = get_term_by( 'slug' , 'uncategorized' , 'product_cat' );
+			$uncategorized 	= !empty($category) ? $category->term_id : null;
+			$args_cat['exclude'] = array($uncategorized);
+		} 
 
 		$cat = get_categories( $args_cat );
 		$result_cat = array();

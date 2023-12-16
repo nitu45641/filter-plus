@@ -3,11 +3,6 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-?>
-<div class="showing">
-	<p><?php esc_html_e('Showing','filter-plus')?> <span class="pages">1</span><span><?php esc_html_e(' of','filter-plus')?> </span><span class="total"></span> <?php esc_html_e('Products','filter-plus')?></p>
-</div>
-<?php
 $show_sort_bar = true;
 if( class_exists('FilterPlusPro') && $sorting == "no" ){
 	$show_sort_bar = false;
@@ -19,7 +14,7 @@ if ( $show_sort_bar == false ) {
 <div class="sort-bar">
 	<div class="sort-bar-left">
 		<div class="product-grid">
-			<button>
+			<div class="sorting-bar">
 				<svg width="800px" height="800px" viewBox="0 -0.5 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 					<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 						<g id="Dribbble-Light-Preview" transform="translate(-59.000000, -240.000000)" fill="#000000">
@@ -30,10 +25,10 @@ if ( $show_sort_bar == false ) {
 						</g>
 					</g>
 				</svg>
-			</button>
+			</div>
 		</div>
 		<div class="product-list">
-			<button>
+			<div class="sorting-bar">
 				<svg fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 					viewBox="0 0 487.3 487.3" xml:space="preserve">
 					<g>
@@ -50,7 +45,7 @@ if ( $show_sort_bar == false ) {
 						</g>
 					</g>
 				</svg>
-			</button>
+			</div>
 		</div>
 	</div>
 </div>

@@ -189,31 +189,34 @@
 		 * @param {*} selected_data 
 		 */
 		function show_selected_data( selected_data ) {
-
-			let selected_html = "";
+			let selected_html 	= '';
+			let clear_all 		= '<div class="clear_all">Clear All</div>';
+			let cross 			= '<span>X</span>';
+			
 			for (const [key, value] of Object.entries(selected_data)) {
 				if( ! selected_data['default_call'] && typeof value !== "undefined" ){
 					if ( key == "price_range" && value == true ) {
-						selected_html += `<div class='filter-tag'>Price</div>`
+						selected_html += `<div class='filter-tag'>Price ${cross}</div>`
 					}
 					if ( key == "star" && value !== "" ) {
-						console.log(value);
-						selected_html += `<div class='filter-tag'>Rating</div>`
+						selected_html += `<div class='filter-tag'>Rating${cross}</div>`
 					}
 					if ( key == "cat_name" && value !== "" ) {
-						selected_html += `<div class='filter-tag'>${value}</div>`
+						selected_html += `<div class='filter-tag'>${value}${cross}</div>`
 					}
 					if ( key == "search_value" && value !== "" ) {
-						selected_html += `<div class='filter-tag'>Search</div>`
+						selected_html += `<div class='filter-tag'>Search${cross}</div>`
 					}
 					if ( key == "taxonomies_name" ) {
 						for (const [name, data] of Object.entries(value)) {
-							selected_html += `<div class='filter-tag'>${data}</div>`
+							selected_html += `<div class='filter-tag'>${data}${cross}</div>`
 						}
 					}
 				}
 			}
-			$(".selected-filter").html( "" ).html(selected_html);
+			if ( selected_html !== "" ) {
+				$(".selected-filter").html( "" ).html(`${clear_all}${selected_html}`);
+			}
 		}
 
 		/**
@@ -406,36 +409,38 @@
 		/**
 		 * Clear all
 		 */
+		 $(".clear_all").on('click',function(e){
+			e.preventDefault();
+			clear_all($(this));
+		 });
 		 clear_all();
-		function clear_all() {
-			let clear_all = $(".clear_all");
+		function clear_all(element = $(".clear_all")) {
+			let clear_all = element;
 			if ( clear_all.length > 0 ) {
-				clear_all.on('click',function(){
-					// reset block
-					let sidebar = $(".sidebar-row");
-					let param_box = $(".param-box");
-					let ratings = $(".ratings");
-					let category = $(".category-list li");
-					let search = $(".sidebar-input");
-					let price_range = $('.range-slider');
+				// reset block
+				let sidebar = $(".sidebar-row");
+				let param_box = $(".param-box");
+				let ratings = $(".ratings");
+				let category = $(".category-list li");
+				let search = $(".sidebar-input");
+				let price_range = $('.range-slider');
 
-					category.removeClass("active");
-					search.val("");
-					param_box.find('.radio-item').removeClass("active");
+				category.removeClass("active");
+				search.val("");
+				param_box.find('.radio-item').removeClass("active");
 
-					if ( ratings.length > 0) {
-						ratings.attr('id','');
-						let rating_label = $('.rating-label');
-						rating_label.html(rating_label.data('rating_label'));	
-						$('.ratings li').removeClass('rating_disable');	
-					}
-					if (price_range.length>0) {
-						price_range.jRange('setValue', price_range.data('min')+','+ price_range.data('max'));
-					}
-					$('input[type=checkbox]').removeAttr('checked');
-					sidebar.find('.reset').fadeOut();
-					get_products({default_call:true});
-				})
+				if ( ratings.length > 0) {
+					ratings.attr('id','');
+					let rating_label = $('.rating-label');
+					rating_label.html(rating_label.data('rating_label'));	
+					$('.ratings li').removeClass('rating_disable');	
+				}
+				if (price_range.length>0) {
+					price_range.jRange('setValue', price_range.data('min')+','+ price_range.data('max'));
+				}
+				$('input[type=checkbox]').removeAttr('checked');
+				sidebar.find('.reset').fadeOut();
+				get_products({default_call:true});
 			}
 		}
 		/**

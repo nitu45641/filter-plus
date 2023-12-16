@@ -1,3 +1,6 @@
+:root {
+	--secondary-color: #1164cb;
+}
 a {
 	text-decoration: none !important;
 	outline: none !important;
@@ -45,7 +48,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	display: flex;
 }
 
-.sort-bar-left button {
+.sort-bar-left .sorting-bar {
 	background-color: inherit;
 	padding: 3px;
 	height: 30px;
@@ -54,18 +57,13 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	margin-right: 10px;
 	border-radius: 5px;
 	color: #1164cb;
-	display: -webkit-box;
-	display: -ms-flexbox;
+	border: 1px solid var(--secondary-color,#1164cb);
 	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
 	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
+	cursor: pointer;
 	align-items: center;
-	outline: none !important;
 }
-.sort-bar-left button:hover {
+.sort-bar-left .sorting-bar:hover {
 	background-color: #fff;
 }
 
@@ -194,7 +192,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 
 .title-and-clean-area p {
 	cursor: pointer;
-	color: #17c6aa;
+	color: var(--secondary-color,#17c6aa);
 	font-size: 14px;
 }
 
@@ -428,10 +426,6 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 100%;
 	flex: 0 0 100%;
-}
-
-.vpcc-image img {
-	max-width: 100%;
 }
 
 .vpcc-footer {
@@ -927,7 +921,7 @@ a.added_to_cart.wc-forward {
 	-webkit-animation: lds-dual-ring 1.3s linear infinite;
 	animation: lds-dual-ring 1.3s linear infinite;
 	left: 50%;
-	top: 50%;
+	top: 12%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	z-index: 2;

@@ -10,7 +10,6 @@
     border-radius: 6px;
     display: inline-block;
     font-size: 14px;
-    margin-bottom: 10px;
     margin-right: 10px;
     padding: 0.2rem 0.2rem 0.2rem 0.5rem;
 }
@@ -303,8 +302,8 @@ ul.ratings {
 }
 .grid-view-1{
 	display: grid;
-    grid-template: auto / 210px 210px 210px 210px;
-    gap: 30px 13px;
+	grid-template: auto / auto auto auto auto;
+	gap: 30px 13px;
 }
 .vartical-prod-card-container {
 	background: #fff;
@@ -323,13 +322,12 @@ ul.ratings {
 }
 
 .vpcc-image {
-	height: 207px;
+	height: auto;
 	object-fit: cover;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: relative;
-	overflow: hidden;
+	border-radius: 10px;
 }
 .vpcc-name {
 	display: -webkit-box;
@@ -547,4 +545,24 @@ ul.pagination {
 	cursor: pointer;
 	margin-top: 10px;
 	line-height: 18px;
+}
+.selected-filter{
+	display: flex;
+	align-items: center;
+    margin-bottom: 2%;
+	color: var(--secondary-color,#2d73e7);
+}
+
+.filter-tag span{
+	font-size: 12px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.selected-filter .clear_all{
+	font-size: 14px;
+	margin-right: 10px;
+}
+.filter-top{
+	display: flex;
+	justify-content: space-between;
 }
