@@ -130,7 +130,6 @@
 					products_wrap.addClass("loader_box")
 				},
 				success: function (response) {
-					products_wrap.removeClass("loader_box");
 					if (response?.success) {
 						var products = response?.data?.data?.products;
 						let total = response?.data?.data?.total;
@@ -140,10 +139,14 @@
 						prod_list_wrap.html("");
 						message_info.html("");
 						if (response?.data?.message !== "") {
+							$(".sort-bar").fadeOut();
 							let message = response?.data?.message;
-							message_info.html(message);
+							message_info.html(`<div class="filter-plus woocommerce-error">${message}</div>`);
 							$("ul.pagination").html("");
 						} else {
+							if( $(".sort-bar").css('display') == 'none') {
+								$(".sort-bar").fadeIn();
+							}
 							// product data
 							var source_grid = $("#search_products_grid").html();
 							var source_list = $("#search_products_list").html();
@@ -177,6 +180,7 @@
 						// disable tags
 						disable_items(response?.data?.disable_terms);
 					}
+					products_wrap.removeClass("loader_box");
 				},
 				complete: function () {
 					live_search = false;
@@ -415,11 +419,15 @@
 		/**
 		 * Clear all
 		 */
-		 $('.shopContainer').on('click','.selected-filter .clear_all',function(e){
-			e.preventDefault();
-			clear_all($(this));
-		 });
-		 clear_all();
+		let clean_block = ['.selected-filter .clear_all','.title-and-clean-area .clear_all'];
+		clean_block.forEach(element => {
+			$('.shopContainer').on('click',element,function(e){
+				e.preventDefault();
+				clear_all($(this));
+			 });
+		});
+		
+		clear_all();
 		function clear_all(element = $(".clear_all")) {
 			let clear_all = element;
 			if ( clear_all.length > 0 ) {

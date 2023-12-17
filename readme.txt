@@ -13,7 +13,7 @@ Filter Plus is WordPress and WooComerce Product Filter plugin that enable filter
 
 == Description ==
 
-**[Filter Plus](https://woooplugin.com/filter-plus/)** is a **WordPress and WooComerce Product Filter Plugin** that allows users to add multiple filtering features like filter by Ratings, Tags, Price Range etc.
+**[Filter Plus](https://woooplugin.com/filter-plus/)** is a **WordPress and Woocommerce Product Filter Plugin** that allows users to add multiple filtering features like filter by Ratings, Tags, Price Range etc.
 
 Ever wanted to provide a better WooCommerce filtering experience and **product filter** on your WordPress eCommerce site? Now you can do that with the **[Filter Plus](https://woooplugin.com/filter-plus/)** plugin. This will allow the store admin to add different filter options to the store. And by using the advanced filter, customers can easily get the desired products. 
 
@@ -36,21 +36,28 @@ It will help users shorten the products quickly and order from the prioritized p
 * **Filter Everything in WordPress**
 * **Food Menu Filtering**
 * **WooCommerce Product Filtering**
+* **WooCommerce Filter By Price**
 * **Filter By Price Range**
 * **Filter By Ratings**
 * **Filter By Tag**
+* **AJAX Filter**
+* **AJAX Filter Widget**
+* **AJAX Product Filters**
+* **Product Filters**
 
 ##Current Feature##
 
 You can add advanced filtering features with Filter Plus WooCommerce plugin. The following features available at this time for your WooCommerce Filter and Shorting option.
 
-**👉 [Filter by Price Range](https://woooplugin.com/filter-plus/)** - It enables users to narrow down search results by specifying a minimum and maximum price. This is particularly useful in eCommerce website, as it simplifies the process of finding products within a specific budget. It enhances user experience and can boost conversion rates by helping visitors discover cost-effective options.
+**👉 [WooCommerce Filter By Price](https://woooplugin.com/filter-plus/)** - It enables users to narrow down search results by specifying a minimum and maximum price. This is particularly useful in eCommerce website, as it simplifies the process of finding products within a specific budget. It enhances user experience and can boost conversion rates by helping visitors discover cost-effective options.
 
 **👉 [Filter by Ratings](https://woooplugin.com/filter-plus/)** - It empowers users to refine search results based on the ratings or reviews of products or content. In e-commerce or review-based websites, this feature is valuable as it allows visitors to filter and see only items that meet their preferred quality standards. Users can typically set a minimum rating, and the plugin will display content or products with ratings equal to or above that threshold.
 
 **👉 [Filter by Attributes](https://woooplugin.com/filter-plus/)** - It offers users the ability to fine-tune their search results by specifying particular product attributes or characteristics. This is commonly used in e-commerce websites where products have various specifications. Users can select attributes like color, size, material, or any other relevant feature, and the plugin will display products that match these chosen attributes.
 
-**👉 [Filter by Tags](https://woooplugin.com/filter-plus/)** - The feature allows users to categorize and organize content based on tags. Tags are keywords or labels associated with posts or items, and this feature enables users to filter and display content that shares the same tags. It's commonly used in blogs and content-heavy websites, helping users find related articles, posts, or items quickly. Users can select a specific tag, and the plugin will show content that has been tagged with that keyword.
+**👉 [WooComerce Filter by Tags](https://woooplugin.com/filter-plus/)** - The feature allows users to categorize and organize content based on tags. Tags are keywords or labels associated with posts or items, and this feature enables users to filter and display content that shares the same tags. It's commonly used in blogs and content-heavy websites, helping users find related articles, posts, or items quickly. Users can select a specific tag, and the plugin will show content that has been tagged with that keyword.
+
+Moreover, **Filter Tag** will be displayed on the page after applying it. Users can see what tags has been effected on the page.
 
 **👉 [Reset Filter Button](https://woooplugin.com/filter-plus/)** - It is a handy feature often integrated into filter and search functionalities. It provides users with a quick and convenient way to clear any applied filters or search criteria and revert to the default view. By clicking this button, users can reset their search results to the original state, displaying all available content or products without any filters in place.
 

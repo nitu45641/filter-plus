@@ -58,13 +58,13 @@ class Shortcodes {
 					'show_price_range' => '',
 					'product_categories' => '',
 					'product_tags'       => '',
-					'sorting'          => 'no',
+					'sorting'          => 'yes',
 				), $atts )
 		);
 
 		ob_start();
 		$this->custom_css($template);
-
+		$this->is_pro_active($template);
 		if ( file_exists( \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 		?>
 			<div class="shopContainer" 
@@ -78,6 +78,16 @@ class Shortcodes {
 		}
 
 		return ob_get_clean();
+	}
+
+	public function is_pro_active($template) {
+		$pro_template = ['2'];
+		if ( in_array($template,$pro_template) && !class_exists('FilterPlusPro') ) {
+			?>
+			<div class="row"><div class="woocommerce-error"><?php esc_html_e('Please Active FilterPlus Pro','filter-plus');?></div></div>
+			<?php
+			exit();
+		}
 	}
 
 	/**

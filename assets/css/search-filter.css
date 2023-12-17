@@ -574,4 +574,10 @@ ul.pagination {
 	display: flex;
 	justify-content: space-between;
 }
+.filter-plus.woocommerce-error {
+    border-top-color: #2d73e7 !important;
+}
+.filter-plus.woocommerce-error::before {
+    color: #2d73e7;
+}
 
