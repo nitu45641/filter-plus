@@ -209,11 +209,11 @@
 						selected_html += `<div class='filter-tag' data-node='.category-list'>${value}${cross}</div>`
 					}
 					if ( key == "search_value" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data='.search-form'>Search${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.search-form'>Search${cross}</div>`
 					}
 					if ( key == "taxonomies_name" ) {
 						for (const [name, data] of Object.entries(value)) {
-							selected_html += `<div class='filter-tag'>${data}${cross}</div>`
+							selected_html += `<div class='filter-tag' data-node='taxonomy' data-term_value='${name}'>${data}${cross}</div>`
 						}
 					}
 				}
@@ -432,8 +432,14 @@
 				clear_all($this);
 				if (element ==  filter_tag ) {
 					let node = $this.data('node');
-					reset_block($(node),$(node).parents(".sidebar-row"),false,'filter-tag');
-					$(node).siblings('.reset').fadeOut();
+					let cursor = $(node);
+
+					if ( node == 'taxonomy' ) {
+						cursor = $(`div[data-taxonomy="${$this.data('term_value')}"]`).parent('.param-box');
+						console.log(cursor.length);
+					}
+					reset_block(cursor,cursor.parents(".sidebar-row"),false,'filter-tag');
+					cursor.siblings('.reset').fadeOut();
 					$(element).remove();
 				}
 				else if (element ==  clear_filter ) {
