@@ -569,11 +569,13 @@ ul.pagination {
 	font-size: 12px;
     padding: 5px 10px;
 }
-.selected-filter .clear_all{
+.selected-filter .clear-filter{
 	font-size: 14px;
 	margin-right: 10px;
 }
 .filter-top{
+	position: relative;
+    z-index: 1;
 	display: flex;
 	justify-content: space-between;
 }

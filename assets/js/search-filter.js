@@ -194,22 +194,22 @@
 		 */
 		function show_selected_data( selected_data ) {
 			let selected_html 	= '';
-			let clear_all 		= '<div class="clear_all">Clear All</div>';
+			let clear_all 		= '<div class="clear-filter">Clear All</div>';
 			let cross 			= '<span>X</span>';
 			
 			for (const [key, value] of Object.entries(selected_data)) {
 				if( ! selected_data['default_call'] && typeof value !== "undefined" ){
 					if ( key == "price_range" && value == true ) {
-						selected_html += `<div class='filter-tag'>Price ${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.slide-container'>Price ${cross}</div>`
 					}
 					if ( key == "star" && value !== "" ) {
-						selected_html += `<div class='filter-tag'>Rating${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.rating'>Rating${cross}</div>`
 					}
 					if ( key == "cat_name" && value !== "" ) {
-						selected_html += `<div class='filter-tag'>${value}${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.category-list'>${value}${cross}</div>`
 					}
 					if ( key == "search_value" && value !== "" ) {
-						selected_html += `<div class='filter-tag'>Search${cross}</div>`
+						selected_html += `<div class='filter-tag' data='.search-form'>Search${cross}</div>`
 					}
 					if ( key == "taxonomies_name" ) {
 						for (const [name, data] of Object.entries(value)) {
@@ -338,12 +338,15 @@
 		 * reset
 		 * @param {*} $this 
 		 */
-		function reset_block($parent , $this , clear_all = false ) {
+		function reset_block($parent , $this , clear_all = false , action = '' ) {
 			let reset_button = $this.find(".reset");
-			if (reset_button.hasClass('d-none')) {
-				reset_button.removeClass('d-none');
+			if (action == '') {
+				if (reset_button.hasClass('d-none')) {
+					reset_button.removeClass('d-none');
+				}
+				reset_button.fadeIn();
 			}
-			reset_button.fadeIn();
+			
 			reset_button.on('click', function () {
 				if ($this.hasClass('ratings')) {
 					$this.attr('id','');
@@ -419,21 +422,27 @@
 		/**
 		 * Clear all
 		 */
-		let clean_block = ['.selected-filter .clear_all','.selected-filter .filter-tag','.title-and-clean-area .clear_all'];
+		let clear_filter = '.selected-filter .clear-filter';
+		let filter_tag 	 = '.selected-filter .filter-tag';
+		let clean_block  = [clear_filter, filter_tag ,'.title-and-clean-area .clear_all'];
 		clean_block.forEach(element => {
 			$('.shopContainer').on('click',element,function(e){
 				e.preventDefault();
-				clear_all($(this));
-				if (element == '.selected-filter .filter-tag') {
-					
-				}
-				if (element == '.selected-filter .clear_all') {
-					$('.selected-filter .filter-tag').remove();
+				let $this = $(this);
+				clear_all($this);
+				if (element ==  filter_tag ) {
+					let node = $this.data('node');
+					reset_block($(node),$(node).parents(".sidebar-row"),false,'filter-tag');
+					$(node).siblings('.reset').fadeOut();
 					$(element).remove();
-					clear_all($(this));
+				}
+				else if (element ==  clear_filter ) {
+					$(filter_tag).remove();
+					$(element).remove();
+					clear_all($this);
 				}
 				else {
-					clear_all($(this));
+					clear_all($this);
 				}
 			 });
 		});
