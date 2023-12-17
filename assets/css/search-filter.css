@@ -243,8 +243,11 @@
 .category-list li {
 	margin-top: 5px;
 }
-.category-list li:hover,
-.active {
+.category-list li.active{
+	font-weight: bold;
+	color: var(--filter-secondary-color,#2d73e7) !important;
+}
+.category-list li:hover{
 	color: #333333;
 }
 .sidebar-style-1 .categories-wrap ul{

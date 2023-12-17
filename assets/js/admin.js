@@ -17,9 +17,8 @@
 				_this.on('click',function(e){
 					e.preventDefault();
 					let parent_block = _this.parents(".shortcode-block");
-					var shortcode_name = parent_block.data("name");
+					let shortcode_name = parent_block.data("name");
 					let input_value = findInputValue(parent_block.find(".input-section"));
-
 					let shortcode = `[${shortcode_name} ${input_value}]`; 
 					results.val("").val(shortcode);
 					copyTextData(results);
@@ -39,11 +38,14 @@
 			let result          = "";
 			var checkbox        = _this.find('input:checkbox');
 			var select_box      = _this.find('select');
-			
 			// select box
 			if ( select_box.length > 0 ) {
 				select_box.each(function() {
 					let $this = $(this);
+					let disable = $this.parent().hasClass('disable');
+					if (disable) {
+						return;
+					}
 					// select option
 					if ( $.isArray( $this.val() )) {
 						result += ` ${$this.data('option')}="${$this.val().toString()}"`;
@@ -56,6 +58,10 @@
 			if ( checkbox.length > 0 ) {
 				checkbox.each(function() {
 					let $this = $(this);
+					let disable = $this.parent().hasClass('disable');
+					if (disable) {
+						return;
+					}
 					let value = $this.is(':checked') ? "yes" : "no";
 					result += ` ${$this.data('label')}="${ value }"`;
 				});
@@ -64,6 +70,7 @@
 
 			return result;
 		}
+
 
 		/**
 		 * Toggle Show/Hide
