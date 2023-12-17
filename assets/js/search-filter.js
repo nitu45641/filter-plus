@@ -419,11 +419,22 @@
 		/**
 		 * Clear all
 		 */
-		let clean_block = ['.selected-filter .clear_all','.title-and-clean-area .clear_all'];
+		let clean_block = ['.selected-filter .clear_all','.selected-filter .filter-tag','.title-and-clean-area .clear_all'];
 		clean_block.forEach(element => {
 			$('.shopContainer').on('click',element,function(e){
 				e.preventDefault();
 				clear_all($(this));
+				if (element == '.selected-filter .filter-tag') {
+					
+				}
+				if (element == '.selected-filter .clear_all') {
+					$('.selected-filter .filter-tag').remove();
+					$(element).remove();
+					clear_all($(this));
+				}
+				else {
+					clear_all($(this));
+				}
 			 });
 		});
 		
