@@ -18,9 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			}
 			// custom tags
 			if ( 'yes'== $show_tags ) {
-				$title = esc_html__("Filter By Brand","filter-plus");
 				$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
-				include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-grid.php";
+				if (count($get_attr)>0) {
+					$title =  esc_html__("Filter By Brand","filter-plus");
+					include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-grid.php";
+				}
 			}
 			// custom attributes
 			if ( 'yes'== $show_attributes ) {

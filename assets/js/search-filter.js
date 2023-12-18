@@ -436,7 +436,6 @@
 
 					if ( node == 'taxonomy' ) {
 						cursor = $(`div[data-taxonomy="${$this.data('term_value')}"]`).parent('.param-box');
-						console.log(cursor.length);
 					}
 					reset_block(cursor,cursor.parents(".sidebar-row"),false,'filter-tag');
 					cursor.siblings('.reset').fadeOut();
