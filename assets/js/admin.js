@@ -8,7 +8,42 @@
 			$(value).select2( { width: '100%'} );
 		});
 
-		// shortcode generator
+		/**
+		 * Tab functions
+		 */
+		let $settings_tab_li = $(".settings_tab_pan li");
+		let active_tab 		 = window.location?.hash.slice(1) == "" ? "short-codes" : window.location?.hash.slice(1);
+
+		$settings_tab_li.removeClass('active');
+		$(".tab-content div").removeClass('active');
+		$(`li[data-item="${active_tab}"]`).addClass('active');
+		$(`#${active_tab}`).addClass('active');
+		hide_submit($(`li[data-item="${active_tab}"]`).index(this));
+
+		$settings_tab_li.on('click',function(){
+			let $this = $(this);
+			$settings_tab_li.removeClass();
+			$('.tab-content > div').hide();
+			$this.addClass('active');
+			var index = $settings_tab_li.index(this);
+			$('.tab-content > div:eq('+index+')').show();
+			hide_submit(index);
+			window.history.replaceState(null, null, `#${$this.data('item')}`);
+		});
+
+		//Settings Tab	
+		function hide_submit(index=0) {
+			let $admin_button  = $(".admin-button");
+			if ( index == 0 ) {
+				$admin_button.fadeOut();
+			}else{
+				$admin_button.fadeIn();
+			}
+		}
+
+		/**
+		 * Shortcode generator
+		 */
 		generateShortCode();
 		function generateShortCode(){
 			var results = $("#result_shortcode");
@@ -71,23 +106,23 @@
 			return result;
 		}
 
-
 		/**
 		 * Toggle Show/Hide
 		 *  
 		 * */
-		 var ids = ["show_tags","show_attributes"];
-		 $.each(ids,function(index,data){
-			let value = $("#"+data);
-			value.on('change',function(){
-				if (value.is(":checked")) {
-					$("."+data).removeClass("d-none");
-				}else{
-				   $("."+data).addClass("d-none");
-				}
-			 })
+		var ids = ["show_tags","show_attributes"];
+		$.each(ids,function(index,data){
+		let value = $("#"+data);
+		value.on('change',function(){
+			if (value.is(":checked")) {
+				$("."+data).removeClass("d-none");
+			}else{
+				$("."+data).addClass("d-none");
+			}
+			})
 
-		 });
+		});
+
 	});
 
 })(jQuery);

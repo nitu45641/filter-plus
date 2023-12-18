@@ -89,7 +89,7 @@
 			filter_plus_checkbox_field($args);
 		?>
 		<div class="single-block">
-			<div class="generate-block"><button class="button button-primary admin-button"><?php esc_html_e("Copy Filer Shortcodes","filter-plus");?></button></div>
+			<div class="generate-block"><button class="button button-primary"><?php esc_html_e("Copy Filer Shortcodes","filter-plus");?></button></div>
 			<input type="text" class="full_input" id="result_shortcode" value="">
 		</div>
 	</div>

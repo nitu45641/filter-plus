@@ -35,10 +35,15 @@ h1.font_20{
 }
 .single-block {
 	display: grid;
-	grid-template-columns: 175px auto auto;
 	column-gap: 35px;
 	align-items: center;
 	padding: 7px 0;
+}
+.shortcode-block .single-block{
+	grid-template-columns: 175px auto;
+}
+#settings .single-block{
+	grid-template-columns: 205px auto;
 }
 .repeat-section {
 	display: flex;
@@ -293,7 +298,7 @@ button.button-primary:focus {
 	height: 0 !important;
   }
   
-.shortcode-block .custom-switcher .slider {
+.custom-switcher .slider {
 	position: absolute;
 	cursor: pointer;
 	top: 0;
@@ -305,7 +310,7 @@ button.button-primary:focus {
 	transition: all 0.5s ease-in-out;
   }
   
-.shortcode-block .custom-switcher .slider:before {
+.custom-switcher .slider:before {
 	position: absolute;
 	content: "";
     height: 18px !important;
@@ -327,17 +332,17 @@ button.button-primary:focus {
 	box-shadow: 0 0 1px #2196F3 !important;
 }
   
-.shortcode-block .custom-switcher  input:checked + .slider:before {
+.custom-switcher  input:checked + .slider:before {
 	-webkit-transform: translateX(20px) !important;
 	-ms-transform: translateX(20px) !important;
 	transform: translateX(20px) !important;
 }
 
-.shortcode-block .custom-switcher .slider.round {
+.custom-switcher .slider.round {
 	border-radius: 34px;
 }
   
-.shortcode-block .custom-switcher .slider.round:before {
+.custom-switcher .slider.round:before {
 	border-radius: 50%;
 }
 
