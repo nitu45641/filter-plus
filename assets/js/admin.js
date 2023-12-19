@@ -123,6 +123,90 @@
 
 		});
 
+		/**
+		 * Get settings options
+		 * @param {*} main_div 
+		 * @returns 
+		 */
+		function getAllValues(main_div) {
+			let obj = {};
+			$(main_div).map(function(x,item) {
+				let $this = $(this);
+				if ( typeof $this.attr('name') === "undefined" ) {
+					return;
+				}
+
+				let type = $this.prop("type");
+
+				if ((type == "checkbox" || type == "radio") ) { 
+					if (this.checked) {
+						obj[$this.attr('name')] = $this.val();
+					} else {
+						obj[$this.attr('name')] = 'no';
+					}
+					return obj;
+				}
+				if ( type == "select-multiple" || type == "select-one" ) {
+					obj[$this.attr('name')] = $this.val();
+					return obj;
+				}
+				
+				if ( type == "text" || type == "hidden" ) {
+					obj[$this.attr('name')] = $this.val();
+					return obj;
+				}
+
+			});
+
+			return obj;
+		}
+
+		/**
+		 * Get tab data
+		 * @returns 
+		 */
+		function getTabData() {
+			let tabs 		= ['#settings :input'];
+			let form_data 	= {};	
+			tabs.forEach(element => {
+				let input_data 		= getAllValues( element );
+				$.each(input_data, function ( i , value ) {
+					form_data[i] = value;
+				}); 
+			});
+	
+			return form_data;
+		}
+
+		/**
+		 * Save admin settings
+		 */
+		let $admin_button = $('.admin-button');
+		$('#filter-settings').on('submit',function(e){
+			e.preventDefault();
+			let $message	= $(".settings_message");
+			let form_data 	= getTabData();
+
+			let data =
+			{
+				action: 'filter_save_settings',
+				nonce: filter_admin.nonce,
+				params: form_data
+			};
+			$.ajax({
+				url: filter_admin.ajax_url,
+				method: 'POST',
+				data: data,
+				beforeSend: function () {
+					$admin_button.addClass("loader");
+				},
+				success: function (response) {
+					$admin_button.removeClass("loader");
+					$message.removeClass('d-none').html("").html(response?.data?.message)
+					.fadeIn().delay(2000).fadeOut();
+				}
+			})
+		})
 	});
 
 })(jQuery);

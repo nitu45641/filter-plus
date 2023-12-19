@@ -11,7 +11,7 @@
 	$tab_content = array('short-codes','settings');
 ?>
 <div class="settings_message"></div>
-<form id="save_settings">
+<form id="filter-settings">
     <h2 class="content-header"><?php esc_html_e("Settings","filter-plus");?></h2>
     <div class="content-wrapper">
         <div class="settings_tab">

@@ -121,13 +121,11 @@
 				product_tags: product_tags,
 				params: selected_data
 			};
-			var live_search = false;
 			$.ajax({
 				url: filter_client.ajax_url,
 				method: 'POST',
 				data: data,
 				beforeSend: function () {
-					live_search = true;
 					products_wrap.addClass("loader_box")
 				},
 				success: function (response) {

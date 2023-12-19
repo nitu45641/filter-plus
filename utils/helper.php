@@ -887,8 +887,11 @@ class Helper {
 	public static function get_settings() {
 		$settings = array();
 		$get_settings 				   = get_option('filter_plus_settings', true );
-		$settings['woo_order_filter']  = !empty($get_settings['woo_order_filter']) ? $get_settings['woo_order_filter'] : 'no';
-
+		$settings_key 				   = self::get_settings_key();
+		foreach ($settings_key as $key => $value) {
+			$settings[$key] = !empty($get_settings[$key]) ? $get_settings[$key] : $value;
+		}
+		
 		return $settings;
 	}
 
@@ -899,7 +902,7 @@ class Helper {
 	public function verify_nonce($nonce_index,$nonce_value) {
 		if ( is_null( $nonce_index ) || ! wp_verify_nonce( $nonce_value, $nonce_index ) ) {
 			wp_send_json( array(
-				'message'  	=> __( 'Security check failed', 'quicker-pro' ),
+				'message'  	=> __( 'Security check failed', 'filter-plus' ),
 				'code' 		=> 401
 			) );
 		}

@@ -316,7 +316,7 @@ button.button-primary:focus {
 	content: "";
     height: 18px !important;
     width: 18px !important;
-	left: 5px !important;
+	left: 5px ;
 	bottom: 4px !important;
 	background-color: #fff;
 	-webkit-transition: all 0.5s ease-in-out;
@@ -337,6 +337,7 @@ button.button-primary:focus {
 	-webkit-transform: translateX(20px) !important;
 	-ms-transform: translateX(20px) !important;
 	transform: translateX(20px) !important;
+	left: 0 !important ;
 }
 
 .custom-switcher .slider.round {
@@ -613,4 +614,14 @@ a.pr-tag{
 }
 a.pro-link:focus{
 	box-shadow:none
+}
+.settings_message {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
 }
