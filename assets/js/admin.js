@@ -198,10 +198,10 @@
 				method: 'POST',
 				data: data,
 				beforeSend: function () {
-					$admin_button.addClass("loader");
+					$admin_button.addClass("loading");
 				},
 				success: function (response) {
-					$admin_button.removeClass("loader");
+					$admin_button.removeClass("loading");
 					$message.removeClass('d-none').html("").html(response?.data?.message)
 					.fadeIn().delay(2000).fadeOut();
 				}

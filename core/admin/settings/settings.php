@@ -3,14 +3,14 @@
 	$disable = class_exists('FilterPlusPro') ? false : true;
 
 	$settings 		= \FilterPlus\Utils\Helper::get_settings();
-
+    extract($settings);
     $tabs = array(
 		'short-codes'   => esc_html__( 'Shortcodes', 'filter-plus' ),
 		'settings'      => esc_html__( 'General Settings', 'filter-plus' ),
 	);
 	$tab_content = array('short-codes','settings');
 ?>
-<div class="settings_message"></div>
+<div class="settings_message d-none"></div>
 <form id="filter-settings">
     <h2 class="content-header"><?php esc_html_e("Settings","filter-plus");?></h2>
     <div class="content-wrapper">

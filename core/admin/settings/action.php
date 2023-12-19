@@ -28,8 +28,6 @@ class Action{
         $post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
         FilterPlus\Utils\Helper::instance()->verify_nonce('filter_plus', $post_data['nonce'] );
         $params       = !empty($post_data['params']) ? $post_data['params'] : [];
-        error_log(json_encode($params));
-
         $settings_key = Helper::get_settings_key();
 
         foreach ($settings_key as $key => $value) {

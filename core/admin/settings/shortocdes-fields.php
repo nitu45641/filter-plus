@@ -30,14 +30,15 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 
 	function filter_plus_checkbox_field($args){
 		$disable    	= !empty($args['disable']) ? 'disable' : '';
+		$checked      = ( !empty($args['checked']) && $args['checked'] == "yes") ? "checked" : "";
 		extract(pro_link_markup($disable));
 		$html = '
 			<div class="single-block">
 				<div class="form-label">'.$args['label'].'</div>
 				'.$pro_link_start.'
 				<label class="input-section custom-switcher '.$disable.'">
-					<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'" data-label="'.$args['data_label'].'"
-					name="'.esc_attr($args['id']).'" value="" '.esc_attr('checked').'/>
+				<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'"
+					name="'.$args['id'].'" value="yes"  '.$checked.' />
 					<span class="slider round"></span>
 				</label>
 				'.pro_tag_markup($disable).$pro_link_end.'
