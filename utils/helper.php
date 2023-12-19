@@ -47,8 +47,9 @@ class Helper {
 				'data-option' => []							
 			],
 			'option'      => [
-				'value'   => [],
-				'disabled'    => []
+				'selected'    	=> [],
+				'value'   		=> [],
+				'disabled'    	=> []
 			],
 			'textarea'                      => [
 				'value'       => [],
@@ -269,17 +270,6 @@ class Helper {
 			<?php endif;?>
 		</div>
 		<?php
-	}
-
-	/**
-	 * Admin settings array
-	 *
-	 * @return array
-	 */
-	public static function get_settings() {
-		$settings = array();
-
-		return $settings;
 	}
 
 	/**
@@ -879,5 +869,39 @@ class Helper {
 		}
 
 		return $content;
+	}
+
+	/**
+	 * Settings option
+	 * 
+	 */
+	public static function get_settings_key() {
+		$settings_key = array( 'woo_order_filter'=> 'no'  );
+
+		return $settings_key;
+	}
+
+	/**
+	 * Admin settings
+	 */
+	public static function get_settings() {
+		$settings = array();
+		$get_settings 				   = get_option('filter_plus_settings', true );
+		$settings['woo_order_filter']  = !empty($get_settings['woo_order_filter']) ? $get_settings['woo_order_filter'] : 'no';
+
+		return $settings;
+	}
+
+	/**
+	 * check nonce
+	 *
+	 */
+	public function verify_nonce($nonce_index,$nonce_value) {
+		if ( is_null( $nonce_index ) || ! wp_verify_nonce( $nonce_value, $nonce_index ) ) {
+			wp_send_json( array(
+				'message'  	=> __( 'Security check failed', 'quicker-pro' ),
+				'code' 		=> 401
+			) );
+		}
 	}
 }

@@ -32,5 +32,6 @@
                 <?php } ?>
             </div>	
         </div>
+        <button class="button button-primary admin-button mt-3">Save Changes</button>
 	</div>
 </form>

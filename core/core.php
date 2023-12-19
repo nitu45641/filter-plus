@@ -26,6 +26,12 @@ class Core {
         // Load admin menus
         \FilterPlus\Core\Admin\Menus::instance()->init();
       }
+      else{
+        // Ajax submit
+        if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+          \FilterPlus\Core\Admin\Settings\Action::instance()->init();
+        }
+      }
 
       \FilterPlus\Core\Frontend\Shortcodes::instance()->init();
 

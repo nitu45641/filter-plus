@@ -69,25 +69,25 @@ class Enqueue {
         // load js in specific pages
         if ( is_admin() && ( in_array( $screen->id , $pages ) ) ) {
 
-                foreach ( $this->admin_get_scripts() as $key => $value ) {
-                    $deps       = !empty( $value['deps'] ) ? $value['deps'] : false;
-                    $version    = !empty( $value['version'] ) ? $value['version'] : false;
-                    wp_enqueue_script( $key, $value['src'], $deps, $version, true );
-                }
+            foreach ( $this->admin_get_scripts() as $key => $value ) {
+                $deps       = !empty( $value['deps'] ) ? $value['deps'] : false;
+                $version    = !empty( $value['version'] ) ? $value['version'] : false;
+                wp_enqueue_script( $key, $value['src'], $deps, $version, true );
+            }
 
-                // css
+            // css
 
-                foreach ( $this->admin_get_styles() as $key => $value ) {
-                    $deps       = isset( $value['deps'] ) ? $value['deps'] : false;
-                    $version    = !empty( $value['version'] ) ? $value['version'] : false;
-                    wp_enqueue_style( $key, $value['src'], $deps, $version, 'all' );
-                }
+            foreach ( $this->admin_get_styles() as $key => $value ) {
+                $deps       = isset( $value['deps'] ) ? $value['deps'] : false;
+                $version    = !empty( $value['version'] ) ? $value['version'] : false;
+                wp_enqueue_style( $key, $value['src'], $deps, $version, 'all' );
+            }
 
-                // localize for admin
-                $form_data                          = array();
-                $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
-                
-                wp_localize_script( 'filter-plus-data', 'admin_data', [ $form_data ] );
+            // localize for admin
+            $form_data                          = array();
+            $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
+            $form_data['nonce']                 = wp_create_nonce( 'filter_plus' );
+            wp_localize_script( 'admin-js', 'filter_admin', $form_data );
         }
 
     }
@@ -164,10 +164,27 @@ class Enqueue {
         }
 
         // localize for frontend
-        $form_data                        = array();
-        $form_data['ajax_url']        = admin_url( 'admin-ajax.php' );
+        $form_data                          = array();
+        $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
+        $form_data['localize']              = $this->translate_data();
+        $form_data['nonce']                 = wp_create_nonce( 'filter_plus' );
 
-        wp_localize_script( 'filter-js', 'client_data', $form_data  ); 
+        wp_localize_script( 'filter-js', 'filter_client', $form_data  ); 
+    }
+
+    /**
+     * Localize data
+     *
+     * @return array
+     */
+    public function translate_data() {
+        $localize = array();
+        $localize['price'] = esc_html__( 'Price','filter-plus');
+        $localize['rating'] = esc_html__( 'Rating','filter-plus');
+        $localize['search'] = esc_html__( 'Search','filter-plus');
+        $localize['clear_all'] = esc_html__( 'Clear All','filter-plus');
+
+        return $localize;
     }
 
 }

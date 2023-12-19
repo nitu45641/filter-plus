@@ -2,6 +2,7 @@
 
 namespace FilterPlus\Core\Frontend\SearchFilter;
 
+use FilterPlus;
 use FilterPlus\Utils\Singleton;
 
 /**
@@ -37,6 +38,7 @@ class Actions {
 	 */
 	public function get_filtered_data() {
 		$post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
+		FilterPlus\Utils\Helper::instance()->verify_nonce('filter_plus', $post_data['nonce'] );
 		$post_arr     = ! empty( $post_data['params'] ) ? $post_data['params'] : [];
 		$search_value = ! empty( $post_arr['search_value'] ) ? $post_arr['search_value'] : '';
 		$order_by     = ! empty( $post_arr['order_by'] ) ? $post_arr['order_by'] : '';

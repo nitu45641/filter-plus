@@ -115,6 +115,7 @@
 			var data =
 			{
 				action: 'get_filtered_data',
+				nonce: filter_client.nonce,
 				template: template,
 				product_categories: product_categories,
 				product_tags: product_tags,
@@ -122,7 +123,7 @@
 			};
 			var live_search = false;
 			$.ajax({
-				url: client_data.ajax_url,
+				url: filter_client.ajax_url,
 				method: 'POST',
 				data: data,
 				beforeSend: function () {
@@ -194,22 +195,22 @@
 		 */
 		function show_selected_data( selected_data ) {
 			let selected_html 	= '';
-			let clear_all 		= '<div class="clear-filter">Clear All</div>';
+			let clear_all 		= `<div class="clear-filter">${filter_client.localize.clear_all}</div>`;
 			let cross 			= '<span>X</span>';
 			
 			for (const [key, value] of Object.entries(selected_data)) {
 				if( ! selected_data['default_call'] && typeof value !== "undefined" ){
 					if ( key == "price_range" && value == true ) {
-						selected_html += `<div class='filter-tag' data-node='.slide-container'>Price ${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.slide-container'>${filter_client.localize.price} ${cross}</div>`
 					}
 					if ( key == "star" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data-node='.rating'>Rating${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.rating'>${filter_client.localize.rating}${cross}</div>`
 					}
 					if ( key == "cat_name" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='.category-list'>${value}${cross}</div>`
 					}
 					if ( key == "search_value" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data-node='.search-form'>Search${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.search-form'>${filter_client.localize.search}${cross}</div>`
 					}
 					if ( key == "taxonomies_name" ) {
 						for (const [name, data] of Object.entries(value)) {

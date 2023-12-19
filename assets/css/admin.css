@@ -40,10 +40,10 @@ h1.font_20{
 	padding: 7px 0;
 }
 .shortcode-block .single-block{
-	grid-template-columns: 175px auto;
+	grid-template-columns: 175px auto auto;
 }
 #settings .single-block{
-	grid-template-columns: 205px auto;
+	grid-template-columns: 205px auto auto;
 }
 .repeat-section {
 	display: flex;
@@ -153,6 +153,7 @@ option.disable,.disable {
 	background: #ffffff;
 	padding: 2%;
 	border-radius: 5px;
+	min-height: 300px;
 }
 
 .settings_tab ul {
@@ -421,8 +422,13 @@ button.button.button-danger.delete-rules:hover {
 /* Pro Tag */
 a.pr-tag{
 	position: absolute;
-    left: 27%;
 	text-decoration: none;
+}
+#short-codes a.pr-tag{
+    left: 27%;
+}
+#settings a.pr-tag{
+    left: 29%;
 }
 .pro-fr {
     padding: 4px 13px 4px;
@@ -593,8 +599,17 @@ a.pr-tag{
 .mt-1{
 	margin-top: 1% !important;
 }
-.mb-1{
-	margin-bottom: 1% !important;
+.mb-2{
+	margin-bottom: 2% !important;
+}
+.mt-3{
+	margin-top: 3% !important;
+}
+.mt-4{
+	margin-top: 4% !important;
+}
+.mt-5{
+	margin-top: 5% !important;
 }
 a.pro-link:focus{
 	box-shadow:none
