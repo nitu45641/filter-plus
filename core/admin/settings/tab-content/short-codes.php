@@ -40,7 +40,7 @@
 			$get_tags   = \FilterPlus\Utils\Helper::get_product_tags('product_tag');
 
 			$args       = array('label'=>esc_html__("Tag List:","filter-plus"),'id' => 'woo_pro_tags',
-			'data_label' => 'tags','options'=>$get_tags , 'condition_class' => "show_tags d-none",
+			'data_label' => 'tags','options'=>$get_tags , 'select_type' => 'multiple',  'condition_class' => "show_tags d-none",
 			'disable' => $disable );
 
 			filter_plus_select_field($args);
@@ -54,7 +54,7 @@
 			global $product;
 			$get_attributes     = class_exists('WooCommerce') ? wc_get_attribute_taxonomies() : array();
 			$args               = array('label'=>esc_html__("Attribute List:","filter-plus"),'id' => 'woo_pro_attributes',
-			'data_label' => 'attributes', 'options'=>$get_attributes , 'condition_class' => "show_attributes d-none" , 'type'=>'attributes',
+			'data_label' => 'attributes', 'options'=>$get_attributes , 'select_type' => 'multiple', 'condition_class' => "show_attributes d-none" , 'type'=>'attributes',
 			'disable' => $disable );
 			filter_plus_select_field($args);
 

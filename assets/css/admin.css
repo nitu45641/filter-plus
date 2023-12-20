@@ -615,6 +615,14 @@ a.pr-tag{
 .mt-5{
 	margin-top: 5% !important;
 }
+.ml-15{
+	margin-left: 15%;
+}
+a.pro-link,
+ul.select2-selection__rendered
+{
+	cursor: pointer;
+}
 a.pro-link:focus{
 	box-shadow:none
 }

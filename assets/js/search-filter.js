@@ -174,10 +174,11 @@
 								first_page.fadeIn();
 							}
 
-
 						}
 						// disable tags
 						disable_items(response?.data?.disable_terms);
+						$("html, body").animate({ scrollTop: 150 }, "slow");
+
 					}
 					products_wrap.removeClass("loader_box");
 				}
