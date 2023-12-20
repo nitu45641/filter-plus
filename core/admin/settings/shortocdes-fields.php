@@ -38,7 +38,9 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 				'.$pro_link_start.'
 				<label class="input-section custom-switcher '.$disable.'">
 				<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'"
-					name="'.$args['id'].'" value="yes"  '.$checked.' />
+					name="'.$args['id'].'" value="yes"  '.$checked.'
+					data-label="'.$args['data_label'].'"
+					/>
 					<span class="slider round"></span>
 				</label>
 				'.pro_tag_markup($disable).$pro_link_end.'
@@ -55,7 +57,7 @@ if ( !function_exists('filter_plus_select_field') ) {
 		$options_html = "";
 		$disable      = !empty($args['disable']) ? 'disable' : '';
 		$template_disable 	= !empty($args['template_disable']) && is_array($args['options']) ? $args['template_disable'] : $count_option + 1;
-		$select_type  		= "multiple";
+		$select_type  		= !empty($args['select_type']) ? $args['select_type'] : '';
 
 		if (!empty($args['type']) && "attributes" == $args['type'] ) {
 			if ( !empty( $args['options'] ) ) :
@@ -64,13 +66,21 @@ if ( !function_exists('filter_plus_select_field') ) {
 				endforeach; 
 			endif;
 		}
-		else if (!empty($args['type']) && "template" == $args['type'] ) {
+		else if (!empty($args['type']) && ( "template" == $args['type'] ) ) {
 			$select_type = "";
 			if ( !empty( $args['options'] ) ) :
 				foreach($args['options'] as $item):
 					$disabled = (int) $item > $template_disable ? 'disabled' : '';
 					$pro_text = !empty($disabled) ? ' ('.esc_html__('Pro','filter-plus').')' : '';
 					$options_html .= '<option '.$disabled.' value="'.$item.'">'.esc_html__('Template','filter-plus')."-". $item . $pro_text.'</option>';
+				endforeach; 
+			endif;
+		}
+		else if (!empty($args['type']) && ( "random" == $args['type']) ) {
+			if ( !empty( $args['options'] ) ) :
+				foreach($args['options'] as $item):
+					$disabled = !empty($disabled) ? 'disabled' : '';
+					$options_html .= '<option '.$disabled.' value="'.$item.'">'. $item .'</option>';
 				endforeach; 
 			endif;
 		}

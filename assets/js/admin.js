@@ -3,7 +3,7 @@
 
 	$(document).ready(function(){
 		// load select 2
-		var ids = ["#woo_pro_categories","#woo_pro_tags","#woo_pro_attributes"];
+		var ids = ["#woo_pro_categories","#woo_pro_tags","#woo_pro_attributes","#seo_elements"];
 		$.each(ids,function(index,value){
 			$(value).select2( { width: '100%'} );
 		});
@@ -18,8 +18,7 @@
 		$(".tab-content div").removeClass('active');
 		$(`li[data-item="${active_tab}"]`).addClass('active');
 		$(`#${active_tab}`).addClass('active');
-		hide_submit($(`li[data-item="${active_tab}"]`).index(this));
-
+		hide_submit($(`.settings_tab_pan li.active`).index());
 		$settings_tab_li.on('click',function(){
 			let $this = $(this);
 			$settings_tab_li.removeClass();
@@ -73,6 +72,7 @@
 			let result          = "";
 			var checkbox        = _this.find('input:checkbox');
 			var select_box      = _this.find('select');
+			
 			// select box
 			if ( select_box.length > 0 ) {
 				select_box.each(function() {
@@ -102,7 +102,6 @@
 				});
 			}
 
-
 			return result;
 		}
 
@@ -120,7 +119,6 @@
 				$("."+data).addClass("d-none");
 			}
 			})
-
 		});
 
 		/**
@@ -166,7 +164,7 @@
 		 * @returns 
 		 */
 		function getTabData() {
-			let tabs 		= ['#settings :input'];
+			let tabs 		= ['#settings :input','#seo :input'];
 			let form_data 	= {};	
 			tabs.forEach(element => {
 				let input_data 		= getAllValues( element );

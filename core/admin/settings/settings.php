@@ -7,8 +7,9 @@
     $tabs = array(
 		'short-codes'   => esc_html__( 'Shortcodes', 'filter-plus' ),
 		'settings'      => esc_html__( 'General Settings', 'filter-plus' ),
+		'seo'           => esc_html__( 'SEO', 'filter-plus' ),
 	);
-	$tab_content = array('short-codes','settings');
+	$tab_content = array('short-codes','settings','seo');
 ?>
 <div class="settings_message d-none"></div>
 <form id="filter-settings">

@@ -40,7 +40,10 @@ h1.font_20{
 	padding: 7px 0;
 }
 .shortcode-block .single-block{
-	grid-template-columns: 175px auto auto;
+	grid-template-columns: 185px auto auto;
+}
+#seo .single-block {
+    grid-template-columns: 130px auto auto;
 }
 #settings .single-block{
 	grid-template-columns: 205px auto auto;

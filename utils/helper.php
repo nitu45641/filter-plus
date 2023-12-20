@@ -876,7 +876,7 @@ class Helper {
 	 * 
 	 */
 	public static function get_settings_key() {
-		$settings_key = array( 'woo_order_filter'=> 'no'  );
+		$settings_key = array( 'woo_order_filter'=> 'no','seo_elements'=> '','seo_elements_format'=> ''  );
 
 		return $settings_key;
 	}

@@ -180,10 +180,7 @@
 						disable_items(response?.data?.disable_terms);
 					}
 					products_wrap.removeClass("loader_box");
-				},
-				complete: function () {
-					live_search = false;
-				},
+				}
 			})
 		}
 
@@ -432,13 +429,16 @@
 				if (element ==  filter_tag ) {
 					let node = $this.data('node');
 					let cursor = $(node);
-
 					if ( node == 'taxonomy' ) {
 						cursor = $(`div[data-taxonomy="${$this.data('term_value')}"]`).parent('.param-box');
 					}
+					cursor.closest('.reset').fadeOut();
+					$this.remove();
+					
+					if ($(filter_tag).length == 0 ) {
+						$(clear_filter).remove();
+					}
 					reset_block(cursor,cursor.parents(".sidebar-row"),false,'filter-tag');
-					cursor.siblings('.reset').fadeOut();
-					$(element).remove();
 				}
 				else if (element ==  clear_filter ) {
 					$(filter_tag).remove();
