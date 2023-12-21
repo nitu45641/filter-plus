@@ -323,6 +323,7 @@ class Helper {
 
 	public static function woo_attribute_list($type=""){
 		$result = array();
+		if( !class_exists('WooCommerce')){ return $result; }
 		foreach ( wc_get_attribute_taxonomies()  as $key => $value) {
 			if ($type == "assoc" ) {
 				$result[$value->attribute_id] = $value->attribute_name;
