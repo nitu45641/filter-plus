@@ -35,18 +35,20 @@ h1.font_20{
 }
 .single-block {
 	display: grid;
-	column-gap: 35px;
 	align-items: center;
 	padding: 7px 0;
 }
 .shortcode-block .single-block{
 	grid-template-columns: 185px auto auto;
+	column-gap: 35px;
 }
 #seo .single-block {
-    grid-template-columns: 130px auto auto;
+    grid-template-columns: 185px auto auto;
+	column-gap: 20px;
 }
 #settings .single-block{
 	grid-template-columns: 205px auto auto;
+	column-gap: 35px;
 }
 .repeat-section {
 	display: flex;
@@ -64,7 +66,6 @@ h1.font_20{
 .form-label {
 	font-size: 14px;
 	font-weight: bold;
-	width: 250px;
 	padding: 10px 0px;
 }
 .input-section {

@@ -30,19 +30,23 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 
 	function filter_plus_checkbox_field($args){
 		$disable    	= !empty($args['disable']) ? 'disable' : '';
-		$checked      = ( !empty($args['checked']) && $args['checked'] == "yes") ? "checked" : "";
+		$checkbox_label = !empty($args['checkbox_label']) ? $args['checkbox_label'] : '';
+		$checked      	= ( !empty($args['checked']) && $args['checked'] == "yes") ? "checked" : "";
 		extract(pro_link_markup($disable));
 		$html = '
 			<div class="single-block">
 				<div class="form-label">'.$args['label'].'</div>
 				'.$pro_link_start.'
-				<label class="input-section custom-switcher '.$disable.'">
-				<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'"
-					name="'.$args['id'].'" value="yes"  '.$checked.'
-					data-label="'.$args['data_label'].'"
-					/>
-					<span class="slider round"></span>
-				</label>
+				<div>
+					<label class="input-section custom-switcher '.$disable.'">
+					<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'"
+						name="'.$args['id'].'" value="yes"  '.$checked.'
+						data-label="'.$args['data_label'].'"
+						/>
+						<span class="slider round"></span>
+					</label>
+					<span class="ml-1">'.$checkbox_label.'</span>
+				</div>
 				'.pro_tag_markup($disable).$pro_link_end.'
 			</div>
 		';
