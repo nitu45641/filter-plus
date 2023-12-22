@@ -19,6 +19,7 @@ $args = array(
     'header'        =>__("Header","filter-plus"),
     'description'   =>__("Description","filter-plus")
 ),
+'selected' => $seo_elements,
 'disable' => $disable 
 );
 
@@ -36,7 +37,8 @@ $args = array(
     __("{title} [attribute]:[values];[attribute]:[values]","filter-plus"),
     __("[attribute 1 values] {title} with [attribute] [values] and [attribute] [values]","filter-plus")
 ),
-'disable' => $disable 
+'selected' => $seo_elements_format,
+'disable' => $disable
 );
 
 filter_plus_select_field($args);

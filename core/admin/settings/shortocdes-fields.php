@@ -62,6 +62,8 @@ if ( !function_exists('filter_plus_select_field') ) {
 		$disable      = !empty($args['disable']) ? 'disable' : '';
 		$template_disable 	= !empty($args['template_disable']) && is_array($args['options']) ? $args['template_disable'] : $count_option + 1;
 		$select_type  		= !empty($args['select_type']) ? $args['select_type'] : '';
+		$selected	  = !empty($args['selected']) ? $args['selected'] : '';
+
 		extract(pro_link_markup($disable));
 		if (!empty($args['type']) && "attributes" == $args['type'] ) {
 			if ( !empty( $args['options'] ) ) :
@@ -82,9 +84,16 @@ if ( !function_exists('filter_plus_select_field') ) {
 		}
 		else if (!empty($args['type']) && ( "random" == $args['type']) ) {
 			if ( !empty( $args['options'] ) ) :
-				foreach($args['options'] as $item):
+				foreach($args['options'] as $key => $item):
 					$disabled = !empty($disabled) ? 'disabled' : '';
-					$options_html .= '<option '.$disabled.' value="'.$item.'">'. $item .'</option>';
+					if (is_array($selected)) {
+						$select_opt = in_array($key,$selected)  ? 'selected' : '';
+					}else{
+						error_log(json_encode($key));
+						error_log(json_encode($selected));
+						$select_opt = $key == $selected ? 'selected' : '';
+					}
+					$options_html .= '<option '. $select_opt .' '. $disabled.' value="'.$key.'">'. $item .'</option>';
 				endforeach; 
 			endif;
 		}
@@ -106,7 +115,7 @@ if ( !function_exists('filter_plus_select_field') ) {
 				<div class="form-label">'.$args['label'].'</div>
 				<div class="input-section">
 					'.$pro_link_start.'
-					<select id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
+					<select name="'.$args['id'].'" id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
 					'.pro_tag_markup($disable,"ml-15").'
 					'.$pro_link_end.'
 				</div>
