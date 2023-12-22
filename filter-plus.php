@@ -75,12 +75,12 @@ final class FilterPlus {
 		do_action( 'filter-plus/before_load' );
 		$this->load_text_domain();
 		require_once plugin_dir_path( __FILE__ ) . 'autoloader.php';
-		require_once plugin_dir_path( __FILE__ ) . 'bootstrap.php';
+		require_once plugin_dir_path( __FILE__ ) . 'wrapper.php';
 
 		// required plugin check
 		$this->required_plugin();
 		// Load Plugin modules and classes
-		\FilterPlus\Bootstrap::instance();
+		\FilterPlus\Wrapper::instance();
 
 		do_action( 'filter-plus/after_load' );
 	}

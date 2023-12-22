@@ -4,7 +4,7 @@ namespace FilterPlus;
 
 use FilterPlus;
 
-Class Bootstrap{
+Class Wrapper {
 
 	private static $instance;
 
@@ -48,7 +48,8 @@ Class Bootstrap{
 
 		return $actions;
 	}
-		/**
+	
+	/**
 	 * Custom css
 	 *
 	 * @param string $template
