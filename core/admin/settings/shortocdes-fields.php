@@ -7,7 +7,7 @@ if ( !function_exists('pro_tag_markup') ) {
 		$pro_only     = !empty($disable) ? "pro-fr" : "";
 		$pro		  = "";
 		if ( $pro_only !== "" ) {
-			$pro .= '<a href="'.esc_url('https://woooplugin.com/filter-plus/').'" class="pr-tag"><span class="'.esc_attr($pro_only." ".$class).'">'. esc_html__( 'Pro', 'filter-plus' ) .'</span></a>';
+			$pro .= '<span class="'.esc_attr($pro_only." ".$class).'">'. esc_html__( 'Pro', 'filter-plus' ) .'</span>';
 
 		}
 
@@ -37,7 +37,7 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 			<div class="single-block">
 				<div class="form-label">'.$args['label'].'</div>
 				'.$pro_link_start.'
-				<div>
+				<div class="check-wrap">
 					<label class="input-section custom-switcher '.$disable.'">
 					<input type="checkbox" class="switcher-ui-toggle" id="'.$args['id'].'"
 						name="'.$args['id'].'" value="yes"  '.$checked.'
@@ -47,7 +47,8 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 					</label>
 					<span class="ml-1">'.$checkbox_label.'</span>
 				</div>
-				'.pro_tag_markup($disable).$pro_link_end.'
+				'.pro_tag_markup($disable).'
+				'.$pro_link_end.'
 			</div>
 		';
 
@@ -116,7 +117,7 @@ if ( !function_exists('filter_plus_select_field') ) {
 				<div class="input-section">
 					'.$pro_link_start.'
 					<select name="'.$args['id'].'" id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
-					'.pro_tag_markup($disable,"ml-15").'
+					'.pro_tag_markup($disable,"").'
 					'.$pro_link_end.'
 				</div>
 			</div>
