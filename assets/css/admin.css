@@ -440,7 +440,8 @@ a.pr-tag{
     border: 1px solid rgba(50, 99, 248, 0.3);
     border-radius: 22px;
     font-size: 12px;
-    color: #0D165E;
+	background-color: #3263f8;
+	color: #fff;
     height: 17px;
     width: 17px;
 }
