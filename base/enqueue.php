@@ -13,6 +13,7 @@ class Enqueue {
 
     use Singleton;
 
+
     /**
      * Main calling function
      */
@@ -163,11 +164,18 @@ class Enqueue {
             wp_enqueue_style( $key, $value['src'], $deps, $version, 'all' );
         }
 
+        $settings = \FilterPlus\Utils\Helper::instance()->get_settings();;
+        extract($settings);
         // localize for frontend
         $form_data                          = array();
         $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
         $form_data['localize']              = $this->translate_data();
         $form_data['nonce']                 = wp_create_nonce( 'filter_plus' );
+        $form_data['refresh_url']           = $settings['refresh_url'];
+        $form_data['seo_elements']          = $settings['seo_elements'];
+        $form_data['seo_elements_format']   = $settings['seo_elements_format'];
+        $form_data['seo_slug_url']          = $settings['seo_slug_url'];
+        $form_data['is_pro_active']         = class_exists('FilterPlusPro') ? true : false;
 
         wp_localize_script( 'filter-js', 'filter_client', $form_data  ); 
     }

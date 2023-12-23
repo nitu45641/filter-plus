@@ -90,8 +90,6 @@ if ( !function_exists('filter_plus_select_field') ) {
 					if (is_array($selected)) {
 						$select_opt = in_array($key,$selected)  ? 'selected' : '';
 					}else{
-						error_log(json_encode($key));
-						error_log(json_encode($selected));
 						$select_opt = $key == $selected ? 'selected' : '';
 					}
 					$options_html .= '<option '. $select_opt .' '. $disabled.' value="'.$key.'">'. $item .'</option>';

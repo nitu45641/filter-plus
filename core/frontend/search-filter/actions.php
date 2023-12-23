@@ -44,7 +44,7 @@ class Actions {
 		$order_by     = ! empty( $post_arr['order_by'] ) ? $post_arr['order_by'] : '';
 		$cat_id       = ! empty( $post_arr['cat_id'] ) ? $post_arr['cat_id'] : '';
 		$taxonomies   = ! empty( $post_arr['taxonomies'] ) ? $post_arr['taxonomies'] : [];
-		$star         = ! empty( $post_arr['star'] ) ? $post_arr['star'] : '';
+		$rating       = ! empty( $post_arr['rating'] ) ? $post_arr['rating'] : '';
 		$max          = ! empty( $post_arr['max'] ) ? $post_arr['max'] : '';
 		$min          = ! empty( $post_arr['min'] ) ? $post_arr['min'] : '';
 		$filter_param = ! empty( $post_arr['filter_param'] ) ? $post_arr['filter_param'] : array();
@@ -63,7 +63,7 @@ class Actions {
 			'search_value'  => $search_value,
 			'min'           => $min,
 			'max'           => $max,
-			'star'          => $star,
+			'rating'          => $rating,
 			'product_tags'  => $product_tags,
 			'order_by'      => $order_by,
 			'product_categories'  => $product_categories,

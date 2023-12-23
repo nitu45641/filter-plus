@@ -492,11 +492,11 @@ class Helper {
 	 * @return void
 	 */
 	public static function product_reviews( $param , $args ) {
-		if(!empty($param['star'])){
+		if(!empty($param['rating'])){
 			$args['meta_query'] =array(
                 array(
                    'key'     => '_wc_average_rating',
-                   'value'   => $param['star'],
+                   'value'   => $param['rating'],
                    'compare' => '=',
 				   'type'    => 'NUMERIC'
                 )

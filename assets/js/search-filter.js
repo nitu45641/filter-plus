@@ -190,6 +190,7 @@
 		 * @param {*} selected_data 
 		 */
 		function show_selected_data( selected_data ) {
+			refresh_url(selected_data);
 			let selected_html 	= '';
 			let clear_all 		= `<div class="clear-filter">${filter_client.localize.clear_all}</div>`;
 			let cross 			= '<span>X</span>';
@@ -199,10 +200,10 @@
 					if ( key == "price_range" && value == true ) {
 						selected_html += `<div class='filter-tag' data-node='.slide-container'>${filter_client.localize.price} ${cross}</div>`
 					}
-					if ( key == "star" && value !== "" ) {
+					if ( key == "rating" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='.rating'>${filter_client.localize.rating}${cross}</div>`
 					}
-					if ( key == "cat_name" && value !== "" ) {
+					if ( key == "product_cat" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='.category-list'>${value}${cross}</div>`
 					}
 					if ( key == "search_value" && value !== "" ) {
@@ -221,6 +222,24 @@
 		}
 
 		/**
+		 * Refresh url
+		 */
+		function refresh_url(selected_data) {
+			if ( typeof selected_data?.default_call === "undefined" && filter_client.is_pro_active == "1" ) {
+				let urlKey 	 = ['product_cat','rating','min','max'];
+				let $urlPart = '';
+				for (const [key, value] of Object.entries(selected_data)) {
+					if ($.inArray(key,urlKey) !== -1 && value !== '' ) {
+						$urlPart += `${key}=[${value}]`;
+					}
+				}
+				window.history.pushState(null, null, `?fp=`+$urlPart );
+			}else{
+				window.history.replaceState(null, '', window.location.pathname);
+			}
+		}
+
+		/**
 		 * Get data
 		 * @param {*} params 
 		 * @returns 
@@ -232,8 +251,8 @@
 			let price_range = $(".range-slider");
 			// category
 			params['cat_id'] 				= $(".category-list li.active").data('cat_id');
-			params['cat_name'] 				= $(".category-list li.active").text();
-			params['star']   				= $("ul.ratings").attr("id");
+			params['product_cat'] 			= $.trim($(".category-list li.active").text());
+			params['rating']   				= $("ul.ratings").attr("id");
 			params['taxonomies']    		= get_tags(true);
 			params['taxonomies_name']    	= get_tags('name');
 			params['filter_param']  		= get_tags(false);

@@ -4,7 +4,7 @@
 
 $args = array('label'=>esc_html__("Refresh Url when Filtering","filter-plus"),
 'id' => 'refresh_url' , 'data_label' => 'refresh-url' ,  'checked'=> $refresh_url ,
-'checkbox_label' => __('Use Slug in Url instead of ID','filter-plus'),
+'checkbox_label' => __('URL will be updated when filter option is selected/changed','filter-plus'),
 'disable' => $disable );
 
 filter_plus_checkbox_field($args);
@@ -49,10 +49,13 @@ $args = array('label'=>esc_html__("Use slug in Url","filter-plus"),
 'disable' => $disable );
 
 filter_plus_checkbox_field($args);
-
+$nice_url_desc = '';
+if (class_exists('FilterPlusPro')) {
+    $nice_url_desc = __('SEO friendly URL. Wordpress permalink must be set to post name from (Settings=>Permalink)','filter-plus');
+}
 $args = array('label'=>esc_html__("Nice Url","filter-plus"),
 'id' => 'nice_url' , 'data_label' => 'nice-url' ,  'checked'=> $nice_url ,
-'checkbox_label' => __('SEO friendly URL. Wordpress permalink must be set to post name from (Settings=>Permalink)','filter-plus'),
+'checkbox_label' => $nice_url_desc,
 'disable' => $disable );
 
 filter_plus_checkbox_field($args);
