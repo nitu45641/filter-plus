@@ -110,6 +110,11 @@ class Enqueue {
                 'version'   => \FilterPlus::get_version(),
                 'deps'      => ['jquery'],
             ),
+            // 'filter-min-js'     => array(
+            //     'src'       => \FilterPlus::assets_url() . 'js/search-filter.min.js',
+            //     'version'   => \FilterPlus::get_version(),
+            //     'deps'      => ['jquery'],
+            // ),
 			'jquery.range-min'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/jquery.range-min.js',
                 'version' => \FilterPlus::get_version(),
@@ -178,6 +183,7 @@ class Enqueue {
         $form_data['is_pro_active']         = class_exists('FilterPlusPro') ? true : false;
 
         wp_localize_script( 'filter-js', 'filter_client', $form_data  ); 
+       // wp_localize_script( 'filter-min-js', 'filter_client', $form_data  ); 
     }
 
     /**
