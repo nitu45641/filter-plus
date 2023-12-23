@@ -226,11 +226,16 @@
 		 */
 		function refresh_url(selected_data) {
 			if ( typeof selected_data?.default_call === "undefined" && filter_client.is_pro_active == "1" ) {
-				let urlKey 	 = ['product_cat','rating','min','max'];
+				let urlKey 	 = ['product_cat','rating','price_range'];
 				let $urlPart = '';
 				for (const [key, value] of Object.entries(selected_data)) {
-					if ($.inArray(key,urlKey) !== -1 && value !== '' ) {
-						$urlPart += `${key}=[${value}]`;
+					if ($.inArray(key,urlKey) !== -1 && 
+					typeof value !== "undefined" && value !== '' ) {
+						if (key == 'price_range' && value == true ) {
+							$urlPart += `${'price'}=[${selected_data['min']}-${selected_data['max']}]`;
+						}else{
+							$urlPart += `${key}=[${value}]`;
+						}
 					}
 				}
 				window.history.pushState(null, null, `?fp=`+$urlPart );
@@ -370,7 +375,7 @@
 					$('.rating-label').html('');
 				}
 				else if ($parent.hasClass('range-slider')) {
-					price_range.attr('data-action', false );
+					$parent.attr('data-action', false );
 					let min = $parent.data('min');
 					let max = $parent.data('max');
 					$parent.val(min+","+max);

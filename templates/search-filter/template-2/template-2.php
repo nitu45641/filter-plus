@@ -16,10 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			if ( 'yes'== $show_price_range ) {
 				include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/price-range.php";
 			}
+			$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
+
 			// custom tags
-			if ( 'yes'== $show_tags ) {
+			if ( 'yes'== $show_tags && count($get_attr)> 0 ) {
 				$title = esc_html__("Find Favorite Item","filter-plus");
-				$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
 				include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-grid.php";
 			}
 			// custom attributes
