@@ -586,3 +586,34 @@ ul.pagination {
     color: #2d73e7;
 }
 
+/* Add to cart css */
+.add_to_cart_button.loading svg,
+.add_to_cart_button.added svg
+{
+	display: none;
+}
+
+.add_to_cart_button.loading::after {
+    content: url(../../assets/images/wheel.svg);
+    position: absolute;
+    -webkit-animation: spin 2s linear infinite; 
+    animation: spin 2s linear infinite;
+    border-radius: 290486px;
+	margin-left: 4px;
+	left: 5px;
+    top: 5px;
+}
+.add_to_cart_button.added::after {
+    content: url(../../assets/images/check-mark.svg);
+    position: relative;
+}
+/* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
