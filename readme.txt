@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce Filter, Filtering Plugin, Price Range, Product Filter , ajax filter
 Requires at least: 4.7
 Tested up to: 6.4.1
-Stable tag: 1.0.14
+Stable tag: 1.0.15
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -77,6 +77,16 @@ Moreover, **Filter Tag** will be displayed on the page after applying it. Users 
 
 **👉 RTL Support** - If you have any WordPress site that has right to lfet language, you can use the plugin. Filter Plus is now RTL compatible plugin.
 
+**👉 Nice URL for Filter Page ** - Once the users update the filter craiteria, the site will have a SEO friendly new URL.
+
+**👉 Filter by Product** - Visitors can add filter based on the products. So, if any store have same products ubder different category, offers and value, users can see all of them in same page. This features helps growing sales for multivendor eCommerce website.
+
+**👉 Filter by Order Status** - Visitors can add filter based on the order status.
+
+**👉 Filter by Product in Woo Order Page** - With Filter Plus, you can enable filtering option on the WooCommerce order page.
+
+**👉 SEO Options** Filter Plus SEO option helps the store oner to submi SEO information to the search engine. We did the technical part so admin can just select and see the SEO boost on the store.
+
 More features are on the way!
 
 Filter Plus is the ultimate plugin for WordPress and WooCommerce product filtering. Allow the users to filter and shortlist the products in the store easily and effortlessly.
@@ -102,6 +112,11 @@ We have tested all the popular themes. And we believe, it will work with your th
 2. screenshot-3
 
 == Changelog ==
+
+= 1.0.15 (December 24, 2023)=
+Added   : Attributes ,tags filter added
+Added   : Price range filter added
+Tweak   : UX improvement added
 
 = 1.0.14 (December 23, 2023)=
 Fix   : Add filter parameter in url

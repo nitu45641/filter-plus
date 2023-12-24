@@ -660,3 +660,11 @@ ul.pagination {
 	display: none;
 }
 /* Price Range Template 1 start*/
+.checkbox-item{
+	cursor: pointer;
+}
+input[type="checkbox"]:checked + label.checkbox-item
+{
+	background-color: #2d73e7;
+	color: #fff;
+} 

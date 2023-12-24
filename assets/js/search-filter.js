@@ -53,6 +53,18 @@
 					// reset block
 					reset_block(_this,_this.parents(".sidebar-row"));
 				});
+				param_box.on('change', '.checkbox-item', function () {
+					let _this = $(this);
+					param_box.find('.checkbox-item input').removeAttr('checked');
+					if (_this.find('input').is("checked")) {
+						_this.find('input').prop('checked',false); 
+					} else {
+						_this.find('input').prop('checked',true); 
+					}
+					get_products();
+					// reset block
+					reset_block(_this,_this.parents(".sidebar-row"));
+				});
 			})
 		}
 		// price range
@@ -263,6 +275,8 @@
 			params['filter_param']  		= get_tags(false);
 			params['search_value']  		= $(".sidebar-input").val();
 			params['order_by']      		= $("#filter-sort-by option:selected").val()
+			params['stock']      			= $(".stock input[type='checkbox']:checked").val()
+			params['on_sale']      			= $(".on_sale input[type='checkbox']:checked").val()
 			if ( price_range.length>0 ) {
 				let prices = price_range.val().split(',');
 				params['min']    		= prices[0];
