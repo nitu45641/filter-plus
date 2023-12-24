@@ -30,7 +30,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			}
 		}
 	?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-param.php"; ?>
+	<?php 
+		include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-param.php";
+		if (!class_exists('FilterPlusPro')) { return; }
+		// on sale
+		if ( class_exists('FilterPlusPro') && 'yes'== $on_sale ) {
+			include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/on-sale.php";
+		}
+		// stock
+		if ( class_exists('FilterPlusPro') && 'yes'== $stock ) {
+			include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/stock.php";
+		} 
+	?>
 </div>
 
 <div class="row products-wrap">

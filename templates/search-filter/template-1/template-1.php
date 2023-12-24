@@ -27,6 +27,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			$attributes = \FilterPlus\Utils\Helper::array_data($attributes);
 			include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-attr-grid.php";
 		}
+		include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-param.php"; 
+		if (!class_exists('FilterPlusPro')) { return; }
 		// on sale
 		if ( class_exists('FilterPlusPro') && 'yes'== $on_sale ) {
 			include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/on-sale.php";
@@ -34,9 +36,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		// stock
 		if ( class_exists('FilterPlusPro') && 'yes'== $stock ) {
 			include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/stock.php";
-		}
-		
-		include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-param.php"; ?>
+		} 
+	?>
 </div>
 
 <div class="row products-wrap">

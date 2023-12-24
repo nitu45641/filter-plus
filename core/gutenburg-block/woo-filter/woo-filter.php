@@ -27,6 +27,8 @@ function woo_filter_callback( $settings ) {
     $show_reviews       = !empty($settings['show_reviews']) && $settings['show_reviews'] == true ? 'yes' : 'no';
     $show_price_range   = !empty($settings['show_price_range']) && $settings['show_price_range'] == true ? 'yes' : 'no';
     $sorting            = !empty($settings['sorting']) && $settings['sorting'] == true ? 'yes' : 'no';
+    $stock              = !empty($settings['stock']) && $settings['stock'] == true ? 'yes' : 'no';
+    $on_sale            = !empty($settings['on_sale']) && $settings['on_sale'] == true ? 'yes' : 'no';
     $product_categories = !empty($settings['product_categories']) && $settings['product_categories'] == true ? 'yes' : 'no';
     $product_tags       = !empty($settings['product_tags']) && $settings['product_tags'] == true ? 'yes' : 'no';
     
@@ -44,7 +46,7 @@ function woo_filter_callback( $settings ) {
     ?>
 	<div class="woo-filter">
 		<?php
-            echo do_shortcode("[filter_products template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");
+            echo do_shortcode("[filter_products stock={$stock} on_sale={$on_sale} template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");
      	?>
 	</div>
 	<?php

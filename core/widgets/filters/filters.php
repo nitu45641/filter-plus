@@ -98,54 +98,66 @@ class Filters extends Widget_Base {
 				'default' => 'yes',
 			]
 		);
+		$this->add_control(
+			'show_tags',
+			[
+				'label' => esc_html__('Show Tags', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'tags',
+			[
+				'label' => esc_html__('Tags', 'filter-plus'),
+				'type' => Controls_Manager::SELECT2,
+				'options' => \FilterPlus\Utils\Helper::get_product_tags('product_tag','assoc'),
+				'multiple' => true,
+				'condition' => ['show_tags' => 'yes']
+			]
+		);
+
+		$this->add_control(
+			'show_attributes',
+			[
+				'label' => esc_html__('Show Attributes', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'attributes',
+			[
+				'label' 	=> esc_html__('Attributes', 'filter-plus'),
+				'type' 		=> Controls_Manager::SELECT2,
+				'options' 	=> \FilterPlus\Utils\Helper::woo_attribute_list("assoc"),
+				'multiple' 	=> true,
+				'condition' => ['show_attributes' => 'yes']
+			]
+		);
+
+		$this->add_control(
+			'show_price_range',
+			[
+				'label' => esc_html__('Display Price Range', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
 		// Pro
 		if (class_exists('FilterPlusPro')) {
-
-			$this->add_control(
-				'show_tags',
-				[
-					'label' => esc_html__('Show Tags', 'filter-plus'),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-					'label_on' => esc_html__('Show', 'filter-plus'),
-					'label_off' => esc_html__('Hide', 'filter-plus'),
-					'return_value' => 'yes',
-					'default' => 'yes',
-				]
-			);
-
-			$this->add_control(
-				'tags',
-				[
-					'label' => esc_html__('Tags', 'filter-plus'),
-					'type' => Controls_Manager::SELECT2,
-					'options' => \FilterPlus\Utils\Helper::get_product_tags('product_tag','assoc'),
-					'multiple' => true,
-					'condition' => ['show_tags' => 'yes']
-				]
-			);
-
-			$this->add_control(
-				'show_attributes',
-				[
-					'label' => esc_html__('Show Attributes', 'filter-plus'),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-					'label_on' => esc_html__('Show', 'filter-plus'),
-					'label_off' => esc_html__('Hide', 'filter-plus'),
-					'return_value' => 'yes',
-					'default' => 'yes',
-				]
-			);
-
-			$this->add_control(
-				'attributes',
-				[
-					'label' 	=> esc_html__('Attributes', 'filter-plus'),
-					'type' 		=> Controls_Manager::SELECT2,
-					'options' 	=> \FilterPlus\Utils\Helper::woo_attribute_list("assoc"),
-					'multiple' 	=> true,
-					'condition' => ['show_attributes' => 'yes']
-				]
-			);
 
 			$this->add_control(
 				'show_reviews',
@@ -160,9 +172,21 @@ class Filters extends Widget_Base {
 			);
 
 			$this->add_control(
-				'show_price_range',
+				'stock',
 				[
-					'label' => esc_html__('Display Price Range', 'filter-plus'),
+					'label' => esc_html__('Filter By Stock', 'filter-plus'),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => esc_html__('Show', 'filter-plus'),
+					'label_off' => esc_html__('Hide', 'filter-plus'),
+					'return_value' => 'yes',
+					'default' => 'yes',
+				]
+			);
+
+			$this->add_control(
+				'on_sale',
+				[
+					'label' => esc_html__('Sales', 'filter-plus'),
 					'type' => \Elementor\Controls_Manager::SWITCHER,
 					'label_on' => esc_html__('Show', 'filter-plus'),
 					'label_off' => esc_html__('Hide', 'filter-plus'),
@@ -222,7 +246,7 @@ class Filters extends Widget_Base {
 				'label'         => esc_html__('Title Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .wpc-category-title a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .category-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -234,7 +258,7 @@ class Filters extends Widget_Base {
 				'label'         => esc_html__('Title BG Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .wpc-category-title a' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .category-title a' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -243,7 +267,7 @@ class Filters extends Widget_Base {
 			[
 				'name'         => 'title_typo',
 				'label'         => esc_html__('Typography', 'filter-plus'),
-				'selector'     => '{{WRAPPER}} .wpc-category-title',
+				'selector'     => '{{WRAPPER}} .category-title',
 			]
 		);
 		$this->add_responsive_control(
@@ -253,7 +277,7 @@ class Filters extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
-					'{{WRAPPER}} .wpc-category-title a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .category-title a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -273,7 +297,7 @@ class Filters extends Widget_Base {
 				'label'         => esc_html__('Button Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .wpc-readmore-link' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .readmore-link' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -284,7 +308,7 @@ class Filters extends Widget_Base {
 				'label'         => esc_html__('Button Hover Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .wpc-single-cat-item:hover .wpc-readmore-link' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .single-cat-item:hover .readmore-link' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -296,7 +320,7 @@ class Filters extends Widget_Base {
 				'label'         => esc_html__('Button BG Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .wpc-readmore-link' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .readmore-link' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -306,7 +330,7 @@ class Filters extends Widget_Base {
 				'label'         => esc_html__('Button BG Hover Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .wpc-single-cat-item:hover .wpc-readmore-link' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .single-cat-item:hover .readmore-link' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -315,7 +339,7 @@ class Filters extends Widget_Base {
 			[
 				'name'         => 'btn_typo',
 				'label'         => esc_html__('Typography', 'filter-plus'),
-				'selector'     => '{{WRAPPER}} .wpc-readmore-link',
+				'selector'     => '{{WRAPPER}} .readmore-link',
 			]
 		);
 		$this->add_responsive_control(
@@ -335,7 +359,7 @@ class Filters extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .wpc-readmore-link' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .readmore-link' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -353,7 +377,7 @@ class Filters extends Widget_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .wpc-readmore-link' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .readmore-link' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -384,7 +408,7 @@ class Filters extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .wpc-cat-thumb' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .cat-thumb' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -401,7 +425,7 @@ class Filters extends Widget_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .wpc-cat-thumb' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .cat-thumb' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -422,7 +446,7 @@ class Filters extends Widget_Base {
 				'label'         => esc_html__('Box Bacground Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .wpc-category-list-style4 .wpc-single-cat-item' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .category-list-style4 .single-cat-item' => 'background-color: {{VALUE}};',
 				],
 				'condition' => ['food_cat_style' => ['style-4']],
 			]
@@ -434,7 +458,7 @@ class Filters extends Widget_Base {
 				'label'         => esc_html__('Box Hover Bacground Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => [
-					'{{WRAPPER}} .wpc-category-list-style4 .wpc-single-cat-item:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .category-list-style4 .single-cat-item:hover' => 'background-color: {{VALUE}};',
 				],
 				'condition' => ['food_cat_style' => ['style-4']],
 			]
@@ -447,7 +471,7 @@ class Filters extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
-					'{{WRAPPER}} .wpc-single-cat-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .single-cat-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -459,7 +483,7 @@ class Filters extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
-					'{{WRAPPER}} .wpc-single-cat-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .single-cat-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -482,11 +506,13 @@ class Filters extends Widget_Base {
 		$show_attributes	= !empty($show_attributes) ? $show_attributes : '';
 		$show_reviews 		= !empty($show_reviews) ? $show_reviews : '';
 		$show_price_range 	= !empty($show_price_range) ? $show_price_range : '';
+		$stock 				= !empty($stock) ? $stock : 'yes';
+		$on_sale 			= !empty($on_sale) ? $on_sale : 'yes';
 		$sorting 			= !empty($sorting) ? $sorting : '';
 		$product_tags 		= !empty($product_tags) ? $product_tags : '';
 		$product_categories = !empty($product_categories) ? $product_categories : '';
 
-        echo do_shortcode("[filter_products template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");
+        echo do_shortcode("[filter_products stock={$stock} on_sale={$on_sale} template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");
 
 	}
 
