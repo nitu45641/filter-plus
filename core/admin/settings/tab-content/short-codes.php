@@ -64,6 +64,16 @@
 			'disable' => $disable );
 			filter_plus_checkbox_field($args);
 
+			// filter by stock
+			$args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock',
+			'disable' => $disable );
+			filter_plus_checkbox_field($args);
+
+			// filter by on sale
+			$args = array('label'=>esc_html__("Filter By On Sale:","filter-plus"),'id' => 'on_sale','data_label' => 'on_sale',
+			'disable' => $disable );
+			filter_plus_checkbox_field($args);
+
 		?>
 
 		<h1 class="font_bold font_20 mt-1 mb-1"><?php esc_html_e("Filter Result Products","filter-plus"); ?></h1>

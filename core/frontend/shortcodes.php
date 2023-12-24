@@ -46,19 +46,21 @@ class Shortcodes {
 		$atts = extract(
 			shortcode_atts(
 				array(
-					'template'         => '1',
-					'categories'       => '',
-					'colors'           => 'yes',
-					'size'             => 'yes',
-					'tags'             => '',
-					'attributes'       => '',
-					'show_tags'        => '',
-					'show_attributes'  => '',
-					'show_reviews'     => '',
-					'show_price_range' => '',
-					'product_categories' => '',
-					'product_tags'       => '',
-					'sorting'          => 'yes',
+					'template'         	=> '1',
+					'categories'       	=> '',
+					'colors'           	=> 'yes',
+					'size'             	=> 'yes',
+					'tags'             	=> '',
+					'attributes'       	=> '',
+					'show_tags'        	=> '',
+					'show_attributes'  	=> '',
+					'show_reviews'     	=> '',
+					'show_price_range' 	=> '',
+					'on_sale' 			=> '',
+					'stock' 			=> '',
+					'product_categories'=> '',
+					'product_tags'      => '',
+					'sorting'          	=> 'yes',
 				), $atts )
 		);
 
