@@ -64,8 +64,6 @@ final class FilterPlus {
 		add_action( 'plugins_loaded', array( $this, 'initialize_modules' ) , 999 );
     }
 	
-
-
 	/**
 	 * Initialize Modules
 	 *

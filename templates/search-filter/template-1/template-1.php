@@ -5,33 +5,30 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/product-search.php"; ?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/categories.php"; ?>
-	<?php 
-		if (class_exists('FilterPlusPro')) {
-			// reviews
-			if ( 'yes'== $show_reviews ) {
-				include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/rating.php";
-			}
-			// price range
-			if ( 'yes'== $show_price_range ) {
-				include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/price-range.php";
-			}
-			// custom tags
-			if ( 'yes'== $show_tags ) {
-				$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
-				if (count($get_attr)>0) {
-					$title =  esc_html__("Filter By Brand","filter-plus");
-					include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-grid.php";
-				}
-			}
-			// custom attributes
-			if ( 'yes'== $show_attributes ) {
-				$attributes = \FilterPlus\Utils\Helper::array_data($attributes);
-				include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-attr-grid.php";
+	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/categories.php"; 
+		// reviews
+		if ( class_exists('FilterPlusPro') && 'yes'== $show_reviews ) {
+			include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/rating.php";
+		}
+		// price range
+		if ( 'yes'== $show_price_range ) {
+			include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/price-range.php";
+		}
+		// custom tags
+		if ( 'yes'== $show_tags ) {
+			$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
+			if (count($get_attr)>0) {
+				$title =  esc_html__("Filter By Brand","filter-plus");
+				include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-grid.php";
 			}
 		}
-	?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-param.php"; ?>
+		// custom attributes
+		if ( 'yes'== $show_attributes ) {
+			$attributes = \FilterPlus\Utils\Helper::array_data($attributes);
+			include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-attr-grid.php";
+		}
+		
+		include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-param.php"; ?>
 </div>
 
 <div class="row products-wrap">
