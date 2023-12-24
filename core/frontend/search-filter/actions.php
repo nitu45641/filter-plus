@@ -144,8 +144,14 @@ class Actions {
 	 * @return array
 	 */
 	public function product_on_sale( $param , $args ) {
-		if(!empty($param['on_sale']) && $param['on_sale'] == "true" ){
+		if ( empty($param['on_sale']) ) {
+			return $args;
+		}
+		if( $param['on_sale'] == "true" ){
 			$args['post__in'] = wc_get_product_ids_on_sale();
+		}
+		else if($param['on_sale'] == "false" ){
+			$args['post__not__in'] = wc_get_product_ids_on_sale();
 		}
 
 		return $args;

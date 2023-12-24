@@ -410,7 +410,7 @@
 				}
 				else{
 					$parent.removeClass('active');
-					$('input[type=checkbox]').removeAttr('checked');
+					$parent.find('input[type=checkbox]').removeAttr('checked');
 				}
 				if ( !clear_all ) {
 					get_products();
@@ -566,4 +566,5 @@
 		}
 
 	});
+
 })(jQuery);
