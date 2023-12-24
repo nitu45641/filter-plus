@@ -206,7 +206,7 @@
 			let selected_html 	= '';
 			let clear_all 		= `<div class="clear-filter">${filter_client.localize.clear_all}</div>`;
 			let cross 			= '<span>X</span>';
-			
+
 			for (const [key, value] of Object.entries(selected_data)) {
 				if( ! selected_data['default_call'] && typeof value !== "undefined" ){
 					if ( key == "price_range" && value == true ) {
@@ -220,6 +220,12 @@
 					}
 					if ( key == "search_value" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='.search-form'>${filter_client.localize.search}${cross}</div>`
+					}
+					if ( key == "stock" && value !== "" ) {
+						selected_html += `<div class='filter-tag' data-node='.search-form'>${selected_data.stock_text}${cross}</div>`
+					}
+					if ( key == "on_sale" && value !== "" ) {
+						selected_html += `<div class='filter-tag' data-node='.search-form'>${selected_data.on_sale_text}${cross}</div>`
 					}
 					if ( key == "taxonomies_name" ) {
 						for (const [name, data] of Object.entries(value)) {
@@ -274,9 +280,12 @@
 			params['taxonomies_name']    	= get_tags('name');
 			params['filter_param']  		= get_tags(false);
 			params['search_value']  		= $(".sidebar-input").val();
-			params['order_by']      		= $("#filter-sort-by option:selected").val()
-			params['stock']      			= $(".stock input[type='checkbox']:checked").val()
-			params['on_sale']      			= $(".on_sale input[type='checkbox']:checked").val()
+			params['order_by']      		= $("#filter-sort-by option:selected").val();
+			params['stock']      			= $(".stock input[type='checkbox']:checked").val();
+			params['stock_text']      		= $(".stock input[type='checkbox']:checked").data('stock_text');
+			params['on_sale']      			= $(".on_sale input[type='checkbox']:checked").val();
+			params['on_sale_text']      	= $(".on_sale input[type='checkbox']:checked").data('on_sale_text');
+
 			if ( price_range.length>0 ) {
 				let prices = price_range.val().split(',');
 				params['min']    		= prices[0];

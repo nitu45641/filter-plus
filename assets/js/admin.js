@@ -168,7 +168,6 @@
 			let form_data 	= {};	
 			tabs.forEach(element => {
 				let input_data 		= getAllValues( element );
-				console.log(input_data);
 				$.each(input_data, function ( i , value ) {
 					form_data[i] = value;
 				}); 
