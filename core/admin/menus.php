@@ -98,6 +98,15 @@ class Menus {
 				"menu_slug"   => 'settings',
 				"cb_function" => array($this,'filter_plus_view'),
 				"position"    => 11
+			),
+			array(
+				"parent_slug" => 'filter_plus',
+				"page_title"  => esc_html__('Filter Set','filter-plus'),
+				"menu_title"  => esc_html__('Filter Set','filter-plus'),
+				"capability"  => 'read',
+				"menu_slug"   => 'filter-set',
+				"cb_function" => array($this,'filter_set'),
+				"position"    => 11
 			)
 		);
 
@@ -125,6 +134,17 @@ class Menus {
      */
     public function over_view() {
 		include_once \FilterPlus::core_dir() . "admin/overview.php"; 
+	}
+
+	/**
+     * OverView
+     *
+     * @return void
+     */
+    public function filter_set() {
+		?>
+			<div class="wrap"><?php include_once \FilterPlus::core_dir() . "admin/filter-set.php"; ?></div>
+		<?php
 	}
 
     /**
