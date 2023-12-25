@@ -16,6 +16,7 @@ foreach ($attributes as $key => $item ) {
 						<div class="radio-item taxonomy-item-<?php echo esc_attr($template);?>" 
 						data-taxonomy="<?php echo esc_attr($term->taxonomy); ?>"
 						data-term_id="<?php echo esc_attr($term->term_id); ?>"
+						data-slug="<?php echo esc_attr($term->slug); ?>"
 						data-name="<?php echo esc_attr($term->name); ?>"
 						>
 							<?php echo esc_html($term->name); ?>

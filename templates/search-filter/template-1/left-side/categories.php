@@ -10,7 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			$get_categories = \FilterPlus\Utils\Helper::get_categories($categories);
 			if ( !empty( $get_categories ) ) :
 				foreach($get_categories as $item): ?>
-					<li data-cat_id="<?php echo esc_attr($item->term_id)?>"><?php echo esc_html($item->name)  ;?></li>
+					<li 
+					data-cat_id="<?php echo esc_attr($item->term_id)?>"
+					data-slug="<?php echo esc_attr($item->slug)?>">
+					<?php echo esc_html($item->name)  ;?></li>
 				<?php 
 				endforeach; 
 			endif;

@@ -22,6 +22,7 @@ foreach ($attributes as $key => $item ) {
 							<div class="radio-item" 
 							data-taxonomy="<?php echo esc_attr($term->taxonomy); ?>"
 							data-term_id="<?php echo esc_attr($term->term_id); ?>"
+							data-slug="<?php echo esc_attr($term->slug); ?>"
 							>
 								<?php echo esc_html($term->name); ?>
 							</div>

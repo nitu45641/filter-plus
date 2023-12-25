@@ -203,7 +203,10 @@
 		 * @param {*} selected_data 
 		 */
 		function show_selected_data( selected_data ) {
-			refresh_url(selected_data);
+			if ( filter_client.refresh_url == 'yes' ) {
+				refresh_url(selected_data);
+			}
+
 			let selected_html 	= '';
 			let clear_all 		= `<div class="clear-filter">${filter_client.localize.clear_all}</div>`;
 			let cross 			= '<span>X</span>';
@@ -245,19 +248,31 @@
 		 */
 		function refresh_url(selected_data) {
 			if ( typeof selected_data?.default_call === "undefined" && filter_client.is_pro_active == "1" ) {
-				let urlKey 	 = ['product_cat','rating','price_range'];
+				let urlKey 	 = ['product_cat','rating','price_range','stock','on_sale','taxonomies_name'];
 				let $urlPart = '';
 				for (const [key, value] of Object.entries(selected_data)) {
 					if ($.inArray(key,urlKey) !== -1 && 
 					typeof value !== "undefined" && value !== '' ) {
-						if (key == 'price_range' && value == true ) {
+						if ( key == 'price_range' && value == true ) {
 							$urlPart += `${'price'}=[${selected_data['min']}-${selected_data['max']}]`;
-						}else{
+						}
+						else if( key == 'taxonomies_name' ){
+							for (const [index, item] of Object.entries(value)) {
+								$urlPart += `${index}=${item}`;
+							}
+						}
+						else{
 							$urlPart += `${key}=[${value}]`;
 						}
 					}
 				}
-				window.history.pushState(null, null, `?fp=`+$urlPart );
+
+				if ($urlPart !== '' ) {
+					window.history.pushState(null, null, `?fp=`+$urlPart );
+				}
+				else{
+					window.history.replaceState(null, '', window.location.pathname);
+				}
 			}else{
 				window.history.replaceState(null, '', window.location.pathname);
 			}
@@ -275,10 +290,10 @@
 			let price_range = $(".range-slider");
 			// category
 			params['cat_id'] 				= $(".category-list li.active").data('cat_id');
-			params['product_cat'] 			= $.trim($(".category-list li.active").text());
+			params['product_cat'] 			= filter_client.seo_slug_url == 'yes' ? $(".category-list li.active").data('slug'): $.trim($(".category-list li.active").text());
 			params['rating']   				= $("ul.ratings").attr("id");
 			params['taxonomies']    		= get_tags(true);
-			params['taxonomies_name']    	= get_tags('name');
+			params['taxonomies_name']    	= filter_client.seo_slug_url == 'yes' ? get_tags('slug') : get_tags('name');
 			params['filter_param']  		= get_tags(false);
 			params['search_value']  		= $(".sidebar-input").val();
 			params['order_by']      		= $("#filter-sort-by option:selected").val();
@@ -429,25 +444,28 @@
 			if (attribute.length > 0) {
 				attribute.each(function (i, value) {
 					let single_attr = $(value).find('div');
+					let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');
 					if (!selected) {
 						obj[single_attr.data('taxonomy')] = single_attr.map(function () {
 							return $(this).data('term_id');
 						}).get();
 					}
-					else if ( selected == 'name' ) {
-						let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');
+					else if ( selected == 'name' || selected == 'slug' ) {
 						if ( typeof active_tag.data("term_id") === "undefined" ) {
 							return
 						}
-						if ( active_tag.data("taxonomy") == "pa_color" ) {
-							obj[single_attr.data('taxonomy')] = active_tag.data('name');
+						if ( selected == 'name' ) {
+							if ( active_tag.data("taxonomy") == "pa_color" ) {
+								obj[single_attr.data('taxonomy')] = active_tag.data('name');
+							} else {
+								obj[single_attr.data('taxonomy')] = active_tag.text();
+							}
 						} else {
-							obj[single_attr.data('taxonomy')] = active_tag.text();
+							obj[single_attr.data('taxonomy')] = active_tag.data('slug');
 						}
-						
+
 					}
 					else {
-						let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');
 						if (active_tag.data("term_id")) {
 							obj[single_attr.data('taxonomy')] = active_tag.data("term_id");
 						}

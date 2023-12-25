@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 							<div class="radio-item" 
 							data-term_id="<?php echo esc_attr($term_id); ?>"
 							data-taxonomy="<?php echo esc_attr(get_term( $term_id )->taxonomy ); ?>"
+							data-slug="<?php echo esc_attr(get_term( $term_id )->slug ); ?>"
 							><?php echo esc_html( get_term( $term_id )->name ); ?></div>
 						<?php
 					}
