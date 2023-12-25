@@ -21,16 +21,14 @@
         ];
 
         ?>
-		<div class="wrap">
-            <button class=""><?php esc_html_e('Add Filter Set', 'filter-plus');?></button>
-			<form method="POST">
-				<?php
-					$table = new \FilterPlus\Core\Admin\FilterSetTable( $filter_sets );
-					$table->preparing_items();
-					$table->display();
-				?>
-			</form>
-		</div>
+        <button class="mt-3"><?php esc_html_e('Add Filter Set', 'filter-plus');?></button>
+        <form method="POST">
+            <?php
+                $table = new \FilterPlus\Core\Admin\FilterSetTable( $filter_sets );
+                $table->preparing_items();
+                $table->display();
+            ?>
+        </form>
 		<?php
 	}
 ?>
