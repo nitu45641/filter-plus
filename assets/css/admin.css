@@ -671,3 +671,72 @@ a.pro-link:focus{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+
+  /* Accordion css start */
+
+
+  .accordion {
+    width: 100%;
+
+    .accordion-list {
+		li{
+			margin-bottom: 0;
+		}
+      .accordion-item {
+        list-style: none;
+        position: relative;
+        height: max-content;
+        input[type="checkbox"] {
+          display: none;
+        }
+        .accordion-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 5px 16px;
+          background: #ffffff;
+          cursor: pointer;
+          position: relative;
+          z-index: 2;
+          .opened {
+            display: none;
+          }
+          .closed {
+            display: block;
+          }
+        }
+
+        .content {
+          transition: all 0.3s ease;
+          opacity: 0;
+          pointer-events: none;
+          padding: 8px 16px;
+          position: relative;
+          z-index: 1;
+          padding-left: 20px;
+          margin-top: -12px;
+          &.show {
+			background: #fff;
+			margin: 10px 0;
+            opacity: 1;
+            pointer-events: all;
+          }
+          p {
+            margin-bottom: 8px;
+            color: gray;
+          }
+        }
+
+        input[type="checkbox"]:checked ~ label .opened {
+          display: block;
+        }
+        input[type="checkbox"]:checked ~ label .closed {
+          display: none;
+        }
+      }
+    }
+  }
+
+
+  /* Accordion css end */

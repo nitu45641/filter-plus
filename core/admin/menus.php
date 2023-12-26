@@ -101,8 +101,8 @@ class Menus {
 			),
 			array(
 				"parent_slug" => 'filter_plus',
-				"page_title"  => esc_html__('Filter Set','filter-plus'),
-				"menu_title"  => esc_html__('Filter Set','filter-plus'),
+				"page_title"  => esc_html__('Filter Sets','filter-plus'),
+				"menu_title"  => esc_html__('Filter Sets','filter-plus'),
 				"capability"  => 'read',
 				"menu_slug"   => 'filter-set',
 				"cb_function" => array($this,'filter_set'),
