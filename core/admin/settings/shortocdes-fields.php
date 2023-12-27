@@ -86,13 +86,14 @@ if ( !function_exists('filter_plus_select_field') ) {
 		else if (!empty($args['type']) && ( "random" == $args['type']) ) {
 			if ( !empty( $args['options'] ) ) :
 				foreach($args['options'] as $key => $item):
-					$disabled = !empty($disabled) ? 'disabled' : '';
+					$disabled = !empty($disable) ? 'disabled' : '';
 					if (is_array($selected)) {
 						$select_opt = in_array($key,$selected)  ? 'selected' : '';
 					}else{
 						$select_opt = $key == $selected ? 'selected' : '';
 					}
-					$options_html .= '<option '. $select_opt .' '. $disabled.' value="'.$key.'">'. $item .'</option>';
+					$pro_text = !empty($disabled) ? ' ('.esc_html__('Pro','filter-plus').')' : '';
+					$options_html .= '<option '.$disabled.' '. $select_opt .' '. $disabled.' value="'.$key.'">'. $item  . $pro_text .'</option>';
 				endforeach; 
 			endif;
 		}

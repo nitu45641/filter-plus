@@ -12,7 +12,7 @@
 		 * Tab functions
 		 */
 		let $settings_tab_li = $(".settings_tab_pan li");
-		let active_tab 		 = window.location?.hash.slice(1) == "" ? "short-codes" : window.location?.hash.slice(1);
+		let active_tab 		 = window.location?.hash.slice(1) == "" ? "settings" : window.location?.hash.slice(1);
 
 		$settings_tab_li.removeClass('active');
 		$(".tab-content div").removeClass('active');

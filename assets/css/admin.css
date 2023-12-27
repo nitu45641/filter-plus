@@ -714,6 +714,7 @@ a.pro-link:focus{
           padding: 8px 16px;
           position: relative;
           z-index: 1;
+		  max-height: 0;
           padding-left: 20px;
           margin-top: -12px;
           &.show {
@@ -721,6 +722,7 @@ a.pro-link:focus{
 			margin: 10px 0;
             opacity: 1;
             pointer-events: all;
+			max-height: max-content;
           }
           p {
             margin-bottom: 8px;

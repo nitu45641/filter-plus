@@ -1,15 +1,14 @@
 <?php 
 	include_once \FilterPlus::core_dir() . "admin/settings/shortocdes-fields.php"; 
-	$disable = class_exists('FilterPlusPro') ? false : true;
-
-	$settings 		= \FilterPlus\Utils\Helper::get_settings();
+	$disable    = class_exists('FilterPlusPro') ? false : true;
+	$settings 	= \FilterPlus\Utils\Helper::get_settings();
     extract($settings);
+
     $tabs = array(
-		'short-codes'   => esc_html__( 'Shortcodes', 'filter-plus' ),
 		'settings'      => esc_html__( 'General Settings', 'filter-plus' ),
 		'seo'           => esc_html__( 'SEO', 'filter-plus' ),
 	);
-	$tab_content = array('short-codes','settings','seo');
+	$tab_content = array('settings','seo');
 ?>
 <div class="settings_message d-none"></div>
 <form id="filter-settings">
@@ -18,15 +17,14 @@
         <div class="settings_tab">
             <ul class="settings_tab_pan">
                 <?php foreach ($tabs as $key => $value) { 
-                    $active = $key == "short-codes" ? "active" : "";
+                    $active = $key == "settings" ? "active" : "";
                 ?>
                     <li class="<?php echo esc_attr( $active )?>" data-item="<?php echo esc_attr( $key );?>"><?php echo($value) ?></li>
                 <?php } ?>
             </ul>
             <div class="tab-content">
                 <?php foreach ($tab_content as $key => $value) { 
-                    $active = $value == "short-codes" ? "active" : "";
-                ?>
+                    $active = $value == "settings" ? "active" : ""; ?>
                 <div id="<?php echo esc_attr( $value )?>" class="<?php echo esc_attr( $active )?>">
                     <?php include_once \FilterPlus::core_dir()."admin/settings/tab-content/".$value.".php"; ?>
                 </div>
