@@ -311,7 +311,7 @@ class Actions {
 	 */
 	public static function process_wp_data( $posts , $param ) {
 		$products = array();
-		$size  = self::product_size($param['template']);
+		$size  = $param['filter_type'] == "product" ? self::product_size($param['template']) : 'full';
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
 				$products[$key]['id'] = $post->ID;
