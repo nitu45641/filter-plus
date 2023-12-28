@@ -378,9 +378,11 @@ class Helper {
 	 * Get categories
 	 *
 	 */
-	public static function get_categories( $categories = "" , $type = false ) {
+	public static function get_categories( $categories = "" , $type = false , $args = array() ) {
+		extract($args);
+		$taxonomy = !empty($taxonomy) ? $taxonomy : 'product_cat';
 		$args_cat = array(
-			'taxonomy'     => "product_cat",
+			'taxonomy'     => $taxonomy,
 			'number'       => 50,
 			'hide_empty'   => 0,
 		);

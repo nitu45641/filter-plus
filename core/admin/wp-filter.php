@@ -3,15 +3,19 @@
 	<div class="shortcode-block" data-name="wp_filter_plus">
 		<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
 		<?php
-			// templates
+			
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/?docs=filter-plus/gutenburg-block-elementor-widget-woocommercce-product-filter"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 			$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</i></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
+			// templates
+			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
+			'data_label' => 'template','options'=>[1],'type'=>'template', 'disable' => $disable );
+			filter_plus_select_field($args);
 
 			$args 		= array('label'=>esc_html__("Select Type","filter-plus"),'id' => 'filter_type',
 				'data_label' => 'filter_type','options'=>
-				array(esc_html__("Post","filter-plus"),esc_html__("Custom Post","filter-plus")),'type'=>'random',
-				'select_type' => 'single' , 'disable' => 'disable'
+				array('post'=>esc_html__("Post","filter-plus"),'custom_post'=>esc_html__("Custom Post","filter-plus")),'type'=>'random',
+				'select_type' => 'single' , 'disable' => $disable
 			);
 
 			filter_plus_select_field($args);

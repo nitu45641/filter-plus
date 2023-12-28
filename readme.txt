@@ -21,7 +21,7 @@ It will help users shorten the products quickly and order from the prioritized p
 
 **Helpful links 👇**
 
-**⭐️ Check Premeium Features 👉 [Filter Plus Pro](https://woooplugin.com/filter-plus/)**
+**⭐️ Check premium Features 👉 [Filter Plus Pro](https://woooplugin.com/filter-plus/)**
 **⭐️ Need Any Help? 👉 [Contact Us](https://woooplugin.com/support/).**
 **⭐️ Check Live Demo 👉 [Filter Plus Sample 1](https://product.woooplugin.com/filter-plus/)**
 **⭐️ Check Live Demo 👉 [Filter Plus Sample 2](https://product.woooplugin.com/filter-products-tempate-1/)**
@@ -75,17 +75,17 @@ Moreover, **Filter Tag** will be displayed on the page after applying it. Users 
 
 **👉 WPML Compatible** - Filter Plus is now WPML compatible. So, you can use this plugin in translatable website. If you have a website in local language, still you can use **Filter Plus WordPress Filter Plugin.** If you use WPML in your site, you are now good to use Filter Plus on the site.
 
-**👉 RTL Support** - If you have any WordPress site that has right to lfet language, you can use the plugin. Filter Plus is now RTL compatible plugin.
+**👉 RTL Support** - If you have any WordPress site that has right to left language, you can use the plugin. Filter Plus is now RTL compatible plugin.
 
-**👉 Nice URL for Filter Page ** - Once the users update the filter craiteria, the site will have a SEO friendly new URL.
+**👉 Nice URL for Filter Page ** - Once the users update the filter criteria, the site will have a SEO friendly new URL.
 
-**👉 Filter by Product** - Visitors can add filter based on the products. So, if any store have same products ubder different category, offers and value, users can see all of them in same page. This features helps growing sales for multivendor eCommerce website.
+**👉 Filter by Product** - Visitors can add filter based on the products. So, if any store have same products under different category, offers and value, users can see all of them in same page. This features helps growing sales for multivendor eCommerce website.
 
 **👉 Filter by Order Status** - Visitors can add filter based on the order status.
 
 **👉 Filter by Product in Woo Order Page** - With Filter Plus, you can enable filtering option on the WooCommerce order page.
 
-**👉 SEO Options** Filter Plus SEO option helps the store oner to submi SEO information to the search engine. We did the technical part so admin can just select and see the SEO boost on the store.
+**👉 SEO Options** Filter Plus SEO option helps the store owner to submit SEO information to the search engine. We did the technical part so admin can just select and see the SEO boost on the store.
 
 More features are on the way!
 
