@@ -55,8 +55,10 @@ class Actions {
 		$on_sale      = ! empty( $post_arr['on_sale'] ) ? $post_arr['on_sale'] : '';
 		$offset       = ! empty( $post_arr['offset'] ) ? $post_arr['offset'] : 1;
 		$default_call = ! empty( $post_arr['default_call'] ) ? $post_arr['default_call'] : false;
+		$filter_type  = ! empty( $post_arr['filter_type'] ) ? $post_arr['filter_type'] : 'woo-filter';
 
 		$args = array(
+			'filter_type'   => $filter_type,
 			'template'      => $template,
 			'offset'        => $offset,
 			'filter_param'  => $filter_param,
@@ -96,25 +98,33 @@ class Actions {
     public function get_products( $param = array() ) {
 		$limit = 9;
 		$args = array(
-			'post_type'             => 'product',
+			'post_type'             => $param['filter_type'],
 			'post_status'           => 'publish',
 			'paged'                 => $param['offset'],
 			'posts_per_page'        => $limit,
 			'paginate'              => true
 		);
-		$args = $this->product_order_by( $param , $args );
-		$args = $this->add_search_value( $param , $args );
-		$args = $this->product_min_max_price( $param , $args );
-		$args = \FilterPlus\Utils\Helper::product_filter( $param , $args );
-		$args = $this->product_reviews( $param , $args );
-		$args = $this->product_on_stock( $param , $args );
-		$args = $this->product_on_sale( $param , $args );
+		if ( $param['filter_type'] == "product") {
+			$args = $this->product_order_by( $param , $args );
+			$args = $this->add_search_value( $param , $args );
+			$args = $this->product_min_max_price( $param , $args );
+			$args = \FilterPlus\Utils\Helper::product_filter( $param , $args );
+			$args = $this->product_reviews( $param , $args );
+			$args = $this->product_on_stock( $param , $args );
+			$args = $this->product_on_sale( $param , $args );
+		}
 
 		$posts = get_posts( $args );
+
 		// total products
 		$args['posts_per_page'] = -1;
 		$posts_count            = count(get_posts($args));
-		$products   = $this->process_product_data( $posts , $param );
+		if ( $param['filter_type'] == "product") {
+			$products   = $this->process_product_data( $posts , $param );
+		}else{
+			$products   = $this->process_wp_data( $posts , $param );
+		}
+		error_log( json_encode($posts) );
 
 
 		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $limit) );
@@ -292,6 +302,28 @@ class Actions {
 				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] );
 				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? get_the_terms ( $post->ID , 'product_cat') : [];
 				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? get_the_terms ( $post->ID , 'product_tag'  ) : [];
+
+			endforeach;
+		}
+
+		return $products;
+	}
+
+	/**
+	 * format wp data
+	 *
+	 * @return array
+	 */
+	public static function process_wp_data( $posts , $param ) {
+		$products = array();
+		$size  = self::product_size($param['template']);
+		if ( !empty($posts) ) {
+			foreach ( $posts as $key => $post ):
+				$products[$key]['post_title']       = get_the_title( $post->ID );
+				$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
+				$products[$key]['post_image']       = $image;
+				$products[$key]['post_description'] = get_the_content();
+				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 
 			endforeach;
 		}

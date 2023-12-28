@@ -289,6 +289,7 @@
 			}
 			let price_range = $(".range-slider");
 			// category
+			params['filter_type'] 			= $(".shopContainer").data('filter_type');
 			params['cat_id'] 				= $(".category-list li.active").data('cat_id');
 			params['product_cat'] 			= filter_client.seo_slug_url == 'yes' ? $(".category-list li.active").data('slug'): $.trim($(".category-list li.active").text());
 			params['rating']   				= $("ul.ratings").attr("id");

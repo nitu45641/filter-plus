@@ -75,7 +75,8 @@ class Shortcodes {
 
 		if ( file_exists( \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 		?>
-			<div class="shopContainer" 
+			<div class="shopContainer"
+			data-filter_type='product' 
 			data-template="<?php echo esc_attr($template)?>"
 			data-product_categories="<?php echo esc_attr($product_categories)?>"
 			data-product_tags="<?php echo esc_attr($product_tags)?>"
