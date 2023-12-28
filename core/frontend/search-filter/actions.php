@@ -124,8 +124,6 @@ class Actions {
 		}else{
 			$products   = $this->process_wp_data( $posts , $param );
 		}
-		error_log( json_encode($posts) );
-
 
 		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $limit) );
 	}
@@ -279,7 +277,7 @@ class Actions {
 	 * @return array
 	 */
 	public static function process_product_data( $posts  , $param ) {
-		$products = array();
+		$products = self::process_wp_data( $posts , $param );
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
 				if(has_post_thumbnail($post->ID)){
@@ -291,10 +289,7 @@ class Actions {
 				}
 				$product_instance = wc_get_product($post->ID);
 
-				$products[$key]['id'] = $post->ID;
-				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$products[$key]['rating']           = class_exists('FilterPlusPro') ? self::rating_html( $product_instance ) : "";
-				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 				$products[$key]['post_description'] = $product_instance->get_short_description();
 				$products[$key]['post_image']       = $image;
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
@@ -319,6 +314,7 @@ class Actions {
 		$size  = self::product_size($param['template']);
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
+				$products[$key]['id'] = $post->ID;
 				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
 				$products[$key]['post_image']       = $image;
