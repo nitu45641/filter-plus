@@ -681,7 +681,7 @@ a.pro-link:focus{
 
     .accordion-list {
 		li{
-			margin-bottom: 0;
+			margin-bottom: 5px;
 		}
       .accordion-item {
         list-style: none;
@@ -699,6 +699,9 @@ a.pro-link:focus{
           cursor: pointer;
           position: relative;
           z-index: 2;
+		  p{
+			font-size: 14px;
+		  }
           .opened {
             display: none;
           }

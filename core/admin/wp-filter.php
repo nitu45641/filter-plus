@@ -1,6 +1,6 @@
 
 <div class="content-wrapper">
-	<div class="shortcode-block" data-name="filter_products">
+	<div class="shortcode-block" data-name="wordpress_filter">
 		<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
 		<?php
 			// templates

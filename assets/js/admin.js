@@ -45,11 +45,11 @@
 		 */
 		generateShortCode();
 		function generateShortCode(){
-			var results = $("#result_shortcode");
 			$(".generate-block").each(function(index,value){
 				let _this = $(this);
 				_this.on('click',function(e){
 					e.preventDefault();
+					let results = _this.siblings(".full_input");
 					let parent_block = _this.parents(".shortcode-block");
 					let shortcode_name = parent_block.data("name");
 					let input_value = findInputValue(parent_block.find(".input-section"));
