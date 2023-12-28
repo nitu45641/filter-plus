@@ -77,7 +77,7 @@
 			if ( select_box.length > 0 ) {
 				select_box.each(function() {
 					let $this = $(this);
-					let disable = $this.parent().hasClass('disable');
+					let disable = $this.hasClass('pro-disable');
 					if (disable) {
 						return;
 					}

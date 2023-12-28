@@ -1,6 +1,6 @@
 
 <div class="content-wrapper">
-	<div class="shortcode-block" data-name="wordpress_filter">
+	<div class="shortcode-block" data-name="wp_filter_plus">
 		<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
 		<?php
 			// templates
@@ -11,7 +11,7 @@
 			$args 		= array('label'=>esc_html__("Select Type","filter-plus"),'id' => 'filter_type',
 				'data_label' => 'filter_type','options'=>
 				array(esc_html__("Post","filter-plus"),esc_html__("Custom Post","filter-plus")),'type'=>'random',
-				'select_type' => 'single'
+				'select_type' => 'single' , 'disable' => 'disable'
 			);
 
 			filter_plus_select_field($args);

@@ -23,7 +23,8 @@ class Shortcodes {
 	public function init() {
 		// [filter_products categories='']
 		$shortcode_arr = array(
-			'filter_products' => 'filter_plus',
+			'filter_products' 	=> 'filter_plus',
+			'wp_filter_plus' 	=> 'wp_filter_plus',
 		);
 
 		// add shortcode
@@ -38,7 +39,6 @@ class Shortcodes {
 	 * Filter products
 	 *
 	 * @param [type] $atts
-	 * @return void
 	 */
 	public function filter_plus( $atts ) {
 		if ( ! class_exists( 'Woocommerce' ) ) {return;}
@@ -65,8 +65,14 @@ class Shortcodes {
 		);
 
 		ob_start();
+		$is_pro_active = $this->pro_template_check($template);
+		if ($is_pro_active !== '' ) {
+			echo $is_pro_active;
+			return ob_get_clean();
+		} 
+		
 		$this->custom_css($template);
-		$this->is_pro_active($template);
+
 		if ( file_exists( \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 		?>
 			<div class="shopContainer" 
@@ -82,14 +88,46 @@ class Shortcodes {
 		return ob_get_clean();
 	}
 
-	public function is_pro_active($template) {
-		$pro_template = ['2'];
-		if ( in_array($template,$pro_template) && !class_exists('FilterPlusPro') ) {
-			?>
-			<div class="row"><div class="woocommerce-error"><?php esc_html_e('Please Active FilterPlus Pro','filter-plus');?></div></div>
-			<?php
-			exit();
+	public function wp_filter_plus( $atts ) {
+		ob_start();
+		$is_pro_active = $this->is_pro_active();
+		if ($is_pro_active !== '' ) {
+			echo $is_pro_active;
+			return ob_get_clean();
+		} 
+
+		apply_filters('filter_pro_pro/wp_filter',$atts);
+		
+		return ob_get_clean();
+	}
+
+	/**
+	 * Check pro template
+	 *
+	 * @param [type] $template
+	 */
+	public function pro_template_check($template) {
+		$pro_template 	= [2];
+		$html 			= '';
+		if ( in_array((int)$template,$pro_template) && !class_exists('FilterPlusPro') ) {
+			$html = '<div class="row"><div class="woocommerce-error">'.esc_html__('Please Active FilterPlus Pro','filter-plus').'</div></div>';
 		}
+
+		return $html;
+	}
+
+	/**
+	 * Check filter pro 
+	 *
+	 * @param [type] $template
+	 */
+	public function is_pro_active() {
+		$html 			= '';
+		if ( !class_exists('FilterPlusPro') ) {
+			$html = '<div class="row"><div class="woocommerce-error">'.esc_html__('Please Active FilterPlus Pro','filter-plus').'</div></div>';
+		}
+
+		return $html;
 	}
 
 	/**

@@ -1,7 +1,6 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) exit;
-
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/product-search.php"; ?>
@@ -28,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-attr-grid.php";
 		}
 		include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-param.php"; 
-		if (!class_exists('FilterPlusPro')) { return; }
+
 		// on sale
 		if ( class_exists('FilterPlusPro') && 'yes'== $on_sale ) {
 			include_once \FilterPlusPro::plugin_dir() . "templates/search-filter/template-".$template."/on-sale.php";
@@ -39,7 +38,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		} 
 	?>
 </div>
-
 <div class="row products-wrap">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/right-side/filter-top.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/right-side/sort-bar.php"; ?>

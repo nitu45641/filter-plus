@@ -107,17 +107,12 @@ if ( !function_exists('filter_plus_select_field') ) {
 				endforeach; 
 			endif;
 		}
-	
-	
-		$condition_class = !empty($args['condition_class']) ? $args['condition_class'] : "";
+		$condition_class = !empty($args['condition_class']) ? $args['condition_class'] : '';
 		$html = '
 			<div class="single-block '.$condition_class.'">
 				<div class="form-label">'.$args['label'].'</div>
 				<div class="input-section">
-					'.$pro_link_start.'
-					<select name="'.$args['id'].'" id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
-					'.pro_tag_markup($disable,"").'
-					'.$pro_link_end.'
+					<select class="pro-'.$disable.'" name="'.$args['id'].'" id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
 				</div>
 			</div>
 		';
