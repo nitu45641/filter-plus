@@ -325,11 +325,13 @@ class Actions {
 					$image_url = wc_placeholder_img_src( 'woocommerce_single' );
 					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
 				}
+				
 				$products[$key]['id'] = $post->ID;
 				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$products[$key]['post_image']       = $image;
-				$products[$key]['post_description'] = get_the_content();
+				$products[$key]['post_description'] = apply_filters('the_content', $post->post_content);
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
+				$products[$key]['author']   		= esc_html__('By','filter-plus').' '. get_the_author_meta( 'display_name',$post->post_author );
 
 			endforeach;
 		}
