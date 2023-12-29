@@ -661,9 +661,14 @@ class Helper {
 	 *
 	 * @return array
 	 */
-	public function author_list() {
-		$users = get_users();
+	public function author_list($ids) {
 		$user_list = array();
+		$args = [
+			'include' => explode(',',$ids),
+			'fields'  => [ 'ID', 'display_name'],
+		  ];
+		$users = get_users($args);
+
 		foreach ($users as $user)  {
 			$user_list[$user->ID] = $user->display_name;
 		}
