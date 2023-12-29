@@ -3,7 +3,7 @@
 
 	$(document).ready(function(){
 		// load select 2
-		var ids = ["#woo_pro_categories","#woo_pro_tags","#woo_pro_attributes","#seo_elements"];
+		var ids = ["#woo_pro_categories","#woo_pro_tags","#woo_pro_attributes","#seo_elements","#post_tags"];
 		$.each(ids,function(index,value){
 			$(value).select2( { width: '100%'} );
 		});
@@ -109,16 +109,24 @@
 		 * Toggle Show/Hide
 		 *  
 		 * */
-		var ids = ["show_tags","show_attributes"];
+		var ids = ["show_tags","show_attributes","show_wp_tags","filter_type"];
 		$.each(ids,function(index,data){
-		let value = $("#"+data);
-		value.on('change',function(){
-			if (value.is(":checked")) {
-				$("."+data).removeClass("d-none");
-			}else{
-				$("."+data).addClass("d-none");
-			}
-			})
+			let value = $("#"+data);
+			value.on('change',function(){
+				if ( data == "filter_type" ) {
+					if ( value.val() == "custom_post" ) {
+						$("."+data).removeClass("d-none");
+					} else {
+						$("."+data).addClass("d-none");
+					}
+				}else{
+					if (value.is(":checked") ) {
+						$("."+data).removeClass("d-none");
+					}else{
+						$("."+data).addClass("d-none");
+					}
+				}
+			});
 		});
 
 		/**

@@ -56,6 +56,7 @@ class Actions {
 		$offset       = ! empty( $post_arr['offset'] ) ? $post_arr['offset'] : 1;
 		$default_call = ! empty( $post_arr['default_call'] ) ? $post_arr['default_call'] : false;
 		$filter_type  = ! empty( $post_arr['filter_type'] ) ? $post_arr['filter_type'] : 'woo-filter';
+		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
 
 		$args = array(
 			'filter_type'   => $filter_type,
@@ -67,16 +68,20 @@ class Actions {
 			'search_value'  => $search_value,
 			'min'           => $min,
 			'max'           => $max,
-			'rating'          => $rating,
+			'rating'        => $rating,
 			'product_tags'  => $product_tags,
 			'order_by'      => $order_by,
 			'product_categories'  => $product_categories,
 			'stock'  		=> $stock,
-			'on_sale'  		=> $on_sale
+			'on_sale'  		=> $on_sale,
+			'taxonomy'  	=> $taxonomy
 		);
 
 		$get_products   = $this->get_products( $args );
-		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id, 'filter_param' => $filter_param ,'default_call' =>$default_call) );
+		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id,
+		'filter_param' => $filter_param ,'default_call' => $default_call , 'filter_type' => $filter_type ,
+		'taxonomy' => $taxonomy ) );
+
 		$message = $get_products['total'] == 0  ? esc_html__( 'No Matching Product Found', 'filter-plus' ) : '';
 		$response = array(
 			'success'        => true,
@@ -104,11 +109,13 @@ class Actions {
 			'posts_per_page'        => $limit,
 			'paginate'              => true
 		);
+		// by category
+		$args = \FilterPlus\Utils\Helper::product_filter( $param , $args );
+
 		if ( $param['filter_type'] == "product") {
 			$args = $this->product_order_by( $param , $args );
 			$args = $this->add_search_value( $param , $args );
 			$args = $this->product_min_max_price( $param , $args );
-			$args = \FilterPlus\Utils\Helper::product_filter( $param , $args );
 			$args = $this->product_reviews( $param , $args );
 			$args = $this->product_on_stock( $param , $args );
 			$args = $this->product_on_sale( $param , $args );
@@ -280,18 +287,9 @@ class Actions {
 		$products = self::process_wp_data( $posts , $param );
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
-				if(has_post_thumbnail($post->ID)){
-					$size  = self::product_size($param['template']);
-					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
-				} else {
-					$image_url = wc_placeholder_img_src( 'woocommerce_single' );
-					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
-				}
 				$product_instance = wc_get_product($post->ID);
-
 				$products[$key]['rating']           = class_exists('FilterPlusPro') ? self::rating_html( $product_instance ) : "";
 				$products[$key]['post_description'] = $product_instance->get_short_description();
-				$products[$key]['post_image']       = $image;
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price']       = $product_instance->get_price_html();
 				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] );
@@ -314,9 +312,14 @@ class Actions {
 		$size  = $param['filter_type'] == "product" ? self::product_size($param['template']) : 'full';
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
+				if(has_post_thumbnail($post->ID)){
+					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
+				} else {
+					$image_url = wc_placeholder_img_src( 'woocommerce_single' );
+					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
+				}
 				$products[$key]['id'] = $post->ID;
 				$products[$key]['post_title']       = get_the_title( $post->ID );
-				$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
 				$products[$key]['post_image']       = $image;
 				$products[$key]['post_description'] = get_the_content();
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );

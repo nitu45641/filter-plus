@@ -8,11 +8,18 @@
 			$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</i></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
 			// templates
-			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
+			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'post_template',
 			'data_label' => 'template','options'=>[1],'type'=>'template', 'disable' => $disable );
 			filter_plus_select_field($args);
 
-			$args 		= array('label'=>esc_html__("Select Type","filter-plus"),'id' => 'filter_type',
+			// categories
+			$get_categories = \FilterPlus\Utils\Helper::get_categories('',false,array('taxonomy'=>'category'));
+			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
+			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories);
+			filter_plus_select_field($args);
+			
+			// post type
+			$args = array('label'=>esc_html__("Select Type","filter-plus"),'id' => 'filter_type',
 				'data_label' => 'filter_type','options'=>
 				array('post'=>esc_html__("Post","filter-plus"),'custom_post'=>esc_html__("Custom Post","filter-plus")),'type'=>'random',
 				'select_type' => 'single' , 'disable' => $disable
@@ -20,28 +27,36 @@
 
 			filter_plus_select_field($args);
 
+			// custom post type
+			$get_custom_post = \FilterPlus\Utils\Helper::custom_post_type();
+			
+			$args 		= array('label'=>esc_html__("Custom Post:","filter-plus"),'id' => 'custom_post',
+			'data_label' => 'custom_post','options'=>$get_custom_post,'type'=>'random', 'disable' => $disable ,
+			'condition_class' => "filter_type d-none", );
+			filter_plus_select_field($args);
+
 			// show tags
-			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'show_wp_tags','data_label' => 'show_tags'
+			$args = array('label'=>esc_html__("Tags:","filter-plus"),'id' => 'show_wp_tags','data_label' => 'show_tags'
 			, 'disable' => $disable);
 			filter_plus_checkbox_field($args) ;
 			
 			// get tag list
-			$get_tags   = \FilterPlus\Utils\Helper::get_product_tags('product_tag');
+			$get_tags   = \FilterPlus\Utils\Helper::get_product_tags('post_tag');
 
 			$args       = array('label'=>esc_html__("Tag List:","filter-plus"),'id' => 'post_tags',
-			'data_label' => 'tags','options'=>$get_tags , 'select_type' => 'multiple',  'condition_class' => "show_tags d-none",
+			'data_label' => 'tags','options'=>$get_tags , 'select_type' => 'multiple',  'condition_class' => "show_wp_tags d-none",
 			'disable' => $disable);
 
 			filter_plus_select_field($args);
 
 			// show post view range
-			$args = array('label'=>esc_html__("Display Post View Range:","filter-plus"),'id' => 'show_post_range','data_label' => 'show_post_range'
+			$args = array('label'=>esc_html__("Post View Range:","filter-plus"),'id' => 'show_post_range','data_label' => 'show_post_range'
 			,'disable' => $disable);
 			filter_plus_checkbox_field($args);
 
 
 			// show reviews
-			$args = array( 'label'=>esc_html__("Display Reviews:","filter-plus"),'id' => 'show_post_reviews','data_label' => 'show_post_reviews',
+			$args = array( 'label'=>esc_html__("Author:","filter-plus"),'id' => 'show_post_reviews','data_label' => 'show_post_reviews',
 			'disable' => $disable );
 			filter_plus_checkbox_field($args);
 

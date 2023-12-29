@@ -414,6 +414,25 @@ class Helper {
 		return $result_cat;
 	}
 
+	/**
+	 * Get all custom post type
+	 *
+	 * @return array
+	 */
+	public static function custom_post_type()  {
+		$args = array(
+			'public'   => true,
+			'_builtin' => false,
+			);
+		
+		$output = 'names'; 
+		$operator = 'and'; 
+	
+		$post_types = get_post_types( $args, $output, $operator ); 
+	
+		return $post_types;
+	}
+
 
 	/**
 	 * Product category and tag filtering
@@ -427,10 +446,10 @@ class Helper {
 		}else{
 			$cat_id = !empty($param['filter_param']) ? $param['filter_param']['product_cat'] : [];
 		}
-		
+
 		$args['tax_query'] = array(
 			array(
-				'taxonomy' => 'product_cat',
+				'taxonomy' => $param['taxonomy'],
 				'field'    => 'id',
 				'terms'    => $cat_id,
 			),
@@ -442,7 +461,7 @@ class Helper {
 			$args['tax_query'] = array('relation' => 'AND' );
 			if ( ! empty( $param['cat_id'] ) ) {
 				$product_cat = array(
-					'taxonomy' => 'product_cat',
+					'taxonomy' => $param['taxonomy'],
 					'field'    => 'id',
 					'terms'    => $param['cat_id'],
 				);
@@ -473,11 +492,11 @@ class Helper {
 		}
 
 		$args = array(
-			'post_type'             => 'product',
+			'post_type'             => $param['filter_type'],
 			'post_status'           => 'publish',
 			'posts_per_page'        => '-1',
 		);
-		$args = self::product_filter( array('cat_id'=> $param['cat_id'] ) , $args );
+		$args = self::product_filter( array('cat_id'=> $param['cat_id'] , 'taxonomy'=> $param['taxonomy'] ) , $args );
 		$posts = get_posts( $args );
 		$all_terms = array();
 		if (!empty($posts)) {
