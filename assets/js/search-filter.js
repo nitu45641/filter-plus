@@ -455,6 +455,7 @@
 						if ( typeof active_tag.data("term_id") === "undefined" ) {
 							return
 						}
+
 						if ( selected == 'name' ) {
 							if ( active_tag.data("taxonomy") == "pa_color" ) {
 								obj[single_attr.data('taxonomy')] = active_tag.data('name');
