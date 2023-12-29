@@ -14,7 +14,7 @@
 
 			// categories
 			$get_categories = \FilterPlus\Utils\Helper::get_categories('',false,array('taxonomy'=>'category'));
-			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
+			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'wp_categories',
 			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories);
 			filter_plus_select_field($args);
 			

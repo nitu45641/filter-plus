@@ -56,9 +56,11 @@ class Actions {
 		$offset       = ! empty( $post_arr['offset'] ) ? $post_arr['offset'] : 1;
 		$default_call = ! empty( $post_arr['default_call'] ) ? $post_arr['default_call'] : false;
 		$filter_type  = ! empty( $post_arr['filter_type'] ) ? $post_arr['filter_type'] : 'woo-filter';
+		$author  	  = ! empty( $post_arr['author'] ) ? $post_arr['author'] : '';
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
 
 		$args = array(
+			'author'   		=> $author,
 			'filter_type'   => $filter_type,
 			'template'      => $template,
 			'offset'        => $offset,
@@ -109,12 +111,17 @@ class Actions {
 			'posts_per_page'        => $limit,
 			'paginate'              => true
 		);
+
+		if ($param['author'] !== '' ) {
+			$args['author__in'] = array($param['author']);
+		}
 		// by category
 		$args = \FilterPlus\Utils\Helper::product_filter( $param , $args );
+		// search
+		$args = $this->add_search_value( $param , $args );
 
 		if ( $param['filter_type'] == "product") {
 			$args = $this->product_order_by( $param , $args );
-			$args = $this->add_search_value( $param , $args );
 			$args = $this->product_min_max_price( $param , $args );
 			$args = $this->product_reviews( $param , $args );
 			$args = $this->product_on_stock( $param , $args );

@@ -661,10 +661,11 @@ class Helper {
 	 *
 	 * @return array
 	 */
-	public function author_list($ids) {
+	public function author_list($ids='') {
 		$user_list = array();
+		$user_ids = $ids == '' ? '' : explode(',',$ids);
 		$args = [
-			'include' => explode(',',$ids),
+			'include' => $user_ids,
 			'fields'  => [ 'ID', 'display_name'],
 		  ];
 		$users = get_users($args);

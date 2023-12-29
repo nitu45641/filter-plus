@@ -228,6 +228,9 @@
 					if ( key == "stock" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='.search-form'>${selected_data.stock_text}${cross}</div>`
 					}
+					if ( key == "author" && value !== "" ) {
+						selected_html += `<div class='filter-tag' data-node='.search-form'>${selected_data.author_text}${cross}</div>`
+					}
 					if ( key == "on_sale" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='.search-form'>${selected_data.on_sale_text}${cross}</div>`
 					}
@@ -248,8 +251,9 @@
 		 */
 		function refresh_url(selected_data) {
 			if ( typeof selected_data?.default_call === "undefined" && filter_client.is_pro_active == "1" ) {
-				let urlKey 	 = ['product_cat','rating','price_range','stock','on_sale','taxonomies_name'];
+				let urlKey 	 = ['product_cat','rating','price_range','stock','author','on_sale','taxonomies_name'];
 				let $urlPart = '';
+
 				for (const [key, value] of Object.entries(selected_data)) {
 					if ($.inArray(key,urlKey) !== -1 && 
 					typeof value !== "undefined" && value !== '' ) {
@@ -298,6 +302,8 @@
 			params['filter_param']  		= get_tags(false);
 			params['search_value']  		= $(".sidebar-input").val();
 			params['order_by']      		= $("#filter-sort-by option:selected").val();
+			params['author']      			= $(".author input[type='checkbox']:checked").val();
+			params['author_text']      		= $(".author input[type='checkbox']:checked").data('author_text');
 			params['stock']      			= $(".stock input[type='checkbox']:checked").val();
 			params['stock_text']      		= $(".stock input[type='checkbox']:checked").data('stock_text');
 			params['on_sale']      			= $(".on_sale input[type='checkbox']:checked").val();

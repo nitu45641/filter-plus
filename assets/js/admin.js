@@ -3,7 +3,7 @@
 
 	$(document).ready(function(){
 		// load select 2
-		var ids = ["#woo_pro_categories","#woo_pro_tags","#woo_pro_attributes",
+		var ids = ["#woo_pro_categories","#wp_categories","#woo_pro_tags","#woo_pro_attributes",
 		"#seo_elements","#post_tags","#author_list"];
 		$.each(ids,function(index,value){
 			$(value).select2( { width: '100%'} );
