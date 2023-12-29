@@ -673,3 +673,8 @@ input[type="checkbox"]:checked + label.checkbox-item
 	background-color: #2d73e7;
 	color: #fff;
 } 
+.post-tax-1{
+	padding: 5px;
+	display: flex;
+    justify-content: space-between;
+}

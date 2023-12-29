@@ -300,9 +300,6 @@ class Actions {
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price']       = $product_instance->get_price_html();
 				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] );
-				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? get_the_terms ( $post->ID , 'product_cat') : [];
-				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? get_the_terms ( $post->ID , 'product_tag'  ) : [];
-
 			endforeach;
 		}
 
@@ -315,8 +312,10 @@ class Actions {
 	 * @return array
 	 */
 	public static function process_wp_data( $posts , $param ) {
-		$products = array();
-		$size  = $param['filter_type'] == "product" ? self::product_size($param['template']) : 'full';
+		$products 	= array();
+		$size  		= $param['filter_type'] == "product" ? self::product_size($param['template']) : 'full';
+		$cats  		= $param['filter_type'] == "product" ? 'product_cat' : 'category';
+		$tags 		= $param['filter_type'] == "product" ? 'product_tag' : 'post_tag';
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
 				if(has_post_thumbnail($post->ID)){
@@ -332,7 +331,8 @@ class Actions {
 				$products[$key]['post_description'] = apply_filters('the_content', $post->post_content);
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 				$products[$key]['author']   		= esc_html__('By','filter-plus').' '. get_the_author_meta( 'display_name',$post->post_author );
-
+				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? get_the_terms ( $post->ID , $cats ) : [];
+				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? get_the_terms ( $post->ID , $tags  ) : [];
 			endforeach;
 		}
 
