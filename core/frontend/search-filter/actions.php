@@ -82,7 +82,7 @@ class Actions {
 		'filter_param' => $filter_param ,'default_call' => $default_call , 'filter_type' => $filter_type ,
 		'taxonomy' => $taxonomy ) );
 
-		$message = $get_products['total'] == 0  ? esc_html__( 'No Matching Product Found', 'filter-plus' ) : '';
+		$message = $get_products['total'] == 0  ? esc_html__( 'No Matching Result Found', 'filter-plus' ) : '';
 		$response = array(
 			'success'        => true,
 			'message'        => $message,

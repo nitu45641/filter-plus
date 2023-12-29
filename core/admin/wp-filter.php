@@ -49,16 +49,20 @@
 
 			filter_plus_select_field($args);
 
-			// show post view range
-			$args = array('label'=>esc_html__("Post View Range:","filter-plus"),'id' => 'show_post_range','data_label' => 'show_post_range'
-			,'disable' => $disable);
-			filter_plus_checkbox_field($args);
-
-
-			// show reviews
-			$args = array( 'label'=>esc_html__("Author:","filter-plus"),'id' => 'show_post_reviews','data_label' => 'show_post_reviews',
+			// show author
+			$args = array( 'label'=>esc_html__("Author:","filter-plus"),'id' => 'author','data_label' => 'author',
 			'disable' => $disable );
 			filter_plus_checkbox_field($args);
+
+			// author list
+			$author_list = \FilterPlus\Utils\Helper::instance()->author_list();
+
+			$args        = array('label'=>esc_html__("Author List:","filter-plus"),'id' => 'author_list',
+			'data_label' => 'author_list','options'=>$author_list , 'type' => 'random',
+			'select_type' => 'multiple',  'condition_class' => "author d-none",
+			'disable' => $disable);
+
+			filter_plus_select_field($args);
 
 		?>
 

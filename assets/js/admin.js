@@ -3,7 +3,8 @@
 
 	$(document).ready(function(){
 		// load select 2
-		var ids = ["#woo_pro_categories","#woo_pro_tags","#woo_pro_attributes","#seo_elements","#post_tags"];
+		var ids = ["#woo_pro_categories","#woo_pro_tags","#woo_pro_attributes",
+		"#seo_elements","#post_tags","#author_list"];
 		$.each(ids,function(index,value){
 			$(value).select2( { width: '100%'} );
 		});
@@ -109,7 +110,7 @@
 		 * Toggle Show/Hide
 		 *  
 		 * */
-		var ids = ["show_tags","show_attributes","show_wp_tags","filter_type"];
+		var ids = ["show_tags","show_attributes","show_wp_tags","filter_type","author"];
 		$.each(ids,function(index,data){
 			let value = $("#"+data);
 			value.on('change',function(){

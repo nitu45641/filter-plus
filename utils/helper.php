@@ -655,4 +655,19 @@ class Helper {
 			) );
 		}
 	}
+
+	/**
+	 * Get author list
+	 *
+	 * @return array
+	 */
+	public function author_list() {
+		$users = get_users();
+		$user_list = array();
+		foreach ($users as $user)  {
+			$user_list[$user->ID] = $user->display_name;
+		}
+
+		return $user_list;
+	}
 }
