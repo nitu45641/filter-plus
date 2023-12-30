@@ -69,12 +69,6 @@
 		<h1 class="font_bold font_20 mt-1 mb-1"><?php esc_html_e("Filter Result","filter-plus"); ?></h1>
 		
 		<?php
-
-			// show sorting
-			$args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'post_sorting','data_label' => 'sorting',
-			'disable' => $disable );
-			filter_plus_checkbox_field($args);
-
 			// show tags
 			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'post_tags','data_label' => 'post_tags',
 			'disable' => $disable );
