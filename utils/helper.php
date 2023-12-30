@@ -282,7 +282,7 @@ class Helper {
 			'filter-plus_page_settings',
 			'toplevel_page_filter_plus',
 			'filter-plus_page_overview',
-			'filter-plus_page_filter-set'
+			'filter-plus_page_filter-sets'
 		);
 
 		return $admin_pages;

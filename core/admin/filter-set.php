@@ -10,12 +10,12 @@
   
     $tabs = array(
         array(
-          'label' => esc_html__("Wordpress Filter","filter-plus"),
-          'path' => \FilterPlus::core_dir()."admin/wp-filter.php"
-        ),
-        array(
           'label' => esc_html__("WooCommerce Filter","filter-plus"),
           'path' => \FilterPlus::core_dir()."admin/settings/tab-content/short-codes.php"
+        ),
+        array(
+          'label' => esc_html__("Wordpress Filter","filter-plus"),
+          'path' => \FilterPlus::core_dir()."admin/wp-filter.php"
         )
       );
     foreach ($tabs as $key => $value) { 
