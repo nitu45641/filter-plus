@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 </script>
 
 <script id="search_products_list" type="text/x-handlebars-template">
-	<div class="horizontal-prod-card-container">
+	<div class="horizontal-prod-card-container horizontal-prod-card">
 		<div class="hpcc-image">
 			{{{ post_image }}}
 		</div>

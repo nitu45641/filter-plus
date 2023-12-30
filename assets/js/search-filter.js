@@ -118,7 +118,7 @@
 		function get_products(params = {}) {
 			var products_wrap = $(".products-wrap");
 			var prod_grid_wrap = $(".prods-grid-view");
-			var prod_list_wrap = $(".prods-list-view");
+			var prod_list_wrap = $(".wp-list-view,.prods-list-view");
 			var message_info = $(".message");
 			var template = $(".shopContainer").data("template");
 			var product_categories = $(".shopContainer").data("product_categories");
@@ -163,9 +163,12 @@
 							var source_grid = $("#search_products_grid").html();
 							var source_list = $("#search_products_list").html();
 							for (var i = 0; i < products.length; i++) {
-								var template_grid = Handlebars.compile(source_grid);
-								var template_grid = template_grid(products[i])
-								prod_grid_wrap.append(template_grid);
+								if ( source_grid ) {
+									var template_grid = Handlebars.compile(source_grid);
+									var template_grid = template_grid(products[i])
+									prod_grid_wrap.append(template_grid);
+								}
+								
 								if (source_list) {
 									var template_list = Handlebars.compile(source_list);
 									var template_list = template_list(products[i])

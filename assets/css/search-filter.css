@@ -22,6 +22,9 @@
 .font_bold {
 	font-weight: bold;
 }
+.mt-1{
+	margin-top: 1%;
+}
 .sort-bar {
 	display: grid;
 	grid-template-columns: 2fr 1fr;
@@ -411,10 +414,15 @@ ul.ratings {
 }
 .horizontal-prod-card-container {
 	display: grid;
-	grid-template-columns: 200px auto 250px;
 	border-top: 1px solid #efefef;
 	padding: 25px 20px;
 	transition: 0.3s;
+}
+.horizontal-prod-card{
+	grid-template-columns: 200px auto 250px;
+}
+.horizontal-wp-card{
+	grid-template-columns: 200px auto;
 }
 .horizontal-prod-card-container:hover {
 	box-shadow: 0 0 6px 0 rgb(1 1 1 / 10%);
@@ -434,7 +442,7 @@ ul.ratings {
 	padding: 0 20px;
 }
 .hpcc-name {
-	font-weight: 500;
+	font-weight: bold;
 	font-size: 18px;
 	transition: 0.3s;
 	cursor: pointer;
