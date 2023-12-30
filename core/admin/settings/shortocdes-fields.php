@@ -113,7 +113,8 @@ if ( !function_exists('filter_plus_select_field') ) {
 				<div class="form-label">'.$args['label'].'</div>
 				<div class="input-section">
 					<select class="pro-'.$disable.'" name="'.$args['id'].'" id="'.$args['id'].'" data-option="'.$args['data_label'].'" '. $select_type .'>'.$options_html.'</select>
-				</div>
+					'.pro_tag_markup($disable,'select-pro-fr').'
+					</div>
 			</div>
 		';
 		

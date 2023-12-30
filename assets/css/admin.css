@@ -70,6 +70,7 @@ h1.font_20{
 }
 .input-section {
 	width: 300px;
+	position: relative;
 }
 
 .full_input {
@@ -445,7 +446,10 @@ a.pr-tag{
     height: 17px;
     width: 17px;
 }
-
+.select-pro-fr{
+	position: relative !important;
+	left: 5px !important;
+}
 /* Overview page */
 .bg-color{
 	background-color: #3263f8;
