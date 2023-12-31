@@ -68,6 +68,7 @@
 				});
 			})
 		}
+
 		// price range
 		price_range();
 		function price_range() {
@@ -124,7 +125,6 @@
 			var product_categories = $(".shopContainer").data("product_categories");
 			var product_tags = $(".shopContainer").data("product_categories");
 			let selected_data = selected_param(params);
-			
 			show_selected_data(selected_data);
 
 			var data =
@@ -215,8 +215,8 @@
 			let selected_html 	= '';
 			let clear_all 		= `<div class="clear-filter">${filter_client.localize.clear_all}</div>`;
 			let cross 			= '<span>X</span>';
-
 			for (const [key, value] of Object.entries(selected_data)) {
+
 				if( ! selected_data['default_call'] && typeof value !== "undefined" ){
 					if ( key == "price_range" && value == true ) {
 						selected_html += `<div class='filter-tag' data-node='.range-slider'>${filter_client.localize.price} ${cross}</div>`
@@ -225,19 +225,19 @@
 						selected_html += `<div class='filter-tag' data-node='.ratings'>${filter_client.localize.rating}${cross}</div>`
 					}
 					if ( key == "product_cat" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data-node='.cat-group'>${value}${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.category-list li'>${value}${cross}</div>`
 					}
 					if ( key == "search_value" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='.search-form'>${filter_client.localize.search}${cross}</div>`
 					}
 					if ( key == "stock" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data-node='.search-form'>${selected_data.stock_text}${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='stock'>${selected_data.stock_text}${cross}</div>`
 					}
 					if ( key == "author" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data-node='.search-form'>${selected_data.author_text}${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='author'>${selected_data.author_text}${cross}</div>`
 					}
 					if ( key == "on_sale" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data-node='.search-form'>${selected_data.on_sale_text}${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='on_sale'>${selected_data.on_sale_text}${cross}</div>`
 					}
 					if ( key == "taxonomies_name" ) {
 						for (const [name, data] of Object.entries(value)) {
@@ -247,9 +247,11 @@
 				}
 			}
 
-			if ( selected_html !== "" ) {
-				$(".selected-filter").html( "" ).html(`${clear_all}${selected_html}`);
+			if ( selected_html == '' ) {
+				clear_all = '';
 			}
+			$(".selected-filter").html( "" ).html(`${clear_all}${selected_html}`);
+
 		}
 
 		/**
@@ -319,7 +321,7 @@
 				let prices = price_range.val().split(',');
 				params['min']    		= prices[0];
 				params['max']    		= prices[1];
-				params['price_range']  	= price_range.data('action');
+				params['price_range']  	= price_range.attr('data-action') == 'true' ? true : false ;
 			}
 
 			return params
@@ -514,27 +516,36 @@
 		let filter_tag 	 = '.selected-filter .filter-tag';
 		let clean_block  = [clear_filter, filter_tag ,'.title-and-clean-area .clear_all'];
 		clean_block.forEach(element => {
-			$('.shopContainer').on('click',element,function(e){
+			$(document).on('click',element,function(e){
 				e.preventDefault();
 				let $this = $(this);
+				let parent = '';
 				if (element ==  filter_tag ) {
 					let node = $this.data('node');
 					let cursor = $(node);
+					let parent = cursor.parents(".sidebar-row");
+					$this.find('.filter-tag').remove();
 					if ( node == 'taxonomy' ) {
-						cursor = $(`div[data-taxonomy="${$this.data('term_value')}"]`).parent('.param-box');
+						parent = $(`div[data-taxonomy="${$this.data('term_value')}"]`).parent('.param-box');
+						cursor = $(`div[data-taxonomy="${$this.data('term_value')}"]`);
 					}
+					if ( node == 'on_sale' || node == 'stock' ) {
+						if ( $(`.${node} input[type='checkbox']`).is(":checked")) {
+							$(`.${node} input[type='checkbox']`).prop('checked',false); 
+						}
+						parent = $(`.${node}`).parent('.param-box');
+						cursor = $(`.${node}`);
+					}
+					else{
+						cursor.parents(".sidebar-row");
+					}
+					
 					cursor.closest('.reset').fadeOut();
-					$this.remove();
 					
 					if ($(filter_tag).length == 0 ) {
 						$(clear_filter).remove();
 					}
-					section_reset(cursor,cursor.parents(".sidebar-row"),false,'filter-tag');
-				}
-				else if (element ==  clear_filter ) {
-					$(filter_tag).remove();
-					$(element).remove();
-					clear_all($this);
+					section_reset(cursor,parent,false,'filter-tag');
 				}
 				else {
 					clear_all($this);
