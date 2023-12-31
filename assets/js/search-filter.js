@@ -124,7 +124,9 @@
 			var product_categories = $(".shopContainer").data("product_categories");
 			var product_tags = $(".shopContainer").data("product_categories");
 			let selected_data = selected_param(params);
+			
 			show_selected_data(selected_data);
+
 			var data =
 			{
 				action: 'get_filtered_data',
@@ -217,13 +219,13 @@
 			for (const [key, value] of Object.entries(selected_data)) {
 				if( ! selected_data['default_call'] && typeof value !== "undefined" ){
 					if ( key == "price_range" && value == true ) {
-						selected_html += `<div class='filter-tag' data-node='.slide-container'>${filter_client.localize.price} ${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.range-slider'>${filter_client.localize.price} ${cross}</div>`
 					}
 					if ( key == "rating" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data-node='.rating'>${filter_client.localize.rating}${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.ratings'>${filter_client.localize.rating}${cross}</div>`
 					}
 					if ( key == "product_cat" && value !== "" ) {
-						selected_html += `<div class='filter-tag' data-node='.category-list'>${value}${cross}</div>`
+						selected_html += `<div class='filter-tag' data-node='.cat-group'>${value}${cross}</div>`
 					}
 					if ( key == "search_value" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='.search-form'>${filter_client.localize.search}${cross}</div>`
@@ -244,6 +246,7 @@
 					}
 				}
 			}
+
 			if ( selected_html !== "" ) {
 				$(".selected-filter").html( "" ).html(`${clear_all}${selected_html}`);
 			}
@@ -409,6 +412,7 @@
 		 * @param {*} $this 
 		 */
 		function reset_block($parent , $this , clear_all = false , action = '' ) {
+
 			let reset_button = $this.find(".reset");
 			if (action == '') {
 				if (reset_button.hasClass('d-none')) {
@@ -416,32 +420,42 @@
 				}
 				reset_button.fadeIn();
 			}
-			
 			reset_button.on('click', function () {
-				if ($this.hasClass('ratings')) {
-					$this.attr('id','');
-					$('.ratings li').removeClass('rating_disable');
-					$('.rating-label').html('');
-				}
-				else if ($parent.hasClass('range-slider')) {
-					$parent.attr('data-action', false );
-					let min = $parent.data('min');
-					let max = $parent.data('max');
-					$parent.val(min+","+max);
-					$parent.jRange('setValue', min+","+max)
-				}
-				else if ($parent.hasClass('sidebar-input')) {
-					$parent.val("");
-				}
-				else{
-					$parent.removeClass('active');
-					$parent.find('input[type=checkbox]').removeAttr('checked');
-				}
-				if ( !clear_all ) {
-					get_products();
-				}
-				reset_button.fadeOut();
+				section_reset($parent , $this , clear_all = false , action = '' );
 			})
+		}
+
+		function section_reset($parent , $this , clear_all = false , action = '' ) {
+			let reset_button = $this.find(".reset");
+
+			if ($this.hasClass('ratings')) {
+				$this.attr('id','');
+				$('.ratings li').removeClass('rating_disable');
+				$('.rating-label').html('');
+			}
+			if ($parent.hasClass('ratings')) {
+				$parent.attr('id','');
+				$('.ratings li').removeClass('rating_disable');
+				$('.rating-label').html('');
+			}
+			else if ($parent.hasClass('range-slider')) {
+				$parent.attr('data-action', false );
+				let min = $parent.data('min');
+				let max = $parent.data('max');
+				$parent.val(min+","+max);
+				$parent.jRange('setValue', min+","+max)
+			}
+			else if ($parent.hasClass('sidebar-input')) {
+				$parent.val("");
+			}
+			else{
+				$parent.removeClass('active');
+				$parent.find('input[type=checkbox]').removeAttr('checked');
+			}
+			if ( !clear_all ) {
+				get_products();
+			}
+			reset_button.fadeOut();
 		}
 
 		/**
@@ -503,7 +517,6 @@
 			$('.shopContainer').on('click',element,function(e){
 				e.preventDefault();
 				let $this = $(this);
-				clear_all($this);
 				if (element ==  filter_tag ) {
 					let node = $this.data('node');
 					let cursor = $(node);
@@ -516,7 +529,7 @@
 					if ($(filter_tag).length == 0 ) {
 						$(clear_filter).remove();
 					}
-					reset_block(cursor,cursor.parents(".sidebar-row"),false,'filter-tag');
+					section_reset(cursor,cursor.parents(".sidebar-row"),false,'filter-tag');
 				}
 				else if (element ==  clear_filter ) {
 					$(filter_tag).remove();
@@ -529,8 +542,7 @@
 			 });
 		});
 		
-		clear_all();
-		function clear_all(element = $(".clear_all")) {
+		function clear_all(element = $(".clear_all"), action = '') {
 			let clear_all = element;
 			if ( clear_all.length > 0 ) {
 				// reset block
@@ -556,7 +568,11 @@
 				}
 				$('input[type=checkbox]').removeAttr('checked');
 				sidebar.find('.reset').fadeOut();
-				get_products({default_call:true});
+				if ( action == '' ) {
+					get_products({default_call:true});
+				} else {
+					get_products();
+				}
 			}
 		}
 		/**
