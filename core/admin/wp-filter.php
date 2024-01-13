@@ -9,7 +9,7 @@
 			echo FilterPlus\Utils\Helper::kses( $docs );
 			// templates
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'post_template',
-			'data_label' => 'template','options'=>[1],'type'=>'template', 'disable' => $disable );
+			'data_label' => 'template','options'=>[2],'type'=>'template', 'disable' => $disable );
 			filter_plus_select_field($args);
 
 			// categories

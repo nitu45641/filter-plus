@@ -446,7 +446,7 @@ class Helper {
 		}else{
 			$cat_id = !empty($param['filter_param']) ? $param['filter_param']['product_cat'] : [];
 		}
-
+		
 		$args['tax_query'] = array(
 			array(
 				'taxonomy' => $param['taxonomy'],

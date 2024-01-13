@@ -446,7 +446,7 @@ ul.ratings {
 	font-size: 18px;
 	transition: 0.3s;
 	cursor: pointer;
-	padding-bottom: 10px;
+	padding: 10px 0 5px 0;
 	line-height: 1.2;
 }
 
@@ -462,11 +462,14 @@ ul.ratings {
 	font-weight: 300;
 }
 .hpcc-description {
-	border-top: 1px solid #ddd;
+	border-top: 1px solid rgba(0,0,0,.05);;
 	padding: 10px 0;
 	margin-top: 15px;
 	color: #555;
 	font-weight: 300;
+}
+.post-border{
+	border-top: 1px solid rgba(0,0,0,.05);;
 }
 .hpcc-actions {
 	display: flex;

@@ -537,20 +537,6 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	padding: 0 20px;
 }
 
-.hpcc-name {
-	font-weight: 500;
-	font-size: 18px;
-	-webkit-transition: 0.3s;
-	transition: 0.3s;
-	cursor: pointer;
-	padding-bottom: 10px;
-	line-height: 1.2;
-}
-
-.hpcc-name:hover {
-	color: #2d73e7;
-}
-
 .hpcc-rating {
 	margin-bottom: 10px;
 }
