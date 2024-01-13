@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce Filter, Filtering Plugin, Price Range, Product Filter , ajax filter
 Requires at least: 4.7
 Tested up to: 6.4.1
-Stable tag: 1.0.19
+Stable tag: 1.0.20
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -112,6 +112,9 @@ We have tested all the popular themes. And we believe, it will work with your th
 2. screenshot-3
 
 == Changelog ==
+
+= 1.0.20 (January 13, 2024)=
+Added   : Custom Post type filter added
 
 = 1.0.19 (December 31, 2023)=
 Fix   : Fix filtering issue

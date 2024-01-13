@@ -143,6 +143,7 @@ class Shortcodes {
 			$custom_css = '
 			:root {
 				--secondary-color: #17c6aa;
+				--filter-secondary-color : #17c6aa;
 			}
 			';
 		}
