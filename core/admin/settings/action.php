@@ -26,12 +26,12 @@ class Action{
 
     public function filter_save_settings() {
         $post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
-        FilterPlus\Utils\Helper::instance()->verify_nonce('filter_plus', $post_data['nonce'] );
+        FilterPlus\Utils\Helper::instance()->verify_nonce('filter_plus_nonce', $post_data['filter_plus_nonce'] );
         $params       = !empty($post_data['params']) ? $post_data['params'] : [];
         $settings_key = Helper::get_settings_key();
 
         foreach ($settings_key as $key => $value) {
-          $settings_key[$key] = !empty( $params[$key] ) ? $params[$key] : "no";
+          $settings_key[$key] = !empty( $params[$key] ) ? $params[$key] : "";
         }
 
         update_option( 'filter_plus_settings' , $settings_key );

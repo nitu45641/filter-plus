@@ -87,7 +87,7 @@ class Enqueue {
             // localize for admin
             $form_data                          = array();
             $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
-            $form_data['nonce']                 = wp_create_nonce( 'filter_plus' );
+            $form_data['filter_plus_nonce']     = wp_create_nonce( 'filter_plus_nonce' );
             wp_localize_script( 'admin-js', 'filter_admin', $form_data );
         }
 
@@ -170,7 +170,7 @@ class Enqueue {
         $form_data                          = array();
         $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
         $form_data['localize']              = $this->translate_data();
-        $form_data['nonce']                 = wp_create_nonce( 'filter_plus' );
+        $form_data['filter_plus_nonce']     = wp_create_nonce( 'filter_plus_nonce' );
         $form_data['refresh_url']           = $settings['refresh_url'];
         $form_data['seo_elements']          = $settings['seo_elements'];
         $form_data['seo_elements_format']   = $settings['seo_elements_format'];

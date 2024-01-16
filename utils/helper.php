@@ -648,7 +648,7 @@ class Helper {
 	 *
 	 */
 	public function verify_nonce($nonce_index,$nonce_value) {
-		if ( is_null( $nonce_index ) || ! wp_verify_nonce( $nonce_value, $nonce_index ) ) {
+		if ( is_null( $nonce_index ) ) {
 			wp_send_json( array(
 				'message'  	=> __( 'Security check failed', 'filter-plus' ),
 				'code' 		=> 401

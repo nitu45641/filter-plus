@@ -130,12 +130,13 @@
 			var data =
 			{
 				action: 'get_filtered_data',
-				nonce: filter_client.nonce,
+				filter_plus_nonce: filter_client.filter_plus_nonce,
 				template: template,
 				product_categories: product_categories,
 				product_tags: product_tags,
 				params: selected_data
 			};
+
 			$.ajax({
 				url: filter_client.ajax_url,
 				method: 'POST',

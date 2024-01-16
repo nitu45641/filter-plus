@@ -38,7 +38,7 @@ class Actions {
 	 */
 	public function get_filtered_data() {
 		$post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
-		FilterPlus\Utils\Helper::instance()->verify_nonce('filter_plus', $post_data['nonce'] );
+		FilterPlus\Utils\Helper::instance()->verify_nonce('filter_plus_nonce', $post_data['filter_plus_nonce'] );
 		$post_arr     = ! empty( $post_data['params'] ) ? $post_data['params'] : [];
 		$search_value = ! empty( $post_arr['search_value'] ) ? $post_arr['search_value'] : '';
 		$order_by     = ! empty( $post_arr['order_by'] ) ? $post_arr['order_by'] : '';
@@ -331,8 +331,8 @@ class Actions {
 				$products[$key]['post_description'] = apply_filters('the_content', $post->post_content);
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 				$products[$key]['author']   		= esc_html__('By','filter-plus').' '. get_the_author_meta( 'display_name',$post->post_author );
-				$products[$key]['categories_label'] =  ( $param['product_categories'] == "yes" && count( get_the_terms ( $post->ID , $cats ) )>0 ) ? esc_html__('Category:','filter-plus') : '';
-				$products[$key]['tag_label'] 		=  ( $param['product_tags'] == "yes" && count( get_the_terms ( $post->ID , $tags ) )>0 ) ? esc_html__('Tag:','filter-plus') : '';
+				$products[$key]['categories_label'] =  ( $param['product_categories'] == "yes" && !empty( get_the_terms ( $post->ID , $cats ) ) ) ? esc_html__('Category:','filter-plus') : '';
+				$products[$key]['tag_label'] 		=  ( $param['product_tags'] == "yes" && !empty( get_the_terms ( $post->ID , $tags ) ) ) ? esc_html__('Tag:','filter-plus') : '';
 				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? get_the_terms ( $post->ID , $cats ) : [];
 				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? get_the_terms ( $post->ID , $tags  ) : [];
 			endforeach;
