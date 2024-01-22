@@ -73,7 +73,6 @@ class Shortcodes {
 		
 		$this->custom_css($template);
 
-		if ( file_exists( \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 		?>
 			<div class="shopContainer"
 			data-filter_type='product' 
@@ -81,10 +80,19 @@ class Shortcodes {
 			data-product_categories="<?php echo esc_attr($product_categories)?>"
 			data-product_tags="<?php echo esc_attr($product_tags)?>"
 			>
-				<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";?>
+			<?php 
+							
+				if ( file_exists( \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
+					include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
+				}
+				else if ( file_exists( \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
+					include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
+				}
+
+			?>
 			</div>
 		<?php
-		}
+		
 
 		return ob_get_clean();
 	}
@@ -108,7 +116,7 @@ class Shortcodes {
 	 * @param [type] $template
 	 */
 	public function pro_template_check($template) {
-		$pro_template 	= [2];
+		$pro_template 	= [2,3];
 		$html 			= '';
 		if ( in_array((int)$template,$pro_template) && !class_exists('FilterPlusPro') ) {
 			$html = '<div class="row"><div class="woocommerce-error">'.esc_html__('Please Active FilterPlus Pro','filter-plus').'</div></div>';
