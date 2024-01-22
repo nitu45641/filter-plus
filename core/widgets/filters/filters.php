@@ -52,9 +52,13 @@ class Filters extends Widget_Base {
 		$templates = [
 			1  => esc_html__('Template 1', 'filter-plus'),
 		];
+		$pro = "";
 		if ( class_exists('FilterPlusPro') ) {
-			$templates[2] = esc_html__('Template 2', 'filter-plus');
+			$pro  = esc_html__('Pro', 'filter-plus');
 		}
+		$templates[2] = esc_html__('Template 2', 'filter-plus').' '.$pro;
+		$templates[3] = esc_html__('Template 3', 'filter-plus').' '.$pro;
+		
 		$this->add_control(
 			'template',
 			[
