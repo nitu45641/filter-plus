@@ -73,7 +73,7 @@ class Shortcodes {
 		
 		$this->custom_css($template);
 
-		if ( file_exists( \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
+		if ( file_exists( \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 		?>
 			<div class="shopContainer"
 			data-filter_type='product' 
@@ -81,7 +81,7 @@ class Shortcodes {
 			data-product_categories="<?php echo esc_attr($product_categories)?>"
 			data-product_tags="<?php echo esc_attr($product_tags)?>"
 			>
-				<?php include_once \FilterPlus::plugin_dir() . "templates/search-filter/template-" . $template . "/template-" . $template . ".php";?>
+				<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";?>
 			</div>
 		<?php
 		}

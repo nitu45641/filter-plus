@@ -11,7 +11,7 @@
 			$get_attr[$key]  = $value->term_id;
 		}
 		
-		include \FilterPlus::plugin_dir() . "templates/search-filter/template-".$template."/left-side/filter-layout-grid.php";
+		include \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/filter-layout-grid.php";
 	}
 ?>
 

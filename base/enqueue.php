@@ -129,7 +129,7 @@ class Enqueue {
                 'src'     => \FilterPlus::assets_url() . 'css/public.css',
                 'version' => \FilterPlus::get_version(),
             ),
-			'search-filter' => array(
+			'filter-plus-public' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/search-filter.css',
                 'version' => \FilterPlus::get_version(),
             ),
