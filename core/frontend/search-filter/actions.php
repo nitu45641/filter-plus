@@ -352,10 +352,11 @@ class Actions {
 		$cart_args = array(
 			'product'       => $product_instance,
 			'cart_button'   => 'yes',
-			'btn_text'      => $template == "2" ? esc_html__('Add to cart' , 'filter-plus') : "",
+			'btn_text'      => $template == '1' ? '': '<span>' .esc_html__('Add to cart' , 'filter-plus').'</span>',
 			'customize_btn' => '',
 			'widget_id'     => '',
-			'icon'          => '<svg width="20" class="cart-icon" height="20" fill="#fff" viewBox="0 0 256 256" xml:space="preserve">
+			'icon'          => '
+			<svg class="cart-icon" viewBox="0 0 256 256" xml:space="preserve">
 				<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
 					<path class="cart-icon-path" d="M 72.975 58.994 H 31.855 c -1.539 0 -2.897 -1.005 -3.347 -2.477 L 15.199 13.006 H 3.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 h 14.289 c 1.539 0 2.897 1.005 3.347 2.476 l 13.309 43.512 h 36.204 l 10.585 -25.191 h -6.021 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 H 86.5 c 1.172 0 2.267 0.587 2.915 1.563 s 0.766 2.212 0.312 3.293 L 76.201 56.85 C 75.655 58.149 74.384 58.994 72.975 58.994 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
 					<circle class="cart-icon-path" cx="28.88" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>

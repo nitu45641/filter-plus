@@ -11,6 +11,17 @@ a {
 .mb-4{
 	margin-bottom: 4%;
 }
+.mt-2{
+	margin-top: 2%;
+}
+.cart-icon{
+	color: var(--filter-cart-icon-color,'#fff');
+	width: 20px;
+	height: 20px;
+}
+.cart-icon-path {
+	fill: var(--filter-cart-icon-color,'#fff') !important;
+}
 input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, input[type="checkbox"]:hover:checked, input[type="checkbox"]:focus:checked, input[type=range]::-webkit-slider-thumb {
 	border-color: #333333 !important;
     background-color: #333333 !important;
@@ -564,14 +575,6 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 /**
  * Woocommerce css
  */
-.cart-icon-path {
-	fill: #fff !important;
-}
-
-.cart-icon {
-	margin-top: 7px;
-}
-
 a.added_to_cart.wc-forward {
 	display: none;
 }

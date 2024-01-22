@@ -152,6 +152,14 @@ class Shortcodes {
 			:root {
 				--secondary-color: #17c6aa;
 				--filter-secondary-color : #17c6aa;
+				--filter-cart-icon-color : #fff;
+			}
+			';
+		}
+		else if ( $template == "3" ) {
+			$custom_css = '
+			:root {
+				--filter-cart-icon-color : #ab1616;
 			}
 			';
 		}
