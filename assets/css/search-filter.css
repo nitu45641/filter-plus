@@ -646,7 +646,7 @@ ul.pagination {
 }
 
 .theme-green .back-bar .selected-bar {
-	background: #2d0607 !important;
+	background: var(--filter-price-range,"#2d0607") !important;
 	background-image: none !important;
 }
 

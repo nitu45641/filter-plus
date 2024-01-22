@@ -81,11 +81,10 @@
 				step: 1,
 				scale: [min,max],
 				width: '250',
-				showLabels: true,
+				showLabels: false,
 				isRange : true,
 				ondragend: function(val){
 					price_range.attr('data-action', true );
-
 					let prices = val.split(',');
 					if ( prices[1] ) {
 						get_products();

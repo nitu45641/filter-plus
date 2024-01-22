@@ -160,6 +160,7 @@ class Shortcodes {
 			$custom_css = '
 			:root {
 				--filter-cart-icon-color : #ab1616;
+				--filter-price-range : #ab1616;
 			}
 			';
 		}
