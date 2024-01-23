@@ -70,11 +70,11 @@
 		}
 
 		// price range
-		price_range();
-		function price_range() {
-			let price_range = $('.range-slider');
-			let min = price_range.data("min");
-			let max = price_range.data("max");
+		var price_range = $('.range-slider');
+		var min = price_range.data("min");
+		var max = price_range.data("max");
+		price_range_picker();
+		function price_range_picker() {
 			price_range.jRange({
 				from: min,
 				to: max,
@@ -84,27 +84,51 @@
 				showLabels: false,
 				isRange : true,
 				ondragend: function(val){
-					price_range.attr('data-action', true );
-					let prices = val.split(',');
-					if ( prices[1] ) {
-						get_products();
-						// reset block
-						reset_block(price_range,price_range.parents(".sidebar-row"));
-					}
+					price_range_actions(val,price_range)
 				},
 				onbarclicked : function(val){
-					price_range.attr('data-action', true );
-					let prices = val.split(',');
-					if ( prices[1] ) {
-						get_products();
-						// reset block
-						reset_block(price_range,price_range.parents(".sidebar-row"));
-					}
+					price_range_actions(val,price_range)
 				}
 			});
 			price_range.jRange('setValue', min+','+max);
-
 		}
+
+		function price_range_actions(val,price_range) {
+			price_range.attr('data-action', true );
+			let prices = val.split(',');
+			if ($(".input-min").length > 0 ) {
+				$(".input-min").val("").val(prices[0]);
+				$(".input-max").val("").val(prices[1]);
+			}
+			if ( prices[1] ) {
+				get_products();
+				// reset block
+				reset_block(price_range,price_range.parents(".sidebar-row"));
+			}
+		}
+		let min_input = $(".input-min");
+		if (min_input.length > 0 ) {
+			$(".field .input-min,.field .input-max").on('change paste keyup',function(){
+				let $this = $(this);
+				let latest_min = min;
+				let latest_max = max;
+				if ( $this.hasClass('input-min') ) {
+					latest_min = $this.val() > max ? min : $this.val();
+					$this.val("").val(latest_min);
+					price_range.jRange('setValue', latest_min +','+max);
+				} else {
+					latest_max = $this.val() > max ? max : $this.val();
+					$this.val("").val(latest_max);
+				}
+				price_range.attr('data-action', true );
+				price_range.jRange('setValue', latest_min +','+ latest_max );
+				get_products();
+				// reset block
+				reset_block(price_range,price_range.parents(".sidebar-row"));
+			});
+			
+		}
+
 
 		//default call
 		if ($(".prods-grid-view").length > 0) {
@@ -399,7 +423,7 @@
 				if ( $template == 1 ) {
 					$('.ratings li').not($this).addClass('rating_disable');
 				}
-				if ( $template == 2 ) {
+				else{
 					$(".rating-label").html("").html($(this).html())
 				}
 				$("ul.ratings").attr('id',$this.data('star'));
@@ -586,10 +610,10 @@
 				}
 			}
 		}
+
 		/**
 		 * Slider
 		 */
-		 $(".rating-section .panel").css("display","none");
 		 $(".down-arrow").css("display","none");
 		 sidebar_slider($(".sidebar-label"));
 		 sidebar_slider($(".dropdown-label"));
@@ -609,10 +633,10 @@
 				  });
 			});
 		}
+
 		/**
 		 * Sorting
 		 */
-
 		sorting();
 		function sorting() {
 			let filter_by = $("#filter-sort-by");

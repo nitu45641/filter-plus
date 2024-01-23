@@ -70,7 +70,7 @@
 	cursor: pointer;
 }
 .shop-sidebar .sidebar-row {
-	margin-bottom: 56px;
+	margin-bottom: 40px;
 	position: relative;
 }
 .shop-sidebar .sidebar-label {
@@ -256,10 +256,15 @@
 .sidebar-style-1 .categories-wrap ul{
     padding-left: 18px !important;
 }
-ul.ratings {
+ul.ratings,.dropdown-box {
+	cursor: pointer;
 	padding: 15px;
 	border: 1px solid var(--filter-border-color);
 	border-radius: 6px;
+	font-size: 14px;
+    color: #0d1218;
+}
+ul.ratings {
 	margin: 0 0 45px;
 	list-style: none;
 	margin: 0;
@@ -329,14 +334,6 @@ ul.ratings {
 	border-radius: 10px;
 }
 
-.vpcc-image {
-	height: auto;
-	object-fit: cover;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10px;
-}
 .vpcc-name {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
