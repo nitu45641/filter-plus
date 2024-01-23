@@ -1,5 +1,8 @@
 :root {
 	--secondary-color: #1164cb;
+	--filter-secondary-color : #1164cb;
+	--filter-cart-icon-color : #fff;
+	--filter-price-range: #1164cb;
 }
 a {
 	text-decoration: none !important;
@@ -706,7 +709,7 @@ a.added_to_cart.wc-forward {
 	.card-action-btn-container
 	a {
 	display: inline-block;
-	padding: 8px 20px 10px;
+	padding: 8px 26px 10px;
 	background-color: #080808;
 	color: #fff;
 	text-decoration: none;
@@ -882,7 +885,7 @@ a.added_to_cart.wc-forward {
 	height: 30px;
 	width: 30px;
 	border: 3px solid;
-	border-color: #17c6aa transparent #17c6aa transparent;
+	border-color: var(--filter-secondary-color,'#17c6aa') transparent var(--filter-secondary-color,'#17c6aa') transparent;
 	border-radius: 50%;
 	-webkit-animation: lds-dual-ring 1.3s linear infinite;
 	animation: lds-dual-ring 1.3s linear infinite;

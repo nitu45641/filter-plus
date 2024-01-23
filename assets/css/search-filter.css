@@ -597,6 +597,9 @@ ul.pagination {
 }
 
 /* Add to cart css */
+.wheel{
+	fill: var(--filter-secondary-color,'#fff');
+}
 .add_to_cart_button.loading svg,
 .add_to_cart_button.added svg
 {
@@ -610,8 +613,14 @@ ul.pagination {
     animation: spin 2s linear infinite;
     border-radius: 290486px;
 	margin-left: 4px;
-	left: 5px;
     top: 5px;
+}
+.cart_button-1.loading::after {
+    left: 5px;
+}
+.cart_button-3.loading::after {
+    right: 17px;
+    top: 7px;
 }
 .add_to_cart_button.added::after {
     content: url(../../assets/images/check-mark.svg);
@@ -682,4 +691,7 @@ input[type="checkbox"]:checked + label.checkbox-item
 	padding: 5px;
 	display: flex;
     justify-content: space-between;
+}
+.range .slider-container.theme-green{
+	background: var(--filter-price-range,"#2d0607") !important;
 }

@@ -153,6 +153,7 @@ class Shortcodes {
 				--secondary-color: #17c6aa;
 				--filter-secondary-color : #17c6aa;
 				--filter-cart-icon-color : #fff;
+				--filter-price-range: #2d0607;
 			}
 			';
 		}
@@ -161,6 +162,9 @@ class Shortcodes {
 			:root {
 				--filter-cart-icon-color : #ab1616;
 				--filter-price-range : #ab1616;
+				--filter-secondary-color : #ab1616;
+				--secondary-color: #ab1616;
+				--filter-price-range: #ab1616;
 			}
 			';
 		}
