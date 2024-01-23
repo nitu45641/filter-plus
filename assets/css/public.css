@@ -2,7 +2,8 @@
 	--secondary-color: #1164cb;
 	--filter-secondary-color : #1164cb;
 	--filter-cart-icon-color : #fff;
-	--filter-price-range: #1164cb;
+	--filter-price-range: #2d73e7;
+	--filter-border-color: rgba(23, 198, 170, 0.34);
 }
 a {
 	text-decoration: none !important;

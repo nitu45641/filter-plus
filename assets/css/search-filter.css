@@ -256,15 +256,12 @@
 .sidebar-style-1 .categories-wrap ul{
     padding-left: 18px !important;
 }
-.sidebar-style-2 .ratings {
+ul.ratings {
 	padding: 15px;
-	border: 1px solid rgba(23, 198, 170, 0.34);
+	border: 1px solid var(--filter-border-color);
 	border-radius: 6px;
 	margin: 0 0 45px;
 	list-style: none;
-}
-
-ul.ratings {
 	margin: 0;
 	padding-left: 0 !important;
 }
