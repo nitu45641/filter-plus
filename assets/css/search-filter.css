@@ -56,11 +56,10 @@
 	grid-row-gap: 10px;
 }
 .radio-wrap .radio-item {
-	border: 5px solid #fff;
-	outline: 1px solid #d7d7d7;
-	padding: 0px 5px;
+	outline: 1px solid var(--filter-secondary-color,"#d7d7d7");
+	padding: 3px 5px;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 500;
 	cursor: pointer;
 }
@@ -196,15 +195,15 @@
 }
 
 .shop-sidebar .radio-wrap .radio-item:hover {
-	background: #17c6aa;
-	border-color: #17c6aa;
+	background: var(--filter-secondary-color, #17c6aa);
+	border-color: var(--filter-secondary-color, #17c6aa);
 	outline-style: none;
 	color: #fff !important;
 }
 .radio-wrap .radio-item.active {
-	background: #17c6aa;
-	border: 5px solid #17c6aa;
-	outline: 1px solid #17c6aa;
+	background: var(--filter-secondary-color, #17c6aa);
+	border: 5px solid var(--filter-secondary-color, #17c6aa);
+	outline: 1px solid var(--filter-secondary-color, #17c6aa);
 	color: #fff !important;
 }
 .radio-wrap .taxonomy-item-1.active {
@@ -614,7 +613,7 @@ ul.pagination {
 }
 .cart_button-3.loading::after {
     right: 17px;
-    top: 7px;
+    top: 10px;
 }
 .add_to_cart_button.added::after {
     content: url(../../assets/images/check-mark.svg);

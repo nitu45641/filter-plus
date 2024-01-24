@@ -116,16 +116,6 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	grid-row-gap: 10px;
 }
 
-.radio-wrap .radio-item {
-	border: 5px solid #fff;
-	outline: 1px solid #d7d7d7;
-	padding: 0px 5px;
-	border-radius: 5px;
-	font-size: 16px;
-	font-weight: 500;
-	cursor: pointer;
-}
-
 .radio-wrap .radio-item.color-item {
 	border-radius: 40px;
 	width: 30px;
@@ -146,7 +136,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	padding: 0 15px;
 }
 .shop-sidebar .search-form input {
-	border: 1px solid #c4c4c4;
+	border: 1px solid var(--filter-header-border,"#c4c4c4") !important;
 	background-color: #fff !important;
 	outline: none;
 	width: 100%;
@@ -159,7 +149,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 .shop-sidebar .search-form input:focus {
 	-webkit-box-shadow: none;
 	box-shadow: none;
-	border: 1px solid #c4c4c4;
+	border: 1px solid var(--filter-header-border,"#c4c4c4") !important;
 	outline: none;
 }
 .shop-sidebar .search-form input::-webkit-input-placeholder {
@@ -216,7 +206,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 }
 
 .shop-sidebar .search-form button svg {
-	fill: #c4c4c4;
+	fill: var(--secondary-color,#c4c4c4);
 }
 
 .sidebar-style-2 .category-list li {
@@ -1019,4 +1009,18 @@ a.added_to_cart.wc-forward {
     font-weight: 600;
     text-decoration: underline;
 }
-
+.woocommerce .woocommerce-product-rating .star-rating{
+    margin: 0.5em 4px 15px 0;
+	font-size: 14px;
+}
+.woocommerce .woocommerce-product-rating {
+    font-size: 14px;
+}
+.offer{
+	margin-top: 5px;
+}
+.offer a{
+	font-size: 13px;
+    padding: 4px;
+    border: 1px solid #d5d5d5;
+}

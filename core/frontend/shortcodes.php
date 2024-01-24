@@ -166,6 +166,7 @@ class Shortcodes {
 				--secondary-color: #ab1616;
 				--filter-price-range: #ab1616;
 				--filter-border-color: #ab1616;
+				--filter-header-border: #ab1616;
 			}
 			';
 		}
