@@ -12,16 +12,20 @@
 <?php
     $features = array(
         array(
+            'icon' =>'<span class="fr-icon dashicons dashicons-format-aside"></span>',
+            'title' =>esc_html__('Filter WP Post','filter-plus')
+        ),
+        array(
             'icon' => '<span class="fr-icon dashicons dashicons-image-filter"></span>',
-            'title' =>'Filter by Anything'
+            'title' =>'Filter WP Custom Post'
+        ),
+        array(
+            'icon' =>'<span class="fr-icon dashicons dashicons-buddicons-groups"></span>',
+            'title' =>'Filter Woo Admin Order'
         ),
         array(
             'icon' => '<span class="fr-icon dashicons dashicons-admin-page"></span>',
             'title' =>'SEO Optimized Url'
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-buddicons-groups"></span>',
-            'title' =>'Amazing style'
         ),
         array(
             'icon' =>'<span class="fr-icon dashicons dashicons-category"></span>',
@@ -46,10 +50,6 @@
         array(
             'icon' =>'<span class="fr-icon dashicons dashicons-grid-view"></span>',
             'title' =>esc_html__('Filter by Stock','filter-plus')
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-format-aside"></span>',
-            'title' =>esc_html__('Filter by Post','filter-plus')
         ),
         array(
             'icon' =>'<span class="fr-icon dashicons dashicons-align-wide"></span>',
