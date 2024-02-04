@@ -155,6 +155,8 @@ class Shortcodes {
 				--filter-secondary-color : #17c6aa;
 				--filter-cart-icon-color : #fff;
 				--filter-price-range: #2d0607;
+				--filter-border-color: #17c6aa;
+				--filter-header-border: #17c6aa;
 			}
 			';
 		}

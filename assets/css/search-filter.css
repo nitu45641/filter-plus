@@ -261,9 +261,7 @@ ul.ratings {
 	margin: 0 0 45px;
 	list-style: none;
 	margin: 0;
-	padding-left: 0 !important;
 }
-
 .ratings li {
 	display: flex;
 	flex-wrap: wrap;
@@ -275,7 +273,7 @@ ul.ratings {
 }
 
 .ratings li span,.rate_2 {
-	margin-left: 10px;
+	margin-right: 7px;
 }
 .rate_1 {
 	margin-left: 0px !important;
@@ -371,6 +369,7 @@ ul.ratings {
 	width: 100%;
 	gap: 10px;
 	transition: 0.5s;
+	z-index: 1;
 }
 .vpcc-btns {
 	background-color: #2d73e7;
@@ -601,6 +600,7 @@ ul.pagination {
     border-radius: 290486px;
 	margin-left: 4px;
     top: 5px;
+    right: 5px;
 }
 .cart_button-1.loading::after {
     left: 5px;

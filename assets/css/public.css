@@ -3,9 +3,10 @@
 	--filter-secondary-color : #1164cb;
 	--filter-cart-icon-color : #fff;
 	--filter-price-range: #2d73e7;
-	--filter-border-color: rgba(23, 198, 170, 0.34);
+	--filter-border-color: #2d73e7;
 	--filter-tab-color: #fff;
 	--filter-tab-bg: #ff0000;
+	--filter-header-border: #2d73e7;
 }
 .shopContainer {
 	@media (min-width: 769px) {
