@@ -146,7 +146,7 @@ class Shortcodes {
 	 * @param string $template
 	 * @return void
 	 */
-	public function custom_css($template = "1") {
+	public function custom_css($template = "1", $filter_type = "product") {
 		global $custom_css;
 		if ( $template == "2" ) {
 			$custom_css = '
@@ -159,15 +159,16 @@ class Shortcodes {
 			';
 		}
 		else if ( $template == "3" ) {
+			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 
 			$custom_css = '
 			:root {
 				--filter-cart-icon-color : #ab1616;
 				--filter-price-range : #ab1616;
-				--filter-secondary-color : #ab1616;
-				--secondary-color: #ab1616;
+				--filter-secondary-color : '.$secondary_color.';
 				--filter-price-range: #ab1616;
 				--filter-border-color: #ab1616;
 				--filter-header-border: #ab1616;
+				--filter-tab-color: '.$secondary_color.';
 			}
 			';
 		}

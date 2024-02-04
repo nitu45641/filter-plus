@@ -4,6 +4,8 @@
 	--filter-cart-icon-color : #fff;
 	--filter-price-range: #2d73e7;
 	--filter-border-color: rgba(23, 198, 170, 0.34);
+	--filter-tab-color: #fff;
+	--filter-tab-bg: #ff0000;
 }
 .shopContainer {
 	@media (min-width: 769px) {
@@ -11,6 +13,24 @@
 	}
 	grid-template-columns: 3fr 10fr;
 	grid-gap: 2rem;
+}
+.filter-wp-list-3{
+	text-align: center;
+}
+.filter-wp-list-3 li{
+    list-style: none;
+	padding: 8px 30px;
+    margin: 5px 3px 5px 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: var(--filter-tab-bg,'#ff0000');
+    color: var(--filter-tab-color,'#fff');
+	display: inline-block;
+}
+.filter-wp-list-3 li:hover,
+.filter-wp-list-3 li:active
+{
+    color: var(--filter-tab-color,'#fff') !important;
 }
 a {
 	text-decoration: none !important;
@@ -196,12 +216,12 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 
 .title-and-clean-area p {
 	cursor: pointer;
-	color: var(--secondary-color,#17c6aa);
+	color: var(--filter-border-color,#17c6aa);
 	font-size: 14px;
 }
 
 .shop-sidebar .search-form button svg {
-	fill: var(--secondary-color,#c4c4c4);
+	fill: var(--filter-border-color,#c4c4c4);
 }
 
 .sidebar-style-2 .category-list li {

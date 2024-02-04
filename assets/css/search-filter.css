@@ -1,7 +1,7 @@
 
 
 .filter-tag{
-	border: 1px solid var(--filter-secondary-color, #d3d3d3);
+	border: 1px solid var(--filter-border-color, #d3d3d3);
     border-radius: 6px;
     display: inline-block;
     font-size: 14px;
@@ -240,12 +240,11 @@
 .category-list li {
 	margin-top: 5px;
 }
-.category-list li.active{
+.category-list li.active,
+.category-list li:hover
+{
 	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
-}
-.category-list li:hover{
-	color: #333333;
 }
 .sidebar-style-1 .categories-wrap ul{
     padding-left: 18px !important;
@@ -561,7 +560,7 @@ ul.pagination {
 	align-items: center;
     margin-bottom: 2%;
 	cursor: pointer;
-	color: var(--secondary-color,#2d73e7);
+	color: var(--filter-border-color,#2d73e7);
 }
 .filter-tag span{
 	font-size: 12px;
