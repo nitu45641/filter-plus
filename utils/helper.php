@@ -429,8 +429,14 @@ class Helper {
 		$operator = 'and'; 
 	
 		$post_types = get_post_types( $args, $output, $operator ); 
-	
-		return $post_types;
+		if ( !empty($post_types) ) {
+			$first_index = array(''=>esc_html__('Select Custom Post Type','filter-Plus'));
+		} else {
+			$first_index = array(''=>esc_html__('No Custom Post Type Found','filter-Plus'));
+		}
+		$all_post_types = $first_index + $post_types;
+
+		return $all_post_types;
 	}
 
 

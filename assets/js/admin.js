@@ -73,13 +73,12 @@
 			let result          = "";
 			var checkbox        = _this.find('input:checkbox');
 			var select_box      = _this.find('select');
-			
 			// select box
 			if ( select_box.length > 0 ) {
 				select_box.each(function() {
 					let $this = $(this);
-					let disable = $this.hasClass('pro-disable');
-					if (disable) {
+					let is_true = shortcode_input_disable( $this );
+					if (is_true) {
 						return;
 					}
 					// select option
@@ -91,11 +90,11 @@
 				});
 			}
 			// check box
-			if ( checkbox.length > 0 ) {
+			if ( _this.parent('.d-none').length == 0 && checkbox.length > 0 ) {
 				checkbox.each(function() {
 					let $this = $(this);
-					let disable = $this.parent().hasClass('disable');
-					if (disable) {
+					let is_true = shortcode_input_disable( $this );
+					if (is_true) {
 						return;
 					}
 					let value = $this.is(':checked') ? "yes" : "no";
@@ -104,6 +103,17 @@
 			}
 
 			return result;
+		}
+
+		function shortcode_input_disable( $this ) {
+			let disable = $this.parent().hasClass('disable');
+			let disable_pro = $this.parent().hasClass('pro-disable');
+			let d_none = $this.parents('.d-none');
+			if (disable_pro || disable || d_none.length > 0 ) {
+				return true;
+			}else{
+				return false;
+			}
 		}
 
 		/**
