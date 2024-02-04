@@ -144,9 +144,9 @@
 			var prod_grid_wrap = $(".prods-grid-view");
 			var prod_list_wrap = $(".wp-list-view,.prods-list-view");
 			var message_info = $(".message");
-			var template = $(".shopContainer").data("template");
-			var product_categories = $(".shopContainer").data("product_categories");
-			var product_tags = $(".shopContainer").data("product_categories");
+			var template = $("#shopContainer").data("template");
+			var product_categories = $("#shopContainer").data("product_categories");
+			var product_tags = $("#shopContainer").data("product_categories");
 			let selected_data = selected_param(params);
 			show_selected_data(selected_data);
 
@@ -325,7 +325,7 @@
 			}
 			let price_range = $(".range-slider");
 			// category
-			params['filter_type'] 			= $(".shopContainer").data('filter_type');
+			params['filter_type'] 			= $("#shopContainer").data('filter_type');
 			params['cat_id'] 				= $(".category-list li.active").data('cat_id');
 			params['product_cat'] 			= filter_client.seo_slug_url == 'yes' ? $(".category-list li.active").data('slug'): $.trim($(".category-list li.active").text());
 			params['rating']   				= $("ul.ratings").attr("id");

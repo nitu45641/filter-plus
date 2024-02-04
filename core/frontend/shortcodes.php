@@ -75,6 +75,7 @@ class Shortcodes {
 
 		?>
 			<div class="shopContainer"
+			id="shopContainer"
 			data-filter_type='product' 
 			data-template="<?php echo esc_attr($template)?>"
 			data-product_categories="<?php echo esc_attr($product_categories)?>"
