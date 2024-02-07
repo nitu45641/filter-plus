@@ -296,7 +296,7 @@ class Actions {
 			foreach ( $posts as $key => $post ):
 				$product_instance = wc_get_product($post->ID);
 				$products[$key]['rating']           = class_exists('FilterPlusPro') ? self::rating_html( $product_instance ) : "";
-				$products[$key]['post_description'] = $product_instance->get_short_description();
+				$products[$key]['post_description'] = wp_trim_words($product_instance->get_short_description(), 80 , '...');
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price']       = $product_instance->get_price_html();
 				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] );
@@ -328,17 +328,31 @@ class Actions {
 				$products[$key]['id'] = $post->ID;
 				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$products[$key]['post_image']       = $image;
-				$products[$key]['post_description'] = apply_filters('the_content', $post->post_content);
+				$products[$key]['post_description'] = wp_trim_words( get_post_field('post_content', $post->ID ) , 30 , '');
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 				$products[$key]['author']   		= esc_html__('By','filter-plus').' '. get_the_author_meta( 'display_name',$post->post_author );
-				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? get_the_terms ( $post->ID , $cats ) : [];
+				$products[$key]['posts_author_link']   	= get_author_posts_url( $post->post_author );
+				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? self::tags_info ( $post->ID , $cats ) : [];
 				$products[$key]['categories_label'] =  ( count($products[$key]['categories']) > 0 ) ? esc_html__('Category:','filter-plus') : '';
-				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? get_the_terms ( $post->ID , $tags  ) : [];
+				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? self::tags_info ( $post->ID , $tags  ) : [];
 				$products[$key]['tag_label'] 		=  ( count($products[$key]['tags']) > 0 ) ? esc_html__('Tag:','filter-plus') : '';
+				$products[$key]['read_more'] 		=  esc_html__('Read More','filter-plus');
 			endforeach;
 		}
 
 		return $products;
+	}
+
+	public static function tags_info( $id , $tags )  {
+		$tags = get_the_terms ( $id , $tags  );
+		if (empty($tags)) {
+			return array();
+		}
+		foreach ($tags as $key => &$tag) {
+			$tag->link = get_tag_link($tag->term_id);
+		}
+
+		return $tags;
 	}
 
 	/**
