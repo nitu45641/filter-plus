@@ -157,11 +157,13 @@ class Shortcodes {
 				--filter-price-range: #2d0607;
 				--filter-border-color: #17c6aa;
 				--filter-header-border: #17c6aa;
+				--filter-blog-header: #17c6aa;
 			}
 			';
 		}
 		else if ( $template == "3" ) {
 			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 
+			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
 			$custom_css = '
 			:root {
 				--filter-cart-icon-color : #ab1616;
@@ -171,6 +173,7 @@ class Shortcodes {
 				--filter-border-color: #ab1616;
 				--filter-header-border: #ab1616;
 				--filter-tab-color: '.$secondary_color.';
+				--filter-blog-header: '.$blog_header.';
 			}
 			';
 		}

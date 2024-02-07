@@ -43,6 +43,9 @@ a {
 .mb-4{
 	margin-bottom: 4%;
 }
+.mb-1{
+	margin-bottom: 1%;
+}
 .mt-2{
 	margin-top: 2%;
 }
@@ -1025,7 +1028,6 @@ a.added_to_cart.wc-forward {
 .post-tag-3{
 	color: #727272;
     font-weight: 600;
-    text-decoration: underline;
 }
 .woocommerce .woocommerce-product-rating .star-rating{
     margin: 0.5em 4px 15px 0;
@@ -1053,4 +1055,10 @@ a.added_to_cart.wc-forward {
 }
 #document_svg .document_svg{
 	fill: #ff0000;
+}
+.author{
+	color:#080808
+}
+.blog-content-2{
+	padding: 30px;
 }

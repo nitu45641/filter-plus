@@ -89,8 +89,9 @@
 					}
 				});
 			}
+
 			// check box
-			if ( _this.parent('.d-none').length == 0 && checkbox.length > 0 ) {
+			if ( checkbox.length > 0 ) {
 				checkbox.each(function() {
 					let $this = $(this);
 					let is_true = shortcode_input_disable( $this );
@@ -98,6 +99,7 @@
 						return;
 					}
 					let value = $this.is(':checked') ? "yes" : "no";
+
 					result += ` ${$this.data('label')}="${ value }"`;
 				});
 			}
