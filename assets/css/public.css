@@ -1049,6 +1049,11 @@ a.added_to_cart.wc-forward {
 	color: #ff0000;
 	margin-right: 3px;
 }
+.blog-cat-3::before{
+	content: url(../../assets/images/category.svg);
+	color: #ff0000;
+	margin-right: 3px;
+}
 .author-3::before{
 	content: url(../../assets/images/author.svg);
 	margin-right: 3px;
