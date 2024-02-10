@@ -281,7 +281,7 @@ class Helper {
 		$admin_pages =  array(
 			'filter-plus_page_settings',
 			'toplevel_page_filter_plus',
-			'filter-plus_page_overview',
+			'filter-plus_page_filter_plus_overview',
 			'filter-plus_page_filter-sets'
 		);
 

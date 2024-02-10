@@ -499,7 +499,7 @@ a.pr-tag{
 }
 .ctn-button{
 	cursor: pointer;
-    padding: 3% 4%;
+	padding: 3% 7%;
     font-size: 15px;
     font-weight: 800;
     border: 1px solid #291c63;
@@ -561,6 +561,10 @@ a.pr-tag{
 .single-item h3,.card-block h3{
     font-weight: 800;
 }
+.card-block h3{
+	font-size: 20px;
+}
+
 .single-item span,.card-block span{
     position: relative;
     font-size: 25px;
@@ -627,10 +631,41 @@ a.pr-tag{
 @media (max-width:1024px){
     .first-block{
 		display: grid;
-		grid-template-columns: 280px 450px
+		grid-template-columns: 40% 60%
 	}
 	.first-block .right-block img{
 		width: 100%;
+	}
+	.left-block h1{
+		font-size: 33px;
+	}
+	.explore-plugin a .ctn-button{
+		margin: 1%;
+		padding: 5% 7%;
+	}
+}
+@media (max-width:425px){
+    .first-block{
+		display: block;
+	}
+	.block-header{
+		font-size: 25px;
+	}
+	.cta-block{
+		display: block;
+	}
+	.feature-cta{
+		padding: 6% 0;
+	}
+	.card-wrapper{
+		display: block;
+	}
+	.card-block{
+		width: 100%;
+		margin-bottom: 3%;
+	}
+	.block-wrapper {
+		grid-template-columns: auto auto;
 	}
 }
 /* Over view page css end */

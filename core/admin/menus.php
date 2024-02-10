@@ -86,7 +86,7 @@ class Menus {
 				"page_title"  => esc_html__('Overview','filter-plus'),
 				"menu_title"  => esc_html__('Overview','filter-plus'),
 				"capability"  => 'read',
-				"menu_slug"   => 'overview',
+				"menu_slug"   => 'filter_plus_overview',
 				"cb_function" => array($this,'over_view'),
 				"position"    => 11
 			),
