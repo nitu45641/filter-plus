@@ -62,18 +62,22 @@
     );
     $more_products = array(
         array(
-            'icon'  =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-            'url'   => 'https://woooplugin.com/discountify/',
-            'title' =>esc_html__('Discount and Coupon Plugin','filter-plus'),
-            'logo'   => 'discountify-logo.png',
-            'cta'   =>esc_html__('Explore The Plugin','filter-plus')
+            'icon'          =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
+            'url_demo'      => 'https://woooplugin.com/discountify/',
+            'url_free'      => 'https://downloads.wordpress.org/plugin/discountify.latest-stable.zip',
+            'title'         =>esc_html__('Discount and Coupon Plugin','filter-plus'),
+            'logo'          => 'discountify-logo.png',
+            'cta_free'      =>esc_html__('Explore Free Plugin','filter-plus'),
+            'cta_demo'      =>esc_html__('Explore The Plugin','filter-plus')
         ),
         array(
             'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-            'url' => 'https://woooplugin.com/quicker/',
+            'url_demo' => 'https://woooplugin.com/quicker/',
+            'url_free' => 'https://woooplugin.com/quicker/',
             'title' =>esc_html__('Quick Checkout Plugin','filter-plus'),
             'logo'   => 'quicker-logo.png',
-            'cta' =>esc_html__('Explore The Plugin','filter-plus')
+            'cta_free' =>esc_html__('Explore Free Plugin','filter-plus'),
+            'cta_demo' =>esc_html__('Explore The Plugin','filter-plus')
         ),
     );
 ?>
@@ -134,8 +138,11 @@
                         height="50px"
                         />
                         <div class="description">
-                            <a href="<?php echo esc_url($value['url']); ?>"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3> </a>  
-                            <button class="btn bg-color ctn-button"><?php esc_html_e($value['cta'],'filter-plus'); ?></button>  
+                            <a href="<?php echo esc_url($value['url_demo']); ?>"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3> </a>  
+                            <div class="explore-plugin">
+                                <a href="<?php echo esc_url($value['url_demo']); ?>"><button class="btn bg-color ctn-button"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></button></a>  
+                                <a href="<?php echo esc_url($value['url_free']); ?>"><button class="btn bg-color ctn-button"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></button></a>  
+                            </div>
                         </div>
 
                 </div>

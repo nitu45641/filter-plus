@@ -450,6 +450,7 @@ a.pr-tag{
 	position: relative !important;
 	left: 5px !important;
 }
+
 /* Overview page */
 .bg-color{
 	background-color: #3263f8;
@@ -487,6 +488,7 @@ a.pr-tag{
 	color: #fff;
 }
 .first-block{
+	padding: 3%;
 	justify-content: space-between;
 	background-color: #3263f8;
 	min-height: 250px;
@@ -553,7 +555,7 @@ a.pr-tag{
 	margin-right: 0;
 }
 .single-item,.card-block {
-	padding: 15px;
+	padding: 3% 0;
 	text-align: center;
 }
 .single-item h3,.card-block h3{
