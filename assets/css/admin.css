@@ -518,7 +518,7 @@ a.pr-tag{
 	margin-bottom: 5%;
 }
 .left-block h1{
-    font-size: 33px;
+    font-size: 38px;
     font-weight: 800;
     color: #fff;
     line-height: 1.2;
@@ -624,7 +624,16 @@ a.pr-tag{
 .mt-5{
 	margin-top: 5% !important;
 }
-
+@media (max-width:1024px){
+    .first-block{
+		display: grid;
+		grid-template-columns: 280px 450px
+	}
+	.first-block .right-block img{
+		width: 100%;
+	}
+}
+/* Over view page css end */
 a.pro-link{
 	position: relative;
 	width: 330px;

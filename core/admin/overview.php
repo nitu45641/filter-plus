@@ -86,7 +86,7 @@
     <div class="block first-block">
         <div class="left-block mb-5">
             <h1 class="first-header"><?php esc_html_e('Powerful Filtering Features for WordPress and WooCommerce','filter-plus');?></h1>
-            <p><?php esc_html_e('Filter Plus is the WordPress and WooCommerce Product Filter Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. The plugin comes with WordPress filter anything functionality that increases the user experience.','filter-plus');?></p>
+            <p><?php esc_html_e('Filter Plus is the WordPress and WooCommerce Product Filter Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. The plugin comes with WordPress post and custom post type filter anything functionality that increases the user experience.It also allows to filter WooCommerce admin order filter by product and order status.','filter-plus');?></p>
             <div class="cta">
             <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
                 <button class="btn ctn-button"><?php esc_html_e('Explore Filter Plus Pro','filter-plus');?></button>

@@ -159,16 +159,5 @@ class Menus {
 		</div>
 	<?php
     }
-
-	/**
-     * Admin sub menu view
-     *
-     * @return void
-     */
-    public function filter_plus_settings_view()
-    {
-	?>
-        <div class="wrap" id="">over view test</div>
-	<?php
-    }
+	
 }
