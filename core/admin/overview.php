@@ -138,10 +138,10 @@
                         height="50px"
                         />
                         <div class="description">
-                            <a href="<?php echo esc_url($value['url_demo']); ?>"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3> </a>  
+                            <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3> </a>  
                             <div class="explore-plugin">
-                                <a href="<?php echo esc_url($value['url_demo']); ?>"><button class="btn bg-color ctn-button"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></button></a>  
-                                <a href="<?php echo esc_url($value['url_free']); ?>"><button class="btn bg-color ctn-button"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></button></a>  
+                                <a href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank"><button class="btn bg-color ctn-button"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></button></a>  
+                                <a href="<?php echo esc_url($value['url_free']); ?>"  target="_blank"><button class="btn bg-color ctn-button"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></button></a>  
                             </div>
                         </div>
 

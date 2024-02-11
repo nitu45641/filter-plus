@@ -1,7 +1,7 @@
 === WooComerce Product Filter, WordPress Filtering by Ratings, Tags, Price Range Plugin - Filter Plus ===
 Contributors: markutos987, galib96
 Donate link: https://woooplugin.com/filter-plus/
-Tags: WooCommerce Filter, Filtering Plugin, Price Range, Product Filter , ajax filter
+Tags: WooCommerce Filter, blog filter, Price Range, Product Filter , ajax filter
 Requires at least: 4.7
 Tested up to: 6.4.1
 Stable tag: 1.0.26
@@ -80,7 +80,7 @@ Moreover, **Filter Tag** will be displayed on the page after applying it. Users 
 
 **👉 RTL Support** - If you have any WordPress site that has right to left language, you can use the plugin. Filter Plus is now RTL compatible plugin.
 
-**👉 Nice URL for Filter Page ** - Once the users update the filter criteria, the site will have a SEO friendly new URL.
+**👉 Nice URL for Filter Page** - Once the users update the filter criteria, the site will have a SEO friendly new URL.
 
 **👉 Filter by Product** - Visitors can add filter based on the products. So, if any store have same products under different category, offers and value, users can see all of them in same page. This features helps growing sales for multivendor eCommerce website.
 
