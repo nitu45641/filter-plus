@@ -51,6 +51,7 @@ class Actions {
 		$template     = ! empty( $post_data['template'] ) ? $post_data['template'] : 1;
 		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : 'yes';
 		$product_tags = ! empty( $post_data['product_tags'] ) ? $post_data['product_tags'] : 'yes';
+		$post_author  = ! empty( $post_data['post_author'] ) ? $post_data['post_author'] : 'yes';
 		$stock        = ! empty( $post_arr['stock'] ) ? $post_arr['stock'] : '';
 		$on_sale      = ! empty( $post_arr['on_sale'] ) ? $post_arr['on_sale'] : '';
 		$offset       = ! empty( $post_arr['offset'] ) ? $post_arr['offset'] : 1;
@@ -72,6 +73,7 @@ class Actions {
 			'max'           => $max,
 			'rating'        => $rating,
 			'product_tags'  => $product_tags,
+			'post_author'   => $post_author,
 			'order_by'      => $order_by,
 			'product_categories'  => $product_categories,
 			'stock'  		=> $stock,
@@ -330,8 +332,8 @@ class Actions {
 				$products[$key]['post_image']       = $image;
 				$products[$key]['post_description'] = wp_trim_words( get_post_field('post_content', $post->ID ) , 30 , '');
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
-				$products[$key]['author']   		= esc_html__('By','filter-plus').' '. get_the_author_meta( 'display_name',$post->post_author );
-				$products[$key]['posts_author_link']   	= get_author_posts_url( $post->post_author );
+				$products[$key]['author']   		= $param['post_author'] =='yes' ? esc_html__('By','filter-plus').' '. get_the_author_meta( 'display_name',$post->post_author ) : '';
+				$products[$key]['posts_author_link']= $param['post_author'] =='yes' ? get_author_posts_url( $post->post_author ) : '#';
 				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? self::tags_info ( $post->ID , $cats ) : [];
 				$products[$key]['categories_label'] =  ( count($products[$key]['categories']) > 0 ) ? esc_html__('Category:','filter-plus') : '';
 				$products[$key]['tags']             =  $param['product_tags'] == "yes" ? self::tags_info ( $post->ID , $tags  ) : [];

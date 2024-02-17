@@ -19,7 +19,6 @@
 		$(".tab-content div").removeClass('active');
 		$(`li[data-item="${active_tab}"]`).addClass('active');
 		$(`#${active_tab}`).addClass('active');
-		hide_submit($(`.settings_tab_pan li.active`).index());
 		$settings_tab_li.on('click',function(){
 			let $this = $(this);
 			$settings_tab_li.removeClass();
@@ -27,19 +26,8 @@
 			$this.addClass('active');
 			var index = $settings_tab_li.index(this);
 			$('.tab-content > div:eq('+index+')').show();
-			hide_submit(index);
 			window.history.replaceState(null, null, `#${$this.data('item')}`);
 		});
-
-		//Settings Tab	
-		function hide_submit(index=0) {
-			let $admin_button  = $(".admin-button");
-			if ( index == 0 ) {
-				$admin_button.fadeOut();
-			}else{
-				$admin_button.fadeIn();
-			}
-		}
 
 		/**
 		 * Shortcode generator

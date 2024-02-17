@@ -77,6 +77,10 @@
 			$args = array('label'=>esc_html__("Display Categories:","filter-plus"),'id' => 'post_categories',
 			'data_label' => 'post_categories', 'disable' => $disable );
 			filter_plus_checkbox_field($args);
+			// show post author
+			$args = array('label'=>esc_html__("Display Author:","filter-plus"),'id' => 'post_author',
+			'data_label' => 'post_author', 'disable' => $disable );
+			filter_plus_checkbox_field($args);
 		?>
 		<div class="single-block">
 			<div class="generate-block"><button class="button button-primary"><?php esc_html_e("Copy Filer Shortcodes","filter-plus");?></button></div>

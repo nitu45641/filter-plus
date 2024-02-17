@@ -29,7 +29,11 @@
           </label>
 
           <section class="content">
-            <?php include_once $value['path']; ?>
+            <?php 
+            if ( file_exists($value['path'])) {
+                include_once $value['path']; 
+            }
+            ?>
           </section>
         </li>
     <?php } ?>

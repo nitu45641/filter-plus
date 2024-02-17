@@ -1,4 +1,4 @@
-=== WooComerce Product Filter, WordPress Filtering by Ratings, Tags, Price Range Plugin - Filter Plus ===
+=== Wordpress Filter, WooCommerce Filtering by Ratings, Tags, Price Range Plugin , Woocommerce admin order filter - Filter Plus ===
 Contributors: markutos987, galib96
 Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce Filter, blog filter, Price Range, Product Filter , ajax filter
@@ -9,7 +9,7 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Filter Plus is WordPress and WooComerce Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website.
+Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website.
 
 == Description ==
 

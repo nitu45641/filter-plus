@@ -147,6 +147,7 @@
 			var template = $("#shopContainer").data("template");
 			var product_categories = $("#shopContainer").data("product_categories");
 			var product_tags = $("#shopContainer").data("product_categories");
+			var post_author = $("#shopContainer").data("post_author");
 			let selected_data = selected_param(params);
 			show_selected_data(selected_data);
 
@@ -157,6 +158,7 @@
 				template: template,
 				product_categories: product_categories,
 				product_tags: product_tags,
+				post_author: post_author,
 				params: selected_data
 			};
 
