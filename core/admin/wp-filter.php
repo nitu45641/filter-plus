@@ -83,7 +83,7 @@
 			filter_plus_checkbox_field($args);
 		?>
 		<div class="single-block">
-			<div class="generate-block"><button class="button button-primary"><?php esc_html_e("Copy Filer Shortcodes","filter-plus");?></button></div>
+			<div class="generate-block <?php echo $disable == 1 ? esc_attr('disable') : '' ;?>"><button class="button button-primary"><?php esc_html_e("Copy Filer Shortcodes","filter-plus");?></button></div>
 			<input type="text" class="full_input" id="wp_filter_shortcode" value="">
 		</div>
 	</div>

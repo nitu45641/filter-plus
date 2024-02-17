@@ -38,6 +38,10 @@
 				let _this = $(this);
 				_this.on('click',function(e){
 					e.preventDefault();
+					console.log(_this.hasClass('disable'));
+					if (_this.hasClass('disable')) {
+						return;
+					}
 					let results = _this.siblings(".full_input");
 					let parent_block = _this.parents(".shortcode-block");
 					let shortcode_name = parent_block.data("name");
