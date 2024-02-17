@@ -13,11 +13,15 @@ Filter Plus is WordPress and WooComerce Product Filter plugin that enable filter
 
 == Description ==
 
-**[Filter Plus](https://woooplugin.com/filter-plus/)** is a **WordPress and Woocommerce Product Filter Plugin** that allows users to add multiple filtering features like filter by Ratings, Tags, Price Range etc.
+**[Filter Plus](https://woooplugin.com/filter-plus/)** is a **WordPress and Woocommerce Product Filter Plugin** that allows users to add multiple filtering features like filter Woocommerce products by Categories,Ratings, Tags, Price Range etc. Wordpress Post,Custom Post type by Categories,Tags,Author and so on.You can also filter Woocommerce admin order by products and order status.
 
 Ever wanted to provide a better WooCommerce filtering experience and **product filter** on your WordPress eCommerce site? Now you can do that with the **[Filter Plus](https://woooplugin.com/filter-plus/)** plugin. This will allow the store admin to add different filter options to the store. And by using the advanced filter, customers can easily get the desired products. 
 
-It will help users shorten the products quickly and order from the prioritized product list. Filter Plus will help you to improve the user experience, and conversion rate while also helping the store owner reduce the bounce rate. Filter Plus as **Woocommerce Filter** plugin will help you making users more comfortable with shoping on the store.
+It will help users shorten the products quickly and order from the prioritized product list. Filter Plus will help you to improve the user experience, and conversion rate while also helping the store owner reduce the bounce rate. Filter Plus as **Woocommerce Filter** plugin will help you make users more comfortable with shopping in the store.
+**Wordpress Filter** Helps you to filter blogs, custom post type by categories,tags, 
+author , post meta, custom fields and so on.
+
+**Woocommerce Admin Order** Filter helps Store Owner analyze which is the best-selling burger in your store by filtering orders by products and order status. With these analytics, you can easily filter out where you have to emphasize for increased sales.
 
 **Helpful links 👇**
 
@@ -41,11 +45,13 @@ It will help users shorten the products quickly and order from the prioritized p
 * **Filter By Ratings**
 * **Filter By Tag**
 * **AJAX Filter**
-* **AJAX Filter Widget**
-* **AJAX Product Filters**
-* **Product Filters**
+* **Filter By Stock Status**
+* **AJAX Product Filter**
+* **Use Custom Templates**
+* **Use for blogs, reviews sites, news sites, property sites and more**
 * **Wordpress Blog Filter**
 * **Wordpress Custom Post Type Filter**
+* **Search Wordpress Post,Custom Post by Custom Fields, Post Meta, Authors, Post Types, Post Dates, Taxonomies, Tags, Categories**
 * **WooCommerce Admin Order Filter by Product,Status**
 
 ##Current Feature##
@@ -106,7 +112,7 @@ After installation and activation, you will see a new option in the admin panel.
 
 = Is it compatible with all WordPress themes? =
 
-We have tested all the popular themes. And we believe, it will work with your theme if that has been well developed for WordPress and WooComerce. If you face any issue, drop us a message on our support link. Our team will take care of the compatibility issue.
+We have tested all the popular themes. And we believe it will work with your theme if that has been well developed for WordPress and WooComerce. If you face any issue, drop us a message on our support link. Our team will take care of the compatibility issue.
 
 == Screenshots ==
 
