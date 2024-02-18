@@ -22,7 +22,7 @@ class Filters extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__('Filter Woo Products', 'filter-plus');
+		return esc_html__('Filter Plus - Woo Product Filter', 'filter-plus');
 	}
 
 	/**
@@ -46,18 +46,19 @@ class Filters extends Widget_Base {
 		$this->start_controls_section(
 			'section_tab',
 			[
-				'label' => esc_html__('Category List', 'filter-plus'),
+				'label' => esc_html__('Filter Options', 'filter-plus'),
 			]
 		);
 		$templates = [
 			1  => esc_html__('Template 1', 'filter-plus'),
 		];
 		$pro = "";
-		if ( class_exists('FilterPlusPro') ) {
+		if ( !class_exists('FilterPlusPro') ) {
 			$pro  = esc_html__('Pro', 'filter-plus');
 		}
 		$templates[2] = esc_html__('Template 2', 'filter-plus').' '.$pro;
 		$templates[3] = esc_html__('Template 3', 'filter-plus').' '.$pro;
+		$templates[4] = esc_html__('Template 4', 'filter-plus').' '.$pro;
 		
 		$this->add_control(
 			'template',
@@ -160,81 +161,80 @@ class Filters extends Widget_Base {
 			]
 		);
 
-		// Pro
-		if (class_exists('FilterPlusPro')) {
+		
+		$this->add_control(
+			'show_reviews',
+			[
+				'label' => esc_html__('Show Reviews', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
 
-			$this->add_control(
-				'show_reviews',
-				[
-					'label' => esc_html__('Show Reviews', 'filter-plus'),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-					'label_on' => esc_html__('Show', 'filter-plus'),
-					'label_off' => esc_html__('Hide', 'filter-plus'),
-					'return_value' => 'yes',
-					'default' => 'yes',
-				]
-			);
+		$this->add_control(
+			'stock',
+			[
+				'label' => esc_html__('Filter By Stock', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
 
-			$this->add_control(
-				'stock',
-				[
-					'label' => esc_html__('Filter By Stock', 'filter-plus'),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-					'label_on' => esc_html__('Show', 'filter-plus'),
-					'label_off' => esc_html__('Hide', 'filter-plus'),
-					'return_value' => 'yes',
-					'default' => 'yes',
-				]
-			);
+		$this->add_control(
+			'on_sale',
+			[
+				'label' => esc_html__('Sales', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
 
-			$this->add_control(
-				'on_sale',
-				[
-					'label' => esc_html__('Sales', 'filter-plus'),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-					'label_on' => esc_html__('Show', 'filter-plus'),
-					'label_off' => esc_html__('Hide', 'filter-plus'),
-					'return_value' => 'yes',
-					'default' => 'yes',
-				]
-			);
+		$this->add_control(
+			'sorting',
+			[
+				'label' => esc_html__('Display Sorting:', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
 
-			$this->add_control(
-				'sorting',
-				[
-					'label' => esc_html__('Display Sorting:', 'filter-plus'),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-					'label_on' => esc_html__('Show', 'filter-plus'),
-					'label_off' => esc_html__('Hide', 'filter-plus'),
-					'return_value' => 'yes',
-					'default' => 'yes',
-				]
-			);
-			// Right Side
-			$this->add_control(
-				'product_categories',
-				[
-					'label' => esc_html__('Display Categories', 'filter-plus'),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-					'label_on' => esc_html__('Show', 'filter-plus'),
-					'label_off' => esc_html__('Hide', 'filter-plus'),
-					'return_value' => 'yes',
-					'default' => 'yes',
-				]
-			);
+		// Right Side
+		$this->add_control(
+			'product_categories',
+			[
+				'label' => esc_html__('Display Categories', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
 
-			$this->add_control(
-				'product_tags',
-				[
-					'label' => esc_html__('Display Tags', 'filter-plus'),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-					'label_on' => esc_html__('Show', 'filter-plus'),
-					'label_off' => esc_html__('Hide', 'filter-plus'),
-					'return_value' => 'yes',
-					'default' => 'yes',
-				]
-			);
-		}
+		$this->add_control(
+			'product_tags',
+			[
+				'label' => esc_html__('Display Tags', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
