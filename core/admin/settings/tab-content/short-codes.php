@@ -60,18 +60,15 @@
 
 
 			// show reviews
-			$args = array('label'=>esc_html__("Display Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews',
-			'disable' => $disable );
+			$args = array('label'=>esc_html__("Display Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews');
 			filter_plus_checkbox_field($args);
 
 			// filter by stock
-			$args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock',
-			'disable' => $disable );
+			$args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock');
 			filter_plus_checkbox_field($args);
 
 			// filter by on sale
-			$args = array('label'=>esc_html__("Filter By On Sale:","filter-plus"),'id' => 'on_sale','data_label' => 'on_sale',
-			'disable' => $disable );
+			$args = array('label'=>esc_html__("Filter By On Sale:","filter-plus"),'id' => 'on_sale','data_label' => 'on_sale');
 			filter_plus_checkbox_field($args);
 
 		?>
@@ -81,17 +78,16 @@
 		<?php
 
 			// show sorting
-			$args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting',
-			'disable' => $disable );
+			$args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting');
 			filter_plus_checkbox_field($args);
 
 			// show tags
-			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'product_tags','data_label' => 'product_tags',
-			'disable' => $disable );
+			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'product_tags','data_label' => 'product_tags');
 			filter_plus_checkbox_field($args);
 			// show product categories
 			$args = array('label'=>esc_html__("Display Categories:","filter-plus"),'id' => 'product_categories',
-			'data_label' => 'product_categories', 'disable' => $disable );
+			'data_label' => 'product_categories');
+			
 			filter_plus_checkbox_field($args);
 		?>
 		<div class="single-block">

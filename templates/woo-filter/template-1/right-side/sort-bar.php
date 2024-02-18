@@ -3,13 +3,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-$show_sort_bar = true;
-if( class_exists('FilterPlusPro') && $sorting == "no" ){
-	$show_sort_bar = false;
-}
-if ( $show_sort_bar == false ) {
+if( $sorting == "no" ){
 	return;
 }
+
 ?>
 <div class="sort-bar">
 	<div class="sort-bar-left">

@@ -18,8 +18,8 @@ Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filte
 Ever wanted to provide a better WooCommerce filtering experience and **product filter** on your WordPress eCommerce site? Now you can do that with the **[Filter Plus](https://woooplugin.com/filter-plus/)** plugin. This will allow the store admin to add different filter options to the store. And by using the advanced filter, customers can easily get the desired products. 
 
 It will help users shorten the products quickly and order from the prioritized product list. Filter Plus will help you to improve the user experience, and conversion rate while also helping the store owner reduce the bounce rate. Filter Plus as **Woocommerce Filter** plugin will help you make users more comfortable with shopping in the store.
-**Wordpress Filter** Helps you to filter blogs, custom post type by categories,tags, 
-author , post meta, custom fields and so on.
+**Wordpress Filter** Helps you to filter blogs, custom post type by categories, tags, author , post meta, custom fields and so on.You can Filter Everything in WordPress.
+
 
 **Woocommerce Admin Order** Filter helps Store Owner analyze which is the best-selling burger in your store by filtering orders by products and order status. With these analytics, you can easily filter out where you have to emphasize for increased sales.
 
@@ -27,8 +27,9 @@ author , post meta, custom fields and so on.
 
 **⭐️ Check premium Features 👉 [Filter Plus Pro](https://woooplugin.com/filter-plus/)**
 **⭐️ Need Any Help? 👉 [Contact Us](https://woooplugin.com/support/).**
-**⭐️ Check Live Demo 👉 [Filter Plus Sample 1](https://product.woooplugin.com/filter-plus/)**
-**⭐️ Check Live Demo 👉 [Filter Plus Sample 2](https://product.woooplugin.com/filter-products-tempate-1/)**
+**⭐️ Check Live Demo 👉 [Filter Plus WooCommerce Filter ](https://product.woooplugin.com/filter-plus/)**
+**⭐️ Check Live Demo 👉 [Filter Plus Wordpress Filter ](https://product.woooplugin.com/filter-plus/)**
+**⭐️ Check Live Demo 👉 [Filter Plus WooCommerce Admin Order Filter ](https://product.woooplugin.com/filter-plus/)**
 **⭐️ Know How It Works 👉 [Documentation](https://docs.woooplugin.com/?docs=filter-plus)**
 
 📌 [Before writing any review, Please be aware that, Filter Plus is still in its initial stage]
@@ -37,22 +38,20 @@ author , post meta, custom fields and so on.
 
 * **Filter Plugin**
 * **Filter Products WordPress Plugin**
-* **Filter Everything in WordPress**
 * **Food Menu Filtering**
 * **WooCommerce Product Filtering**
 * **WooCommerce Filter By Price**
 * **Filter By Price Range**
 * **Filter By Ratings**
 * **Filter By Tag**
-* **AJAX Filter**
-* **Filter By Stock Status**
 * **AJAX Product Filter**
-* **Use Custom Templates**
-* **Use for blogs, reviews sites, news sites, property sites and more**
-* **Wordpress Blog Filter**
-* **Wordpress Custom Post Type Filter**
-* **Search Wordpress Post,Custom Post by Custom Fields, Post Meta, Authors, Post Types, Post Dates, Taxonomies, Tags, Categories**
-* **WooCommerce Admin Order Filter by Product,Status**
+* **Filter By Stock Status – PRO**
+* **Multiple Templates – PRO**
+* **Use for blogs, reviews sites, news sites, property sites and more – PRO**
+* **Wordpress Blog Filter – PRO**
+* **Wordpress Custom Post Type Filter – PRO**
+* **Search Wordpress Post,Custom Post by Custom Fields, Post Meta, Authors, Post Types, Post Dates, Taxonomies, Tags, Categories – PRO**
+* **WooCommerce Admin Order Filter by Product,Status – PRO**
 
 ##Current Feature##
 
