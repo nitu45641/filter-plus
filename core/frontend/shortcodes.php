@@ -74,7 +74,7 @@ class Shortcodes {
 		$this->custom_css($template);
 
 		?>
-			<div class="shopContainer"
+			<div class="shopContainer shop-container-<?php echo esc_attr($template)?>"
 			id="shopContainer"
 			data-filter_type='product' 
 			data-template="<?php echo esc_attr($template)?>"
@@ -82,7 +82,8 @@ class Shortcodes {
 			data-product_tags="<?php echo esc_attr($product_tags)?>"
 			>
 			<?php 
-							
+				$style = $template;
+				$template = $this->select_template($template);
 				if ( file_exists( \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 					include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
 				}
@@ -97,6 +98,20 @@ class Shortcodes {
 
 		return ob_get_clean();
 	}
+
+	/**
+	 * Select Template
+	 *
+	 */
+	public function select_template($template) {
+		if ($template == 4) {
+			$template = 2;
+		}
+		
+		return $template;
+	}
+
+
 
 	public function wp_filter_plus( $atts ) {
 		ob_start();
@@ -149,34 +164,38 @@ class Shortcodes {
 	public function custom_css($template = "1", $filter_type = "product") {
 		global $custom_css;
 		if ( $template == "2" ) {
-			$custom_css = '
-			:root {
-				--secondary-color: #17c6aa;
-				--filter-secondary-color : #17c6aa;
-				--filter-cart-icon-color : #fff;
-				--filter-price-range: #2d0607;
-				--filter-border-color: #17c6aa;
-				--filter-header-border: #17c6aa;
-				--filter-blog-header: #17c6aa;
-			}
-			';
+			$cart_icon =  '#fff'; 
+			$secondary_color = $primary_color = '#17c6aa'; 
+			$price_range = '#2d0607'; 
+			$cart_content = '#080808'; 
+			$tag_color = '#ff1f25';
 		}
 		else if ( $template == "3" ) {
 			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 
 			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
-			$custom_css = '
-			:root {
-				--filter-cart-icon-color : #ab1616;
-				--filter-price-range : #ab1616;
-				--filter-secondary-color : '.$secondary_color.';
-				--filter-price-range: #ab1616;
-				--filter-border-color: #ab1616;
-				--filter-header-border: #ab1616;
-				--filter-tab-color: '.$secondary_color.';
-				--filter-blog-header: '.$blog_header.';
-			}
-			';
+			$cart_icon = $primary_color = $price_range = '#ab1616'; 
 		}
+		else if ( $template == "4" ) {
+			$primary_color = $price_range = $cart_content = '#ff69b4'; 
+			$secondary_color = $tag_color = '#ff69b4'; 
+			$cart_icon = '#fff'; 
+			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
+		}
+
+		$custom_css = '
+		:root {
+			--filter-cart-icon-color : '.$cart_icon.';
+			--filter-cart-content: '.$cart_content.';
+			--filter-price-range : '.$price_range.';
+			--filter-secondary-color : '.$secondary_color.';
+			--filter-price-range: '.$primary_color.';
+			--filter-border-color: '.$primary_color.';
+			--filter-header-border: '.$primary_color.';
+			--filter-tab-color: '.$secondary_color.';
+			--filter-blog-header: '.$blog_header.';
+			--filter-tag-color: '.$tag_color.';
+		}';
+
 		wp_register_style( 'filter-plus-custom-css', false );
 		wp_enqueue_style( 'filter-plus-custom-css' );
 		wp_add_inline_style('filter-plus-custom-css',$custom_css);

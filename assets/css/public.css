@@ -648,7 +648,7 @@ a.added_to_cart.wc-forward {
 	.offer
 	span {
 	background-color: #fff;
-	color: #ff1f25;
+	color: var(--filter-tag-color,'#ff1f25');
 	font-size: 12px;
 	line-height: 14px;
 	padding: 3px 5px;
@@ -705,9 +705,9 @@ a.added_to_cart.wc-forward {
 	.product-thumbnail
 	.card-action-btn-container
 	a {
-	display: inline-block;
+	display: flex;
 	padding: 8px 26px 10px;
-	background-color: #080808;
+	background-color: var(--filter-cart-content,'#080808');
 	color: #fff;
 	text-decoration: none;
 	border-radius: 4px;
@@ -727,7 +727,7 @@ a.added_to_cart.wc-forward {
 	margin-top: 0;
 	position: relative;
 	top: 4px;
-	margin-right: 10px;
+	margin-right: 3px;
 }
 .product-style-two
 	.vartical-prod-card-container
