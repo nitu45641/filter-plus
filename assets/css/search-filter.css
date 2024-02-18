@@ -625,10 +625,6 @@ ul.pagination {
   }
 
 /* Price Range Template 1 start*/
-.d-none {
-	display: none;
-}
-
 .shop-sidebar input[type="range"] {
 	accent-color: #2d0607;
 	overflow: hidden;

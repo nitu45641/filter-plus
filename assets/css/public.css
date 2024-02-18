@@ -1036,6 +1036,25 @@ a.added_to_cart.wc-forward {
 .woocommerce .woocommerce-product-rating {
     font-size: 14px;
 }
+/* Rating css left side start */
+.rating-section .woocommerce-product-rating .star-rating {
+	float: none;
+	display: inline-block;
+}
+.ratings {
+	cursor: pointer;
+}
+.rating {
+	fill: #e3a405;
+	display: inline-block;
+}
+.rating_light {
+	fill: #ebdcb5;
+}
+/* Rating css left side start */
+.d-none {
+	display: none;
+}
 .offer{
 	margin-top: 5px;
 }
