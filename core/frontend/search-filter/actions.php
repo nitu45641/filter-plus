@@ -58,6 +58,9 @@ class Actions {
 		$default_call = ! empty( $post_arr['default_call'] ) ? $post_arr['default_call'] : false;
 		$filter_type  = ! empty( $post_arr['filter_type'] ) ? $post_arr['filter_type'] : 'woo-filter';
 		$author  	  = ! empty( $post_arr['author'] ) ? $post_arr['author'] : '';
+		$custom_field_key  		= ! empty( $post_arr['custom_field_key'] ) ? $post_arr['custom_field_key'] : '';
+		$custom_field_value  	= ! empty( $post_arr['custom_field_value'] ) ? $post_arr['custom_field_value'] : '';
+		$meta_condition  		= ! empty( $post_arr['meta_condition'] ) ? $post_arr['meta_condition'] : '';
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
 
 		$args = array(
@@ -78,7 +81,10 @@ class Actions {
 			'product_categories'  => $product_categories,
 			'stock'  		=> $stock,
 			'on_sale'  		=> $on_sale,
-			'taxonomy'  	=> $taxonomy
+			'meta_condition'=> $meta_condition,
+			'custom_field_key'	=> $custom_field_key,
+			'custom_field_value'=> $custom_field_value,
+			'taxonomy'  		=> $taxonomy
 		);
 
 		$get_products   = $this->get_products( $args );
@@ -123,12 +129,14 @@ class Actions {
 		$args = $this->add_search_value( $param , $args );
 
 		if ( $param['filter_type'] == "product") {
-			$args = $this->product_order_by( $param , $args );
 			$args = $this->product_min_max_price( $param , $args );
 			$args = $this->product_reviews( $param , $args );
 			$args = $this->product_on_stock( $param , $args );
 			$args = $this->product_on_sale( $param , $args );
+			$args = $this->product_order_by( $param , $args );
 		}
+
+		$args = $this->filter_by_custom_field( $param , $args );
 
 		$posts = get_posts( $args );
 
@@ -142,6 +150,25 @@ class Actions {
 		}
 
 		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $limit) );
+	}
+
+	/**
+	 * Filter by stock
+	 *
+	 * @return array
+	 */
+	public function filter_by_custom_field( $param , $args ) {
+		if(!empty($param['custom_field_key'])){
+			$args['meta_query'] =array(
+                array(
+                   'key'     => $param['custom_field_key'],
+                   'value'   => $param['custom_field_value'],
+				   'compare' => 'LIKE'
+				)
+			);
+		}
+
+		return $args;
 	}
 
 	/**

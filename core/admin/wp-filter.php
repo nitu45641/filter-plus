@@ -71,12 +71,6 @@
 			'disable' => $disable );
 			filter_plus_checkbox_field($args);
 
-			$args        = array('label'=>esc_html__("Conditions:","filter-plus"),'id' => 'meta_condition',
-			'data_label' => 'meta_condition','options'=>$conditions , 'type' => 'random',
-			'select_type' => 'single',  'condition_class' => "custom_field d-none",
-			'disable' => $disable);
-			filter_plus_select_field($args);
-
 			$args        = array('label'=>esc_html__("Custom Field Label:","filter-plus"),'id' => 'custom_field_label',
 			'data_label' => 'custom_field_label','options'=>$conditions , 'type' => 'random',
 			'select_type' => 'single',  'condition_class' => "custom_field d-none",

@@ -241,7 +241,7 @@
 					$message.removeClass('d-none').html("").html(response?.data?.message)
 					.fadeIn().delay(2000).fadeOut();
 				}
-			})
+			});
 		})
 	
 		/**
