@@ -265,6 +265,9 @@
 					if ( key == "on_sale" && value !== "" ) {
 						selected_html += `<div class='filter-tag' data-node='on_sale'>${selected_data.on_sale_text}${cross}</div>`
 					}
+					if ( key == "custom_field_value" && value !== "" ) {
+						selected_html += `<div class='filter-tag' data-node='custom-field'>${selected_data.custom_field_value}${cross}</div>`
+					}
 					if ( key == "taxonomies_name" ) {
 						for (const [name, data] of Object.entries(value)) {
 							selected_html += `<div class='filter-tag' data-node='taxonomy' data-term_value='${name}'>${data}${cross}</div>`
@@ -342,6 +345,9 @@
 			params['stock_text']      		= $(".stock input[type='checkbox']:checked").data('stock_text');
 			params['on_sale']      			= $(".on_sale input[type='checkbox']:checked").val();
 			params['on_sale_text']      	= $(".on_sale input[type='checkbox']:checked").data('on_sale_text');
+			params['custom_field_key']      = $(".custom-field input[type='checkbox']:checked").val();
+			params['custom_field_value']    = $(".custom-field input[type='checkbox']:checked").data('meta_value');
+			params['meta_condition']      	= $(".custom-field input[type='checkbox']:checked").data('meta_condition');
 
 			if ( price_range.length>0 ) {
 				let prices = price_range.val().split(',');
@@ -384,7 +390,7 @@
 		 * @param {*} disable_terms 
 		 */
 		function disable_items(terms) {
-			$(".param-box div").removeClass('disable')
+			$(".param-box div").removeClass('disable');
 			$.each(terms, function (key, value) {
 				if (value.length > 0) {
 					for (let index = 0; index < value.length; index++) {
@@ -555,13 +561,14 @@
 						parent = $(`div[data-taxonomy="${$this.data('term_value')}"]`).parent('.param-box');
 						cursor = $(`div[data-taxonomy="${$this.data('term_value')}"]`);
 					}
-					if ( node == 'on_sale' || node == 'stock' ) {
+					if ( node == 'on_sale' || node == 'stock'|| node == 'custom-field' ) {
 						if ( $(`.${node} input[type='checkbox']`).is(":checked")) {
 							$(`.${node} input[type='checkbox']`).prop('checked',false); 
 						}
 						parent = $(`.${node}`).parent('.param-box');
 						cursor = $(`.${node}`);
 					}
+					
 					else{
 						cursor.parents(".sidebar-row");
 					}

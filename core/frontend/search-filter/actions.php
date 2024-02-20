@@ -454,7 +454,7 @@ class Actions {
 				$size = array(255,315);
 				break;
 			default:
-				$size = array(255,255);
+				$size = array(255,315);
 			break;
 		}
 

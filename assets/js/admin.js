@@ -4,7 +4,7 @@
 	$(document).ready(function(){
 		// load select 2
 		var ids = ["#woo_pro_categories","#wp_categories","#woo_pro_tags","#woo_pro_attributes",
-		"#seo_elements","#post_tags","#author_list"];
+		"#seo_elements","#post_tags","#author_list","#custom_field_list"];
 		$.each(ids,function(index,value){
 			$(value).select2( { width: '100%'} );
 		});
@@ -30,7 +30,7 @@
 		});
 
 		/**
-		 * Shortcode generator
+		 * ShortCode generator
 		 */
 		generateShortCode();
 		function generateShortCode(){
@@ -38,7 +38,6 @@
 				let _this = $(this);
 				_this.on('click',function(e){
 					e.preventDefault();
-					console.log(_this.hasClass('disable'));
 					if (_this.hasClass('disable')) {
 						return;
 					}
@@ -64,7 +63,9 @@
 		function findInputValue( _this ){
 			let result          = "";
 			var checkbox        = _this.find('input:checkbox');
+			var input_text      = _this.find('input:text');
 			var select_box      = _this.find('select');
+
 			// select box
 			if ( select_box.length > 0 ) {
 				select_box.each(function() {
@@ -96,6 +97,30 @@
 				});
 			}
 
+			// input text
+			result = shortcode_input_value(input_text,result)
+
+			return result;
+		}
+
+		function shortcode_input_value(input_data,result) {
+			if ( input_data.length > 0 ) {
+				input_data.each(function() {
+					let $this = $(this);
+					let is_true = shortcode_input_disable( $this );
+					if (is_true ) {
+						return;
+					}
+					// input value
+					if ( $.isArray( $this.val() )) {
+						result += ` ${$this.data('option')}="${$this.val().toString()}"`;
+					}
+					else{
+						result += ` ${$this.data('option')}="${$this.val()}"`;
+					}
+				});
+			}
+
 			return result;
 		}
 
@@ -114,7 +139,7 @@
 		 * Toggle Show/Hide
 		 *  
 		 * */
-		var ids = ["show_tags","show_attributes","show_wp_tags","filter_type","author"];
+		var ids = ["show_tags","show_attributes","show_wp_tags","filter_type","author","custom_field"];
 		$.each(ids,function(index,data){
 			let value = $("#"+data);
 			value.on('change',function(){
@@ -220,7 +245,7 @@
 		})
 	
 		/**
-		 * Accordian
+		 * Accordion
 		 */
 		$(".accordion-button").on("change", function () {
 			$(".accordion-button").not(this).prop("checked", false);

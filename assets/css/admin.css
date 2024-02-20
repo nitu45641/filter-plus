@@ -72,7 +72,9 @@ h1.font_20{
 	width: 300px;
 	position: relative;
 }
-
+.input-section  input{
+	width: 80%;
+}
 .full_input {
 	width: 100%;
 }
@@ -248,7 +250,12 @@ button.button-primary:focus {
 .select2-container{
     width: 240px !important;
 }
-
+.select2-container .select2-selection--single{
+	height: 35px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+	top:55% !important;
+}
 .input-section select, .wp-core-ui select {
     padding: 3px 30px 3px 20px !important;
     border: 1px solid #c7c7c7 !important;

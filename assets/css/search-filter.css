@@ -6,10 +6,11 @@
     border-radius: 6px;
     display: inline-block;
     font-size: 14px;
-    padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+	padding: 0px 10px;
 }
-.products-wrap{
-	max-width: 825px;
+.filter-tag span{
+	font-size: 12px;
+    padding-left: 5px;
 }
 .font_14 {
 	font-size: 14px;
@@ -246,7 +247,9 @@
 	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
 }
-.sidebar-style-1 .categories-wrap ul{
+.sidebar-style-1 .categories-wrap ul,
+.wp-style-2 .categories-wrap ul
+{
     padding-left: 18px !important;
 }
 ul.ratings,.dropdown-box {
@@ -561,10 +564,7 @@ ul.pagination {
 	cursor: pointer;
 	color: var(--filter-border-color,#2d73e7);
 }
-.filter-tag span{
-	font-size: 12px;
-    padding: 5px 10px;
-}
+
 .selected-filter .clear-filter{
 	font-size: 14px;
 	margin-right: 10px;

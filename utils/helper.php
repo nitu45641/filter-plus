@@ -32,7 +32,8 @@ class Helper {
 				'placeholder' => [],
 				'id'          => [],
 				'class'       => [],
-				'data-label'  => []
+				'data-label'  => [],
+				'data-option'  => []
 			],
 
 			'select'                        => [
@@ -743,4 +744,30 @@ class Helper {
 		
 		echo $html;
 	}
+
+	/**
+	 * Get custom fields keys
+	 *
+	 * @return array
+	 */
+	public static function get_custom_fields_keys( $post_type = 'post' ) {
+		$all_keys  = array();
+
+		$posts = get_posts(array('post_type'=> $post_type ));
+		if (empty($posts)) {
+			return $all_keys;
+		}
+		$meta_keys = get_post_meta($posts[0]->ID);
+
+		foreach($meta_keys as $meta_key=>$meta_value) {
+			$all_keys[$meta_key] = $meta_key;
+		}
+
+		return $all_keys;
+	}
+
+	public static function custom_field_condition() {
+		return array('OR'=>esc_html__('OR','filter-plus'),'AND'=>esc_html__('AND','filter-plus'));
+	}
+
 }

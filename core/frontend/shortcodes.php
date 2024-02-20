@@ -163,21 +163,26 @@ class Shortcodes {
 	 */
 	public function custom_css($template = "1", $filter_type = "product") {
 		global $custom_css;
+		$secondary_color = '#1164cb'; $primary_color ='#2d73e7';$tag_color ='';
+		$blog_header = "#000"; $cart_icon =  '#fff'; 
+		$cart_content = '#2d73e7';$price_range = '#2d73e7'; $loader_color = '#1164cb';
+
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
-			$secondary_color = $primary_color = '#17c6aa'; 
+			$loader_color = $secondary_color = $primary_color = '#17c6aa'; 
 			$price_range = '#2d0607'; 
 			$cart_content = '#080808'; 
 			$tag_color = '#ff1f25';
 		}
 		else if ( $template == "3" ) {
 			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 
-			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
-			$cart_icon = $primary_color = $price_range = '#ab1616'; 
+			$loader_color 	 = $filter_type !== "product" ? "#ff0000" : "#ab1616"; 
+			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000"; 
+			$cart_icon 		 = $primary_color = $price_range = '#ab1616'; 
 		}
 		else if ( $template == "4" ) {
 			$primary_color = $price_range = $cart_content = '#ff69b4'; 
-			$secondary_color = $tag_color = '#ff69b4'; 
+			$loader_color = $secondary_color = $tag_color = '#ff69b4'; 
 			$cart_icon = '#fff'; 
 			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
 		}
@@ -188,6 +193,7 @@ class Shortcodes {
 			--filter-cart-content: '.$cart_content.';
 			--filter-price-range : '.$price_range.';
 			--filter-secondary-color : '.$secondary_color.';
+			--filter-loader-color : '.$loader_color.';
 			--filter-price-range: '.$primary_color.';
 			--filter-border-color: '.$primary_color.';
 			--filter-header-border: '.$primary_color.';

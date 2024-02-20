@@ -56,6 +56,37 @@ if ( !function_exists('filter_plus_checkbox_field') ) {
 	}
 }
 
+/**
+ * Number/Text/Hidden
+ */
+if ( !function_exists('filter_plus_number_input_field') ) {
+	function filter_plus_number_input_field( $args ) {
+		$id           = !empty($args['id']) ? $args['id'] : '';
+		$wrapper_class= !empty($args['wrapper_class']) ? $args['wrapper_class'] : 'single-block';
+		$label_class= !empty($args['label_class']) ? $args['label_class'] : 'form-label';
+		$value        = !empty($args['value']) ? $args['value'] : '';
+		$label        = !empty($args['label']) ? $args['label'] : '';
+		$field_type   = !empty($args['field_type']) ? $args['field_type'] : 'text';
+		$condition_class   	= !empty($args['condition_class']) ? $args['condition_class'] : '';
+		$disable   	  		= !empty($args['disable']) ? $args['disable'] : '';
+		$extra_label   	  	= !empty($args['extra_label']) ? $args['extra_label'] : '';
+		$extra_label_class 	= !empty($args['extra_label_class']) ? $args['extra_label_class'] : '';
+		$hidden_class		= $field_type == 'hidden' ? 'd-none' : '';
+		$html = '
+		<div class="'.$wrapper_class.' '.$condition_class.' '.$hidden_class.'">
+			<div class="'.$label_class.'">'.$label.'</div>
+			<div class="input-section '.$disable.'">
+				<input type="'.$field_type.'" name="'.$id.'" id="'.$id.'" value="'.$value.'"  
+				data-option="'.$args['data_label'].'"  />
+				<span class="extra-label '.$extra_label_class.'">'.$extra_label.'</span>
+			</div>
+		</div>
+		';
+
+		echo FilterPlus\Utils\Helper::kses($html);
+	}
+}
+
 if ( !function_exists('filter_plus_select_field') ) {
 	function filter_plus_select_field($args){
 		$count_option = is_array($args['options']) ? count($args['options']) : 0 ;

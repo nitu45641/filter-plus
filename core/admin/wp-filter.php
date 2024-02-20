@@ -56,10 +56,37 @@
 
 			// author list
 			$author_list = \FilterPlus\Utils\Helper::instance()->author_list();
+			$meta_keys = \FilterPlus\Utils\Helper::instance()->get_custom_fields_keys();
+			$conditions = \FilterPlus\Utils\Helper::instance()->custom_field_condition();
 
 			$args        = array('label'=>esc_html__("Author List:","filter-plus"),'id' => 'author_list',
 			'data_label' => 'author_list','options'=>$author_list , 'type' => 'random',
 			'select_type' => 'multiple',  'condition_class' => "author d-none",
+			'disable' => $disable);
+
+			filter_plus_select_field($args);
+
+			// show custom field
+			$args = array( 'label'=>esc_html__("Show Custom Field:","filter-plus"),'id' => 'custom_field','data_label' => 'custom_field',
+			'disable' => $disable );
+			filter_plus_checkbox_field($args);
+
+			$args        = array('label'=>esc_html__("Conditions:","filter-plus"),'id' => 'meta_condition',
+			'data_label' => 'meta_condition','options'=>$conditions , 'type' => 'random',
+			'select_type' => 'single',  'condition_class' => "custom_field d-none",
+			'disable' => $disable);
+			filter_plus_select_field($args);
+
+			$args        = array('label'=>esc_html__("Custom Field Label:","filter-plus"),'id' => 'custom_field_label',
+			'data_label' => 'custom_field_label','options'=>$conditions , 'type' => 'random',
+			'select_type' => 'single',  'condition_class' => "custom_field d-none",
+			'value' => '',
+			'disable' => $disable);
+			filter_plus_number_input_field($args);
+
+			$args        = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
+			'data_label' => 'custom_field_list','options'=>$meta_keys , 'type' => 'random',
+			'select_type' => 'single',  'condition_class' => "custom_field d-none",
 			'disable' => $disable);
 
 			filter_plus_select_field($args);

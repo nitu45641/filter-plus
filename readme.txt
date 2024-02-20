@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce Filter, blog filter, Price Range, Product Filter , ajax filter
 Requires at least: 4.7
 Tested up to: 6.4.1
-Stable tag: 1.0.28
+Stable tag: 1.0.29
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,7 +45,7 @@ It will help users shorten the products quickly and order from the prioritized p
 * **Filter By Ratings**
 * **Filter By Tag**
 * **AJAX Product Filter**
-* **Filter By Stock Status – PRO**
+* **Filter By Stock Status**
 * **Multiple Templates – PRO**
 * **Use for blogs, reviews sites, news sites, property sites and more – PRO**
 * **Wordpress Blog Filter – PRO**
@@ -114,6 +114,9 @@ After installation and activation, you will see a new option in the admin panel.
 We have tested all the popular themes. And we believe it will work with your theme if that has been well developed for WordPress and WooComerce. If you face any issue, drop us a message on our support link. Our team will take care of the compatibility issue.
 
 == Changelog ==
+
+= 1.0.29 (February 20, 2024)=
+Tweak   : Improve Product Filter UX 
 
 = 1.0.28 (February 18, 2024)=
 Added   : Woocommerce filter new options for filtering
