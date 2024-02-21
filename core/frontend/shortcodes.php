@@ -166,13 +166,17 @@ class Shortcodes {
 		$secondary_color = '#1164cb'; $primary_color ='#2d73e7';$tag_color ='';
 		$blog_header = "#000"; $cart_icon =  '#fff'; 
 		$cart_content = '#2d73e7';$price_range = '#2d73e7'; $loader_color = '#1164cb';
-
+		$param_direction = 'row';
+		if ( $template == "1" ) {
+			$param_direction = $filter_type !== "product" ? "column" : "row";
+		}
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
 			$loader_color = $secondary_color = $primary_color = '#17c6aa'; 
 			$price_range = '#2d0607'; 
 			$cart_content = '#080808'; 
 			$tag_color = '#ff1f25';
+			$param_direction = $filter_type !== "product" ? "column" : "row";
 		}
 		else if ( $template == "3" ) {
 			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 
@@ -200,6 +204,7 @@ class Shortcodes {
 			--filter-tab-color: '.$secondary_color.';
 			--filter-blog-header: '.$blog_header.';
 			--filter-tag-color: '.$tag_color.';
+			--filter-param-box-direction: '.$param_direction.';
 		}';
 
 		wp_register_style( 'filter-plus-custom-css', false );

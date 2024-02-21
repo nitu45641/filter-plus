@@ -124,19 +124,12 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 }
 
 .param-box {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: row;
-	flex-direction: row;
-	-ms-flex-wrap: wrap;
+	flex-direction: var(--filter-param-box-direction,'row');
 	flex-wrap: wrap;
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
 }
-
 .radio-wrap .radio-item.color-item {
 	border-radius: 40px;
 	width: 30px;
