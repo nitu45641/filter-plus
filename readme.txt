@@ -113,6 +113,11 @@ After installation and activation, you will see a new option in the admin panel.
 
 We have tested all the popular themes. And we believe it will work with your theme if that has been well developed for WordPress and WooComerce. If you face any issue, drop us a message on our support link. Our team will take care of the compatibility issue.
 
+### 🔥 WHAT’S NEXT
+If you like Filter Plus, then consider checking out  other WordPress Plugins made by the same team:
+
+🔔 **[Discountify](https://wordpress.org/plugins/discountify/)** –  Discount Rules, Dynamic Pricing for WooCommerce
+
 == Changelog ==
 
 = 1.0.30 (February 20, 2024)=
