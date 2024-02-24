@@ -510,8 +510,9 @@ a.pr-tag{
 	margin-left: 6px;
     font-size: 12px;
 }
-.upgrade_pro{
+.upgrade_pro,.submit_filter_license{
 	background-color: #1a7efb;
+	border-color: #1a7efb;
     color: #fff !important;
     border-radius: 6px;
     font-weight: normal !important;
@@ -647,6 +648,9 @@ a.pr-tag{
 }
 .mb-1{
 	margin-bottom: 1%;
+}
+.mb-2{
+	margin-bottom: 2%;
 }
 .mb-5{
 	margin-bottom: 5%;
