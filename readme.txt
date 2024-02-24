@@ -1,4 +1,4 @@
-=== Wordpress Filter, WooCommerce Filtering by Ratings, Tags, Price Range Plugin , Woocommerce admin order filter - Filter Plus ===
+=== Wordpress Filter, WooCommerce Product Filtering by Categories, Tags, Price Range Plugin , Woocommerce admin order filter - Filter Plus ===
 Contributors: markutos987, galib96
 Donate link: https://woooplugin.com/filter-plus/
 Tags: WooCommerce Filter, blog filter, Price Range, Product Filter , ajax filter

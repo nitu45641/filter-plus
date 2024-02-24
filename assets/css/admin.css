@@ -464,6 +464,10 @@ a.pr-tag{
 	color: #fff;
 }
 .menu{
+	display: flex;
+    justify-content: space-between;
+    text-align: center;
+	align-items: center;
 	padding: 1% 2%;
 	background: #ffffff;
 	border-radius: 5px;
@@ -472,6 +476,7 @@ a.pr-tag{
     background: no-repeat;
     display: flex;
     width: fit-content;
+	align-items: center;
 }
 .logo img{
 	margin-right: 6px;
@@ -479,6 +484,34 @@ a.pr-tag{
 .menu h1{
 	font-weight: 800;
 }
+.navigation li{
+	display: inline-block;
+    list-style: none;
+}
+.navigation li a{
+	color: #000;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+	padding: 4px 14px;
+}
+.version {
+    height: fit-content;
+    background-color: #e8f2ff;
+    color: #1a7efb;
+    border-radius: 6px;
+    padding: 2px 5px;
+	margin-left: 6px;
+    font-size: 12px;
+}
+.upgrade_pro{
+	background-color: #1a7efb;
+    color: #fff !important;
+    border-radius: 6px;
+    font-weight: normal !important;
+    padding: 8px 14px !important;
+}
+
 .over-view-wrapper{
 	background: #ffffff;
 	padding: 2%;
@@ -577,7 +610,7 @@ a.pr-tag{
     font-size: 25px;
     padding: 16px;
     border-radius: 30px;
-    background: #fcdee7;
+    background: #FDE6EE;
 }
 .fr-icon::before{
 	position: relative;

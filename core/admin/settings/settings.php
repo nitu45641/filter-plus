@@ -1,4 +1,5 @@
 <?php 
+
 	include_once \FilterPlus::core_dir() . "admin/settings/shortocdes-fields.php"; 
 	$disable    = class_exists('FilterPlusPro') ? false : true;
 	$settings 	= \FilterPlus\Utils\Helper::get_settings();

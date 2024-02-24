@@ -86,7 +86,7 @@ class Menus {
 				"page_title"  => esc_html__('Overview','filter-plus'),
 				"menu_title"  => esc_html__('Overview','filter-plus'),
 				"capability"  => 'read',
-				"menu_slug"   => 'filter_plus_overview',
+				"menu_slug"   => 'filter-plus-overview',
 				"cb_function" => array($this,'over_view'),
 				"position"    => 11
 			),
@@ -104,7 +104,7 @@ class Menus {
 				"page_title"  => esc_html__('Settings','filter-plus'),
 				"menu_title"  => esc_html__('Settings','filter-plus'),
 				"capability"  => 'read',
-				"menu_slug"   => 'settings',
+				"menu_slug"   => 'filter-plus-settings',
 				"cb_function" => array($this,'filter_plus_view'),
 				"position"    => 11
 			)
@@ -133,6 +133,7 @@ class Menus {
      * @return void
      */
     public function over_view() {
+		require_once \FilterPlus::core_dir().'admin/header.php';
 		include_once \FilterPlus::core_dir() . "admin/overview.php"; 
 	}
 
@@ -142,6 +143,7 @@ class Menus {
      * @return void
      */
     public function filter_sets() {
+		require_once \FilterPlus::core_dir().'admin/header.php';
 		?>
 			<div class="wrap"><?php include_once \FilterPlus::core_dir() . "admin/filter-set.php"; ?></div>
 		<?php
@@ -153,6 +155,7 @@ class Menus {
      * @return void
      */
     public function filter_plus_view() {
+		require_once \FilterPlus::core_dir().'admin/header.php';
 	?>
         <div class="wrap">
 			<?php include_once \FilterPlus::core_dir() . "admin/settings/settings.php"; ?>

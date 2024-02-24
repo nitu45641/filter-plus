@@ -1,85 +1,78 @@
-<header class="menu">
-    <div class="logo">
-        <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-logo.png' ?>"
-            alt="filter-plus-banner" 
-            width="50px"
-            height="50px"
-        />
-        <h1><?php esc_html_e('Filter Plus','filter-plus');?></h1>
-    </div>
-</header>
 
 <?php
-    $features = array(
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-format-aside"></span>',
-            'title' =>esc_html__('Filter WP Post','filter-plus')
-        ),
-        array(
-            'icon' => '<span class="fr-icon dashicons dashicons-image-filter"></span>',
-            'title' =>'Filter WP Custom Post'
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-buddicons-groups"></span>',
-            'title' =>'Filter Woo Admin Order'
-        ),
-        array(
-            'icon' => '<span class="fr-icon dashicons dashicons-admin-page"></span>',
-            'title' =>'SEO Optimized Url'
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-category"></span>',
-            'title' =>'Filter by Categories'
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-filter"></span>',
-            'title' =>'Filter by Price Range'
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-star-filled"></span>',
-            'title' =>esc_html__('Filter by Ratings','filter-plus')
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-menu-alt3"></span>',
-            'title' =>esc_html__('Filter by Attributes','filter-plus')
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-screenoptions"></span>',
-            'title' =>esc_html__('Filter by Tags','filter-plus')
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-grid-view"></span>',
-            'title' =>esc_html__('Filter by Stock','filter-plus')
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-align-wide"></span>',
-            'title' =>esc_html__('Gutenburg Block','filter-plus')
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-            'title' =>esc_html__('+16 More Features','filter-plus')
-        ),
-    );
-    $more_products = array(
-        array(
-            'icon'          =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-            'url_demo'      => 'https://woooplugin.com/discountify/',
-            'url_free'      => 'https://downloads.wordpress.org/plugin/discountify.latest-stable.zip',
-            'title'         =>esc_html__('Discount and Coupon Plugin','filter-plus'),
-            'logo'          => 'discountify-logo.png',
-            'cta_free'      =>esc_html__('Explore Free Plugin','filter-plus'),
-            'cta_demo'      =>esc_html__('Explore The Plugin','filter-plus')
-        ),
-        array(
-            'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-            'url_demo' => 'https://woooplugin.com/quicker/',
-            'url_free' => 'https://woooplugin.com/quicker/',
-            'title' =>esc_html__('Quick Checkout Plugin','filter-plus'),
-            'logo'   => 'quicker-logo.png',
-            'cta_free' =>esc_html__('Explore Free Plugin','filter-plus'),
-            'cta_demo' =>esc_html__('Explore The Plugin','filter-plus')
-        ),
-    );
+
+$features = array(
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-format-aside"></span>',
+        'title' =>esc_html__('Filter WP Post','filter-plus')
+    ),
+    array(
+        'icon' => '<span class="fr-icon dashicons dashicons-image-filter"></span>',
+        'title' =>'Filter WP Custom Post'
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-buddicons-groups"></span>',
+        'title' =>'Filter Woo Admin Order'
+    ),
+    array(
+        'icon' => '<span class="fr-icon dashicons dashicons-admin-page"></span>',
+        'title' =>'SEO Optimized Url'
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-category"></span>',
+        'title' =>'Filter by Categories'
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-filter"></span>',
+        'title' =>'Filter by Price Range'
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-star-filled"></span>',
+        'title' =>esc_html__('Filter by Ratings','filter-plus')
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-menu-alt3"></span>',
+        'title' =>esc_html__('Filter by Attributes','filter-plus')
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-screenoptions"></span>',
+        'title' =>esc_html__('Filter by Tags','filter-plus')
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-grid-view"></span>',
+        'title' =>esc_html__('Filter by Stock','filter-plus')
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-align-wide"></span>',
+        'title' =>esc_html__('Gutenburg Block','filter-plus')
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
+        'title' =>esc_html__('+16 More Features','filter-plus')
+    ),
+);
+
+$more_products = array(
+    array(
+        'icon'          =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
+        'url_demo'      => 'https://woooplugin.com/discountify/',
+        'url_free'      => 'https://downloads.wordpress.org/plugin/discountify.latest-stable.zip',
+        'title'         =>esc_html__('Discount and Coupon Plugin','filter-plus'),
+        'logo'          => 'discountify-logo.png',
+        'cta_free'      =>esc_html__('Explore Free Plugin','filter-plus'),
+        'cta_demo'      =>esc_html__('Explore The Plugin','filter-plus')
+    ),
+    array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
+        'url_demo' => 'https://woooplugin.com/quicker/',
+        'url_free' => 'https://woooplugin.com/quicker/',
+        'title' =>esc_html__('Quick Checkout Plugin','filter-plus'),
+        'logo'   => 'quicker-logo.png',
+        'cta_free' =>esc_html__('Explore Free Plugin','filter-plus'),
+        'cta_demo' =>esc_html__('Explore The Plugin','filter-plus')
+    ),
+);
+
 ?>
 
 <div class="over-view-wrapper">

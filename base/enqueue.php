@@ -66,7 +66,6 @@ class Enqueue {
     public function admin_enqueue_assets() {
         $screen = get_current_screen();
         $pages  = \FilterPlus\Utils\Helper::admin_unique_id();
-
         // load js in specific pages
         if ( is_admin() && ( in_array( $screen->id , $pages ) ) ) {
 
