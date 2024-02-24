@@ -13,11 +13,13 @@
             array(
                 'name' => 'Filter Sets',
                 'url' => admin_url().'admin.php?page=filter-sets',
+                'slug'=>'filter-sets',
                 'target'=>'_self'
             ),
             array(
                 'name' => 'Settings',
                 'url' => admin_url().'admin.php?page=filter-plus-settings',
+                'slug'=>'filter-plus-settings',
                 'target'=>'_self'
             ),
             array(
@@ -39,11 +41,14 @@
     ?>
     <div class="navigation">
         <?php
+            $filter_menus= ['filter-sets','filter-plus-settings'];
+            $current_page = !empty($_GET['page']) ? $_GET['page'] : '';
             foreach ($menus as $key => $value) {
+                $active = (!empty($value['slug']) && $value['slug'] == $current_page ) ? 'active' : '';
                 $class= $value === end( $menus ) ? 'upgrade_pro':'';
                 ?>
                 <li>
-                    <a class="<?php echo esc_attr($class);?>" href="<?php echo esc_url($value['url'])?>"
+                    <a class="<?php echo esc_attr($class).' '.esc_attr($active);?>" href="<?php echo esc_url($value['url'])?>"
                      target="<?php echo esc_attr($value['target']); ?>">
                     <?php echo __( $value['name'] , 'filter-plus') ?>
                     </a>

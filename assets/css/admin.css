@@ -495,11 +495,17 @@ a.pr-tag{
     font-weight: bold;
 	padding: 4px 14px;
 }
-.version {
+.navigation li a.active,.version {
     height: fit-content;
     background-color: #e8f2ff;
     color: #1a7efb;
     border-radius: 6px;
+
+}
+.navigation li a.active{
+    padding: 7px 14px;
+}
+.version{
     padding: 2px 5px;
 	margin-left: 6px;
     font-size: 12px;
