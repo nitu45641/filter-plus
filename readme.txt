@@ -9,16 +9,13 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website.
+Filter Plus is WordPress and **WooCommerce Product** Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range, Stock Status on website.
 
 == Description ==
 
-**[Filter Plus](https://woooplugin.com/filter-plus/)** is a **WordPress and Woocommerce Product Filter Plugin** that allows users to add multiple filtering features like filter Woocommerce products by Categories,Ratings, Tags, Price Range etc. Wordpress Post,Custom Post type by Categories,Tags,Author and so on.You can also filter Woocommerce admin order by products and order status.
-
-Ever wanted to provide a better WooCommerce filtering experience and **product filter** on your WordPress eCommerce site? Now you can do that with the **[Filter Plus](https://woooplugin.com/filter-plus/)** plugin. This will allow the store admin to add different filter options to the store. And by using the advanced filter, customers can easily get the desired products. 
+**[Filter Plus](https://woooplugin.com/filter-plus/)** is a **WordPress and Woocommerce Product Filter Plugin** that allows users to add multiple filtering features like filter Woocommerce products by Categories,Ratings, Tags, Price Range etc. Wordpress Post,Custom Post type by Categories,Tags,Custom Field , Author and so on.You can also filter **Woocommerce Admin Order** by products and order status.
 
 **Wordpress Filter** Helps you to filter blogs, custom post type by categories, tags, author , post meta, custom fields and so on.You can Filter Everything in WordPress.
-
 
 **Woocommerce Admin Order** Filter helps Store Owner analyze which is the best-selling burger in your store by filtering orders by products and order status. With these analytics, you can easily filter out where you have to emphasize for increased sales.
 
