@@ -761,6 +761,9 @@ a.pro-link:focus{
     border-radius: 290486px;
 	margin-left: 4px;
 }
+.cart-icon-path{
+	fill: #fff !important;
+}
 /* Safari */
   @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }

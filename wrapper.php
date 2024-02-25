@@ -82,5 +82,5 @@ Class Wrapper {
 
 		return self::$instance;
 	}
-	
+
 }
