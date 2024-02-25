@@ -2,21 +2,21 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Filter Plus 1.0.28\n"
+"Project-Id-Version: Filter Plus 1.0.32\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/filter-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-02-18T04:46:50+00:00\n"
+"POT-Creation-Date: 2024-02-25T01:58:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: filter-plus\n"
 
 #. Plugin Name of the plugin
+#: core/admin/header.php:8
 #: core/admin/menus.php:43
-#: core/admin/overview.php:8
 #: core/gutenburg-block/init.php:18
 msgid "Filter Plus"
 msgstr ""
@@ -37,19 +37,19 @@ msgstr ""
 msgid "https://woooplugin.com/"
 msgstr ""
 
-#: base/enqueue.php:190
+#: base/enqueue.php:189
 msgid "Price"
 msgstr ""
 
-#: base/enqueue.php:191
+#: base/enqueue.php:190
 msgid "Rating"
 msgstr ""
 
-#: base/enqueue.php:192
+#: base/enqueue.php:191
 msgid "Search"
 msgstr ""
 
-#: base/enqueue.php:193
+#: base/enqueue.php:192
 msgid "Clear All"
 msgstr ""
 
@@ -67,6 +67,14 @@ msgstr ""
 msgid "Wordpress Filter"
 msgstr ""
 
+#: core/admin/header.php:31
+msgid "Feature Request"
+msgstr ""
+
+#: core/admin/header.php:36
+msgid "Upgrade to Pro"
+msgstr ""
+
 #: core/admin/menus.php:42
 msgid "Shortcodes"
 msgstr ""
@@ -78,7 +86,7 @@ msgstr ""
 
 #: core/admin/menus.php:104
 #: core/admin/menus.php:105
-#: core/admin/settings/settings.php:15
+#: core/admin/settings/settings.php:16
 #: wrapper.php:44
 #: build/index.js:1
 #: src/index.js:149
@@ -89,85 +97,85 @@ msgstr ""
 msgid "Upgrade To Premium"
 msgstr ""
 
-#: core/admin/overview.php:16
+#: core/admin/overview.php:7
 msgid "Filter WP Post"
 msgstr ""
 
-#: core/admin/overview.php:40
+#: core/admin/overview.php:31
 msgid "Filter by Ratings"
 msgstr ""
 
-#: core/admin/overview.php:44
+#: core/admin/overview.php:35
 msgid "Filter by Attributes"
 msgstr ""
 
-#: core/admin/overview.php:48
+#: core/admin/overview.php:39
 msgid "Filter by Tags"
 msgstr ""
 
-#: core/admin/overview.php:52
+#: core/admin/overview.php:43
 msgid "Filter by Stock"
 msgstr ""
 
-#: core/admin/overview.php:56
+#: core/admin/overview.php:47
 msgid "Gutenburg Block"
 msgstr ""
 
-#: core/admin/overview.php:60
+#: core/admin/overview.php:51
 msgid "+16 More Features"
 msgstr ""
 
-#: core/admin/overview.php:68
+#: core/admin/overview.php:60
 msgid "Discount and Coupon Plugin"
 msgstr ""
 
-#: core/admin/overview.php:70
-#: core/admin/overview.php:79
+#: core/admin/overview.php:62
+#: core/admin/overview.php:71
 msgid "Explore Free Plugin"
 msgstr ""
 
-#: core/admin/overview.php:71
-#: core/admin/overview.php:80
+#: core/admin/overview.php:63
+#: core/admin/overview.php:72
 msgid "Explore The Plugin"
 msgstr ""
 
-#: core/admin/overview.php:77
+#: core/admin/overview.php:69
 msgid "Quick Checkout Plugin"
 msgstr ""
 
-#: core/admin/overview.php:88
+#: core/admin/overview.php:81
 msgid "Powerful Filtering Features for WordPress and WooCommerce"
 msgstr ""
 
-#: core/admin/overview.php:89
+#: core/admin/overview.php:82
 msgid "Filter Plus is the WordPress and WooCommerce Product Filter Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. The plugin comes with WordPress post and custom post type filter anything functionality that increases the user experience.It also allows to filter WooCommerce admin order filter by product and order status."
 msgstr ""
 
-#: core/admin/overview.php:92
+#: core/admin/overview.php:85
 msgid "Explore Filter Plus Pro"
 msgstr ""
 
-#: core/admin/overview.php:105
+#: core/admin/overview.php:98
 msgid "Advanced Filtering Features"
 msgstr ""
 
-#: core/admin/overview.php:106
+#: core/admin/overview.php:99
 msgid "Available at Filter Plus Pro"
 msgstr ""
 
-#: core/admin/overview.php:119
+#: core/admin/overview.php:112
 msgid "Explore the premium version to experience our countless advanced features."
 msgstr ""
 
-#: core/admin/overview.php:123
+#: core/admin/overview.php:116
 msgid "Look Into Pro"
 msgstr ""
 
-#: core/admin/overview.php:129
+#: core/admin/overview.php:122
 msgid "More Plugins By The Same Team"
 msgstr ""
 
-#: core/admin/overview.php:130
+#: core/admin/overview.php:123
 msgid "We also have other solutions for growing your store conversion."
 msgstr ""
 
@@ -175,22 +183,22 @@ msgstr ""
 msgid "Settings Save Successfully..."
 msgstr ""
 
-#: core/admin/settings/settings.php:8
+#: core/admin/settings/settings.php:9
 msgid "General Settings"
 msgstr ""
 
-#: core/admin/settings/settings.php:9
+#: core/admin/settings/settings.php:10
 msgid "SEO"
 msgstr ""
 
 #: core/admin/settings/shortocdes-fields.php:10
-#: core/admin/settings/shortocdes-fields.php:81
-#: core/admin/settings/shortocdes-fields.php:95
+#: core/admin/settings/shortocdes-fields.php:112
+#: core/admin/settings/shortocdes-fields.php:126
 #: core/widgets/filters/filters.php:57
 msgid "Pro"
 msgstr ""
 
-#: core/admin/settings/shortocdes-fields.php:82
+#: core/admin/settings/shortocdes-fields.php:113
 msgid "Template"
 msgstr ""
 
@@ -308,12 +316,12 @@ msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:35
 #: core/admin/settings/tab-content/short-codes.php:85
-#: core/admin/wp-filter.php:73
+#: core/admin/wp-filter.php:100
 msgid "Display Tags:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:41
-#: core/admin/wp-filter.php:46
+#: core/admin/wp-filter.php:51
 msgid "Tag List:"
 msgstr ""
 
@@ -351,12 +359,12 @@ msgid "Display Sorting:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:88
-#: core/admin/wp-filter.php:77
+#: core/admin/wp-filter.php:104
 msgid "Display Categories:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:94
-#: core/admin/wp-filter.php:86
+#: core/admin/wp-filter.php:113
 msgid "Copy Filer Shortcodes"
 msgstr ""
 
@@ -384,56 +392,76 @@ msgstr ""
 msgid "Tags:"
 msgstr ""
 
-#: core/admin/wp-filter.php:53
+#: core/admin/wp-filter.php:43
+msgid "Tag Label:"
+msgstr ""
+
+#: core/admin/wp-filter.php:58
 msgid "Author:"
 msgstr ""
 
-#: core/admin/wp-filter.php:60
+#: core/admin/wp-filter.php:67
+msgid "Author Label:"
+msgstr ""
+
+#: core/admin/wp-filter.php:72
 msgid "Author List:"
 msgstr ""
 
-#: core/admin/wp-filter.php:69
+#: core/admin/wp-filter.php:79
+msgid "Show Custom Field:"
+msgstr ""
+
+#: core/admin/wp-filter.php:83
+msgid "Custom Field Label:"
+msgstr ""
+
+#: core/admin/wp-filter.php:88
+msgid "Custom Field List:"
+msgstr ""
+
+#: core/admin/wp-filter.php:96
 msgid "Filter Result"
 msgstr ""
 
-#: core/admin/wp-filter.php:81
+#: core/admin/wp-filter.php:108
 msgid "Display Author:"
 msgstr ""
 
-#: core/frontend/search-filter/actions.php:89
+#: core/frontend/search-filter/actions.php:95
 msgid "No Matching Result Found"
 msgstr ""
 
-#: core/frontend/search-filter/actions.php:302
+#: core/frontend/search-filter/actions.php:329
 msgid "product image"
 msgstr ""
 
-#: core/frontend/search-filter/actions.php:327
+#: core/frontend/search-filter/actions.php:354
 msgid "single image blank"
 msgstr ""
 
-#: core/frontend/search-filter/actions.php:335
+#: core/frontend/search-filter/actions.php:362
 msgid "By"
 msgstr ""
 
-#: core/frontend/search-filter/actions.php:338
+#: core/frontend/search-filter/actions.php:365
 msgid "Category:"
 msgstr ""
 
-#: core/frontend/search-filter/actions.php:340
+#: core/frontend/search-filter/actions.php:367
 msgid "Tag:"
 msgstr ""
 
-#: core/frontend/search-filter/actions.php:341
+#: core/frontend/search-filter/actions.php:368
 msgid "Read More"
 msgstr ""
 
-#: core/frontend/search-filter/actions.php:372
+#: core/frontend/search-filter/actions.php:399
 msgid "Add to cart"
 msgstr ""
 
-#: core/frontend/shortcodes.php:123
-#: core/frontend/shortcodes.php:137
+#: core/frontend/shortcodes.php:138
+#: core/frontend/shortcodes.php:152
 msgid "Please Active FilterPlus Pro"
 msgstr ""
 
@@ -727,8 +755,16 @@ msgstr ""
 msgid "Find Favorite Item"
 msgstr ""
 
-#: utils/helper.php:659
+#: utils/helper.php:661
 msgid "Security check failed"
+msgstr ""
+
+#: utils/helper.php:771
+msgid "OR"
+msgstr ""
+
+#: utils/helper.php:771
+msgid "AND"
 msgstr ""
 
 #: wrapper.php:46
