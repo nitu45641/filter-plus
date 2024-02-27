@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		if ( 'yes'== $show_tags ) {
 			$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
 			if (count($get_attr)>0) {
-				$title =  esc_html__("Filter By Brand","filter-plus");
+				$title =  !empty( $tag_label ) ? $tag_label : esc_html__("Filter By Brand","filter-plus");
 				include \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/filter-layout-grid.php";
 			}
 		}

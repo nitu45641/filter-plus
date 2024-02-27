@@ -5,7 +5,7 @@
 		<?php
 			// templates
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/?docs=filter-plus/gutenburg-block-elementor-widget-woocommercce-product-filter"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
-			$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</i></div>';
+			$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Gutenberg Block,Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</i></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
 
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
@@ -18,6 +18,7 @@
 
 			// categories
 			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
+			'placeholder'=>esc_html__("Place Category Label Here","filter-plus"),
 			'data_label' => 'category_label','disable' => $disable);
 			filter_plus_number_input_field($args);
 
@@ -30,16 +31,31 @@
 			// colors
 			$args = array('label'=>esc_html__("Display Colors:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
 			filter_plus_checkbox_field($args);
+			
+			$args        = array('label'=>esc_html__("Color Label:","filter-plus"),
+			'id' => 'color_label',
+			'condition_class' => "show_colors d-none",
+			'placeholder'=>esc_html__("Place Color Label Here","filter-plus"),
+			'data_label' => 'color_label','disable' => $disable);
+			filter_plus_number_input_field($args);
 
 			// sizes
 			$args = array('label'=>esc_html__("Display Size:","filter-plus"),'id' => 'show_size','data_label' => 'size');
 		 	filter_plus_checkbox_field($args);
+			
+			$args        = array('label'=>esc_html__("Size Label:","filter-plus"),
+			'id' => 'size_label',
+			'condition_class' => "show_size d-none",
+			'placeholder'=>esc_html__("Place Size Label Here","filter-plus"),
+			'data_label' => 'size_label','disable' => $disable);
+			filter_plus_number_input_field($args);
 			
 			// show tags
 			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'show_tags','data_label' => 'show_tags');
 			filter_plus_checkbox_field($args);
 
 			$args = array('label'=>esc_html__("Tag Label:","filter-plus"),'id' => 'tag_label',
+			'placeholder'=>esc_html__("Place Tag Label Here","filter-plus"),
 			'data_label' => 'tag_label','condition_class' => "show_tags d-none",
 			'value' => '','disable' => $disable);
 			filter_plus_number_input_field($args);
@@ -55,6 +71,11 @@
 			// show attributes
 			$args = array('label'=>esc_html__("Display Attributes:","filter-plus"),'id' => 'show_attributes','data_label' => 'show_attributes');
 			filter_plus_checkbox_field($args);
+			$args = array('label'=>esc_html__("Attribute Label:","filter-plus"),'id' => 'attribute_label',
+			'placeholder'=>esc_html__("Place Attribute Label Here","filter-plus"),
+			'data_label' => 'attribute_label',
+			'condition_class' => "show_attributes d-none",'disable' => $disable);
+			filter_plus_number_input_field($args);
 
 			// get attributes list
 			global $product;
@@ -66,19 +87,43 @@
 			// show price range
 			$args = array('label'=>esc_html__("Display Price Range:","filter-plus"),'id' => 'show_price_range','data_label' => 'show_price_range');
 			filter_plus_checkbox_field($args);
+			$args = array('label'=>esc_html__("Price Range Label:","filter-plus"),
+			'placeholder'=>esc_html__("Place Price Range Label Here","filter-plus"),
+			'id' => 'price_range_label','data_label' => 'price_range_label',
+			'condition_class' => "show_price_range d-none",'disable' => $disable);
+			filter_plus_number_input_field($args);
 
 
 			// show reviews
 			$args = array('label'=>esc_html__("Display Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews');
 			filter_plus_checkbox_field($args);
 
+			$args = array('label'=>esc_html__("Review Label:","filter-plus"),
+			'placeholder'=>esc_html__("Place Review Label Here","filter-plus"),
+			'id' => 'review_label','data_label' => 'review_label',
+			'condition_class' => "show_reviews d-none",'disable' => $disable);
+			filter_plus_number_input_field($args);
+
 			// filter by stock
 			$args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock');
 			filter_plus_checkbox_field($args);
 
+			$args = array('label'=>esc_html__("Stock Label:","filter-plus"),'id' => 'stock_label',
+			'placeholder'=>esc_html__("Place Stock Label Here","filter-plus"),
+			'data_label' => 'stock_label','condition_class' => "stock d-none", 'disable' => $disable);
+			filter_plus_number_input_field($args);
+
 			// filter by on sale
-			$args = array('label'=>esc_html__("Filter By On Sale:","filter-plus"),'id' => 'on_sale','data_label' => 'on_sale');
+			$args = array('label'=>esc_html__("Filter By On Sale:","filter-plus"),'id' =>'on_sale','data_label' => 'on_sale');
 			filter_plus_checkbox_field($args);
+
+			$args = array('label'=>esc_html__("On Sale Label:","filter-plus"),
+			'placeholder'=>esc_html__("Place On Sale Label Here","filter-plus"),
+			'id' => 'on_sale_label','data_label' => 'on_sale_label',
+			'condition_class' => "on_sale d-none",'disable' => $disable);
+
+			filter_plus_number_input_field($args);
+
 
 		?>
 

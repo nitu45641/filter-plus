@@ -23,7 +23,7 @@
 			filter_plus_select_field($args);
 			
 			// post type
-			$args = array('label'=>esc_html__("Select Type","filter-plus"),'id' => 'filter_type',
+			$args = array('label'=>esc_html__("Select Type:","filter-plus"),'id' => 'filter_type',
 				'data_label' => 'filter_type','options'=>
 				array('post'=>esc_html__("Post","filter-plus"),'custom_post'=>esc_html__("Custom Post","filter-plus")),'type'=>'random',
 				'select_type' => 'single' , 'disable' => $disable
@@ -114,7 +114,7 @@
 			filter_plus_checkbox_field($args);
 		?>
 		<div class="single-block">
-			<div class="generate-block <?php echo $disable == 1 ? esc_attr('disable') : '' ;?>"><button class="button button-primary"><?php esc_html_e("Copy Filer Shortcodes","filter-plus");?></button></div>
+			<div class="generate-block <?php echo $disable == 1 ? esc_attr('disable') : '' ;?>"><button class="button button-primary"><?php esc_html_e("Copy Filter Shortcodes","filter-plus");?></button></div>
 			<input type="text" class="full_input" id="wp_filter_shortcode" value="">
 		</div>
 	</div>

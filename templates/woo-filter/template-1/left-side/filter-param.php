@@ -5,7 +5,7 @@
 
 	if ( "yes" == $size ) {
 		$attrs      = \FilterPlus\Utils\Helper::get_attributes("pa_size");
-		$title      = esc_html__("Filter By Size","filter-plus");
+		$title      = !empty($size_label) ? $size_label : esc_html__("Filter By Size","filter-plus");
 		$get_attr   = array();
 		foreach ($attrs['terms'] as $key => $value) {
 			$get_attr[$key]  = $value->term_id;
@@ -21,7 +21,8 @@
 	$get_attr = \FilterPlus\Utils\Helper::get_attributes("pa_color");
 ?>
 	<div class="sidebar-row radio-wrap">
-		<h4 class="sidebar-label"><?php echo esc_html__("Filter By") ." ".esc_html($get_attr['label']) ;?></h4>
+		<h4 class="sidebar-label"><?php echo 
+		!empty($color_label) ? $color_label : esc_html__("Filter By") ." ".esc_html($get_attr['label']) ;?></h4>
 		<div class="panel">
 			<div class="param-box">
 				<?php

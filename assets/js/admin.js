@@ -139,7 +139,9 @@
 		 * Toggle Show/Hide
 		 *  
 		 * */
-		var ids = ["show_tags","show_attributes","show_wp_tags","filter_type","author","custom_field"];
+		var ids = ["show_tags","show_attributes","show_wp_tags","filter_type",
+		"author","custom_field","refresh_url","on_sale","stock","show_reviews",
+		"show_price_range","show_size","show_colors"];
 		$.each(ids,function(index,data){
 			let value = $("#"+data);
 			value.on('change',function(){

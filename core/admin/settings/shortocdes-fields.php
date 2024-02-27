@@ -71,6 +71,7 @@ if ( !function_exists('filter_plus_number_input_field') ) {
 		$condition_class   	= !empty($args['condition_class']) ? $args['condition_class'] : '';
 		$disable   	  		= !empty($args['disable']) ? $args['disable'] : '';
 		$extra_label   	  	= !empty($args['extra_label']) ? $args['extra_label'] : '';
+		$placeholder   	  	= !empty($args['placeholder']) ? $args['placeholder'] : '';
 		$extra_label_class 	= !empty($args['extra_label_class']) ? $args['extra_label_class'] : '';
 		$hidden_class		= $field_type == 'hidden' ? 'd-none' : '';
 		$html = '
@@ -78,7 +79,9 @@ if ( !function_exists('filter_plus_number_input_field') ) {
 			<div class="'.$label_class.'">'.$label.'</div>
 			<div class="input-section '.$disable.'">
 				<input type="'.$field_type.'" name="'.$id.'" id="'.$id.'" value="'.$value.'"  
-				data-option="'.$args['data_label'].'"  />
+					data-option="'.$args['data_label'].'" 
+					placeholder="'.$placeholder.'"
+				/>
 				<span class="extra-label '.$extra_label_class.'">'.$extra_label.'</span>
 			</div>
 		</div>
