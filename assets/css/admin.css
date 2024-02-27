@@ -458,11 +458,7 @@ a.pr-tag{
 	left: 5px !important;
 }
 
-/* Overview page */
-.bg-color{
-	background-color: #3263f8;
-	color: #fff;
-}
+/* Header menu start */
 .menu{
 	display: flex;
     justify-content: space-between;
@@ -507,8 +503,8 @@ a.pr-tag{
 }
 .version{
     padding: 2px 5px;
-	margin-left: 6px;
-    font-size: 12px;
+    margin: 3px 0 0 6px;
+	font-size: 12px;
 }
 .upgrade_pro,.submit_filter_license{
 	background-color: #1a7efb;
@@ -517,6 +513,13 @@ a.pr-tag{
     border-radius: 6px;
     font-weight: normal !important;
     padding: 8px 14px !important;
+}
+/* Header menu end */
+
+/* Overview page */
+.bg-color{
+	background-color: #3263f8;
+	color: #fff;
 }
 
 .over-view-wrapper{
@@ -527,8 +530,6 @@ a.pr-tag{
 }
 .block{
 	align-items: center;
-	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
     border-radius: 4px;
     padding-left: 50px;
