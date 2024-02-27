@@ -468,6 +468,9 @@ a.pr-tag{
 	background: #ffffff;
 	border-radius: 5px;
 }
+.menu a{
+	text-decoration: none;
+}
 .menu .logo {
     background: no-repeat;
     display: flex;

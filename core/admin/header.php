@@ -1,13 +1,15 @@
 <header class="menu">
-    <div class="logo">
-        <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-logo.png' ?>"
-            alt="filter-plus-banner" 
-            width="50px"
-            height="50px"
-        />
-        <h1><?php esc_html_e('Filter Plus','filter-plus');?></h1>
-        <span class='version'><?php echo esc_html('v ').FilterPlus::get_version();?></span>
-    </div>
+    <a href='https://woooplugin.com/filter-plus/' target="_blank">
+        <div class="logo">
+            <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-logo.png' ?>"
+                alt="filter-plus-banner" 
+                width="50px"
+                height="50px"
+            />
+            <h1><?php esc_html_e('Filter Plus','filter-plus');?></h1>
+            <span class='version'><?php echo esc_html('v ').FilterPlus::get_version();?></span>
+        </div>
+    </a>
     <?php
         $menus = array( 
             array(
