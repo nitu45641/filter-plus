@@ -228,7 +228,7 @@
 			let data =
 			{
 				action: 'filter_save_settings',
-				nonce: filter_admin.nonce,
+				filter_plus_nonce: filter_admin.filter_plus_nonce,
 				params: form_data
 			};
 			$.ajax({

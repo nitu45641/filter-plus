@@ -4,7 +4,7 @@
 		<h1 class="font_bold font_16 mb-1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
 		<?php
 			
-			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/?docs=filter-plus/gutenburg-block-elementor-widget-woocommercce-product-filter"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
+			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/wordpress-filter/show-wordpress-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 			$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</i></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
 			// templates

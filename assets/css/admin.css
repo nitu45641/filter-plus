@@ -50,7 +50,7 @@ h1.font_16{
 	column-gap: 20px;
 }
 #settings .single-block{
-	grid-template-columns: 205px auto auto;
+	grid-template-columns: 225px auto auto;
 	column-gap: 35px;
 }
 .repeat-section {
