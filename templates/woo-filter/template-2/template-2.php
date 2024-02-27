@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 			// custom tags
 			if ( 'yes'== $show_tags && count($get_attr)> 0 ) {
-				$title = esc_html__("Find Favorite Item","filter-plus");
+				$title =  !empty( $tag_label ) ? $tag_label : esc_html__("Find Favorite Item","filter-plus");
 				include \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/filter-layout-grid.php";
 			}
 			// custom attributes

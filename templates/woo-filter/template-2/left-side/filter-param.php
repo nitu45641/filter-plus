@@ -5,7 +5,7 @@
 
 	if ( "yes" == $size ) {
 		$attrs      = \FilterPlus\Utils\Helper::get_attributes("pa_size");
-		$title      = esc_html__("Best Match Item","filter-plus");
+		$title      = !empty($size_label) ? $size_label : esc_html__("Best Match Item","filter-plus");
 		$get_attr   = array();
 		foreach ($attrs['terms'] as $key => $value) {
 			$get_attr[$key]  = $value->term_id;
@@ -21,7 +21,7 @@
 	$get_attr = \FilterPlus\Utils\Helper::get_attributes("pa_color");
 ?>
 	<div class="sidebar-row radio-wrap">
-		<h4 class="sidebar-label"><?php echo esc_html__("Filter By") ." ".esc_html($get_attr['label']) ;?></h4>
+		<?php echo !empty($color_label) ? $color_label : esc_html__("Filter By","filter-plus") ." ".esc_html($get_attr['label']) ;?></h4>
 		<div class="down-arrow">
 			<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg>
 		</div>

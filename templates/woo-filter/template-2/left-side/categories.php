@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 
 <div class="sidebar-row categories-wrap">
-	<h4 class="sidebar-label"><?php esc_html_e('Categories','filter-plus');?></h4>
+<h4 class="sidebar-label"><?php echo !empty( $category_label ) ?  $category_label : esc_html__('Categories','filter-plus');?></h4>
 	<ul class="category-list panel categories-wrapper">
 		<?php 
 			$get_categories = \FilterPlus\Utils\Helper::get_categories($categories);

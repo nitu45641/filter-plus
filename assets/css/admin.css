@@ -16,6 +16,9 @@ h2.content-header {
 h1.font_20{
 	font-size: 20px ;
 }
+h1.font_16{
+	font-size: 16px ;
+}
 .font_bold {
 	font-weight: bold !important;
 }
@@ -832,7 +835,7 @@ a.pro-link:focus{
           position: relative;
           z-index: 2;
 		  p{
-			font-size: 15px;
+			font-size: 16px;
 		  }
           .opened {
             display: none;

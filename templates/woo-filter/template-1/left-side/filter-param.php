@@ -21,8 +21,8 @@
 	$get_attr = \FilterPlus\Utils\Helper::get_attributes("pa_color");
 ?>
 	<div class="sidebar-row radio-wrap">
-		<h4 class="sidebar-label"><?php echo 
-		!empty($color_label) ? $color_label : esc_html__("Filter By") ." ".esc_html($get_attr['label']) ;?></h4>
+		<h4 class="sidebar-label">
+		<?php echo !empty($color_label) ? $color_label : esc_html__("Filter By","filter-plus") ." ".esc_html($get_attr['label']) ;?></h4>
 		<div class="panel">
 			<div class="param-box">
 				<?php

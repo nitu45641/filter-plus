@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-02-27T14:14:30+00:00\n"
+"POT-Creation-Date: 2024-02-27T17:13:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: filter-plus\n"
@@ -42,6 +42,7 @@ msgid "Price"
 msgstr ""
 
 #: base/enqueue.php:190
+#: templates/woo-filter/template-1/rating.php:7
 msgid "Rating"
 msgstr ""
 
@@ -192,13 +193,13 @@ msgid "SEO"
 msgstr ""
 
 #: core/admin/settings/shortocdes-fields.php:10
-#: core/admin/settings/shortocdes-fields.php:112
-#: core/admin/settings/shortocdes-fields.php:126
+#: core/admin/settings/shortocdes-fields.php:116
+#: core/admin/settings/shortocdes-fields.php:130
 #: core/widgets/filters/filters.php:57
 msgid "Pro"
 msgstr ""
 
-#: core/admin/settings/shortocdes-fields.php:113
+#: core/admin/settings/shortocdes-fields.php:117
 msgid "Template"
 msgstr ""
 
@@ -214,59 +215,59 @@ msgstr ""
 msgid "SEO elements:"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:18
+#: core/admin/settings/tab-content/seo.php:19
 msgid "Title"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:19
+#: core/admin/settings/tab-content/seo.php:20
 msgid "Header"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:20
+#: core/admin/settings/tab-content/seo.php:21
 msgid "Description"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:29
+#: core/admin/settings/tab-content/seo.php:30
 msgid "SEO elements Format:"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:33
+#: core/admin/settings/tab-content/seo.php:35
 msgid "Select Option"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:34
+#: core/admin/settings/tab-content/seo.php:36
 msgid "{title} with [attribute] [values] and [attribute] [values]"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:35
+#: core/admin/settings/tab-content/seo.php:37
 msgid "{title} - [values] / [values]"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:36
+#: core/admin/settings/tab-content/seo.php:38
 msgid "[attribute]:[values];[attribute]:[values] - {title}"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:37
+#: core/admin/settings/tab-content/seo.php:39
 msgid "{title} [attribute]:[values];[attribute]:[values]"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:38
+#: core/admin/settings/tab-content/seo.php:40
 msgid "[attribute 1 values] {title} with [attribute] [values] and [attribute] [values]"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:46
+#: core/admin/settings/tab-content/seo.php:48
 msgid "Use slug in Url"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:48
+#: core/admin/settings/tab-content/seo.php:51
 msgid "Use Slug in Url instead of ID"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:54
+#: core/admin/settings/tab-content/seo.php:57
 msgid "SEO friendly URL. Wordpress permalink must be set to post name from (Settings=>Permalink)"
 msgstr ""
 
-#: core/admin/settings/tab-content/seo.php:56
+#: core/admin/settings/tab-content/seo.php:59
 msgid "Nice Url"
 msgstr ""
 
@@ -292,8 +293,7 @@ msgid "Documentation Link"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:8
-#: core/admin/wp-filter.php:8
-msgid "Gutenberg Block , Elementor widget is available for filter features. "
+msgid "Gutenberg Block,Elementor widget is available for filter features. "
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:11
@@ -306,69 +306,139 @@ msgstr ""
 msgid "Category Label:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:26
+#: core/admin/settings/tab-content/short-codes.php:21
+msgid "Place Category Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:27
 #: core/admin/wp-filter.php:21
 msgid "Category List:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:31
+#: core/admin/settings/tab-content/short-codes.php:32
 msgid "Display Colors:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:35
+msgid "Color Label:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:38
+msgid "Place Color Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:43
 msgid "Display Size:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:39
-#: core/admin/settings/tab-content/short-codes.php:89
+#: core/admin/settings/tab-content/short-codes.php:46
+msgid "Size Label:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:49
+msgid "Place Size Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:54
+#: core/admin/settings/tab-content/short-codes.php:139
 #: core/admin/wp-filter.php:104
 msgid "Display Tags:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:45
+#: core/admin/settings/tab-content/short-codes.php:57
+#: core/admin/wp-filter.php:47
+msgid "Tag Label:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:58
+msgid "Place Tag Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:66
 #: core/admin/wp-filter.php:55
 msgid "Tag List:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:51
+#: core/admin/settings/tab-content/short-codes.php:72
 msgid "Display Attributes:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:57
-msgid "Attribute List:"
-msgstr ""
-
-#: core/admin/settings/tab-content/short-codes.php:62
-msgid "Display Price Range:"
-msgstr ""
-
-#: core/admin/settings/tab-content/short-codes.php:67
-msgid "Display Reviews:"
-msgstr ""
-
-#: core/admin/settings/tab-content/short-codes.php:71
-msgid "Filter By Stock:"
+#: core/admin/settings/tab-content/short-codes.php:74
+msgid "Attribute Label:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:75
+msgid "Place Attribute Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:83
+msgid "Attribute List:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:88
+msgid "Display Price Range:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:90
+msgid "Price Range Label:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:91
+msgid "Place Price Range Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:98
+msgid "Display Reviews:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:101
+msgid "Review Label:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:102
+msgid "Place Review Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:108
+msgid "Filter By Stock:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:111
+msgid "Stock Label:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:112
+msgid "Place Stock Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:117
 msgid "Filter By On Sale:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:80
+#: core/admin/settings/tab-content/short-codes.php:120
+msgid "On Sale Label:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:121
+msgid "Place On Sale Label Here"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:130
 msgid "Filter Result Products"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:85
+#: core/admin/settings/tab-content/short-codes.php:135
 #: core/widgets/filters/filters.php:204
 msgid "Display Sorting:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:92
+#: core/admin/settings/tab-content/short-codes.php:142
 #: core/admin/wp-filter.php:108
 msgid "Display Categories:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:98
+#: core/admin/settings/tab-content/short-codes.php:148
+#: core/admin/wp-filter.php:117
 msgid "Copy Filter Shortcodes"
 msgstr ""
 
@@ -376,8 +446,12 @@ msgstr ""
 msgid "Available Wordpress Filter Section"
 msgstr ""
 
+#: core/admin/wp-filter.php:8
+msgid "Gutenberg Block , Elementor widget is available for filter features. "
+msgstr ""
+
 #: core/admin/wp-filter.php:26
-msgid "Select Type"
+msgid "Select Type:"
 msgstr ""
 
 #: core/admin/wp-filter.php:28
@@ -394,10 +468,6 @@ msgstr ""
 
 #: core/admin/wp-filter.php:43
 msgid "Tags:"
-msgstr ""
-
-#: core/admin/wp-filter.php:47
-msgid "Tag Label:"
 msgstr ""
 
 #: core/admin/wp-filter.php:62
@@ -432,10 +502,6 @@ msgstr ""
 msgid "Display Author:"
 msgstr ""
 
-#: core/admin/wp-filter.php:117
-msgid "Copy Filer Shortcodes"
-msgstr ""
-
 #: core/frontend/search-filter/actions.php:95
 msgid "No Matching Result Found"
 msgstr ""
@@ -468,8 +534,55 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
-#: core/frontend/shortcodes.php:138
-#: core/frontend/shortcodes.php:152
+#: core/frontend/shortcodes.php:50
+#: core/widgets/filters/filters.php:76
+#: templates/woo-filter/template-1/left-side/categories.php:7
+#: templates/woo-filter/template-2/left-side/categories.php:9
+msgid "Categories"
+msgstr ""
+
+#: core/frontend/shortcodes.php:53
+msgid "Colors"
+msgstr ""
+
+#: core/frontend/shortcodes.php:55
+msgid "Size"
+msgstr ""
+
+#: core/frontend/shortcodes.php:57
+#: core/widgets/filters/filters.php:121
+#: build/index.js:1
+#: src/index.js:181
+msgid "Tags"
+msgstr ""
+
+#: core/frontend/shortcodes.php:59
+#: core/widgets/filters/filters.php:144
+#: build/index.js:1
+#: src/index.js:193
+msgid "Attributes"
+msgstr ""
+
+#: core/frontend/shortcodes.php:62
+msgid "Review"
+msgstr ""
+
+#: core/frontend/shortcodes.php:65
+#: templates/woo-filter/template-1/left-side/price-range.php:8
+msgid "Price Range"
+msgstr ""
+
+#: core/frontend/shortcodes.php:67
+msgid "Sale"
+msgstr ""
+
+#: core/frontend/shortcodes.php:69
+#: templates/woo-filter/template-1/stock.php:3
+msgid "Stock"
+msgstr ""
+
+#: core/frontend/shortcodes.php:147
+#: core/frontend/shortcodes.php:161
 msgid "Please Active FilterPlus Pro"
 msgstr ""
 
@@ -499,12 +612,6 @@ msgstr ""
 
 #: core/widgets/filters/filters.php:66
 msgid "Category Style"
-msgstr ""
-
-#: core/widgets/filters/filters.php:76
-#: templates/woo-filter/template-1/left-side/categories.php:7
-#: templates/woo-filter/template-2/left-side/categories.php:9
-msgid "Categories"
 msgstr ""
 
 #: core/widgets/filters/filters.php:86
@@ -547,20 +654,8 @@ msgstr ""
 msgid "Show Tags"
 msgstr ""
 
-#: core/widgets/filters/filters.php:121
-#: build/index.js:1
-#: src/index.js:181
-msgid "Tags"
-msgstr ""
-
 #: core/widgets/filters/filters.php:132
 msgid "Show Attributes"
-msgstr ""
-
-#: core/widgets/filters/filters.php:144
-#: build/index.js:1
-#: src/index.js:193
-msgid "Attributes"
 msgstr ""
 
 #: core/widgets/filters/filters.php:155
@@ -580,6 +675,7 @@ msgid "Filter By Stock"
 msgstr ""
 
 #: core/widgets/filters/filters.php:192
+#: templates/woo-filter/template-1/on-sale.php:4
 #: build/index.js:1
 #: src/index.js:209
 msgid "Sales"
@@ -709,8 +805,12 @@ msgstr ""
 #: templates/woo-filter/template-1/left-side/categories.php:22
 #: templates/woo-filter/template-1/left-side/filter-layout-attr-grid.php:29
 #: templates/woo-filter/template-1/left-side/filter-layout-grid.php:23
-#: templates/woo-filter/template-1/left-side/filter-param.php:40
+#: templates/woo-filter/template-1/left-side/filter-param.php:41
+#: templates/woo-filter/template-1/left-side/price-range.php:17
 #: templates/woo-filter/template-1/left-side/product-search.php:18
+#: templates/woo-filter/template-1/on-sale.php:18
+#: templates/woo-filter/template-1/rating.php:14
+#: templates/woo-filter/template-1/stock.php:14
 #: templates/woo-filter/template-2/left-side/categories.php:25
 #: templates/woo-filter/template-2/left-side/filter-layout-attr-grid.php:34
 #: templates/woo-filter/template-2/left-side/filter-layout-grid.php:30
@@ -723,9 +823,28 @@ msgstr ""
 msgid "Filter By Size"
 msgstr ""
 
+#: templates/woo-filter/template-1/left-side/filter-param.php:25
+#: templates/woo-filter/template-2/left-side/filter-param.php:24
+msgid "Filter By"
+msgstr ""
+
 #: templates/woo-filter/template-1/left-side/product-search.php:12
 #: templates/woo-filter/template-2/left-side/product-search.php:12
 msgid "Search Products"
+msgstr ""
+
+#: templates/woo-filter/template-1/on-sale.php:3
+msgid "Sales:"
+msgstr ""
+
+#: templates/woo-filter/template-1/on-sale.php:8
+#: templates/woo-filter/template-1/on-sale.php:10
+msgid "On Sale"
+msgstr ""
+
+#: templates/woo-filter/template-1/on-sale.php:14
+#: templates/woo-filter/template-1/on-sale.php:16
+msgid "Regular Sale"
 msgstr ""
 
 #: templates/woo-filter/template-1/right-side/filter-top.php:5
@@ -741,6 +860,16 @@ msgstr ""
 #: templates/woo-filter/template-1/right-side/filter-top.php:8
 #: templates/woo-filter/template-2/right-side/filter-top.php:3
 msgid "Products"
+msgstr ""
+
+#: templates/woo-filter/template-1/stock.php:6
+#: templates/woo-filter/template-1/stock.php:8
+msgid "In Stock"
+msgstr ""
+
+#: templates/woo-filter/template-1/stock.php:11
+#: templates/woo-filter/template-1/stock.php:12
+msgid "Out Of Stock"
 msgstr ""
 
 #: templates/woo-filter/template-1/template-1.php:20
@@ -805,6 +934,11 @@ msgid "Template-4 (Pro)"
 msgstr ""
 
 #: build/index.js:1
+#: src/index.js:142
+msgid "Template-5 (Pro)"
+msgstr ""
+
+#: build/index.js:1
 #: src/index.js:159
 msgid "Category List"
 msgstr ""
@@ -842,8 +976,4 @@ msgstr ""
 #: build/index.js:1
 #: src/index.js:229
 msgid "Display Categories in Filter Result"
-msgstr ""
-
-#: src/index.js:142
-msgid "Template-5 (Pro)"
 msgstr ""

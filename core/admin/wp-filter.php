@@ -1,7 +1,7 @@
 
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="wp_filter_plus">
-		<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
+		<h1 class="font_bold font_16 mb-1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
 		<?php
 			
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/?docs=filter-plus/gutenburg-block-elementor-widget-woocommercce-product-filter"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
