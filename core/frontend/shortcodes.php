@@ -47,9 +47,11 @@ class Shortcodes {
 			shortcode_atts(
 				array(
 					'template'         	=> '1',
+					'category_label'    => esc_html__('Categories','filter-plus'),
 					'categories'       	=> '',
 					'colors'           	=> 'yes',
 					'size'             	=> 'yes',
+					'tag_label'        	=> esc_html__('Tags','filter-plus'),
 					'tags'             	=> '',
 					'attributes'       	=> '',
 					'show_tags'        	=> '',

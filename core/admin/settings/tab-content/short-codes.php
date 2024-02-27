@@ -9,7 +9,7 @@
 			echo FilterPlus\Utils\Helper::kses( $docs );
 
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
-			'data_label' => 'template','options'=>[1,2,3,4],'type'=>'template' );
+			'data_label' => 'template','options'=>[1,2,3,4,5],'type'=>'template' );
 
 			if ( $disable ) {
 				$args['template_disable'] = 1;
@@ -17,6 +17,10 @@
 			filter_plus_select_field($args);
 
 			// categories
+			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
+			'data_label' => 'category_label','disable' => $disable);
+			filter_plus_number_input_field($args);
+
 			$get_categories = \FilterPlus\Utils\Helper::get_categories();
 
 			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
@@ -34,6 +38,11 @@
 			// show tags
 			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'show_tags','data_label' => 'show_tags');
 			filter_plus_checkbox_field($args);
+
+			$args = array('label'=>esc_html__("Tag Label:","filter-plus"),'id' => 'tag_label',
+			'data_label' => 'tag_label','condition_class' => "show_tags d-none",
+			'value' => '','disable' => $disable);
+			filter_plus_number_input_field($args);
 			
 			// get tag list
 			$get_tags   = \FilterPlus\Utils\Helper::get_product_tags('product_tag');

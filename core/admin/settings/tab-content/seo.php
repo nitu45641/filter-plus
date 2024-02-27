@@ -14,6 +14,7 @@ $args = array(
 'id' => 'seo_elements' , 'data_label' => 'seo-elements' , 
 'type' => 'random',
 'select_type' => 'multiple',
+'condition_class'=>'refresh_url', 
 'options' => array(
     'title'         =>__("Title","filter-plus"),
     'header'        =>__("Header","filter-plus"),
@@ -27,7 +28,8 @@ filter_plus_select_field($args);
 
 $args = array(
 'label'=>esc_html__("SEO elements Format:","filter-plus"),
-'id' => 'seo_elements_format' , 'data_label' => 'seo-elements-format' , 
+'id' => 'seo_elements_format' , 'data_label' => 'seo-elements-format',
+'condition_class'=>'refresh_url', 
 'type' => 'random',
 'options' => array(
     __("Select Option","filter-plus"),
@@ -44,11 +46,12 @@ $args = array(
 filter_plus_select_field($args);
 
 $args = array('label'=>esc_html__("Use slug in Url","filter-plus"),
+'condition_class'=>'refresh_url', 
 'id' => 'seo_slug_url' , 'data_label' => 'seo-slug-url' ,  'checked'=> $seo_slug_url ,
 'checkbox_label' => __('Use Slug in Url instead of ID','filter-plus'),
 'disable' => $disable );
-
 filter_plus_checkbox_field($args);
+
 $nice_url_desc = '';
 if (class_exists('FilterPlusPro')) {
     $nice_url_desc = __('SEO friendly URL. Wordpress permalink must be set to post name from (Settings=>Permalink)','filter-plus');

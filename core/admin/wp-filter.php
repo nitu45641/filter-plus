@@ -13,6 +13,10 @@
 			filter_plus_select_field($args);
 
 			// categories
+			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
+			'data_label' => 'category_label','disable' => $disable);
+			filter_plus_number_input_field($args);
+
 			$get_categories = \FilterPlus\Utils\Helper::get_categories('',false,array('taxonomy'=>'category'));
 			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'wp_categories',
 			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories, 'disable' => $disable );

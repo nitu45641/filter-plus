@@ -29,12 +29,13 @@ if ( !function_exists('pro_link_markup') ) {
 if ( !function_exists('filter_plus_checkbox_field') ) {
 
 	function filter_plus_checkbox_field($args){
+		$condition_class= !empty($args['condition_class']) ? $args['condition_class'] : '';
 		$disable    	= !empty($args['disable']) ? 'disable' : '';
 		$checkbox_label = !empty($args['checkbox_label']) ? $args['checkbox_label'] : '';
 		$checked      	= ( !empty($args['checked']) && $args['checked'] == "yes") ? "checked" : "";
 		extract(pro_link_markup($disable));
 		$html = '
-			<div class="single-block">
+			<div class="single-block '.$condition_class.'">
 				<div class="form-label">'.$args['label'].'</div>
 				'.$pro_link_start.'
 				<div class="check-wrap">
