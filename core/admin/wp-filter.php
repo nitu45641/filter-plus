@@ -14,6 +14,7 @@
 
 			// categories
 			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
+			'placeholder'=>esc_html__("Place Category Label Here","filter-plus"),
 			'data_label' => 'category_label','disable' => $disable);
 			filter_plus_number_input_field($args);
 
@@ -46,7 +47,8 @@
 
 			$args        = array('label'=>esc_html__("Tag Label:","filter-plus"),'id' => 'tag_label',
 			'data_label' => 'tag_label','condition_class' => "show_wp_tags d-none",
-			'value' => '','disable' => $disable);
+			'placeholder'=>esc_html__("Place Tag Label Here","filter-plus"),
+			'disable' => $disable);
 			filter_plus_number_input_field($args);
 			
 			// get tag list
@@ -59,7 +61,8 @@
 			filter_plus_select_field($args);
 
 			// show author
-			$args = array( 'label'=>esc_html__("Author:","filter-plus"),'id' => 'author','data_label' => 'author',
+			$args = array( 'label'=>esc_html__("Author:","filter-plus"),'id' => 'author',
+			'data_label' => 'author',
 			'disable' => $disable );
 			filter_plus_checkbox_field($args);
 
@@ -70,7 +73,8 @@
 
 			$args        = array('label'=>esc_html__("Author Label:","filter-plus"),'id' => 'author_label',
 			'data_label' => 'author_label','condition_class' => "author d-none",
-			'value' => '','disable' => $disable);
+			'placeholder'=>esc_html__("Place Author Label Here","filter-plus"),
+			'disable' => $disable);
 			filter_plus_number_input_field($args);
 
 			$args        = array('label'=>esc_html__("Author List:","filter-plus"),'id' => 'author_list',
@@ -86,7 +90,8 @@
 
 			$args        = array('label'=>esc_html__("Custom Field Label:","filter-plus"),'id' => 'custom_field_label',
 			'data_label' => 'custom_field_label','condition_class' => "custom_field d-none",
-			'value' => '','disable' => $disable);
+			'placeholder'=>esc_html__("Place Custom Field Here","filter-plus"),
+			'disable' => $disable);
 			filter_plus_number_input_field($args);
 
 			$args        = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
