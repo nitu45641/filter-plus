@@ -210,7 +210,7 @@ class Shortcodes {
 			--filter-secondary-color : '.$secondary_color.';
 			--filter-loader-color : '.$loader_color.';
 			--filter-price-range: '.$primary_color.';
-			--filter-border-color: '.$primary_color.';
+			--filter-border-color: '.$secondary_color.';
 			--filter-header-border: '.$primary_color.';
 			--filter-tab-color: '.$tab_pan_item_color.';
 			--filter-blog-header: '.$blog_header.';

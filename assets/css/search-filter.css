@@ -685,12 +685,12 @@ input[type="checkbox"]:checked + label.checkbox-item
 	display: inline-block;
 }
 .filter-tab-pane li:hover,
-.filter-tab-pane li:active
+.filter-tab-pane li.active
 {
     color: var(--filter-tab-color,'#fff') !important;
 }
 .tab-item{
     display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-columns: auto auto auto;
     column-gap: 20px;
 }

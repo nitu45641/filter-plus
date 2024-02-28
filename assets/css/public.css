@@ -831,7 +831,7 @@ a.added_to_cart.wc-forward {
 	justify-content: space-between;
 	margin-bottom: 30px;
 }
-.sorting .showing p {
+.showing p{
 	font-size: 14px;
 	color: #c4c4c4;
 	margin: 0;
