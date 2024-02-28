@@ -15,24 +15,6 @@
 	grid-template-columns: 3fr 10fr;
 	grid-gap: 2rem;
 }
-.filter-wp-list-3{
-	text-align: center;
-}
-.filter-wp-list-3 li{
-    list-style: none;
-	padding: 8px 30px;
-    margin: 5px 3px 5px 3px;
-    text-transform: uppercase;
-    font-weight: 600;
-    background: var(--filter-tab-bg,'#ff0000');
-    color: var(--filter-tab-color,'#fff');
-	display: inline-block;
-}
-.filter-wp-list-3 li:hover,
-.filter-wp-list-3 li:active
-{
-    color: var(--filter-tab-color,'#fff') !important;
-}
 a {
 	text-decoration: none !important;
 	outline: none !important;
@@ -850,6 +832,7 @@ a.added_to_cart.wc-forward {
 	margin-bottom: 30px;
 }
 .sorting .showing p {
+	font-size: 14px;
 	color: #c4c4c4;
 	margin: 0;
 }

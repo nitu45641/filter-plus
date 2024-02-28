@@ -671,3 +671,26 @@ input[type="checkbox"]:checked + label.checkbox-item
 .range .slider-container.theme-green{
 	background: var(--filter-price-range,"#2d0607") !important;
 }
+.filter-tab-pane{
+	text-align: center;
+}
+.filter-tab-pane li{
+    list-style: none;
+	padding: 8px 30px;
+    margin: 5px 3px 5px 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: var(--filter-tab-bg,'#ff0000');
+    color: var(--filter-tab-color,'#fff');
+	display: inline-block;
+}
+.filter-tab-pane li:hover,
+.filter-tab-pane li:active
+{
+    color: var(--filter-tab-color,'#fff') !important;
+}
+.tab-item{
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    column-gap: 20px;
+}

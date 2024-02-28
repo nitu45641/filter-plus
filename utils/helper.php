@@ -453,17 +453,18 @@ class Helper {
 		}else{
 			$cat_id = !empty($param['filter_param']) ? $param['filter_param']['product_cat'] : [];
 		}
-		
-		$args['tax_query'] = array(
-			array(
-				'taxonomy' => $param['taxonomy'],
-				'field'    => 'id',
-				'terms'    => $cat_id,
-			),
-		);
 
-		// filter by attributes
+		if ( !empty( $param['taxonomy']) ) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => $param['taxonomy'],
+					'field'    => 'id',
+					'terms'    => $cat_id,
+				),
+			);
+		}
 
+		//filter by attributes
 		if ( ! empty( $param['taxonomies'] ) ) {
 			$args['tax_query'] = array('relation' => 'AND' );
 			if ( ! empty( $param['cat_id'] ) ) {

@@ -176,6 +176,7 @@ class Shortcodes {
 		$blog_header = "#000"; $cart_icon =  '#fff'; 
 		$cart_content = '#2d73e7';$price_range = '#2d73e7'; $loader_color = '#1164cb';
 		$param_direction = 'row';
+		$tab_pan_item_color = '#fff';
 		
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
@@ -197,6 +198,9 @@ class Shortcodes {
 			$cart_icon = '#fff'; 
 			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
 		}
+		else if( $template == "5" ){
+			$secondary_color = $loader_color = '#ab1616';
+		}
 
 		$custom_css = '
 		:root {
@@ -208,7 +212,7 @@ class Shortcodes {
 			--filter-price-range: '.$primary_color.';
 			--filter-border-color: '.$primary_color.';
 			--filter-header-border: '.$primary_color.';
-			--filter-tab-color: '.$secondary_color.';
+			--filter-tab-color: '.$tab_pan_item_color.';
 			--filter-blog-header: '.$blog_header.';
 			--filter-tag-color: '.$tag_color.';
 			--filter-param-box-direction: '.$param_direction.';
