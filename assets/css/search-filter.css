@@ -191,7 +191,6 @@
 }
 .radio-wrap .radio-item.active {
 	background: var(--filter-secondary-color, #17c6aa);
-	border: 5px solid var(--filter-secondary-color, #17c6aa);
 	outline: 1px solid var(--filter-secondary-color, #17c6aa);
 	color: #fff !important;
 }
@@ -587,7 +586,7 @@ ul.pagination {
 
 .add_to_cart_button.loading::after {
     content: url(../../assets/images/wheel.svg);
-    position: absolute;
+    position: var(--filter-loading-icon-position,'relative');
     -webkit-animation: spin 2s linear infinite; 
     animation: spin 2s linear infinite;
     border-radius: 290486px;

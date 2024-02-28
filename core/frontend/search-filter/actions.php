@@ -392,7 +392,6 @@ class Actions {
 	 */
 	public static function cart_btn_html( $product_instance , $template ) {
 		$not_text = array('1','5');
-		error_log(in_array($not_text,$template));
 		// show cart button
 		$cart_args = array(
 			'template'      => $template,

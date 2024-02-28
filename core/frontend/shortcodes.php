@@ -176,9 +176,12 @@ class Shortcodes {
 		$blog_header = "#000"; $cart_icon =  '#fff'; 
 		$cart_content = '#2d73e7';$price_range = '#2d73e7'; $loader_color = '#1164cb';
 		$param_direction = 'row';
-		$tab_pan_item_color = '#fff';
-		
-		if ( $template == "2" ) {
+		$tab_pan_item_color = '#fff';$loading_icon_position = 'relative';
+
+		if ( $template == "1" ) {
+			$loading_icon_position = 'absolute';
+		}
+		else if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
 			$loader_color = $secondary_color = $primary_color = '#17c6aa'; 
 			$price_range = '#2d0607'; 
@@ -209,13 +212,14 @@ class Shortcodes {
 			--filter-price-range : '.$price_range.';
 			--filter-secondary-color : '.$secondary_color.';
 			--filter-loader-color : '.$loader_color.';
-			--filter-price-range: '.$primary_color.';
+			--filter-price-range: '.$secondary_color.';
 			--filter-border-color: '.$secondary_color.';
 			--filter-header-border: '.$primary_color.';
 			--filter-tab-color: '.$tab_pan_item_color.';
 			--filter-blog-header: '.$blog_header.';
 			--filter-tag-color: '.$tag_color.';
 			--filter-param-box-direction: '.$param_direction.';
+			--filter-loading-icon-position: '.$loading_icon_position.';
 		}';
 
 		wp_register_style( 'filter-plus-custom-css', false );
