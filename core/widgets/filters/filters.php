@@ -47,6 +47,7 @@ class Filters extends Widget_Base {
 			'section_tab',
 			[
 				'label' => esc_html__('Filter Options', 'filter-plus'),
+				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$templates = [
@@ -99,6 +100,15 @@ class Filters extends Widget_Base {
 				'default' => 'yes',
 			]
 		);
+		$this->add_control(
+			'color_label',
+			[
+				'label' 	=> esc_html__('Color Label', 'filter-plus'),
+				'type' 		=> Controls_Manager::TEXT,
+				'placeholder' => esc_html__('Place Color Label Here', 'filter-plus'),
+				'condition' => ['colors' => 'yes']
+			]
+		);
 
         $this->add_control(
 			'size',
@@ -112,6 +122,16 @@ class Filters extends Widget_Base {
 			]
 		);
 		$this->add_control(
+			'size_label',
+			[
+				'label' 	=> esc_html__('Size Label', 'filter-plus'),
+				'type' 		=> Controls_Manager::TEXT,
+				'placeholder' => esc_html__('Place Size Label Here', 'filter-plus'),
+				'condition' => ['size' => 'yes']
+			]
+		);
+
+		$this->add_control(
 			'show_tags',
 			[
 				'label' => esc_html__('Show Tags', 'filter-plus'),
@@ -120,6 +140,16 @@ class Filters extends Widget_Base {
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'tag_label',
+			[
+				'label' 	=> esc_html__('Tag Label', 'filter-plus'),
+				'type' 		=> Controls_Manager::TEXT,
+				'placeholder' => esc_html__('Place Tag Label Here', 'filter-plus'),
+				'condition' => ['show_tags' => 'yes']
 			]
 		);
 
@@ -147,6 +177,16 @@ class Filters extends Widget_Base {
 		);
 
 		$this->add_control(
+			'attribute_label',
+			[
+				'label' 	=> esc_html__('Attribute Label', 'filter-plus'),
+				'type' 		=> Controls_Manager::TEXT,
+				'placeholder' => esc_html__('Place Attribute Label Here', 'filter-plus'),
+				'condition' => ['show_attributes' => 'yes']
+			]
+		);
+
+		$this->add_control(
 			'attributes',
 			[
 				'label' 	=> esc_html__('Attributes', 'filter-plus'),
@@ -169,7 +209,16 @@ class Filters extends Widget_Base {
 			]
 		);
 
-		
+		$this->add_control(
+			'price_range_label',
+			[
+				'label' 	=> esc_html__('Price Range Label', 'filter-plus'),
+				'type' 		=> Controls_Manager::TEXT,
+				'placeholder' => esc_html__('Place Price Range Label Here', 'filter-plus'),
+				'condition' => ['show_price_range' => 'yes']
+			]
+		);
+
 		$this->add_control(
 			'show_reviews',
 			[
@@ -179,6 +228,16 @@ class Filters extends Widget_Base {
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'review_label',
+			[
+				'label' 	=> esc_html__('Review Label', 'filter-plus'),
+				'type' 		=> Controls_Manager::TEXT,
+				'placeholder' => esc_html__('Place Review Label Here', 'filter-plus'),
+				'condition' => ['show_reviews' => 'yes']
 			]
 		);
 
@@ -195,6 +254,16 @@ class Filters extends Widget_Base {
 		);
 
 		$this->add_control(
+			'stock_label',
+			[
+				'label' 	=> esc_html__('Stock Label', 'filter-plus'),
+				'type' 		=> Controls_Manager::TEXT,
+				'placeholder' => esc_html__('Place Stock Label Here', 'filter-plus'),
+				'condition' => ['stock' => 'yes']
+			]
+		);
+
+		$this->add_control(
 			'on_sale',
 			[
 				'label' => esc_html__('Sales', 'filter-plus'),
@@ -207,23 +276,42 @@ class Filters extends Widget_Base {
 		);
 
 		$this->add_control(
+			'on_sale_label',
+			[
+				'label' 	=> esc_html__('On Sale Label', 'filter-plus'),
+				'type' 		=> Controls_Manager::TEXT,
+				'placeholder' => esc_html__('Place On Sale Label Here', 'filter-plus'),
+				'condition' => ['on_sale' => 'yes']
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'filter-result',
+			[
+				'label' => esc_html__('Filter Result Options', 'filter-plus'),
+				'tab' => Controls_Manager::TAB_CONTENT
+			]
+		);
+
+		// Right Side
+		$this->add_control(
 			'sorting',
 			[
 				'label' => esc_html__('Display Sorting:', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
 		);
-
-		// Right Side
 		$this->add_control(
 			'product_categories',
 			[
 				'label' => esc_html__('Display Categories', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
@@ -235,7 +323,7 @@ class Filters extends Widget_Base {
 			'product_tags',
 			[
 				'label' => esc_html__('Display Tags', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
