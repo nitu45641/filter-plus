@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		if (class_exists('FilterPlusPro')) {
 			// reviews
 			if ( 'yes'== $show_reviews ) {
-				include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-".$template."/rating.php";
+				include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/rating.php";
 			}
 			// price range
 			if ( 'yes'== $show_price_range ) {
-				include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-".$template."/price-range.php";
+				include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/price-range.php";
 			}
 			$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
 
@@ -35,11 +35,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		if (!class_exists('FilterPlusPro')) { return; }
 		// on sale
 		if ( class_exists('FilterPlusPro') && 'yes'== $on_sale ) {
-			include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-".$template."/on-sale.php";
+			include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/on-sale.php";
 		}
 		// stock
 		if ( class_exists('FilterPlusPro') && 'yes'== $stock ) {
-			include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-".$template."/stock.php";
+			include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/stock.php";
 		} 
 	?>
 </div>
