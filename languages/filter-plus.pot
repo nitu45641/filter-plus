@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Filter Plus 1.0.32\n"
+"Project-Id-Version: Filter Plus 1.0.33\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/filter-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-02-27T18:04:02+00:00\n"
+"POT-Creation-Date: 2024-02-28T05:02:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: filter-plus\n"
@@ -195,7 +195,7 @@ msgstr ""
 #: core/admin/settings/shortocdes-fields.php:10
 #: core/admin/settings/shortocdes-fields.php:116
 #: core/admin/settings/shortocdes-fields.php:130
-#: core/widgets/filters/filters.php:57
+#: core/widgets/filters/filters.php:58
 msgid "Pro"
 msgstr ""
 
@@ -308,6 +308,7 @@ msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:21
 #: core/admin/wp-filter.php:17
+#: core/widgets/filters/filters.php:79
 msgid "Place Category Label Here"
 msgstr ""
 
@@ -325,6 +326,7 @@ msgid "Color Label:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:38
+#: core/widgets/filters/filters.php:108
 msgid "Place Color Label Here"
 msgstr ""
 
@@ -337,6 +339,7 @@ msgid "Size Label:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:49
+#: core/widgets/filters/filters.php:129
 msgid "Place Size Label Here"
 msgstr ""
 
@@ -353,6 +356,7 @@ msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:58
 #: core/admin/wp-filter.php:50
+#: core/widgets/filters/filters.php:151
 msgid "Place Tag Label Here"
 msgstr ""
 
@@ -370,6 +374,7 @@ msgid "Attribute Label:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:75
+#: core/widgets/filters/filters.php:184
 msgid "Place Attribute Label Here"
 msgstr ""
 
@@ -386,6 +391,7 @@ msgid "Price Range Label:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:91
+#: core/widgets/filters/filters.php:217
 msgid "Place Price Range Label Here"
 msgstr ""
 
@@ -398,6 +404,7 @@ msgid "Review Label:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:102
+#: core/widgets/filters/filters.php:239
 msgid "Place Review Label Here"
 msgstr ""
 
@@ -410,6 +417,7 @@ msgid "Stock Label:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:112
+#: core/widgets/filters/filters.php:261
 msgid "Place Stock Label Here"
 msgstr ""
 
@@ -422,6 +430,7 @@ msgid "On Sale Label:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:121
+#: core/widgets/filters/filters.php:283
 msgid "Place On Sale Label Here"
 msgstr ""
 
@@ -430,7 +439,7 @@ msgid "Filter Result Products"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:135
-#: core/widgets/filters/filters.php:204
+#: core/widgets/filters/filters.php:302
 msgid "Display Sorting:"
 msgstr ""
 
@@ -545,48 +554,57 @@ msgid "Add to cart"
 msgstr ""
 
 #: core/frontend/shortcodes.php:50
-#: core/widgets/filters/filters.php:76
+#: core/widgets/filters/filters.php:85
+#: core/widgets/filters/filters.php:601
 #: templates/woo-filter/template-1/left-side/categories.php:7
 #: templates/woo-filter/template-2/left-side/categories.php:9
 msgid "Categories"
 msgstr ""
 
 #: core/frontend/shortcodes.php:53
+#: core/widgets/filters/filters.php:606
 msgid "Colors"
 msgstr ""
 
 #: core/frontend/shortcodes.php:55
+#: core/widgets/filters/filters.php:609
 msgid "Size"
 msgstr ""
 
 #: core/frontend/shortcodes.php:57
-#: core/widgets/filters/filters.php:121
+#: core/widgets/filters/filters.php:159
+#: core/widgets/filters/filters.php:605
 #: build/index.js:1
 #: src/index.js:181
 msgid "Tags"
 msgstr ""
 
 #: core/frontend/shortcodes.php:59
-#: core/widgets/filters/filters.php:144
+#: core/widgets/filters/filters.php:192
+#: core/widgets/filters/filters.php:614
 #: build/index.js:1
 #: src/index.js:193
 msgid "Attributes"
 msgstr ""
 
 #: core/frontend/shortcodes.php:62
+#: core/widgets/filters/filters.php:616
 msgid "Review"
 msgstr ""
 
 #: core/frontend/shortcodes.php:65
+#: core/widgets/filters/filters.php:618
 #: templates/woo-filter/template-1/left-side/price-range.php:8
 msgid "Price Range"
 msgstr ""
 
 #: core/frontend/shortcodes.php:67
+#: core/widgets/filters/filters.php:622
 msgid "Sale"
 msgstr ""
 
 #: core/frontend/shortcodes.php:69
+#: core/widgets/filters/filters.php:620
 #: templates/woo-filter/template-1/stock.php:3
 msgid "Stock"
 msgstr ""
@@ -604,175 +622,219 @@ msgstr ""
 msgid "Filter Options"
 msgstr ""
 
-#: core/widgets/filters/filters.php:53
+#: core/widgets/filters/filters.php:54
 msgid "Template 1"
 msgstr ""
 
-#: core/widgets/filters/filters.php:59
+#: core/widgets/filters/filters.php:60
 msgid "Template 2"
 msgstr ""
 
-#: core/widgets/filters/filters.php:60
+#: core/widgets/filters/filters.php:61
 msgid "Template 3"
 msgstr ""
 
-#: core/widgets/filters/filters.php:61
+#: core/widgets/filters/filters.php:62
 msgid "Template 4"
 msgstr ""
 
-#: core/widgets/filters/filters.php:66
-msgid "Category Style"
+#: core/widgets/filters/filters.php:63
+msgid "Template 5"
 msgstr ""
 
-#: core/widgets/filters/filters.php:86
+#: core/widgets/filters/filters.php:68
+msgid "Select Style"
+msgstr ""
+
+#: core/widgets/filters/filters.php:77
+msgid "Category Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:95
 msgid "Show Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:88
-#: core/widgets/filters/filters.php:100
-#: core/widgets/filters/filters.php:111
-#: core/widgets/filters/filters.php:134
-#: core/widgets/filters/filters.php:157
-#: core/widgets/filters/filters.php:170
-#: core/widgets/filters/filters.php:182
-#: core/widgets/filters/filters.php:194
-#: core/widgets/filters/filters.php:206
-#: core/widgets/filters/filters.php:219
-#: core/widgets/filters/filters.php:231
+#: core/widgets/filters/filters.php:97
+#: core/widgets/filters/filters.php:118
+#: core/widgets/filters/filters.php:139
+#: core/widgets/filters/filters.php:172
+#: core/widgets/filters/filters.php:205
+#: core/widgets/filters/filters.php:227
+#: core/widgets/filters/filters.php:249
+#: core/widgets/filters/filters.php:271
+#: core/widgets/filters/filters.php:304
+#: core/widgets/filters/filters.php:315
+#: core/widgets/filters/filters.php:327
 msgid "Show"
 msgstr ""
 
-#: core/widgets/filters/filters.php:89
-#: core/widgets/filters/filters.php:101
-#: core/widgets/filters/filters.php:112
-#: core/widgets/filters/filters.php:135
-#: core/widgets/filters/filters.php:158
-#: core/widgets/filters/filters.php:171
-#: core/widgets/filters/filters.php:183
-#: core/widgets/filters/filters.php:195
-#: core/widgets/filters/filters.php:207
-#: core/widgets/filters/filters.php:220
-#: core/widgets/filters/filters.php:232
+#: core/widgets/filters/filters.php:98
+#: core/widgets/filters/filters.php:119
+#: core/widgets/filters/filters.php:140
+#: core/widgets/filters/filters.php:173
+#: core/widgets/filters/filters.php:206
+#: core/widgets/filters/filters.php:228
+#: core/widgets/filters/filters.php:250
+#: core/widgets/filters/filters.php:272
+#: core/widgets/filters/filters.php:305
+#: core/widgets/filters/filters.php:316
+#: core/widgets/filters/filters.php:328
 msgid "Hide"
 msgstr ""
 
-#: core/widgets/filters/filters.php:98
+#: core/widgets/filters/filters.php:106
+msgid "Color Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:116
 msgid "Show Size"
 msgstr ""
 
-#: core/widgets/filters/filters.php:109
+#: core/widgets/filters/filters.php:127
+msgid "Size Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:137
 msgid "Show Tags"
 msgstr ""
 
-#: core/widgets/filters/filters.php:132
+#: core/widgets/filters/filters.php:149
+msgid "Tag Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:170
 msgid "Show Attributes"
 msgstr ""
 
-#: core/widgets/filters/filters.php:155
+#: core/widgets/filters/filters.php:182
+msgid "Attribute Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:203
 #: build/index.js:1
 #: src/index.js:199
 msgid "Display Price Range"
 msgstr ""
 
-#: core/widgets/filters/filters.php:168
+#: core/widgets/filters/filters.php:215
+msgid "Price Range Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:225
 msgid "Show Reviews"
 msgstr ""
 
-#: core/widgets/filters/filters.php:180
+#: core/widgets/filters/filters.php:237
+msgid "Review Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:247
 #: build/index.js:1
 #: src/index.js:204
 msgid "Filter By Stock"
 msgstr ""
 
-#: core/widgets/filters/filters.php:192
+#: core/widgets/filters/filters.php:259
+msgid "Stock Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:269
 #: templates/woo-filter/template-1/on-sale.php:3
 #: build/index.js:1
 #: src/index.js:209
 msgid "Sales"
 msgstr ""
 
-#: core/widgets/filters/filters.php:217
+#: core/widgets/filters/filters.php:281
+msgid "On Sale Label"
+msgstr ""
+
+#: core/widgets/filters/filters.php:293
+msgid "Filter Result Options"
+msgstr ""
+
+#: core/widgets/filters/filters.php:313
 msgid "Display Categories"
 msgstr ""
 
-#: core/widgets/filters/filters.php:229
+#: core/widgets/filters/filters.php:325
 #: build/index.js:1
 #: src/index.js:175
 msgid "Display Tags"
 msgstr ""
 
-#: core/widgets/filters/filters.php:243
+#: core/widgets/filters/filters.php:339
 msgid "Title Style"
 msgstr ""
 
-#: core/widgets/filters/filters.php:250
+#: core/widgets/filters/filters.php:346
 msgid "Title Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:262
+#: core/widgets/filters/filters.php:358
 msgid "Title BG Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:273
-#: core/widgets/filters/filters.php:345
+#: core/widgets/filters/filters.php:369
+#: core/widgets/filters/filters.php:441
 msgid "Typography"
 msgstr ""
 
-#: core/widgets/filters/filters.php:280
+#: core/widgets/filters/filters.php:376
 msgid "Padding"
 msgstr ""
 
-#: core/widgets/filters/filters.php:293
+#: core/widgets/filters/filters.php:389
 msgid "Button Style"
 msgstr ""
 
-#: core/widgets/filters/filters.php:301
+#: core/widgets/filters/filters.php:397
 msgid "Button Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:312
+#: core/widgets/filters/filters.php:408
 msgid "Button Hover Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:324
+#: core/widgets/filters/filters.php:420
 msgid "Button BG Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:334
+#: core/widgets/filters/filters.php:430
 msgid "Button BG Hover Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:352
-#: core/widgets/filters/filters.php:401
+#: core/widgets/filters/filters.php:448
+#: core/widgets/filters/filters.php:497
 msgid "Width"
 msgstr ""
 
-#: core/widgets/filters/filters.php:374
-#: core/widgets/filters/filters.php:422
+#: core/widgets/filters/filters.php:470
+#: core/widgets/filters/filters.php:518
 msgid "Height"
 msgstr ""
 
-#: core/widgets/filters/filters.php:393
+#: core/widgets/filters/filters.php:489
 msgid "Thumbnail Style"
 msgstr ""
 
-#: core/widgets/filters/filters.php:442
+#: core/widgets/filters/filters.php:538
 msgid "Advance Style"
 msgstr ""
 
-#: core/widgets/filters/filters.php:450
+#: core/widgets/filters/filters.php:546
 msgid "Box Bacground Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:462
+#: core/widgets/filters/filters.php:558
 msgid "Box Hover Bacground Color"
 msgstr ""
 
-#: core/widgets/filters/filters.php:474
+#: core/widgets/filters/filters.php:570
 msgid "Border Radius"
 msgstr ""
 
-#: core/widgets/filters/filters.php:486
+#: core/widgets/filters/filters.php:582
 msgid "Margin"
 msgstr ""
 

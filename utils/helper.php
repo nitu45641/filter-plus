@@ -319,7 +319,6 @@ class Helper {
 			$result_terms = $terms;
 		} 
 		
-
 		return $result_terms;
 
 	}
@@ -332,8 +331,8 @@ class Helper {
 				$result[$value->attribute_id] = $value->attribute_name;
 			}
 			else if ($type == "label_value" ) {
-				$result[$key]['value'] = $value->attribute_id;
-				$result[$key]['label'] = $value->attribute_name;
+				$result[]['value'] = $value->attribute_id;
+				$result[]['label'] = $value->attribute_name;
 			}
 		}
 

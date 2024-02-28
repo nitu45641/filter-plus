@@ -607,7 +607,6 @@ class Filters extends Widget_Base {
 		$colors				= !empty($colors) ? $colors : '';
 		$size				= !empty($size) ? $size : '';
 		$size_label			= !empty($size_label) ? $size_label : esc_html__('Size','filter-plus');
-
 		$product_categories = !empty($product_categories) ? $product_categories : '';
 		$attributes			= !empty($attributes) ? implode(',',$attributes) : '';
 		$show_attributes	= !empty($show_attributes) ? $show_attributes : '';
