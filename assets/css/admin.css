@@ -537,12 +537,19 @@ a.pr-tag{
     margin: 3px 0 0 6px;
 	font-size: 12px;
 }
-.upgrade_pro,.submit_filter_license{
+.upgrade_pro,
+.submit_filter_license,
+.revoke-license
+{
 	background-color: #1a7efb;
 	border-color: #1a7efb;
     color: #fff !important;
     border-radius: 6px;
     font-weight: normal !important;
+}
+.upgrade_pro,
+.submit_filter_license
+{
     padding: 8px 14px !important;
 }
 /* Header menu end */
