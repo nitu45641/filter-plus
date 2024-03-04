@@ -34,12 +34,16 @@
                 'url' => 'https://app.loopedin.io/woooplugin#/ideas',
                 'target'=>'_blank'
             ),
-            array(
+           
+        );
+        
+        if (!class_exists('FilterPlusPro')) {
+            $menus[] =  array(
                 'name' => esc_html__('Upgrade to Pro','filter-plus'),
                 'url' => 'https://woooplugin.com/filter-plus/',
                 'target'=>'_blank'
-            )
-        );
+            );
+        }
     ?>
     <div class="navigation">
         <?php

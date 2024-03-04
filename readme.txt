@@ -9,7 +9,7 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range, Stock Status on website.
+Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filter anything in your website.
 
 == Description ==
 
