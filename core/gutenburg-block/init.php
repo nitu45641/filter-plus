@@ -31,16 +31,17 @@ function filter_plus_block_assets() {
         $wp_editor = [ 'wp-editor'];
     }
 
+    $param = array_merge( $wp_editor, [ 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-compose', 'wp-server-side-render','wp-hooks', 'wp-editor' ] );
+
     // Register block editor script for backend.
     wp_register_script(
         'filter-plus-block-js',
         \FilterPlus::build_url() . 'index.js' ,
-        array_merge( $wp_editor, [ 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-compose', 'wp-server-side-render','wp-hooks', 'wp-editor' ] ),
+        $param,
         null,
         true
     );
 
-    // WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
     wp_localize_script(
         'filter-plus-block-js',
         'filterPlus',
@@ -48,7 +49,7 @@ function filter_plus_block_assets() {
             'woo_categories'    => \FilterPlus\Utils\Helper::get_categories('','label_value'),
             'tags'              => \FilterPlus\Utils\Helper::get_product_tags('product_tag','label_value'),
             'attributes'        => \FilterPlus\Utils\Helper::woo_attribute_list('label_value'),
-			'is_pro_active'     => (( class_exists( 'FilterPlusPro' ) ) ? 1 : 0 ),
+			'is_pro_active'     => (( class_exists( 'FilterPlusPro' ) ) ? 0 : 1 ),
         ]
     );
 
@@ -66,6 +67,10 @@ add_action( 'init', 'filter_plus_block_assets' );
 
 
 // woo filter
-if ( file_exists( \FilterPlus::plugin_dir() . 'core/gutenburg-block/woo-filter/woo-filter.php' ) ) {
-    include_once \FilterPlus::plugin_dir() . 'core/gutenburg-block/woo-filter/woo-filter.php';
+if ( file_exists( \FilterPlus::plugin_dir() . 'core/gutenburg-block/blocks/woo-filter.php' ) ) {
+    include_once \FilterPlus::plugin_dir() . 'core/gutenburg-block/blocks/woo-filter.php';
+}
+// wp filter
+if ( file_exists( \FilterPlus::plugin_dir() . 'core/gutenburg-block/blocks/wp-filter.php' ) ) {
+    include_once \FilterPlus::plugin_dir() . 'core/gutenburg-block/blocks/wp-filter.php';
 }
