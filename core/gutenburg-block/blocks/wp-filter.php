@@ -15,6 +15,9 @@ add_action( 'init', 'wp_filter_block' );
 
 
 function wp_filter_callback( $settings ) {
+    if ( !class_exists('FilterPlusPro')) {
+        return esc_html__('Please Active Filter Plus Pro. It is Premium feature.','filter-plus');
+    }
     extract($settings);
     $filter_type        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
     $custom_post        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';

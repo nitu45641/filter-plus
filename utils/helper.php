@@ -420,7 +420,8 @@ class Helper {
 	 *
 	 * @return array
 	 */
-	public static function custom_post_type()  {
+	public static function custom_post_type($type='')  {
+		$result_data = array();
 		$args = array(
 			'public'   => true,
 			'_builtin' => false,
@@ -437,7 +438,15 @@ class Helper {
 		}
 		$all_post_types = $first_index + $post_types;
 
-		return $all_post_types;
+		if ( $type == 'label_value' ) {
+			foreach ($all_post_types as $key => $value) {
+				$result_data[] = array('label'=>$value,'value'=>$value);
+			} 
+		}else{
+			$result_data = $all_post_types;
+		}
+
+		return $result_data;
 	}
 
 
@@ -669,7 +678,7 @@ class Helper {
 	 *
 	 * @return array
 	 */
-	public function author_list($ids='') {
+	public function author_list($ids='',$type='') {
 		$user_list = array();
 		$user_ids = $ids == '' ? '' : explode(',',$ids);
 		$args = [
@@ -679,7 +688,12 @@ class Helper {
 		$users = get_users($args);
 
 		foreach ($users as $user)  {
-			$user_list[$user->ID] = $user->display_name;
+			if ( $type == 'label_value' ) {
+				$user_list[] = array('label'=> $user->display_name , 'value'=>$user->ID);
+			} else {
+				$user_list[$user->ID] = $user->display_name;
+			}
+			
 		}
 
 		return $user_list;
@@ -751,7 +765,7 @@ class Helper {
 	 *
 	 * @return array
 	 */
-	public static function get_custom_fields_keys( $post_type = 'post' ) {
+	public static function get_custom_fields_keys( $post_type = 'post' , $type='label_value' ) {
 		$all_keys  = array();
 
 		$posts = get_posts(array('post_type'=> $post_type ));
@@ -761,7 +775,11 @@ class Helper {
 		$meta_keys = get_post_meta($posts[0]->ID);
 
 		foreach($meta_keys as $meta_key=>$meta_value) {
-			$all_keys[$meta_key] = $meta_key;
+			if ( $type == '' ) {
+				$all_keys[$meta_key] = $meta_key;
+			}else{
+				$all_keys[] = array('label'=>$meta_key,'value'=>$meta_key);
+			}
 		}
 
 		return $all_keys;

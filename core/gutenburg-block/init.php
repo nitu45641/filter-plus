@@ -46,6 +46,10 @@ function filter_plus_block_assets() {
         'filter-plus-block-js',
         'filterPlus',
         [
+            'custom_post_type'  => \FilterPlus\Utils\Helper::custom_post_type('label_value'),
+            'wp_cats'           => \FilterPlus\Utils\Helper::get_categories('','label_value',array('taxonomy'=>'category')),
+            'post_tag'          => \FilterPlus\Utils\Helper::get_product_tags('post_tag','label_value'),
+            'author_list'       =>  \FilterPlus\Utils\Helper::instance()->author_list('','label_value'),
             'woo_categories'    => \FilterPlus\Utils\Helper::get_categories('','label_value'),
             'tags'              => \FilterPlus\Utils\Helper::get_product_tags('product_tag','label_value'),
             'attributes'        => \FilterPlus\Utils\Helper::woo_attribute_list('label_value'),
