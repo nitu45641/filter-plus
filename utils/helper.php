@@ -765,7 +765,7 @@ class Helper {
 	 *
 	 * @return array
 	 */
-	public static function get_custom_fields_keys( $post_type = 'post' , $type='label_value' ) {
+	public static function get_custom_fields_keys( $post_type = 'post' , $type='' ) {
 		$all_keys  = array();
 
 		$posts = get_posts(array('post_type'=> $post_type ));

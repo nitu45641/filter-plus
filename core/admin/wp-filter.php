@@ -93,7 +93,6 @@
 			'placeholder'=>esc_html__("Place Custom Field Here","filter-plus"),
 			'disable' => $disable);
 			filter_plus_number_input_field($args);
-
 			$args        = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
 			'data_label' => 'custom_field_list','options'=>$meta_keys , 'type' => 'random',
 			'select_type' => 'single',  'condition_class' => "custom_field d-none",

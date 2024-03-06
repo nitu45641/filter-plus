@@ -127,6 +127,7 @@ if ( !function_exists('filter_plus_select_field') ) {
 					}else{
 						$select_opt = $key == $selected ? 'selected' : '';
 					}
+					
 					$pro_text = !empty($disabled) ? ' ('.esc_html__('Pro','filter-plus').')' : '';
 					$options_html .= '<option '.$disabled.' '. $select_opt .' '. $disabled.' value="'.$key.'">'. $item  . $pro_text .'</option>';
 				endforeach; 
