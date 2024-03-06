@@ -7,14 +7,14 @@ defined("ABSPATH") || exit;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
-class Filters extends Widget_Base {
+class Wp_Filter extends Widget_Base {
 
 	/**
 	 * Retrieve the widget name.
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'filter-plus-woo';
+		return 'filter-plus-wp';
 	}
 
 	/**
@@ -22,7 +22,7 @@ class Filters extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__('Filter Plus - Woo Product Filter', 'filter-plus');
+		return esc_html__('Wordpress Filter', 'filter-plus');
 	}
 
 	/**
@@ -50,17 +50,17 @@ class Filters extends Widget_Base {
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
-		$templates = [
-			1  => esc_html__('Template 1', 'filter-plus'),
-		];
 		$pro = "";
 		if ( !class_exists('FilterPlusPro') ) {
 			$pro  = esc_html__('Pro', 'filter-plus');
 		}
+
+		$templates = [
+			1  => esc_html__('Template 1', 'filter-plus').' '.$pro,
+		];
 		$templates[2] = esc_html__('Template 2', 'filter-plus').' '.$pro;
 		$templates[3] = esc_html__('Template 3', 'filter-plus').' '.$pro;
 		$templates[4] = esc_html__('Template 4', 'filter-plus').' '.$pro;
-		$templates[4] = esc_html__('Template 5', 'filter-plus').' '.$pro;
 		
 		$this->add_control(
 			'template',
@@ -72,11 +72,43 @@ class Filters extends Widget_Base {
 			]
 		);
 		$this->add_control(
+			'filter_type',
+			[
+				'label' => esc_html__('Select Filter Type', 'filter-plus'),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => array('post'=> esc_html__('Post', 'filter-plus'),
+				'custom_post'=> esc_html__('Custom Post', 'filter-plus')),
+			]
+		);
+		$this->add_control(
+			'custom_post',
+			[
+				'label' => esc_html__('Select Custom Post', 'filter-plus'),
+				'type' => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => \FilterPlus\Utils\Helper::custom_post_type(''),
+				'condition' => ['filter_type' => 'custom_post']
+			]
+		);
+		$this->add_control(
+			'show_categories',
+			[
+				'label' => esc_html__('Display Categories', 'filter-plus'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
 			'category_label',
 			[
 				'label' 	=> esc_html__('Category Label', 'filter-plus'),
 				'type' 		=> Controls_Manager::TEXT,
 				'placeholder' => esc_html__('Place Category Label Here', 'filter-plus'),
+				'condition' => ['show_categories' => 'yes']
 			]
 		);
 		$this->add_control(
@@ -84,50 +116,9 @@ class Filters extends Widget_Base {
 			[
 				'label' => esc_html__('Categories', 'filter-plus'),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_categories('','assoc'),
+				'options' => \FilterPlus\Utils\Helper::get_categories('category','assoc',array('taxonomy'=>'category')),
 				'multiple' => true,
-			]
-		);
-
-		$this->add_control(
-			'colors',
-			[
-				'label' => esc_html__('Show Color', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-		$this->add_control(
-			'color_label',
-			[
-				'label' 	=> esc_html__('Color Label', 'filter-plus'),
-				'type' 		=> Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Place Color Label Here', 'filter-plus'),
-				'condition' => ['colors' => 'yes']
-			]
-		);
-
-        $this->add_control(
-			'size',
-			[
-				'label' => esc_html__('Show Size', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-		$this->add_control(
-			'size_label',
-			[
-				'label' 	=> esc_html__('Size Label', 'filter-plus'),
-				'type' 		=> Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Place Size Label Here', 'filter-plus'),
-				'condition' => ['size' => 'yes']
+				'condition' => ['show_categories' => 'yes']
 			]
 		);
 
@@ -158,16 +149,16 @@ class Filters extends Widget_Base {
 			[
 				'label' => esc_html__('Tags', 'filter-plus'),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_product_tags('product_tag','assoc'),
+				'options' => \FilterPlus\Utils\Helper::get_product_tags('post_tag','assoc'),
 				'multiple' => true,
 				'condition' => ['show_tags' => 'yes']
 			]
 		);
 
 		$this->add_control(
-			'show_attributes',
+			'author',
 			[
-				'label' => esc_html__('Show Attributes', 'filter-plus'),
+				'label' => esc_html__('Display Authors', 'filter-plus'),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
@@ -177,30 +168,29 @@ class Filters extends Widget_Base {
 		);
 
 		$this->add_control(
-			'attribute_label',
+			'author_label',
 			[
-				'label' 	=> esc_html__('Attribute Label', 'filter-plus'),
+				'label' 	=> esc_html__('Author Label', 'filter-plus'),
 				'type' 		=> Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Place Attribute Label Here', 'filter-plus'),
-				'condition' => ['show_attributes' => 'yes']
+				'placeholder' => esc_html__('Place Author Label', 'filter-plus'),
+				'condition' => ['author' => 'yes']
 			]
 		);
 
 		$this->add_control(
-			'attributes',
+			'author_list',
 			[
-				'label' 	=> esc_html__('Attributes', 'filter-plus'),
-				'type' 		=> Controls_Manager::SELECT2,
-				'options' 	=> \FilterPlus\Utils\Helper::woo_attribute_list("assoc"),
-				'multiple' 	=> true,
-				'condition' => ['show_attributes' => 'yes']
+				'label' => esc_html__('Author List', 'filter-plus'),
+				'type' => Controls_Manager::SELECT2,
+				'options' => \FilterPlus\Utils\Helper::instance()->author_list('',''),
+				'multiple' => true,
+				'condition' => ['author' => 'yes']
 			]
 		);
-
 		$this->add_control(
-			'show_price_range',
+			'custom_field',
 			[
-				'label' => esc_html__('Display Price Range', 'filter-plus'),
+				'label' => esc_html__('Display Custom Field', 'filter-plus'),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
@@ -210,78 +200,22 @@ class Filters extends Widget_Base {
 		);
 
 		$this->add_control(
-			'price_range_label',
+			'custom_field_label',
 			[
-				'label' 	=> esc_html__('Price Range Label', 'filter-plus'),
+				'label' 	=> esc_html__('Custom Field Label', 'filter-plus'),
 				'type' 		=> Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Place Price Range Label Here', 'filter-plus'),
-				'condition' => ['show_price_range' => 'yes']
+				'placeholder' => esc_html__('Place Custom Field Label', 'filter-plus'),
+				'desc' 		=> esc_html__('Enter Exact Custom Field Name', 'filter-plus'),
+				'condition' => ['custom_field' => 'yes']
 			]
 		);
 
 		$this->add_control(
-			'show_reviews',
+			'custom_field_list',
 			[
-				'label' => esc_html__('Show Reviews', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'review_label',
-			[
-				'label' 	=> esc_html__('Review Label', 'filter-plus'),
-				'type' 		=> Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Place Review Label Here', 'filter-plus'),
-				'condition' => ['show_reviews' => 'yes']
-			]
-		);
-
-		$this->add_control(
-			'stock',
-			[
-				'label' => esc_html__('Filter By Stock', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'stock_label',
-			[
-				'label' 	=> esc_html__('Stock Label', 'filter-plus'),
-				'type' 		=> Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Place Stock Label Here', 'filter-plus'),
-				'condition' => ['stock' => 'yes']
-			]
-		);
-
-		$this->add_control(
-			'on_sale',
-			[
-				'label' => esc_html__('Sales', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'on_sale_label',
-			[
-				'label' 	=> esc_html__('On Sale Label', 'filter-plus'),
-				'type' 		=> Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Place On Sale Label Here', 'filter-plus'),
-				'condition' => ['on_sale' => 'yes']
+				'label' => esc_html__('Custom Field Name', 'filter-plus'),
+				'type' => Controls_Manager::TEXT,
+				'condition' => ['custom_field' => 'yes']
 			]
 		);
 
@@ -297,20 +231,9 @@ class Filters extends Widget_Base {
 
 		// Right Side
 		$this->add_control(
-			'sorting',
+			'post_categories',
 			[
-				'label' => esc_html__('Display Sorting:', 'filter-plus'),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'filter-plus'),
-				'label_off' => esc_html__('Hide', 'filter-plus'),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-		$this->add_control(
-			'product_categories',
-			[
-				'label' => esc_html__('Display Categories', 'filter-plus'),
+				'label' => esc_html__('Display Categories in Filter Result', 'filter-plus'),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
@@ -320,9 +243,9 @@ class Filters extends Widget_Base {
 		);
 
 		$this->add_control(
-			'product_tags',
+			'post_tags',
 			[
-				'label' => esc_html__('Display Tags', 'filter-plus'),
+				'label' => esc_html__('Display Tags in Filter Result', 'filter-plus'),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
@@ -330,7 +253,17 @@ class Filters extends Widget_Base {
 				'default' => 'yes',
 			]
 		);
-
+		$this->add_control(
+			'post_author',
+			[
+				'label' => esc_html__('Display Author in Filter Result', 'filter-plus'),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Show', 'filter-plus'),
+				'label_off' => esc_html__('Hide', 'filter-plus'),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -596,37 +529,40 @@ class Filters extends Widget_Base {
      *
      */
 	protected function render() {
+		\FilterPlus\Utils\Helper::instance()->pro_active_message();
 		$settings   = $this->get_settings();
         extract($settings);
-		$category_label = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
-		$categories = is_array($categories) ? implode(',',$categories) : '';
-		$tags 		= !empty($tags) && is_array($tags) ? implode(',',$tags) : '';
-		$show_tags 	= !empty($show_tags) ? $show_tags : '';
-		$tag_label 	= !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
-		$color_label 		= !empty($color_label) ? $color_label : esc_html__('Colors','filter-plus');
-		$colors				= !empty($colors) ? $colors : '';
-		$size				= !empty($size) ? $size : '';
-		$size_label			= !empty($size_label) ? $size_label : esc_html__('Size','filter-plus');
-		$product_categories = !empty($product_categories) ? $product_categories : '';
-		$attributes			= !empty($attributes) ? implode(',',$attributes) : '';
-		$show_attributes	= !empty($show_attributes) ? $show_attributes : '';
-		$attribute_label	= !empty($attribute_label) ? $attribute_label : esc_html__('Attributes','filter-plus');
-		$show_reviews 		= !empty($show_reviews) ? $show_reviews : '';
-		$review_label 		= !empty($review_label) ? $review_label : esc_html__('Review','filter-plus');
-		$show_price_range 	= !empty($show_price_range) ? $show_price_range : '';
-		$price_range_label 	= !empty($price_range_label) ? $price_range_label :  esc_html__('Price Range','filter-plus');
-		$stock 				= !empty($stock) ? $stock : 'yes';
-		$stock_label 		= !empty($stock_label) ? $stock_label : esc_html__('Stock','filter-plus');
-		$on_sale 			= !empty($on_sale) ? $on_sale : 'yes';
-		$on_sale_label 		= !empty($on_sale_label) ? $on_sale_label :  esc_html__('Sale','filter-plus');
-		$sorting 			= !empty($sorting) ? $sorting : '';
-		$product_tags 		= !empty($product_tags) ? $product_tags : '';
-		$product_categories = !empty($product_categories) ? $product_categories : '';
 
-        echo do_shortcode("[filter_products category_label={$category_label} tag_label={$tag_label} color_label={$color_label}
-		size_label={$size_label} attribute_label={$attribute_label} review_label={$review_label} price_range_label={$price_range_label}
-		stock_label={$stock_label} on_sale_label={$on_sale_label}
-		stock={$stock} on_sale={$on_sale} template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");
+		$custom_field_list = '';
+		if (!empty($settings['custom_field_list'])) {
+			$custom_field_list  = is_array($custom_field_list) ? implode(',',$custom_field_list) : $settings['custom_field_list'];
+		}
+
+		$filter_type        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
+		$custom_post        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
+		$template           = !empty($settings['template']) ? $settings['template'] : '1';
+		$show_categories    = !empty($show_categories) ? $show_categories : 'yes';
+		$category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
+		$categories         = is_array($categories) ? implode(',',$categories) : '';
+		$show_tags          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
+		$tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
+		$tags               = is_array($tags) ? implode(',',$tags) : '';
+		$author	            = !empty($author) ? $author : '';
+		$author_label	    = !empty($author_label) ? $author_label : esc_html__('Authors','filter-plus');
+		$author_list	    = is_array($author_list) ? implode(',',$author_list) : '';
+		$custom_field	    = !empty($custom_field) ? $custom_field : 'no';
+		$custom_field_label	= !empty($custom_field_label) ? $custom_field_label : esc_html__('Custom Field','filter-plus');
+		$meta_condition	    = !empty($meta_condition) ? $meta_condition : 'OR';
+		$post_categories    = !empty($settings['post_categories']) && $settings['post_categories'] == true ? 'yes' : 'no';
+		$post_tags          = !empty($settings['post_tags']) && $settings['post_tags'] == true ? 'yes' : 'no';
+		$post_author        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
+		
+		echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} category_label={$category_label} 
+		categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label={$tag_label}
+		template ={$template} author={$author} author_label={$author_label} author_list={$author_list} 
+		custom_field={$custom_field} custom_field_label={$custom_field_label} meta_condition={$meta_condition}
+		custom_field_list={$custom_field_list} post_tags='{$post_tags}'
+		post_categories='{$post_categories} post_author={$post_author}']"); 
 
 	}
 

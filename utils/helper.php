@@ -785,8 +785,24 @@ class Helper {
 		return $all_keys;
 	}
 
+	/**
+	 * Custom Field Condition
+	 *
+	 */
 	public static function custom_field_condition() {
 		return array('OR'=>esc_html__('OR','filter-plus'),'AND'=>esc_html__('AND','filter-plus'));
+	}
+
+	/**
+	 * Custom Field Condition
+	 *
+	 */
+	public static function pro_active_message($message='') {
+		if ( !class_exists('FilterPlusPro')) {
+			$pro_message = $message == '' ? esc_html__('Please Active Filter Plus Pro. It is Premium feature.','filter-plus') : $message;
+			return $pro_message;
+		}
+		return true;
 	}
 
 }

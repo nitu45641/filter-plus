@@ -19,7 +19,8 @@ Class Manifest {
 
     public function get_input_widgets() {
         return array(
-            'Filters'
+            'woo-filter',
+            'wp-filter'
         );
     }
 
@@ -33,9 +34,9 @@ Class Manifest {
     public function register_widgets() {
 
         foreach ( $this->get_input_widgets() as $v ):
-            $f = str_replace('_','-',$v);
-            $files = plugin_dir_path( __FILE__ ) . strtolower($f) . '/' . strtolower($f) . '.php';
-            if ( file_exists( $files ) ) {
+          //  $f = str_replace('_','-',$v);
+          $files = plugin_dir_path( __FILE__ ) . $v . '/' . $v . '.php';
+          if ( file_exists( $files ) ) {
                 require_once $files;
 				$class_name = 'FilterPlus\\Core\\Widgets\\' . Helper::make_classname( $v );
                 \Elementor\Plugin::instance()->widgets_manager->register( new $class_name() );
