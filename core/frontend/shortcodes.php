@@ -174,7 +174,7 @@ class Shortcodes {
 		global $custom_css;
 		$secondary_color = '#1164cb'; $primary_color ='#2d73e7';$tag_color ='';
 		$blog_header = "#000"; $cart_icon =  '#fff'; 
-		$cart_content = '#2d73e7';$price_range = '#2d73e7'; $loader_color = '#1164cb';
+		$cart_content = '#2d73e7';$price_range = '#2d73e7';
 		$param_direction = 'row';
 		$tab_pan_item_color = '#fff';$loading_icon_position = 'relative';
 
@@ -183,7 +183,7 @@ class Shortcodes {
 		}
 		else if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
-			$loader_color = $secondary_color = $primary_color = '#17c6aa'; 
+			$secondary_color = $primary_color = '#17c6aa'; 
 			$price_range = '#2d0607'; 
 			$cart_content = '#080808'; 
 			$tag_color = '#ff1f25';
@@ -191,27 +191,34 @@ class Shortcodes {
 		}
 		else if ( $template == "3" ) {
 			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 
-			$loader_color 	 = $filter_type !== "product" ? "#ff0000" : "#ab1616"; 
+			$filter_type !== "product" ? "#ff0000" : "#ab1616"; 
 			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000"; 
 			$cart_icon 		 = $primary_color = $price_range = '#ab1616'; 
 		}
 		else if ( $template == "4" ) {
 			$primary_color = $price_range = $cart_content = '#ff69b4'; 
-			$loader_color = $secondary_color = $tag_color = '#ff69b4'; 
+			$secondary_color = $tag_color = '#ff69b4'; 
 			$cart_icon = '#fff'; 
 			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
 		}
 		else if( $template == "5" ){
-			$secondary_color = $loader_color = '#ab1616';
+			$secondary_color = '#ab1616';
+		}
+
+		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();;
+        if ($settings['primary_color'] !== '#ffffff' && $settings['secondary_color'] !== '#ffffff' ) {
+			$secondary_color = $settings['secondary_color'];
+			$primary_color   = $settings['primary_color'];
 		}
 
 		$custom_css = '
 		:root {
+			--filter-primary-color: '.$primary_color.';
+			--filter-secondary-color : '.$secondary_color.';
 			--filter-cart-icon-color : '.$cart_icon.';
 			--filter-cart-content: '.$cart_content.';
 			--filter-price-range : '.$price_range.';
-			--filter-secondary-color : '.$secondary_color.';
-			--filter-loader-color : '.$loader_color.';
+			--filter-loader-color : '.$secondary_color.';
 			--filter-price-range: '.$secondary_color.';
 			--filter-border-color: '.$secondary_color.';
 			--filter-header-border: '.$primary_color.';

@@ -33,10 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			{{{ rating }}}
 			<div class="hpcc-description">{{ post_description }}</div>
 		</div>
-		<div class="hpcc-actions">
-			<div class="hpcc-btns">
-				<span class="cart-bg">{{{ cart_btn }}}</span>
-			</div>
+		<div class="hpcc-btns">
+			<span class="vpcc-btns">{{{ cart_btn }}}</span>
 		</div>
 	</div>
 </script>

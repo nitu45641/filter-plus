@@ -642,7 +642,7 @@ class Helper {
 		'woo_order_filter_status'=> 'no','seo_elements'=> array(),
 		'seo_elements_format'=> '' , 'nice_url'=> '', 'seo_slug_url'=> '',
 		'refresh_url'=> '', 'primary_color'=> '#ffffff', 'secondary_color'=> '#ffffff' 
-		 );
+		);
 
 		return $settings_key;
 	}

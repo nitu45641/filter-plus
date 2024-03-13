@@ -321,19 +321,16 @@ ul.ratings {
 }
 
 .vpcc-name {
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
 	overflow: hidden;
-	-webkit-line-clamp: 1;
 	transition: 0.3s;
 	font-size: 115%;
 	line-height: 130%;
 	margin: 10px 0 5px;
 	font-weight: bold;
-	color: #2d73e7;
+	color: var(--filter-primary-color,#2d73e7);
 }
 .vpcc-name:hover {
-	color: #2d73e7;
+	color: var(--filter-secondary-color,#2d73e7);
 	cursor: pointer;
 }
 
@@ -367,7 +364,7 @@ ul.ratings {
 	z-index: 1;
 }
 .vpcc-btns {
-	background-color: #2d73e7;
+	background-color: var(--filter-primary-color,#2d73e7);
 	height: 37px;
 	width: 37px;
 	display: flex;
@@ -460,6 +457,7 @@ ul.ratings {
 }
 .hpcc-btns {
 	display: flex;
+	justify-content: end;
 	align-items: center;
 	gap: 10px;
 	padding: 10px;
@@ -536,12 +534,12 @@ ul.pagination {
 }
 /* Reset */
 .reset-1{
-	color: #2d73e7;
-	border-bottom: 1px solid #2d73e7;
+	color: var(--filter-border-color,"#2d73e7");
+	border-bottom: 1px solid var(--filter-border-color,"#2d73e7");
 }
 .reset-2{
-	color: #17c6aa;
-	border-bottom: 1px solid #17c6aa;
+	color: var(--filter-border-color,"#17c6aa");
+	border-bottom: 1px solid var(--filter-border-color,"#17c6aa");
 }
 .reset {
 	float: right;
