@@ -189,7 +189,7 @@
 					return obj;
 				}
 				
-				if ( type == "text" || type == "hidden" ) {
+				if ( type == "text" || type == "hidden" || type == "color" ) {
 					obj[$this.attr('name')] = $this.val();
 					return obj;
 				}
@@ -204,7 +204,7 @@
 		 * @returns 
 		 */
 		function getTabData() {
-			let tabs 		= ['#settings :input','#seo :input'];
+			let tabs 		= ['#settings :input','#seo :input','#woo-order :input'];
 			let form_data 	= {};	
 			tabs.forEach(element => {
 				let input_data 		= getAllValues( element );
@@ -212,7 +212,7 @@
 					form_data[i] = value;
 				}); 
 			});
-	
+
 			return form_data;
 		}
 
@@ -260,6 +260,12 @@
 			} else {
 			content.removeClass("show");
 			}
+		});
+
+		// Load color picker
+		let color_array = ["#primary_color","#secondary_color"];
+		$.each(color_array,function(index,value){
+			$(value).wpColorPicker();
 		});
 
 	});

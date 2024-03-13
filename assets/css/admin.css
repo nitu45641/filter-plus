@@ -45,11 +45,11 @@ h1.font_16{
 	grid-template-columns: 185px auto auto;
 	column-gap: 35px;
 }
-#seo .single-block {
+.tab-wrapper .single-block {
     grid-template-columns: 185px auto auto;
 	column-gap: 20px;
 }
-#settings .single-block{
+#woo-order .single-block{
 	grid-template-columns: 225px auto auto;
 	column-gap: 35px;
 }
@@ -75,9 +75,7 @@ h1.font_16{
 	width: 300px;
 	position: relative;
 }
-.input-section  input{
-	width: 80%;
-}
+
 /* do not group these rules */
 .input-section  input::placeholder::-webkit-input-placeholder {
     color: red;
@@ -717,6 +715,16 @@ a.pr-tag{
 .mt-5{
 	margin-top: 5% !important;
 }
+.check-wrap{
+	display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+/* Color control start */
+.wp-color-picker {
+    height: 30px;
+}
+/* Color control end */
 @media (max-width:1024px){
     .first-block{
 		display: grid;

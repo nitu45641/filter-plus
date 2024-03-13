@@ -1,17 +1,18 @@
-<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Woo Admin Order Filter","filter-plus"); ?></h1>
+<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Style","filter-plus"); ?></h1>
 
 <?php
-$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/woocommerce-admin-order-filter/filter-woo-order/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
-$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Filter Admin Order','filter-plus') . $doc_url . '</i></div>';
+$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/settings/change-color/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
+$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Set Color for Templates','filter-plus') . $doc_url . '</i></div>';
 echo FilterPlus\Utils\Helper::kses( $docs );
-// Woo order filter By Products
-$args = array('label'=>esc_html__("Woo Order Filter By Products:","filter-plus"),
-'id' => 'woo_order_filter_product' , 'data_label' => 'woo-order-filter-pro' ,  'checked'=> $woo_order_filter_product ,
-'disable' => $disable );
-filter_plus_checkbox_field($args);
 
-// Woo order filter By Status
-$args = array('label'=>esc_html__("Woo Order Filter By Status:","filter-plus"),
-'id' => 'woo_order_filter_status' , 'data_label' => 'woo-order-filter-status' ,  'checked'=> $woo_order_filter_status ,
+
+$args = array('label'=>esc_html__("Primary Color:","filter-plus"),
+'id' => 'primary_color' , 'field_type'=>'color', 'data_label' => 'primary_color' ,  'value'=> $primary_color ,
 'disable' => $disable );
-filter_plus_checkbox_field($args);
+filter_plus_number_input_field($args);
+
+$args = array('label'=>esc_html__("Secondary Color:","filter-plus"),
+'id' => 'secondary_color' , 'field_type'=>'color', 'data_label' => 'secondary_color' ,  'value'=> $secondary_color ,
+'disable' => $disable );
+filter_plus_number_input_field($args);
+

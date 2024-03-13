@@ -68,6 +68,7 @@ class Enqueue {
         $pages  = \FilterPlus\Utils\Helper::admin_unique_id();
         // load js in specific pages
         if ( is_admin() && ( in_array( $screen->id , $pages ) ) ) {
+            wp_enqueue_script( 'wp-color-picker' );
 
             foreach ( $this->admin_get_scripts() as $key => $value ) {
                 $deps       = !empty( $value['deps'] ) ? $value['deps'] : false;
@@ -76,7 +77,7 @@ class Enqueue {
             }
 
             // css
-
+            wp_enqueue_style( 'wp-color-picker' );
             foreach ( $this->admin_get_styles() as $key => $value ) {
                 $deps       = isset( $value['deps'] ) ? $value['deps'] : false;
                 $version    = !empty( $value['version'] ) ? $value['version'] : false;

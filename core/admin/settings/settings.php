@@ -7,9 +7,10 @@
 
     $tabs = array(
 		'settings'      => esc_html__( 'General Settings', 'filter-plus' ),
+		'woo-order'     => esc_html__( 'Woo Order', 'filter-plus' ),
 		'seo'           => esc_html__( 'SEO', 'filter-plus' ),
 	);
-	$tab_content = array('settings','seo');
+	$tab_content = array('settings','woo-order','seo');
 ?>
 <div class="settings_message d-none"></div>
 <form id="filter-settings">
@@ -25,9 +26,13 @@
             </ul>
             <div class="tab-content">
                 <?php foreach ($tab_content as $key => $value) { 
-                    $active = $value == "settings" ? "active" : ""; ?>
+                    $active = $value == "settings" ? "active tab-wrapper" : "tab-wrapper"; ?>
                 <div id="<?php echo esc_attr( $value )?>" class="<?php echo esc_attr( $active )?>">
-                    <?php include_once \FilterPlus::core_dir()."admin/settings/tab-content/".$value.".php"; ?>
+                    <?php 
+                        if (file_exists( \FilterPlus::core_dir()."admin/settings/tab-content/".$value.".php") ) {
+                            include_once \FilterPlus::core_dir()."admin/settings/tab-content/".$value.".php"; 
+                        }
+                    ?>
                 </div>
                 <?php } ?>
             </div>	
