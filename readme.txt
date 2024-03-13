@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , ajax filter
 Requires at least: 4.7
 Tested up to: 6.4.1
-Stable tag: 1.0.36
+Stable tag: 1.0.37
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -116,6 +116,9 @@ We have tested all the popular themes. And we believe it will work with your the
 
 
 == Changelog ==
+
+= 1.0.37 (March 13, 2024)=
+Added   : Add Dynamic color for filter template
 
 = 1.0.36 (March 06, 2024)=
 Fix   : WordPress filter custom field select option

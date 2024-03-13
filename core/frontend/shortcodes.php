@@ -187,7 +187,6 @@ class Shortcodes {
 			$price_range = '#2d0607'; 
 			$cart_content = '#080808'; 
 			$tag_color = '#ff1f25';
-			$param_direction = $filter_type !== "product" ? "column" : "row";
 		}
 		else if ( $template == "3" ) {
 			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 

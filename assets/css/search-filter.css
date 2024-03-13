@@ -329,11 +329,10 @@ ul.ratings {
 	font-weight: bold;
 	color: var(--filter-primary-color,#2d73e7);
 }
-.vpcc-name:hover {
+.vpcc-name:hover,.hpcc-name:hover {
 	color: var(--filter-secondary-color,#2d73e7);
 	cursor: pointer;
 }
-
 .vpcc-price {
 	font-size: 110%;
 	line-height: 1.2;
@@ -426,10 +425,7 @@ ul.ratings {
 	cursor: pointer;
 	padding: 10px 0 5px 0;
 	line-height: 1.2;
-}
-
-.hpcc-name:hover {
-	color: #2d73e7;
+	color: var(--filter-primary-color,#2d73e7);
 }
 .hpcc-rating {
 	margin-bottom: 10px;
