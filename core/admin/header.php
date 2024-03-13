@@ -31,7 +31,7 @@
             ),
             array(
                 'name' => esc_html__('Feature Request','filter-plus'),
-                'url' => 'https://app.loopedin.io/woooplugin#/ideas',
+                'url' => 'https://app.loopedin.io/filter-plus#/roadmap',
                 'target'=>'_blank'
             ),
            
