@@ -72,8 +72,10 @@ h1.font_16{
 	padding: 10px 0px;
 }
 .input-section {
+	display: inline-flex;
 	width: 300px;
 	position: relative;
+	align-items: center;
 }
 
 /* do not group these rules */
@@ -478,6 +480,7 @@ a.pr-tag{
 	color: #fff;
     height: 17px;
     width: 17px;
+	margin-left: 15px;
 }
 .select-pro-fr{
 	position: relative !important;
@@ -773,10 +776,10 @@ a.pro-link{
     display: inline-grid;
     grid-template-columns: auto auto auto;
 }
-.pro-fr{
+/* .pro-fr{
     position: absolute;
     left: 65px;
-}
+} */
 #seo .pro-link .pro-fr{
     position: absolute;
     left: 265px;

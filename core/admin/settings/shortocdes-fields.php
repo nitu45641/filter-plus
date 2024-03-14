@@ -77,13 +77,17 @@ if ( !function_exists('filter_plus_number_input_field') ) {
 		$html = '
 		<div class="'.$wrapper_class.' '.$condition_class.' '.$hidden_class.'">
 			<div class="'.$label_class.'">'.$label.'</div>
-			<div class="input-section '.$disable.'">
-				<input type="'.$field_type.'" name="'.$id.'" id="'.$id.'" value="'.$value.'"  
-					data-option="'.$args['data_label'].'" 
-					placeholder="'.$placeholder.'"
-				/>
-				<span class="extra-label '.$extra_label_class.'">'.$extra_label.'</span>
+			<div class="input-section">
+				<div class="input-wrap '.$disable.'">
+					<input type="'.$field_type.'" name="'.$id.'" id="'.$id.'" value="'.$value.'"  
+						data-option="'.$args['data_label'].'" 
+						placeholder="'.$placeholder.'"
+					/>
+					<span class="extra-label '.$extra_label_class.'">'.$extra_label.'</span>
+				</div>
+				'.FilterPlus\Utils\Helper::kses(pro_tag_markup($disable)).'
 			</div>
+			
 		</div>
 		';
 
