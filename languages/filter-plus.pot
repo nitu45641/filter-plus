@@ -2,20 +2,19 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Filter Plus 1.0.36\n"
+"Project-Id-Version: Filter Plus 1.0.37\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/filter-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-06T15:22:38+00:00\n"
+"POT-Creation-Date: 2024-03-14T17:57:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: filter-plus\n"
 
 #. Plugin Name of the plugin
-#: core/admin/header.php:9
 #: core/admin/menus.php:43
 #: core/gutenburg-block/init.php:18
 msgid "Filter Plus"
@@ -37,20 +36,20 @@ msgstr ""
 msgid "https://woooplugin.com/"
 msgstr ""
 
-#: base/enqueue.php:189
+#: base/enqueue.php:190
 msgid "Price"
 msgstr ""
 
-#: base/enqueue.php:190
+#: base/enqueue.php:191
 #: templates/woo-filter/template-1/rating.php:7
 msgid "Rating"
 msgstr ""
 
-#: base/enqueue.php:191
+#: base/enqueue.php:192
 msgid "Search"
 msgstr ""
 
-#: base/enqueue.php:192
+#: base/enqueue.php:193
 msgid "Clear All"
 msgstr ""
 
@@ -89,7 +88,7 @@ msgstr ""
 
 #: core/admin/menus.php:104
 #: core/admin/menus.php:105
-#: core/admin/settings/settings.php:16
+#: core/admin/settings/settings.php:17
 #: wrapper.php:44
 #: build/index.js:1
 #: src/WooFilter.js:218
@@ -192,6 +191,10 @@ msgid "General Settings"
 msgstr ""
 
 #: core/admin/settings/settings.php:10
+msgid "Woo Order"
+msgstr ""
+
+#: core/admin/settings/settings.php:11
 msgid "SEO"
 msgstr ""
 
@@ -276,25 +279,43 @@ msgid "Nice Url"
 msgstr ""
 
 #: core/admin/settings/tab-content/settings.php:1
-msgid "Woo Admin Order Filter"
+msgid "Style"
 msgstr ""
 
 #: core/admin/settings/tab-content/settings.php:4
+#: core/admin/settings/tab-content/settings.php:21
 #: core/admin/settings/tab-content/short-codes.php:7
+#: core/admin/settings/tab-content/woo-order.php:4
 #: core/admin/wp-filter.php:7
 msgid "Documentation Link"
 msgstr ""
 
 #: core/admin/settings/tab-content/settings.php:5
-msgid "Filter Admin Order"
+msgid "Set Color for Templates"
 msgstr ""
 
-#: core/admin/settings/tab-content/settings.php:8
-msgid "Woo Order Filter By Products:"
+#: core/admin/settings/tab-content/settings.php:9
+msgid "Primary Color:"
 msgstr ""
 
 #: core/admin/settings/tab-content/settings.php:14
-msgid "Woo Order Filter By Status:"
+msgid "Secondary Color:"
+msgstr ""
+
+#: core/admin/settings/tab-content/settings.php:19
+msgid "WooCommerce Product Filter Control"
+msgstr ""
+
+#: core/admin/settings/tab-content/settings.php:22
+msgid "WooCommerce Product Filter Default Control"
+msgstr ""
+
+#: core/admin/settings/tab-content/settings.php:25
+msgid "Minimum Price Range:"
+msgstr ""
+
+#: core/admin/settings/tab-content/settings.php:30
+msgid "Maximum Price Range:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:4
@@ -464,6 +485,22 @@ msgstr ""
 msgid "Copy Filter Shortcodes"
 msgstr ""
 
+#: core/admin/settings/tab-content/woo-order.php:1
+msgid "Woo Admin Order Filter"
+msgstr ""
+
+#: core/admin/settings/tab-content/woo-order.php:5
+msgid "Filter Admin Order"
+msgstr ""
+
+#: core/admin/settings/tab-content/woo-order.php:8
+msgid "Woo Order Filter By Products:"
+msgstr ""
+
+#: core/admin/settings/tab-content/woo-order.php:14
+msgid "Woo Order Filter By Status:"
+msgstr ""
+
 #: core/admin/wp-filter.php:4
 msgid "Available Wordpress Filter Section"
 msgstr ""
@@ -623,7 +660,7 @@ msgstr ""
 #: core/frontend/shortcodes.php:65
 #: core/gutenburg-block/blocks/woo-filter.php:35
 #: core/widgets/woo-filter/woo-filter.php:617
-#: templates/woo-filter/template-1/left-side/price-range.php:8
+#: templates/woo-filter/template-1/left-side/price-range.php:7
 msgid "Price Range"
 msgstr ""
 
@@ -1039,7 +1076,7 @@ msgstr ""
 #: templates/woo-filter/template-1/left-side/filter-layout-attr-grid.php:29
 #: templates/woo-filter/template-1/left-side/filter-layout-grid.php:23
 #: templates/woo-filter/template-1/left-side/filter-param.php:41
-#: templates/woo-filter/template-1/left-side/price-range.php:17
+#: templates/woo-filter/template-1/left-side/price-range.php:16
 #: templates/woo-filter/template-1/left-side/product-search.php:18
 #: templates/woo-filter/template-1/on-sale.php:16
 #: templates/woo-filter/template-1/rating.php:14
@@ -1142,19 +1179,19 @@ msgstr ""
 msgid "Find Favorite Item"
 msgstr ""
 
-#: utils/helper.php:670
+#: utils/helper.php:675
 msgid "Security check failed"
 msgstr ""
 
-#: utils/helper.php:793
+#: utils/helper.php:798
 msgid "OR"
 msgstr ""
 
-#: utils/helper.php:793
+#: utils/helper.php:798
 msgid "AND"
 msgstr ""
 
-#: utils/helper.php:802
+#: utils/helper.php:807
 msgid "Please Active Filter Plus Pro. It is Premium feature."
 msgstr ""
 

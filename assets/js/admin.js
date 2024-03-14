@@ -189,7 +189,7 @@
 					return obj;
 				}
 				
-				if ( type == "text" || type == "hidden" || type == "color" ) {
+				if ( type == "text" || type == "hidden" || type == "color" || type == "number" ) {
 					obj[$this.attr('name')] = $this.val();
 					return obj;
 				}

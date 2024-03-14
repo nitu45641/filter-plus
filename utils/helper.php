@@ -591,10 +591,12 @@ class Helper {
 	/**
 	 * Get min max price off all products
 	 *
-	 * @return void
+	 * @return array
 	 */
 	public static function get_min_max_price() {
 		$price  = array( 'min' => '' , 'max'=> '' );
+
+		if( !class_exists('WooCommerce')){ return $price; }
 
 		$min = PHP_FLOAT_MAX;
 		$max = 0.00;
@@ -641,6 +643,8 @@ class Helper {
 		$settings_key = array( 'woo_order_filter_product'=> 'no',
 		'woo_order_filter_status'=> 'no','seo_elements'=> array(),
 		'seo_elements_format'=> '' , 'nice_url'=> '', 'seo_slug_url'=> '',
+		'min_price_range'=>'','max_price_range'=>'',
+
 		'refresh_url'=> '', 'primary_color'=> '#ffffff', 'secondary_color'=> '#ffffff' 
 		);
 
@@ -804,6 +808,15 @@ class Helper {
 			return $pro_message;
 		}
 		return true;
+	}
+
+	public static function get_price_range() {
+		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();;
+		$get_price = \FilterPlus\Utils\Helper::instance()->get_min_max_price();
+		$min = $settings['min_price_range'] == '' ? $get_price['min'] : $settings['min_price_range'];
+		$max = $settings['max_price_range'] == '' ? $get_price['max'] : $settings['max_price_range'];
+		
+		return array('min'=>$min,'max'=>$max);
 	}
 
 }
