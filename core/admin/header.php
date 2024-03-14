@@ -6,7 +6,7 @@
                 width="50px"
                 height="50px"
             />
-            <h1><?php esc_html_e('Filter Plus','filter-plus');?></h1>
+            <h1><?php echo esc_html('Filter Plus');?></h1>
             <span class='version'><?php echo esc_html('v ').FilterPlus::get_version();?></span>
         </div>
     </a>
