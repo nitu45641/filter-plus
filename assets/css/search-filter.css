@@ -289,10 +289,9 @@ ul.ratings {
 	margin-right: 4px;
 }
 .grid-view-2 {
-	display: -ms-grid;
 	display: grid;
 	grid-template: auto / 255px 255px 255px;
-	gap: 30px 30px;
+	gap: 30px 15px;
 }
 .grid-view-1{
     display: grid;
@@ -686,4 +685,9 @@ input[type="checkbox"]:checked + label.checkbox-item
     display: grid;
     grid-template-columns: auto auto auto;
     column-gap: 20px;
+}
+@media screen and (max-width: 1024px) {
+	.grid-view-2 {
+		grid-template: auto / 220px 220px 220px;
+	}
 }

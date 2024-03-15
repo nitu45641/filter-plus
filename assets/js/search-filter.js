@@ -54,16 +54,15 @@
 					// reset block
 					reset_block(_this,_this.parents(".sidebar-row"));
 				});
-				param_box.on('change', '.checkbox-item', function () {
-					let _this = $(this);
-					param_box.find('.checkbox-item input').removeAttr('checked');
-					if (_this.find('input').is("checked")) {
-						_this.find('input').prop('checked',false); 
+				param_box.on('change', '.checkbox-item input', function () {
+					let _this = $(this);					
+					if (_this.is(':checked')) {
+						_this.prop('checked',true); 
 					} else {
-						_this.find('input').prop('checked',true); 
+						_this.prop('checked',false); 
 					}
 					get_products();
-					// reset block
+					//reset block
 					reset_block(_this,_this.parents(".sidebar-row"));
 				});
 			})

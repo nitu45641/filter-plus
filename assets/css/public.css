@@ -64,10 +64,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	padding: 8px;
 	border-radius: 5px;
 }
-
 .sort-bar-left {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 }
 
@@ -129,6 +126,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 
 
 .shop-sidebar {
+	width: 280px;
 	padding: 0 15px;
 }
 .shop-sidebar .search-form input {
@@ -286,19 +284,13 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	border: 3px solid #17c6aa;
 }
 .shop-sidebar .price-range .range-values {
-	display: -webkit-inline-box;
-	display: -ms-inline-flexbox;
 	display: inline-flex;
-	-webkit-column-gap: 10px;
-	-moz-column-gap: 10px;
 	column-gap: 10px;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
 }
 .shop-sidebar .price-range input[type="number"] {
-	-webkit-appearance: none;
-	-moz-appearance: none;
 	max-width: 70px;
 	border: 1px solid #d7d7d7;
 	border-radius: 4px;
@@ -511,9 +503,6 @@ a.added_to_cart.wc-forward {
 	background: #2e74e8;
 	padding: 0 7px;
 	border-radius: 3.5px;
-}
-.shop-container-2{
-	display: flex;
 }
 .product-style-two .vartical-prod-card-container {
 	border: 0px solid;
