@@ -17,11 +17,9 @@
 		category_li.on(action, function () {
 			let _this = $(this);
 			let active_li = $("#cat_li_"+_this.data("cat_id"));
-
 			if ( active_li.length > 0 ) {
 				if(active_li.is(":checked")) {
 					_this.addClass("active");
-					$('input[type=checkbox]').not(active_li).removeAttr('checked');      
 				} 
 			} else {
 				_this.addClass("active");
