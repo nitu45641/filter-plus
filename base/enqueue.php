@@ -108,6 +108,11 @@ class Enqueue {
 			'filter-js'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/search-filter.js',
                 'version'   => \FilterPlus::get_version(),
+                'deps'      => ['jquery','filter-option'],
+            ),
+            'filter-option'     => array(
+                'src'       => \FilterPlus::assets_url() . 'js/filter-option.js',
+                'version'   => \FilterPlus::get_version(),
                 'deps'      => ['jquery'],
             ),
 			'jquery.range-min'     => array(

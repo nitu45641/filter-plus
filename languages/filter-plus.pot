@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Filter Plus 1.0.37\n"
+"Project-Id-Version: Filter Plus 1.0.38\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/filter-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-14T17:57:31+00:00\n"
+"POT-Creation-Date: 2024-03-15T09:33:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: filter-plus\n"
@@ -199,14 +199,14 @@ msgid "SEO"
 msgstr ""
 
 #: core/admin/settings/shortocdes-fields.php:10
-#: core/admin/settings/shortocdes-fields.php:116
-#: core/admin/settings/shortocdes-fields.php:131
+#: core/admin/settings/shortocdes-fields.php:120
+#: core/admin/settings/shortocdes-fields.php:135
 #: core/widgets/woo-filter/woo-filter.php:58
 #: core/widgets/wp-filter/wp-filter.php:55
 msgid "Pro"
 msgstr ""
 
-#: core/admin/settings/shortocdes-fields.php:117
+#: core/admin/settings/shortocdes-fields.php:121
 msgid "Template"
 msgstr ""
 
@@ -283,7 +283,7 @@ msgid "Style"
 msgstr ""
 
 #: core/admin/settings/tab-content/settings.php:4
-#: core/admin/settings/tab-content/settings.php:21
+#: core/admin/settings/tab-content/settings.php:20
 #: core/admin/settings/tab-content/short-codes.php:7
 #: core/admin/settings/tab-content/woo-order.php:4
 #: core/admin/wp-filter.php:7
@@ -302,19 +302,19 @@ msgstr ""
 msgid "Secondary Color:"
 msgstr ""
 
-#: core/admin/settings/tab-content/settings.php:19
+#: core/admin/settings/tab-content/settings.php:18
 msgid "WooCommerce Product Filter Control"
 msgstr ""
 
-#: core/admin/settings/tab-content/settings.php:22
+#: core/admin/settings/tab-content/settings.php:21
 msgid "WooCommerce Product Filter Default Control"
 msgstr ""
 
-#: core/admin/settings/tab-content/settings.php:25
+#: core/admin/settings/tab-content/settings.php:24
 msgid "Minimum Price Range:"
 msgstr ""
 
-#: core/admin/settings/tab-content/settings.php:30
+#: core/admin/settings/tab-content/settings.php:29
 msgid "Maximum Price Range:"
 msgstr ""
 
