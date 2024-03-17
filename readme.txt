@@ -3,7 +3,7 @@ Contributors: markutos987, galib96
 Donate link: https://woooplugin.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , ajax filter
 Requires at least: 4.7
-Tested up to: 6.4.1
+Tested up to: 6.4
 Stable tag: 1.0.39
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -47,7 +47,8 @@ Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filte
 * **Wordpress Blog Filter – PRO**
 * **Wordpress Custom Post Type Filter – PRO**
 * **Search Wordpress Post,Custom Post by Custom Fields, Post Meta, Authors, Post Types, Post Dates, Taxonomies, Tags, Categories – PRO**
-* **WooCommerce Admin Order Filter by Product,Status – PRO**
+* **WooCommerce Admin Order Filter by Product, Status – PRO**
+* **SEO Optimization – PRO**
 
 ##Current Feature##
 
