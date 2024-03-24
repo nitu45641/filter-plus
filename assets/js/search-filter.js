@@ -649,6 +649,25 @@
 			})
 		}
 
+		mobile_filter_slide();
+		function mobile_filter_slide() {
+			let $sidebarAndWrapper = $(".shop-sidebar");
+
+			$(".filter-mb-search").click(function (e) {
+				e.stopPropagation();
+				$sidebarAndWrapper.toggleClass("active-sidebar");
+			});
+			$('body,html').click(function(e){
+				//$sidebarAndWrapper.removeClass('active-sidebar');
+				var container = $(".active-sidebar");
+
+				if (!container.is(e.target) && container.has(e.target).length === 0) {
+					container.removeClass('active-sidebar');
+			
+				}
+			 });
+		}
+
 	});
 
 })(jQuery);
