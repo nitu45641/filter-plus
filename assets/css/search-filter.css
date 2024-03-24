@@ -293,6 +293,11 @@ ul.ratings {
 	grid-template: auto / 255px 255px 255px;
 	gap: 30px 15px;
 }
+.grid-view-3{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+}
 .grid-view-1{
     display: grid;
     grid-template: auto / 24% 24% 24% 24%;
@@ -689,5 +694,15 @@ input[type="checkbox"]:checked + label.checkbox-item
 @media screen and (max-width: 1024px) {
 	.grid-view-2 {
 		grid-template: auto / 220px 220px 220px;
+	}
+}
+@media (max-width: 768px) {
+    .shop-sidebar {
+        display: none;
+    }
+}
+@media screen and (max-width: 425px) {
+	.grid-view-1,.grid-view-2,.grid-view-3 {
+		grid-template: auto / auto;
 	}
 }
