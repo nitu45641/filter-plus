@@ -348,7 +348,7 @@ ul.ratings {
 }
 
 .vpcc-image img {
-	max-width: 100%;
+	width: 100%;
 }
 .vpcc-footer {
 	text-align: center;
@@ -695,6 +695,14 @@ input[type="checkbox"]:checked + label.checkbox-item
 	display:flex;
 	flex-direction:row-reverse;
 }
+.filter-mb-search::after {
+    content: url(../../assets/images/mb-filter.svg);
+	
+}
+.filter-mb-search{
+	display: none;
+	cursor: pointer;
+}
 @media screen and (max-width: 1024px) {
 	.grid-view-2 {
 		grid-template: auto / 220px 220px 220px;
@@ -704,6 +712,9 @@ input[type="checkbox"]:checked + label.checkbox-item
     .shop-sidebar {
         display: none;
     }
+	.filter-mb-search{
+		display: block;
+	}
 }
 @media screen and (max-width: 425px) {
 	.grid-view-1,.grid-view-2,.grid-view-3,.tab-item,

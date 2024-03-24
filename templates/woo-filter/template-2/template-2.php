@@ -59,7 +59,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 </div>
 
 <div class="row products-wrap">
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/filter-top.php"; ?>
+	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-top.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/sort-bar.php"; ?>
 	<div class="prods-grid-view grid-view-<?php echo esc_attr($template)?>"></div>
 	<div class="message"></div>

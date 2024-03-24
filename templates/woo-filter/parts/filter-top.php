@@ -1,5 +1,12 @@
+
+<div class="filter-mb-search"></div>
 <div class="filter-top">
+    <?php
+    $templates = array('1','5');
+    ?>
+    <?php if( in_array( $template , $templates) ) : ?>
     <div class="selected-filter"></div>
+    <?php endif; ?>
     <div class="showing">
         <p>
             <?php esc_html_e('Showing','filter-plus')?>
@@ -8,4 +15,7 @@
             <?php esc_html_e('Products','filter-plus')?>
         </p>
     </div>
+    <?php if( !in_array( $template , $templates) ) : ?>
+    <div class="selected-filter"></div>
+    <?php endif; ?>
 </div>
