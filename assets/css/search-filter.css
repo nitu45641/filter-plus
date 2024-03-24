@@ -706,7 +706,9 @@ input[type="checkbox"]:checked + label.checkbox-item
     }
 }
 @media screen and (max-width: 425px) {
-	.grid-view-1,.grid-view-2,.grid-view-3,.tab-item {
+	.grid-view-1,.grid-view-2,.grid-view-3,.tab-item,
+	.horizontal-prod-card-container
+	{
 		grid-template: auto / auto;
 	}
 	.shop-container-3,.shop-container-4 {

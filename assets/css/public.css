@@ -422,27 +422,6 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 
 /* Grid view css end*/
 /* List view css start */
-.prods-list-view {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
-}
-
-.horizontal-prod-card-container {
-	display: -ms-grid;
-	display: grid;
-	-ms-grid-columns: 200px auto 250px;
-	grid-template-columns: 200px auto 250px;
-	border-top: 1px solid #efefef;
-	padding: 25px 20px;
-	-webkit-transition: 0.3s;
-	transition: 0.3s;
-}
-
 .horizontal-prod-card-container:hover {
 	-webkit-box-shadow: 0 0 6px 0 rgba(1, 1, 1, 0.1);
 	box-shadow: 0 0 6px 0 rgba(1, 1, 1, 0.1);
