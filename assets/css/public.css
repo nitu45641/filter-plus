@@ -404,7 +404,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	position: absolute;
 	display: none;
     bottom: 0;
-	right: 0;
+	left: 0;
 	width: 100%;
 	gap: 10px;
 	-webkit-transition: 0.5s;
@@ -858,6 +858,7 @@ a.added_to_cart.wc-forward {
 	font-weight: 500;
 	padding-left: 11px;
 	cursor: pointer;
+	margin-bottom: 0;
 }
 
 .categories-wrapper .cat-group input[type="checkbox"]:checked {

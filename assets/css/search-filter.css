@@ -169,6 +169,7 @@
 }
 .shop-sidebar .search-wrap .search-form .sidebar-input {
 	padding-right: 25%;
+	line-height: 0;
 }
 
 .shop-sidebar .radio-wrap .radio-item:hover {
@@ -220,6 +221,8 @@
 }
 .category-list li {
 	margin-top: 5px;
+	display: flex;
+    align-items: center;
 }
 .category-list li.active,
 .category-list li:hover
