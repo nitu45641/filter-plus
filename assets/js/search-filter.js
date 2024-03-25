@@ -76,7 +76,7 @@
 				step: 1,
 				scale: [min,max],
 				width: '250',
-				showLabels: false,
+				showLabels: true,
 				isRange : true,
 				ondragend: function(val){
 					price_range_actions(val,price_range)
@@ -658,7 +658,6 @@
 				$sidebarAndWrapper.toggleClass("active-sidebar");
 			});
 			$('body,html').click(function(e){
-				//$sidebarAndWrapper.removeClass('active-sidebar');
 				var container = $(".active-sidebar");
 
 				if (!container.is(e.target) && container.has(e.target).length === 0) {

@@ -1,5 +1,7 @@
 
+<?php if( $template !== '5' ) : ?>
 <div class="filter-mb-search"></div>
+<?php endif; ?>
 <div class="filter-top">
     <?php
     $templates = array('1','5');

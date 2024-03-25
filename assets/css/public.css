@@ -526,8 +526,6 @@ a.added_to_cart.wc-forward {
 	.product-meta {
 	position: absolute;
 	top: 20px;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: start;
 	-ms-flex-align: start;
