@@ -1,6 +1,6 @@
 <?php
 
-namespace FilterPlus\Core\Widgets;
+namespace FilterPlus\Core\Widgets\Elementor;
 
 defined("ABSPATH") || exit;
 

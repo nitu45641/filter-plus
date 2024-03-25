@@ -819,4 +819,25 @@ class Helper {
 		return array('min'=>$min,'max'=>$max);
 	}
 
+	/**
+	 * Templates for widgets
+	 *
+	 * @return array
+	 */
+	public static function widgets_templates()  {
+		$templates = array(
+			1  => esc_html__( 'Template 1', 'filter-plus' ),
+		);
+		$pro = '';
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$pro  = esc_html__( 'Pro', 'filter-plus' );
+		}
+		$templates[2] = esc_html__( 'Template 2', 'filter-plus' ) . ' ' . $pro;
+		$templates[3] = esc_html__( 'Template 3', 'filter-plus' ) . ' ' . $pro;
+		$templates[4] = esc_html__( 'Template 4', 'filter-plus' ) . ' ' . $pro;
+		$templates[5] = esc_html__( 'Template 5', 'filter-plus' ) . ' ' . $pro;
+
+		return $templates;
+	}
+
 }

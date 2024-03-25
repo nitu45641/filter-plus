@@ -2,7 +2,6 @@
 
 /**
  * Menu class
- *
  */
 
 namespace FilterPlus\Core\Admin;
@@ -14,36 +13,35 @@ use FilterPlus\Utils\Singleton;
  */
 class Menus {
 
-    use Singleton;
+	use Singleton;
 
-    /**
-     * Initialize
-     *
-     * @return void
-     */
-    public function init() {
-        add_action('admin_menu', array($this, 'register_admin_menu'));
-    }
+	/**
+	 * Initialize
+	 *
+	 * @return void
+	 */
+	public function init() {
+		add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
+	}
 
 
-    /**
-     * Register admin menu
-     *
-     * @return void
-     */
-
-    public function register_admin_menu() {
-        $capability = 'read';
-        $slug       = 'filter_plus';
+	/**
+	 * Register admin menu
+	 *
+	 * @return void
+	 */
+	public function register_admin_menu() {
+		$capability = 'read';
+		$slug       = 'filter_plus';
 
 		// Add main page
-		if ( empty ( $GLOBALS['admin_page_hooks'][$slug] ) ) {
+		if ( empty( $GLOBALS['admin_page_hooks'][ $slug ] ) ) {
 			add_menu_page(
-				esc_html__('Shortcodes', 'filter-plus'),
-				esc_html__('Filter Plus', 'filter-plus'),
+				esc_html__( 'Shortcodes', 'filter-plus' ),
+				esc_html__( 'Filter Plus', 'filter-plus' ),
 				$capability,
 				$slug,
-				array($this,'filter_plus_view'),
+				array( $this, 'filter_plus_view' ),
 				'data:image/svg+xml;base64,' . base64_encode(
 					'<svg width="89" height="80" viewBox="0 0 75 80" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M49.3946 79.1002L34.6998 39.461C34.4022 38.6632 35.447 38.4637 35.447 38.4637L74.3009 52.6741C75.0481 54.6685 76.0444 67.1336 69.5687 73.6155C64.3882 78.801 53.9607 79.4326 49.3946 79.1002ZM51.3871 68.879C51.3871 68.1905 51.9452 67.6324 52.6336 67.6324H55.8702V64.3901C55.8702 63.7023 56.4278 63.1448 57.1155 63.1448C57.8033 63.1448 58.3608 63.7023 58.3608 64.3901V67.6324H61.5975C62.2859 67.6324 62.844 68.1905 62.844 68.879C62.844 69.5674 62.2859 70.1255 61.5975 70.1255H58.3608V73.3674C58.3608 74.0551 57.8033 74.6127 57.1155 74.6127C56.4278 74.6127 55.8702 74.0551 55.8702 73.3674V70.1255H52.6336C51.9452 70.1255 51.3871 69.5674 51.3871 68.879Z" fill="white"/>
@@ -56,111 +54,118 @@ class Menus {
 					<path d="M33.4154 35.8682L49.2892 41.665L74.42 50.8416L71.6423 36.3811L69.5672 25.58C69.2675 24.0198 67.9035 22.8923 66.3166 22.8923H12.7182C11.2955 22.8923 10.0522 23.7983 9.59399 25.1106C12.2583 41.0889 24.1743 53.9332 39.6435 57.9388L32.0847 37.2002C32.0373 37.0709 32.017 36.9421 32.0204 36.8178C32.0339 36.1461 32.7156 35.6129 33.4154 35.8682ZM49.1499 26.3206C49.9558 26.3206 50.6093 26.9742 50.6093 27.7813C50.6093 28.588 49.9558 29.2421 49.1499 29.2421C48.344 29.2421 47.6905 28.588 47.6905 27.7813C47.6905 26.9741 48.344 26.3206 49.1499 26.3206ZM28.548 26.3206C29.3539 26.3206 30.0074 26.9742 30.0074 27.7813C30.0074 28.588 29.3539 29.2421 28.548 29.2421C27.7415 29.2421 27.088 28.588 27.088 27.7813C27.088 26.9741 27.7416 26.3206 28.548 26.3206Z" fill="#FBFBFB"/>
 					<path d="M69.5673 25.58C69.2676 24.0198 67.9036 22.8923 66.3167 22.8923H17.0242C20.7578 28.7083 25.9221 33.5166 32.0204 36.8178C32.034 36.1461 32.7157 35.6129 33.4155 35.8682L49.2893 41.665C50.0009 41.7018 50.7177 41.7204 51.4383 41.7204C58.7872 41.7204 65.6835 39.7795 71.6423 36.3811L69.5673 25.58ZM28.548 29.2421C27.7416 29.2421 27.0881 28.588 27.0881 27.7814C27.0881 26.9742 27.7416 26.3206 28.548 26.3206C29.3539 26.3206 30.0074 26.9742 30.0074 27.7814C30.0075 28.588 29.3539 29.2421 28.548 29.2421ZM49.1499 29.2421C48.3441 29.2421 47.6905 28.588 47.6905 27.7814C47.6905 26.9742 48.3441 26.3206 49.1499 26.3206C49.9558 26.3206 50.6093 26.9742 50.6093 27.7814C50.6093 28.588 49.9558 29.2421 49.1499 29.2421Z" fill="white"/>
 					</svg>
-					'),
+					'
+				),
 				10
 			);
 		}
 
 		// Add submenu pages
-		if (count( $this->sub_menu_pages() ) > 0 ) {
+		if ( count( $this->sub_menu_pages() ) > 0 ) {
 			foreach ( $this->sub_menu_pages() as $key => $value ) {
-				add_submenu_page( $value['parent_slug'], $value['page_title'], $value['menu_title'],
-				$value['capability'], $value['menu_slug'], $value['cb_function'] , $value['position'] );
+				add_submenu_page(
+					$value['parent_slug'],
+					$value['page_title'],
+					$value['menu_title'],
+					$value['capability'],
+					$value['menu_slug'],
+					$value['cb_function'],
+					$value['position']
+				);
 			}
 		}
 
-		if ( !empty ( $GLOBALS['admin_page_hooks'][$slug] ) ) {
-			unset($GLOBALS['submenu']['filter_plus'][0]);
+		if ( ! empty( $GLOBALS['admin_page_hooks'][ $slug ] ) ) {
+			unset( $GLOBALS['submenu']['filter_plus'][0] );
 		}
-
-    }
+	}
 
 	/**
 	 * Create menu page
+	 *
 	 * @param [type] $cb_function
 	 */
 	public function sub_menu_pages() {
-		$sub_pages  = array(
+		$sub_pages = array(
 			array(
-				"parent_slug" => 'filter_plus',
-				"page_title"  => esc_html__('Overview','filter-plus'),
-				"menu_title"  => esc_html__('Overview','filter-plus'),
-				"capability"  => 'read',
-				"menu_slug"   => 'filter-plus-overview',
-				"cb_function" => array($this,'over_view'),
-				"position"    => 11
+				'parent_slug' => 'filter_plus',
+				'page_title'  => esc_html__( 'Overview', 'filter-plus' ),
+				'menu_title'  => esc_html__( 'Overview', 'filter-plus' ),
+				'capability'  => 'read',
+				'menu_slug'   => 'filter-plus-overview',
+				'cb_function' => array( $this, 'over_view' ),
+				'position'    => 11,
 			),
 			array(
-				"parent_slug" => 'filter_plus',
-				"page_title"  => esc_html__('Filter Sets','filter-plus'),
-				"menu_title"  => esc_html__('Filter Sets','filter-plus'),
-				"capability"  => 'read',
-				"menu_slug"   => 'filter-sets',
-				"cb_function" => array($this,'filter_sets'),
-				"position"    => 11
+				'parent_slug' => 'filter_plus',
+				'page_title'  => esc_html__( 'Filter Sets', 'filter-plus' ),
+				'menu_title'  => esc_html__( 'Filter Sets', 'filter-plus' ),
+				'capability'  => 'read',
+				'menu_slug'   => 'filter-sets',
+				'cb_function' => array( $this, 'filter_sets' ),
+				'position'    => 11,
 			),
 			array(
-				"parent_slug" => 'filter_plus',
-				"page_title"  => esc_html__('Settings','filter-plus'),
-				"menu_title"  => esc_html__('Settings','filter-plus'),
-				"capability"  => 'read',
-				"menu_slug"   => 'filter-plus-settings',
-				"cb_function" => array($this,'filter_plus_view'),
-				"position"    => 11
-			)
+				'parent_slug' => 'filter_plus',
+				'page_title'  => esc_html__( 'Settings', 'filter-plus' ),
+				'menu_title'  => esc_html__( 'Settings', 'filter-plus' ),
+				'capability'  => 'read',
+				'menu_slug'   => 'filter-plus-settings',
+				'cb_function' => array( $this, 'filter_plus_view' ),
+				'position'    => 11,
+			),
 		);
 
-		if ( !class_exists('FilterPlusPro') ) {
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
 			$premium_link = array(
-				"parent_slug" => 'filter_plus',
-				"page_title"  => '',
-				"menu_title"  => esc_html__('Upgrade To Premium','filter-plus'),
-				"capability"  => 'read',
-				"menu_slug"   => 'https://woooplugin.com/filter-plus/',
-				"cb_function" => null,
-				"position"    => 11
+				'parent_slug' => 'filter_plus',
+				'page_title'  => '',
+				'menu_title'  => esc_html__( 'Upgrade To Premium', 'filter-plus' ),
+				'capability'  => 'read',
+				'menu_slug'   => 'https://woooplugin.com/filter-plus/',
+				'cb_function' => null,
+				'position'    => 11,
 			);
 
-			array_push($sub_pages, $premium_link );
+			array_push( $sub_pages, $premium_link );
 		}
 
 		return $sub_pages;
 	}
 
 	/**
-     * OverView
-     *
-     * @return void
-     */
-    public function over_view() {
-		require_once \FilterPlus::core_dir().'admin/header.php';
-		include_once \FilterPlus::core_dir() . "admin/overview.php"; 
+	 * OverView
+	 *
+	 * @return void
+	 */
+	public function over_view() {
+		require_once \FilterPlus::core_dir() . 'admin/header.php';
+		include_once \FilterPlus::core_dir() . 'admin/overview.php';
 	}
 
 	/**
-     * OverView
-     *
-     * @return void
-     */
-    public function filter_sets() {
-		require_once \FilterPlus::core_dir().'admin/header.php';
+	 * OverView
+	 *
+	 * @return void
+	 */
+	public function filter_sets() {
+		require_once \FilterPlus::core_dir() . 'admin/header.php';
 		?>
-			<div class="wrap"><?php include_once \FilterPlus::core_dir() . "admin/filter-set.php"; ?></div>
+			<div class="wrap"><?php include_once \FilterPlus::core_dir() . 'admin/filter-set.php'; ?></div>
 		<?php
 	}
 
-    /**
-     * Admin view
-     *
-     * @return void
-     */
-    public function filter_plus_view() {
-		require_once \FilterPlus::core_dir().'admin/header.php';
-	?>
-        <div class="wrap">
-			<?php include_once \FilterPlus::core_dir() . "admin/settings/settings.php"; ?>
+	/**
+	 * Admin view
+	 *
+	 * @return void
+	 */
+	public function filter_plus_view() {
+		require_once \FilterPlus::core_dir() . 'admin/header.php';
+		?>
+		<div class="wrap">
+			<?php include_once \FilterPlus::core_dir() . 'admin/settings/settings.php'; ?>
 		</div>
-	<?php
-    }
-	
+		<?php
+	}
 }
