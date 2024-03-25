@@ -627,6 +627,10 @@ ul.pagination {
 .checkbox-item{
 	cursor: pointer;
 }
+.dropdown-box .checkbox-item input{
+	padding: 0;
+	border: none;
+}
 input[type="checkbox"]:checked + label.checkbox-item
 {
 	background-color: #2d73e7;
