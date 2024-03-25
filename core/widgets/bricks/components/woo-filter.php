@@ -10,7 +10,7 @@ class Woo_Filter extends \Bricks\Element {
 	// Element properties
 	public $category     = 'filter-plus';
 	public $name         = 'fplus-woo';
-	public $icon         = 'ti-bolt-alt';
+	public $icon         = 'ti-filter';
 	public $css_selector = '.fplus-woo-wrapper';
 
 	// Return localised element label
