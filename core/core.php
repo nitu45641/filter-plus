@@ -4,7 +4,6 @@ namespace FilterPlus\Core;
 
 use FilterPlus\Utils\Singleton;
 use FilterPlus\Core\Widgets\Elementor\Manifest as Elementor_Manifest;
-use FilterPlus\Core\Widgets\Bricks\Manifest as Bricks_Manifest;
 
 /**
  * Base Class
@@ -42,9 +41,6 @@ class Core {
       // load elementor
       add_action( 'elementor/frontend/before_enqueue_scripts', array( $this, 'element_js' ) );
       Elementor_Manifest::instance()->init();
-      // load bricks
-      Bricks_Manifest::instance()->init();
-
     }
 
     public function element_js() {
