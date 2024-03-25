@@ -296,22 +296,6 @@ ul.ratings {
     grid-template: auto / 32.5% 32.5% 32.5%;
     gap: 15px 11px;
 }
-.vartical-prod-card-container {
-	background: #fff;
-	text-align: center;
-	transition: all ease 0.4s;
-	border: 1px solid #eaeaea;
-	border-radius: 10px;
-}
-.vartical-prod-card-container:hover {
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.22));
-	border-color: #d7d7d7;
-}
-.vartical-prod-card-container:hover .vpcc-image {
-	background-color: #fff;
-	border-radius: 10px;
-}
-
 .vpcc-name {
 	overflow: hidden;
 	transition: 0.3s;
@@ -342,18 +326,7 @@ ul.ratings {
 	text-align: center;
 	padding: 0 10px 16px;
 }
-.card-action-btn-container {
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	height: 0px;
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	gap: 10px;
-	transition: 0.5s;
-	z-index: 1;
-}
+
 .vpcc-btns {
 	background-color: var(--filter-primary-color,#2d73e7);
 	height: 37px;
@@ -370,10 +343,6 @@ ul.ratings {
 .vpcc-btns:hover {
 	transform: scale(1.2);
 }
-.vartical-prod-card-container:hover .card-action-btn-container {
-	height: 70px;
-}
-
 /* Grid view css end*/
 
 /* List view css start */

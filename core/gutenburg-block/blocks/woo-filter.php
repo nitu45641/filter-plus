@@ -52,7 +52,6 @@ function woo_filter_callback( $settings ) {
         $attributes     =  join(", ",$attributes);
     }
 
-    ob_start();
     ?>
 	<div class="woo-filter">
 		<?php
@@ -62,6 +61,4 @@ function woo_filter_callback( $settings ) {
 		stock={$stock} on_sale={$on_sale} template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");     	?>
 	</div>
 	<?php
-
-    return ob_get_clean();
 }

@@ -194,7 +194,7 @@ class Woo_Filter extends Widget_Base {
 		$this->add_control(
 			'show_price_range',
 			array(
-				'label' => esc_html__( 'Display Price Range', 'filter-plus' ),
+				'label' => esc_html__( 'Show Price Range', 'filter-plus' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
@@ -293,7 +293,7 @@ class Woo_Filter extends Widget_Base {
 		$this->add_control(
 			'sorting',
 			array(
-				'label' => esc_html__( 'Display Sorting:', 'filter-plus' ),
+				'label' => esc_html__( 'Display Sorting', 'filter-plus' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
