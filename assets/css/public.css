@@ -403,6 +403,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 .card-action-btn-container {
 	position: absolute;
 	display: none;
+	justify-content: center;
     bottom: 0;
 	left: 0;
 	width: 100%;
