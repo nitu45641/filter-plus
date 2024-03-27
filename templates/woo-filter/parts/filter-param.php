@@ -1,28 +1,32 @@
 <!-- Filter By Size -->
 <?php
 
-	if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-	if ( "yes" == $size ) {
-		$attrs      = \FilterPlus\Utils\Helper::get_attributes("pa_size");
-		$title      = !empty($size_label) ? $size_label : esc_html__("Best Match Item","filter-plus");
-		$get_attr   = array();
-		foreach ($attrs['terms'] as $key => $value) {
-			$get_attr[$key]  = $value->term_id;
-		}
-		if ( file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-grid.php")) {
-			include \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-grid.php";
+if ( 'yes' == $size ) {
+	$attrs      = \FilterPlus\Utils\Helper::get_attributes( 'pa_size' );
+	$title      = ! empty( $size_label ) ? $size_label : esc_html__( 'Best Match Item', 'filter-plus' );
+	$get_attr   = array();
+	foreach ( $attrs['terms'] as $key => $value ) {
+		if ( ! empty( $value->term_id ) ) {
+			$get_attr[ $key ]  = $value->term_id;
 		}
 	}
+	if ( file_exists( \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-layout-grid.php' ) ) {
+		include \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-layout-grid.php';
+	}
+}
 ?>
 
 <!-- Filter By Color -->
 <?php
-	if ( "yes" == $colors ) {
-	$get_attr = \FilterPlus\Utils\Helper::get_attributes("pa_color");
-?>
+if ( 'yes' == $colors ) {
+	$get_attr = \FilterPlus\Utils\Helper::get_attributes( 'pa_color' );
+	?>
 	<div class="sidebar-row radio-wrap">
-		<?php echo !empty($color_label) ? $color_label : esc_html__("Filter By","filter-plus") ." ".esc_html($get_attr['label']) ;?></h4>
+		<h4 class="sidebar-label"><?php echo ! empty( $color_label ) ? $color_label : esc_html__( 'Filter By', 'filter-plus' ) . ' ' . esc_html( $get_attr['label'] ); ?></h4>
 		<div class="down-arrow">
 			<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg>
 		</div>
@@ -31,23 +35,27 @@
 		</div>
 		<div class="panel">
 			<div class="param-box color-meta">
-				<?php
-					if (!empty( $get_attr['terms'] ) ) {
-						foreach ( $get_attr['terms'] as $key => $value) { ?>
-							<div class="radio-item color-item tooltips" title="<?php echo esc_attr($value->name); ?>"
-							data-term_id="<?php echo esc_attr($value->term_id); ?>"
-							data-taxonomy="<?php echo esc_attr($value->taxonomy); ?>"
-							data-name="<?php echo esc_attr($value->name); ?>"
-							data-slug="<?php echo esc_attr($value->slug); ?>"
-							style="background-color: <?php echo esc_attr(strtolower($value->name))?>"></div>
-						<?php }
+			<?php
+			if ( ! empty( $get_attr['terms'] ) ) {
+				foreach ( $get_attr['terms'] as $key => $value ) {
+					if ( ! empty( $value->name ) ) {
+						?>
+								<div class="radio-item color-item tooltips" title="<?php echo esc_attr( $value->name ); ?>"
+								data-term_id="<?php echo esc_attr( $value->term_id ); ?>"
+								data-taxonomy="<?php echo esc_attr( $value->taxonomy ); ?>"
+								data-name="<?php echo esc_attr( $value->name ); ?>"
+								data-slug="<?php echo esc_attr( $value->slug ); ?>"
+								style="background-color: <?php echo esc_attr( strtolower( $value->name ) ); ?>">
+							</div>
+						<?php
 					}
-				?>
+				}
+			}
+			?>
 			</div>
-			<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
+			<span class="reset d-none reset-<?php echo esc_attr( $template ); ?>"><?php esc_html_e( 'Reset', 'filter-plus' ); ?></span>
 		</div>
 	</div>
-<?php
+	<?php
 }
-?>
 

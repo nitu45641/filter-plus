@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			$attributes = \FilterPlus\Utils\Helper::array_data($attributes);
 			include \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/filter-layout-attr-grid.php";
 		}
-		include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/filter-param.php"; 
+		include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-param.php"; 
 
 		// on sale
 		if ( 'yes'== $on_sale ) {

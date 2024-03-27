@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		<div class="param-box">
 			<?php
 				foreach ($get_attr as $key => $term_id) {
-					if (!empty( get_term( $term_id ) ) ) {
+					if (!empty( get_term( $term_id ) ) && empty(get_term( $term_id )->errors) ) {
 						?>
 							<div class="radio-item" 
 							data-term_id="<?php echo esc_attr($term_id); ?>"

@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				<div class="vpcc-btns btn-1">{{{ cart_btn }}}</div>
 			</div>
 		</div>
-		<div class="vpcc-name"> {{{ post_title }}} </div>
+		<div class="vpcc-name"> <a href="{{post_permalink}}">{{{ post_title }}}</a></div>
 		<p>{{ post_description }}</p>
 		{{{ rating }}}
 		<div class="vpcc-footer">

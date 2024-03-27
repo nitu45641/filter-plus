@@ -204,12 +204,12 @@ class Shortcodes {
 			$secondary_color = '#ab1616';
 		}
 
-		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();;
-        if ($settings['primary_color'] !== '#ffffff' && $settings['secondary_color'] !== '#ffffff' ) {
+		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();
+		
+        if ( ($settings['secondary_color'] !== '#ffffff') || ($settings['primary_color'] !== '#ffffff')  ) {
 			$secondary_color = $settings['secondary_color'];
 			$primary_color   = $settings['primary_color'];
 		}
-
 		$custom_css = '
 		:root {
 			--filter-primary-color: '.$primary_color.';
