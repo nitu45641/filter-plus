@@ -13,19 +13,19 @@
 	<?php
 		$menus = array(
 			array(
-				'name' => 'Filter Sets',
+				'name' => esc_html__('Filter Sets','filter-plus'),
 				'url' => admin_url() . 'admin.php?page=filter-sets',
 				'slug' => 'filter-sets',
 				'target' => '_self',
 			),
 			array(
-				'name' => 'Settings',
+				'name' => esc_html__('Settings','filter-plus' ),
 				'url' => admin_url() . 'admin.php?page=filter-plus-settings',
 				'slug' => 'filter-plus-settings',
 				'target' => '_self',
 			),
 			array(
-				'name' => 'Support',
+				'name' => esc_html__('Support', 'filter-plus' ),
 				'url' => 'https://woooplugin.com/support/',
 				'target' => '_blank',
 			),
@@ -39,7 +39,7 @@
 
 		if ( ! class_exists( 'FilterPlusPro' ) ) {
 			$menus[] = array(
-				'name' => 'Upgrade to Pro',
+				'name' => esc_html__( 'Upgrade to Pro','filter-plus' ),
 				'url' => 'https://woooplugin.com/filter-plus/',
 				'target' => '_blank',
 			);
@@ -56,13 +56,7 @@
 				<li>
 					<a class="<?php echo esc_attr( $class ) . ' ' . esc_attr( $active ); ?>" href="<?php echo esc_url( $value['url'] ); ?>"
 					 target="<?php echo esc_attr( $value['target'] ); ?>">
-					<?php
-						printf(
-							/* translators: %s: Name of a menu */
-							__( '%s', 'filter-plus' ),
-							esc_html( $value['name'] )
-						);
-					?>
+						<?php echo esc_html($value['name']);?>
 					</a>
 				</li>
 				<?php

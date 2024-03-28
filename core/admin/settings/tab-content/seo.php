@@ -59,8 +59,7 @@ $args = array(
 		__( '{title} with [attribute] [values] and [attribute] [values]', 'filter-plus' ),
 		__( '{title} - [values] / [values]', 'filter-plus' ),
 		__( '[attribute]:[values];[attribute]:[values] - {title}', 'filter-plus' ),
-		__( '{title} [attribute]:[values];[attribute]:[values]', 'filter-plus' ),
-		__( '[attribute 1 values] {title} with [attribute] [values] and [attribute] [values]', 'filter-plus' ),
+		__( '{title} [attribute]:[values];[attribute]:[values]', 'filter-plus' )
 	),
 	'selected' => $seo_elements_format,
 	'disable' => $disable,
