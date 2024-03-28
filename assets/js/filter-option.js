@@ -26,12 +26,19 @@ var filterOption = {
                     $urlPart += `${'price'}=[${selected_data['min']}-${selected_data['max']}]`;
                 }
                 else if( key == 'taxonomies_name' ){
-                    let sign = format.seo_data == true ? ' ': '=';
+                    let sign = ' ';
+                    if ( format.seo_data == true ) {
+                        sign = filterOption.seo_format();;
+                    }else{
+                        sign = '=';
+                    }
+
                     for (const [index, item] of Object.entries(value)) {
-                        if (format.sign == '[]') {
-                            $urlPart += `[${index}${sign}${item}]`;
+                        if (sign == ':') {
+                            $urlPart += `[${index}]${sign}[${item}]`;
+
                         } else {
-                            $urlPart += `${index}${sign}${item}`;
+                            $urlPart += `[${index}${sign}${item}]`;
                         }
                     }
                 }
@@ -44,14 +51,51 @@ var filterOption = {
 
         return $urlPart;
     },
+    seo_format:function(){
+        let format = '[]';
+        switch ( filter_client.seo_elements_format ) {
+            case '1':
+                format = '[]';
+                break;
+            case '2':
+                format = '/';
+                break;
+            case '3' || '4':
+                format = ':';
+                break;
+            default:
+                format = '[]';
+                break;
+
+        }
+
+        return format;
+    },
     seo_data:function($,selected_data,page_title){
         let line    = '';
         let urlKey 	= ['taxonomies_name'];
         let format  = {data:urlKey,sign:'[]',seo_data:true};
         let data    = filterOption.get_taxonomies_data($,selected_data,format);
         let part1   = data !== '' ? `${' '}${filter_client.and}${' '}${data}` : '';
-        line        = `${page_title} ${' '} ${filter_client.with} ${' '} ${selected_data.product_cat }${part1}`;
-        
+        switch (filter_client.seo_elements_format) {
+            case '1':
+                line        = `${page_title} ${' '} ${filter_client.with} ${' '} ${selected_data.product_cat }${part1}`;
+                break;
+            case '2':
+                line        = `${page_title} ${' - '} ${selected_data.product_cat }${part1}`;
+                break;
+            case '3':
+                line        = `${selected_data.product_cat }${part1}${' - '}${page_title}`;
+                break;
+            case '4':
+                line        = `${page_title}${' - '}${selected_data.product_cat }${part1}`;
+                break;
+            default:
+                line        = `${page_title} ${' '} ${filter_client.with} ${' '} ${selected_data.product_cat }${part1}`;
+                break;
+        }
         return line;
     }
 }
+
+
