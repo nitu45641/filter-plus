@@ -1,4 +1,6 @@
 
+<h1 class="fplus-title" data-page_title="<?php echo get_the_title(); ?>"></h1>
+
 <?php if( $template !== '5' ) : ?>
 <div class="filter-mb-search"></div>
 <?php endif; ?>

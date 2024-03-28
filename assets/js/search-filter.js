@@ -7,6 +7,7 @@
 		/*
 		* Get Product dat from filter
 		*/
+
 		//list click/change
 		let category_li = $(".category-list li");
 		let action = 'click';
@@ -129,7 +130,7 @@
 		if ($(".prods-grid-view").length > 0) {
 			get_products({default_call:true});
 		}
-		
+
 		/**
 		 * Fetch products
 		 * @param {*} params 
@@ -283,26 +284,7 @@
 		 */
 		function refresh_url(selected_data) {
 			if ( typeof selected_data?.default_call === "undefined" && filter_client.is_pro_active == "1" ) {
-				let urlKey 	 = ['product_cat','rating','price_range','stock','author','on_sale','taxonomies_name'];
-				let $urlPart = '';
-
-				for (const [key, value] of Object.entries(selected_data)) {
-					if ($.inArray(key,urlKey) !== -1 && 
-					typeof value !== "undefined" && value !== '' ) {
-						if ( key == 'price_range' && value == true ) {
-							$urlPart += `${'price'}=[${selected_data['min']}-${selected_data['max']}]`;
-						}
-						else if( key == 'taxonomies_name' ){
-							for (const [index, item] of Object.entries(value)) {
-								$urlPart += `${index}=${item}`;
-							}
-						}
-						else{
-							$urlPart += `${key}=[${value}]`;
-						}
-					}
-				}
-
+				let $urlPart = filterOption.get_taxonomies_data($,selected_data);
 				if ($urlPart !== '' ) {
 					window.history.pushState(null, null, `?fp=`+$urlPart );
 				}
@@ -311,6 +293,30 @@
 				}
 			}else{
 				window.history.replaceState(null, '', window.location.pathname);
+			}
+			seo_optimize(selected_data);
+		}
+		/**
+		 * SEO elements apply
+		 */
+		function seo_optimize(selected_data) {
+			let seo_elements = filter_client.seo_elements;
+			let title = $('.fplus-title');
+			let page_title = title.data('page_title');
+			if ( selected_data?.default_call == true || !$.isArray(seo_elements)) {
+				return;
+			}
+			let $result_text = `Buy ${selected_data.product_cat} - ${page_title}`;
+			if ( $.inArray('header',seo_elements) !== -1 ) {
+				title.html('').html( $result_text );
+			}
+			if ( $.inArray('title',seo_elements) !== -1 ) {
+				document.title = $result_text;
+			}
+			if ( $.inArray('description',seo_elements) !== -1 ) {
+				document.description = 'description......';
+				$('meta[name=description]').attr('content',  $result_text );
+
 			}
 		}
 
@@ -327,7 +333,8 @@
 			// category
 			params['filter_type'] 			= $("#shopContainer").data('filter_type');
 			params['cat_id'] 				= filterOption.get_category_list($);
-			params['product_cat'] 			= filter_client.seo_slug_url == 'yes' ? $(".category-list li.active").data('slug'): $.trim($(".category-list li.active").text());
+			params['product_cat'] 			= filterOption.category_formatted_text($);
+			console.log(params['product_cat'] );
 			params['rating']   				= $("ul.ratings").attr("id");
 			params['taxonomies']    		= get_tags(true);
 			params['taxonomies_name']    	= filter_client.seo_slug_url == 'yes' ? get_tags('slug') : get_tags('name');

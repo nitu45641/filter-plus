@@ -81,7 +81,6 @@ class Shortcodes {
 		} 
 		
 		$this->custom_css($template);
-
 		?>
 			<div class="shopContainer shop-container-<?php echo esc_attr($template)?>"
 			id="shopContainer"
