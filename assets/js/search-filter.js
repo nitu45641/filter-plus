@@ -284,7 +284,9 @@
 		 */
 		function refresh_url(selected_data) {
 			if ( typeof selected_data?.default_call === "undefined" && filter_client.is_pro_active == "1" ) {
-				let $urlPart = filterOption.get_taxonomies_data($,selected_data);
+				let urlKey 	 = ['product_cat','rating','price_range','stock','author','on_sale','taxonomies_name'];
+				let format = {data:urlKey,sign:'[]',seo_data:false};
+				let $urlPart = filterOption.get_taxonomies_data($,selected_data,format);
 				if ($urlPart !== '' ) {
 					window.history.pushState(null, null, `?fp=`+$urlPart );
 				}
@@ -296,17 +298,18 @@
 			}
 			seo_optimize(selected_data);
 		}
+
 		/**
 		 * SEO elements apply
 		 */
 		function seo_optimize(selected_data) {
 			let seo_elements = filter_client.seo_elements;
-			let title = $('.fplus-title');
-			let page_title = title.data('page_title');
 			if ( selected_data?.default_call == true || !$.isArray(seo_elements)) {
 				return;
 			}
-			let $result_text = `Buy ${selected_data.product_cat} - ${page_title}`;
+			let title = $('.fplus-title');
+			let page_title = title.data('page_title');
+			let $result_text = filterOption.seo_data($,selected_data,page_title);
 			if ( $.inArray('header',seo_elements) !== -1 ) {
 				title.html('').html( $result_text );
 			}
@@ -314,7 +317,6 @@
 				document.title = $result_text;
 			}
 			if ( $.inArray('description',seo_elements) !== -1 ) {
-				document.description = 'description......';
 				$('meta[name=description]').attr('content',  $result_text );
 
 			}
@@ -334,7 +336,6 @@
 			params['filter_type'] 			= $("#shopContainer").data('filter_type');
 			params['cat_id'] 				= filterOption.get_category_list($);
 			params['product_cat'] 			= filterOption.category_formatted_text($);
-			console.log(params['product_cat'] );
 			params['rating']   				= $("ul.ratings").attr("id");
 			params['taxonomies']    		= get_tags(true);
 			params['taxonomies_name']    	= filter_client.seo_slug_url == 'yes' ? get_tags('slug') : get_tags('name');

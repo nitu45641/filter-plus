@@ -16,19 +16,24 @@ var filterOption = {
 
         return get_cat_list.join(",");
     },
-
-    get_taxonomies_data:function ($,selected_data) {
+    get_taxonomies_data:function ($,selected_data,format) {
         let $urlPart = '';
-        let urlKey 	 = ['product_cat','rating','price_range','stock','author','on_sale','taxonomies_name'];
+        let urlKey 	 = format.data;
+
         for (const [key, value] of Object.entries(selected_data)) {
-            if ($.inArray(key,urlKey) !== -1 && 
+            if ( $.inArray(key,urlKey) !== -1 && 
             typeof value !== "undefined" && value !== '' && value !== false ) {
                 if ( key == 'price_range' && value == true ) {
                     $urlPart += `${'price'}=[${selected_data['min']}-${selected_data['max']}]`;
                 }
                 else if( key == 'taxonomies_name' ){
+                    let sign = format.seo_data == true ? ' ': '=';
                     for (const [index, item] of Object.entries(value)) {
-                        $urlPart += `${index}=${item}`;
+                        if (format.sign == '[]') {
+                            $urlPart += `[${index}${sign}${item}]`;
+                        } else {
+                            $urlPart += `${index}${sign}${item}`;
+                        }
                     }
                 }
                 else{
@@ -38,5 +43,15 @@ var filterOption = {
         }
 
         return $urlPart;
+    },
+    seo_data:function($,selected_data,page_title){
+        let line    = '';
+        let urlKey 	= ['taxonomies_name'];
+        let format  = {data:urlKey,sign:'[]',seo_data:true};
+        let data    = filterOption.get_taxonomies_data($,selected_data,format);
+        let part1   = data !== '' ? `${' '}${filter_client.and}${' '}${data}` : '';
+        line        = `${page_title} ${' '} ${filter_client.with} ${' '} ${selected_data.product_cat }${part1}`;
+        
+        return line;
     }
 }
