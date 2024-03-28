@@ -33,6 +33,8 @@
 }
 
 .radio-wrap .radio-item {
+	display: inline-flex;
+    align-items: center;
 	outline: 1px solid var(--filter-secondary-color,"#d7d7d7");
 	padding: 3px 5px;
 	border-radius: 5px;

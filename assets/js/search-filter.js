@@ -395,7 +395,7 @@
 		function disable_items(terms) {
 			$(".param-box div").removeClass('disable');
 			$.each(terms, function (key, value) {
-				if (value.length > 0) {
+				if (value?.length > 0) {
 					for (let index = 0; index < value.length; index++) {
 						$('.radio-item[data-term_id=' + value[index] + ']').addClass('disable');
 					}
@@ -504,6 +504,10 @@
 			let attribute = $(".param-box");
 			if (attribute.length > 0) {
 				attribute.each(function (i, value) {
+					if (typeof value === 'undefined' ) {
+						return;
+					}
+					let label = $(value).parents('.sidebar-row').find('.sidebar-label').text();
 					let single_attr = $(value).find('div');
 					let active_tag = $('.active[data-taxonomy="' + single_attr.data('taxonomy') + '"]');
 					if (!selected) {
@@ -513,17 +517,17 @@
 					}
 					else if ( selected == 'name' || selected == 'slug' ) {
 						if ( typeof active_tag.data("term_id") === "undefined" ) {
-							return
+							return;
 						}
 
 						if ( selected == 'name' ) {
 							if ( active_tag.data("taxonomy") == "pa_color" ) {
-								obj[single_attr.data('taxonomy')] = active_tag.data('name');
+								obj[label] = active_tag.data('name');
 							} else {
-								obj[single_attr.data('taxonomy')] = active_tag.text();
+								obj[label] = active_tag.text();
 							}
 						} else {
-							obj[single_attr.data('taxonomy')] = active_tag.data('slug');
+							obj[label] = active_tag.data('slug');
 						}
 
 					}
@@ -532,7 +536,6 @@
 							obj[single_attr.data('taxonomy')] = active_tag.data("term_id");
 						}
 					}
-
 				});
 			}
 			if (!selected && $(".category-list").length>0) {

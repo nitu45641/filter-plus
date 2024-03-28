@@ -19,7 +19,6 @@ var filterOption = {
     get_taxonomies_data:function ($,selected_data,format) {
         let $urlPart = '';
         let urlKey 	 = format.data;
-
         for (const [key, value] of Object.entries(selected_data)) {
             if ( $.inArray(key,urlKey) !== -1 && 
             typeof value !== "undefined" && value !== '' && value !== false ) {
@@ -37,7 +36,8 @@ var filterOption = {
                     }
                 }
                 else{
-                    $urlPart += `${key}=[${value}]`;
+                    let key_name = key == 'product_cat' ? 'categories' : key;
+                    $urlPart += `${key_name}=[${value}]`;
                 }
             }
         }
