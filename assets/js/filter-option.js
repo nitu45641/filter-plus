@@ -52,19 +52,22 @@ var filterOption = {
         return $urlPart;
     },
     seo_format:function(){
-        let format = '[]';
+        let format = ' ';
         switch ( filter_client.seo_elements_format ) {
             case '1':
-                format = '[]';
+                format = ' ';
                 break;
             case '2':
                 format = '/';
                 break;
-            case '3' || '4':
+            case '3':
+                format = ':';
+                break;
+            case '4':
                 format = ':';
                 break;
             default:
-                format = '[]';
+                format = ' ';
                 break;
 
         }
