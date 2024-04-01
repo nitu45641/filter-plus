@@ -350,7 +350,7 @@ class Actions {
 				if(has_post_thumbnail($post->ID)){
 					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
 				} else {
-					$image_url = wc_placeholder_img_src( 'woocommerce_single' );
+					$image_url = $param['filter_type'] == "product" ? wc_placeholder_img_src( 'woocommerce_single' ) : get_post_meta($post->ID, 'featured_image', true);
 					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
 				}
 				
