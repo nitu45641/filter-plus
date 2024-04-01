@@ -75,59 +75,11 @@ final class FilterPlus {
 		require_once plugin_dir_path( __FILE__ ) . 'autoloader.php';
 		require_once plugin_dir_path( __FILE__ ) . 'wrapper.php';
 
-		// required plugin check
-		$this->required_plugin();
 		// Load Plugin modules and classes
 		\FilterPlus\Wrapper::instance();
 
 		do_action( 'filter-plus/after_load' );
 	}
-
-	/**
-	 * Check required plugin and throw notice
-	 *
-	 * @return void
-	 */
-	public function required_plugin() {
-        include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		$plugins = array( array( 'name' => 'woccommerce' , 'slug' => 'woocommerce/woocommerce.php'  ) );
-
-		foreach ( $plugins as $key => $value) {
-			if ( !is_plugin_active( $value['slug'] ) ) {
-				add_action( 'admin_notices', [$this, 'woo_plugin_notice'] );
-			}
-		}
-	}
-
-	/**
-     * Load on plugin
-     *
-     * @return void
-     */
-    public function woo_plugin_notice( $slug ) {
-
-        if ( isset( $_GET['activate'] ) ) {
-            unset( $_GET['activate'] );
-        }
-		
-        if ( file_exists( WP_PLUGIN_DIR . '/woocommerce/woocommerce.php' ) ) {
-            $btn['label'] = esc_html__( 'Activate WooCommerce', 'filter-plus' );
-            $btn['url']   = wp_nonce_url( 'plugins.php?action=activate&plugin=woocommerce/woocommerce.php&plugin_status=all&paged=1', 'activate-plugin_woocommerce/woocommerce.php' );
-        } else {
-            $btn['label'] = esc_html__( 'Install WooCommerce', 'filter-plus' );
-            $btn['url']   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' );
-        }
-
-        Helper::push(
-            [
-                'id'          => 'unsupported-woocommerce-version',
-                'type'        => 'error',
-                'dismissible' => true,
-                'btn'         => $btn,
-                'message'     => sprintf( esc_html__( 'Filter Plus requires WooCommerce , which is currently NOT RUNNING.', 'filter-plus' ) ),
-            ]
-        );
-    }
 
 	/**
      * Load Localization Files
