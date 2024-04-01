@@ -357,7 +357,7 @@ class Actions {
 				$products[$key]['id'] = $post->ID;
 				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$products[$key]['post_image']       = $image;
-				$products[$key]['post_description'] = wp_trim_words( get_post_field('post_content', $post->ID ) , 30 , '');
+				$products[$key]['post_description'] = wp_trim_words( get_post_field('post_excerpt', $post->ID ) , 30 , '');
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 				$products[$key]['author']   		= $param['post_author'] =='yes' ? esc_html__('By','filter-plus').' '. get_the_author_meta( 'display_name',$post->post_author ) : '';
 				$products[$key]['posts_author_link']= $param['post_author'] =='yes' ? get_author_posts_url( $post->post_author ) : '#';
