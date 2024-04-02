@@ -492,7 +492,7 @@ a.added_to_cart.wc-forward {
 	.vartical-prod-card-container
 	.product-thumbnail
 	.vpcc-image {
-	height: 315px !important;
+	height: auto;
 	position: relative;
 }
 .product-style-two
