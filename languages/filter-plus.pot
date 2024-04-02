@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Filter Plus 1.0.42\n"
+"Project-Id-Version: Filter Plus 1.0.44\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/filter-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-28T16:57:19+00:00\n"
+"POT-Creation-Date: 2024-04-02T17:05:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: filter-plus\n"
@@ -75,7 +75,9 @@ msgstr ""
 #: core/admin/filter-set.php:17
 #: core/widgets/bricks/components/wp-filter.php:18
 #: core/widgets/elementor/wp-filter/wp-filter.php:25
+#: build/index.js:470
 #: src/WpFilter.js:18
+#: build/index.js:455
 msgid "Wordpress Filter"
 msgstr ""
 
@@ -84,9 +86,12 @@ msgstr ""
 #: core/admin/menus.php:111
 #: core/admin/settings/settings.php:17
 #: wrapper.php:44
-#: build/index.js:1
+#: build/index.js:288
+#: build/index.js:689
 #: src/WooFilter.js:218
 #: src/WpFilter.js:186
+#: build/index.js:218
+#: build/index.js:623
 msgid "Settings"
 msgstr ""
 
@@ -570,13 +575,17 @@ msgstr ""
 
 #: core/admin/wp-filter.php:29
 #: core/widgets/elementor/wp-filter/wp-filter.php:80
+#: build/index.js:700
 #: src/WpFilter.js:197
+#: build/index.js:634
 msgid "Post"
 msgstr ""
 
 #: core/admin/wp-filter.php:29
 #: core/widgets/elementor/wp-filter/wp-filter.php:81
+#: build/index.js:704
 #: src/WpFilter.js:198
+#: build/index.js:635
 msgid "Custom Post"
 msgstr ""
 
@@ -660,7 +669,11 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
-#: core/frontend/shortcodes.php:50
+#: core/frontend/shortcodes.php:45
+msgid "Please Active WooCommerce to get the filtering options"
+msgstr ""
+
+#: core/frontend/shortcodes.php:53
 #: core/gutenburg-block/blocks/woo-filter.php:21
 #: core/gutenburg-block/blocks/wp-filter.php:26
 #: core/widgets/bricks/components/woo-filter.php:62
@@ -676,21 +689,21 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: core/frontend/shortcodes.php:53
+#: core/frontend/shortcodes.php:56
 #: core/gutenburg-block/blocks/woo-filter.php:23
 #: core/widgets/bricks/components/woo-filter.php:311
 #: core/widgets/elementor/woo-filter/woo-filter.php:597
 msgid "Colors"
 msgstr ""
 
-#: core/frontend/shortcodes.php:55
+#: core/frontend/shortcodes.php:58
 #: core/gutenburg-block/blocks/woo-filter.php:25
 #: core/widgets/bricks/components/woo-filter.php:313
 #: core/widgets/elementor/woo-filter/woo-filter.php:600
 msgid "Size"
 msgstr ""
 
-#: core/frontend/shortcodes.php:57
+#: core/frontend/shortcodes.php:60
 #: core/gutenburg-block/blocks/woo-filter.php:27
 #: core/gutenburg-block/blocks/wp-filter.php:29
 #: core/widgets/bricks/components/woo-filter.php:136
@@ -701,32 +714,36 @@ msgstr ""
 #: core/widgets/elementor/woo-filter/woo-filter.php:596
 #: core/widgets/elementor/wp-filter/wp-filter.php:150
 #: core/widgets/elementor/wp-filter/wp-filter.php:548
-#: build/index.js:1
+#: build/index.js:335
+#: build/index.js:740
 #: src/WooFilter.js:286
 #: src/WpFilter.js:256
+#: build/index.js:286
+#: build/index.js:693
 msgid "Tags"
 msgstr ""
 
-#: core/frontend/shortcodes.php:59
+#: core/frontend/shortcodes.php:62
 #: core/gutenburg-block/blocks/woo-filter.php:30
 #: core/widgets/bricks/components/woo-filter.php:171
 #: core/widgets/bricks/components/woo-filter.php:318
 #: core/widgets/bricks/components/wp-filter.php:172
 #: core/widgets/elementor/woo-filter/woo-filter.php:186
 #: core/widgets/elementor/woo-filter/woo-filter.php:604
-#: build/index.js:1
+#: build/index.js:350
 #: src/WooFilter.js:310
+#: build/index.js:310
 msgid "Attributes"
 msgstr ""
 
-#: core/frontend/shortcodes.php:62
+#: core/frontend/shortcodes.php:65
 #: core/gutenburg-block/blocks/woo-filter.php:33
 #: core/widgets/bricks/components/woo-filter.php:321
 #: core/widgets/elementor/woo-filter/woo-filter.php:606
 msgid "Review"
 msgstr ""
 
-#: core/frontend/shortcodes.php:65
+#: core/frontend/shortcodes.php:68
 #: core/gutenburg-block/blocks/woo-filter.php:35
 #: core/widgets/bricks/components/woo-filter.php:323
 #: core/widgets/elementor/woo-filter/woo-filter.php:608
@@ -734,14 +751,14 @@ msgstr ""
 msgid "Price Range"
 msgstr ""
 
-#: core/frontend/shortcodes.php:67
+#: core/frontend/shortcodes.php:70
 #: core/gutenburg-block/blocks/woo-filter.php:40
 #: core/widgets/bricks/components/woo-filter.php:327
 #: core/widgets/elementor/woo-filter/woo-filter.php:612
 msgid "Sale"
 msgstr ""
 
-#: core/frontend/shortcodes.php:69
+#: core/frontend/shortcodes.php:72
 #: core/gutenburg-block/blocks/woo-filter.php:38
 #: core/widgets/bricks/components/woo-filter.php:325
 #: core/widgets/elementor/woo-filter/woo-filter.php:610
@@ -749,8 +766,8 @@ msgstr ""
 msgid "Stock"
 msgstr ""
 
-#: core/frontend/shortcodes.php:146
-#: core/frontend/shortcodes.php:160
+#: core/frontend/shortcodes.php:149
+#: core/frontend/shortcodes.php:163
 msgid "Please Active FilterPlus Pro"
 msgstr ""
 
@@ -768,8 +785,9 @@ msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:17
 #: core/widgets/elementor/woo-filter/woo-filter.php:27
-#: build/index.js:1
+#: build/index.js:28
 #: src/WooFilter.js:17
+#: build/index.js:17
 msgid "WooCommerce Product Filter"
 msgstr ""
 
@@ -798,9 +816,12 @@ msgstr ""
 #: core/widgets/bricks/components/wp-filter.php:55
 #: core/widgets/elementor/woo-filter/woo-filter.php:71
 #: core/widgets/elementor/wp-filter/wp-filter.php:108
-#: build/index.js:1
+#: build/index.js:296
+#: build/index.js:719
 #: src/WooFilter.js:227
 #: src/WpFilter.js:224
+#: build/index.js:227
+#: build/index.js:661
 msgid "Category Label"
 msgstr ""
 
@@ -818,8 +839,9 @@ msgstr ""
 #: core/widgets/bricks/components/woo-filter.php:87
 #: core/widgets/bricks/components/wp-filter.php:88
 #: core/widgets/elementor/woo-filter/woo-filter.php:100
-#: build/index.js:1
+#: build/index.js:312
 #: src/WooFilter.js:248
+#: build/index.js:248
 msgid "Color Label"
 msgstr ""
 
@@ -832,8 +854,9 @@ msgstr ""
 #: core/widgets/bricks/components/woo-filter.php:107
 #: core/widgets/bricks/components/wp-filter.php:108
 #: core/widgets/elementor/woo-filter/woo-filter.php:121
-#: build/index.js:1
+#: build/index.js:321
 #: src/WooFilter.js:264
+#: build/index.js:264
 msgid "Size Label"
 msgstr ""
 
@@ -848,9 +871,12 @@ msgstr ""
 #: core/widgets/bricks/components/wp-filter.php:128
 #: core/widgets/elementor/woo-filter/woo-filter.php:143
 #: core/widgets/elementor/wp-filter/wp-filter.php:140
-#: build/index.js:1
+#: build/index.js:330
+#: build/index.js:735
 #: src/WooFilter.js:280
 #: src/WpFilter.js:250
+#: build/index.js:280
+#: build/index.js:687
 msgid "Tag Label"
 msgstr ""
 
@@ -868,8 +894,9 @@ msgstr ""
 #: core/widgets/bricks/components/woo-filter.php:162
 #: core/widgets/bricks/components/wp-filter.php:163
 #: core/widgets/elementor/woo-filter/woo-filter.php:176
-#: build/index.js:1
+#: build/index.js:345
 #: src/WooFilter.js:304
+#: build/index.js:304
 msgid "Attribute Label"
 msgstr ""
 
@@ -885,8 +912,9 @@ msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:198
 #: core/widgets/elementor/woo-filter/woo-filter.php:209
-#: build/index.js:1
+#: build/index.js:369
 #: src/WooFilter.js:341
+#: build/index.js:341
 msgid "Price Range Label"
 msgstr ""
 
@@ -897,30 +925,34 @@ msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:219
 #: core/widgets/elementor/woo-filter/woo-filter.php:231
-#: build/index.js:1
+#: build/index.js:360
 #: src/WooFilter.js:327
+#: build/index.js:327
 msgid "Review Label"
 msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:230
 #: core/widgets/elementor/woo-filter/woo-filter.php:241
-#: build/index.js:1
+#: build/index.js:373
 #: src/WooFilter.js:347
+#: build/index.js:347
 msgid "Filter By Stock"
 msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:240
 #: core/widgets/elementor/woo-filter/woo-filter.php:253
-#: build/index.js:1
+#: build/index.js:378
 #: src/WooFilter.js:355
+#: build/index.js:355
 msgid "Stock Label"
 msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:251
 #: core/widgets/elementor/woo-filter/woo-filter.php:263
 #: templates/woo-filter/template-1/on-sale.php:3
-#: build/index.js:1
+#: build/index.js:382
 #: src/WooFilter.js:361
+#: build/index.js:361
 msgid "Sales"
 msgstr ""
 
@@ -932,8 +964,9 @@ msgstr ""
 #: core/widgets/bricks/components/woo-filter.php:272
 #: core/widgets/bricks/components/wp-filter.php:189
 #: core/widgets/elementor/woo-filter/woo-filter.php:296
-#: build/index.js:1
+#: build/index.js:391
 #: src/WooFilter.js:376
+#: build/index.js:376
 msgid "Display Sorting"
 msgstr ""
 
@@ -941,16 +974,21 @@ msgstr ""
 #: core/widgets/bricks/components/wp-filter.php:199
 #: core/widgets/elementor/woo-filter/woo-filter.php:307
 #: core/widgets/elementor/wp-filter/wp-filter.php:97
+#: build/index.js:714
 #: src/WpFilter.js:215
+#: build/index.js:652
 msgid "Display Categories"
 msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:292
 #: core/widgets/bricks/components/wp-filter.php:209
 #: core/widgets/elementor/woo-filter/woo-filter.php:319
-#: build/index.js:1
+#: build/index.js:325
+#: build/index.js:730
 #: src/WooFilter.js:270
 #: src/WpFilter.js:240
+#: build/index.js:270
+#: build/index.js:677
 msgid "Display Tags"
 msgstr ""
 
@@ -1113,7 +1151,9 @@ msgid "Template 4"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:77
+#: build/index.js:696
 #: src/WpFilter.js:194
+#: build/index.js:631
 msgid "Select Filter Type"
 msgstr ""
 
@@ -1122,33 +1162,47 @@ msgid "Select Custom Post"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:161
+#: build/index.js:745
 #: src/WpFilter.js:264
+#: build/index.js:701
 msgid "Display Authors"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:173
+#: build/index.js:750
 #: src/WpFilter.js:273
+#: build/index.js:710
 msgid "Author Label"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:175
+#: build/index.js:751
 #: src/WpFilter.js:274
+#: build/index.js:711
 msgid "Place Author Label"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:183
+#: build/index.js:756
 #: src/WpFilter.js:280
+#: build/index.js:717
 msgid "Author List"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:193
+#: build/index.js:761
 #: src/WpFilter.js:288
+#: build/index.js:725
 msgid "Display Custom Field"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:205
+#: build/index.js:766
+#: build/index.js:767
 #: src/WpFilter.js:297
 #: src/WpFilter.js:298
+#: build/index.js:734
+#: build/index.js:735
 msgid "Custom Field Label"
 msgstr ""
 
@@ -1157,44 +1211,44 @@ msgid "Place Custom Field Label"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:208
+#: build/index.js:773
 #: src/WpFilter.js:305
+#: build/index.js:742
 msgid "Enter Exact Custom Field Name"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:216
+#: build/index.js:772
 #: src/WpFilter.js:304
+#: build/index.js:741
 msgid "Custom Field Name"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:236
-#: build/index.js:1
+#: build/index.js:399
+#: build/index.js:777
 #: src/WooFilter.js:386
 #: src/WpFilter.js:312
+#: build/index.js:386
+#: build/index.js:749
 msgid "Display Categories in Filter Result"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:248
-#: build/index.js:1
+#: build/index.js:395
+#: build/index.js:781
 #: src/WooFilter.js:381
 #: src/WpFilter.js:317
+#: build/index.js:381
+#: build/index.js:754
 msgid "Display Tags in Filter Result"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:259
+#: build/index.js:785
 #: src/WpFilter.js:322
+#: build/index.js:759
 msgid "Display Author in Filter Result"
-msgstr ""
-
-#: filter-plus.php:114
-msgid "Activate WooCommerce"
-msgstr ""
-
-#: filter-plus.php:117
-msgid "Install WooCommerce"
-msgstr ""
-
-#: filter-plus.php:127
-msgid "Filter Plus requires WooCommerce , which is currently NOT RUNNING."
 msgstr ""
 
 #: templates/woo-filter/parts/filter-layout-attr-grid.php:34
@@ -1232,8 +1286,7 @@ msgid " of"
 msgstr ""
 
 #: templates/woo-filter/parts/filter-top.php:19
-#: templates/woo-filter/template-2/right-side/filter-top.php:3
-msgid "Products"
+msgid "Items"
 msgstr ""
 
 #: templates/woo-filter/sort-option.php:8
@@ -1297,6 +1350,10 @@ msgstr ""
 msgid "Clean All"
 msgstr ""
 
+#: templates/woo-filter/template-2/right-side/filter-top.php:3
+msgid "Products"
+msgstr ""
+
 #: templates/woo-filter/template-2/template-2.php:29
 msgid "Find Favorite Item"
 msgstr ""
@@ -1325,84 +1382,128 @@ msgstr ""
 msgid "Go To Premium"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:261
+#: build/index.js:660
 #: src/WooFilter.js:203
 #: src/WpFilter.js:169
+#: build/index.js:203
+#: build/index.js:606
 msgid "(Pro)"
 msgstr ""
 
-#: build/index.js:1
-#: src/WooFilter.js:220
-#: src/WpFilter.js:188
-msgid "Select Template"
-msgstr ""
-
-#: build/index.js:1
+#: build/index.js:267
+#: build/index.js:668
 #: src/WooFilter.js:207
 #: src/WpFilter.js:175
+#: build/index.js:207
+#: build/index.js:612
 msgid "Template-1"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:272
+#: build/index.js:673
 #: src/WooFilter.js:208
 #: src/WpFilter.js:176
+#: build/index.js:208
+#: build/index.js:613
 msgid "Template-2"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:277
+#: build/index.js:678
 #: src/WooFilter.js:209
 #: src/WpFilter.js:177
+#: build/index.js:209
+#: build/index.js:614
 msgid "Template-3"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:282
+#: build/index.js:683
 #: src/WooFilter.js:210
 #: src/WpFilter.js:178
+#: build/index.js:210
+#: build/index.js:615
 msgid "Template-4"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:290
+#: build/index.js:691
+#: src/WooFilter.js:220
+#: src/WpFilter.js:188
+#: build/index.js:220
+#: build/index.js:625
+msgid "Select Template"
+msgstr ""
+
+#: build/index.js:297
+#: build/index.js:720
 #: src/WooFilter.js:228
 #: src/WpFilter.js:225
+#: build/index.js:228
+#: build/index.js:662
 msgid "Place Category Label"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:302
+#: build/index.js:725
 #: src/WooFilter.js:234
 #: src/WpFilter.js:231
+#: build/index.js:234
+#: build/index.js:668
 msgid "Category List"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:307
 #: src/WooFilter.js:240
+#: build/index.js:240
 msgid "Display Colors"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:316
 #: src/WooFilter.js:256
+#: build/index.js:256
 msgid "Display Size"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:340
 #: src/WooFilter.js:295
+#: build/index.js:295
 msgid "Display Attributes"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:355
 #: src/WooFilter.js:319
+#: build/index.js:319
 msgid "Display Reviews"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:364
 #: src/WooFilter.js:333
+#: build/index.js:333
 msgid "Display Price Range"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:387
 #: src/WooFilter.js:369
+#: build/index.js:369
 msgid "Sale Label"
 msgstr ""
 
+#: build/index.js:404
+#: src/WooFilter.js:394
+#: build/index.js:394
+msgid "Customize the Woocommerce filtering options from the block settings"
+msgstr ""
+
+#: build/index.js:709
 #: src/WpFilter.js:206
+#: build/index.js:643
 msgid "Select Custom Post Type"
+msgstr ""
+
+#: build/index.js:790
+#: src/WpFilter.js:330
+#: build/index.js:767
+msgid "Customize the Wordpress filtering options from the block settings"
 msgstr ""
