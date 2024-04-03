@@ -72,7 +72,6 @@ class Shortcodes {
 					'sorting'          	=> 'yes',
 				), $atts )
 		);
-
 		ob_start();
 		$is_pro_active = $this->pro_template_check($template);
 		if ($is_pro_active !== '' ) {

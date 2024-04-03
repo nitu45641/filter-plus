@@ -347,12 +347,13 @@ class Woo_Filter extends \Bricks\Element {
 		$this->set_attribute( '_root', 'class', $root_classes );
 
 		echo "<div {$this->render_attributes( '_root' )}>";
-		echo do_shortcode(
-			"[filter_products category_label={$category_label} tag_label={$tag_label} color_label={$color_label}
-            size_label={$size_label} attribute_label={$attribute_label} review_label={$review_label} price_range_label={$price_range_label}
-            stock_label={$stock_label} on_sale_label={$on_sale_label}
-            stock={$stock} on_sale={$on_sale} template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']"
-		);
+			echo do_shortcode("[filter_products category_label='".$category_label."' 
+			tag_label='".$tag_label."' 
+			color_label='".$color_label."' 
+			size_label='".$size_label."' attribute_label='".$attribute_label."' 
+			review_label='".$review_label."' price_range_label='".$price_range_label."'
+			stock_label='".$stock_label."' on_sale_label='".$on_sale_label."' 
+			stock={$stock} on_sale={$on_sale} template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");     	
 		echo '</div>';
 	}
 }

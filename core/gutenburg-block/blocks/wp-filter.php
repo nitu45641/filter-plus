@@ -52,14 +52,15 @@ function wp_filter_callback( $settings ) {
         $tags     =  join(", ",$tags);
     }
 
-    ob_start();
+    if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 ) {
 
-    echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} category_label={$category_label} 
-    categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label={$tag_label}
-    template ={$template} author={$author} author_label={$author_label} author_list={$author_list} 
-    custom_field={$custom_field} custom_field_label={$custom_field_label} meta_condition={$meta_condition}
-    custom_field_list={$custom_field_list} post_tags='{$post_tags}'
-    post_categories='{$post_categories} post_author={$post_author}']"); 
+        echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
+        category_label='".$category_label."' 
+        categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
+        template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
+        custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
+        custom_field_list={$custom_field_list} post_tags='{$post_tags}'
+        post_categories='{$post_categories} post_author={$post_author}']"); 
 
-    return ob_get_clean();
+    }
 }
