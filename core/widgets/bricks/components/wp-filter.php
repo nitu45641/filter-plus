@@ -40,7 +40,7 @@ class Wp_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Style', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::widgets_templates(),
+			'options' => \FilterPlus\Utils\Helper::widgets_templates(4),
 			'inline' => true,
 			'placeholder' => esc_html__( 'Select Style', 'filter-plus' ),
 			'single' => true,
@@ -62,53 +62,13 @@ class Wp_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Categories', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::get_categories( '', 'assoc' ),
+			'options' => \FilterPlus\Utils\Helper::get_categories( '', 'assoc' , array('taxonomy'=>'category') ),
 			'inline' => true,
 			'placeholder' => esc_html__( 'Select Categories', 'filter-plus' ),
 			'multiple' => true,
 			'searchable' => true,
 			'clearable' => true,
 			'default' => '',
-		);
-
-		// colors
-		$this->controls['colors'] = array(
-			'tab' => 'content',
-			'group' => 'filter_options',
-			'label' => esc_html__( 'Show Color', 'filter-plus' ),
-			'type' => 'checkbox',
-			'inline' => true,
-			'small' => true,
-			'default' => true,
-		);
-
-		$this->controls['color_label'] = array(
-			'tab' => 'content',
-			'group' => 'filter_options',
-			'label' => esc_html__( 'Color Label', 'filter-plus' ),
-			'type' => 'text',
-			'default' => esc_html__( 'Place Color Label Here', 'filter-plus' ),
-			'required' => array( 'colors', '=', true ),
-		);
-
-		// Size
-		$this->controls['size'] = array(
-			'tab' => 'content',
-			'group' => 'filter_options',
-			'label' => esc_html__( 'Show Size', 'filter-plus' ),
-			'type' => 'checkbox',
-			'inline' => true,
-			'small' => true,
-			'default' => true,
-		);
-
-		$this->controls['size_label'] = array(
-			'tab' => 'content',
-			'group' => 'filter_options',
-			'label' => esc_html__( 'Size Label', 'filter-plus' ),
-			'type' => 'text',
-			'default' => esc_html__( 'Place Size Label Here', 'filter-plus' ),
-			'required' => array( 'size', '=', true ),
 		);
 
 		// Tags
@@ -136,7 +96,7 @@ class Wp_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Tags', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::get_product_tags( 'product_tag', 'assoc' ),
+			'options' => \FilterPlus\Utils\Helper::get_product_tags( 'post_tag', 'assoc' ),
 			'inline' => true,
 			'placeholder' => esc_html__( 'Select Tag', 'filter-plus' ),
 			'multiple' => true,
@@ -147,38 +107,38 @@ class Wp_Filter extends \Bricks\Element {
 		);
 
 		// Attributes
-		$this->controls['show_attributes'] = array(
+		$this->controls['author'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',
-			'label' => esc_html__( 'Show Attributes', 'filter-plus' ),
+			'label' => esc_html__( 'Display Authors', 'filter-plus' ),
 			'type' => 'checkbox',
 			'inline' => true,
 			'small' => true,
 			'default' => true,
 		);
 
-		$this->controls['attribute_label'] = array(
+		$this->controls['author_label'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',
-			'label' => esc_html__( 'Attribute Label', 'filter-plus' ),
+			'label' => esc_html__( 'Author Label', 'filter-plus' ),
 			'type' => 'text',
-			'default' => esc_html__( 'Place Attribute Label Here', 'filter-plus' ),
-			'required' => array( 'show_attributes', '=', true ),
+			'default' => esc_html__( 'Place Author Label Here', 'filter-plus' ),
+			'required' => array( 'author', '=', true ),
 		);
 
-		$this->controls['attributes'] = array(
+		$this->controls['author_list'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',
-			'label' => esc_html__( 'Attributes', 'filter-plus' ),
+			'label' => esc_html__( 'Author List', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::woo_attribute_list( 'assoc' ),
+			'options' => \FilterPlus\Utils\Helper::instance()->author_list( '','assoc' ),
 			'inline' => true,
-			'placeholder' => esc_html__( 'Select Attributes', 'filter-plus' ),
+			'placeholder' => esc_html__( 'Select Authors', 'filter-plus' ),
 			'multiple' => true,
 			'searchable' => true,
 			'clearable' => true,
 			'default' => '',
-			'required' => array( 'show_attributes', '=', true ),
+			'required' => array( 'author', '=', true ),
 		);
 
 		// Filter Results
@@ -237,10 +197,10 @@ class Wp_Filter extends \Bricks\Element {
 		$categories         = is_array($categories) ? implode(',',$categories) : '';
 		$show_tags          = !empty($show_tags) && $show_tags == true ? 'yes' : 'no';
 		$tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
-		$tags               = is_array($tags) ? implode(',',$tags) : '';
+		$tags               = !empty($tags) && is_array($tags) ? implode(',',$tags) : '';
 		$author	            = !empty($author) ? $author : '';
 		$author_label	    = !empty($author_label) ? $author_label : esc_html__('Authors','filter-plus');
-		$author_list	    = is_array($author_list) ? implode(',',$author_list) : '';
+		$author_list	    = !empty($author_list) && is_array($author_list) ? implode(',',$author_list) : '';
 		$custom_field	    = !empty($custom_field) ? $custom_field : 'no';
 		$custom_field_label	= !empty($custom_field_label) ? $custom_field_label : esc_html__('Custom Field','filter-plus');
 		$meta_condition	    = !empty($meta_condition) ? $meta_condition : 'OR';

@@ -824,18 +824,16 @@ class Helper {
 	 *
 	 * @return array
 	 */
-	public static function widgets_templates()  {
-		$templates = array(
-			1  => esc_html__( 'Template 1', 'filter-plus' ),
-		);
+	public static function widgets_templates($limit = 5 )  {
 		$pro = '';
 		if ( ! class_exists( 'FilterPlusPro' ) ) {
 			$pro  = esc_html__( 'Pro', 'filter-plus' );
 		}
-		$templates[2] = esc_html__( 'Template 2', 'filter-plus' ) . ' ' . $pro;
-		$templates[3] = esc_html__( 'Template 3', 'filter-plus' ) . ' ' . $pro;
-		$templates[4] = esc_html__( 'Template 4', 'filter-plus' ) . ' ' . $pro;
-		$templates[5] = esc_html__( 'Template 5', 'filter-plus' ) . ' ' . $pro;
+		$templates = array( 1  => esc_html__( 'Template 1', 'filter-plus' ) );
+		for ($i=1; $i <= $limit ; $i++) { 
+			$pro_tag = $i == 1 ? '' : ' '. $pro;
+			$templates[$i] = esc_html__( 'Template '.$i, 'filter-plus' ) . $pro_tag;
+		}
 
 		return $templates;
 	}
