@@ -32,10 +32,9 @@ class Core {
       }
 
       \FilterPlus\Core\Frontend\Shortcodes::instance()->init();
-
       //register gutenberg blocks.
-      if ( file_exists( \FilterPlus::plugin_dir() . 'core/gutenburg-block/init.php' ) ) {
-      	include_once \FilterPlus::plugin_dir() . 'core/gutenburg-block/init.php';
+      if ( file_exists( \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/init.php' ) ) {
+      	include_once \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/init.php';
       }
 
       // load elementor

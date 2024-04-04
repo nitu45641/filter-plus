@@ -69,12 +69,11 @@ if( version_compare($wp_version, '5.8') >= 0){
 // Hook: Block assets.
 add_action( 'init', 'filter_plus_block_assets' );
 
-
 // woo filter
-if ( file_exists( \FilterPlus::plugin_dir() . 'core/gutenburg-block/blocks/woo-filter.php' ) ) {
-    include_once \FilterPlus::plugin_dir() . 'core/gutenburg-block/blocks/woo-filter.php';
+if ( file_exists( \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/blocks/woo-filter.php' ) ) {
+    include_once \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/blocks/woo-filter.php';
 }
 // wp filter
-if ( file_exists( \FilterPlus::plugin_dir() . 'core/gutenburg-block/blocks/wp-filter.php' ) ) {
-    include_once \FilterPlus::plugin_dir() . 'core/gutenburg-block/blocks/wp-filter.php';
+if ( file_exists( \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/blocks/wp-filter.php' ) ) {
+    include_once \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/blocks/wp-filter.php';
 }
