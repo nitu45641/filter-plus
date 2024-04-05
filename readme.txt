@@ -118,7 +118,7 @@ We have tested all the popular themes. And we believe it will work with your the
 
 == Changelog ==
 
-= 1.0.46 (April 04, 2024)=
+= 1.0.46 (April 05, 2024)=
 Fix   : WordPress Filter UX update
 
 = 1.0.45 (April 03, 2024)=
