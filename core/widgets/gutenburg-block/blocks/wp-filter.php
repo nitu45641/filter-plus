@@ -28,13 +28,13 @@ function wp_filter_callback( $settings ) {
     $show_tags          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
     $tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
     $tags               = !empty($settings['tags']) ? $settings['tags'] : '';
-    $author	            = !empty($author) ? $author : '';
+    $author	            = !empty($author) && $author == true ? 'yes' : 'no';
     $author_label	    = !empty($author_label) ? $author_label : esc_html__('Authors','filter-plus');
     $author_list	    = !empty($author_list) ? $author_list : '';
-    $custom_field	    = !empty($custom_field) ? $custom_field : 'no';
+    $custom_field	    = !empty($custom_field) && $custom_field == true ? 'yes' : 'no';
     $custom_field_label	= !empty($custom_field_label) ? $custom_field_label : esc_html__('Custom Field','filter-plus');
     $meta_condition	    = !empty($meta_condition) ? $meta_condition : 'OR';
-    $custom_field_list    = !empty($settings['custom_field_list']) ? $custom_field_list : '';
+    $custom_field_list  = !empty($settings['custom_field_list']) ? $custom_field_list : '';
     $post_categories    = !empty($settings['post_categories']) && $settings['post_categories'] == true ? 'yes' : 'no';
     $post_tags          = !empty($settings['post_tags']) && $settings['post_tags'] == true ? 'yes' : 'no';
     $post_author        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';

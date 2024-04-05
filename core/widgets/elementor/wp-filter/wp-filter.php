@@ -533,9 +533,9 @@ class Wp_Filter extends Widget_Base {
 		$settings   = $this->get_settings();
         extract($settings);
 
-		$custom_field_list = '';
-		if (!empty($settings['custom_field_list'])) {
-			$custom_field_list  = is_array($custom_field_list) ? implode(',',$custom_field_list) : $settings['custom_field_list'];
+		$custom_fields = '';
+		if (!empty($custom_field_list)) {
+			$custom_fields  = is_array($custom_field_list) ? implode(',',$custom_field_list) : $custom_field_list;
 		}
 
 		$filter_type        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
@@ -562,7 +562,7 @@ class Wp_Filter extends Widget_Base {
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
-        custom_field_list={$custom_field_list} post_tags='{$post_tags}'
+        custom_field_list={$custom_fields} post_tags='{$post_tags}'
         post_categories='{$post_categories} post_author={$post_author}']"); 
 
 	}
