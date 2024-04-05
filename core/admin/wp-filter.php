@@ -14,7 +14,7 @@
 
 			// categories
 			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
-			'placeholder'=>esc_html__("Place Category Label Here","filter-plus"),
+			'wrapper_type'=>'fwp','placeholder'=>esc_html__("Place Category Label Here","filter-plus"),
 			'data_label' => 'category_label','disable' => $disable);
 			filter_plus_number_input_field($args);
 
@@ -45,7 +45,8 @@
 			, 'disable' => $disable);
 			filter_plus_checkbox_field($args) ;
 
-			$args        = array('label'=>esc_html__("Tag Label:","filter-plus"),'id' => 'tag_label',
+			$args        = array('label'=>esc_html__("Tag Label:","filter-plus"), 
+			'wrapper_type'=>'fwp', 'id' => 'tag_label',
 			'data_label' => 'tag_label','condition_class' => "show_wp_tags d-none",
 			'placeholder'=>esc_html__("Place Tag Label Here","filter-plus"),
 			'disable' => $disable);

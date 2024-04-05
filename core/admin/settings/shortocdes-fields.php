@@ -68,6 +68,7 @@ if ( ! function_exists( 'filter_plus_checkbox_field' ) ) {
 if ( ! function_exists( 'filter_plus_number_input_field' ) ) {
 	function filter_plus_number_input_field( $args ) {
 		$id           = ! empty( $args['id'] ) ? $args['id'] : '';
+		$wrapper_type = ! empty( $args['wrapper_type'] ) ? $args['wrapper_type'] : '';
 		$wrapper_class = ! empty( $args['wrapper_class'] ) ? $args['wrapper_class'] : 'single-block';
 		$label_class = ! empty( $args['label_class'] ) ? $args['label_class'] : 'form-label';
 		$value        = ! empty( $args['value'] ) ? $args['value'] : '';
@@ -84,7 +85,7 @@ if ( ! function_exists( 'filter_plus_number_input_field' ) ) {
 			<div class="' . $label_class . '">' . $label . '</div>
 			<div class="input-section">
 				<div class="input-wrap ' . $disable . '">
-					<input type="' . $field_type . '" name="' . $id . '" id="' . $id . '" value="' . $value . '"  
+					<input type="' . $field_type . '" name="' . $id . '" id="' . $wrapper_type.$id . '" value="' . $value . '"  
 						data-option="' . $args['data_label'] . '" 
 						placeholder="' . $placeholder . '"
 					/>
