@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Woo_Filter extends \Bricks\Element {
-	public $category     = 'filter-plus';
+	public $category     = 'filter plus';
 	public $name         = 'fplus-woo';
 	public $icon         = 'ti-filter';
 	public $css_selector = '.fplus-woo-wrapper';
