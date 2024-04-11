@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<div class="search-form">
 		<input
 			type="text"
+			value=""
 			class="sidebar-input"
 			placeholder=<?php esc_html_e("Search Products","filter-plus");?>
 		/>

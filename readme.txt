@@ -17,6 +17,8 @@ Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filte
 
 https://www.youtube.com/watch?v=MkbFDvwuG08&t=3s
 
+**[Filter Plus Pro](https://woooplugin.com/filter-plus/) Features**
+
 **Wordpress Filter** Helps you to filter blogs, custom post type by Categories, Tags, Author, Post Meta, Custom Fields and so on.You can Filter Everything in WordPress.
 
 **Woocommerce Admin Order** Filter helps Store Owner analyze which is the best-selling burger in your store by filtering orders by products and order status. With these analytics, you can easily filter out where you have to emphasize for increased sales.
