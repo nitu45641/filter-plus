@@ -49,6 +49,7 @@ class Shortcodes {
 					'template'         	=> '1',
 					'category_label'    => esc_html__('Categories','filter-plus'),
 					'categories'       	=> '',
+					'sub_categories'	=> 'no',
 					'colors'           	=> 'yes',
 					'color_label'       => esc_html__('Colors','filter-plus'),
 					'size'             	=> 'yes',

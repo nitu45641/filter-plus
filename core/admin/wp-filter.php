@@ -22,6 +22,9 @@
 			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'wp_categories',
 			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories, 'disable' => $disable );
 			filter_plus_select_field($args);
+			// sub categories
+			$args = array('label'=>esc_html__("Display Sub Categories:","filter-plus"),'id' => 'wp_sub_categories','data_label' => 'sub_categories');
+			filter_plus_checkbox_field($args);
 			
 			// post type
 			$args = array('label'=>esc_html__("Select Type:","filter-plus"),'id' => 'filter_type',

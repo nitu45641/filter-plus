@@ -82,12 +82,23 @@ class Woo_Filter extends Widget_Base {
 				'multiple' => true,
 			)
 		);
+		$this->add_control(
+			'sub_categories',
+			array(
+				'label' => esc_html__( 'Show Sub Categories', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
 
 		$this->add_control(
 			'colors',
 			array(
 				'label' => esc_html__( 'Show Color', 'filter-plus' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',
@@ -108,7 +119,7 @@ class Woo_Filter extends Widget_Base {
 			'size',
 			array(
 				'label' => esc_html__( 'Show Size', 'filter-plus' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',
@@ -595,6 +606,7 @@ class Woo_Filter extends Widget_Base {
 		$show_tags  = ! empty( $show_tags ) ? $show_tags : '';
 		$tag_label  = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Tags', 'filter-plus' );
 		$color_label        = ! empty( $color_label ) ? $color_label : esc_html__( 'Colors', 'filter-plus' );
+		$sub_categories     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
 		$colors             = ! empty( $colors ) ? $colors : '';
 		$size               = ! empty( $size ) ? $size : '';
 		$size_label         = ! empty( $size_label ) ? $size_label : esc_html__( 'Size', 'filter-plus' );
@@ -615,6 +627,7 @@ class Woo_Filter extends Widget_Base {
 		$product_categories = ! empty( $product_categories ) ? $product_categories : '';
 
 		echo do_shortcode("[filter_products category_label='".$category_label."' 
+		sub_categories='".$sub_categories."' 
 		tag_label='".$tag_label."' 
 		color_label='".$color_label."' 
 		size_label='".$size_label."' attribute_label='".$attribute_label."' 

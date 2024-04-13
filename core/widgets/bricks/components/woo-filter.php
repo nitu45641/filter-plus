@@ -70,6 +70,17 @@ class Woo_Filter extends \Bricks\Element {
 			'default' => '',
 		);
 
+		// sub categories
+		$this->controls['sub_categories'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Show Sub Categories', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
+		
 		// colors
 		$this->controls['colors'] = array(
 			'tab' => 'content',
@@ -308,7 +319,8 @@ class Woo_Filter extends \Bricks\Element {
         $template           = !empty($template) ? $template[0] : '1';
         $category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
         $categories         = !empty($categories) ? $categories : '';
-        $color_label 		= !empty($color_label) ? $color_label : esc_html__('Colors','filter-plus');
+		$sub_categories     = !empty($sub_categories) && $sub_categories == true ? 'yes' : 'no';
+		$color_label 		= !empty($color_label) ? $color_label : esc_html__('Colors','filter-plus');
         $colors             = !empty($colors) && $colors == true  ? 'yes' : 'no';
         $size_label			= !empty($size_label) ? $size_label : esc_html__('Size','filter-plus');
         $size               = !empty($size) && $size == true ? 'yes' : 'no';
@@ -348,6 +360,7 @@ class Woo_Filter extends \Bricks\Element {
 
 		echo "<div {$this->render_attributes( '_root' )}>";
 			echo do_shortcode("[filter_products category_label='".$category_label."' 
+			sub_categories='".$sub_categories."' 
 			tag_label='".$tag_label."' 
 			color_label='".$color_label."' 
 			size_label='".$size_label."' attribute_label='".$attribute_label."' 

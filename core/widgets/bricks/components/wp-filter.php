@@ -114,6 +114,17 @@ class Wp_Filter extends \Bricks\Element {
 			'required' => array( 'show_categories', '=', true )
 		);
 
+		// Sub Categories
+		$this->controls['sub_categories'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Show Sub Categories', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
+
 		// Tags
 		$this->controls['show_tags'] = array(
 			'tab' => 'content',
@@ -267,6 +278,7 @@ class Wp_Filter extends \Bricks\Element {
 		$show_categories    = !empty($show_categories) ? $show_categories : 'yes';
 		$category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
 		$categories         = !empty($categories) && is_array($categories) ? implode(',',$categories) : '';
+		$sub_categories     = !empty($sub_categories) && $sub_categories == true ? 'yes' : 'no';
 		$show_tags          = !empty($show_tags) && $show_tags == true ? 'yes' : 'no';
 		$tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
 		$tags               = !empty($tags) && is_array($tags) ? implode(',',$tags) : '';
@@ -290,6 +302,7 @@ class Wp_Filter extends \Bricks\Element {
 
         echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
         category_label='".$category_label."' 
+		sub_categories='".$sub_categories."' 
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}

@@ -203,8 +203,9 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	fill: var(--filter-border-color,#c4c4c4);
 }
 
-.sidebar-style-2 .category-list li {
+.checkbox-style .category-list li {
 	list-style-type: none;
+	display: block;
 	cursor: pointer;
 	color: #666666;
 }

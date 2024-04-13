@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					data-slug="<?php echo esc_attr($item['slug'])?>"
 				>
 					<?php echo esc_html($item['name']);?>
-					<?php if( !empty($item['sub_categories'])): ?>
+					<?php if( $sub_categories == 'yes' && !empty($item['sub_categories'])): ?>
 					<ul class="sub_categories">
 					<?php foreach($item['sub_categories'] as $sub): ?>
 						<li 

@@ -121,12 +121,23 @@ class Wp_Filter extends Widget_Base {
 				'condition' => ['show_categories' => 'yes']
 			]
 		);
+		$this->add_control(
+			'sub_categories',
+			array(
+				'label' => esc_html__( 'Show Sub Categories', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
 
 		$this->add_control(
 			'show_tags',
 			[
 				'label' => esc_html__('Show Tags', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
@@ -544,6 +555,7 @@ class Wp_Filter extends Widget_Base {
 		$show_categories    = !empty($show_categories) ? $show_categories : 'yes';
 		$category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
 		$categories         = is_array($categories) ? implode(',',$categories) : '';
+		$sub_categories     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
 		$show_tags          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
 		$tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
 		$tags               = is_array($tags) ? implode(',',$tags) : '';
@@ -559,6 +571,7 @@ class Wp_Filter extends Widget_Base {
 		
         echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
         category_label='".$category_label."' 
+		sub_categories='".$sub_categories."' 
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}

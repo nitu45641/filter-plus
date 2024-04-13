@@ -20,6 +20,7 @@ function woo_filter_callback( $settings ) {
     $template           = !empty($settings['template']) ? $settings['template'] : '1';
     $category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
     $categories         = !empty($settings['categories']) ? $settings['categories'] : '';
+    $sub_categories     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
     $color_label 		= !empty($color_label) ? $color_label : esc_html__('Colors','filter-plus');
     $colors             = !empty($settings['colors']) && $settings['colors'] == true  ? 'yes' : 'no';
     $size_label			= !empty($size_label) ? $size_label : esc_html__('Size','filter-plus');
@@ -58,6 +59,7 @@ function woo_filter_callback( $settings ) {
             <?php
                 echo do_shortcode("[filter_products category_label='".$category_label."' 
                 tag_label='".$tag_label."' 
+                sub_categories='".$sub_categories."' 
                 color_label='".$color_label."' 
                 size_label='".$size_label."' attribute_label='".$attribute_label."' 
                 review_label='".$review_label."' price_range_label='".$price_range_label."'

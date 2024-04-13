@@ -146,7 +146,14 @@ if ( ! function_exists( 'filter_plus_select_field' ) ) {
 			}
 			if ( ! empty( $args['options'] ) ) :
 				foreach ( $args['options'] as $item ) :
-					$options_html .= '<option value="' . $item->term_id . '">' . $item->name . '</option>';
+					if ( is_array($item) ) {
+						$term_id = $item['term_id'];	
+						$name = $item['name'];
+					}else{
+						$term_id = $item->term_id;
+						$name = $item->name;
+					}
+					$options_html .= '<option value="' . $term_id . '">' . $name . '</option>';
 				endforeach;
 			endif;
 		}

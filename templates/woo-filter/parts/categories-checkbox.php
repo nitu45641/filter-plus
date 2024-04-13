@@ -1,9 +1,5 @@
 
-<?php
-
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-?>
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <div class="sidebar-row categories-wrap">
 <h4 class="sidebar-label"><?php echo !empty( $category_label ) ?  $category_label : esc_html__('Categories','filter-plus');?></h4>
@@ -19,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 						>
 							<input type="checkbox" value="<?php  echo esc_attr($item['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$item['term_id'])?>">
 							<label for="<?php  echo esc_attr("cat_li_".$item['term_id'])?>"><?php  echo esc_html($item['name'])  ;?></label>
-							<?php if( !empty($item['sub_categories'])): ?>
+							<?php if( $sub_categories == 'yes' && !empty($item['sub_categories'])): ?>
 								<ul class="sub_categories">
 									<?php foreach($item['sub_categories'] as $sub): ?>
 										<li 

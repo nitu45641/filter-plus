@@ -25,6 +25,7 @@ function wp_filter_callback( $settings ) {
     $show_categories    = !empty($show_categories) ? $show_categories : 'yes';
     $category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
     $categories         = !empty($settings['categories']) ? $settings['categories'] : '';
+    $sub_categories     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
     $show_tags          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
     $tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
     $tags               = !empty($settings['tags']) ? $settings['tags'] : '';
@@ -56,6 +57,7 @@ function wp_filter_callback( $settings ) {
 
         echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
         category_label='".$category_label."' 
+        sub_categories='".$sub_categories."' 
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}

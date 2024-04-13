@@ -27,6 +27,9 @@
 			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
 			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories);
 			filter_plus_select_field($args);
+			// sub categories
+			$args = array('label'=>esc_html__("Display Sub Categories:","filter-plus"),'id' => 'woo_sub_categories','data_label' => 'sub_categories');
+			filter_plus_checkbox_field($args);
 
 			// colors
 			$args = array('label'=>esc_html__("Display Colors:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
