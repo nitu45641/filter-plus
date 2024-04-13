@@ -224,15 +224,14 @@
 .category-list li {
 	margin-top: 5px;
 	display: flex;
-    align-items: center;
+	flex-direction: column;
 }
-.category-list li.active,
-.category-list li:hover
+ul.category-list li:not(ul.sub_categories li).active,
+ul.category-list li:not(ul.sub_categories li):hover 
 {
 	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
 }
-.sidebar-style-1 .categories-wrap ul,
 .wp-style-2 .categories-wrap ul
 {
     padding-left: 18px !important;

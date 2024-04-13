@@ -9,11 +9,12 @@
 		//list click/change
 		const category_li = $('.category-list li');
 		let action = 'click';
-		if (category_li.find('input[type="checkbox"]').length) {
+		if (category_li.find('input[type="checkbox"]').length !== 0 ) {
 			action = 'change';
 		}
 
-		category_li.on(action, function () {
+		category_li.on(action, function (event) {
+			event.stopPropagation();
 			const _this = $(this);
 			const active_li = $('#cat_li_' + _this.data('cat_id'));
 			if (active_li.length > 0) {

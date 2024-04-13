@@ -15,10 +15,9 @@ var filterOption = {
 			.map(function () {
 				return filter_client.seo_slug_url == 'yes'
 					? $(this).data('slug')
-					: $.trim($(this).text());
+					: $.trim($(this).data('name'));
 			})
 			.get();
-
 		return get_cat_list.join(',');
 	},
 	get_taxonomies_data($, selected_data, format) {

@@ -398,20 +398,40 @@ class Helper {
 
 		$cat = get_categories( $args_cat );
 		$result_cat = array();
-		foreach ($cat as $key => $value) {
-			if ($type == "assoc" ) {
-				$result_cat[$value->term_id] = $value->name;
+		foreach ($cat as $key => &$value) {
+			$sub_cats = self::get_sub_categories($value->term_id,$taxonomy , $type );
+			if ( $type == "assoc" || $type == "" ) {
+				$result_cat[$key][$value->term_id] 	= $value->name;
+				$result_cat[$key]['term_id'] = $value->term_id;
+				$result_cat[$key]['name'] = $value->name;
+				$result_cat[$key]['slug'] = $value->slug;
+				$result_cat[$key]['sub_categories'] = $sub_cats;
+			} 
+			else if ($type == "label_value" ) {
+				$result_cat[$key]['value'] 		= $value->term_id;
+				$result_cat[$key]['label'] 		= $value->name;
+				$result_cat[$key]['sub_categories'] = $sub_cats;
+			} 
+		}
+		return $result_cat;
+	}
+
+	public static function get_sub_categories($parent_id,$taxonomy,$type) {
+		$result_cat = array();
+		$args = array('orderby' => 'name', 'parent' => $parent_id , 'taxonomy' => $taxonomy );
+		$subcategories = get_categories( $args );
+		foreach ($subcategories as $key => &$value) {			
+			if ( $type == "assoc" || $type == "" ) {
+				$result_cat[$key][$value->term_id] 	= $value->name;
+				$result_cat[$key]['term_id'] = $value->term_id;
+				$result_cat[$key]['name'] = $value->name;
+				$result_cat[$key]['slug'] = $value->slug;
 			} 
 			else if ($type == "label_value" ) {
 				$result_cat[$key]['value'] = $value->term_id;
 				$result_cat[$key]['label'] = $value->name;
 			} 
 		}
-
-		if ( $type == "" ) {
-			$result_cat = $cat;
-		} 
-
 		return $result_cat;
 	}
 

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/title.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/product-search.php"; ?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/categories.php"; ?>
+	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/categories-checkbox.php"; ?>
 	<?php 
 		if (class_exists('FilterPlusPro')) {
 			// reviews
