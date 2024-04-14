@@ -40,7 +40,7 @@ class Wp_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Style', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::widgets_templates(4),
+			'options' => \FilterPlus\Utils\Helper::widgets_templates(3),
 			'inline' => true,
 			'placeholder' => esc_html__( 'Select Style', 'filter-plus' ),
 			'single' => true,
