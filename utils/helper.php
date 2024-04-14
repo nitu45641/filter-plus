@@ -398,7 +398,7 @@ class Helper {
 
 		$cat = get_categories( $args_cat );
 		$result_cat = array();
-		foreach ($cat as $key => &$value) {
+		foreach ($cat as $key => $value) {
 			$sub_cats = self::get_sub_categories($value->term_id,$taxonomy , $type );
 			if ( $type == "assoc" || $type == "" ) {
 				$result_cat[$key]['term_id'] = $value->term_id;
@@ -406,7 +406,7 @@ class Helper {
 				$result_cat[$key]['slug'] = $value->slug;
 				$result_cat[$key]['sub_categories'] = $sub_cats;
 			} 
-			else if ($type == "elementor" ) {
+			else if ($type == "widget" ) {
 				$result_cat[$value->term_id] 	= $value->name;
 			}
 			else if ($type == "label_value" ) {

@@ -61,7 +61,7 @@ class Woo_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Categories', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::get_categories( '', 'assoc' ),
+			'options' => \FilterPlus\Utils\Helper::get_categories( '', 'widget' ),
 			'inline' => true,
 			'placeholder' => esc_html__( 'Select Categories', 'filter-plus' ),
 			'multiple' => true,

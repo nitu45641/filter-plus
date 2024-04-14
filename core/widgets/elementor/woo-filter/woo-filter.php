@@ -77,7 +77,7 @@ class Woo_Filter extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Categories', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_categories( '', 'elementor' ),
+				'options' => \FilterPlus\Utils\Helper::get_categories( '', 'widget' ),
 				'multiple' => true,
 			)
 		);
