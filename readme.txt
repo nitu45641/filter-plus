@@ -122,7 +122,7 @@ We have tested all the popular themes. And we believe it will work with your the
 
 == Changelog ==
 
-= 1.0.46 (April 05, 2024)=
+= 1.0.46 (April 14, 2024)=
 Added   : Submenu categories control for  WooCommerce Filter
 
 = 1.0.46 (April 05, 2024)=
