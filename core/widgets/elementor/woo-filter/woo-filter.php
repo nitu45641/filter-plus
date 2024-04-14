@@ -55,7 +55,6 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 
-
 		$this->add_control(
 			'template',
 			array(
@@ -78,7 +77,7 @@ class Woo_Filter extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Categories', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_categories( '', 'assoc' ),
+				'options' => \FilterPlus\Utils\Helper::get_categories( '', 'elementor' ),
 				'multiple' => true,
 			)
 		);

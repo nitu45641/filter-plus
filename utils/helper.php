@@ -401,12 +401,14 @@ class Helper {
 		foreach ($cat as $key => &$value) {
 			$sub_cats = self::get_sub_categories($value->term_id,$taxonomy , $type );
 			if ( $type == "assoc" || $type == "" ) {
-				$result_cat[$key][$value->term_id] 	= $value->name;
 				$result_cat[$key]['term_id'] = $value->term_id;
 				$result_cat[$key]['name'] = $value->name;
 				$result_cat[$key]['slug'] = $value->slug;
 				$result_cat[$key]['sub_categories'] = $sub_cats;
 			} 
+			else if ($type == "elementor" ) {
+				$result_cat[$value->term_id] 	= $value->name;
+			}
 			else if ($type == "label_value" ) {
 				$result_cat[$key]['value'] 		= $value->term_id;
 				$result_cat[$key]['label'] 		= $value->name;
