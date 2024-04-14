@@ -60,7 +60,6 @@ class Wp_Filter extends Widget_Base {
 		];
 		$templates[2] = esc_html__('Template 2', 'filter-plus').' '.$pro;
 		$templates[3] = esc_html__('Template 3', 'filter-plus').' '.$pro;
-		$templates[4] = esc_html__('Template 4', 'filter-plus').' '.$pro;
 		
 		$this->add_control(
 			'template',
@@ -76,7 +75,7 @@ class Wp_Filter extends Widget_Base {
 			[
 				'label' => esc_html__('Select Filter Type', 'filter-plus'),
 				'type' => Controls_Manager::SELECT,
-				'default' => '1',
+				'default' => 'post',
 				'options' => array('post'=> esc_html__('Post', 'filter-plus'),
 				'custom_post'=> esc_html__('Custom Post', 'filter-plus')),
 			]
@@ -568,10 +567,10 @@ class Wp_Filter extends Widget_Base {
 		$post_categories    = !empty($settings['post_categories']) && $settings['post_categories'] == true ? 'yes' : 'no';
 		$post_tags          = !empty($settings['post_tags']) && $settings['post_tags'] == true ? 'yes' : 'no';
 		$post_author        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
-		
-        echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
+
+		echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
         category_label='".$category_label."' 
-		sub_categories='".$sub_categories."' 
+		sub_categories='{$sub_categories}'
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
