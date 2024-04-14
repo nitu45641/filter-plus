@@ -63,8 +63,7 @@ class Wp_Filter extends \Bricks\Element {
 			'single' => true,
 			'searchable' => true,
 			'clearable' => true,
-			
-			'default' => '1',
+			'default' => 'post',
 		);
 		$this->controls['custom_post'] = array(
 			'tab' => 'content',
@@ -104,7 +103,7 @@ class Wp_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Categories', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::get_categories( '', 'assoc' , array('taxonomy'=>'category') ),
+			'options' => \FilterPlus\Utils\Helper::get_categories( '', 'widget' , array('taxonomy'=>'category') ),
 			'inline' => true,
 			'placeholder' => esc_html__( 'Select Categories', 'filter-plus' ),
 			'multiple' => true,

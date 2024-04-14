@@ -95,7 +95,7 @@ class Wp_Filter extends Widget_Base {
 			'show_categories',
 			[
 				'label' => esc_html__('Display Categories', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
@@ -116,7 +116,7 @@ class Wp_Filter extends Widget_Base {
 			[
 				'label' => esc_html__('Categories', 'filter-plus'),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_categories('category','assoc',array('taxonomy'=>'category')),
+				'options' => \FilterPlus\Utils\Helper::get_categories('category','widget',array('taxonomy'=>'category')),
 				'multiple' => true,
 				'condition' => ['show_categories' => 'yes']
 			]
