@@ -141,10 +141,7 @@ if ( ! function_exists( 'filter_plus_select_field' ) ) {
 				endforeach;
 			endif;
 		} else {
-			if ( ! class_exists( 'WooCommerce' ) ) {
-				return;
-			}
-			if ( ! empty( $args['options'] ) ) :
+			if ( class_exists( 'WooCommerce' ) && ! empty( $args['options'] ) ) :
 				foreach ( $args['options'] as $item ) :
 					if ( is_array($item) ) {
 						$term_id = $item['term_id'];	

@@ -3,7 +3,6 @@
 	<div class="shortcode-block" data-name="wp_filter_plus">
 		<h1 class="font_bold font_16 mb-1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
 		<?php
-			
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/wordpress-filter/show-wordpress-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 			$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</i></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
@@ -97,6 +96,7 @@
 			'placeholder'=>esc_html__("Place Custom Field Here","filter-plus"),
 			'disable' => $disable);
 			filter_plus_number_input_field($args);
+			
 			$args        = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
 			'data_label' => 'custom_field_list','options'=>$meta_keys , 'type' => 'random',
 			'select_type' => 'single',  'condition_class' => "custom_field d-none",

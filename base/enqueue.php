@@ -30,10 +30,15 @@ class Enqueue {
      */
     public function admin_get_scripts() {
         $script_arr =  array(
-			'admin-js'     => array(
+            'filter-plus-select2'  => array(
+                'src'     => \FilterPlus::assets_url() . 'js/filter-plus-select2.js',
+                'version' => \FilterPlus::get_version(),
+                'deps'    => ['jquery'],
+            ),
+			'filter-plus-admin-js'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/admin.js',
                 'version' => \FilterPlus::get_version(),
-                'deps'    => ['jquery','select2'],
+                'deps'    => ['jquery','filter-plus-select2'],
             )
 		);
         
@@ -47,7 +52,7 @@ class Enqueue {
      */
     public function admin_get_styles() {
         return array(
-            'admin' => array(
+            'filter-plus-admin-css' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/admin.css',
                 'version' => \FilterPlus::get_version(),
             ),
@@ -66,6 +71,7 @@ class Enqueue {
     public function admin_enqueue_assets() {
         $screen = get_current_screen();
         $pages  = \FilterPlus\Utils\Helper::admin_unique_id();
+
         // load js in specific pages
         if ( is_admin() && ( in_array( $screen->id , $pages ) ) ) {
             wp_enqueue_script( 'wp-color-picker' );
@@ -88,7 +94,7 @@ class Enqueue {
             $form_data                          = array();
             $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
             $form_data['filter_plus_nonce']     = wp_create_nonce( 'filter_plus_nonce' );
-            wp_localize_script( 'admin-js', 'filter_admin', $form_data );
+            wp_localize_script( 'filter-plus-admin-js', 'filter_admin', $form_data );
         }
 
     }
@@ -176,8 +182,8 @@ class Enqueue {
         $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
         $form_data['localize']              = $this->translate_data();
         $form_data['filter_plus_nonce']     = wp_create_nonce( 'filter_plus_nonce' );
-        $form_data['with']           = esc_html__('with','filter-plus');
-        $form_data['and']           = esc_html__('and','filter-plus');
+        $form_data['with']                  = esc_html__('with','filter-plus');
+        $form_data['and']                   = esc_html__('and','filter-plus');
         $form_data['refresh_url']           = $settings['refresh_url'];
         $form_data['seo_elements']          = $settings['seo_elements'];
         $form_data['seo_elements_format']   = $settings['seo_elements_format'];
