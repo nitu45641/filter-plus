@@ -72,7 +72,7 @@ Class Wrapper {
 	/**
 	 * Singleton Instance
 	 *
-	 * @return Bootstrap
+	 * @return Wrapper
 	 */
 	public static function instance() {
 
