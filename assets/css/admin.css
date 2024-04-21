@@ -706,7 +706,7 @@ a.pr-tag{
 	padding-bottom: 2%;
 }
 .mt-2{
-	margin-top: 2%;
+	margin-top: 2% !important;
 }
 .mt-5{
 	margin-top: 5%;
