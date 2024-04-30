@@ -1,5 +1,5 @@
 :root {
-	--secondary-color: #1164cb;
+	--filter-primary-color: #1164cb;
 	--filter-secondary-color : #1164cb;
 	--filter-cart-icon-color : #fff;
 	--filter-price-range: #2d73e7;
@@ -7,6 +7,10 @@
 	--filter-tab-color: #fff;
 	--filter-tab-bg: #ff0000;
 	--filter-header-border: #2d73e7;
+}
+.panel{
+	box-shadow: none;
+	-webkit-box-shadow: none !important;
 }
 .shopContainer {
 	@media (min-width: 769px) {
@@ -104,7 +108,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 
 .param-box {
 	display: flex;
-	flex-direction: var(--filter-param-box-direction,'row');
+	flex-direction: var(--filter-param-box-direction,row);
 	flex-wrap: wrap;
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
@@ -168,17 +172,15 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 }
 .shop-sidebar .search-form button {
 	position: absolute;
-	right: 15px;
-	top: 9px;
+	right: 7px;
+	top: 5px;
 	bottom: 4px;
-	padding: 0;
-	font-size: 20px;
+	padding: 6px !important;
+	font-size: 18px;
 	border-radius: 4px;
-	background-color: #fff;
-	color: #c4c4c4;
-	border: none;
 	-webkit-transition: all 0.2s linear;
 	transition: all 0.2s linear;
+	background: var( --filter-border-color);
 }
 
 .title-and-clean-area {
@@ -200,7 +202,7 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 }
 
 .shop-sidebar .search-form button svg {
-	fill: var(--filter-border-color,#c4c4c4);
+	fill: var(--filter-cart-icon-color,#c4c4c4);
 }
 
 .checkbox-style .category-list li {

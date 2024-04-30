@@ -413,7 +413,6 @@ ul.ratings {
 .hpcc-actions {
 	display: flex;
 	flex-direction: column;
-	/* gap: 4px; */
 	padding: 3px 0 5px 50px;
 }
 .hpcc-btns {
@@ -459,8 +458,7 @@ li.first-page{
 .pagination li {
 	display: inline-block;
 	margin: 0 8px;
-	height: 50px;
-	width: 50px;
+	padding: 5px 12px;
 	font-size: 16px;
 	font-weight: 700;
 	text-align: center;
@@ -469,14 +467,13 @@ li.first-page{
 	transition: all 0.6s ease-in-out;
 }
 .pagination-1 li{
-	background: var(--bg_color);
+    background: var(--bg_color);
     border: 1px solid;
-    border-radius: 50%;
+    border-radius: 100%;
     display: inline-block !important;
     height: 35px;
-    line-height: 35px;
-    text-align: center;
     width: 35px;
+	line-height: 25px;
 }
 
 ul.pagination {
