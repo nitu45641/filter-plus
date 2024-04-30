@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , ajax filter
 Requires at least: 4.7
 Tested up to: 6.4
-Stable tag: 1.0.48
+Stable tag: 1.0.49
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -122,6 +122,12 @@ We have tested all the popular themes. And we believe it will work with your the
 
 
 == Changelog ==
+
+= 1.0.49 (April 30, 2024)=
+Fix   : Theme compatibility css issue
+
+= 1.0.48 (April 25, 2024)=
+Fix   : Filtering option update
 
 = 1.0.47 (April 17, 2024)=
 Fix   : WordPress Filter issue fix
