@@ -506,7 +506,7 @@ ul.pagination {
 	line-height: 18px;
 }
 .selected-filter{
-    margin-bottom: 2%;
+    margin: 0 10px;
 	cursor: pointer;
 	color: var(--filter-border-color,#2d73e7);
 }
