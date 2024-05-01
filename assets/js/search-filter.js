@@ -605,7 +605,8 @@
 						if (typeof active_tag.data('term_id') === 'undefined') {
 							return;
 						}
-						let property_name = selected == 'seo_taxonomy' ? label : active_tag.data('taxonomy');  	
+						let property_name = selected == 'seo_taxonomy' ? label : active_tag.data('taxonomy'); 
+ 	
 						if (selected == 'name') {
 							if (active_tag.data('taxonomy') == 'pa_color') {
 								obj[property_name] = active_tag.data('name');
