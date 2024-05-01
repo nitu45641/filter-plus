@@ -360,7 +360,8 @@ class Actions {
 				$products[$key]['post_image']       = $image;
 				$products[$key]['post_description'] = wp_trim_words( get_post_field('post_excerpt', $post->ID ) , 30 , '');
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
-				$products[$key]['author']   		= $param['post_author'] =='yes' ? esc_html__('By','filter-plus').' '. get_the_author_meta( 'display_name',$post->post_author ) : '';
+				$products[$key]['author']   		= $param['post_author'] =='yes' ? esc_html__('By','filter-plus').' '. 
+				get_the_author_meta( 'first_name',$post->post_author ) .' '. get_the_author_meta( 'last_name',$post->post_author ) : '';
 				$products[$key]['posts_author_link']= $param['post_author'] =='yes' ? get_author_posts_url( $post->post_author ) : '#';
 				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? self::tags_info ( $post->ID , $cats ) : [];
 				$products[$key]['categories_label'] =  ( count($products[$key]['categories']) > 0 ) ? esc_html__('Category:','filter-plus') : '';

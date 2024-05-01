@@ -107,6 +107,7 @@ var filterOption = {
 	filterSearch($){
 		let $not_in = ['Search here','Search'];
 		let $search_value = $('.sidebar-input').val();
-		return $.inArray( $search_value , $not_in ) ? '' : $search_value;
+
+		return $.inArray( $search_value , $not_in ) !== -1 ? '' : $search_value;
 	},
 };
