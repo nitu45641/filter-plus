@@ -104,4 +104,7 @@ var filterOption = {
 		}
 		return line;
 	},
+	filterSearch($){
+		return $('.sidebar-input').val() == 'Search here' ? '' : $('.sidebar-input').val();
+	},
 };

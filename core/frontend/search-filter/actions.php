@@ -283,7 +283,7 @@ class Actions {
 	 */
 	public function add_search_value( $param , $args ) {
 		if(!empty($param['search_value'])){
-			$search_data = trim( $param['search_value'] , " " );
+			$search_data = trim( $param['search_value'] , ' ' );
 			$args['s']   = $search_data;
 		}
 
