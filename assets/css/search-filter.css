@@ -232,10 +232,6 @@ ul.category-list li:not(ul.sub_categories li):hover
 	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
 }
-.wp-style-2 .categories-wrap ul
-{
-    padding-left: 18px !important;
-}
 ul.ratings,.dropdown-box {
 	cursor: pointer;
 	padding: 15px;

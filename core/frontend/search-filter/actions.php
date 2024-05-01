@@ -123,8 +123,10 @@ class Actions {
 		if ($param['author'] !== '' ) {
 			$args['author__in'] = array($param['author']);
 		}
+
 		// by category
 		$args = \FilterPlus\Utils\Helper::product_filter( $param , $args );
+
 		// search
 		$args = $this->add_search_value( $param , $args );
 

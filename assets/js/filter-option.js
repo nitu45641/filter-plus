@@ -105,6 +105,8 @@ var filterOption = {
 		return line;
 	},
 	filterSearch($){
-		return $('.sidebar-input').val() == 'Search here' ? '' : $('.sidebar-input').val();
+		let $not_in = ['Search here','Search'];
+		let $search_value = $('.sidebar-input').val();
+		return $.inArray( $search_value , $not_in ) ? '' : $search_value;
 	},
 };

@@ -713,12 +713,12 @@ class Helper {
 			'fields'  => [ 'ID', 'display_name'],
 		  ];
 		$users = get_users($args);
-
 		foreach ($users as $user)  {
+			$full_name = get_user_meta($user->ID, 'first_name', true) .' '. get_user_meta($user->ID, 'last_name', true);
 			if ( $type == 'label_value' ) {
-				$user_list[] = array('label'=> $user->display_name , 'value'=>$user->ID);
+				$user_list[] = array('label'=> $full_name , 'value'=>$user->ID);
 			} else {
-				$user_list[$user->ID] = $user->display_name;
+				$user_list[$user->ID] = $full_name;
 			}
 			
 		}
