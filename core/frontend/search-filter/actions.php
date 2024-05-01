@@ -136,9 +136,8 @@ class Actions {
 			$args = $this->product_order_by( $param , $args );
 		}
 
-		$args = $this->filter_by_custom_field( $param , $args );
-
-		$posts = get_posts( $args );
+		$args 	= $this->filter_by_custom_field( $param , $args );
+		$posts 	= get_posts( $args );
 
 		// total products
 		$args['posts_per_page'] = -1;
@@ -301,7 +300,7 @@ class Actions {
 		if ( ! empty( $param['min'] ) && ! empty( $param['max'] ) ) {
 			$args['meta_query'] = array(
 				array(
-					'key'       => '_regular_price',
+					'key'       => '_price',
 					'value'     => array( $param['min'], $param['max'] ),
 					'compare'   => 'BETWEEN',
 					'type'      => 'NUMERIC'
