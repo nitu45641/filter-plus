@@ -239,7 +239,7 @@ ul.category-list li:not(ul.sub_categories li):hover
 ul.ratings,.dropdown-box {
 	cursor: pointer;
 	padding: 15px;
-	border: 1px solid var(--filter-border-color);
+	border: 1px solid var(--filter-border-color) !important;
 	border-radius: 6px;
 	font-size: 14px;
     color: #0d1218;

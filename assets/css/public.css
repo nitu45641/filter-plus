@@ -182,7 +182,10 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	transition: all 0.2s linear;
 	background: var( --filter-border-color);
 }
-
+.search-form-3 button{
+	background: transparent !important;
+    border: none;
+}
 .title-and-clean-area {
 	display: flex;
 	justify-content: space-between;

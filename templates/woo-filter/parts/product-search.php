@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="sidebar-row search-wrap">
 	<!-- Product Search -->
-	<div class="search-form">
+	<div class="search-form search-form-<?php echo esc_attr($template);?>">
 		<input
 			type="text"
 			value=""
