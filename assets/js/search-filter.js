@@ -315,7 +315,7 @@
 					'stock',
 					'author',
 					'on_sale',
-					'taxonomies_name',
+					'seo_taxonomy',
 				];
 				const format = { data: urlKey, sign: '[]', seo_data: false };
 				const $urlPart = filterOption.get_taxonomies_data(
@@ -384,12 +384,13 @@
 			params.product_cat = filterOption.category_formatted_text($);
 			params.rating = $('ul.ratings').attr('id');
 			params.taxonomies = get_tags(true);
-			params.taxonomies_name =
-				filter_client.seo_slug_url == 'yes'
-					? get_tags('slug')
-					: get_tags('name');
+			params.taxonomies_name = get_tags('name');
+			params.seo_taxonomy =
+			filter_client.seo_slug_url == 'yes'
+				? get_tags('slug')
+				: get_tags('seo_data');
 			params.filter_param = get_tags(false);
-			params.search_value = params.default_call == true ? '' : $('.sidebar-input').val();
+			params.search_value = filterOption.filterSearch($);
 			params.order_by = $('#filter-sort-by option:selected').val();
 			params.author = $(".author input[type='checkbox']:checked").val();
 			params.author_text = $(
@@ -600,20 +601,21 @@
 								return $(this).data('term_id');
 							})
 							.get();
-					} else if (selected == 'name' || selected == 'slug') {
+					} else if (selected == 'name' || selected == 'slug' || selected == 'seo_taxonomy' ) {
 						if (typeof active_tag.data('term_id') === 'undefined') {
 							return;
 						}
-
+						let property_name = selected == 'seo_taxonomy' ? label : active_tag.data('taxonomy');  	
 						if (selected == 'name') {
 							if (active_tag.data('taxonomy') == 'pa_color') {
-								obj[label] = active_tag.data('name');
+								obj[property_name] = active_tag.data('name');
 							} else {
-								obj[label] = active_tag.text();
+								obj[property_name] = active_tag.text();
 							}
 						} else {
-							obj[label] = active_tag.data('slug');
+							obj[property_name] = active_tag.data('slug');
 						}
+
 					} else if (active_tag.data('term_id')) {
 						obj[single_attr.data('taxonomy')] =
 							active_tag.data('term_id');
