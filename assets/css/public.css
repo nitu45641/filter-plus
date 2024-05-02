@@ -782,7 +782,7 @@ a.added_to_cart.wc-forward {
 	height: 30px;
 	width: 30px;
 	border: 3px solid;
-	border-color: var(--filter-loader-color,'#17c6aa') transparent var(--filter-loader-color,'#17c6aa') transparent;
+	border-color: var(--filter-loader-color,#17c6aa) transparent var(--filter-loader-color,#17c6aa) transparent;
 	border-radius: 50%;
 	-webkit-animation: lds-dual-ring 1.3s linear infinite;
 	animation: lds-dual-ring 1.3s linear infinite;

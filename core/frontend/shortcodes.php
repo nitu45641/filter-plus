@@ -209,6 +209,9 @@ class Shortcodes {
 			$secondary_color = $settings['secondary_color'];
 			$primary_color   = $settings['primary_color'];
 		}
+
+		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
+
 		$custom_css = '
 		:root {
 			--filter-primary-color: '.$primary_color.';
@@ -216,7 +219,7 @@ class Shortcodes {
 			--filter-cart-icon-color : '.$cart_icon.';
 			--filter-cart-content: '.$cart_content.';
 			--filter-price-range : '.$price_range.';
-			--filter-loader-color : '.$secondary_color.';
+			--filter-loader-color : '.$loader_color.';
 			--filter-price-range: '.$secondary_color.';
 			--filter-border-color: '.$secondary_color.';
 			--filter-header-border: '.$primary_color.';
