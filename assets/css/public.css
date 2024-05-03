@@ -522,6 +522,7 @@ ul.pagination {
 }
 .selected-filter div{
     display: inline-block;
+	margin-right: 4px;
 }
 .filter-tag{
 	border: 1px solid var(--filter-border-color, #d3d3d3);
@@ -536,11 +537,10 @@ ul.pagination {
 }
 .filter-top{
     position: relative;
-    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin: 0 15px 15px 0;
 }
 .filter-plus.woocommerce-error {
     border-top-color: #2d73e7 !important;
