@@ -20,6 +20,8 @@
 			if (active_li.length > 0) {
 				if (active_li.is(':checked')) {
 					_this.addClass('active');
+				}else{
+					_this.removeClass('active');
 				}
 			} else {
 				_this.addClass('active');
