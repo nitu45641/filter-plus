@@ -140,10 +140,6 @@ class Enqueue {
                 'src'     => \FilterPlus::assets_url() . 'css/public.css',
                 'version' => \FilterPlus::get_version(),
             ),
-			'filter-plus-public' => array(
-                'src'     => \FilterPlus::assets_url() . 'css/search-filter.css',
-                'version' => \FilterPlus::get_version(),
-            ),
 			'jquery.range-min' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/jquery.range.css',
                 'version' => \FilterPlus::get_version(),
