@@ -3,7 +3,7 @@ Contributors: markutos987, galib96
 Donate link: https://woooplugin.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , ajax filter
 Requires at least: 4.7
-Tested up to: 6.4
+Tested up to: 6.5
 Stable tag: 1.0.51
 Requires PHP: 7.0
 License: GPLv2 or later
