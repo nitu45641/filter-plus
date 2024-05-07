@@ -685,7 +685,7 @@ input[type="checkbox"]:checked + label.checkbox-item
 	cursor: pointer;
 }
 .filter-bar-mb-search{
-	z-index: 1;
+	z-index: 99;
     align-items: center;
 	position: fixed;
     bottom: 20px;
