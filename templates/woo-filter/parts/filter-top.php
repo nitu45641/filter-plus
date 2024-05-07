@@ -1,8 +1,10 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <h1 class="fplus-title" data-page_title="<?php echo get_the_title(); ?>"></h1>
-
-<?php if( $template !== '5' ) : ?>
-<div class="filter-mb-search"></div>
+<?php 
+$not_in = array('5','2');
+if( !in_array($template,$not_in)  ) : ?>
+<div class="filter-mb filter-mb-search"></div>
 <?php endif; ?>
 <div class="filter-top">
     <?php

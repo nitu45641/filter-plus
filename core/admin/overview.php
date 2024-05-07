@@ -65,7 +65,7 @@ $more_products = array(
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
         'url_demo' => 'https://woooplugin.com/quicker/',
-        'url_free' => 'https://woooplugin.com/quicker/',
+        'url_free' => 'https://downloads.wordpress.org/plugin/quicker.latest-stable.zip',
         'title' =>esc_html__('Quick Checkout Plugin','filter-plus'),
         'logo'   => 'quicker-logo.png',
         'cta_free' =>esc_html__('Explore Free Plugin','filter-plus'),

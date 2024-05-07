@@ -676,11 +676,14 @@ input[type="checkbox"]:checked + label.checkbox-item
 	display:flex;
 	flex-direction:row-reverse;
 }
-.filter-mb-search::after {
+.filter-mb-search::before {
     content: url(../../assets/images/mb-filter.svg);
 	
 }
-.filter-mb-search{
+.filter-bar-mb-search::before {
+	padding: 10px 0;
+}
+.filter-mb-search,.filter-bar-mb-search{
 	display: none;
 	cursor: pointer;
 }
@@ -1699,4 +1702,22 @@ a.added_to_cart.wc-forward {
 	.shop-container-3,.shop-container-4 {
 		display: block;
 	}
+}
+.filter-bar-mb-search{
+	z-index: 1;
+	display: inline-flex;
+    align-items: center;
+	position: fixed;
+    bottom: 20px;
+    background: #000;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    padding: 7px 20px;
+    border-radius: 15px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+.filter-bar-mb-search span{
+	padding: 3px 10px 0 10px;
 }

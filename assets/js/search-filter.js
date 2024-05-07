@@ -770,7 +770,7 @@
 		function mobile_filter_slide() {
 			const $sidebarAndWrapper = $('.shop-sidebar');
 
-			$('.filter-mb-search').click(function (e) {
+			$('.filter-mb').click(function (e) {
 				e.stopPropagation();
 				$sidebarAndWrapper.toggleClass('active-sidebar');
 			});
