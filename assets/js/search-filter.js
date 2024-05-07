@@ -785,5 +785,15 @@
 				}
 			});
 		}
+		//watch window resize
+		$(window).on('resize', function() {
+			resize()
+		});
+		//Resize window
+		function resize() {
+			if ($(window).width() < 700) {
+				$('.sidebar-label').addClass('closed');
+			}
+		}
 	});
 })(jQuery);

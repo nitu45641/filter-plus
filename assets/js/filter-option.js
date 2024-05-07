@@ -6,7 +6,6 @@ var filterOption = {
 				return $(this).data('cat_id');
 			})
 			.get();
-			console.log(get_cat_list);
 		return get_cat_list;
 	},
 	category_formatted_text($) {
