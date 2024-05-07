@@ -59,6 +59,7 @@
 	cursor: pointer;
 }
 .side-cart-close{
+	display: none;
 	background: #fff;
 	color: #000;
     text-align: center;
@@ -1714,6 +1715,9 @@ a.added_to_cart.wc-forward {
 	}
 }
 @media (max-width: 768px) {
+	.side-cart-close{
+		display: block;
+	}
 	.shop-sidebar {
 		z-index: 999;
 		background: #fff;
