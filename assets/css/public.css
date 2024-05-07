@@ -71,11 +71,9 @@
     margin: 2% auto;
     box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2);
 }
-.side-cart-close:after {
-    content: 'X';
-    font-size: 18px;
-    left: 15px;
-    top: 10px;
+.shop-sidebar{
+	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
 }
 .shop-sidebar .sidebar-row {
 	color: var(--filter-font-color);

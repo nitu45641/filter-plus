@@ -774,9 +774,13 @@
 				e.stopPropagation();
 				$sidebarAndWrapper.toggleClass('active-sidebar');
 			});
+			$('.side-cart-close').click(function (e) {
+				console.log("yess");
+				$('.shop-sidebar').removeClass('active-sidebar');
+			});
+
 			$('body,html').click(function (e) {
 				const container = $('.active-sidebar');
-
 				if (
 					!container.is(e.target) &&
 					container.has(e.target).length === 0
@@ -795,5 +799,6 @@
 				$('.sidebar-label').addClass('closed');
 			}
 		}
+
 	});
 })(jQuery);
