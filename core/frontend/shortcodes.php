@@ -121,18 +121,68 @@ class Shortcodes {
 
 
 
-	public function wp_filter_plus( $atts ) {
+	public function wp_filter_plus( $short_atts ) {
 		ob_start();
-		$is_pro_active = $this->is_pro_active();
-		if ($is_pro_active !== '' ) {
-			echo $is_pro_active;
-			return ob_get_clean();
-		} 
 
-		apply_filters('filter_pro_pro/wp_filter',$atts);
+		$atts = 
+			shortcode_atts(
+				array(
+					'filter_type'       => 'post',
+					'custom_post'       => '',
+					'template'         	=> '1',
+					'show_categories'   => 'yes',
+					'category_label'    => esc_html__('Categories','filter-plus-pro'),
+					'categories'       	=> '',
+					'sub_categories'	=> 'no',
+					'show_tags'        	=> '',
+					'tag_label'        	=> esc_html__('Tags','filter-plus-pro'),
+					'tags'             	=> '',
+					'author'            => '',
+					'author_label'      => esc_html__('Authors','filter-plus-pro'),
+					'author_list'       => '',
+					'post_categories'	=> 'yes',
+					'post_tags'      	=> 'yes',
+					'post_author'      	=> 'yes',
+					'custom_field_label' 	=> esc_html__('Custom Field','filter-plus-pro'),
+					'custom_field'      	=> 'no',
+					'meta_condition'     	=> 'OR',
+					'custom_field_list'     => ''
+				), $short_atts );
+		extract($atts);		
 		
+		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
+		$main_wrapper   = $template == '3' ? 'mainWrapper' : 'shopContainer';
+		$this->custom_css($template,$filter_type);
+		?>
+			<div class="<?php echo esc_attr($main_wrapper);?>" id="shopContainer"
+				data-filter_type='<?php echo esc_attr($filtering_type)?>'
+				data-template="<?php echo esc_attr($template)?>"
+				data-product_categories="<?php echo esc_attr($post_categories)?>"
+				data-product_tags="<?php echo esc_attr($post_tags)?>"
+				data-post_author="<?php echo esc_attr($post_author)?>"
+			>
+				<?php $this->wp_filter_file($template,$atts);?>
+			</div>
+		<?php
+				
 		return ob_get_clean();
 	}
+
+	public function wp_filter_file($template,$atts) {
+		extract($atts);
+		if ( '1' == $template ) {
+			include_once \FilterPlus::template_dir() . 'wp-filter/template-' . $template .'/template-' . $template . '.php';
+		}else{
+			$is_pro_active = $this->is_pro_active();
+			if ($is_pro_active !== '' ) {
+				echo $is_pro_active;
+				return ob_get_clean();
+			}
+	
+			include_once \FilterPlusPro::plugin_dir() . "templates/wp-filter/template-" . $template . ".php";
+		}
+	}
+
 
 	/**
 	 * Check pro template

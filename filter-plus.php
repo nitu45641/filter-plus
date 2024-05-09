@@ -3,7 +3,7 @@
  * Plugin Name:       Filter Plus
  * Plugin URI:        https://woooplugin.com/filter-plus
  * Description:       Advanced Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website. It allows users to filter anything based on different taxonomies.
- * Version:           1.0.52
+ * Version:           1.0.53
  * Requires at least: 5.2
  * Requires PHP:      7.3
  * Author:            Woooplugin
@@ -38,7 +38,7 @@ final class FilterPlus {
      * @return string
      */
     public static function get_version() {
-        return '1.0.52';
+        return '1.0.53';
     }
 
 	/**
@@ -114,10 +114,21 @@ final class FilterPlus {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public static function assets_dir() {
 		return trailingslashit( self::plugin_dir() . 'assets' );
+	}
+
+	/**
+	 * Template Folder Directory Path
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public static function template_dir() {
+		return trailingslashit( self::plugin_dir() . 'templates' );
 	}
 
 	/**
