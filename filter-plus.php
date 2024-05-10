@@ -121,6 +121,17 @@ final class FilterPlus {
 	}
 
 	/**
+	 * Assets Folder Directory Path
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public static function base_dir() {
+		return trailingslashit( self::plugin_dir() . 'base' );
+	}
+
+	/**
 	 * Template Folder Directory Path
 	 *
 	 * @since 1.0.0

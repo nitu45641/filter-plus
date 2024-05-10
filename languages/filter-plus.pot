@@ -218,15 +218,15 @@ msgstr ""
 msgid "SEO"
 msgstr ""
 
-#: core/admin/settings/shortocdes-fields.php:12
-#: core/admin/settings/shortocdes-fields.php:124
-#: core/admin/settings/shortocdes-fields.php:138
+#: core/admin/settings/settings-fields.php:12
+#: core/admin/settings/settings-fields.php:124
+#: core/admin/settings/settings-fields.php:138
 #: core/widgets/elementor/wp-filter/wp-filter.php:55
 #: utils/helper.php:833
 msgid "Pro"
 msgstr ""
 
-#: core/admin/settings/shortocdes-fields.php:125
+#: core/admin/settings/settings-fields.php:125
 msgid "Template"
 msgstr ""
 

@@ -3,10 +3,13 @@
 <section class="accordion">
   <ul class="accordion-list">
     <?php 
-    include_once \FilterPlus::core_dir() . "admin/settings/shortocdes-fields.php"; 
-    $disable      = class_exists('FilterPlusPro') ? false : true;
-    $settings 		= \FilterPlus\Utils\Helper::get_settings();
-    extract($settings);
+    
+      if ( file_exists( \FilterPlus::base_dir().'input-fields.php' ) ) {
+        include_once \FilterPlus::base_dir().'input-fields.php'; 
+      }
+      $disable      = class_exists('FilterPlusPro') ? false : true;
+      $settings 		= \FilterPlus\Utils\Helper::get_settings();
+      extract($settings);
   
     $tabs = array(
         array(

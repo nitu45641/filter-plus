@@ -78,16 +78,17 @@ if ( ! function_exists( 'filter_plus_number_input_field' ) ) {
 		$disable            = ! empty( $args['disable'] ) ? $args['disable'] : '';
 		$extra_label        = ! empty( $args['extra_label'] ) ? $args['extra_label'] : '';
 		$placeholder        = ! empty( $args['placeholder'] ) ? $args['placeholder'] : '';
+		$data_label         = ! empty( $args['data_label'] ) ? $args['data_label'] : '';
 		$extra_label_class  = ! empty( $args['extra_label_class'] ) ? $args['extra_label_class'] : '';
 		$hidden_class       = $field_type == 'hidden' ? 'd-none' : '';
 		$html = '
 		<div class="' . $wrapper_class . ' ' . $condition_class . ' ' . $hidden_class . '">
 			<div class="' . $label_class . '">' . $label . '</div>
 			<div class="input-section">
-				<div class="input-wrap ' . $disable . '">
-					<input type="' . $field_type . '" name="' . $id . '" id="' . $wrapper_type.$id . '" value="' . $value . '"  
-						data-option="' . $args['data_label'] . '" 
-						placeholder="' . $placeholder . '"
+				<div class="input-wrap ' . esc_attr($disable) . '">
+					<input type="' . esc_attr($field_type) . '" name="' . esc_attr($id) . '" id="' . esc_attr($wrapper_type.$id) . '" value="' . $value . '"  
+						data-option="' . esc_attr($data_label) . '" 
+						placeholder="' . esc_attr($placeholder) . '"
 					/>
 					<span class="extra-label ' . $extra_label_class . '">' . $extra_label . '</span>
 				</div>

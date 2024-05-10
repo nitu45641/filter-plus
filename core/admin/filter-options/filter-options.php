@@ -2,9 +2,8 @@
 <?php 
 
     if ( ! defined( 'ABSPATH' ) ) exit; 
-
-    if ( file_exists( \FilterPlus::core_dir().'admin/settings/settings-fields.php' ) ) {
-        include_once \FilterPlus::core_dir().'admin/settings/settings-fields.php'; 
+    if ( file_exists( \FilterPlus::base_dir().'input-fields.php' ) ) {
+        include_once \FilterPlus::base_dir().'input-fields.php'; 
     }
 ?>
 <div class="mt-2">
