@@ -300,4 +300,28 @@
 			$(value).wpColorPicker();
 		});
 	});
+
+	filter_plus_admin_modal();
+	function filter_plus_admin_modal() {
+		/**
+		 * Add new checkout field
+		 */
+		const $modal_content = '#filter-options-modal';
+		$('.add-new-options').on('click', function (e) {
+			e.preventDefault();
+			$($modal_content).show();
+		});
+
+		// closing
+		const $modal_close = $('.modal-close');
+		$modal_close.on('click', function () {
+			$($modal_content).fadeOut(500);
+		});
+
+		$(document).click(function (e) {
+			if ($(e.target).is($modal_content)) {
+				$($modal_content).fadeOut(500);
+			}
+		});
+	}
 })(jQuery);

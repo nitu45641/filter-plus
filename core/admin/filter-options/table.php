@@ -43,7 +43,6 @@ class Table extends \WP_List_Table{
      * Sortable column function
      */
     public function get_sortable_columns() {
-		unset($this->columns['enable_rules']);
 		unset($this->columns['action']);
 
         return $this->columns;
@@ -64,6 +63,13 @@ class Table extends \WP_List_Table{
         }
     }
 
+    function get_bulk_actions() {
+        $actions = array();
+        $actions['trash'] = __( 'Move to Trash','filter-plus' );
+
+        return $actions;
+    }
+
     /**
      * Main query and show function
      */
@@ -75,7 +81,7 @@ class Table extends \WP_List_Table{
         $this->_column_headers = [ $column , $hidden , $sortable ];
         $current_page = $this->get_pagenum();
         $offset       = ( $current_page - 1) * $per_page;
-
+        
         if ( isset( $_REQUEST['orderby']) && isset( $_REQUEST['order']) ) 
         {
             $args['orderby']    = sanitize_key($_REQUEST['orderby']);
@@ -85,7 +91,7 @@ class Table extends \WP_List_Table{
         $args['limit']  = $per_page;
         $args['offset'] = $offset;
 
-        $get_data = array();
+        $get_data = array(array('type'=>'','style'=>'','label'=>''));
         $this->set_pagination_args( [
             'total_items'   => count( array() ),
             'per_page'      => $per_page,
