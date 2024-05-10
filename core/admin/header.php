@@ -3,8 +3,8 @@
 		<div class="logo">
 			<img src = "<?php echo esc_url( FilterPlus::assets_url() . 'images/filter-plus-logo.png' ); ?>"
 				alt="filter-plus-banner" 
-				width="50px"
-				height="50px"
+				width="35px"
+				height="35px"
 			/>
 			<h1><?php echo esc_html( 'Filter Plus' ); ?></h1>
 			<span class='version'><?php echo esc_html( 'v ' . FilterPlus::get_version() ); ?></span>

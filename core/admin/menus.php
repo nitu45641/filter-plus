@@ -15,6 +15,8 @@ class Menus {
 
 	use Singleton;
 
+	public $capability = 'read';
+
 	/**
 	 * Initialize
 	 *
@@ -31,7 +33,7 @@ class Menus {
 	 * @return void
 	 */
 	public function register_admin_menu() {
-		$capability = 'read';
+		$capability = $this->capability;
 		$slug       = 'filter_plus';
 
 		// Add main page
@@ -91,16 +93,25 @@ class Menus {
 				'parent_slug' => 'filter_plus',
 				'page_title'  => esc_html__( 'Overview', 'filter-plus' ),
 				'menu_title'  => esc_html__( 'Overview', 'filter-plus' ),
-				'capability'  => 'read',
+				'capability'  => $this->capability,
 				'menu_slug'   => 'filter-plus-overview',
 				'cb_function' => array( $this, 'over_view' ),
 				'position'    => 11,
 			),
 			array(
 				'parent_slug' => 'filter_plus',
+				'page_title'  => esc_html__( 'Filter Options', 'filter-plus' ),
+				'menu_title'  => esc_html__( 'Filter Options', 'filter-plus' ),
+				'capability'  => $this->capability,
+				'menu_slug'   => 'filter-options',
+				'cb_function' => array( $this, 'filter_options' ),
+				'position'    => 11,
+			),
+			array(
+				'parent_slug' => 'filter_plus',
 				'page_title'  => esc_html__( 'Filter Sets', 'filter-plus' ),
 				'menu_title'  => esc_html__( 'Filter Sets', 'filter-plus' ),
-				'capability'  => 'read',
+				'capability'  => $this->capability,
 				'menu_slug'   => 'filter-sets',
 				'cb_function' => array( $this, 'filter_sets' ),
 				'position'    => 11,
@@ -109,7 +120,7 @@ class Menus {
 				'parent_slug' => 'filter_plus',
 				'page_title'  => esc_html__( 'Settings', 'filter-plus' ),
 				'menu_title'  => esc_html__( 'Settings', 'filter-plus' ),
-				'capability'  => 'read',
+				'capability'  => $this->capability,
 				'menu_slug'   => 'filter-plus-settings',
 				'cb_function' => array( $this, 'filter_plus_view' ),
 				'position'    => 11,
@@ -121,7 +132,7 @@ class Menus {
 				'parent_slug' => 'filter_plus',
 				'page_title'  => '',
 				'menu_title'  => esc_html__( 'Upgrade To Premium', 'filter-plus' ),
-				'capability'  => 'read',
+				'capability'  => $this->capability,
 				'menu_slug'   => 'https://woooplugin.com/filter-plus/',
 				'cb_function' => null,
 				'position'    => 11,
@@ -132,6 +143,25 @@ class Menus {
 
 		return $sub_pages;
 	}
+	
+	/**
+	 * Filter Options
+	 *
+	 */
+	function filter_options() {
+		if (file_exists(\FilterPlus::core_dir() . 'admin/header.php')) {
+			require_once \FilterPlus::core_dir() . 'admin/header.php';
+		}
+		?>
+		<div class="wrap">
+		<?php
+			if (file_exists(\FilterPlus::core_dir() . 'admin/filter-options/filter-options.php')) {
+				include_once \FilterPlus::core_dir() . 'admin/filter-options/filter-options.php';
+			}
+		?>
+		</div>
+		<?php
+	}
 
 	/**
 	 * OverView
@@ -139,8 +169,12 @@ class Menus {
 	 * @return void
 	 */
 	public function over_view() {
-		require_once \FilterPlus::core_dir() . 'admin/header.php';
-		include_once \FilterPlus::core_dir() . 'admin/overview.php';
+		if (file_exists(\FilterPlus::core_dir() . 'admin/header.php')) {
+			require_once \FilterPlus::core_dir() . 'admin/header.php';
+		}
+		if (file_exists(\FilterPlus::core_dir() . 'admin/overview.php')) {
+			include_once \FilterPlus::core_dir() . 'admin/overview.php';
+		}
 	}
 
 	/**
@@ -149,7 +183,9 @@ class Menus {
 	 * @return void
 	 */
 	public function filter_sets() {
-		require_once \FilterPlus::core_dir() . 'admin/header.php';
+		if (file_exists(\FilterPlus::core_dir() . 'admin/header.php')) {
+			require_once \FilterPlus::core_dir() . 'admin/header.php';
+		}
 		?>
 			<div class="wrap"><?php include_once \FilterPlus::core_dir() . 'admin/filter-set.php'; ?></div>
 		<?php

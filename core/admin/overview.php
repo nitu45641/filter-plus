@@ -127,8 +127,8 @@ $more_products = array(
                 <div class="card-block">
                         <img src="<?php echo esc_url(FilterPlus::assets_url().'images/'.$value['logo']); ?> " 
                         alt="<?php echo esc_html($value['title']);?>"
-                        width="50px"
-                        height="50px"
+                        width="35px"
+                        height="35px"
                         />
                         <div class="description">
                             <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3> </a>  

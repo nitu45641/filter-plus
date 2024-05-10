@@ -284,6 +284,7 @@ class Helper {
 			'toplevel_page_filter_plus',
 			'filter-plus_page_filter-plus-overview',
 			'filter-plus_page_filter-sets',
+			'filter-plus_page_filter-options',
 			'filter-plus_page_filter-plus-license'
 		);
 
