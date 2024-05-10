@@ -41,6 +41,10 @@ h1.font_16{
 	align-items: center;
 	padding: 7px 0;
 }
+.fields .single-block{
+	grid-template-columns: 100px auto auto;
+	column-gap: 35px;
+} 
 .shortcode-block .single-block{
 	grid-template-columns: 185px auto auto;
 	column-gap: 35px;
@@ -273,6 +277,11 @@ button.button-primary:focus {
     color: #000000;
     border-radius: 7px !important;
 }
+.input-wrap,
+.input-section input{
+	width: 90%;
+}
+
 .full_input{
 	height: 40px;
 }

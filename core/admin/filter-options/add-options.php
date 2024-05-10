@@ -42,6 +42,7 @@
                     
                 filter_plus_select_field($args);
             ?>
-        </div>
+            <button class="button button-primary add-filter-option mt-3 <?php echo class_exists('FilterPlusPro') ? '': 'disable'?>"><?php esc_html_e('Save Changes','filter-plus'); ?></button>
+    </div>
     </div>
 </div>
