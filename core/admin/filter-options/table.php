@@ -4,6 +4,8 @@ namespace FilterPlus\Core\Admin\FilterOptions;
 
 defined('ABSPATH') || exit;
 
+use \FilterPlus\Utils\Helper as Helper;
+
 if ( ! class_exists( 'WP_List_Table' )){
     require_once ABSPATH . 'wp-admin/inclueds/class-wp-list-table.php';
 }
@@ -43,7 +45,7 @@ class Table extends \WP_List_Table{
      * Sortable column function
      */
     public function get_sortable_columns() {
-		unset($this->columns['action']);
+		unset($this->columns['actions'],$this->columns['cb']);
 
         return $this->columns;
     }
@@ -53,8 +55,6 @@ class Table extends \WP_List_Table{
      */
     protected function column_default( $item , $column_name ){
         switch( $column_name ) { 
-			case "enable_rules":
-				return  '<span>'.$item[$column_name].'</span>';
 			case $column_name:
 				return  $item[$column_name];
             default:
@@ -63,9 +63,27 @@ class Table extends \WP_List_Table{
         }
     }
 
-    function get_bulk_actions() {
+    /**
+     * Render the bulk edit checkbox
+     *
+     * @param array $item
+     *
+     * @return string
+     */
+    function column_cb( $item ) {
+        return sprintf(
+            '<input type="checkbox" name="%1$s" id="%2$s" value="checked" />',
+            'ID',
+            $item['ID']
+        );
+    }
+
+    /**
+     * Get Bulk options
+     */
+    public function get_bulk_actions() {
         $actions = array();
-        $actions['trash'] = __( 'Move to Trash','filter-plus' );
+        $actions['trash'] = esc_html__( 'Move to Trash','filter-plus' );
 
         return $actions;
     }
@@ -91,9 +109,9 @@ class Table extends \WP_List_Table{
         $args['limit']  = $per_page;
         $args['offset'] = $offset;
 
-        $get_data = array(array('type'=>'','style'=>'','label'=>''));
+        $get_data = Helper::instance()->get_filter_options();
         $this->set_pagination_args( [
-            'total_items'   => count( array() ),
+            'total_items'   => count( Helper::instance()->get_filter_options() ),
             'per_page'      => $per_page,
         ] );
 

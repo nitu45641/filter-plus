@@ -2,8 +2,9 @@
     <div class="modal-content">
         <span class="modal-close">&times;</span>
         <h2 class="font_bold"><?php esc_html_e("Add Filter Options","filter-plus"); ?></h2>
-        <div class="fields">
+        <form method="POST" id="add-filter-option" class="fields">
             <?php
+			    $meta_keys = \FilterPlus\Utils\Helper::instance()->get_custom_fields_keys();
 
                 $args = array(
                 'label'         => esc_html__("Field Type:","filter-plus"),
@@ -41,8 +42,19 @@
                 );
                     
                 filter_plus_select_field($args);
+
+                $args        = array(
+                    'label'=>esc_html__("Custom Field List:","filter-plus"),
+                    'id' => 'custom_field_list',
+                    'data_label' => 'custom_field_list',
+                    'options'=>$meta_keys ,
+                    'type' => 'random',
+                    'select_type' => 'single',
+                );
+                filter_plus_select_field($args);
+
             ?>
-            <button class="button button-primary add-filter-option mt-3 <?php echo class_exists('FilterPlusPro') ? '': 'disable'?>"><?php esc_html_e('Save Changes','filter-plus'); ?></button>
-    </div>
+            <button type="submit" class="button button-primary add-filter-option mt-3 <?php echo class_exists('FilterPlusPro') ? '': 'disable'?>"><?php esc_html_e('Save Changes','filter-plus'); ?></button>
+        </form>
     </div>
 </div>

@@ -21,9 +21,11 @@
 	 * Shows Rules
 	 */
     $columns = array(
+        'cb'        => '<input type="checkbox" />',
         'type'      => esc_html__( 'Filter Type', 'filter-plus' ),
         'style'     => esc_html__( 'Style', 'filter-plus' ),
-        'label'     => esc_html__( 'Label', 'filter-plus' )
+        'label'     => esc_html__( 'Label', 'filter-plus' ),
+        'actions'   => esc_html__( 'Action', 'filter-plus' )
     );
 
     $rules_list = array(

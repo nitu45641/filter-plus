@@ -861,4 +861,50 @@ class Helper {
 		return $templates;
 	}
 
+	/**
+	 * Get Filter Options
+	 *
+	 * @return array
+	 */
+	public static function get_filter_options( $limit=-1) { 
+		$all_rules = get_posts(array('post_type'=>'filter_plus_option','posts_per_page'=> $limit));
+
+		return self::get_filters_arr( $all_rules );
+	}
+
+	/**
+	 * Get filter options
+	 *
+	 * @param [type] $all_rules
+	 * @return array
+	 */
+	public static function get_filters_arr( $all_rules ) {
+		$arr = array();
+		if (!empty($all_rules)) {
+			foreach ($all_rules as $key => $value) {
+				$single_options = self::get_filter_opt($value);
+				$single_options['actions'] = '
+					<span class="filter-action update-filter" data-id="'.$value->ID.'"><span class="dashicons dashicons-edit"></span></span>
+					<span class="filter-action delete-filter" data-id="'.$value->ID.'"><span class="dashicons dashicons-trash"></span></span>
+				';
+				array_push($arr,$single_options);
+			}
+		}
+
+		return $arr;
+	}
+
+	public static function get_filter_opt($value) {
+		$rule_arr = array();
+
+		if ( !empty($value) ) {
+			$rule_arr['ID'] 	= $value->ID;
+			$rule_arr['label'] 	= get_post_meta(  $value->ID , 'label' , true );
+			$rule_arr['type'] 	= get_post_meta(  $value->ID , 'type' , true );
+			$rule_arr['style'] 	= get_post_meta(  $value->ID , 'style' , true );
+		}
+
+		return $rule_arr;
+	}
+
 }

@@ -35,7 +35,7 @@ class Enqueue {
                 'version' => \FilterPlus::get_version(),
                 'deps'    => ['jquery'],
             ),
-			'filter-plus-admin-js'     => array(
+			'filter-plus-admin'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/admin.js',
                 'version' => \FilterPlus::get_version(),
                 'deps'    => ['jquery','filter-plus-select2'],
@@ -94,7 +94,7 @@ class Enqueue {
             $form_data                          = array();
             $form_data['ajax_url']              = admin_url( 'admin-ajax.php' );
             $form_data['filter_plus_nonce']     = wp_create_nonce( 'filter_plus_nonce' );
-            wp_localize_script( 'filter-plus-admin-js', 'filter_admin', $form_data );
+            wp_localize_script( 'filter-plus-admin', 'filter_admin', $form_data );
         }
 
     }

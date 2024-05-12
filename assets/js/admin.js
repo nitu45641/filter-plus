@@ -323,5 +323,46 @@
 				$($modal_content).fadeOut(500);
 			}
 		});
+
+		//Add filter options
+		let new_filter_opt 		= $('#add-filter-option');
+		let new_filter_submit 	= $('.add-filter-option');
+		let message 			= $('.new-filter-message');
+
+		new_filter_opt.on('submit',function(e){
+			e.preventDefault();
+			let form_data 	= $(this).serializeArray();
+			let obj 		= {};
+			form_data.map(function (x, item) {
+				obj[x.name] = x.value;
+			});
+			const data = {
+				action: 'add_filter_options',
+				params: obj,
+				filter_plus_nonce: filter_admin.filter_plus_nonce,
+			};
+
+			$.ajax({
+				url: filter_admin.ajax_url,
+				method: 'POST',
+				data,
+				dataType: 'json',
+				beforeSend() {
+					new_filter_submit.addClass('loading');
+				},
+				success(response) {
+					message
+						.removeClass('d-none')
+						.html('')
+						.html(response?.data?.message)
+						.fadeIn()
+						.delay(2000)
+						.fadeOut();
+					//reload table
+					new_filter_submit.removeClass('loading');
+					location.reload();
+				},
+			});
+		});
 	}
 })(jQuery);
