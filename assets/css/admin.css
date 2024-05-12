@@ -428,6 +428,33 @@ button.button-primary:focus {
 }
 
 /* Table CSS */
+.column-actions .update-filter{
+    border: 1px solid #0D165E;
+    background: #dbe2f4;
+}
+.column-actions .delete-filter{
+    border: 1px solid #5e0d0d;
+    background: #f9c6c7;
+}
+.update-filter span{
+	color: #3263f8;
+}
+.delete-filter span
+{
+	color: #d63a3a;
+}
+.column-actions .update-filter,
+.column-actions .delete-filter
+{
+    padding: 8px;
+    border-radius: 45px;
+}
+.update-filter span,
+.delete-filter span
+{
+	position: relative;
+	top: 7px;
+}
 .alternate, .striped>tbody>:nth-child(odd), ul.striped>:nth-child(odd) {
     background-color: #3263f814 !important;
 }
@@ -450,12 +477,12 @@ td.rules_type.column-rules_type.has-row-actions.column-primary {
 	color: #0D165E !important;
 }
 
-button.button.button-primary.update-rules {
+button.button.button-primary.update-filter {
     font-weight: 600 !important;
     font-size: 13px !important;
 }
 
-button.button.button-danger.delete-rules {
+button.button.button-danger.delete-filter {
     padding: 4px 15px;
     margin-left: 10px;
     background: linear-gradient(180deg, #eb1d3a 0%, #ff1414 100%) !important;
@@ -466,7 +493,7 @@ button.button.button-danger.delete-rules {
 	border-radius: 5px;
 }
 
-button.button.button-danger.delete-rules:hover {
+button.button.button-danger.delete-filter:hover {
 	background: linear-gradient(180deg, #ff1414 0%, #eb1d3a 100%) !important;
 }
 /* Pro Tag */
