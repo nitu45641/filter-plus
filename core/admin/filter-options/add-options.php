@@ -35,7 +35,7 @@
                     'data_label'    => 'style',
                     'options'       => array(
                         'select'    =>__('Select','filter-plus'),
-                        'Checkbox'  =>__('Checkbox','filter-plus'),
+                        'checkbox'  =>__('Checkbox','filter-plus'),
                         'radio'     =>__('Radio','filter-plus'),
                     ), 
                     'selected'      =>'Select' 

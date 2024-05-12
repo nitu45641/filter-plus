@@ -72,8 +72,7 @@ class Table extends \WP_List_Table{
      */
     function column_cb( $item ) {
         return sprintf(
-            '<input type="checkbox" name="%1$s" id="%2$s" value="checked" />',
-            'ID',
+            '<input type="checkbox" name="bulk-delete[]" id="filter-options-delete" value="%1$s" />',
             $item['ID']
         );
     }
@@ -88,6 +87,19 @@ class Table extends \WP_List_Table{
         return $actions;
     }
 
+    public function process_bulk_action() {
+        $action = $this->current_action();
+        if( 'trash'===$action ) {
+            $delete_ids = esc_sql( $_POST['bulk-delete'] );
+            foreach ( $delete_ids as $did ) {
+                wp_delete_post ($did, true);
+            }
+            wp_redirect( esc_url( add_query_arg() ) );
+
+            exit;
+        }
+    }
+
     /**
      * Main query and show function
      */
@@ -99,7 +111,8 @@ class Table extends \WP_List_Table{
         $this->_column_headers = [ $column , $hidden , $sortable ];
         $current_page = $this->get_pagenum();
         $offset       = ( $current_page - 1) * $per_page;
-        
+        $this->process_bulk_action();
+
         if ( isset( $_REQUEST['orderby']) && isset( $_REQUEST['order']) ) 
         {
             $args['orderby']    = sanitize_key($_REQUEST['orderby']);

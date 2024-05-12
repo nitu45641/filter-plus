@@ -867,21 +867,21 @@ class Helper {
 	 * @return array
 	 */
 	public static function get_filter_options( $limit=-1) { 
-		$all_rules = get_posts(array('post_type'=>'filter_plus_option','posts_per_page'=> $limit));
+		$all_opts = get_posts(array('post_type'=>'filter_plus_option','posts_per_page'=> $limit));
 
-		return self::get_filters_arr( $all_rules );
+		return self::get_filters_arr( $all_opts );
 	}
 
 	/**
 	 * Get filter options
 	 *
-	 * @param [type] $all_rules
+	 * @param [type] $all_opts
 	 * @return array
 	 */
-	public static function get_filters_arr( $all_rules ) {
+	public static function get_filters_arr( $all_opts ) {
 		$arr = array();
-		if (!empty($all_rules)) {
-			foreach ($all_rules as $key => $value) {
+		if (!empty($all_opts)) {
+			foreach ($all_opts as $key => $value) {
 				$single_options = self::get_filter_opt($value);
 				$single_options['actions'] = '
 					<span class="filter-action update-filter" data-id="'.$value->ID.'"><span class="dashicons dashicons-edit"></span></span>

@@ -21,7 +21,7 @@
 	 * Shows Rules
 	 */
     $columns = array(
-        'cb'        => '<input type="checkbox" />',
+        'cb'        => '<input name="bulk-delete[]" type="checkbox" />',
         'type'      => esc_html__( 'Filter Type', 'filter-plus' ),
         'style'     => esc_html__( 'Style', 'filter-plus' ),
         'label'     => esc_html__( 'Label', 'filter-plus' ),
