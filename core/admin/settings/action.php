@@ -49,7 +49,8 @@ class Action {
      */
     public function insert_filter_options( $params ) {
 		$label = !empty( $params['label'] ) ? $params['label'] : esc_html__('Custom Field','filter-plus');
-		$ID = !empty( $params['ID'] ) ? $params['ID'] : '';
+		$ID = !empty( $params['id'] ) ? $params['id'] : '';
+
 		if ( $ID == "" ) {
 		  $id = wp_insert_post(array(
 			  'post_title'=> $label  , 

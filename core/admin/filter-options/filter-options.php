@@ -7,7 +7,7 @@
     }
 ?>
 <div class="mt-2">
-	<button class="button button-primary add-new-options"><?php esc_html_e('Add Filter Options', 'filter-plus' );?></button>
+	<button class="button button-primary add-filter-opt"><?php esc_html_e('Add Filter Options', 'filter-plus' );?></button>
 	<button class="button button-primary view-options d-none"><?php esc_html_e('View Filter Options', 'filter-plus' );?></button>
 </div>
 <?php

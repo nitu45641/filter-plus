@@ -5,6 +5,14 @@
         <form method="POST" id="add-filter-option" class="fields">
             <?php
 			    $meta_keys = \FilterPlus\Utils\Helper::instance()->get_custom_fields_keys();
+                $args = array(
+                    'label'=>'',
+                    'placeholder'=>'',
+                    'field_type' => 'hidden',
+                    'id' => 'id',
+                    'value' => '' ,
+                );
+                filter_plus_number_input_field($args);
 
                 $args = array(
                 'label'         => esc_html__("Field Type:","filter-plus"),

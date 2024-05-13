@@ -428,28 +428,29 @@ button.button-primary:focus {
 }
 
 /* Table CSS */
-.column-actions .update-filter{
+.column-actions .update-filter-option{
     border: 1px solid #0D165E;
     background: #dbe2f4;
+	cursor:pointer;
 }
 .column-actions .delete-filter{
     border: 1px solid #5e0d0d;
     background: #f9c6c7;
 }
-.update-filter span{
+.update-filter-option span{
 	color: #3263f8;
 }
 .delete-filter span
 {
 	color: #d63a3a;
 }
-.column-actions .update-filter,
+.column-actions .update-filter-option,
 .column-actions .delete-filter
 {
     padding: 8px;
     border-radius: 45px;
 }
-.update-filter span,
+.update-filter-option span,
 .delete-filter span
 {
 	position: relative;
@@ -477,7 +478,7 @@ td.rules_type.column-rules_type.has-row-actions.column-primary {
 	color: #0D165E !important;
 }
 
-button.button.button-primary.update-filter {
+button.button.button-primary.update-filter-option {
     font-weight: 600 !important;
     font-size: 13px !important;
 }

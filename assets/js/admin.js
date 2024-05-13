@@ -196,7 +196,6 @@
 				}
 
 				const type = $this.prop('type');
-
 				if (type == 'checkbox' || type == 'radio') {
 					if (this.checked) {
 						obj[$this.attr('name')] = $this.val();
@@ -307,8 +306,23 @@
 		 * Add new checkout field
 		 */
 		const $modal_content = '#filter-options-modal';
-		$('.add-new-options').on('click', function (e) {
+		$('.add-filter-opt,.update-filter-option').on('click', function (e) {
 			e.preventDefault();
+			if ( typeof ( $(this).data("id") ) !== 'undefined' ) {
+				let $this = $(this);
+				let $data = {
+					id : $this.data("id"),
+					type : $this.data("type"),
+					style : $this.data("style"),
+					label : $this.data("label"),
+					custom_field_list : $this.data("custom_field_list"),
+				}
+				$.each($data, function (key, valueObj) {
+					if ($(`#${key}`)) {
+						set_value($, $(`#${key}`), valueObj);
+					}
+				});
+			}
 			$($modal_content).show();
 		});
 
@@ -364,5 +378,32 @@
 				},
 			});
 		});
+	}
+	/**
+	 * Set value into field
+	 * @param     $
+	 * @param {*} field
+	 * @param {*} valueObj
+	 */
+	function set_value($, field, valueObj) {
+		switch (field.prop('type')) {
+			case 'hidden':
+			case 'select-one':
+				field.val(valueObj);
+			case 'text':
+			case 'number':
+				field.val(valueObj);
+			case 'checkbox':
+				field.val(valueObj);
+				if (valueObj == 'yes') {
+					field.prop('checked', true);
+				} else {
+					field.prop('checked', false);
+				}
+			case 'select-multiple':
+				field.val(valueObj).trigger('change');
+			default:
+				break;
+		}
 	}
 })(jQuery);

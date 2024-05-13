@@ -884,8 +884,13 @@ class Helper {
 			foreach ($all_opts as $key => $value) {
 				$single_options = self::get_filter_opt($value);
 				$single_options['actions'] = '
-					<span class="filter-action update-filter" data-id="'.$value->ID.'"><span class="dashicons dashicons-edit"></span></span>
-					<span class="filter-action delete-filter" data-id="'.$value->ID.'"><span class="dashicons dashicons-trash"></span></span>
+					<span class="filter-action update-filter-option"
+					data-id="'.$value->ID.'"
+					data-label="'.$value->label.'"
+					data-type="'.$value->type.'"
+					data-style="'.$value->style.'"
+					data-custom_field_list="'.$value->custom_field_list.'"
+					><span class="dashicons dashicons-edit"></span></span>
 				';
 				array_push($arr,$single_options);
 			}
