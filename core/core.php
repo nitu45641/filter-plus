@@ -36,6 +36,8 @@ class Core {
       if ( file_exists( \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/init.php' ) ) {
       	include_once \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/init.php';
       }
+      // Discountify Compatibility Added
+      \FilterPlus\Core\Compatibility\Hooks::instance()->init();
 
       // load elementor
       add_action( 'elementor/frontend/before_enqueue_scripts', array( $this, 'element_js' ) );
@@ -56,3 +58,4 @@ class Core {
 	}
 
 }
+
