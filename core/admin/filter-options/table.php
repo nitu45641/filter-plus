@@ -4,7 +4,7 @@ namespace FilterPlus\Core\Admin\FilterOptions;
 
 defined('ABSPATH') || exit;
 
-use \FilterPlus\Utils\Helper as Helper;
+use \FilterPlus\Core\Admin\FilterOptions\Helper as Helper;
 
 if ( ! class_exists( 'WP_List_Table' )){
     require_once ABSPATH . 'wp-admin/inclueds/class-wp-list-table.php';

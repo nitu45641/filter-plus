@@ -1,0 +1,76 @@
+<?php
+
+namespace FilterPlus\Core\Admin\FilterOptions;
+
+use FilterPlus\Utils\Singleton;
+
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * Helper function
+ */
+class Helper {
+
+	use Singleton;
+
+	/**
+	 * Get Filter Options
+	 *
+	 * @return array
+	 */
+	public static function get_filter_options( $limit=-1 , $type='' ) { 
+		$all_opts = get_posts(array('post_type'=>'filter_plus_option','posts_per_page'=> $limit));
+
+		return self::get_filters_arr( $all_opts , $type  );
+	}
+
+	/**
+	 * Get filter options
+	 *
+	 * @param [type] $all_opts
+	 * @return array
+	 */
+	public static function get_filters_arr( $all_opts , $type ) {
+        $filter_opt = array();
+
+		if (!empty($all_opts)) {
+			foreach ( $all_opts as $key => $value ) {
+				$single_options = self::get_filter_opt($value);
+
+                if (empty($type)) {
+                    $single_options['actions'] = '
+                        <span class="filter-action update-filter-option"
+                        data-id="'.$value->ID.'"
+                        data-label="'.$value->label.'"
+                        data-type="'.$value->type.'"
+                        data-style="'.$value->style.'"
+                        data-custom_field_list="'.$value->custom_field_list.'"
+                        ><span class="dashicons dashicons-edit"></span></span>
+				    ';
+                    
+                    array_push($filter_opt,$single_options);
+                }
+                else if( $type == $value->type ){
+                    $filter_opt[$key] = $value->label ;
+                }
+			}
+		}
+
+        return $filter_opt;
+
+	}
+
+	public static function get_filter_opt($value) {
+		$arr = array();
+
+		if ( !empty($value) ) {
+			$arr['ID'] 	= $value->ID;
+			$arr['label'] 	= get_post_meta(  $value->ID , 'label' , true );
+			$arr['type'] 	= get_post_meta(  $value->ID , 'type' , true );
+			$arr['style'] 	= get_post_meta(  $value->ID , 'style' , true );
+		}
+
+		return $arr;
+	}
+
+}

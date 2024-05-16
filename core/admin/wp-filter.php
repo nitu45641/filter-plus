@@ -1,4 +1,11 @@
 
+<?php
+
+    if ( ! defined( 'ABSPATH' ) ) exit; 
+
+    use \FilterPlus\Core\Admin\FilterOptions\Helper as FilterOptionsHelper;
+    use \FilterPlus\Utils\Helper as Helper;
+?>
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="wp_filter_plus">
 		<h1 class="font_bold font_16 mb-1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
@@ -37,7 +44,7 @@
 			filter_plus_select_field($args);
 
 			// custom post type
-			$get_custom_post = \FilterPlus\Utils\Helper::custom_post_type();
+			$get_custom_post = Helper::custom_post_type();
 			
 			$args 		= array('label'=>esc_html__("Custom Post:","filter-plus"),'id' => 'custom_post',
 			'data_label' => 'custom_post','options'=>$get_custom_post,'type'=>'random',
@@ -55,7 +62,7 @@
 			filter_plus_number_input_field($args);
 			
 			// get tag list
-			$get_tags   = \FilterPlus\Utils\Helper::get_product_tags('post_tag');
+			$get_tags   = Helper::get_product_tags('post_tag');
 
 			$args       = array('label'=>esc_html__("Tag List:","filter-plus"),'id' => 'post_tags',
 			'data_label' => 'tags','options'=>$get_tags , 'select_type' => 'multiple',  'condition_class' => "show_wp_tags d-none");
@@ -68,33 +75,44 @@
 			filter_plus_checkbox_field($args);
 
 			// author list
-			$author_list = \FilterPlus\Utils\Helper::instance()->author_list();
-			$meta_keys = \FilterPlus\Utils\Helper::instance()->get_custom_fields_keys();
-			$conditions = \FilterPlus\Utils\Helper::instance()->custom_field_condition();
+			$author_list = Helper::instance()->author_list();
+			$meta_keys = Helper::instance()->get_custom_fields_keys();
+			$conditions = Helper::instance()->custom_field_condition();
 
 			$args        = array('label'=>esc_html__("Author Label:","filter-plus"),'id' => 'author_label',
 			'data_label' => 'author_label','condition_class' => "author d-none",
-			'placeholder'=>esc_html__("Place Author Label Here","filter-plus") );
+			'placeholder'=>esc_html__('Place Author Label Here','filter-plus') );
 			filter_plus_number_input_field($args);
 
-			$args        = array('label'=>esc_html__("Author List:","filter-plus"),'id' => 'author_list',
+			$args        = array('label'=>esc_html__('Author List:','filter-plus'),'id' => 'author_list',
 			'data_label' => 'author_list','options'=>$author_list , 'type' => 'random',
 			'select_type' => 'multiple',  'condition_class' => "author d-none" );
 			filter_plus_select_field($args);
 
 			// show custom field
-			$args = array( 'label'=>esc_html__("Show Custom Field:","filter-plus"),'id' => 'custom_field','data_label' => 'custom_field');
+			$args = array( 'label'=>esc_html__('Show Custom Field:','filter-plus'),'id' => 'custom_field','data_label' => 'custom_field');
 			filter_plus_checkbox_field($args);
+			if ( !class_exists('FilterPlusPro') ) {
+				$args        = array('label'=>esc_html__('Custom Field Label:','filter-plus'),'id' => 'custom_field_label',
+				'data_label' => 'custom_field_label','condition_class' => "custom_field d-none",
+				'placeholder'=>esc_html__('Place Custom Field Here','filter-plus'));
+				filter_plus_number_input_field($args);
+				
+				$args        = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
+				'data_label' => 'custom_field_list','options'=>$meta_keys , 'type' => 'random',
+				'select_type' => 'single',  'condition_class' => "custom_field d-none");
+				filter_plus_select_field($args);
+			}
+			else{
+				$get_data = FilterOptionsHelper::instance()->get_filter_options(-1,'custom_field');
+				
+				$args        = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
+				'data_label' => 'custom_field_list','options'=>$get_data , 'type' => 'random',
+				'select_type' => 'multiple',  'condition_class' => "custom_field d-none");
 
-			$args        = array('label'=>esc_html__("Custom Field Label:","filter-plus"),'id' => 'custom_field_label',
-			'data_label' => 'custom_field_label','condition_class' => "custom_field d-none",
-			'placeholder'=>esc_html__("Place Custom Field Here","filter-plus"));
-			filter_plus_number_input_field($args);
-			
-			$args        = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
-			'data_label' => 'custom_field_list','options'=>$meta_keys , 'type' => 'random',
-			'select_type' => 'single',  'condition_class' => "custom_field d-none");
-			filter_plus_select_field($args);
+				filter_plus_select_field($args);
+			}
+
 
 		?>
 

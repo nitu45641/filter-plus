@@ -2,6 +2,7 @@
 <?php 
 
     if ( ! defined( 'ABSPATH' ) ) exit; 
+
     if ( file_exists( \FilterPlus::base_dir().'input-fields.php' ) ) {
         include_once \FilterPlus::base_dir().'input-fields.php'; 
     }

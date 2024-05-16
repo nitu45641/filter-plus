@@ -714,7 +714,7 @@ class Helper {
 			'fields'  => [ 'ID', 'display_name'],
 		  ];
 		$users = get_users($args);
-		foreach ($users as $user)  {
+		foreach ($users as $user) {
 			$full_name = get_user_meta($user->ID, 'first_name', true) .' '. get_user_meta($user->ID, 'last_name', true);
 			if ( $type == 'label_value' ) {
 				$user_list[] = array('label'=> $full_name , 'value'=>$user->ID);
@@ -860,56 +860,5 @@ class Helper {
 
 		return $templates;
 	}
-
-	/**
-	 * Get Filter Options
-	 *
-	 * @return array
-	 */
-	public static function get_filter_options( $limit=-1) { 
-		$all_opts = get_posts(array('post_type'=>'filter_plus_option','posts_per_page'=> $limit));
-
-		return self::get_filters_arr( $all_opts );
-	}
-
-	/**
-	 * Get filter options
-	 *
-	 * @param [type] $all_opts
-	 * @return array
-	 */
-	public static function get_filters_arr( $all_opts ) {
-		$arr = array();
-		if (!empty($all_opts)) {
-			foreach ($all_opts as $key => $value) {
-				$single_options = self::get_filter_opt($value);
-				$single_options['actions'] = '
-					<span class="filter-action update-filter-option"
-					data-id="'.$value->ID.'"
-					data-label="'.$value->label.'"
-					data-type="'.$value->type.'"
-					data-style="'.$value->style.'"
-					data-custom_field_list="'.$value->custom_field_list.'"
-					><span class="dashicons dashicons-edit"></span></span>
-				';
-				array_push($arr,$single_options);
-			}
-		}
-
-		return $arr;
-	}
-
-	public static function get_filter_opt($value) {
-		$rule_arr = array();
-
-		if ( !empty($value) ) {
-			$rule_arr['ID'] 	= $value->ID;
-			$rule_arr['label'] 	= get_post_meta(  $value->ID , 'label' , true );
-			$rule_arr['type'] 	= get_post_meta(  $value->ID , 'type' , true );
-			$rule_arr['style'] 	= get_post_meta(  $value->ID , 'style' , true );
-		}
-
-		return $rule_arr;
-	}
-
+	
 }
