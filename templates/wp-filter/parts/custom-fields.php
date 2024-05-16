@@ -36,8 +36,8 @@
                                 name="custom-field"
                                 type="<?php echo esc_attr($item['style'])?>" 
                                 data-meta_condition="<?php echo esc_attr($meta_condition);?>"
-                                data-meta_key="<?php echo esc_attr($custom_field_list);?>"
-                                value="<?php echo esc_attr($custom_field_list);?>"/>
+                                data-meta_key="<?php echo esc_attr($item['custom_field_list']);?>"
+                                value="<?php echo esc_attr($item['custom_field_list']);?>"/>
                                 <?php echo esc_html($field->meta_value);?>
                             </label>
                         <?php
@@ -47,7 +47,7 @@
                     <select name="custom-field" 
                     class="custom-field"
                     data-meta_condition="<?php echo esc_attr($meta_condition);?>"
-                    data-meta_key="<?php echo esc_attr($custom_field_list);?>"
+                    data-meta_key="<?php echo esc_attr($item['custom_field_list']);?>"
                     >
                         <option value=""><?php echo esc_html__('Select','filter-plus').' '.esc_html($item['label']) ?></option>
                         <?php foreach ($field_list as $key => $field) {  ?>
