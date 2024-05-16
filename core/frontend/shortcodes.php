@@ -178,8 +178,9 @@ class Shortcodes {
 				echo $is_pro_active;
 				return ob_get_clean();
 			}
-	
-			include_once \FilterPlusPro::plugin_dir() . "templates/wp-filter/template-" . $template . ".php";
+			if ( file_exists(\FilterPlusPro::plugin_dir() . "templates/wp-filter/template-".$template."/template-" . $template . ".php") ) {
+				include_once \FilterPlusPro::plugin_dir() . "templates/wp-filter/template-".$template."/template-" . $template . ".php";
+			}
 		}
 	}
 

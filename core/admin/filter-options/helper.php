@@ -73,4 +73,16 @@ class Helper {
 		return $arr;
 	}
 
+	/**
+	 * Get custom fields values
+	 *
+	 * @return object
+	 */
+	public static function get_custom_fields_values( $key ) {
+		global $wpdb;
+		$meta_values = $wpdb->get_results( 'SELECT DISTINCT meta_value FROM '.$wpdb->postmeta.' WHERE meta_value !="" AND meta_value IS NOT NULL AND meta_key="'.$key.'" ', OBJECT );
+
+		return $meta_values;
+	}
+
 }

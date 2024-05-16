@@ -104,13 +104,16 @@
 				filter_plus_select_field($args);
 			}
 			else{
-				$get_data = FilterOptionsHelper::instance()->get_filter_options(-1,'custom_field');
-				
-				$args        = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
-				'data_label' => 'custom_field_list','options'=>$get_data , 'type' => 'random',
+				$custom_fields	= FilterOptionsHelper::instance()->get_filter_options(-1,'custom_field');
+				$args        	= array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
+				'data_label' => 'custom_field_list','options'=>$custom_fields , 'type' => 'random',
 				'select_type' => 'multiple',  'condition_class' => "custom_field d-none");
 
 				filter_plus_select_field($args);
+				if (count($custom_fields) == 0 ) {
+					$opt_link = '<a href='.esc_url(admin_url().'admin.php?page=filter-options>').' target="_blank">'.esc_html__('Filter Option','filter-plus').'</a>';
+					echo esc_html__('Create New Custom Field','filter-plus') .' '.$opt_link;
+				}
 			}
 
 
