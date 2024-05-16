@@ -68,6 +68,7 @@ class Helper {
 			$arr['label'] 	= get_post_meta(  $value->ID , 'label' , true );
 			$arr['type'] 	= get_post_meta(  $value->ID , 'type' , true );
 			$arr['style'] 	= get_post_meta(  $value->ID , 'style' , true );
+			$arr['custom_field_list'] 	= get_post_meta(  $value->ID , 'custom_field_list' , true );
 		}
 
 		return $arr;
@@ -83,6 +84,20 @@ class Helper {
 		$meta_values = $wpdb->get_results( 'SELECT DISTINCT meta_value FROM '.$wpdb->postmeta.' WHERE meta_value !="" AND meta_value IS NOT NULL AND meta_key="'.$key.'" ', OBJECT );
 
 		return $meta_values;
+	}
+
+	public static function get_filter_option_list($keys,$filter_type='custom_field') {
+		$result_arr = array();
+		$fields	= self::get_filter_options(-1);
+		$accepted_keys = explode(',',$keys);
+
+		foreach ($fields as $index => $value ) {
+			if ( in_array($index,$accepted_keys)) {
+				$result_arr[]=$value;
+			}
+		}
+
+		return $result_arr;
 	}
 
 }

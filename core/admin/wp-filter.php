@@ -3,7 +3,7 @@
 
     if ( ! defined( 'ABSPATH' ) ) exit; 
 
-    use \FilterPlus\Core\Admin\FilterOptions\Helper as FilterOptionsHelper;
+    use \FilterPlus\Core\Admin\FilterOptions\Helper as OptionHelper;
     use \FilterPlus\Utils\Helper as Helper;
 ?>
 <div class="content-wrapper">
@@ -27,7 +27,7 @@
 			'data_label' => 'category_label');
 			filter_plus_number_input_field($args);
 
-			$get_categories = \FilterPlus\Utils\Helper::get_categories('',false,array('taxonomy'=>'category'));
+			$get_categories = Helper::get_categories('',false,array('taxonomy'=>'category'));
 			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'wp_categories',
 			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories);
 			filter_plus_select_field($args);
@@ -104,7 +104,7 @@
 				filter_plus_select_field($args);
 			}
 			else{
-				$custom_fields	= FilterOptionsHelper::instance()->get_filter_options(-1,'custom_field');
+				$custom_fields	= OptionHelper::instance()->get_filter_options(-1,'custom_field');
 				$args        	= array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
 				'data_label' => 'custom_field_list','options'=>$custom_fields , 'type' => 'random',
 				'select_type' => 'multiple',  'condition_class' => "custom_field d-none");
