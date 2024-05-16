@@ -109,4 +109,15 @@ var filterOption = {
 
 		return $.inArray( $search_value , $not_in ) !== -1 ? '' : $search_value;
 	},
+	customFieldValue($,params){
+		let custom_field = $(".custom-field input[name='custom-field']:checked");
+		if ($("select[name='custom-field']").length > 0 ) {
+			custom_field = $("select[name='custom-field']");
+		}
+		params.custom_field_key 	= custom_field.data('meta_key');
+		params.custom_field_value 	= custom_field.val();
+		params.meta_condition 		= custom_field.data('meta_condition');
+		
+		return params;
+	}
 };

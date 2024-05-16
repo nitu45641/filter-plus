@@ -32,9 +32,11 @@
                     foreach ($field_list as $key => $field) {
                         ?>
                             <label class="checkbox-item custom-field">
-                                <input type="<?php echo esc_attr($item['style'])?>" 
+                                <input 
+                                name="custom-field"
+                                type="<?php echo esc_attr($item['style'])?>" 
                                 data-meta_condition="<?php echo esc_attr($meta_condition);?>"
-                                data-meta_value="<?php echo esc_attr($field->meta_value);?>"
+                                data-meta_key="<?php echo esc_attr($custom_field_list);?>"
                                 value="<?php echo esc_attr($custom_field_list);?>"/>
                                 <?php echo esc_html($field->meta_value);?>
                             </label>
@@ -42,9 +44,14 @@
                     }
                 }else{
                     ?>
-                    <select data-meta_condition="<?php echo esc_attr($meta_condition);?>">
+                    <select name="custom-field" 
+                    class="custom-field"
+                    data-meta_condition="<?php echo esc_attr($meta_condition);?>"
+                    data-meta_key="<?php echo esc_attr($custom_field_list);?>"
+                    >
+                        <option value=""><?php echo esc_html__('Select','filter-plus').' '.esc_html($item['label']) ?></option>
                         <?php foreach ($field_list as $key => $field) {  ?>
-                            <option>
+                            <option value="<?php echo esc_attr($field->meta_value);?>">
                                 <?php echo esc_html($field->meta_value);?>
                             </option>
                         <?php } ?>

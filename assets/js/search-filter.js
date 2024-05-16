@@ -52,12 +52,14 @@
 					// reset block
 					reset_block(_this, _this.parents('.sidebar-row'));
 				});
-				param_box.on('change', '.checkbox-item input', function () {
+				param_box.on('change', '.checkbox-item input,select[name="custom-field"]', function () {
 					const _this = $(this);
-					if (_this.is(':checked')) {
-						_this.prop('checked', true);
-					} else {
-						_this.prop('checked', false);
+					if ( _this.attr('type') !== 'select' ) {
+						if (_this.is(':checked') ) {
+							_this.prop('checked', true);
+						} else {
+							_this.prop('checked', false);
+						}
 					}
 					get_products();
 					//reset block
@@ -405,16 +407,8 @@
 			params.on_sale_text = $(
 				".on_sale input[type='checkbox']:checked"
 			).data('on_sale_text');
-			params.custom_field_key = $(
-				".custom-field input[type='checkbox']:checked"
-			).val();
-			params.custom_field_value = $(
-				".custom-field input[type='checkbox']:checked"
-			).data('meta_value');
-			params.meta_condition = $(
-				".custom-field input[type='checkbox']:checked"
-			).data('meta_condition');
 
+			params = filterOption.customFieldValue($,params);
 			if (price_range.length > 0) {
 				const prices = price_range.val().split(',');
 				params.min = prices[0];
@@ -565,7 +559,13 @@
 				$parent.val('');
 			} else {
 				$parent.removeClass('active');
-				$parent.find('input[type=checkbox]').removeAttr('checked');
+				$parent.prop('checked',false);
+				$parent.val('');
+				let niceSelect = $('.nice-select');
+                $(".custom-field option:eq(0)").prop("selected", true);
+                if (niceSelect.length>0) {
+                    $('select').niceSelect('update'); 
+                }
 			}
 			if (!clear_all) {
 				get_products();
@@ -774,7 +774,6 @@
 				$sidebarAndWrapper.toggleClass('active-sidebar');
 			});
 			$('.side-cart-close').click(function (e) {
-				console.log("yess");
 				$('.shop-sidebar').removeClass('active-sidebar');
 			});
 
