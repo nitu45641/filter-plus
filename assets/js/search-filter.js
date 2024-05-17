@@ -559,7 +559,7 @@
 				$parent.val('');
 			} else {
 				$parent.removeClass('active');
-				if ($parent.attr('type') !== 'select' ) {
+				if ( typeof $parent.attr('type') !=='undefined' && $parent.attr('type') !== 'select' ) {
 					$parent.prop('checked',false);
 				} else {
 					$parent.val('');
