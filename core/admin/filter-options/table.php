@@ -87,6 +87,9 @@ class Table extends \WP_List_Table{
         return $actions;
     }
 
+    /** 
+     * Delete data
+    */
     public function process_bulk_action() {
         $action = $this->current_action();
         if( 'trash'===$action ) {
