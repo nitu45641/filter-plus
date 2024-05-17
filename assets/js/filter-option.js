@@ -111,13 +111,36 @@ var filterOption = {
 	},
 	customFieldValue($,params){
 		let custom_field = $(".custom-field input[name='custom-field']:checked");
-		if ($("select[name='custom-field']").length > 0 ) {
-			custom_field = $("select[name='custom-field']");
+		let get_cf_list  =[];
+		let input_data   =[];
+		let get_cf_list_select  =[];
+
+		if (custom_field.length>0) {
+			input_data = custom_field
+			.map(function () {
+				let $this = $(this);
+				return {
+					custom_field_key:$this.data('meta_key'),custom_field_value:$this.val(),
+					meta_condition: $this.data('meta_condition')
+				};
+			}).get();
+
 		}
-		params.custom_field_key 	= custom_field.data('meta_key');
-		params.custom_field_value 	= custom_field.val();
-		params.meta_condition 		= custom_field.data('meta_condition');
-		
+
+		if ($("select[name='custom-field']").length > 0 ) {
+			custom_field_select = $("select[name='custom-field']");
+			get_cf_list_select 		= custom_field_select
+			.map(function () {
+				let $this = $(this);
+				return {
+					custom_field_key:$this.data('meta_key'),custom_field_value:$this.val(),
+					meta_condition: $this.data('meta_condition')
+				};
+			}).get();
+		}
+		get_cf_list = $.merge(input_data,get_cf_list_select);
+		params.cf_list = get_cf_list; 
+
 		return params;
 	}
 };

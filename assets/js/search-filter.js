@@ -559,13 +559,16 @@
 				$parent.val('');
 			} else {
 				$parent.removeClass('active');
-				$parent.prop('checked',false);
-				$parent.val('');
-				let niceSelect = $('.nice-select');
-                $(".custom-field option:eq(0)").prop("selected", true);
-                if (niceSelect.length>0) {
-                    $('select').niceSelect('update'); 
-                }
+				if ($parent.attr('type') !== 'select' ) {
+					$parent.prop('checked',false);
+				} else {
+					$parent.val('');
+					let niceSelect = $('.nice-select');
+					$(".custom-field option:eq(0)").prop("selected", true);
+					if (niceSelect.length>0) {
+						$('select').niceSelect('update'); 
+					}
+				}
 			}
 			if (!clear_all) {
 				get_products();

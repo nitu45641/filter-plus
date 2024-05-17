@@ -37,7 +37,7 @@
                                 type="<?php echo esc_attr($item['style'])?>" 
                                 data-meta_condition="<?php echo esc_attr($meta_condition);?>"
                                 data-meta_key="<?php echo esc_attr($item['custom_field_list']);?>"
-                                value="<?php echo esc_attr($item['custom_field_list']);?>"/>
+                                value="<?php echo esc_attr($field->meta_value);?>"/>
                                 <?php echo esc_html($field->meta_value);?>
                             </label>
                         <?php

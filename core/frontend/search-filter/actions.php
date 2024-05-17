@@ -58,9 +58,7 @@ class Actions {
 		$default_call = ! empty( $post_arr['default_call'] ) ? $post_arr['default_call'] : false;
 		$filter_type  = ! empty( $post_arr['filter_type'] ) ? $post_arr['filter_type'] : 'woo-filter';
 		$author  	  = ! empty( $post_arr['author'] ) ? $post_arr['author'] : '';
-		$custom_field_key  		= ! empty( $post_arr['custom_field_key'] ) ? $post_arr['custom_field_key'] : '';
-		$custom_field_value  	= ! empty( $post_arr['custom_field_value'] ) ? $post_arr['custom_field_value'] : '';
-		$meta_condition  		= ! empty( $post_arr['meta_condition'] ) ? $post_arr['meta_condition'] : '';
+		$cf_list  	  = ! empty( $post_arr['cf_list'] ) ? $post_arr['cf_list'] : [];
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
 
 		$args = array(
@@ -81,13 +79,12 @@ class Actions {
 			'product_categories'  => $product_categories,
 			'stock'  		=> $stock,
 			'on_sale'  		=> $on_sale,
-			'meta_condition'=> $meta_condition,
-			'custom_field_key'	=> $custom_field_key,
-			'custom_field_value'=> $custom_field_value,
-			'taxonomy'  		=> $taxonomy
+			'cf_list'		=> $cf_list,
+			'taxonomy'  	=> $taxonomy
 		);
 
 		$get_products   = $this->get_products( $args );
+
 		$disable_terms  = \FilterPlus\Utils\Helper::get_single_product_tags( array( 'cat_id' => $cat_id,
 		'filter_param' => $filter_param ,'default_call' => $default_call , 'filter_type' => $filter_type ,
 		'taxonomy' => $taxonomy ) );
@@ -159,14 +156,22 @@ class Actions {
 	 * @return array
 	 */
 	public function filter_by_custom_field( $param , $args ) {
-		if(!empty($param['custom_field_key'])){
-			$args['meta_query'] =array(
-                array(
-                   'key'     => $param['custom_field_key'],
-                   'value'   => $param['custom_field_value'],
-				   'compare' => 'LIKE'
-				)
-			);
+		if(!empty($param['cf_list'])){
+			$all_list = array();
+			foreach($param['cf_list'] as $item ){
+				if (!empty($item['custom_field_value'])) {
+					$single = array(
+						'key'     => $item['custom_field_key'],
+						'value'   => $item['custom_field_value'],
+						'compare' => 'LIKE'
+					);
+					array_push( $all_list , $single );
+				}
+			}
+
+			if (!empty($all_list)) {
+				$args['meta_query'] = $all_list;
+			}
 		}
 
 		return $args;
