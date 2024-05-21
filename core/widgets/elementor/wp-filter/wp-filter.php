@@ -6,6 +6,7 @@ defined("ABSPATH") || exit;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use \FilterPlus\Core\Admin\FilterOptions\Helper as OptionHelper;
 
 class Wp_Filter extends Widget_Base {
 
@@ -35,7 +36,7 @@ class Wp_Filter extends Widget_Base {
 
 	/**
 	 * Retrieve the widget category.
-	 * @return string Widget category.
+	 * @return array
 	 */
 	public function get_categories() {
 		return ['filter-plus'];
@@ -56,7 +57,7 @@ class Wp_Filter extends Widget_Base {
 		}
 
 		$templates = [
-			1  => esc_html__('Template 1', 'filter-plus').' '.$pro,
+			1  => esc_html__('Template 1', 'filter-plus'),
 		];
 		$templates[2] = esc_html__('Template 2', 'filter-plus').' '.$pro;
 		$templates[3] = esc_html__('Template 3', 'filter-plus').' '.$pro;
@@ -169,7 +170,7 @@ class Wp_Filter extends Widget_Base {
 			'author',
 			[
 				'label' => esc_html__('Display Authors', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
@@ -201,33 +202,47 @@ class Wp_Filter extends Widget_Base {
 			'custom_field',
 			[
 				'label' => esc_html__('Display Custom Field', 'filter-plus'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__('Show', 'filter-plus'),
 				'label_off' => esc_html__('Hide', 'filter-plus'),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
 		);
+		if ( !class_exists('FilterPlusPro') ) {
+			$this->add_control(
+				'custom_field_label',
+				[
+					'label' 	=> esc_html__('Custom Field Label', 'filter-plus'),
+					'type' 		=> Controls_Manager::TEXT,
+					'placeholder' => esc_html__('Place Custom Field Label', 'filter-plus'),
+					'desc' 		=> esc_html__('Enter Exact Custom Field Name', 'filter-plus'),
+					'condition' => ['custom_field' => 'yes']
+				]
+			);
+	
+			$this->add_control(
+				'custom_field_list',
+				[
+					'label' => esc_html__('Custom Field Name', 'filter-plus'),
+					'type' => Controls_Manager::TEXT,
+					'condition' => ['custom_field' => 'yes']
+				]
+			);
+		}else{
+			$custom_fields	= OptionHelper::instance()->get_filter_options(-1,'custom_field');
 
-		$this->add_control(
-			'custom_field_label',
-			[
-				'label' 	=> esc_html__('Custom Field Label', 'filter-plus'),
-				'type' 		=> Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Place Custom Field Label', 'filter-plus'),
-				'desc' 		=> esc_html__('Enter Exact Custom Field Name', 'filter-plus'),
-				'condition' => ['custom_field' => 'yes']
-			]
-		);
-
-		$this->add_control(
-			'custom_field_list',
-			[
-				'label' => esc_html__('Custom Field Name', 'filter-plus'),
-				'type' => Controls_Manager::TEXT,
-				'condition' => ['custom_field' => 'yes']
-			]
-		);
+			$this->add_control(
+				'custom_field_list',
+				[
+					'label' => esc_html__('Custom Field List', 'filter-plus'),
+					'type' => Controls_Manager::SELECT2,
+					'options' => $custom_fields,
+					'multiple' => true,
+					'condition' => ['custom_field' => 'yes']
+				]
+			);
+		}
 
 		$this->end_controls_section();
 

@@ -2,9 +2,9 @@
 
 namespace FilterPlus\Core\Widgets\Bricks;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+use \FilterPlus\Core\Admin\FilterOptions\Helper as OptionHelper;
 
 class Wp_Filter extends \Bricks\Element {
 	// Element properties
@@ -205,22 +205,21 @@ class Wp_Filter extends \Bricks\Element {
 			'default' => true,
 		);
 
-		$this->controls['custom_field_label'] = array(
-			'tab' => 'content',
-			'group' => 'filter_options',
-			'label' => esc_html__( 'Custom Field Label', 'filter-plus' ),
-			'type' => 'text',
-			'default' => esc_html__( 'Place Custom Field Label Here', 'filter-plus' ),
-			'required' => array( 'custom_field', '=', true ),
-		);
+		$custom_fields	= OptionHelper::instance()->get_filter_options(-1,'custom_field');
 
 		$this->controls['custom_field_list'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',
-			'label' => esc_html__( 'Custom Field Name', 'filter-plus' ),
-			'type' => 'text',
-			'default' => esc_html__( 'Enter Exact Custom Field Name', 'filter-plus' ),
-			'required' => array( 'custom_field', '=', true ),
+			'label' => esc_html__( 'Custom Field List', 'filter-plus' ),
+			'type' => 'select',
+			'options' => $custom_fields,
+			'inline' => true,
+			'placeholder' => esc_html__( 'Select Custom Field List', 'filter-plus' ),
+			'multiple' => true,
+			'searchable' => true,
+			'clearable' => true,
+			'default' => '',
+			'required' => array( 'custom_field', '=', true )
 		);
 
 		// Filter Results
