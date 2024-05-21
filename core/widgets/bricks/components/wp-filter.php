@@ -206,11 +206,16 @@ class Wp_Filter extends \Bricks\Element {
 		);
 
 		$custom_fields	= OptionHelper::instance()->get_filter_options(-1,'custom_field');
-
+		$desc = esc_html__('Select Custom Field','filter-plus');
+		if (count($custom_fields) == 0 ) {
+			$desc = esc_html__('Create New Custom Field From','filter-plus') .' '.'<a href='.esc_url(admin_url().'admin.php?page=filter-options>').' target="_blank">'.
+			 esc_html__('Filter Options','filter-plus').'</a>';
+		}
 		$this->controls['custom_field_list'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Custom Field List', 'filter-plus' ),
+			'description' => $desc,
 			'type' => 'select',
 			'options' => $custom_fields,
 			'inline' => true,

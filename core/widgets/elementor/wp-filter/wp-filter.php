@@ -233,7 +233,7 @@ class Wp_Filter extends Widget_Base {
 			$custom_fields	= OptionHelper::instance()->get_filter_options(-1,'custom_field');
 			$desc = esc_html__('Select Custom Field','filter-plus');
 			if (count($custom_fields) == 0 ) {
-				$desc = esc_html__('Create New Custom Field','filter-plus') .' '.'<a href='.esc_url(admin_url().'admin.php?page=filter-options>').' target="_blank">'.
+				$desc = esc_html__('Create New Custom Field From','filter-plus') .' '.'<a href='.esc_url(admin_url().'admin.php?page=filter-options>').' target="_blank">'.
 				 esc_html__('Filter Options','filter-plus').'</a>';
 			}
 			$this->add_control(
