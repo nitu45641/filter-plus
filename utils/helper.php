@@ -660,7 +660,7 @@ class Helper {
 
 	/**
 	 * Settings option
-	 * 
+	 * @return array
 	 */
 	public static function get_settings_key() {
 		$settings_key = array( 'woo_order_filter_product'=> 'no',

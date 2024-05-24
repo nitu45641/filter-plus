@@ -36,7 +36,7 @@ Class Wrapper {
 	 * Add required links
 	 *
 	 * @param [type] $actions
-	 * @return void
+	 * @return array
 	 */
 	public function add_action_links( $actions ) {
 		$this->custom_css();

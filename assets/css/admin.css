@@ -1,4 +1,5 @@
 /* Admin css */
+/* Settings page start*/
 #wpcontent {
     padding: 0;
 }
@@ -426,6 +427,7 @@ button.button-primary:focus {
     margin-right: 10px!important;
     padding: 0 3px!important;
 }
+/* Settings page end */
 
 /* Table CSS */
 .column-actions .update-filter-option{
