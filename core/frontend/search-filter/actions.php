@@ -25,8 +25,8 @@ class Actions {
 		$callback = ['get_filtered_data'];
 		if ( ! empty( $callback ) ) {
 			foreach ( $callback as $key => $value ) {
-				add_action( 'wp_ajax_' . $value, [$this, $value] );
 				add_action( 'wp_ajax_nopriv_' . $value, [$this, $value] );
+				add_action( 'wp_ajax_' . $value, [$this, $value] );
 			}
 		}
 	}
@@ -38,7 +38,6 @@ class Actions {
 	 */
 	public function get_filtered_data() {
 		$post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
-		FilterPlus\Utils\Helper::instance()->verify_nonce('filter_plus_nonce', $post_data['filter_plus_nonce'] );
 		$post_arr     = ! empty( $post_data['params'] ) ? $post_data['params'] : [];
 		$search_value = ! empty( $post_arr['search_value'] ) ? $post_arr['search_value'] : '';
 		$order_by     = ! empty( $post_arr['order_by'] ) ? $post_arr['order_by'] : '';

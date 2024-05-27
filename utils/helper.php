@@ -727,7 +727,7 @@ class Helper {
 		return $user_list;
 	}
 
-		/**
+	/**
 	 * Admin pages array
 	 *
 	 */
