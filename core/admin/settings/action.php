@@ -19,7 +19,7 @@ class Action {
 		$callback = array( 'filter_save_settings','add_filter_options' );
 		if ( ! empty( $callback ) ) {
 			foreach ( $callback as $key => $value ) {
-				add_action( 'wp_ajax_' . $value, array( $this, $value ) );
+				add_action( 'wp_ajax_' . $value , array( $this, $value ) );
 				add_action( 'wp_ajax_nopriv_' . $value, array( $this, $value ) );
 			}
 		}

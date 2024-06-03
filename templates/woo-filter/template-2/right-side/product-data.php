@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					{{/each}}
 				</div>	
 				<div class="product-name">
-					<a href="#">{{{ post_title }}}</a>
+					<a href="{{post_permalink}}">{{{ post_title }}}</a>
 				</div>
 				<div class="product-price">
 					{{{ post_price }}}
