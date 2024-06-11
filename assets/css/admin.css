@@ -1046,11 +1046,12 @@ tfoot > tr
 	border: 1px solid #81B4FE;
 	color: #0D6EFD;
 }
-.add-filter-opt{
+.add-filter-opt.button,.add-filter-opt.button:hover{
 	background: #0D6EFD;
 	color: #FAFAFB;
 	font-size: 12px;
 	font-weight: 600;
+	height: 36px;
 }
 .add-filter-opt::before{
 	content: '+';

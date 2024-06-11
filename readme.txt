@@ -1,10 +1,10 @@
 === Wordpress Filter, WooCommerce Product Filtering by Categories, Tags, Price Range Plugin , Woocommerce admin order filter - Filter Plus ===
 Contributors: markutos987, galib96
 Donate link: https://woooplugin.com/filter-plus/
-Tags: woocommerce filter, post filter, woocommerce product filter, product filter , ajax filter
+Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Requires at least: 4.7
 Tested up to: 6.5
-Stable tag: 1.0.60
+Stable tag: 1.0.61
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -122,6 +122,9 @@ We have tested all the popular themes. And we believe it will work with your the
 
 
 == Changelog ==
+
+= 1.0.61 (June 03, 2024)=
+Tweak  : Admin UX improve
 
 = 1.0.60 (June 03, 2024)=
 Fix   : Product link added

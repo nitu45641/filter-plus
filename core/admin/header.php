@@ -13,6 +13,12 @@
 	<?php
 		$menus = array(
 			array(
+				'name' => esc_html__('Filter Options','filter-plus'),
+				'url' => admin_url() . 'admin.php?page=filter-options',
+				'slug' => 'filter-options',
+				'target' => '_self',
+			),
+			array(
 				'name' => esc_html__('Filter Sets','filter-plus'),
 				'url' => admin_url() . 'admin.php?page=filter-sets',
 				'slug' => 'filter-sets',
