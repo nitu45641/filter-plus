@@ -1,7 +1,7 @@
 
 <h2 class="content-header"><?php esc_html_e("Filter Sets","filter-plus");?></h2>
 <section class="accordion">
-  <ul class="accordion-list">
+  <div class="accordion-list">
     <?php 
     
       if ( file_exists( \FilterPlus::base_dir().'input-fields.php' ) ) {
@@ -20,25 +20,32 @@
           'label' => esc_html__("Wordpress Filter","filter-plus"),
           'path' => \FilterPlus::core_dir()."admin/wp-filter.php"
         )
-      );
-    foreach ($tabs as $key => $value) { 
-      ?>
-        <li class="accordion-item">
-          <input type="checkbox" id="collapse-<?php echo esc_attr($key);?>" class="accordion-button">
-          <label for="collapse-<?php echo esc_attr($key);?>" class="accordion-header">
-            <p class="font_bold"><?php echo esc_html($value['label']);?></p>
-            <p class="closed">+</p>
-            <p class="opened">-</p>
-          </label>
+    );
 
-          <section class="content">
-            <?php 
-            if ( file_exists($value['path'])) {
-                include_once $value['path']; 
-            }
-            ?>
-          </section>
-        </li>
-    <?php } ?>
-  </ul>
+    foreach ($tabs as $key => $value) { 
+      $active_class = $key == 0 ? 'active' : '';
+      $d_none_close = $key == 0 ? 'd-none' : '';
+      $d_none_open = $key == 0 ? '' : 'd-none';
+      ?>
+        <div class="accordion-item <?php echo esc_attr($active_class);?>">
+            <div class="title"><?php echo esc_html($value['label']);?></div>
+            <div class="closed <?php echo esc_attr($d_none_close);?>">+</div>
+            <div class="opened <?php echo esc_attr($d_none_open);?>">-</div>
+          </label>
+        </div>
+    <?php 
+    }  
+    ?>
+  </div>
+  <?php foreach ($tabs as $key => $value) { 
+    $active_class = $key == 0 ? 'active' : 'd-none';
+  ?>
+      <section class="content <?php echo esc_attr($active_class);?>" >
+          <?php 
+          if ( file_exists($value['path'])) {
+              include_once $value['path']; 
+          }
+          ?>
+      </section>
+  <?php } ?>
 </section>

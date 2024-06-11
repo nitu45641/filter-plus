@@ -102,7 +102,8 @@ Filter Plus is the ultimate plugin for WordPress and WooCommerce product filteri
 ### 🔥 WHAT’S NEXT
 If you like Filter Plus, then consider checking out  other WordPress Plugins made by the same team:
 
-🔔 **[Discountify](https://wordpress.org/plugins/discountify/)** – Discount Rules, Dynamic Pricing for WooCommerce
+🔔 **[Create Members](https://wordpress.org/plugins/create-members/)** – Create Members for Wordpress and WooCommerce and Boost your sales
+🔔 **[Discountify](https://wordpress.org/plugins/discountify/)** – Discount Rules, Dynamic Pricing and Coupon management for WooCommerce
 🔔 **[Quicker](https://wordpress.org/plugins/quicker/)** – Convert Your Browsers into Buyers and Maximize Conversions
 
 == Frequently Asked Questions ==
@@ -117,7 +118,7 @@ After installation and activation, you will see a new option in the admin panel.
 
 = Is it compatible with all WordPress themes? =
 
-We have tested all the popular themes. And we believe it will work with your theme if that has been well developed for WordPress and WooComerce. If you face any issue, drop us a message on our support link. Our team will take care of the compatibility issue.
+We have tested all the popular themes. And we believe it will work with your theme if that has been well developed for WordPress and WooCommerce. If you face any issue, drop us a message on our support link. Our team will take care of the compatibility issue.
 
 
 == Changelog ==

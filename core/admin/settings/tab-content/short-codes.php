@@ -1,11 +1,11 @@
 
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="filter_products">
-		<h1 class="font_bold font_16 mb-1"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></h1>
+		<div class="title1"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></div>
 		<?php
 			// templates
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/show-woocommerce-product-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
-			$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('Gutenberg Block,Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</i></div>';
+			$docs 		= '<div class="documentation mb-3"><div class="doc">'.esc_html__('Gutenberg Block,Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
 
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
@@ -19,7 +19,7 @@
 			// categories
 			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
 			'placeholder'=>esc_html__("Place Category Label Here","filter-plus"),
-			'data_label' => 'category_label','disable' => $disable);
+			'data_label' => 'category_label');
 			filter_plus_number_input_field($args);
 
 			$get_categories = \FilterPlus\Utils\Helper::get_categories();
@@ -39,7 +39,7 @@
 			'id' => 'color_label',
 			'condition_class' => "show_colors d-none",
 			'placeholder'=>esc_html__("Place Color Label Here","filter-plus"),
-			'data_label' => 'color_label','disable' => $disable);
+			'data_label' => 'color_label');
 			filter_plus_number_input_field($args);
 
 			// sizes
@@ -50,7 +50,7 @@
 			'id' => 'size_label',
 			'condition_class' => "show_size d-none",
 			'placeholder'=>esc_html__("Place Size Label Here","filter-plus"),
-			'data_label' => 'size_label','disable' => $disable);
+			'data_label' => 'size_label');
 			filter_plus_number_input_field($args);
 			
 			// show tags
@@ -60,7 +60,7 @@
 			$args = array('label'=>esc_html__("Tag Label:","filter-plus"),'id' => 'tag_label',
 			'placeholder'=>esc_html__("Place Tag Label Here","filter-plus"),
 			'data_label' => 'tag_label','condition_class' => "show_tags d-none",
-			'value' => '','disable' => $disable);
+			'value' => '');
 			filter_plus_number_input_field($args);
 			
 			// get tag list
@@ -77,7 +77,7 @@
 			$args = array('label'=>esc_html__("Attribute Label:","filter-plus"),'id' => 'attribute_label',
 			'placeholder'=>esc_html__("Place Attribute Label Here","filter-plus"),
 			'data_label' => 'attribute_label',
-			'condition_class' => "show_attributes d-none",'disable' => $disable);
+			'condition_class' => "show_attributes d-none");
 			filter_plus_number_input_field($args);
 
 			// get attributes list
@@ -93,7 +93,7 @@
 			$args = array('label'=>esc_html__("Price Range Label:","filter-plus"),
 			'placeholder'=>esc_html__("Place Price Range Label Here","filter-plus"),
 			'id' => 'price_range_label','data_label' => 'price_range_label',
-			'condition_class' => "show_price_range d-none",'disable' => $disable);
+			'condition_class' => "show_price_range d-none");
 			filter_plus_number_input_field($args);
 
 
@@ -104,7 +104,7 @@
 			$args = array('label'=>esc_html__("Review Label:","filter-plus"),
 			'placeholder'=>esc_html__("Place Review Label Here","filter-plus"),
 			'id' => 'review_label','data_label' => 'review_label',
-			'condition_class' => "show_reviews d-none",'disable' => $disable);
+			'condition_class' => "show_reviews d-none");
 			filter_plus_number_input_field($args);
 
 			// filter by stock
@@ -113,7 +113,7 @@
 
 			$args = array('label'=>esc_html__("Stock Label:","filter-plus"),'id' => 'stock_label',
 			'placeholder'=>esc_html__("Place Stock Label Here","filter-plus"),
-			'data_label' => 'stock_label','condition_class' => "stock d-none", 'disable' => $disable);
+			'data_label' => 'stock_label','condition_class' => 'stock d-none' );
 			filter_plus_number_input_field($args);
 
 			// filter by on sale
@@ -123,7 +123,7 @@
 			$args = array('label'=>esc_html__("On Sale Label:","filter-plus"),
 			'placeholder'=>esc_html__("Place On Sale Label Here","filter-plus"),
 			'id' => 'on_sale_label','data_label' => 'on_sale_label',
-			'condition_class' => "on_sale d-none",'disable' => $disable);
+			'condition_class' => "on_sale d-none");
 
 			filter_plus_number_input_field($args);
 
