@@ -1013,8 +1013,20 @@ a.pro-link:focus{
 /* Modal css end */
 
 /* wp list table css start */
+.content-header{
+	display: flex;
+    justify-content: space-between;
+}
+.content-header .title{
+	font-size: 22px;
+    font-weight: 700;
+    line-height: 33.18px;
+}
 .tablenav {
     margin: 6px 0 18px;
+}
+#the-list > tr{
+	border-bottom:1px solid #E4E9EE !important;
 }
 .wp-list-table thead tr,
 tfoot > tr
@@ -1033,6 +1045,16 @@ tfoot > tr
     height: 35px;
 	border: 1px solid #81B4FE;
 	color: #0D6EFD;
-;
+}
+.add-filter-opt{
+	background: #0D6EFD;
+	color: #FAFAFB;
+	font-size: 12px;
+	font-weight: 600;
+}
+.add-filter-opt::before{
+	content: '+';
+	font-size: 15px;
+	padding-right: 5px;
 }
 /* wp list table css end */

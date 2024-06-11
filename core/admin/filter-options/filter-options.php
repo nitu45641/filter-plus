@@ -7,9 +7,9 @@
         include_once \FilterPlus::base_dir().'input-fields.php'; 
     }
 ?>
-<div class="mt-2">
-	<button class="button button-primary add-filter-opt"><?php esc_html_e('Add Filter Options', 'filter-plus' );?></button>
-	<button class="button button-primary view-options d-none"><?php esc_html_e('View Filter Options', 'filter-plus' );?></button>
+<div class="mt-2 content-header">
+    <div class="title"><?php esc_html_e("Filter Options","filter-plus"); ?></div>
+    <button class="button add-filter-opt"><?php esc_html_e('Add New Filter Options', 'filter-plus' );?></button>
 </div>
 <?php
     if ( file_exists(\FilterPlus::core_dir().'admin/filter-options/add-options.php') ) {
