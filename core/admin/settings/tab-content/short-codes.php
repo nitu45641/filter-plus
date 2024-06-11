@@ -130,7 +130,7 @@
 
 		?>
 
-		<h1 class="font_bold font_20 mt-1 mb-1"><?php esc_html_e("Filter Result Products","filter-plus"); ?></h1>
+		<div class="title1 mt-3 mb-3"><?php esc_html_e("Filter Result Products","filter-plus"); ?></div>
 		
 		<?php
 

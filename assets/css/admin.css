@@ -45,18 +45,27 @@ h1.font_16{
 	padding: 20px 5px;
 	border: 1px solid #d5d5d5;
 }
-.single-block {
-	display: grid;
-	align-items: center;
-	padding: 7px 0;
-}
+
 .fields .single-block{
 	grid-template-columns: 100px auto auto;
 	column-gap: 35px;
 } 
 .shortcode-block .single-block{
-	grid-template-columns: 185px auto auto;
-	column-gap: 35px;
+	display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+	border-radius: 6px;
+	.form-label{
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 21.78px;
+	}
+	.generate-block{
+		margin-right: 5px;
+	}
 }
 .tab-wrapper .single-block {
     grid-template-columns: 185px auto auto;
@@ -84,12 +93,12 @@ h1.font_16{
 	font-weight: bold;
 	padding: 10px 0px;
 }
-.input-section {
+/* .input-section {
 	display: inline-flex;
 	width: 300px;
 	position: relative;
 	align-items: center;
-}
+} */
 
 /* do not group these rules */
 .input-section  input::placeholder::-webkit-input-placeholder {
@@ -259,13 +268,12 @@ option.disable,.disable {
 
 
 button.button-primary {
-	padding: 5px 25px !important;
-	font-size: 15px !important;
+	padding: 6px 25px !important;
+	font-size: 14px !important;
 	line-height: 25px !important;
-	background: linear-gradient(180deg, #3263f8 0%, #254ec8 100%) !important;
+	background: var(--filter-primary-bg,#0D6EFD) !important;
 	border: 1px solid transparent !important;
-	border-radius: 5px !important;
-	font-weight: 500;
+	border-radius: 6px !important;
 }
 
 button.button-primary:hover {
@@ -286,11 +294,6 @@ button.button-primary:focus {
     color: #000000;
     border-radius: 7px !important;
 }
-.input-wrap,
-.input-section input{
-	width: 90%;
-}
-
 .full_input{
 	height: 40px;
 }
@@ -308,7 +311,6 @@ button.button-primary:focus {
     border: 1px solid #c7c7c7 !important;
     font-size: 14px !important;
     border-radius: 6px !important;
-    width: 240px;
 }
 
 .input-section .select2-selection {
@@ -935,7 +937,7 @@ a.pro-link:focus{
 		}
 	}
 	.accordion-item.active{
-		background: #0D6EFD;
+		background: var(--filter-primary-bg,#0D6EFD);
 		color: #fff;
 	}
 }
