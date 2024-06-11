@@ -32,6 +32,7 @@
 		$(`#${active_tab}`).addClass('active');
 		$settings_tab_li.on('click', function () {
 			const $this = $(this);
+			$settings_tab_li.removeClass();
 			$this.addClass('active');
 			$('.tab-content > div').hide();
 			const index = $settings_tab_li.index(this);
