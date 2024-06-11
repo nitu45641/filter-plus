@@ -32,13 +32,31 @@
 		$(`#${active_tab}`).addClass('active');
 		$settings_tab_li.on('click', function () {
 			const $this = $(this);
-			$settings_tab_li.removeClass();
-			$('.tab-content > div').hide();
 			$this.addClass('active');
+			$('.tab-content > div').hide();
 			const index = $settings_tab_li.index(this);
 			$('.tab-content > div:eq(' + index + ')').show();
 			window.history.replaceState(null, null, `#${$this.data('item')}`);
 		});
+
+		/**
+		 * ShortCode tab
+		 */
+		let handel = $('.accordion-list .accordion-item');
+		handel.on('click',function(){
+			let $this = $(this);
+			let index = handel.index(this);
+			tab_slide($this,'filter-set-content',index);
+			$('.closed').show();
+			$('.opened').hide();
+		});
+
+		function tab_slide($this,content,index) {
+			handel.removeClass('active')
+			$this.addClass('active');
+			$(`.${content}`).hide();
+			$('.'+content+':eq(' + index + ')').show();
+		}
 
 		/**
 		 * ShortCode generator

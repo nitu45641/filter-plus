@@ -24,13 +24,9 @@
 
     foreach ($tabs as $key => $value) { 
       $active_class = $key == 0 ? 'active' : '';
-      $d_none_close = $key == 0 ? 'd-none' : '';
-      $d_none_open = $key == 0 ? '' : 'd-none';
       ?>
         <div class="accordion-item <?php echo esc_attr($active_class);?>">
             <div class="title"><?php echo esc_html($value['label']);?></div>
-            <div class="closed <?php echo esc_attr($d_none_close);?>">+</div>
-            <div class="opened <?php echo esc_attr($d_none_open);?>">-</div>
           </label>
         </div>
     <?php 
@@ -38,9 +34,9 @@
     ?>
   </div>
   <?php foreach ($tabs as $key => $value) { 
-    $active_class = $key == 0 ? 'active' : 'd-none';
+    $active_class = $key == 0 ? 'active' : '';
   ?>
-      <section class="content <?php echo esc_attr($active_class);?>" >
+      <section class="filter-set-content <?php echo esc_attr($active_class);?>" >
           <?php 
           if ( file_exists($value['path'])) {
               include_once $value['path']; 
