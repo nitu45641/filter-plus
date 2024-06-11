@@ -47,8 +47,14 @@ h1.font_16{
 }
 
 .fields .single-block{
-	grid-template-columns: 100px auto auto;
-	column-gap: 35px;
+	display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+	border-radius: 6px;
+	border: 1px solid #E6E6E6;
 } 
 .shortcode-block .single-block{
 	display: flex;
@@ -477,8 +483,9 @@ button.button-primary:focus {
 	position: relative;
 	top: 7px;
 }
-.alternate, .striped>tbody>:nth-child(odd), ul.striped>:nth-child(odd) {
-    background-color: #3263f814 !important;
+.alternate, .striped>tbody>:nth-child(odd),
+ul.striped>:nth-child(odd) {
+    background-color: #fff;
 }
 
 td.enable_rules.column-enable_rules span {
@@ -947,7 +954,7 @@ a.pro-link:focus{
 		display: flex;
 		justify-content: space-between;
 		background: #fff;
-		padding: 25px 15px;
+		padding: 15px;
 		border-radius: 6px;
 		.title{
 			font-size: 16px;
@@ -1008,5 +1015,24 @@ a.pro-link:focus{
 /* wp list table css start */
 .tablenav {
     margin: 6px 0 18px;
+}
+.wp-list-table thead tr,
+tfoot > tr
+{
+	height: 60px;
+    background: #F5F5F5;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.86px;
+}
+.widefat tbody th.check-column{
+	padding: 19px 0 0 3px;
+}
+#doaction,#doaction2{
+	width: 74px;
+    height: 35px;
+	border: 1px solid #81B4FE;
+	color: #0D6EFD;
+;
 }
 /* wp list table css end */

@@ -116,7 +116,6 @@
 				}
 			}
 
-
 		?>
 
 		<div class="title1 mt-3 mb-3"><?php esc_html_e("Filter Result","filter-plus"); ?></div>
