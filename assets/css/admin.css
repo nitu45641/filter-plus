@@ -3,6 +3,10 @@
 body{
 	color:#121212;
 }
+input,
+input::placeholder {
+    font-size: 13px;
+}
 .mb-3{
 	margin-bottom: 3%;
 }
@@ -102,16 +106,10 @@ h1.font_16{
 	cursor: pointer;
 }
 .form-label {
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: bold;
 	padding: 10px 0px;
 }
-/* .input-section {
-	display: inline-flex;
-	width: 300px;
-	position: relative;
-	align-items: center;
-} */
 
 /* do not group these rules */
 .input-section  input::placeholder::-webkit-input-placeholder {
