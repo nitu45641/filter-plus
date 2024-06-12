@@ -16,7 +16,7 @@
 ?>
 <div class="settings_message d-none"></div>
 <form id="filter-settings">
-    <h2 class="content-header"><?php esc_html_e("Settings","filter-plus");?></h2>
+    <h2 class="content-header"><?php esc_html_e('Settings','filter-plus');?></h2>
     <div class="content-wrapper">
         <div class="settings_tab">
             <ul class="settings_tab_pan">
@@ -39,6 +39,6 @@
                 <?php } ?>
             </div>	
         </div>
-        <button class="button button-primary admin-button mt-3">Save Changes</button>
+        <button class="button button-primary admin-button"><?php esc_html_e( 'Save Changes','filter-plus' )?></button>
 	</div>
 </form>

@@ -219,8 +219,7 @@ option.disable,.disable {
 
 /* Setting Tab Style */
 .tab-content {
-	background: #ffffff;
-	padding: 2%;
+	padding: 2% 0;
 	border-radius: 5px;
 	min-height: 300px;
 }
