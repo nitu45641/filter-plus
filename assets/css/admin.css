@@ -648,7 +648,23 @@ a.pr-tag{
 	background-color: #3263f8;
 	color: #fff;
 }
-
+.explore-plugin{
+    display: grid;
+    grid-template-columns: auto auto;
+	gap: 10px;
+	.btn{
+		padding: 10px;
+		border-radius: 6px;
+	}
+	.free-button{
+		color: #121212;
+		background: #F1F2F4;
+	}
+	.pro-button{
+		color: #fff;
+		background: #0D6EFD;
+	}
+}
 .over-view-wrapper{
 	background: #ffffff;
 	padding: 2%;
@@ -669,8 +685,12 @@ a.pr-tag{
 	min-height: 250px;
 }
 .cta-block{
-	gap: 20%;
-	background-color: #ff5d8f;;
+	display: inline-block;
+	text-align: center;
+	background-image: url("../images/cta-block.png");
+}
+.heading-block h1{
+	color: #fff;
 }
 .ctn-button{
 	cursor: pointer;
@@ -680,10 +700,11 @@ a.pr-tag{
     border: 1px solid #291c63;
 }
 .feature-cta{
-    background: #fff;
-    color: #291c63;
-    width: 190px;
-    padding: 12% 0;
+	box-shadow: 0px 1px 2px 0px #1018280D;
+	width: 220px;
+	height: 60px;
+	padding: 16px 28px 16px 32px;
+	border-radius: 6px 0px 0px 0px;	
 }
 .first-block .ctn-button {
 	background: #ff5d8f;
@@ -701,11 +722,23 @@ a.pr-tag{
 .left-block p{
 	font-size: 15px;
 }
-.block-header{
-	color: #291c63;
-    font-size: 34px; 
-    font-weight: 700;
-    margin: 0 0 1rem;
+.cta-block-header{
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 42px;
+	letter-spacing: -0.01em;	
+}
+.more-product-header {
+	.block-header{
+		color: #121212;
+		font-size: 48px;
+		font-weight: 700;
+		line-height: 56px;
+	}
+	p{
+		font-size: 14px;
+		font-weight: 400;
+	}
 }
 .row{
 	display: flex;
@@ -717,27 +750,34 @@ a.pr-tag{
 	grid-template-columns: auto auto auto auto;
 }
 .card-wrapper{
-	display: flex;
-    flex-wrap:wrap;
+    display: grid;
+    grid-template-columns: auto auto auto;
+	column-gap: 10px;
 }
 .card-block{
-	width: 44%;
-	margin-right: 5%;
+    padding: 25px;
     border: 1px solid #f4ecec;
-    border-radius: 15px;
+    border-radius: 8px;
+    text-align: center;
+	box-shadow: 0px 8px 65px 0px #0000000D;
+	.desc p{
+		margin: 5px 0 40px 0;
+	}
 }
 .card-block:last-child{
 	margin-right: 0;
 }
-.single-item,.card-block {
+.single-item {
 	padding: 3% 0;
 	text-align: center;
 }
-.single-item h3,.card-block h3{
+.single-item h3{
     font-weight: 800;
 }
 .card-block h3{
-	font-size: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
 }
 
 .single-item span,.card-block span{
@@ -787,10 +827,6 @@ a.pr-tag{
 	margin-bottom: 5%;
 }
 
-.description p{
-	margin: 0;
-	float: left;
-}
 .description a{
 	text-decoration: none;
 }

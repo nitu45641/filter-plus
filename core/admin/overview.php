@@ -54,22 +54,34 @@ $features = array(
 
 $more_products = array(
     array(
+        'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
+        'url_demo' => 'https://woooplugin.com/ultimate-membership/',
+        'url_free' => 'https://downloads.wordpress.org/plugin/create-members.latest-stable.zip',
+        'title' =>esc_html__('Ultimate Membership','filter-plus'),
+        'logo'   => 'quicker.png',
+        'desc'   => esc_html__('Restrict content, manage member subscriptions','filter-plus'),
+        'cta_free' =>esc_html__('Free Version','filter-plus'),
+        'cta_demo' =>esc_html__('Premium Version','filter-plus')
+    ),
+    array(
         'icon'          =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
         'url_demo'      => 'https://woooplugin.com/discountify/',
         'url_free'      => 'https://downloads.wordpress.org/plugin/discountify.latest-stable.zip',
         'title'         =>esc_html__('Discount and Coupon Plugin','filter-plus'),
-        'logo'          => 'discountify-logo.png',
-        'cta_free'      =>esc_html__('Explore Free Plugin','filter-plus'),
-        'cta_demo'      =>esc_html__('Explore The Plugin','filter-plus')
+        'logo'          => 'discountify.png',
+        'desc'   => esc_html__('Transform Discounts into Profits','filter-plus'),
+        'cta_free'      =>esc_html__('Free Version','filter-plus'),
+        'cta_demo'      =>esc_html__('Premium Version','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
         'url_demo' => 'https://woooplugin.com/quicker/',
         'url_free' => 'https://downloads.wordpress.org/plugin/quicker.latest-stable.zip',
         'title' =>esc_html__('Quick Checkout Plugin','filter-plus'),
-        'logo'   => 'quicker-logo.png',
-        'cta_free' =>esc_html__('Explore Free Plugin','filter-plus'),
-        'cta_demo' =>esc_html__('Explore The Plugin','filter-plus')
+        'logo'   => 'quicker.png',
+        'desc'   => esc_html__('Checkout in Seconds, Save Precious Time','filter-plus'),
+        'cta_free' =>esc_html__('Free Version','filter-plus'),
+        'cta_demo' =>esc_html__('Premium Version','filter-plus')
     ),
 );
 
@@ -108,33 +120,33 @@ $more_products = array(
         </div>
     </div>
     <div class="block cta-block p-7 mb-5">
-        <div class="left-block">
-            <h1 class="block-header"><?php esc_html_e('Explore the premium version to experience our countless advanced features.','filter-plus');?></h1>
+        <div class="heading-block">
+            <h1 class="cta-block-header"><?php esc_html_e('Explore the premium version to experience our countless advanced features.','filter-plus');?></h1>
         </div>
-        <div class="right-block">
+        <div class="cta-action">
             <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
-                <button class="btn feature-cta ctn-button"><?php esc_html_e('Look Into Pro','filter-plus');?></button>
+                <button class="btn feature-cta"><?php esc_html_e('Look Into Pro','filter-plus');?></button>
             </a>
         </div>
     </div>
     <div class="more-products-section">
-        <div class="text-center pt-5 pb-2">
-            <h1 class="block-header"><?php esc_html_e('More Plugins By The Same Team','filter-plus');?></h1>
+        <div class="more-product-header text-center pt-5 pb-2">
+            <div class="block-header"><?php esc_html_e('More Plugins By The Same Team','filter-plus');?></div>
             <p><?php esc_html_e('We also have other solutions for growing your store conversion.','filter-plus');?></p>
         </div>
         <div class="card-wrapper mb-5">
             <?php foreach ($more_products as $key => $value) { ?>
                 <div class="card-block">
                         <img src="<?php echo esc_url(FilterPlus::assets_url().'images/'.$value['logo']); ?> " 
-                        alt="<?php echo esc_html($value['title']);?>"
-                        width="35px"
-                        height="35px"
-                        />
+                        alt="<?php echo esc_html($value['title']);?>"/>
                         <div class="description">
-                            <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3> </a>  
+                            <div class="desc">
+                                <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3></a>
+                                <p><?php echo esc_html($value['desc']); ?></p>  
+                            </div>
                             <div class="explore-plugin">
-                                <a href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank"><button class="btn bg-color ctn-button"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></button></a>  
-                                <a href="<?php echo esc_url($value['url_free']); ?>"  target="_blank"><button class="btn bg-color ctn-button"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></button></a>  
+                                <a class="btn free-button" href="<?php echo esc_url($value['url_free']); ?>"  target="_blank"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></a>  
+                                <a class="btn pro-button" href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></a>  
                             </div>
                         </div>
 
