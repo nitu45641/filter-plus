@@ -585,8 +585,8 @@ a.pr-tag{
 .navigation li a{
 	color: #000;
     text-decoration: none;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 500;
 	padding: 4px 14px;
 }
 .navigation li a.active,.version {
