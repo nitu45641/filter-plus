@@ -1,4 +1,4 @@
-<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Woo Admin Order Filter","filter-plus"); ?></h1>
+<h1 class="font_bold font_20"><?php esc_html_e("Woo Admin Order Filter","filter-plus"); ?></h1>
 
 <?php
 $doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/woocommerce-admin-order-filter/filter-woo-order/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';

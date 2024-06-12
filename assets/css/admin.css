@@ -33,7 +33,7 @@ h1.font_16{
 	font-size: 16px ;
 }
 .font_bold {
-	font-weight: bold !important;
+	font-weight: 500 !important;
 }
 .ml-2{
 	margin-left: 2%;
@@ -219,11 +219,14 @@ option.disable,.disable {
 
 /* Setting Tab Style */
 .tab-content {
-	padding: 2% 0;
 	border-radius: 5px;
-	min-height: 300px;
+	margin-bottom: 2%;
 }
-
+.check-wrap{
+	display: flex;
+    flex-direction: column;
+	align-items: end;
+}
 .settings_tab ul {
 	display: flex;
 	background: #fff;
@@ -865,11 +868,6 @@ a.pr-tag{
 }
 .mt-5{
 	margin-top: 5% !important;
-}
-.check-wrap{
-	display: flex;
-    align-items: center;
-    column-gap: 5px;
 }
 /* Color control start */
 .wp-color-picker {
