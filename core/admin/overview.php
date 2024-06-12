@@ -3,52 +3,49 @@
 
 $features = array(
     array(
-        'icon' =>'<span class="fr-icon dashicons dashicons-format-aside"></span>',
-        'title' =>esc_html__('Filter WP Post','filter-plus')
+        'icon' =>'<span class="fr-icon dashicons dashicons-category"></span>',
+        'title' =>esc_html__('Filter WooCommerce Product','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' => '<span class="fr-icon dashicons dashicons-image-filter"></span>',
-        'title' =>'Filter WP Custom Post'
+        'title' =>esc_html__('Filter WP Custom Post','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-buddicons-groups"></span>',
-        'title' =>'Filter Woo Admin Order'
+        'title' =>esc_html__('Filter Woo Admin Order','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' => '<span class="fr-icon dashicons dashicons-admin-page"></span>',
-        'title' =>'SEO Optimized Url'
-    ),
-    array(
-        'icon' =>'<span class="fr-icon dashicons dashicons-category"></span>',
-        'title' =>'Filter by Categories'
+        'title' =>esc_html__('SEO Optimized Url','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-filter"></span>',
-        'title' =>'Filter by Price Range'
+        'title' =>esc_html__('Price Range','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-star-filled"></span>',
-        'title' =>esc_html__('Filter by Ratings','filter-plus')
+        'title' =>esc_html__('Filter by Ratings','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-menu-alt3"></span>',
-        'title' =>esc_html__('Filter by Attributes','filter-plus')
+        'title' =>esc_html__('Filter by Attributes','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-screenoptions"></span>',
-        'title' =>esc_html__('Filter by Tags','filter-plus')
-    ),
-    array(
-        'icon' =>'<span class="fr-icon dashicons dashicons-grid-view"></span>',
-        'title' =>esc_html__('Filter by Stock','filter-plus')
-    ),
-    array(
-        'icon' =>'<span class="fr-icon dashicons dashicons-align-wide"></span>',
-        'title' =>esc_html__('Gutenburg Block','filter-plus')
+        'title' =>esc_html__('Filter by Tags','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-        'title' =>esc_html__('+16 More Features','filter-plus')
+        'title' =>esc_html__('+16 More Features','filter-plus'),
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
     ),
 );
 
@@ -107,14 +104,15 @@ $more_products = array(
     </div>
     <div class="features-section mt-5">
         <div class="text-center pt-5 pb-2">
-            <h1 class="block-header"><?php esc_html_e('Advanced Filtering Features','filter-plus');?></h1>
+            <div class="block-header"><?php esc_html_e('Advanced Filtering Features','filter-plus');?></div>
             <p><?php esc_html_e('Available at Filter Plus Pro','filter-plus');?></p>
         </div>
         <div class="block-wrapper mb-5">
             <?php foreach ($features as $key => $value) { ?>
                 <div class="single-item">
                         <?php echo FilterPlus\Utils\Helper::kses($value['icon']); ?>  
-                        <h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3>   
+                        <h3><?php echo esc_html($value['title']); ?></h3>   
+                        <p><?php echo esc_html($value['desc']); ?></p>   
                 </div>
             <?php } ?>
         </div>
