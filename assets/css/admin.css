@@ -665,16 +665,9 @@ a.pr-tag{
 		background: #0D6EFD;
 	}
 }
-.over-view-wrapper{
-	background: #ffffff;
-	padding: 2%;
-	margin: 2%;
-	border-radius: 5px;
-}
 .block{
 	align-items: center;
 	display: flex;
-    border-radius: 4px;
     padding-left: 50px;
 	color: #fff;
 }
@@ -694,10 +687,10 @@ a.pr-tag{
 }
 .ctn-button{
 	cursor: pointer;
-	padding: 3% 7%;
+	padding: 3%;
     font-size: 15px;
-    font-weight: 800;
-    border: 1px solid #291c63;
+	color: #0D6EFD;
+	border: 1px solid #FFFFFF;
 }
 .feature-cta{
 	box-shadow: 0px 1px 2px 0px #1018280D;
@@ -707,17 +700,17 @@ a.pr-tag{
 	border-radius: 6px 0px 0px 0px;	
 }
 .first-block .ctn-button {
-	background: #ff5d8f;
-	color: #fff;
+	border: 1px solid #FFFFFF;
 }
 .first-block p{
 	margin-bottom: 5%;
 }
 .left-block h1{
-    font-size: 38px;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.2;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.4000000059604645px;
+	color: #fff;
 }
 .left-block p{
 	font-size: 15px;
@@ -752,6 +745,7 @@ a.pr-tag{
 	row-gap: 10px;
 }
 .card-block{
+	background: #fff;
     padding: 25px;
     border: 1px solid #f4ecec;
     border-radius: 8px;
@@ -766,8 +760,9 @@ a.pr-tag{
 }
 .block-wrapper{
 	.single-item {
+		background: #fff;
 		box-shadow: 0px 6px 65px 0px #0000000D;
-		padding: 35px 0;
+		padding: 35px 8px;
 		text-align: center;
 		border-radius: 8px;
 	}
@@ -925,6 +920,9 @@ a.pr-tag{
 	}
 }
 /* Over view page css end */
+.over-view-wrapper{
+	padding: 0 4%;
+}
 a.pro-link{
 	position: relative;
 	width: 330px;
@@ -932,10 +930,6 @@ a.pro-link{
     display: inline-grid;
     grid-template-columns: auto auto auto;
 }
-/* .pro-fr{
-    position: absolute;
-    left: 65px;
-} */
 #seo .pro-link .pro-fr{
     position: absolute;
     left: 265px;

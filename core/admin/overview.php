@@ -83,25 +83,24 @@ $more_products = array(
 );
 
 ?>
-
-<div class="over-view-wrapper">
-    <div class="block first-block">
-        <div class="left-block mb-5">
-            <h1 class="first-header"><?php esc_html_e('Powerful Filtering Features for WordPress and WooCommerce','filter-plus');?></h1>
-            <p><?php esc_html_e('Filter Plus is the WordPress and WooCommerce Product Filter Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. The plugin comes with WordPress post and custom post type filter anything functionality that increases the user experience.It also allows to filter WooCommerce admin order filter by product and order status.','filter-plus');?></p>
-            <div class="cta">
-            <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
-                <button class="btn ctn-button"><?php esc_html_e('Explore Filter Plus Pro','filter-plus');?></button>
-            </a>
-        </div>
-        </div>
-        <div class="right-block p-2">
-            <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-banner.png' ?>"
-                alt="filter-plus-banner" 
-                width="500px"
-            />
-        </div>
+<div class="block first-block">
+    <div class="left-block mb-5">
+        <h1 class="first-header"><?php esc_html_e('Powerful Filtering Features for WordPress and WooCommerce','filter-plus');?></h1>
+        <p><?php esc_html_e('Filter Plus is the WordPress and WooCommerce Product Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. ','filter-plus');?></p>
+        <div class="cta">
+        <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
+            <button class="btn ctn-button"><?php esc_html_e('Explore Filter Plus Pro','filter-plus');?></button>
+        </a>
     </div>
+    </div>
+    <div class="right-block p-2">
+        <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-banner.png' ?>"
+            alt="filter-plus-banner" 
+            width="500px"
+        />
+    </div>
+</div>
+<div class="over-view-wrapper">
     <div class="features-section mt-5">
         <div class="text-center pt-5 pb-2">
             <div class="block-header"><?php esc_html_e('Advanced Filtering Features','filter-plus');?></div>
