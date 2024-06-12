@@ -133,12 +133,11 @@ $more_products = array(
         </div>
         <div class="card-wrapper mb-5">
             <?php foreach ($more_products as $key => $value) {
-                $class = $key == 0 ? 'mt-17' : ''; 
                 ?>
                 <div class="card-block">
                         <img src="<?php echo esc_url(FilterPlus::assets_url().'images/'.$value['logo']); ?> " 
                         alt="<?php echo esc_html($value['title']);?>"/>
-                        <div class="description <?php echo esc_attr($class);?>">
+                        <div class="description">
                             <div class="desc">
                                 <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3></a>
                                 <p><?php echo esc_html($value['desc']); ?></p>  
