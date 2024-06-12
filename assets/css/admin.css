@@ -771,6 +771,33 @@ a.pr-tag{
 		text-align: center;
 		border-radius: 8px;
 	}
+	.single-item:nth-child(1) span{
+		background: #7E36F4;
+	}
+	.single-item:nth-child(2) span{
+		background: #FD933A;
+	}
+	.single-item:nth-child(3) span{
+		background: #3E9A6F;
+	}
+	.single-item:nth-child(4) span{
+		background: #DD5498;
+	}
+	.single-item:nth-child(5) span{
+		background: #34D2F2;
+	}
+	.single-item:nth-child(6) span{
+		background: #8660CB;
+	}
+	.single-item:nth-child(7) span{
+		background: #FFCB2F;
+	}
+	.single-item:nth-child(8) span{
+		background: #3485FD;
+	}
+	.single-item:nth-child(9) span{
+		background: #E25563;
+	}
 }
 
 .single-item h3{
@@ -785,17 +812,15 @@ a.pr-tag{
 }
 
 .single-item span,.card-block span{
-    position: relative;
     font-size: 25px;
     padding: 16px;
     border-radius: 30px;
-    background: #FDE6EE;
 }
 .fr-icon::before{
 	position: relative;
     bottom: 2px;
     right: 2px;
-    color: #7f2ace;
+    color: #fff;
 }
 .text-center {
     text-align: center;

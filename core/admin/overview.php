@@ -5,47 +5,47 @@ $features = array(
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-category"></span>',
         'title' =>esc_html__('Filter WooCommerce Product','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your Store.Easily Manage and Sort Products and Boost Sales','filter-plus')
     ),
     array(
         'icon' => '<span class="fr-icon dashicons dashicons-image-filter"></span>',
         'title' =>esc_html__('Filter WP Custom Post','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'desc' =>esc_html__('Simplify Content Management with the WordPress Custom Post Filters.Enhance User Experience by Filtering','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-buddicons-groups"></span>',
         'title' =>esc_html__('Filter Woo Admin Order','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'desc' =>esc_html__('Improve Your WooCommerce Workflow with Order Filtering Master Order Management','filter-plus')
     ),
     array(
         'icon' => '<span class="fr-icon dashicons dashicons-admin-page"></span>',
         'title' =>esc_html__('SEO Optimized Url','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'desc' =>esc_html__('Boost Your Search Engine Rankings with Effective URL Optimization','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-filter"></span>',
-        'title' =>esc_html__('Price Range','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'title' =>esc_html__('Filter by Multiple Custom Field','filter-plus'),
+        'desc' =>esc_html__('Find the Best Deals with Multiple Custom Field.Easily Sort Products to Fit Your Budget.','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-star-filled"></span>',
-        'title' =>esc_html__('Filter by Ratings','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'title' =>esc_html__('Multiple Product Filter Templates','filter-plus'),
+        'desc' =>esc_html__('Quickly Find What You Need by Using More Effective product search templates','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-menu-alt3"></span>',
-        'title' =>esc_html__('Filter by Attributes','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'title' =>esc_html__('Support Multiple Builder','filter-plus'),
+        'desc' =>esc_html__('Support ShortCode,Elementor,BricksBuilder to setup best searching widgets,','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-screenoptions"></span>',
-        'title' =>esc_html__('Filter by Tags','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'title' =>esc_html__('Multiple Blog Filter Templates','filter-plus'),
+        'desc' =>esc_html__('Enhance User experience with best Searching options.Easily Manage and Sort Your Content','filter-plus')
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-        'title' =>esc_html__('+16 More Features','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your WordPress Posts.Easily Manage and Sort Your Content','filter-plus')
+        'title' =>esc_html__('Many More Features','filter-plus'),
+        'desc' =>esc_html__('Find the Best Deals with Our Price Range, Attributes, Tag, Taxonomies.Easily Sort Products to Fit Your Budget.','filter-plus')
     ),
 );
 
