@@ -55,7 +55,7 @@ $more_products = array(
         'url_demo' => 'https://woooplugin.com/ultimate-membership/',
         'url_free' => 'https://downloads.wordpress.org/plugin/create-members.latest-stable.zip',
         'title' =>esc_html__('Ultimate Membership','filter-plus'),
-        'logo'   => 'quicker.png',
+        'logo'   => 'membership.png',
         'desc'   => esc_html__('Restrict content, manage member subscriptions','filter-plus'),
         'cta_free' =>esc_html__('Free Version','filter-plus'),
         'cta_demo' =>esc_html__('Premium Version','filter-plus')
@@ -132,11 +132,13 @@ $more_products = array(
             <p><?php esc_html_e('We also have other solutions for growing your store conversion.','filter-plus');?></p>
         </div>
         <div class="card-wrapper mb-5">
-            <?php foreach ($more_products as $key => $value) { ?>
+            <?php foreach ($more_products as $key => $value) {
+                $class = $key == 0 ? 'mt-17' : ''; 
+                ?>
                 <div class="card-block">
                         <img src="<?php echo esc_url(FilterPlus::assets_url().'images/'.$value['logo']); ?> " 
                         alt="<?php echo esc_html($value['title']);?>"/>
-                        <div class="description">
+                        <div class="description <?php echo esc_attr($class);?>">
                             <div class="desc">
                                 <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3></a>
                                 <p><?php echo esc_html($value['desc']); ?></p>  

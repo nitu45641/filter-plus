@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Requires at least: 4.7
 Tested up to: 6.5
-Stable tag: 1.0.61
+Stable tag: 1.0.62
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -123,7 +123,10 @@ We have tested all the popular themes. And we believe it will work with your the
 
 == Changelog ==
 
-= 1.0.61 (June 03, 2024)=
+= 1.0.62 (June 12, 2024)=
+Tweak  : Admin UX improve
+
+= 1.0.61 (June 11, 2024)=
 Tweak  : Admin UX improve
 
 = 1.0.60 (June 03, 2024)=
