@@ -717,13 +717,15 @@ a.pr-tag{
 	margin-bottom: 5%;
 }
 .left-block h1{
-    font-size: 34px;
-    font-weight: 700;
-    line-height: 40px;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 45px;
     letter-spacing: -0.4000000059604645px;
 	color: #fff;
+	margin-bottom: 5px;
 }
 .left-block p{
+	margin-top: 5px;
 	font-size: 15px;
 }
 .cta-block-header{
@@ -777,6 +779,10 @@ a.pr-tag{
 		text-align: center;
 		border-radius: 8px;
 	}
+	p{
+		font-size: 13px;
+		font-weight: 400;
+	}
 	.single-item:nth-child(1) span{
 		background: #7E36F4;
 	}
@@ -810,6 +816,7 @@ a.pr-tag{
 	font-size: 16px;
     font-weight: 700;
     line-height: 19.36px;
+	margin-bottom: 0;
 }
 .card-block h3{
     font-size: 24px;
