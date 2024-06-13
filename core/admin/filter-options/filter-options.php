@@ -8,7 +8,7 @@
     }
 ?>
 <div class="mt-2 content-header">
-    <div class="title"><?php esc_html_e("Filter Options","filter-plus"); ?></div>
+    <div class="title mr-1"><?php esc_html_e("Filter Options","filter-plus"); ?></div>
     <button class="button add-filter-opt"><?php esc_html_e('Add New Filter Options', 'filter-plus' );?></button>
 </div>
 <?php

@@ -8,10 +8,10 @@
 ?>
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="wp_filter_plus">
-		<div class="title1"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></div>
+		<h1 class="mt-1 mb-0 font_bold font_20"><?php esc_html_e("Available Wordpress Filter Section","filter-plus"); ?></h1>
 		<?php
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/wordpress-filter/show-wordpress-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
-			$docs 		= '<div class="documentation mb-3"><div class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
+			$docs 		= '<div class="documentation mb-1"><div class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
 			// templates
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'post_template',
@@ -118,7 +118,7 @@
 
 		?>
 
-		<div class="title1 mt-3 mb-3"><?php esc_html_e("Filter Result","filter-plus"); ?></div>
+		<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Filter Result","filter-plus"); ?></h1>
 		
 		<?php
 			// show tags

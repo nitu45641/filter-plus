@@ -135,19 +135,18 @@ $more_products = array(
             <?php foreach ($more_products as $key => $value) {
                 ?>
                 <div class="card-block">
-                        <img src="<?php echo esc_url(FilterPlus::assets_url().'images/'.$value['logo']); ?> " 
-                        alt="<?php echo esc_html($value['title']);?>"/>
-                        <div class="description">
-                            <div class="desc">
-                                <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3></a>
-                                <p><?php echo esc_html($value['desc']); ?></p>  
-                            </div>
-                            <div class="explore-plugin">
-                                <a class="btn free-button" href="<?php echo esc_url($value['url_free']); ?>"  target="_blank"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></a>  
-                                <a class="btn pro-button" href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></a>  
-                            </div>
+                    <img src="<?php echo esc_url(FilterPlus::assets_url().'images/'.$value['logo']); ?> " 
+                    alt="<?php echo esc_html($value['title']);?>"/>
+                    <div class="description">
+                        <div class="desc">
+                            <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3></a>
+                            <p><?php echo esc_html($value['desc']); ?></p>  
                         </div>
-
+                        <div class="explore-plugin">
+                            <a class="btn free-button" href="<?php echo esc_url($value['url_free']); ?>"  target="_blank"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></a>  
+                            <a class="btn pro-button" href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></a>  
+                        </div>
+                    </div>
                 </div>
             <?php } ?>
         </div>

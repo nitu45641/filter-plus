@@ -1,8 +1,10 @@
 <div class="popup-modal" id="filter-options-modal">
     <div class="modal-content">
         <div class="modal-header">
+            <div class="content-header">
+                <div class="title"><?php esc_html_e('Add Filter Options','filter-plus'); ?></div>
+            </div>
             <span class="modal-close">&times;</span>
-            <h2 class="font_bold"><?php esc_html_e("Add Filter Options","filter-plus"); ?></h2>
         </div>
         <form method="POST" id="add-filter-option" class="fields">
             <?php

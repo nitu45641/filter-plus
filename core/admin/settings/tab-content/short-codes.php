@@ -1,11 +1,11 @@
 
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="filter_products">
-		<div class="title1"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></div>
+		<h1 class="mt-1 mb-0 font_bold font_20"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></h1>
 		<?php
 			// templates
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/show-woocommerce-product-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
-			$docs 		= '<div class="documentation mb-3"><div class="doc">'.esc_html__('Gutenberg Block,Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
+			$docs 		= '<div class="documentation mb-1"><div class="doc">'.esc_html__('Gutenberg Block,Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
 
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
@@ -130,7 +130,7 @@
 
 		?>
 
-		<div class="title1 mt-3 mb-3"><?php esc_html_e("Filter Result Products","filter-plus"); ?></div>
+		<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Filter Result Products","filter-plus"); ?></h1>
 		
 		<?php
 
