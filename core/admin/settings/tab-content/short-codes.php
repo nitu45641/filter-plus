@@ -1,7 +1,7 @@
 
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="filter_products">
-		<h1 class="mt-1 mb-0 font_bold font_20"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></h1>
+		<h1 class="mt-1 mb-0 font_bold font_18"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></h1>
 		<?php
 			// templates
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/show-woocommerce-product-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
@@ -130,7 +130,7 @@
 
 		?>
 
-		<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Filter Result Products","filter-plus"); ?></h1>
+		<h1 class="font_bold font_18 mb-1"><?php esc_html_e("Filter Result Products","filter-plus"); ?></h1>
 		
 		<?php
 

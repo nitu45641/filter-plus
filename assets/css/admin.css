@@ -41,6 +41,9 @@ h2.content-header {
 h1.font_20{
 	font-size: 20px ;
 }
+h1.font_18{
+	font-size: 18px ;
+}
 h1.font_16{
 	font-size: 16px ;
 }
@@ -940,7 +943,7 @@ a.pro-link{
 	text-decoration: none;
 }
 .pro-link .pro-fr{
-	width: 66px;
+	width: 99px;
     position: absolute;
     top: 5px;
     right: 0;
@@ -1128,7 +1131,7 @@ tfoot > tr
 .add-filter-opt.button,.add-filter-opt.button:hover{
 	background: #0D6EFD;
 	color: #FAFAFB;
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 600;
 	height: 40px;
 }

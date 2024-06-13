@@ -1,4 +1,4 @@
-<h1 class="font_bold font_20"><?php esc_html_e('SEO Rules','filter-plus'); ?></h1>
+<h1 class="font_bold font_18"><?php esc_html_e('SEO Rules','filter-plus'); ?></h1>
 <?php
 $doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/seo-rules/apply-seo-rules/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 $docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('SEO Rules ','filter-plus') . $doc_url . '</i></div>';
