@@ -9,7 +9,7 @@ if ( ! function_exists( 'pro_tag_markup' ) ) {
 		$pro_only     = ! empty( $disable ) ? 'pro-fr' : '';
 		$pro          = '';
 		if ( $pro_only !== '' ) {
-			$pro .= '<span class="' . esc_attr( $pro_only . ' ' . $class ) . '">' . esc_html__( 'Pro', 'filter-plus' ) . '</span>';
+			$pro .= '<span class="' . esc_attr( $pro_only . ' ' . $class ) . '">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</span>';
 
 		}
 
@@ -81,18 +81,22 @@ if ( ! function_exists( 'filter_plus_number_input_field' ) ) {
 		$data_label         = ! empty( $args['data_label'] ) ? $args['data_label'] : '';
 		$extra_label_class  = ! empty( $args['extra_label_class'] ) ? $args['extra_label_class'] : '';
 		$hidden_class       = $field_type == 'hidden' ? 'd-none' : '';
+		extract( pro_link_markup( $disable ) );
+
 		$html = '
 		<div class="' . $wrapper_class . ' ' . $condition_class . ' ' . $hidden_class . '">
 			<div class="' . $label_class . '">' . $label . '</div>
 			<div class="input-section">
-				<div class="input-wrap ' . esc_attr($disable) . '">
+				' . $pro_link_start . '
+				<div class="input-wrap">
 					<input type="' . esc_attr($field_type) . '" name="' . esc_attr($id) . '" id="' . esc_attr($wrapper_type.$id) . '" value="' . $value . '"  
 						data-option="' . esc_attr($data_label) . '" 
 						placeholder="' . esc_attr($placeholder) . '"
 					/>
 					<span class="extra-label ' . $extra_label_class . '">' . $extra_label . '</span>
 				</div>
-				' . FilterPlus\Utils\Helper::kses( pro_tag_markup( $disable ) ) . '
+				' . pro_tag_markup( $disable ) . '
+				' . $pro_link_end . '
 			</div>
 			
 		</div>

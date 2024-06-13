@@ -233,6 +233,9 @@ option.disable,.disable {
 	display: flex;
     flex-direction: column;
 	align-items: end;
+	span{
+		color: #605F5F;
+	}
 }
 .settings_tab ul {
 	display: flex;
@@ -549,13 +552,9 @@ a.pr-tag{
 .pro-fr {
     padding: 4px 13px 4px;
     border: 1px solid rgba(50, 99, 248, 0.3);
-    border-radius: 22px;
     font-size: 12px;
 	background-color: #3263f8;
 	color: #fff;
-    height: 17px;
-    width: 17px;
-	margin-left: 15px;
 }
 .select-pro-fr{
 	position: relative !important;
@@ -938,15 +937,22 @@ a.pr-tag{
 }
 a.pro-link{
 	position: relative;
-	width: 330px;
 	text-decoration: none;
-    display: inline-grid;
-    grid-template-columns: auto auto auto;
 }
-#seo .pro-link .pro-fr{
+.pro-link .pro-fr{
+	width: 66px;
     position: absolute;
-    left: 265px;
+    top: 5px;
+    right: 0;
 }
+.pro-link .pro-fr::after{
+	position: relative;
+	font-family: dashicons;
+	content: "\f344";
+	top: 2px;
+    left: 4px;
+}
+
 a.pro-link,
 ul.select2-selection__rendered
 {
