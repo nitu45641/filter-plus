@@ -471,34 +471,6 @@ button.button-primary:focus {
 /* Settings page end */
 
 /* Table CSS */
-.column-actions .update-filter-option{
-    border: 1px solid #0D165E;
-    background: #dbe2f4;
-	cursor:pointer;
-}
-.column-actions .delete-filter{
-    border: 1px solid #5e0d0d;
-    background: #f9c6c7;
-}
-.update-filter-option span{
-	color: #3263f8;
-}
-.delete-filter span
-{
-	color: #d63a3a;
-}
-.column-actions .update-filter-option,
-.column-actions .delete-filter
-{
-    padding: 8px;
-    border-radius: 45px;
-}
-.update-filter-option span,
-.delete-filter span
-{
-	position: relative;
-	top: 7px;
-}
 .alternate, .striped>tbody>:nth-child(odd),
 ul.striped>:nth-child(odd) {
     background-color: #fff;
@@ -551,13 +523,6 @@ a.pr-tag{
 }
 #settings a.pr-tag{
     left: 29%;
-}
-.pro-fr {
-    padding: 4px 13px 4px;
-    border: 1px solid rgba(50, 99, 248, 0.3);
-    font-size: 12px;
-	background-color: #3263f8;
-	color: #fff;
 }
 .select-pro-fr{
 	position: relative !important;
@@ -938,24 +903,32 @@ a.pr-tag{
 .over-view-wrapper{
 	padding: 0 4%;
 }
+/* Pro link start */
 a.pro-link{
 	position: relative;
 	text-decoration: none;
 }
+.pro-fr {
+    padding: 0 4px;
+	border: 1px solid #FD933A;
+	font-size: 11px;
+	background: #FFEAD8;
+	color: #121212;
+	border-radius: 6px;
+}
 .pro-link .pro-fr{
-	width: 99px;
+	justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 98px;
     position: absolute;
     top: 5px;
     right: 0;
 }
 .pro-link .pro-fr::after{
 	position: relative;
-	font-family: dashicons;
-	content: "\f344";
-	top: 2px;
-    left: 4px;
+	content: url('../images/arrow-right-pro.svg');
 }
-
 a.pro-link,
 ul.select2-selection__rendered
 {
@@ -964,6 +937,7 @@ ul.select2-selection__rendered
 a.pro-link:focus{
 	box-shadow:none
 }
+/* Pro link end */
 .settings_message {
     position: relative;
     padding: 0.75rem 1.25rem;
@@ -1096,6 +1070,14 @@ a.pro-link:focus{
 /* Modal css end */
 
 /* wp list table css start */
+.union-edit{
+	margin-left: 10px;
+	cursor: pointer;
+	display: block;
+	width: 18px;
+    height: 18px;
+	background-image: url('../images/union.svg');
+}
 .content-header{
 	display: flex;
 }

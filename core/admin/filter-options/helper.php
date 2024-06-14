@@ -45,7 +45,7 @@ class Helper {
                         data-type="'.$value->type.'"
                         data-style="'.$value->style.'"
                         data-custom_field_list="'.$value->custom_field_list.'"
-                        ><span class="dashicons dashicons-edit"></span></span>
+                        ><span class="union-edit"></span></span></span>
 				    ';
                     
                     array_push($filter_opt,$single_options);
