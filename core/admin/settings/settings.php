@@ -16,7 +16,9 @@
 ?>
 <div class="settings_message d-none"></div>
 <form id="filter-settings">
-    <h2 class="content-header"><?php esc_html_e('Settings','filter-plus');?></h2>
+    <div class="content-header">
+        <div class="title-wrap"><?php esc_html_e('Settings','filter-plus');?></div>
+    </div>
     <div class="content-wrapper">
         <div class="settings_tab">
             <ul class="settings_tab_pan">

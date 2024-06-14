@@ -1099,6 +1099,12 @@ a.pro-link:focus{
 .content-header{
 	display: flex;
 }
+.title-wrap{
+	margin: 1% 0;
+	font-size: 22px;
+    font-weight: 700;
+    line-height: 33.18px;
+}
 .content-header .title{
 	font-size: 20px;
     font-weight: 700;
