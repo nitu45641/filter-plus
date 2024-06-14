@@ -1107,7 +1107,7 @@ a.pro-link:focus{
 .tablenav {
     margin: 6px 0 18px;
 }
-#the-list > tr{
+.widefat th, .widefat td{
 	border-bottom:1px solid #E4E9EE !important;
 }
 .wp-list-table thead tr,
@@ -1124,7 +1124,7 @@ tfoot > tr
 }
 #doaction,#doaction2{
 	width: 74px;
-    height: 35px;
+    height: 40px;
 	border: 1px solid #81B4FE;
 	color: #0D6EFD;
 }
