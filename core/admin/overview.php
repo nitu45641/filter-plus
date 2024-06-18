@@ -66,7 +66,7 @@ $more_products = array(
         'url_free'      => 'https://downloads.wordpress.org/plugin/discountify.latest-stable.zip',
         'title'         =>esc_html__('Discount and Coupon Plugin','filter-plus'),
         'logo'          => 'discountify.png',
-        'desc'   => esc_html__('Transform Discounts into Profits','filter-plus'),
+        'desc'          => esc_html__('Transform Discounts into Profits','filter-plus'),
         'cta_free'      =>esc_html__('Free Version','filter-plus'),
         'cta_demo'      =>esc_html__('Premium Version','filter-plus')
     ),
@@ -116,7 +116,7 @@ $more_products = array(
             <?php } ?>
         </div>
     </div>
-    <div class="block cta-block p-7 mb-5">
+    <div class="block cta-block p-7 mb-5 mt-5">
         <div class="heading-block">
             <h1 class="cta-block-header"><?php esc_html_e('Explore the premium version to experience our countless advanced features.','filter-plus');?></h1>
         </div>
