@@ -64,7 +64,7 @@ $more_products = array(
         'icon'          =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
         'url_demo'      => 'https://woooplugin.com/discountify/',
         'url_free'      => 'https://downloads.wordpress.org/plugin/discountify.latest-stable.zip',
-        'title'         =>esc_html__('Discount and Coupon Plugin','filter-plus'),
+        'title'         =>esc_html__('Discount and Coupon Management','filter-plus'),
         'logo'          => 'discountify.png',
         'desc'          => esc_html__('Transform Discounts into Profits','filter-plus'),
         'cta_free'      =>esc_html__('Free Version','filter-plus'),
