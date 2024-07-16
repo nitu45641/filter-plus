@@ -350,7 +350,7 @@ class Wp_Filter extends Widget_Base {
 			'readmore_btn_style',
 			[
 				'label' => esc_html__('Button Style', 'filter-plus'),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => ['food_cat_style' => 'style-4']
 			]
 		);

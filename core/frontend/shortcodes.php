@@ -21,7 +21,6 @@ class Shortcodes {
 	 * @return void
 	 */
 	public function init() {
-		// [filter_products categories='']
 		$shortcode_arr = array(
 			'filter_products' 	=> 'filter_plus',
 			'wp_filter_plus' 	=> 'wp_filter_plus',
