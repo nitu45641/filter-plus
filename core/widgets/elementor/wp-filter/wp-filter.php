@@ -72,6 +72,22 @@ class Wp_Filter extends Widget_Base {
 			]
 		);
 		$this->add_control(
+			'title',
+			array(
+				'label'     => esc_html__( 'Title', 'filter-plus' ),
+				'type'      => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Place Title', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
+			'no_of_items',
+			array(
+				'label'     => esc_html__( 'No of Items Per Page', 'filter-plus' ),
+				'type'      => Controls_Manager::NUMBER,
+				'placeholder' => esc_html__( 'Place No of Items Per Page', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
 			'filter_type',
 			[
 				'label' => esc_html__('Select Filter Type', 'filter-plus'),
@@ -571,6 +587,8 @@ class Wp_Filter extends Widget_Base {
 		$filter_type        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
 		$custom_post        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
 		$template           = !empty($settings['template']) ? $settings['template'] : '1';
+		$title           	= !empty($settings['title']) ? $settings['title'] : '';
+		$no_of_items 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
 		$show_categories    = !empty($show_categories) ? $show_categories : 'yes';
 		$category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
 		$categories         = is_array($categories) ? implode(',',$categories) : '';
@@ -592,7 +610,8 @@ class Wp_Filter extends Widget_Base {
         category_label='".$category_label."' 
 		sub_categories='{$sub_categories}'
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
-        template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
+        template ={$template} title ={$title} limit={$no_of_items} 
+		author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
         custom_field_list={$custom_fields} post_tags='{$post_tags}'
         post_categories='{$post_categories} post_author={$post_author}']"); 

@@ -65,6 +65,22 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'title',
+			array(
+				'label'     => esc_html__( 'Title', 'filter-plus' ),
+				'type'      => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Place Title', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
+			'no_of_items',
+			array(
+				'label'     => esc_html__( 'No of Items Per Page', 'filter-plus' ),
+				'type'      => Controls_Manager::NUMBER,
+				'placeholder' => esc_html__( 'Place No of Items Per Page', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
 			'category_label',
 			array(
 				'label'     => esc_html__( 'Category Label', 'filter-plus' ),
@@ -139,7 +155,7 @@ class Woo_Filter extends Widget_Base {
 			'show_tags',
 			array(
 				'label' => esc_html__( 'Show Tags', 'filter-plus' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',
@@ -172,7 +188,7 @@ class Woo_Filter extends Widget_Base {
 			'show_attributes',
 			array(
 				'label' => esc_html__( 'Show Attributes', 'filter-plus' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',
@@ -271,7 +287,7 @@ class Woo_Filter extends Widget_Base {
 			'on_sale',
 			array(
 				'label' => esc_html__( 'Sales', 'filter-plus' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',
@@ -356,7 +372,7 @@ class Woo_Filter extends Widget_Base {
 		);
 
 		$this->add_control(
-			'titlte_bg_color',
+			'title_bg_color',
 			array(
 				'label'         => esc_html__( 'Title BG Color', 'filter-plus' ),
 				'type'         => Controls_Manager::COLOR,
@@ -390,7 +406,7 @@ class Woo_Filter extends Widget_Base {
 			'readmore_btn_style',
 			array(
 				'label' => esc_html__( 'Button Style', 'filter-plus' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'food_cat_style' => 'style-4' ),
 			)
 		);
@@ -489,7 +505,7 @@ class Woo_Filter extends Widget_Base {
 			'thumbnail_style',
 			array(
 				'label' => esc_html__( 'Thumbnail Style', 'filter-plus' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab' => Controls_Manager::TAB_STYLE,
 			)
 		);
 
@@ -538,7 +554,7 @@ class Woo_Filter extends Widget_Base {
 			'advance_style',
 			array(
 				'label' => esc_html__( 'Advance Style', 'filter-plus' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab' => Controls_Manager::TAB_STYLE,
 			)
 		);
 
@@ -624,6 +640,9 @@ class Woo_Filter extends Widget_Base {
 		$sorting            = ! empty( $sorting ) ? $sorting : '';
 		$product_tags       = ! empty( $product_tags ) ? $product_tags : '';
 		$product_categories = ! empty( $product_categories ) ? $product_categories : '';
+		$template 			= ! empty( $template ) ? $template : '';
+		$title 				= ! empty( $title ) ? $title : '';
+		$no_of_items 		= ! empty( $no_of_items ) ? $no_of_items : 9;
 
 		echo do_shortcode("[filter_products category_label='".$category_label."' 
 		sub_categories='".$sub_categories."' 
@@ -632,6 +651,7 @@ class Woo_Filter extends Widget_Base {
 		size_label='".$size_label."' attribute_label='".$attribute_label."' 
 		review_label='".$review_label."' price_range_label='".$price_range_label."'
 		stock_label='".$stock_label."' on_sale_label='".$on_sale_label."' 
-		stock={$stock} on_sale={$on_sale} template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");   
+		stock={$stock} on_sale={$on_sale} template ={$template} title ={$title} limit={$no_of_items} 
+		categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");   
 	}
 }

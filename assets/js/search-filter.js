@@ -146,11 +146,12 @@
 		 * @param {*} params
 		 */
 		function get_products(params = {}) {
-			const products_wrap = $('.products-wrap');
-			const prod_grid_wrap = $('.prods-grid-view');
-			const prod_list_wrap = $('.wp-list-view,.prods-list-view');
-			const message_info = $('.message');
-			const template = $('#shopContainer').data('template');
+			const products_wrap 	= $('.products-wrap');
+			const prod_grid_wrap 	= $('.prods-grid-view');
+			const prod_list_wrap 	= $('.wp-list-view,.prods-list-view');
+			const message_info 		= $('.message');
+			const template 			= $('#shopContainer').data('template');
+			const limit 			= $('#shopContainer').data('limit');
 			const product_categories =
 				$('#shopContainer').data('product_categories');
 			const product_tags = $('#shopContainer').data('product_categories');
@@ -162,6 +163,7 @@
 				action: 'get_filtered_data',
 				filter_plus_nonce: filter_client.filter_plus_nonce,
 				template,
+				limit,
 				product_categories,
 				product_tags,
 				post_author,

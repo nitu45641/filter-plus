@@ -16,6 +16,19 @@
 			}
 			filter_plus_select_field($args);
 
+			// Title
+			$args        = array('label'=>esc_html__("Title:","filter-plus"),'id' => 'title',
+			'placeholder'=>esc_html__("Place Title","filter-plus"),
+			'data_label' => 'title');
+			
+			filter_plus_number_input_field($args);
+
+			// Limit
+			$args        = array('label'=>esc_html__("No of Items Per Page:","filter-plus"),'id' => 'no_of_items',
+			'placeholder'=>esc_html__("Place No of Items Per Page","filter-plus"), 'field_type'=> 'number',
+			'data_label' => 'no_of_items');
+			filter_plus_number_input_field($args);
+
 			// categories
 			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
 			'placeholder'=>esc_html__("Place Category Label Here","filter-plus"),

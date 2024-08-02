@@ -912,6 +912,9 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 	border-bottom: 1px solid #dce5e5;
 	padding-bottom: 20px;
 }
+.title-and-clean-area h2{
+	font-size: 18px;
+}
 .title-and-clean-area h2,
 .title-and-clean-area p {
 	margin-bottom: 0;

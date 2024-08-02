@@ -47,6 +47,25 @@ class Woo_Filter extends \Bricks\Element {
 			'clearable' => true,
 			'default' => '1',
 		);
+
+		//title
+		$this->controls['title'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Title', 'filter-plus' ),
+			'type' => 'text',
+			'default' => esc_html__( 'Place Title Here', 'filter-plus' ),
+		);
+
+		//limit
+		$this->controls['no_of_items'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'No of Items Per Page', 'filter-plus' ),
+			'type' => 'text',
+			'default' => esc_html__( 'Place No of Items Per Page', 'filter-plus' ),
+		);
+
 		// Category
 		$this->controls['category_label'] = array(
 			'tab' => 'content',
@@ -341,7 +360,9 @@ class Woo_Filter extends \Bricks\Element {
         $sorting            = !empty($sorting) && $sorting == true ? 'yes' : 'no';
         $product_categories = !empty($product_categories) && $product_categories == true ? 'yes' : 'no';
         $product_tags       = !empty($product_tags) && $product_tags == true ? 'yes' : 'no';
-        
+		$title 				= ! empty( $title ) ? $title : '';
+		$no_of_items 		= ! empty( $no_of_items ) ? $no_of_items : 9;
+
         if ( is_array($categories) ) {
             $categories     =  join(", ",$categories);
         }
@@ -360,13 +381,13 @@ class Woo_Filter extends \Bricks\Element {
 
 		echo "<div {$this->render_attributes( '_root' )}>";
 			echo do_shortcode("[filter_products category_label='".$category_label."' 
-			sub_categories='".$sub_categories."' 
+			sub_categories='".$sub_categories."' title ={$title} limit={$no_of_items} 
 			tag_label='".$tag_label."' 
 			color_label='".$color_label."' 
 			size_label='".$size_label."' attribute_label='".$attribute_label."' 
 			review_label='".$review_label."' price_range_label='".$price_range_label."'
 			stock_label='".$stock_label."' on_sale_label='".$on_sale_label."' 
-			stock={$stock} on_sale={$on_sale} template ={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");     	
+			stock={$stock} on_sale={$on_sale} template={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");     	
 		echo '</div>';
 	}
 }

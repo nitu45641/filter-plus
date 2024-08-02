@@ -48,6 +48,25 @@ class Wp_Filter extends \Bricks\Element {
 			'clearable' => true,
 			'default' => '1',
 		);
+
+		//title
+		$this->controls['title'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Title', 'filter-plus' ),
+			'type' => 'text',
+			'default' => esc_html__( 'Place Title Here', 'filter-plus' ),
+		);
+
+		//limit
+		$this->controls['no_of_items'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'No of Items Per Page', 'filter-plus' ),
+			'type' => 'text',
+			'default' => esc_html__( 'Place No of Items Per Page', 'filter-plus' ),
+		);
+
 		//filter type
 		$this->controls['filter_type'] = array(
 			'tab' => 'content',
@@ -294,7 +313,9 @@ class Wp_Filter extends \Bricks\Element {
 		$post_categories    = !empty($post_categories) && $post_categories == true ? 'yes' : 'no';
 		$post_tags          = !empty($post_tags) && $post_tags == true ? 'yes' : 'no';
 		$post_author        = !empty($post_author) && $post_author == true ? 'yes' : 'no';
-
+		$title 				= ! empty( $title ) ? $title : '';
+		$no_of_items 		= ! empty( $no_of_items ) ? $no_of_items : 9;
+		
 		$root_classes[] = 'fplus-wp-wrapper';
 		if ( ! empty( $this->settings['type'] ) ) {
 			$root_classes[] = "color-{$this->settings['type']}";
@@ -304,14 +325,13 @@ class Wp_Filter extends \Bricks\Element {
 		echo "<div {$this->render_attributes( '_root' )}>";
 
         echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
-        category_label='".$category_label."' 
+        category_label='".$category_label."' title ={$title} limit={$no_of_items} 
 		sub_categories='".$sub_categories."' 
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
         custom_field_list={$custom_fields} post_tags='{$post_tags}'
         post_categories='{$post_categories} post_author={$post_author}']");  
-
 		echo '</div>';
 	}
 }

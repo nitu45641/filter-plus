@@ -94,9 +94,10 @@
 		// find input value
 		function findInputValue(_this) {
 			let result = '';
-			const checkbox = _this.find('input:checkbox');
-			const input_text = _this.find('input:text');
-			const select_box = _this.find('select');
+			const checkbox 		= _this.find('input:checkbox');
+			const input_text 	= _this.find('input:text');
+			const input_num 	= _this.find('input[type="number"]');
+			const select_box 	= _this.find('select');
 
 			// select box
 			if (select_box.length > 0) {
@@ -128,15 +129,15 @@
 					result += ` ${$this.data('label')}="${value}"`;
 				});
 			}
-
 			// input text
-			result = shortcode_input_value(input_text, result);
+			result = shortcode_input_value(input_text,input_num, result);
 
 			return result;
 		}
 
-		function shortcode_input_value(input_data, result) {
+		function shortcode_input_value(input_data,input_num, result) {
 			if (input_data.length > 0) {
+				input_data.push(input_num);
 				input_data.each(function () {
 					const $this = $(this);
 					const is_true = shortcode_input_disable($this);

@@ -39,6 +39,7 @@ class Actions {
 	public function get_filtered_data() {
 		$post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
 		$post_arr     = ! empty( $post_data['params'] ) ? $post_data['params'] : [];
+		$limit 	      = ! empty( $post_data['limit'] ) ? $post_data['limit'] : 9;
 		$search_value = ! empty( $post_arr['search_value'] ) ? $post_arr['search_value'] : '';
 		$order_by     = ! empty( $post_arr['order_by'] ) ? $post_arr['order_by'] : '';
 		$cat_id       = ! empty( $post_arr['cat_id'] ) ? $post_arr['cat_id'] : '';
@@ -63,6 +64,7 @@ class Actions {
 		$args = array(
 			'author'   		=> $author,
 			'filter_type'   => $filter_type,
+			'limit'      	=> $limit,
 			'template'      => $template,
 			'offset'        => $offset,
 			'filter_param'  => $filter_param,
@@ -107,12 +109,11 @@ class Actions {
 	 * @return array
 	 */
     public function get_products( $param = array() ) {
-		$limit = 9;
 		$args = array(
 			'post_type'             => $param['filter_type'],
 			'post_status'           => 'publish',
 			'paged'                 => $param['offset'],
-			'posts_per_page'        => $limit,
+			'posts_per_page'        => $param['limit'],
 			'paginate'              => true
 		);
 
@@ -146,7 +147,7 @@ class Actions {
 			$products   = $this->process_wp_data( $posts , $param );
 		}
 
-		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $limit) );
+		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $param['limit']) );
 	}
 
 	/**

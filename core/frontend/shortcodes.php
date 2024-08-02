@@ -45,6 +45,8 @@ class Shortcodes {
 		$atts = extract(
 			shortcode_atts(
 				array(
+					'title'         	=> esc_html__('Filters','filter-plus'),
+					'no_of_items'       => 9,
 					'template'         	=> '1',
 					'category_label'    => esc_html__('Categories','filter-plus'),
 					'categories'       	=> '',
@@ -72,6 +74,7 @@ class Shortcodes {
 					'sorting'          	=> 'yes',
 				), $atts )
 		);
+
 		ob_start();
 		$is_pro_active = $this->pro_template_check($template);
 		if ($is_pro_active !== '' ) {
@@ -84,6 +87,7 @@ class Shortcodes {
 			<div class="shopContainer shop-container-<?php echo esc_attr($template)?>"
 			id="shopContainer"
 			data-filter_type='product' 
+			data-limit="<?php echo intval($no_of_items)?>"
 			data-template="<?php echo esc_attr($template)?>"
 			data-product_categories="<?php echo esc_attr($product_categories)?>"
 			data-product_tags="<?php echo esc_attr($product_tags)?>"
@@ -129,6 +133,8 @@ class Shortcodes {
 					'filter_type'       => 'post',
 					'custom_post'       => '',
 					'template'         	=> '1',
+					'title'         	=> esc_html__('Filters','filter-plus'),
+					'no_of_items'       => 9,
 					'show_categories'   => 'yes',
 					'category_label'    => esc_html__('Categories','filter-plus-pro'),
 					'categories'       	=> '',
@@ -155,6 +161,7 @@ class Shortcodes {
 		?>
 			<div class="<?php echo esc_attr($main_wrapper);?>" id="shopContainer"
 				data-filter_type='<?php echo esc_attr($filtering_type)?>'
+				data-limit="<?php echo intval($no_of_items)?>"
 				data-template="<?php echo esc_attr($template)?>"
 				data-product_categories="<?php echo esc_attr($post_categories)?>"
 				data-product_tags="<?php echo esc_attr($post_tags)?>"
