@@ -1,7 +1,6 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) exit;
-
 ?>
 <div class="title-and-clean-area">
 	<?php if($title !== ''): ?>

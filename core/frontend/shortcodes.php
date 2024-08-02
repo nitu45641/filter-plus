@@ -41,6 +41,7 @@ class Shortcodes {
 	 */
 	public function filter_plus( $atts ) {
 		if ( ! class_exists( 'Woocommerce' ) ) {return;}
+
 		// shortcode option
 		$atts = extract(
 			shortcode_atts(
