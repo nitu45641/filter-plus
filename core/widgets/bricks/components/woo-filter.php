@@ -381,7 +381,7 @@ class Woo_Filter extends \Bricks\Element {
 
 		echo "<div {$this->render_attributes( '_root' )}>";
 			echo do_shortcode("[filter_products category_label='".$category_label."' 
-			sub_categories='".$sub_categories."' title ={$title} limit={$no_of_items} 
+			sub_categories='".$sub_categories."' title ={$title} no_of_items={$no_of_items} 
 			tag_label='".$tag_label."' 
 			color_label='".$color_label."' 
 			size_label='".$size_label."' attribute_label='".$attribute_label."' 

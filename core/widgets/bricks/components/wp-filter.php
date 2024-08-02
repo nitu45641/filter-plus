@@ -325,7 +325,7 @@ class Wp_Filter extends \Bricks\Element {
 		echo "<div {$this->render_attributes( '_root' )}>";
 
         echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
-        category_label='".$category_label."' title ={$title} limit={$no_of_items} 
+        category_label='".$category_label."' title ={$title} no_of_items={$no_of_items} 
 		sub_categories='".$sub_categories."' 
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 

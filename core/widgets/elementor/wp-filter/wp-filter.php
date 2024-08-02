@@ -587,7 +587,7 @@ class Wp_Filter extends Widget_Base {
 		$filter_type        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
 		$custom_post        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
 		$template           = !empty($settings['template']) ? $settings['template'] : '1';
-		$title           	= !empty($settings['title']) ? $settings['title'] : '';
+		$title           	= !empty($settings['title']) ? $settings['title'] : esc_html__('Filters','filter-plus');
 		$no_of_items 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
 		$show_categories    = !empty($show_categories) ? $show_categories : 'yes';
 		$category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
@@ -610,7 +610,7 @@ class Wp_Filter extends Widget_Base {
         category_label='".$category_label."' 
 		sub_categories='{$sub_categories}'
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
-        template ={$template} title ={$title} limit={$no_of_items} 
+        template ={$template} title={$title} no_of_items={$no_of_items} 
 		author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
         custom_field_list={$custom_fields} post_tags='{$post_tags}'

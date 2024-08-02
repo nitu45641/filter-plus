@@ -42,7 +42,9 @@ function woo_filter_callback( $settings ) {
     $on_sale            = !empty($settings['on_sale']) && $settings['on_sale'] == true ? 'yes' : 'no';
     $product_categories = !empty($settings['product_categories']) && $settings['product_categories'] == true ? 'yes' : 'no';
     $product_tags       = !empty($settings['product_tags']) && $settings['product_tags'] == true ? 'yes' : 'no';
-    
+    $title           	= !empty($settings['title']) ? $settings['title'] : esc_html__('Filters','filter-plus');
+    $no_of_items 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
+
     if ( is_array($categories) ) {
         $categories     =  join(", ",$categories);
     }
@@ -58,7 +60,7 @@ function woo_filter_callback( $settings ) {
         <div class="woo-filter">
             <?php
                 echo do_shortcode("[filter_products category_label='".$category_label."' 
-                tag_label='".$tag_label."' 
+                tag_label='".$tag_label."' title={$title} no_of_items={$no_of_items} 
                 sub_categories='".$sub_categories."' 
                 color_label='".$color_label."' 
                 size_label='".$size_label."' attribute_label='".$attribute_label."' 

@@ -928,6 +928,8 @@ input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
 
 .shop-sidebar .search-form button svg {
 	fill: var(--filter-cart-icon-color,#c4c4c4);
+	align-items: center;
+    display: flex;
 }
 
 .checkbox-style .category-list li {

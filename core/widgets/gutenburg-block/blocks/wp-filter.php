@@ -39,7 +39,9 @@ function wp_filter_callback( $settings ) {
     $post_categories    = !empty($settings['post_categories']) && $settings['post_categories'] == true ? 'yes' : 'no';
     $post_tags          = !empty($settings['post_tags']) && $settings['post_tags'] == true ? 'yes' : 'no';
     $post_author        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
-    
+    $title           	= !empty($settings['title']) ? $settings['title'] : esc_html__('Filters','filter-plus');
+    $no_of_items 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
+
     if ( is_array($custom_field_list) ) {
         $custom_field_list     =  join(", ",$custom_field_list);
     }
@@ -56,7 +58,7 @@ function wp_filter_callback( $settings ) {
     if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 ) {
 
         echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
-        category_label='".$category_label."' 
+        category_label='".$category_label."' title={$title} no_of_items={$no_of_items} 
         sub_categories='".$sub_categories."' 
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
