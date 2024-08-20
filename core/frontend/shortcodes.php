@@ -41,40 +41,9 @@ class Shortcodes {
 	 */
 	public function filter_plus( $atts ) {
 		if ( ! class_exists( 'Woocommerce' ) ) {return;}
-
+		$data_factory = \FilterPlus\Base\DataFactory::instance()->woo_default_data();
 		// shortcode option
-		$atts = extract(
-			shortcode_atts(
-				array(
-					'title'         	=> esc_html__('Filters','filter-plus'),
-					'no_of_items'       => 9,
-					'template'         	=> '1',
-					'category_label'    => esc_html__('Categories','filter-plus'),
-					'categories'       	=> '',
-					'sub_categories'	=> 'no',
-					'colors'           	=> 'yes',
-					'color_label'       => esc_html__('Colors','filter-plus'),
-					'size'             	=> 'yes',
-					'size_label'        => esc_html__('Size','filter-plus'),
-					'tags'             	=> '',
-					'tag_label'        	=> esc_html__('Tags','filter-plus'),
-					'attributes'       	=> '',
-					'attribute_label'   => esc_html__('Attributes','filter-plus'),
-					'show_tags'        	=> '',
-					'show_attributes'  	=> '',
-					'review_label'   	=> esc_html__('Review','filter-plus'),
-					'show_reviews'     	=> '',
-					'show_price_range' 	=> '',
-					'price_range_label' => esc_html__('Price Range','filter-plus'),
-					'on_sale' 			=> '',
-					'on_sale_label' 	=> esc_html__('Sale','filter-plus'),
-					'stock' 			=> '',
-					'stock_label' 		=> esc_html__('Stock','filter-plus'),
-					'product_categories'=> '',
-					'product_tags'      => '',
-					'sorting'          	=> 'yes',
-				), $atts )
-		);
+		$atts = extract( shortcode_atts( $data_factory , $atts ) );
 
 		ob_start();
 		$is_pro_active = $this->pro_template_check($template);
@@ -125,37 +94,11 @@ class Shortcodes {
 
 
 
-	public function wp_filter_plus( $short_atts ) {
+	public function wp_filter_plus( $atts ) {
 		ob_start();
+		$data_factory = \FilterPlus\Base\DataFactory::instance()->wp_default_data();
+		$atts = extract( shortcode_atts( $data_factory , $atts ) );
 
-		$atts = 
-			shortcode_atts(
-				array(
-					'filter_type'       => 'post',
-					'custom_post'       => '',
-					'template'         	=> '1',
-					'title'         	=> esc_html__('Filters','filter-plus'),
-					'no_of_items'       => 9,
-					'show_categories'   => 'yes',
-					'category_label'    => esc_html__('Categories','filter-plus-pro'),
-					'categories'       	=> '',
-					'sub_categories'	=> 'no',
-					'show_tags'        	=> '',
-					'tag_label'        	=> esc_html__('Tags','filter-plus-pro'),
-					'tags'             	=> '',
-					'author'            => '',
-					'author_label'      => esc_html__('Authors','filter-plus-pro'),
-					'author_list'       => '',
-					'post_categories'	=> 'yes',
-					'post_tags'      	=> 'yes',
-					'post_author'      	=> 'yes',
-					'custom_field_label' 	=> esc_html__('Custom Field','filter-plus-pro'),
-					'custom_field'      	=> 'no',
-					'meta_condition'     	=> 'OR',
-					'custom_field_list'     => ''
-				), $short_atts );
-		extract($atts);		
-		
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
 		$main_wrapper   = $template == '3' ? 'mainWrapper' : 'shopContainer';
 		$this->custom_css($template,$filter_type);

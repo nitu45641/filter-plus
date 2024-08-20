@@ -561,7 +561,7 @@ class Woo_Filter extends Widget_Base {
 		$this->add_control(
 			'box_bg_color',
 			array(
-				'label'         => esc_html__( 'Box Bacground Color', 'filter-plus' ),
+				'label'         => esc_html__( 'Box Background Color', 'filter-plus' ),
 				'type'         => Controls_Manager::COLOR,
 				'selectors'     => array(
 					'{{WRAPPER}} .category-list-style4 .single-cat-item' => 'background-color: {{VALUE}};',
@@ -614,44 +614,8 @@ class Woo_Filter extends Widget_Base {
 	 */
 	protected function render() {
 		$settings   = $this->get_settings();
-		extract( $settings );
-		$category_label = ! empty( $category_label ) ? $category_label : esc_html__( 'Categories', 'filter-plus' );
-		$categories = is_array( $categories ) ? implode( ',', $categories ) : '';
-		$tags       = ! empty( $tags ) && is_array( $tags ) ? implode( ',', $tags ) : '';
-		$show_tags  = ! empty( $show_tags ) ? $show_tags : '';
-		$tag_label  = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Tags', 'filter-plus' );
-		$color_label        = ! empty( $color_label ) ? $color_label : esc_html__( 'Colors', 'filter-plus' );
-		$sub_categories     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
-		$colors             = ! empty( $colors ) ? $colors : '';
-		$size               = ! empty( $size ) ? $size : '';
-		$size_label         = ! empty( $size_label ) ? $size_label : esc_html__( 'Size', 'filter-plus' );
-		$product_categories = ! empty( $product_categories ) ? $product_categories : '';
-		$attributes         = ! empty( $attributes ) ? implode( ',', $attributes ) : '';
-		$show_attributes    = ! empty( $show_attributes ) ? $show_attributes : '';
-		$attribute_label    = ! empty( $attribute_label ) ? $attribute_label : esc_html__( 'Attributes', 'filter-plus' );
-		$show_reviews       = ! empty( $show_reviews ) ? $show_reviews : '';
-		$review_label       = ! empty( $review_label ) ? $review_label : esc_html__( 'Review', 'filter-plus' );
-		$show_price_range   = ! empty( $show_price_range ) ? $show_price_range : '';
-		$price_range_label  = ! empty( $price_range_label ) ? $price_range_label : esc_html__( 'Price Range', 'filter-plus' );
-		$stock              = ! empty( $stock ) ? $stock : 'yes';
-		$stock_label        = ! empty( $stock_label ) ? $stock_label : esc_html__( 'Stock', 'filter-plus' );
-		$on_sale            = ! empty( $on_sale ) ? $on_sale : 'yes';
-		$on_sale_label      = ! empty( $on_sale_label ) ? $on_sale_label : esc_html__( 'Sale', 'filter-plus' );
-		$sorting            = ! empty( $sorting ) ? $sorting : '';
-		$product_tags       = ! empty( $product_tags ) ? $product_tags : '';
-		$product_categories = ! empty( $product_categories ) ? $product_categories : '';
-		$template 			= ! empty( $template ) ? $template : '';
-		$title 				= ! empty( $title ) ? $title : esc_html__( 'Filters', 'filter-plus' );
-		$no_of_items 		= ! empty( $no_of_items ) ? $no_of_items : 9;
-
-		echo do_shortcode("[filter_products category_label='".$category_label."' 
-		sub_categories='".$sub_categories."' title ={$title} no_of_items={$no_of_items} 
-		tag_label='".$tag_label."' 
-		color_label='".$color_label."' 
-		size_label='".$size_label."' attribute_label='".$attribute_label."' 
-		review_label='".$review_label."' price_range_label='".$price_range_label."'
-		stock_label='".$stock_label."' on_sale_label='".$on_sale_label."' 
-		stock={$stock} on_sale={$on_sale} template ={$template} 
-		categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");   
+		echo \FilterPlus\Base\DataFactory::instance()->woo_render_html( $settings );
 	}
+
 }
+

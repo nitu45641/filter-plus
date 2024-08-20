@@ -575,47 +575,8 @@ class Wp_Filter extends Widget_Base {
      *
      */
 	protected function render() {
-		\FilterPlus\Utils\Helper::instance()->pro_active_message();
 		$settings   = $this->get_settings();
-        extract($settings);
-
-		$custom_fields = '';
-		if (!empty($custom_field_list)) {
-			$custom_fields  = is_array($custom_field_list) ? implode(',',$custom_field_list) : $custom_field_list;
-		}
-
-		$filter_type        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
-		$custom_post        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
-		$template           = !empty($settings['template']) ? $settings['template'] : '1';
-		$title           	= !empty($settings['title']) ? $settings['title'] : esc_html__('Filters','filter-plus');
-		$no_of_items 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
-		$show_categories    = !empty($show_categories) ? $show_categories : 'yes';
-		$category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
-		$categories         = is_array($categories) ? implode(',',$categories) : '';
-		$sub_categories     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
-		$show_tags          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
-		$tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
-		$tags               = is_array($tags) ? implode(',',$tags) : '';
-		$author	            = !empty($author) ? $author : '';
-		$author_label	    = !empty($author_label) ? $author_label : esc_html__('Authors','filter-plus');
-		$author_list	    = is_array($author_list) ? implode(',',$author_list) : '';
-		$custom_field	    = !empty($custom_field) ? $custom_field : 'no';
-		$custom_field_label	= !empty($custom_field_label) ? $custom_field_label : esc_html__('Custom Field','filter-plus');
-		$meta_condition	    = !empty($meta_condition) ? $meta_condition : 'OR';
-		$post_categories    = !empty($settings['post_categories']) && $settings['post_categories'] == true ? 'yes' : 'no';
-		$post_tags          = !empty($settings['post_tags']) && $settings['post_tags'] == true ? 'yes' : 'no';
-		$post_author        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
-
-		echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
-        category_label='".$category_label."' 
-		sub_categories='{$sub_categories}'
-        categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
-        template ={$template} title={$title} no_of_items={$no_of_items} 
-		author={$author} author_label='".$author_label."' author_list={$author_list} 
-        custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
-        custom_field_list={$custom_fields} post_tags='{$post_tags}'
-        post_categories='{$post_categories} post_author={$post_author}']"); 
-
+		echo \FilterPlus\Base\DataFactory::instance()->wp_render_html( $settings );
 	}
 }
 
