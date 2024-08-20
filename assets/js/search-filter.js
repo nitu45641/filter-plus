@@ -564,6 +564,10 @@
 				if ( typeof $parent.attr('type') !=='undefined' && $parent.attr('type') !== 'select' ) {
 					$parent.prop('checked',false);
 				} else {
+					let list_checkbox = $parent.find('input').attr('type');
+					if( list_checkbox !=='undefined' && list_checkbox == 'checkbox' ) {
+						$parent.find('input').prop('checked',false);
+					}
 					$parent.val('');
 					let niceSelect = $('.nice-select');
 					$(".custom-field option:eq(0)").prop("selected", true);
