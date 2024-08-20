@@ -334,44 +334,7 @@ class Woo_Filter extends \Bricks\Element {
 
 	// Render element HTML
 	public function render() {
-		extract( $this->settings );
-        $template           = !empty($template) ? $template[0] : '1';
-        $category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
-        $categories         = !empty($categories) ? $categories : '';
-		$sub_categories     = !empty($sub_categories) && $sub_categories == true ? 'yes' : 'no';
-		$color_label 		= !empty($color_label) ? $color_label : esc_html__('Colors','filter-plus');
-        $colors             = !empty($colors) && $colors == true  ? 'yes' : 'no';
-        $size_label			= !empty($size_label) ? $size_label : esc_html__('Size','filter-plus');
-        $size               = !empty($size) && $size == true ? 'yes' : 'no';
-        $tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
-        $show_tags          = !empty($show_tags) && $show_tags == true ? 'yes' : 'no';
-        $tags               = !empty($tags) ? $tags : '';
-        $attribute_label	= !empty($attribute_label) ? $attribute_label : esc_html__('Attributes','filter-plus');
-        $show_attributes    = !empty($show_attributes) && $show_attributes == true ? 'yes' : 'no';
-        $attributes         = !empty($attributes) ? $attributes : '';
-        $review_label 		= !empty($review_label) ? $review_label : esc_html__('Review','filter-plus');
-        $show_reviews       = !empty($show_reviews) && $show_reviews == true ? 'yes' : 'no';
-        $price_range_label 	= !empty($price_range_label) ? $price_range_label :  esc_html__('Price Range','filter-plus');
-        $show_price_range   = !empty($show_price_range) && $show_price_range == true ? 'yes' : 'no';
-        $stock_label 		= !empty($stock_label) ? $stock_label : esc_html__('Stock','filter-plus');
-        $stock              = !empty($stock) && $stock == true ? 'yes' : 'no';
-        $on_sale_label 		= !empty($on_sale_label) ? $on_sale_label :  esc_html__('Sale','filter-plus');
-        $on_sale            = !empty($on_sale) && $on_sale == true ? 'yes' : 'no';
-        $sorting            = !empty($sorting) && $sorting == true ? 'yes' : 'no';
-        $product_categories = !empty($product_categories) && $product_categories == true ? 'yes' : 'no';
-        $product_tags       = !empty($product_tags) && $product_tags == true ? 'yes' : 'no';
-		$title 				= ! empty( $title ) ? $title : '';
-		$no_of_items 		= ! empty( $no_of_items ) ? $no_of_items : 9;
-
-        if ( is_array($categories) ) {
-            $categories     =  join(", ",$categories);
-        }
-        if ( is_array($tags) ) {
-            $tags     =  join(", ",$tags);
-        }
-        if ( is_array($attributes) ) {
-            $attributes     =  join(", ",$attributes);
-        }
+		$settings = $this->settings;
 
 		$root_classes[] = 'fplus-woo-wrapper';
 		if ( ! empty( $this->settings['type'] ) ) {
@@ -380,14 +343,7 @@ class Woo_Filter extends \Bricks\Element {
 		$this->set_attribute( '_root', 'class', $root_classes );
 
 		echo "<div {$this->render_attributes( '_root' )}>";
-			echo do_shortcode("[filter_products category_label='".$category_label."' 
-			sub_categories='".$sub_categories."' title ={$title} no_of_items={$no_of_items} 
-			tag_label='".$tag_label."' 
-			color_label='".$color_label."' 
-			size_label='".$size_label."' attribute_label='".$attribute_label."' 
-			review_label='".$review_label."' price_range_label='".$price_range_label."'
-			stock_label='".$stock_label."' on_sale_label='".$on_sale_label."' 
-			stock={$stock} on_sale={$on_sale} template={$template} categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");     	
+		echo \FilterPlus\Base\DataFactory::instance()->woo_render_html( $settings );
 		echo '</div>';
 	}
 }
