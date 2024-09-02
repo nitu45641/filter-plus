@@ -94,10 +94,11 @@ class Shortcodes {
 
 
 
-	public function wp_filter_plus( $atts ) {
+	public function wp_filter_plus( $args ) {
 		ob_start();
 		$data_factory = \FilterPlus\Base\DataFactory::instance()->wp_default_data();
-		$atts = extract( shortcode_atts( $data_factory , $atts ) );
+		$data = shortcode_atts( $data_factory , $args );
+		extract( $data );
 
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
 		$main_wrapper   = $template == '3' ? 'mainWrapper' : 'shopContainer';
@@ -111,7 +112,7 @@ class Shortcodes {
 				data-product_tags="<?php echo esc_attr($post_tags)?>"
 				data-post_author="<?php echo esc_attr($post_author)?>"
 			>
-				<?php $this->wp_filter_file($template,$atts);?>
+				<?php $this->wp_filter_file($template, $data );?>
 			</div>
 		<?php
 				
