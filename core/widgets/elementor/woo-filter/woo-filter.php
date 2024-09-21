@@ -61,7 +61,7 @@ class Woo_Filter extends Widget_Base {
 				'label' => esc_html__( 'Select Style', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
-				'options' => \FilterPlus\Utils\Helper::widgets_templates(),
+				'options' => \FilterPlus\Utils\Helper::widgets_templates(7),
 			)
 		);
 		$this->add_control(

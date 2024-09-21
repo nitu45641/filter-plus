@@ -38,6 +38,9 @@ final class FilterPlus {
      * @return string
      */
     public static function get_version() {
+    	if( ! function_exists('get_plugin_data') ){
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
 		$plugin_data = get_plugin_data( __FILE__ );
 		return !empty($plugin_data['Version']) ? $plugin_data['Version'] : '';
     }
