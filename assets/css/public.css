@@ -252,8 +252,8 @@
     padding: 0 !important;
 	cursor: pointer;
 }
-ul.category-list li:not(ul.sub_categories li).active,
-ul.category-list li:not(ul.sub_categories li):hover 
+ul.category-list li.active,
+ul.category-list li:hover 
 {
 	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
