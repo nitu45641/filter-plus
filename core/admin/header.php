@@ -1,9 +1,9 @@
 <header class="menu">
 	<a href="<?php echo esc_url( 'https://woooplugin.com/filter-plus/' ); ?>" target="_blank">
 		<div class="logo">
-			<img src = "<?php echo esc_url( FilterPlus::assets_url() . 'images/filter-plus-logo.png' ); ?>"
+			<img src = "<?php echo esc_url( FilterPlus::assets_url() . 'images/filter-plus-logo.svg' ); ?>"
 				alt="filter-plus-banner" 
-				width="70px"
+                width="35px"
 			/>
 			<span class='version'><?php echo esc_html( 'v ' . FilterPlus::get_version() ); ?></span>
 		</div>
