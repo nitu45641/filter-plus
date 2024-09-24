@@ -28,6 +28,11 @@
 			'right'=>esc_html__('Right','filter-plus')),'type'=>'random' );
 			filter_plus_select_field($args);
 
+			$args 		= array('label'=>esc_html__("Pagination Style:","filter-plus"),'id' => 'pagination_style',
+			'data_label' => 'pagination_style','options'=> array('numbers'=>esc_html__('Numbers','filter-plus'),
+			'loadmore'=>esc_html__('Load More','filter-plus')),'type'=>'random' );
+			filter_plus_select_field($args);
+
 			// Limit
 			$args        = array('label'=>esc_html__("No of Items Per Page:","filter-plus"),'id' => 'no_of_items',
 			'placeholder'=>esc_html__("Place No of Items Per Page","filter-plus"), 'field_type'=> 'number',

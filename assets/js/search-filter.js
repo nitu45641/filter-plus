@@ -146,17 +146,18 @@
 		 * @param {*} params
 		 */
 		function get_products(params = {}) {
-			const products_wrap 	= $('.products-wrap');
-			const prod_grid_wrap 	= $('.prods-grid-view');
-			const prod_list_wrap 	= $('.wp-list-view,.prods-list-view');
-			const message_info 		= $('.message');
-			const template 			= $('#shopContainer').data('template');
-			const limit 			= $('#shopContainer').data('limit');
-			const product_categories =
+			let products_wrap 	= $('.products-wrap');
+			let prod_grid_wrap 	= $('.prods-grid-view');
+			let prod_list_wrap 	= $('.wp-list-view,.prods-list-view');
+			let message_info 		= $('.message');
+			let pagination_style 	= $('#shopContainer').data('template');
+			let template 			= $('#shopContainer').data('template');
+			let limit 			= $('#shopContainer').data('limit');
+			let product_categories =
 				$('#shopContainer').data('product_categories');
-			const product_tags = $('#shopContainer').data('product_categories');
-			const post_author = $('#shopContainer').data('post_author');
-			const selected_data = selected_param(params);
+			let product_tags 	= $('#shopContainer').data('product_categories');
+			let post_author 	= $('#shopContainer').data('post_author');
+			let selected_data 	= selected_param(params);
 			show_selected_data(selected_data);
 
 			const data = {
@@ -183,8 +184,12 @@
 						const total = response?.data?.data?.total;
 						$('.total').html('').html(total);
 						$('.pages').html('').html(products.length);
-						prod_grid_wrap.html('');
-						prod_list_wrap.html('');
+						
+						if (pagination_style == 'numbers') {
+							prod_grid_wrap.html('');
+							prod_list_wrap.html('');
+						}
+
 						message_info.html('');
 						if (response?.data?.message !== '') {
 							$('.sort-bar').fadeOut();
