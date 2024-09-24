@@ -47,6 +47,7 @@ class DataFactory {
             'product_categories'=> '',
             'product_tags'      => '',
             'sorting'          	=> 'yes',
+            'filter_position'   => 'left',
         );
     }
 

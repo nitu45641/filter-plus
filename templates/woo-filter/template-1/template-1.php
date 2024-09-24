@@ -8,8 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
 		}
-		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/categories-list.php" )) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/categories-list.php" ;
+		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/categories-checkbox.php" )) {
+			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/categories-checkbox.php" ;
 		}
 		// reviews
 		if ( 'yes'== $show_reviews ) {

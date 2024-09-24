@@ -51,10 +51,11 @@ class Shortcodes {
 			echo $is_pro_active;
 			return ob_get_clean();
 		} 
+
 		
 		$this->custom_css($template);
 		?>
-			<div class="shopContainer shop-container-<?php echo esc_attr($template)?>"
+			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template)?>"
 			id="shopContainer"
 			data-filter_type='product' 
 			data-limit="<?php echo intval($no_of_items)?>"

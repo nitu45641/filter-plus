@@ -23,6 +23,11 @@
 			
 			filter_plus_number_input_field($args);
 
+			$args 		= array('label'=>esc_html__("Filter Position:","filter-plus"),'id' => 'filter_position',
+			'data_label' => 'filter_position','options'=> array('left'=>esc_html__('Left','filter-plus'),
+			'right'=>esc_html__('Right','filter-plus')),'type'=>'random' );
+			filter_plus_select_field($args);
+
 			// Limit
 			$args        = array('label'=>esc_html__("No of Items Per Page:","filter-plus"),'id' => 'no_of_items',
 			'placeholder'=>esc_html__("Place No of Items Per Page","filter-plus"), 'field_type'=> 'number',
