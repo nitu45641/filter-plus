@@ -45,6 +45,7 @@ class Actions {
 		$cat_id       = ! empty( $post_arr['cat_id'] ) ? $post_arr['cat_id'] : '';
 		$taxonomies   = ! empty( $post_arr['taxonomies'] ) ? $post_arr['taxonomies'] : [];
 		$rating       = ! empty( $post_arr['rating'] ) ? $post_arr['rating'] : '';
+		$pagination_style  = ! empty( $post_data['pagination_style'] ) ? $post_data['pagination_style'] : 'numbers';
 		$max          = ! empty( $post_arr['max'] ) ? $post_arr['max'] : '';
 		$min          = ! empty( $post_arr['min'] ) ? $post_arr['min'] : '';
 		$filter_param = ! empty( $post_arr['filter_param'] ) ? $post_arr['filter_param'] : array();
@@ -62,6 +63,7 @@ class Actions {
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
 
 		$args = array(
+			'pagination_style' => $pagination_style,
 			'author'   		=> $author,
 			'filter_type'   => $filter_type,
 			'limit'      	=> $limit,
@@ -146,8 +148,13 @@ class Actions {
 		}else{
 			$products   = $this->process_wp_data( $posts , $param );
 		}
-
-		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $param['limit']) );
+		$pagination_markup = \FilterPlus\Core\Frontend\SearchFilter\Templates\Templates::instance()->pagination( array(
+			'totalPages' 	=> ceil($posts_count / $param['limit']),
+			'page' 			=> $param['offset'],
+			'template' 		=> $param['pagination_style'],
+		) );
+		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $param['limit'])
+		, 'pagination_markup' => $pagination_markup );
 	}
 
 	/**
@@ -327,7 +334,6 @@ class Actions {
 	 */
 	public static function process_product_data( $posts  , $param ) {
 		$products = self::process_wp_data( $posts , $param );
-		error_log(print_r($param, true));
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
 				$product_instance = wc_get_product($post->ID);
