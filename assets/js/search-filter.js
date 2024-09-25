@@ -181,12 +181,14 @@
 				},
 				success(response) {
 					if (response?.success) {
-						const products = response?.data?.data?.products;
-						const total = response?.data?.data?.total;
+						const products 	= response?.data?.data?.products;
+						const total 	= response?.data?.data?.total;
 						$('.total').html('').html(total);
 						$('.pages').html('').html(products.length);
-						
-						if (pagination_style == 'numbers') {
+						// clear product data
+						if ( ( typeof params?.load_more === 'undefined'
+							 && pagination_style == 'loadmore' ) ||
+						 pagination_style == 'numbers') {
 							prod_grid_wrap.html('');
 							prod_list_wrap.html('');
 						}
@@ -422,10 +424,13 @@
 			let pagination = $('.pagination');
 			pagination.html('').html(pagination_markup);
 			$('.products-wrap').find('ul.pagination li').on('click', function () {
-				let offset = $(this).data('page');
-				get_products({
-					offset,
-				});
+				let load_more = false;
+				let _this = $(this);
+				if (_this.hasClass('load-more')) {
+					load_more = true;
+				}
+				let offset = _this.data('page');
+				get_products({offset:offset,load_more:load_more});
 			});
 		}
 
