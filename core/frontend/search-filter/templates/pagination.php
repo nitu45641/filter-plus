@@ -25,9 +25,7 @@
                   </li>
             <?php } ?>
          <?php endfor; ?>
-         <li>
-            <span>....</span>
-         </li>
+         <span>....</span>
          <?php for($i = 0; $i <= 3; $i++ ): ?>
          <?php if($totalPages > $page - 4 -  $i){ ?>
             <li class="page-item <?php if($page == $totalPages - (4 - $i)) {echo 'active'; } ?>"
