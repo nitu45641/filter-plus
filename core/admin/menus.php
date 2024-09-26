@@ -38,14 +38,14 @@ class Menus {
 
 		// Add main page
 		if ( empty( $GLOBALS['admin_page_hooks'][ $slug ] ) ) {
-			$logo = file_get_contents( \FilterPlus::assets_url() . 'images/logo.svg' );
+			$logo = \FilterPlus::assets_url() . 'images/logo.png' ;
 			add_menu_page(
 				esc_html__( 'Shortcodes', 'filter-plus' ),
 				esc_html__( 'Filter Plus', 'filter-plus' ),
 				$capability,
 				$slug,
 				array( $this, 'filter_plus_view' ),
-				'data:image/svg+xml;base64,' . base64_encode($logo ),
+				$logo,
 				10
 			);
 		}
