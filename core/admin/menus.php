@@ -38,7 +38,7 @@ class Menus {
 
 		// Add main page
 		if ( empty( $GLOBALS['admin_page_hooks'][ $slug ] ) ) {
-			$logo = \FilterPlus::assets_url() . 'images/logo.png' ;
+			$logo = \FilterPlus::assets_url() . 'images/filter-logo.png' ;
 			add_menu_page(
 				esc_html__( 'Shortcodes', 'filter-plus' ),
 				esc_html__( 'Filter Plus', 'filter-plus' ),
