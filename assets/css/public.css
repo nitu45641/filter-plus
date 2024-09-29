@@ -744,7 +744,9 @@ input[type="checkbox"]:checked + label.checkbox-item
 	display: flex;
 	column-gap: 15px;
 }
-.shopContainer.right{
+.shopContainer.right,
+.mainWrapper.right
+{
 	flex-direction: row-reverse !important;
 }
 a {

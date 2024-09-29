@@ -5,7 +5,7 @@
  * @package Filter_Plus
  * @since 1.0.0
  */
-defined( constant_name: 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit;
 
 use \FilterPlus\Utils\Helper as Helper;
 ?>

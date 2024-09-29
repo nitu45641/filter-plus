@@ -202,7 +202,7 @@ class DataFactory {
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
         custom_field_list={$custom_fields} post_tags='{$post_tags}'
         filter_position={$filter_position} pagination_style='{$pagination_style}'
-        post_categories='{$post_categories} post_author={$post_author}']"); 
+        post_categories='{$post_categories}' post_author='{$post_author}']"); 
     }
 
 }

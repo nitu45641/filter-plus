@@ -106,14 +106,14 @@ class Shortcodes {
 		$main_wrapper   = $template == '3' ? 'mainWrapper' : 'shopContainer';
 		$this->custom_css($template,$filter_type);
 		?>
-			<div class="<?php echo esc_attr($main_wrapper);?>" id="shopContainer"
-				data-pagination_style="<?php echo esc_attr($pagination_style)?>"
-				data-filter_type='<?php echo esc_attr($filtering_type)?>'
+			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?>" id="shopContainer"
+				data-pagination_style="<?php echo esc_html($pagination_style)?>"
+				data-filter_type='<?php echo esc_html($filtering_type)?>'
 				data-limit="<?php echo intval($no_of_items)?>"
-				data-template="<?php echo esc_attr($template)?>"
-				data-product_categories="<?php echo esc_attr($post_categories)?>"
-				data-product_tags="<?php echo esc_attr($post_tags)?>"
-				data-post_author="<?php echo esc_attr($post_author)?>"
+				data-template="<?php echo esc_html($template)?>"
+				data-product_categories="<?php echo esc_html($post_categories) ?>"
+				data-product_tags="<?php echo esc_html($post_tags)?>"
+				data-post_author="<?php echo esc_html($post_author)?>"
 			>
 				<?php $this->wp_filter_file($template, $data );?>
 			</div>
