@@ -860,5 +860,25 @@ class Helper {
 
 		return $templates;
 	}
+
+	/**
+	 * Pagination Style
+	 *
+	 * @return array
+	 */
+	public static function pagination_style()  {
+		return array('numbers'=>esc_html__('Numbers','filter-plus'),
+		'loadmore'=>esc_html__('Load More','filter-plus'));
+	}
+
+	/**
+	 * Filter position
+	 *
+	 * @return array
+	 */
+	public static function filter_position()  {
+		return array('left'=>esc_html__('Left','filter-plus'),
+			'right'=>esc_html__('Right','filter-plus'));
+	}
 	
 }

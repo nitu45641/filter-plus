@@ -107,6 +107,7 @@ class Shortcodes {
 		$this->custom_css($template,$filter_type);
 		?>
 			<div class="<?php echo esc_attr($main_wrapper);?>" id="shopContainer"
+				data-pagination_style="<?php echo esc_attr($pagination_style)?>"
 				data-filter_type='<?php echo esc_attr($filtering_type)?>'
 				data-limit="<?php echo intval($no_of_items)?>"
 				data-template="<?php echo esc_attr($template)?>"

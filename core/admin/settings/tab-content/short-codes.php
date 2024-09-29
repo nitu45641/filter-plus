@@ -1,4 +1,14 @@
+<?php
+/**
+ * Filter Plus Shortcodes
+ *
+ * @package Filter_Plus
+ * @since 1.0.0
+ */
+defined( constant_name: 'ABSPATH' ) || exit;
 
+use \FilterPlus\Utils\Helper as Helper;
+?>
 <div class="content-wrapper">
 	<div class="shortcode-block" data-name="filter_products">
 		<h1 class="mt-1 mb-0 font_bold font_18"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></h1>
@@ -6,7 +16,7 @@
 			// templates
 			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/show-woocommerce-product-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 			$docs 		= '<div class="documentation mb-1"><div class="doc">'.esc_html__('Gutenberg Block,Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
-			echo FilterPlus\Utils\Helper::kses( $docs );
+			echo Helper::kses( $docs );
 
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
 			'data_label' => 'template','options'=>[1,2,3,4,5,6,7],'type'=>'template' );
@@ -24,13 +34,11 @@
 			filter_plus_number_input_field($args);
 
 			$args 		= array('label'=>esc_html__("Filter Position:","filter-plus"),'id' => 'filter_position',
-			'data_label' => 'filter_position','options'=> array('left'=>esc_html__('Left','filter-plus'),
-			'right'=>esc_html__('Right','filter-plus')),'type'=>'random' );
+			'data_label' => 'filter_position','options'=> Helper::filter_position(),'type'=>'random' );
 			filter_plus_select_field($args);
 
 			$args 		= array('label'=>esc_html__("Pagination Style:","filter-plus"),'id' => 'pagination_style',
-			'data_label' => 'pagination_style','options'=> array('numbers'=>esc_html__('Numbers','filter-plus'),
-			'loadmore'=>esc_html__('Load More','filter-plus')),'type'=>'random' );
+			'data_label' => 'pagination_style','options'=> Helper::pagination_style(),'type'=>'random' );
 			filter_plus_select_field($args);
 
 			// Limit
@@ -45,7 +53,7 @@
 			'data_label' => 'category_label');
 			filter_plus_number_input_field($args);
 
-			$get_categories = \FilterPlus\Utils\Helper::get_categories();
+			$get_categories = Helper::get_categories();
 
 			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
 			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories);
@@ -87,7 +95,7 @@
 			filter_plus_number_input_field($args);
 			
 			// get tag list
-			$get_tags   = \FilterPlus\Utils\Helper::get_product_tags('product_tag');
+			$get_tags   = Helper::get_product_tags('product_tag');
 
 			$args       = array('label'=>esc_html__("Tag List:","filter-plus"),'id' => 'woo_pro_tags',
 			'data_label' => 'tags','options'=>$get_tags , 'select_type' => 'multiple',  'condition_class' => "show_tags d-none");

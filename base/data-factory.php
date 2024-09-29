@@ -80,7 +80,9 @@ class DataFactory {
             'custom_field_label' 	=> esc_html__('Custom Field','filter-plus-pro'),
             'custom_field'      	=> 'no',
             'meta_condition'     	=> 'OR',
-            'custom_field_list'     => ''
+            'custom_field_list'     => '',
+            'filter_position'   => 'left',
+            'pagination_style'  => 'numbers'
         );
     }
 
@@ -120,7 +122,8 @@ class DataFactory {
 		$default_data['product_categories'] = ! empty( $product_categories ) ? $product_categories : '';
 		$default_data['template'] 			= ! empty( $template ) ? $template : '';
 		$default_data['title'] 				= ! empty( $title ) ? $title : esc_html__( 'Filters', 'filter-plus' );
-		$default_data['no_of_items'] 		= ! empty( $no_of_items ) ? $no_of_items : 9;
+		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
+		$default_data['pagination_style'] 	= ! empty( $pagination_style ) ? $pagination_style : 'numbers';
 
         return $default_data;
     }
@@ -141,6 +144,7 @@ class DataFactory {
 		review_label='".$review_label."' price_range_label='".$price_range_label."'
 		stock_label='".$stock_label."' on_sale_label='".$on_sale_label."' 
 		stock={$stock} on_sale={$on_sale} template ={$template} 
+        filter_position={$filter_position} pagination_style='{$pagination_style}'
 		categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");  
     }
 
@@ -174,6 +178,8 @@ class DataFactory {
 		$default_data['post_categories']    = !empty($settings['post_categories']) && $settings['post_categories'] == true ? 'yes' : 'no';
 		$default_data['post_tags']          = !empty($settings['post_tags']) && $settings['post_tags'] == true ? 'yes' : 'no';
 		$default_data['post_author']        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
+		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
+		$default_data['pagination_style'] 	= ! empty( $pagination_style ) ? $pagination_style : 'numbers';
 
         return $default_data;
     }
@@ -195,6 +201,7 @@ class DataFactory {
 		author={$author} author_label='".$author_label."' author_list={$author_list} 
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
         custom_field_list={$custom_fields} post_tags='{$post_tags}'
+        filter_position={$filter_position} pagination_style='{$pagination_style}'
         post_categories='{$post_categories} post_author={$post_author}']"); 
     }
 

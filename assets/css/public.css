@@ -284,6 +284,7 @@ ul.ratings {
 	display: flex;
 	flex-wrap: wrap;
 	color: #666666;
+	margin-bottom: 5px;
 }
 
 .sidebar-style-2 .ratings li svg {

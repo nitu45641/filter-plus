@@ -34,6 +34,13 @@
 			'data_label' => 'no_of_items');
 			filter_plus_number_input_field($args);
 			
+			$args 		= array('label'=>esc_html__("Filter Position:","filter-plus"),'id' => 'filter_position',
+			'data_label' => 'filter_position','options'=> Helper::filter_position(),'type'=>'random' );
+			filter_plus_select_field($args);
+
+			$args 		= array('label'=>esc_html__("Pagination Style:","filter-plus"),'id' => 'pagination_style',
+			'data_label' => 'pagination_style','options'=> Helper::pagination_style(),'type'=>'random' );
+			filter_plus_select_field($args);
 
 			// categories
 			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',

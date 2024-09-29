@@ -66,6 +66,36 @@ class Woo_Filter extends \Bricks\Element {
 			'default' => esc_html__( 'Place No of Items Per Page', 'filter-plus' ),
 		);
 
+		// filter position
+		$this->controls['filter_position'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Filter Position', 'filter-plus' ),
+			'type' => 'select',
+			'options' => \FilterPlus\Utils\Helper::filter_position(),
+			'inline' => true,
+			'placeholder' => esc_html__( 'Select Filter Position', 'filter-plus' ),
+			'single' => true,
+			'searchable' => true,
+			'clearable' => true,
+			'default' => 'left',
+		);
+
+		// pagination style
+		$this->controls['pagination_style'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Pagination Style', 'filter-plus' ),
+			'type' => 'select',
+			'options' => \FilterPlus\Utils\Helper::pagination_style(),
+			'inline' => true,
+			'placeholder' => esc_html__( 'Select Pagination Style', 'filter-plus' ),
+			'single' => true,
+			'searchable' => true,
+			'clearable' => true,
+			'default' => 'numbers',
+		);
+
 		// Category
 		$this->controls['category_label'] = array(
 			'tab' => 'content',

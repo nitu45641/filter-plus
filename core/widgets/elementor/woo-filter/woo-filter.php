@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) || exit;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-
+use FilterPlus\Utils\Helper as Helper;
 class Woo_Filter extends Widget_Base {
 
 	/**
@@ -61,7 +61,7 @@ class Woo_Filter extends Widget_Base {
 				'label' => esc_html__( 'Select Style', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
-				'options' => \FilterPlus\Utils\Helper::widgets_templates(7),
+				'options' => Helper::widgets_templates(7),
 			)
 		);
 		$this->add_control(
@@ -72,6 +72,7 @@ class Woo_Filter extends Widget_Base {
 				'placeholder' => esc_html__( 'Place Title', 'filter-plus' ),
 			)
 		);
+
 		$this->add_control(
 			'no_of_items',
 			array(
@@ -80,6 +81,29 @@ class Woo_Filter extends Widget_Base {
 				'placeholder' => esc_html__( 'Place No of Items Per Page', 'filter-plus' ),
 			)
 		);
+
+		$this->add_control(
+			'filter_position',
+			array(
+				'label' => esc_html__( 'Filter Position', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => Helper::filter_position(),
+				'multiple' => false,
+				'default' => 'left'
+			)
+		);
+
+		$this->add_control(
+			'pagination_style',
+			array(
+				'label' => esc_html__( 'Pagination Style', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => Helper::pagination_style(),
+				'multiple' => false,
+				'default' => 'numbers'
+			)
+		);
+
 		$this->add_control(
 			'category_label',
 			array(
@@ -93,7 +117,7 @@ class Woo_Filter extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Categories', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_categories( '', 'widget' ),
+				'options' => Helper::get_categories( '', 'widget' ),
 				'multiple' => true,
 			)
 		);
@@ -178,7 +202,7 @@ class Woo_Filter extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Tags', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_product_tags( 'product_tag', 'assoc' ),
+				'options' => Helper::get_product_tags( 'product_tag', 'assoc' ),
 				'multiple' => true,
 				'condition' => array( 'show_tags' => 'yes' ),
 			)
@@ -211,7 +235,7 @@ class Woo_Filter extends Widget_Base {
 			array(
 				'label'     => esc_html__( 'Attributes', 'filter-plus' ),
 				'type'      => Controls_Manager::SELECT2,
-				'options'   => \FilterPlus\Utils\Helper::woo_attribute_list( 'assoc' ),
+				'options'   => Helper::woo_attribute_list( 'assoc' ),
 				'multiple'  => true,
 				'condition' => array( 'show_attributes' => 'yes' ),
 			)
@@ -221,7 +245,7 @@ class Woo_Filter extends Widget_Base {
 			'show_price_range',
 			array(
 				'label' => esc_html__( 'Show Price Range', 'filter-plus' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',

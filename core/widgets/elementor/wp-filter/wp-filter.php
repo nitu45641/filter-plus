@@ -7,6 +7,7 @@ defined("ABSPATH") || exit;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use \FilterPlus\Core\Admin\FilterOptions\Helper as OptionHelper;
+use FilterPlus\Utils\Helper as Helper;
 
 class Wp_Filter extends Widget_Base {
 
@@ -51,6 +52,8 @@ class Wp_Filter extends Widget_Base {
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
+
+
 		$pro = "";
 		if ( !class_exists('FilterPlusPro') ) {
 			$pro  = esc_html__('Pro', 'filter-plus');
@@ -79,6 +82,7 @@ class Wp_Filter extends Widget_Base {
 				'placeholder' => esc_html__( 'Place Title', 'filter-plus' ),
 			)
 		);
+		
 		$this->add_control(
 			'no_of_items',
 			array(
@@ -87,6 +91,29 @@ class Wp_Filter extends Widget_Base {
 				'placeholder' => esc_html__( 'Place No of Items Per Page', 'filter-plus' ),
 			)
 		);
+
+		$this->add_control(
+			'filter_position',
+			array(
+				'label' => esc_html__( 'Filter Position', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => Helper::filter_position(),
+				'multiple' => false,
+				'default' => 'left'
+			)
+		);
+
+		$this->add_control(
+			'pagination_style',
+			array(
+				'label' => esc_html__( 'Pagination Style', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => Helper::pagination_style(),
+				'multiple' => false,
+				'default' => 'numbers'
+			)
+		);
+
 		$this->add_control(
 			'filter_type',
 			[
@@ -103,7 +130,7 @@ class Wp_Filter extends Widget_Base {
 				'label' => esc_html__('Select Custom Post', 'filter-plus'),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
-				'options' => \FilterPlus\Utils\Helper::custom_post_type(''),
+				'options' => Helper::custom_post_type(''),
 				'condition' => ['filter_type' => 'custom_post']
 			]
 		);
@@ -132,7 +159,7 @@ class Wp_Filter extends Widget_Base {
 			[
 				'label' => esc_html__('Categories', 'filter-plus'),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_categories('category','widget',array('taxonomy'=>'category')),
+				'options' => Helper::get_categories('category','widget',array('taxonomy'=>'category')),
 				'multiple' => true,
 				'condition' => ['show_categories' => 'yes']
 			]
@@ -176,7 +203,7 @@ class Wp_Filter extends Widget_Base {
 			[
 				'label' => esc_html__('Tags', 'filter-plus'),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::get_product_tags('post_tag','assoc'),
+				'options' => Helper::get_product_tags('post_tag','assoc'),
 				'multiple' => true,
 				'condition' => ['show_tags' => 'yes']
 			]
@@ -209,7 +236,7 @@ class Wp_Filter extends Widget_Base {
 			[
 				'label' => esc_html__('Author List', 'filter-plus'),
 				'type' => Controls_Manager::SELECT2,
-				'options' => \FilterPlus\Utils\Helper::instance()->author_list('',''),
+				'options' => Helper::instance()->author_list('',''),
 				'multiple' => true,
 				'condition' => ['author' => 'yes']
 			]
@@ -316,11 +343,11 @@ class Wp_Filter extends Widget_Base {
 			'title_style',
 			[
 				'label' => esc_html__('Title Style', 'filter-plus'),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_control(
-			'titlte_color',
+			'title_color',
 			[
 				'label'         => esc_html__('Title Color', 'filter-plus'),
 				'type'         => Controls_Manager::COLOR,
@@ -466,7 +493,7 @@ class Wp_Filter extends Widget_Base {
 			'thumbnail_style',
 			[
 				'label' => esc_html__('Thumbnail Style', 'filter-plus'),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -515,7 +542,7 @@ class Wp_Filter extends Widget_Base {
 			'advance_style',
 			[
 				'label' => esc_html__('Advance Style', 'filter-plus'),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
