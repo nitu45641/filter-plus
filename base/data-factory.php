@@ -94,9 +94,8 @@ class DataFactory {
     public function woo_process_data( $settings ) {
         extract($settings);
         $default_data = $this->woo_default_data();
-
         $default_data['category_label'] = ! empty( $category_label ) ? $category_label : esc_html__( 'Categories', 'filter-plus' );
-		$default_data['categories'] = is_array( $categories ) ? implode( ',', $categories ) : '';
+		$default_data['categories'] = ( ! empty( $categories ) && is_array( $categories ) ) ? implode( ',', $categories ) : '';
 		$default_data['tags']       = ! empty( $tags ) && is_array( $tags ) ? implode( ',', $tags ) : '';
 		$default_data['show_tags']  = ! empty( $show_tags ) ? $show_tags : '';
 		$default_data['tag_label']  = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Tags', 'filter-plus' );
@@ -164,14 +163,14 @@ class DataFactory {
 		$default_data['no_of_items'] 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
 		$default_data['show_categories']    = !empty($show_categories) ? $show_categories : 'yes';
 		$default_data['category_label']     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
-		$default_data['categories']         = is_array($categories) ? implode(',',$categories) : '';
+		$default_data['categories']         = ( ! empty( $categories ) && is_array($categories) ) ? implode(',',$categories) : '';
 		$default_data['sub_categories']     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
 		$default_data['show_tags']          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
 		$default_data['tag_label'] 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
-		$default_data['tags']               = is_array($tags) ? implode(',',$tags) : '';
+		$default_data['tags']               = ( ! empty( $tags ) && is_array($tags) ) ? implode(',',$tags) : '';
 		$default_data['author']	            = !empty($author) ? $author : '';
 		$default_data['author_label']	    = !empty($author_label) ? $author_label : esc_html__('Authors','filter-plus');
-		$default_data['author_list']	    = is_array($author_list) ? implode(',',$author_list) : '';
+		$default_data['author_list']	    = ( ! empty( $author_list ) && is_array($author_list) ) ? implode(',',$author_list) : '';
 		$default_data['custom_field']	    = !empty($custom_field) ? $custom_field : 'no';
 		$default_data['custom_field_label']	= !empty($custom_field_label) ? $custom_field_label : esc_html__('Custom Field','filter-plus');
 		$default_data['meta_condition']	    = !empty($meta_condition) ? $meta_condition : 'OR';
