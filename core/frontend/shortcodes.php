@@ -66,7 +66,6 @@ class Shortcodes {
 			>
 			<?php 
 				$style = $template;
-				$template = $this->select_template($template);
 				if ( file_exists( \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 					include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
 				}
@@ -87,14 +86,8 @@ class Shortcodes {
 	 *
 	 */
 	public function select_template($template) {
-		if ($template == 4) {
-			$template = 2;
-		}
-		
 		return $template;
 	}
-
-
 
 	public function wp_filter_plus( $args ) {
 		ob_start();

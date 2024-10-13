@@ -1,6 +1,9 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
-<h1 class="fplus-title" data-page_title="<?php echo get_the_title(); ?>"></h1>
+<?php if( get_the_title() !=='' ) : ?>
+<span class="fplus-title" data-page_title="<?php echo get_the_title(); ?>"></span>
+<?php endif;?>
+
 <?php 
 $not_in = array('5','2');
 if( !in_array($template,$not_in)  ) : ?>
