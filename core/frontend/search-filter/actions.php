@@ -407,7 +407,7 @@ class Actions {
 	 * @param [type] $template
 	 */
 	public static function cart_btn_html( $product_instance , $template ) {
-		$not_text = array('1','4','5');
+		$not_text = array('1','3','4','5');
 		// show cart button
 		$cart_args = array(
 			'template'      => $template,

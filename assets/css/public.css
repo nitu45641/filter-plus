@@ -1383,7 +1383,7 @@ a.added_to_cart.wc-forward {
 	.product-name
 	a {
 	font-size: 16px;
-	font-weight: 600;
+	font-weight: bold;
 	color: #333333;
 	line-height: 22px;
 	display: inline-block;
@@ -1747,7 +1747,7 @@ ul.sub_categories{
     border-radius: 36px;
     -webkit-border-radius: 36px;
 }
-.product-tag a{
+.product-tag a,.product-tag a:hover{
     color: #fff;
 }
 @media screen and (max-width: 1024px) {
