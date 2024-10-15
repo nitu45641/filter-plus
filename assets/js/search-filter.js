@@ -252,7 +252,7 @@
 			}
 
 			let selected_html = '';
-			const cross = '<span>X</span>';
+			const cross = '<span><svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.80936 0.809359C7.98021 0.638505 7.98021 0.361495 7.80936 0.190641C7.63851 0.0197864 7.3615 0.0197864 7.19064 0.190641L4 3.38128L0.809359 0.190641C0.638505 0.0197864 0.361495 0.0197864 0.190641 0.190641C0.0197864 0.361495 0.0197864 0.638505 0.190641 0.809359L3.38128 4L0.190641 7.19064C0.0197864 7.3615 0.0197864 7.63851 0.190641 7.80936C0.361495 7.98021 0.638505 7.98021 0.809359 7.80936L4 4.61872L7.19064 7.80936C7.3615 7.98021 7.63851 7.98021 7.80936 7.80936C7.98021 7.63851 7.98021 7.3615 7.80936 7.19064L4.61872 4L7.80936 0.809359Z" fill="#605F5F"/></svg></span>';
 			let clear_all = `<div class="clear-filter">${filter_client.localize.clear_all}${cross}</div>`;
 			for (const [key, value] of Object.entries(selected_data)) {
 				if (

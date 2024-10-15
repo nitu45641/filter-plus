@@ -443,7 +443,7 @@ class Actions {
 		$rating = '<div class="rating"><div class="woocommerce">';
 		if ( $rating_count > 0 ) :
 		$rating .= '<div class="woocommerce-product-rating">';
-		$rating .= wc_get_rating_html( $average, $rating_count ).'('.$review_count.' reviews)';
+		
 		$rating .= '</div>';
 		endif;
 		$rating .= '</div></div>';
