@@ -66,7 +66,6 @@ class Shortcodes {
 			>
 			<?php 
 				$style = $template;
-				$template = $this->select_template($template);
 				if ( file_exists( \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 					include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
 				}
@@ -87,14 +86,8 @@ class Shortcodes {
 	 *
 	 */
 	public function select_template($template) {
-		if ($template == 4) {
-			$template = 2;
-		}
-		
 		return $template;
 	}
-
-
 
 	public function wp_filter_plus( $args ) {
 		ob_start();
@@ -193,10 +186,11 @@ class Shortcodes {
 			$tag_color = '#ff1f25';
 		}
 		else if ( $template == "3" ) {
+			$cart_icon = '#fff';
 			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 
 			$filter_type !== "product" ? "#ff0000" : "#ab1616"; 
 			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000"; 
-			$cart_icon 		 = $primary_color = $price_range = '#ab1616'; 
+			$primary_color = $price_range = '#ab1616'; 
 		}
 		else if ( $template == "4" ) {
 			$primary_color = $price_range = $cart_content = '#ff69b4'; 

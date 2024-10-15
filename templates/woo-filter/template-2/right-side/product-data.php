@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 ?>
 <script id="search_products_grid" type="text/x-handlebars-template">
-	<div class="product-style-two">
+	<div class="product-style-<?php echo intval( $template );?>">
 		<div class="vartical-prod-card-container">
 			<div class="product-thumbnail">
 				<div class="vpcc-image">
