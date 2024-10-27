@@ -601,19 +601,28 @@ ul.pagination {
     animation: spin 2s linear infinite;
     border-radius: 290486px;
 	margin-left: 4px;
-    top: 5px;
-    right: 5px;
+    left: 5px;
 }
 .cart_button-1.loading::after {
     left: 5px;
 }
-.cart_button-3.loading::after {
+/* .cart_button-3.loading::after {
     right: 17px;
     top: 10px;
-}
-.add_to_cart_button.added::after {
+} */
+.cart_button-1.added::after,
+.cart_button-2.added::after,
+.cart_button-3.added::after,
+.cart_button-4.added::after {
     content: url(../../assets/images/check-mark.svg);
-    position: relative;
+	position: relative;
+    left: 10px;
+    top: 5px;
+}
+.cart_button-5.added::after {
+    content: url(../../assets/images/check-mark.svg);
+	margin: auto;
+	position: relative;
 }
 /* Safari */
   @-webkit-keyframes spin {
@@ -771,7 +780,7 @@ a {
 	height: 20px;
 	display: flex;
     align-items: center;
-	margin: 10px auto;
+	margin: 9px;
 }
 .cart-icon-path {
 	fill: var(--filter-cart-icon-color,'#fff') !important;
