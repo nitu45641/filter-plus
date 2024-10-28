@@ -606,23 +606,21 @@ ul.pagination {
 .cart_button-1.loading::after {
     left: 5px;
 }
-/* .cart_button-3.loading::after {
-    right: 17px;
-    top: 10px;
-} */
-.cart_button-1.added::after,
+.add_to_cart_button.added::after{
+    content: url(../../assets/images/check-mark.svg);
+	position: relative;
+}
+.cart_button-1.added::after{
+    top: 2px;
+}
 .cart_button-2.added::after,
 .cart_button-3.added::after,
 .cart_button-4.added::after {
-    content: url(../../assets/images/check-mark.svg);
-	position: relative;
     left: 10px;
     top: 5px;
 }
 .cart_button-5.added::after {
-    content: url(../../assets/images/check-mark.svg);
 	margin: auto;
-	position: relative;
 }
 /* Safari */
   @-webkit-keyframes spin {
