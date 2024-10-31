@@ -380,6 +380,7 @@ ul.ratings {
 	cursor: pointer;
 	user-select: none;
 	transition: 0.5s;
+	position: relative;
 }
 .vpcc-btns:hover {
 	transform: scale(1.2);
