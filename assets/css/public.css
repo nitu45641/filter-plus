@@ -596,7 +596,7 @@ ul.pagination {
 
 .add_to_cart_button.loading::after {
     content: url(../../assets/images/wheel.svg);
-    position: var(--filter-loading-icon-position,'relative');
+    position: absolute;
     -webkit-animation: spin 2s linear infinite; 
     animation: spin 2s linear infinite;
     border-radius: 290486px;
