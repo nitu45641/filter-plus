@@ -17,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			{{/if}}
 			<div class="hpcc-description">
 				{{{ post_description }}}
-				<a href="{{post_permalink}}" target="_blank">{{ read_more }}</a>
 			</div>
 			<div>
 				<div class="cat mt-1">

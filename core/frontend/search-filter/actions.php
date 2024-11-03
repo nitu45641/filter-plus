@@ -351,6 +351,40 @@ class Actions {
 	}
 
 	/**
+	 * Filter item description
+	 * @param mixed $id
+	 * @return string
+	 */
+	public static function filter_item_description( $id  ) {
+		$read_more = '<a href="'.get_permalink($id).'" class="read-more">'.esc_html__('[...]','filter-plus').'</a>';
+		$desc = wp_trim_words( get_post_field('post_excerpt', $id  ) , 30 , $read_more );
+		if ($desc == '' ) {
+			$desc = wp_trim_words( get_post_field('post_content', $id  ) , 30 , 
+			$read_more );
+		}
+
+		return $desc;
+	}
+
+	public static function filter_item_author( $post , $post_author ) {
+		$by = esc_html__('By','filter-plus').' ';
+		if ( $post_author == 'yes' ) {
+			if ( get_the_author_meta( 'first_name',$post->post_author ) == '' ) {
+				$author_name =  get_the_author_meta( 'display_name',$post->post_author );
+			} else {
+				$author_name =  get_the_author_meta( 'first_name',$post->post_author ) .' '. get_the_author_meta( 'last_name', $post->post_author );;
+			}
+			
+			$author = $by . $author_name;
+
+		}else{
+			$author = '';
+		}
+
+		return $author;
+	}
+
+	/**
 	 * format wp data
 	 *
 	 * @return array
@@ -372,10 +406,9 @@ class Actions {
 				$products[$key]['id'] = $post->ID;
 				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$products[$key]['post_image']       = $image;
-				$products[$key]['post_description'] = wp_trim_words( get_post_field('post_excerpt', $post->ID ) , 30 , '');
+				$products[$key]['post_description'] = self::filter_item_description($post->ID);
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
-				$products[$key]['author']   		= $param['post_author'] =='yes' ? esc_html__('By','filter-plus').' '. 
-				get_the_author_meta( 'first_name',$post->post_author ) .' '. get_the_author_meta( 'last_name',$post->post_author ) : '';
+				$products[$key]['author'] 			= self::filter_item_author( $post , $param['post_author'] );
 				$products[$key]['posts_author_link']= $param['post_author'] =='yes' ? get_author_posts_url( $post->post_author ) : '#';
 				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? self::tags_info ( $post->ID , $cats ) : [];
 				$products[$key]['categories_label'] =  ( count($products[$key]['categories']) > 0 ) ? esc_html__('Category:','filter-plus') : '';

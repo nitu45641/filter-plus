@@ -380,7 +380,7 @@ ul.ratings {
 	cursor: pointer;
 	user-select: none;
 	transition: 0.5s;
-	position: relative;
+	position: relative !important;
 }
 .vpcc-btns:hover {
 	transform: scale(1.2);
@@ -446,7 +446,8 @@ ul.ratings {
 	font-weight: 300;
 }
 .post-border{
-	border-top: 1px solid rgba(0,0,0,.05);;
+	border-top: 1px solid rgba(0,0,0,.05);
+	font-size: 13px;
 }
 .hpcc-actions {
 	display: flex;
@@ -564,8 +565,8 @@ ul.pagination {
 	border: 1px solid var(--filter-border-color, #d3d3d3);
 	color: var(--filter-border-color, #000);
     border-radius: 6px;
-    font-size: 14px;
-	padding: 5px 10px;
+	font-size: 13px;
+    padding: 3px 9px;
 }
 .filter-tag span{
 	font-size: 12px;
@@ -603,6 +604,7 @@ ul.pagination {
     border-radius: 290486px;
 	margin-left: 4px;
     left: 5px;
+    top: 5px;
 }
 .cart_button-1.loading::after {
     left: 5px;
@@ -1363,6 +1365,7 @@ a.added_to_cart.wc-forward {
 	font-weight: 500;
 	outline: none !important;
 	line-height: 24px;
+	position: relative;
 }
 
 .product-style-2
