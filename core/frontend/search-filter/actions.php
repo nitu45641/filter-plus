@@ -356,7 +356,7 @@ class Actions {
 	 * @return string
 	 */
 	public static function filter_item_description( $id  ) {
-		$read_more = '<a href="'.get_permalink($id).'" class="read-more">'.esc_html__('[...]','filter-plus').'</a>';
+		$read_more = '<a href="'.get_permalink($id).'" class="wp-read-more">'.esc_html__('[...]','filter-plus').'</a>';
 		$desc = wp_trim_words( get_post_field('post_excerpt', $id  ) , 30 , $read_more );
 		if ($desc == '' ) {
 			$desc = wp_trim_words( get_post_field('post_content', $id  ) , 30 , 

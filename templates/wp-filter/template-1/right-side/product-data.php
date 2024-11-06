@@ -19,12 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				{{{ post_description }}}
 			</div>
 			<div>
-				<div class="cat mt-1">
+				<div class="cats mt-1">
 					{{#each categories }}
 						<a href="{{link}}" target="_blank" class="filter-tag">{{ name }}</a>
 					{{/each}}
 				</div>
-				<div class="tag mt-1">
+				<div class="tags mt-1">
 					{{#each tags }}
 						<a href="{{link}}" target="_blank" class="filter-tag">{{ name }}</a>
 					{{/each}}
