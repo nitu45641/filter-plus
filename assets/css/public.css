@@ -204,9 +204,6 @@
 	padding-right: 25%;
 	line-height: 0;
 }
-.filter-wp-title:hover{
-	color: var(--filter-secondary-color, #2d73e7);
-}
 .shop-sidebar .radio-wrap .radio-item:hover{
 	background: var(--filter-secondary-color, #17c6aa);
 	border-color: var(--filter-secondary-color, #17c6aa);

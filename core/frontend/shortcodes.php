@@ -170,7 +170,7 @@ class Shortcodes {
 	public function custom_css($template = "1", $filter_type = "product") {
 		global $custom_css;
 		$secondary_color = '#1164cb'; $primary_color ='#2d73e7';$tag_color ='';
-		$blog_header = "#000"; $cart_icon =  '#fff'; 
+		$blog_header = "#1164cb"; $cart_icon =  '#fff'; 
 		$cart_content = '#2d73e7';$price_range = '#2d73e7';
 		$param_direction = 'row';
 		$tab_pan_item_color = '#fff';$loading_icon_position = 'absolute';
