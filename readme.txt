@@ -4,7 +4,7 @@ Donate link: https://woooplugin.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Requires at least: 4.7
 Tested up to: 6.5
-Stable tag: 1.0.73
+Stable tag: 1.0.74
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -132,11 +132,14 @@ Some of the features of Filter Plus are free for everyone and some features have
 = What about the page load speed? Does this plugin impact site loading speed? =
 Not at all! Filter Plus is developed with minimal and clean coding that ensures that the WordPress website or the WooCommerce store is loading smoothly.
 
-= Do I need some expertise to use this pluin? =
+= Do I need some expertise to use this plugin? =
 If you are familiar with WordPress interface and how to use plugins in WordPress, you will be able to use our plugin.
 
 
 == Changelog ==
+
+= 1.0.74 (November 9, 2024)=
+Tweak  : UX improve of Wp filter
 
 = 1.0.73 (October 31, 2024)=
 Tweak  : UX improve, add to cart loading effect added
