@@ -24,7 +24,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				>
 					<?php echo esc_html($item['name']);?>
 					<?php if( $sub_categories == 'yes' && !empty($item['sub_categories'])): ?>
-					<ul class="sub_categories">
+					<ul class="sub_categories"
+					class="cat-group"
+					>
 					<?php foreach($item['sub_categories'] as $sub): ?>
 						<li 
 							data-name="<?php echo esc_attr($sub['name'])?>"
