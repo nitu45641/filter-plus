@@ -16,8 +16,11 @@
 
 		category_li.on(action, function (event) {
 			event.stopPropagation();
-			const _this = $(this);
-			const active_li = $('#cat_li_' + _this.data('cat_id'));
+			let _this = $(this);
+			let active_li = $('#cat_li_parent_' + _this.data('cat_id'));
+			if (_this.parent().hasClass('sub_categories')) {
+				active_li = $('#cat_li_child_' + _this.data('cat_id'));
+			}
 			if (active_li.length > 0) {
 				if (active_li.is(':checked')) {
 					_this.addClass('active');
