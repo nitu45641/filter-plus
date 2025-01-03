@@ -261,11 +261,17 @@ ul.category-list {
 	cursor: pointer;
 }
 
+ul.category-list li.active,
+ul.category-list li:hover,
 ul.category-list li.active label,
 ul.category-list li label:hover 
 {
 	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
+	transition: all 0.10s ease-in-out;
+}
+.categories-wrapper .cat-group input[type="checkbox"]:checked {
+	background-color: transparent;
 }
 .cat-group input[type="checkbox"],
 .cat-group input[type=radio]:checked + label
@@ -1634,9 +1640,6 @@ a.added_to_cart.wc-forward {
 }
 ul.sub_categories{
 	padding-left: 10px;
-}
-.categories-wrapper .cat-group input[type="checkbox"]:checked {
-	background-color: #333333;
 }
 
 .color-item.tooltips {
