@@ -273,14 +273,6 @@ ul.category-list li label:hover
 	border-color: var(--filter-secondary-color,#2d73e7);
 }
 
-input[type="radio"]:checked, input[type=reset], input[type="checkbox"]:checked, 
-input[type="checkbox"]:hover:checked, input[type="checkbox"]:focus:checked,
-input[type=range]::-webkit-slider-thumb {
-	border-color: var(--filter-secondary-color,#333333);
-    background-color: var(--filter-secondary-color,#333333);
-    box-shadow: none;
-}
-
 .cat-group input[type="checkbox"]:hover{
     width: 13px;
     height: 13px;
