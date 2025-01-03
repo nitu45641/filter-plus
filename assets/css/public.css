@@ -254,6 +254,7 @@ ul.category-list {
 	width: 0;
 	height: 0;
 	position: absolute;
+	opacity: 0;
 }
 .sidebar-style-1 ul.sub_categories {
 	list-style-type: none;
@@ -277,7 +278,7 @@ ul.category-list li label:hover
     width: 13px;
     height: 13px;
 	border-style: solid;
-    border-color: #c00;
+    border-color: var(--filter-secondary-color,#2d73e7);
     border-width: 2px;
     border-radius: 3px;
     appearance: none;
