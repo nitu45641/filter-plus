@@ -1,11 +1,11 @@
-=== WordPress Filter, WooCommerce Product Filtering by Categories, Tags, Price Range Plugin , Woocommerce admin order filter - Filter Plus ===
+=== Product Filtering by Categories, Tags, Price Range for WooCommerce - Filter Plus ===
 Contributors: markutos987, galib96
-Donate link: https://woooplugin.com/filter-plus/
+Donate link: https://wpbens.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Requires at least: 4.7
 Tested up to: 6.5
-Stable tag: 1.0.76
-Requires PHP: 7.0
+Stable tag: 1.0.78
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filte
 
 == Description ==
 
-Introducing **[Filter Plus](https://woooplugin.com/filter-plus/)**  – Your Ultimate WordPress & WooCommerce Product Filter Plugin!
+Introducing **[Filter Plus](https://wpbnes.com/filter-plus/)**  – Your Ultimate WordPress & WooCommerce Product Filter Plugin!
 
 Easily empower your site with advanced filtering features: let users find exactly what they need by categories, ratings, tags, price range, stock status, and more.
 
@@ -23,14 +23,14 @@ With Filter Plus, you can Filter Everything in WordPress!
 
 https://www.youtube.com/watch?v=MkbFDvwuG08&t=3s
 
-**[Filter Plus Pro](https://woooplugin.com/filter-plus/) Features**
+**[Filter Plus Pro](https://wpbnes.com/filter-plus/) Features**
 
 **WooCommerce Admin Order Filter** is your go-to tool for pinpointing best-sellers! Easily analyze which burger (or any product) tops the list by filtering orders by product and status. Get clear insights into what’s driving sales and see exactly where to focus for maximum growth.
 
 **Helpful links 👇**
 
-**⭐️ Check premium Features 👉 [Filter Plus Pro](https://woooplugin.com/filter-plus/)**
-**⭐️ Need Any Help? 👉 [Contact Us](https://woooplugin.com/support/).**
+**⭐️ Check premium Features 👉 [Filter Plus Pro](https://wpbnes.com/filter-plus/)**
+**⭐️ Need Any Help? 👉 [Contact Us](https://wpbnes.com/support/).**
 **⭐️ Check Live Demo 👉 [Filter Plus WooCommerce Filter ](https://product.woooplugin.com/filter-plus/)**
 **⭐️ Check Live Demo 👉 [Filter Plus Wordpress Filter ](https://product.woooplugin.com/filter-plus/)**
 **⭐️ Check Live Demo 👉 [Filter Plus WooCommerce Admin Order Filter ](https://product.woooplugin.com/filter-plus/)**
@@ -61,25 +61,25 @@ https://www.youtube.com/watch?v=MkbFDvwuG08&t=3s
 
 Accelerate your store with Filter Plus – the WooCommerce plugin that brings powerful, advanced filtering options to your fingertips! Currently, enjoy these robust features for flawless WooCommerce filtering and sorting.
 
-**👉 [WooCommerce Filter By Price](https://woooplugin.com/filter-plus/)** - With Filter Plus, users can fine-tune search results by setting a minimum and maximum price range. This feature is perfect for those shopping on a budget, allowing them to quickly find products within their desired price. Essential for eCommerce, it streamlines the search process, enhances user experience, and can even boost conversion rates by guiding visitors to the best deals that meet their needs.
+**👉 [WooCommerce Filter By Price](https://wpbnes.com/filter-plus/)** - With Filter Plus, users can fine-tune search results by setting a minimum and maximum price range. This feature is perfect for those shopping on a budget, allowing them to quickly find products within their desired price. Essential for eCommerce, it streamlines the search process, enhances user experience, and can even boost conversion rates by guiding visitors to the best deals that meet their needs.
 
-**👉 [Filter by Ratings](https://woooplugin.com/filter-plus/)** - Sometimes users want to purchase only those products that have got more 5 star ratings. Without a ratings filter, they can't sort out that. But Filter plus makes it easy with the 'filter by rating' feature. In e-commerce or review-based websites, this feature is valuable as it allows visitors to filter and see only items that meet their preferred quality standards. This plugin allows to set a minimum rating, and it will display content or products with ratings equal to or above that threshold.
+**👉 [Filter by Ratings](https://wpbnes.com/filter-plus/)** - Sometimes users want to purchase only those products that have got more 5 star ratings. Without a ratings filter, they can't sort out that. But Filter plus makes it easy with the 'filter by rating' feature. In e-commerce or review-based websites, this feature is valuable as it allows visitors to filter and see only items that meet their preferred quality standards. This plugin allows to set a minimum rating, and it will display content or products with ratings equal to or above that threshold.
 
-**👉 [Filter by Attributes](https://woooplugin.com/filter-plus/)** - Looking for products in just the right color, size, or style? Our plugin helps users find exactly what they want in seconds. Perfect for e-commerce stores, it narrows search results based on specific attributes—no more endless scrolling. Find, click, and buy faster with precision search features your customers will love!
+**👉 [Filter by Attributes](https://wpbnes.com/filter-plus/)** - Looking for products in just the right color, size, or style? Our plugin helps users find exactly what they want in seconds. Perfect for e-commerce stores, it narrows search results based on specific attributes—no more endless scrolling. Find, click, and buy faster with precision search features your customers will love!
 
-**👉 [WooComerce Filter by Tags](https://woooplugin.com/filter-plus/)** - Help your audience find exactly what they're looking for! With our tagging feature, users can organize and filter content by keywords, bringing related posts and articles to the forefront. Perfect for blogs and content-rich sites—just select a tag, and watch relevant content appear instantly. Make navigation a breeze!
+**👉 [WooComerce Filter by Tags](https://wpbnes.com/filter-plus/)** - Help your audience find exactly what they're looking for! With our tagging feature, users can organize and filter content by keywords, bringing related posts and articles to the forefront. Perfect for blogs and content-rich sites—just select a tag, and watch relevant content appear instantly. Make navigation a breeze!
 
 Moreover, **Filter Tag** will be displayed on the page after applying it. Users can see what tags has been effected on the page.
 
-**👉 [Reset Filter Button](https://woooplugin.com/filter-plus/)** - Make searching easy with a single click! Our Reset Filter feature lets users clear all applied filters and instantly return to the full view—perfect for seamless browsing. No more backtracking, just quick resets for a smooth shopping experience!
+**👉 [Reset Filter Button](https://wpbnes.com/filter-plus/)** - Make searching easy with a single click! Our Reset Filter feature lets users clear all applied filters and instantly return to the full view—perfect for seamless browsing. No more backtracking, just quick resets for a smooth shopping experience!
 
-**👉 [Filter by Categories](https://woooplugin.com/filter-plus/)** -Help your users shop smarter! Our Category Sorting feature allows them to quickly filter content and products by predefined categories. No more sifting through irrelevant items—just select a category, and instantly see what matters most. Speed up the buying decision and enhance their experience!
+**👉 [Filter by Categories](https://wpbnes.com/filter-plus/)** -Help your users shop smarter! Our Category Sorting feature allows them to quickly filter content and products by predefined categories. No more sifting through irrelevant items—just select a category, and instantly see what matters most. Speed up the buying decision and enhance their experience!
 
-**👉 [Filter by Color](https://woooplugin.com/filter-plus/)** - Let your users shop by their favorite colors! Our Color Filter feature enables them to refine search results effortlessly. Ideal for e-commerce and design sites, users can pick a color from a palette, instantly displaying only products that match. Enhance their shopping experience with vibrant choices!
+**👉 [Filter by Color](https://wpbnes.com/filter-plus/)** - Let your users shop by their favorite colors! Our Color Filter feature enables them to refine search results effortlessly. Ideal for e-commerce and design sites, users can pick a color from a palette, instantly displaying only products that match. Enhance their shopping experience with vibrant choices!
 
-**👉 [Filter by Size](https://woooplugin.com/filter-plus/)** - Size matters! Our Size Filter feature lets users narrow down product searches based on their preferred sizes. Perfect for apparel and accessories, they can easily select small, medium, or large to see only what's available in their fit. Simplify shopping and ensure every item is just right!
+**👉 [Filter by Size](https://wpbnes.com/filter-plus/)** - Size matters! Our Size Filter feature lets users narrow down product searches based on their preferred sizes. Perfect for apparel and accessories, they can easily select small, medium, or large to see only what's available in their fit. Simplify shopping and ensure every item is just right!
 
-**👉 [Filter Anything](https://woooplugin.com/filter-plus/)** - Empower your users with the Filter Anything feature! This powerful tool allows them to refine search results based on any criteria—price, color, size, ratings, and more. Perfect for diverse content offerings, it ensures users can tailor their searches to find exactly what they need. Enhance engagement and usability, making every visit count!
+**👉 [Filter Anything](https://wpbnes.com/filter-plus/)** - Empower your users with the Filter Anything feature! This powerful tool allows them to refine search results based on any criteria—price, color, size, ratings, and more. Perfect for diverse content offerings, it ensures users can tailor their searches to find exactly what they need. Enhance engagement and usability, making every visit count!
 
 **Advanced widgets for your WooCommerce Store**
 
@@ -108,7 +108,7 @@ Filter Plus is the ultimate plugin for WordPress and WooCommerce product filteri
 ### 🔥 WHAT’S NEXT
 If you like Filter Plus, then consider checking out  other WordPress Plugins made by the same team:
 
-🔔 **[Create Members](https://wordpress.org/plugins/create-members/)** – Create Members for Wordpress and WooCommerce and Boost your sales
+🔔 **[MemberHub](https://wordpress.org/plugins/create-members/)** – MemberHub for Wordpress and WooCommerce and Boost your sales
 🔔 **[Discountify](https://wordpress.org/plugins/discountify/)** – Discount Rules, Dynamic Pricing and Coupon management for WooCommerce
 🔔 **[Quicker](https://wordpress.org/plugins/quicker/)** – Convert Your Browsers into Buyers and Maximize Conversions
 
@@ -137,6 +137,9 @@ If you are familiar with WordPress interface and how to use plugins in WordPress
 
 
 == Changelog ==
+
+= 1.0.77 (January 15, 2024)=
+Tweak  : Url update
 
 = 1.0.76 (January 03, 2024)=
 Tweak  : Category Sub Categories Filter UX improvement
