@@ -143,8 +143,24 @@ $more_products = array(
                             <p><?php echo esc_html($value['desc']); ?></p>  
                         </div>
                         <div class="explore-plugin">
-                            <a class="btn free-button" href="<?php echo esc_url($value['url_free']); ?>"  target="_blank"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></a>  
-                            <a class="btn pro-button" href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></a>  
+                            <a class="btn free-button" href="<?php echo esc_url($value['url_free']); ?>"  target="_blank">
+                                <?php 
+                                    printf(
+                                        /* translators: %s: cta button text */
+                                        esc_html__( '%s', 'filter-plus' ),
+                                        esc_html( $value['cta_free'] )
+                                    );
+                                ?>
+                                </a>  
+                            <a class="btn pro-button" href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank">
+                                <?php 
+                                    printf(
+                                        /* translators: %s: demo button text */
+                                        esc_html__( '%s', 'filter-plus' ),
+                                        esc_html( $value['cta_demo'] )
+                                    );
+                                ?>
+                            </a>  
                         </div>
                     </div>
                 </div>

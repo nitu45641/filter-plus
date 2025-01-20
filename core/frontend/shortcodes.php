@@ -168,7 +168,7 @@ class Shortcodes {
 	 * @return void
 	 */
 	public function custom_css($template = "1", $filter_type = "product") {
-		global $custom_css;
+		global $filter_custom_css;
 		$secondary_color = '#1164cb'; $primary_color ='#2d73e7';$tag_color ='';
 		$blog_header = "#1164cb"; $cart_icon =  '#fff'; 
 		$cart_content = '#2d73e7';$price_range = '#2d73e7';
@@ -208,7 +208,7 @@ class Shortcodes {
 
 		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
 
-		$custom_css = '
+		$filter_custom_css = '
 		:root {
 			--filter-primary-color: '.$primary_color.';
 			--filter-secondary-color : '.$secondary_color.';
@@ -227,6 +227,6 @@ class Shortcodes {
 
 		wp_register_style( 'filter-plus-custom-css', false );
 		wp_enqueue_style( 'filter-plus-custom-css' );
-		wp_add_inline_style('filter-plus-custom-css',$custom_css);
+		wp_add_inline_style('filter-plus-custom-css',$filter_custom_css);
 	}
 }

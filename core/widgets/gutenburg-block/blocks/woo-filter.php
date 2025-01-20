@@ -1,21 +1,21 @@
 <?php
 
 //register woo filter block
-function woo_filter_block() {
+function product_filter_block() {
     register_block_type(
         'filter-plus/woo-filter',
         [
             // Enqueue blocks.build.js in the editor only.
             'editor_script'   => 'filter-plus-block-js',
-            'render_callback' => 'woo_filter_callback',
+            'render_callback' => 'product_filter_callback',
             'attributes'      => array(),
         ]
     );
 }
-add_action( 'init', 'woo_filter_block' );
+add_action( 'init', 'product_filter_block' );
 
 
-function woo_filter_callback( $settings ) {
+function product_filter_callback( $settings ) {
     extract($settings);
     $template           = !empty($settings['template']) ? $settings['template'] : '1';
     $category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');

@@ -11,6 +11,6 @@ use FilterPlus\Utils\Helper;
 				Helper::rating_html($i,$template);
 			} 
 		?>
-		<span class="reset d-none reset-<?php esc_attr_e($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
+		<span class="reset d-none reset-<?php echo esc_html($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
 	</ul>
 </div>

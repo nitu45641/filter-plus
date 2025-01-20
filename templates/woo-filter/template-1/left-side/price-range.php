@@ -1,5 +1,8 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <!-- Price range -->
 <?php
+
 $get_price = \FilterPlus\Utils\Helper::instance()->get_price_range();
 extract($get_price);
 ?>
@@ -13,5 +16,5 @@ extract($get_price);
 			<span class="max"><?php echo (\FilterPlus\Utils\Helper::instance()->currency_position( $max )); ?></span>
 		</div>
 	</div>
-	<span class="reset d-none reset-<?php esc_attr_e($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
+	<span class="reset d-none reset-<?php echo esc_html($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
 </div>

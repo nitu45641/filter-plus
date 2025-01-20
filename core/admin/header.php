@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <header class="menu">
 	<a href="<?php echo esc_url( 'https://woooplugin.com/filter-plus/' ); ?>" target="_blank">
 		<div class="logo">
@@ -52,7 +54,7 @@
 	<div class="navigation">
 		<?php
 			$filter_menus = array( 'filter-sets', 'filter-plus-settings' );
-			$current_page = ! empty( $_GET['page'] ) ? $_GET['page'] : '';
+			$current_page = ! empty( $_GET['page'] ) ? sanitize_text_field($_GET['page']) : '';
 		foreach ( $menus as $key => $value ) {
 			$active = ( ! empty( $value['slug'] ) && $value['slug'] == $current_page ) ? 'active' : '';
 			$class = $value === end( $menus ) ? 'upgrade_pro' : '';

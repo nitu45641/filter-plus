@@ -93,7 +93,7 @@ class Table extends \WP_List_Table{
     public function process_bulk_action() {
         $action = $this->current_action();
         if( 'trash'===$action ) {
-            $delete_ids = esc_sql( $_POST['bulk-delete'] );
+            $delete_ids = esc_sql( sanitize_text_field($_POST['bulk-delete']) );
             foreach ( $delete_ids as $did ) {
                 wp_delete_post ($did, true);
             }

@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <div class="price-range-input price-input-<?php echo esc_attr($template);?>">
     <div class="field">
         <span><?php esc_html_e('Min','filter-plus-pro');?></span>

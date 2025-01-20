@@ -4,11 +4,10 @@
  * Plugin Name:       Filter Plus
  * Plugin URI:        https://wpbens.com/filter-plus/
  * Description:       Advanced Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website. It allows users to filter anything based on different taxonomies.
- * Version:           1.0.78
- * Requires at least: 5.2
- * Requires PHP:      7.3
+ * Version:           1.0.79
+ * Requires PHP:      7.4
  * Author:            Wpbens
- * Author URI:        https://wpbnes.com/
+ * Author URI:        https://wpbens.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       filter-plus
