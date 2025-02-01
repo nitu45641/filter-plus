@@ -21,7 +21,7 @@ if ( ! function_exists( 'filter_pro_link_markup' ) ) {
 		$pro_link_start = '';
 		$pro_link_end   = '';
 		if ( ! empty( $disable ) ) {
-			$pro_link_start = '<a class="pro-link" target="_blank" href="' . esc_url( 'https://woooplugin.com/filter-plus/' ) . '">';
+			$pro_link_start = '<a class="pro-link" target="_blank" href="' . esc_url( 'https://wpbens.com/filter-plus/' ) . '">';
 			$pro_link_end   = '</a>';
 		}
 

@@ -34,7 +34,13 @@ function filter_plus_block_assets() {
     $param = array_merge( $wp_editor, [ 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-compose', 'wp-server-side-render','wp-hooks', 'wp-editor' ] );
 
     // Register block editor script for backend.
-
+    wp_register_script(
+        'filter-plus-block-js',
+        \FilterPlus::build_url() . 'index.js' ,
+        $param,
+        null,
+        true
+    );
 
     wp_localize_script(
         'filter-plus-block-js',

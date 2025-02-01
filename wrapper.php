@@ -43,7 +43,7 @@ Class Wrapper {
 		$actions[] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page=filter_plus') ) .'">'.
 		esc_html__('Settings','filter-plus').'</a>';
 		if ( !class_exists('FilterPlusPro') ) {
-			$actions[] = '<a href="https://woooplugin.com/filter-plus/" class="filter-go-pro" target="_blank">'.esc_html__('Go To Premium','filter-plus').'</a>';
+			$actions[] = '<a href="https://wpbens.com/filter-plus/" class="filter-go-pro" target="_blank">'.esc_html__('Go To Premium','filter-plus').'</a>';
 		}
 
 		return $actions;
