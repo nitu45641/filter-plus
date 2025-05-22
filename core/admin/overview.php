@@ -53,7 +53,7 @@ $more_products = array(
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
         'url_demo' => 'https://wpbens.com/memberhub/',
-        'url_free' => 'https://downloads.wordpress.org/plugin/create-members.latest-stable.zip',
+        'url_free' => 'https://downloads.wordpress.org/plugin/memberhub.latest-stable.zip',
         'title' =>esc_html__('MemberHub','filter-plus'),
         'logo'   => 'membership.png',
         'desc'   => esc_html__('Restrict content, manage member subscriptions','filter-plus'),

@@ -31,6 +31,11 @@
 				'target' => '_self',
 			),
 			array(
+				'name' => esc_html__('Documentation','filter-plus' ),
+				'url' => 'https://wpbens.com/docs/filter-plus/',
+				'target' => '_blank',
+			),
+			array(
 				'name' => esc_html__('Support', 'filter-plus' ),
 				'url' => 'https://wpbens.com/support/',
 				'target' => '_blank',

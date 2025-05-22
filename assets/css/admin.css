@@ -668,7 +668,7 @@ a.pr-tag{
 }
 .ctn-button{
 	cursor: pointer;
-	padding: 3%;
+	padding: 15px 30px;
     font-size: 15px;
 	color: #0D6EFD;
 	border: 1px solid #FFFFFF;
@@ -744,7 +744,7 @@ a.pr-tag{
 	.single-item {
 		background: #fff;
 		box-shadow: 0px 6px 65px 0px #0000000D;
-		padding: 35px 8px 15px 8px;
+        padding: 35px 20px 15px 20px;
 		text-align: center;
 		border-radius: 8px;
 	}
@@ -788,7 +788,7 @@ a.pr-tag{
 	margin-bottom: 0;
 }
 .card-block h3{
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     margin: 0;
 }

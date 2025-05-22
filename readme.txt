@@ -33,7 +33,7 @@ https://www.youtube.com/watch?v=MkbFDvwuG08&t=3s
 **⭐️ Check Live Demo 👉 [Filter Plus WooCommerce Filter ](https://product.woooplugin.com/filter-plus/)**
 **⭐️ Check Live Demo 👉 [Filter Plus Wordpress Filter ](https://product.woooplugin.com/filter-plus/)**
 **⭐️ Check Live Demo 👉 [Filter Plus WooCommerce Admin Order Filter ](https://product.woooplugin.com/filter-plus/)**
-**⭐️ Know How It Works 👉 [Documentation](https://docs.woooplugin.com/?docs=filter-plus)**
+**⭐️ Know How It Works 👉 [Documentation](https://wpbens.com/docs/filter-plus/)**
 
 📌 [Before writing any review, Please be aware that, Filter Plus is still in its initial stage]
 
