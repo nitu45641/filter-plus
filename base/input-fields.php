@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'pro_tag_markup' ) ) {
-	function pro_tag_markup( $disable, $class = '' ) {
+if ( ! function_exists( 'filter_pro_tag_markup' ) ) {
+	function filter_pro_tag_markup( $disable, $class = '' ) {
 		$pro_only     = ! empty( $disable ) ? 'pro-fr' : '';
 		$pro          = '';
 		if ( $pro_only !== '' ) {
@@ -16,12 +16,12 @@ if ( ! function_exists( 'pro_tag_markup' ) ) {
 		return $pro;
 	}
 }
-if ( ! function_exists( 'pro_link_markup' ) ) {
-	function pro_link_markup( $disable, $class = '' ) {
+if ( ! function_exists( 'filter_pro_link_markup' ) ) {
+	function filter_pro_link_markup( $disable, $class = '' ) {
 		$pro_link_start = '';
 		$pro_link_end   = '';
 		if ( ! empty( $disable ) ) {
-			$pro_link_start = '<a class="pro-link" target="_blank" href="' . esc_url( 'https://woooplugin.com/filter-plus/' ) . '">';
+			$pro_link_start = '<a class="pro-link" target="_blank" href="' . esc_url( 'https://wpbens.com/filter-plus/' ) . '">';
 			$pro_link_end   = '</a>';
 		}
 
@@ -38,7 +38,7 @@ if ( ! function_exists( 'filter_plus_checkbox_field' ) ) {
 		$disable        = ! empty( $args['disable'] ) ? 'disable' : '';
 		$checkbox_label = ! empty( $args['checkbox_label'] ) ? $args['checkbox_label'] : '';
 		$checked        = ( ! empty( $args['checked'] ) && $args['checked'] == 'yes' ) ? 'checked' : '';
-		extract( pro_link_markup( $disable ) );
+		extract( filter_pro_link_markup( $disable ) );
 		$html = '
 			<div class="single-block ' . $condition_class . '">
 				<div class="form-label">' . $args['label'] . '</div>
@@ -53,7 +53,7 @@ if ( ! function_exists( 'filter_plus_checkbox_field' ) ) {
 					</label>
 					<span class="ml-1">' . $checkbox_label . '</span>
 				</div>
-				' . pro_tag_markup( $disable ) . '
+				' . filter_pro_tag_markup( $disable ) . '
 				' . $pro_link_end . '
 			</div>
 		';
@@ -81,7 +81,7 @@ if ( ! function_exists( 'filter_plus_number_input_field' ) ) {
 		$data_label         = ! empty( $args['data_label'] ) ? $args['data_label'] : '';
 		$extra_label_class  = ! empty( $args['extra_label_class'] ) ? $args['extra_label_class'] : '';
 		$hidden_class       = $field_type == 'hidden' ? 'd-none' : '';
-		extract( pro_link_markup( $disable ) );
+		extract( filter_pro_link_markup( $disable ) );
 
 		$html = '
 		<div class="' . $wrapper_class . ' ' . $condition_class . ' ' . $hidden_class . '">
@@ -95,7 +95,7 @@ if ( ! function_exists( 'filter_plus_number_input_field' ) ) {
 					/>
 					<span class="extra-label ' . $extra_label_class . '">' . $extra_label . '</span>
 				</div>
-				' . pro_tag_markup( $disable ) . '
+				' . filter_pro_tag_markup( $disable ) . '
 				' . $pro_link_end . '
 			</div>
 			
@@ -115,7 +115,7 @@ if ( ! function_exists( 'filter_plus_select_field' ) ) {
 		$select_type        = ! empty( $args['select_type'] ) ? $args['select_type'] : '';
 		$selected     = ! empty( $args['selected'] ) ? $args['selected'] : '';
 
-		extract( pro_link_markup( $disable ) );
+		extract( filter_pro_link_markup( $disable ) );
 		if ( ! empty( $args['type'] ) && 'attributes' == $args['type'] ) {
 			if ( ! empty( $args['options'] ) ) :
 				foreach ( $args['options'] as $item ) :
@@ -162,7 +162,7 @@ if ( ! function_exists( 'filter_plus_select_field' ) ) {
 		$condition_class = ! empty( $args['condition_class'] ) ? $args['condition_class'] : '';
 		$docs = '';
 		if ( ! empty( $args['docs'] ) ) {
-			$docs = doc_html( $args['docs'] );
+			$docs = filter_doc_html( $args['docs'] );
 		}
 
 		$html = '
@@ -171,7 +171,7 @@ if ( ! function_exists( 'filter_plus_select_field' ) ) {
 				<div class="input-section">
 					<select class="pro-' . $disable . '" name="' . $args['id'] . '" id="' . $args['id'] . '" data-option="' . $args['data_label'] . '" ' . $select_type . '>' . $options_html .
 					'</select>
-					' . pro_tag_markup( $disable, 'select-pro-fr' ) . '
+					' . filter_pro_tag_markup( $disable, 'select-pro-fr' ) . '
 				</div>
 				'. $docs .'
 			</div>
@@ -181,8 +181,8 @@ if ( ! function_exists( 'filter_plus_select_field' ) ) {
 	}
 }
 
-if ( ! function_exists( 'doc_html' ) ) {
-	function doc_html( $text ) {
+if ( ! function_exists( 'filter_doc_html' ) ) {
+	function filter_doc_html( $text ) {
 		$html = '
 			<div class="docs">
 				' . $text . '

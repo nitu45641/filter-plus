@@ -121,7 +121,7 @@ class Menus {
 				'page_title'  => '',
 				'menu_title'  => esc_html__( 'Upgrade To Premium', 'filter-plus' ),
 				'capability'  => $this->capability,
-				'menu_slug'   => 'https://woooplugin.com/filter-plus/',
+				'menu_slug'   => 'https://wpbens.com/filter-plus/',
 				'cb_function' => null,
 				'position'    => 11,
 			);

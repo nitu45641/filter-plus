@@ -1,4 +1,7 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /* Filter Size */
 if ( 'yes' == $size ) {
 	$attrs      = \FilterPlus\Utils\Helper::get_attributes( 'pa_size' );

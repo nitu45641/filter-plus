@@ -43,7 +43,7 @@ Class Wrapper {
 		$actions[] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page=filter_plus') ) .'">'.
 		esc_html__('Settings','filter-plus').'</a>';
 		if ( !class_exists('FilterPlusPro') ) {
-			$actions[] = '<a href="https://woooplugin.com/filter-plus/" class="filter-go-pro" target="_blank">'.esc_html__('Go To Premium','filter-plus').'</a>';
+			$actions[] = '<a href="https://wpbens.com/filter-plus/" class="filter-go-pro" target="_blank">'.esc_html__('Go To Premium','filter-plus').'</a>';
 		}
 
 		return $actions;
@@ -56,8 +56,8 @@ Class Wrapper {
 	 * @return void
 	 */
 	public function custom_css() {
-		global $custom_css;
-			$custom_css = '
+		global $filter_custom_css;
+			$filter_custom_css = '
 				.filter-go-pro {
 					color: #086808;
 					font-weight: bold;
@@ -66,7 +66,7 @@ Class Wrapper {
 		
 		wp_register_style( 'filter-go-pro', false );
 		wp_enqueue_style( 'filter-go-pro' );
-		wp_add_inline_style('filter-go-pro',$custom_css);
+		wp_add_inline_style('filter-go-pro',$filter_custom_css);
 	}
 
 	/**

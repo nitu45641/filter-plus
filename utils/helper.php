@@ -455,9 +455,9 @@ class Helper {
 	
 		$post_types = get_post_types( $args, $output, $operator ); 
 		if ( !empty($post_types) ) {
-			$first_index = array(''=>esc_html__('Select Custom Post Type','filter-Plus'));
+			$first_index = array(''=>esc_html__('Select Custom Post Type','filter-plus'));
 		} else {
-			$first_index = array(''=>esc_html__('No Custom Post Type Found','filter-Plus'));
+			$first_index = array(''=>esc_html__('No Custom Post Type Found','filter-plus'));
 		}
 		$all_post_types = $first_index + $post_types;
 

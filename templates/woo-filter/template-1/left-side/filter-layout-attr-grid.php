@@ -7,7 +7,7 @@ foreach ($attributes as $key => $item ) {
 	$get_attr = \FilterPlus\Utils\Helper::get_attributes( !empty( wc_get_attribute( $item ) ) ? wc_get_attribute( $item )->slug : '' );
 ?>
 <div class="sidebar-row radio-wrap">
-	<h4 class="sidebar-label"><?php echo  !empty( $attribute_label ) ? $attribute_label :  esc_html__('Filter By ') .esc_html($get_attr['label']); ?></h4>
+	<h4 class="sidebar-label"><?php echo  !empty( $attribute_label ) ? $attribute_label :  esc_html__('Filter By ','filter-plus') .esc_html($get_attr['label']); ?></h4>
 	<div class="param-box">
 		<?php
 			foreach ($get_attr['terms'] as $key => $term) {

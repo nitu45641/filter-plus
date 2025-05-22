@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <h1 class="font_bold font_18"><?php esc_html_e('SEO Rules','filter-plus'); ?></h1>
 <?php
 $doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/seo-rules/apply-seo-rules/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
@@ -5,8 +7,8 @@ $docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('SEO Rule
 echo FilterPlus\Utils\Helper::kses( $docs );
 
 // SEO global settings
-if (!function_exists('seo_doc')) {
-    function seo_doc()  {
+if (!function_exists('filter_seo_doc')) {
+    function filter_seo_doc()  {
         $seo_docs  = '';
         $seo_docs .= '<div>'. esc_html__('Title :','filter-plus') .' '. htmlspecialchars('<title>' . esc_html__( 'This is an example SEO title', 'filter-plus' ) . '</title>').'</div>';
         $seo_docs .= '<div>'. esc_html__('Description :','filter-plus') .' '.htmlspecialchars('<meta name="description" content="'.esc_html__('Meta Description!','filter-plus').'"/>' ).'</div>';
@@ -43,7 +45,7 @@ $args = array(
 	),
 	'selected' => $seo_elements,
 	'disable' => $disable,
-	'docs' => seo_doc(),
+	'docs' => filter_seo_doc(),
 );
 
 filter_plus_select_field( $args );

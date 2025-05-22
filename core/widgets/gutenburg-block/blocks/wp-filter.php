@@ -1,20 +1,20 @@
 <?php
 
 //register woo filter block
-function wp_filter_block() {
+function content_filter_block() {
     register_block_type(
         'filter-plus/wp-filter',
         [
             'editor_script'   => 'filter-plus-wp-filter',
-            'render_callback' => 'wp_filter_callback',
+            'render_callback' => 'content_filter_callback',
             'attributes'      => array(),
         ]
     );
 }
-add_action( 'init', 'wp_filter_block' );
+add_action( 'init', 'content_filter_block' );
 
 
-function wp_filter_callback( $settings ) {
+function content_filter_callback( $settings ) {
 
     \FilterPlus\Utils\Helper::instance()->pro_active_message();
 

@@ -52,9 +52,9 @@ $features = array(
 $more_products = array(
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-        'url_demo' => 'https://woooplugin.com/ultimate-membership/',
+        'url_demo' => 'https://wpbens.com/memberhub/',
         'url_free' => 'https://downloads.wordpress.org/plugin/create-members.latest-stable.zip',
-        'title' =>esc_html__('Ultimate Membership','filter-plus'),
+        'title' =>esc_html__('MemberHub','filter-plus'),
         'logo'   => 'membership.png',
         'desc'   => esc_html__('Restrict content, manage member subscriptions','filter-plus'),
         'cta_free' =>esc_html__('Free Version','filter-plus'),
@@ -62,7 +62,7 @@ $more_products = array(
     ),
     array(
         'icon'          =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-        'url_demo'      => 'https://woooplugin.com/discountify/',
+        'url_demo'      => 'https://wpbens.com/discountify/',
         'url_free'      => 'https://downloads.wordpress.org/plugin/discountify.latest-stable.zip',
         'title'         =>esc_html__('Discount and Coupon Management','filter-plus'),
         'logo'          => 'discountify.png',
@@ -72,7 +72,7 @@ $more_products = array(
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-        'url_demo' => 'https://woooplugin.com/quicker/',
+        'url_demo' => 'https://wpbens.com/quicker/',
         'url_free' => 'https://downloads.wordpress.org/plugin/quicker.latest-stable.zip',
         'title' =>esc_html__('Quick Checkout Plugin','filter-plus'),
         'logo'   => 'quicker.png',
@@ -88,7 +88,7 @@ $more_products = array(
         <h1 class="first-header"><?php esc_html_e('Powerful Filtering Features for WordPress and WooCommerce','filter-plus');?></h1>
         <p><?php esc_html_e('Filter Plus is the WordPress and WooCommerce Product Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. ','filter-plus');?></p>
         <div class="cta">
-        <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
+        <a target="_blank" href="https://www.wpbens.com/filter-plus/">
             <button class="btn ctn-button"><?php esc_html_e('Explore Filter Plus Pro','filter-plus');?></button>
         </a>
     </div>
@@ -121,7 +121,7 @@ $more_products = array(
             <h1 class="cta-block-header"><?php esc_html_e('Explore the premium version to experience our countless advanced features.','filter-plus');?></h1>
         </div>
         <div class="cta-action">
-            <a target="_blank" href="https://www.woooplugin.com/filter-plus/">
+            <a target="_blank" href="https://www.wpbens.com/filter-plus/">
                 <button class="btn feature-cta"><?php esc_html_e('Look Into Pro','filter-plus');?></button>
             </a>
         </div>
@@ -143,8 +143,24 @@ $more_products = array(
                             <p><?php echo esc_html($value['desc']); ?></p>  
                         </div>
                         <div class="explore-plugin">
-                            <a class="btn free-button" href="<?php echo esc_url($value['url_free']); ?>"  target="_blank"><?php esc_html_e($value['cta_free'],'filter-plus'); ?></a>  
-                            <a class="btn pro-button" href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank"><?php esc_html_e($value['cta_demo'],'filter-plus'); ?></a>  
+                            <a class="btn free-button" href="<?php echo esc_url($value['url_free']); ?>"  target="_blank">
+                                <?php 
+                                    printf(
+                                        /* translators: %s: cta button text */
+                                        esc_html__( '%s', 'filter-plus' ),
+                                        esc_html( $value['cta_free'] )
+                                    );
+                                ?>
+                                </a>  
+                            <a class="btn pro-button" href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank">
+                                <?php 
+                                    printf(
+                                        /* translators: %s: demo button text */
+                                        esc_html__( '%s', 'filter-plus' ),
+                                        esc_html( $value['cta_demo'] )
+                                    );
+                                ?>
+                            </a>  
                         </div>
                     </div>
                 </div>
