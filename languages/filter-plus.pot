@@ -23,7 +23,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: filter-plus.php
-msgid "https://woooplugin.com/filter-plus"
+msgid "https://wpbens.com/filter-plus"
 msgstr ""
 
 #. Description of the plugin
@@ -38,7 +38,7 @@ msgstr ""
 
 #. Author URI of the plugin
 #: filter-plus.php
-msgid "https://woooplugin.com/"
+msgid "https://wpbens.com/"
 msgstr ""
 
 #: base/data-factory.php:23

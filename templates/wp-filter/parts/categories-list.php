@@ -22,15 +22,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					data-cat_id="<?php echo esc_attr($item['term_id'])?>"
 					data-slug="<?php echo esc_attr($item['slug'])?>"
 				>
-					<?php echo esc_html($item['name']);?>
+					<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($item['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$item['term_id'])?>">
+					<label for="<?php  echo esc_attr("cat_li_".$item['term_id'])?>"><?php  echo esc_html($item['name'])  ;?></label>
 					<?php if( $sub_categories == 'yes' && !empty($item['sub_categories'])): ?>
-					<ul class="sub_categories">
+					<ul class="sub_categories"
+					class="cat-group"
+					>
 					<?php foreach($item['sub_categories'] as $sub): ?>
 						<li 
 							data-name="<?php echo esc_attr($sub['name'])?>"
 							data-cat_id="<?php echo esc_attr($sub['term_id'])?>"
 							data-slug="<?php echo esc_attr($sub['slug'])?>">
-							<?php echo esc_html($sub['name']);?>
+							<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($sub['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$sub['term_id'])?>">
+							<label for="<?php  echo esc_attr("cat_li_".$sub['term_id'])?>"><?php  echo esc_html($sub['name'])  ;?></label>
 						</li>
 					<?php endforeach; ?>
 					</ul>

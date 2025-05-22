@@ -1,6 +1,8 @@
 <!-- Filter By Size -->
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }

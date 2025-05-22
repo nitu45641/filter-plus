@@ -13,18 +13,19 @@
 							data-cat_id="<?php echo esc_attr($item['term_id'])?>"
 							data-slug="<?php echo esc_attr($item['slug'])?>"
 						>
-							<input type="checkbox" value="<?php  echo esc_attr($item['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$item['term_id'])?>">
-							<label for="<?php  echo esc_attr("cat_li_".$item['term_id'])?>"><?php  echo esc_html($item['name'])  ;?></label>
+							<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($item['term_id'])?>" id="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>">
+							<label for="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>"><?php  echo esc_html($item['name'])  ;?></label>
 						</li>
 						<?php if( $sub_categories == 'yes' && !empty($item['sub_categories'])): ?>
 							<ul class="sub_categories">
 								<?php foreach($item['sub_categories'] as $sub): ?>
 									<li 
+										class="cat-group"
 										data-name="<?php echo esc_attr($sub['name'])?>"
 										data-cat_id="<?php echo esc_attr($sub['term_id'])?>"
 										data-slug="<?php echo esc_attr($sub['slug'])?>">
-										<input type="checkbox" value="<?php  echo esc_attr($sub['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$sub['term_id'])?>">
-										<label for="<?php  echo esc_attr("cat_li_".$sub['term_id'])?>"><?php  echo esc_html($sub['name'])  ;?></label>
+										<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($sub['term_id'])?>" id="<?php  echo esc_attr("cat_li_child_".$sub['term_id'])?>">
+										<label for="<?php  echo esc_attr("cat_li_child_".$sub['term_id'])?>"><?php  echo esc_html($sub['name'])  ;?></label>
 									</li>
 								<?php endforeach; ?>
 							</ul>

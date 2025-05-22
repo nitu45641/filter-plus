@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <h1 class="font_bold font_18"><?php esc_html_e('Style','filter-plus'); ?></h1>
 
 <?php

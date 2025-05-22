@@ -1,5 +1,7 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <header class="menu">
-	<a href="<?php echo esc_url( 'https://woooplugin.com/filter-plus/' ); ?>" target="_blank">
+	<a href="<?php echo esc_url( 'https://wpbens.com/filter-plus/' ); ?>" target="_blank">
 		<div class="logo">
 			<img src = "<?php echo esc_url( FilterPlus::assets_url() . 'images/filter-plus-logo.svg' ); ?>"
 				alt="filter-plus-banner" 
@@ -30,7 +32,7 @@
 			),
 			array(
 				'name' => esc_html__('Support', 'filter-plus' ),
-				'url' => 'https://woooplugin.com/support/',
+				'url' => 'https://wpbens.com/support/',
 				'target' => '_blank',
 			),
 			array(
@@ -44,7 +46,7 @@
 		if ( ! class_exists( 'FilterPlusPro' ) ) {
 			$menus[] = array(
 				'name' => esc_html__( 'Upgrade to Pro','filter-plus' ),
-				'url' => 'https://woooplugin.com/filter-plus/',
+				'url' => 'https://wpbens.com/filter-plus/',
 				'target' => '_blank',
 			);
 		}
@@ -52,7 +54,7 @@
 	<div class="navigation">
 		<?php
 			$filter_menus = array( 'filter-sets', 'filter-plus-settings' );
-			$current_page = ! empty( $_GET['page'] ) ? $_GET['page'] : '';
+			$current_page = ! empty( $_GET['page'] ) ? sanitize_text_field($_GET['page']) : '';
 		foreach ( $menus as $key => $value ) {
 			$active = ( ! empty( $value['slug'] ) && $value['slug'] == $current_page ) ? 'active' : '';
 			$class = $value === end( $menus ) ? 'upgrade_pro' : '';

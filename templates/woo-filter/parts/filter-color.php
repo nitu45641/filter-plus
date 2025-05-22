@@ -1,4 +1,7 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /* Filter By Color */
 
 if ( 'yes' == $colors ) {
