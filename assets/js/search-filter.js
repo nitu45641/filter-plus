@@ -253,10 +253,10 @@
 			if (filter_client.refresh_url == 'yes') {
 				refresh_url(selected_data);
 			}
-
+			
 			let selected_html = '';
 			const cross = '<span>X</span>';
-			let clear_all = `<div class="clear-filter">${filter_client.localize.clear_all}${cross}</div>`;
+			let clear_all = `<div class="clear-filter">${filter_client.localize.clear_all}</div>`;
 			for (const [key, value] of Object.entries(selected_data)) {
 				if (
 					!selected_data.default_call &&
@@ -269,7 +269,10 @@
 						selected_html += `<div class='filter-tag' data-node='.ratings'>${filter_client.localize.rating}${cross}</div>`;
 					}
 					if (key == 'product_cat' && value !== '') {
-						selected_html += `<div class='filter-tag' data-node='.category-list li'>${value}${cross}</div>`;
+						let cat_tag = value.split(',');
+						cat_tag.forEach(element => {
+							selected_html += `<div class='filter-tag' data-node='.category-list li'>${element}${cross}</div>`;
+						});
 					}
 					if (key == 'search_value' && value !== '') {
 						selected_html += `<div class='filter-tag' data-node='.search-form'>${filter_client.localize.search}${cross}</div>`;
@@ -296,7 +299,7 @@
 
 			if (selected_html == '') {
 				clear_all = '';
-			}
+			}			
 			$('.selected-filter').html('').html(`${clear_all}${selected_html}`);
 		}
 

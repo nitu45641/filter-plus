@@ -327,7 +327,7 @@ ul.ratings {
 /* Product Css */
 .vartical-prod-card-container {
 	p{
-		margin-bottom: 0 ;
+		margin-bottom: 10px ;
 	}
 }
 .product-style-2 .vartical-prod-card-container .product-content {
@@ -355,6 +355,9 @@ ul.ratings {
     grid-template: auto / 24% 24% 24% 24%;
     gap: 15px 11px;
 }
+.grid-view-1 img{
+	border-radius: 10px;
+}
 .post-grid-view-1{
     display: grid;
     grid-template: auto / 32.5% 32.5% 32.5%;
@@ -365,7 +368,7 @@ ul.ratings {
 	transition: 0.3s;
 	font-size: 115%;
 	line-height: 130%;
-	margin: 10px 0 5px;
+	margin: 20px 0 5px;
 	font-weight: bold;
 	color: var(--filter-primary-color,#2d73e7);
 }
@@ -388,7 +391,7 @@ ul.ratings {
 }
 .vpcc-footer {
 	text-align: center;
-	padding: 0 10px 16px;
+	padding: 0 0 35px;
 }
 
 .vpcc-btns {
@@ -572,12 +575,12 @@ ul.pagination {
 	line-height: 18px;
 }
 .selected-filter{
-    margin: 0 10px;
+    margin: 0 10px 0 0;
 	cursor: pointer;
 	color: var(--filter-border-color,#2d73e7);
 }
 .selected-filter .clear-filter{
-	font-size: 14px;
+	font-size: 13px;
 	margin-right: 10px;
 }
 .selected-filter div{
@@ -1163,11 +1166,6 @@ a {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 100%;
 	flex: 0 0 100%;
-}
-
-.vpcc-footer {
-	text-align: center;
-	padding: 0 10px 16px;
 }
 .vpcc-image{
 	position: relative;
