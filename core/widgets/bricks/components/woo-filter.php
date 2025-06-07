@@ -129,6 +129,17 @@ class Woo_Filter extends \Bricks\Element {
 			'small' => true,
 			'default' => true,
 		);
+
+		// product count
+		$this->controls['product_count'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Show Product Count', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
 		
 		// colors
 		$this->controls['colors'] = array(
