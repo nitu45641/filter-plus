@@ -405,6 +405,7 @@ class Helper {
 				$result_cat[$key]['term_id'] = $value->term_id;
 				$result_cat[$key]['name'] = $value->name;
 				$result_cat[$key]['slug'] = $value->slug;
+				$result_cat[$key]['count'] = $value->count;
 				$result_cat[$key]['sub_categories'] = $sub_cats;
 			} 
 			else if ($type == "widget" ) {
@@ -429,6 +430,7 @@ class Helper {
 				$result_cat[$key]['term_id'] = $value->term_id;
 				$result_cat[$key]['name'] = $value->name;
 				$result_cat[$key]['slug'] = $value->slug;
+				$result_cat[$key]['count'] = $value->count;
 			} 
 			else if ($type == "label_value" ) {
 				$result_cat[$key]['value'] = $value->term_id;

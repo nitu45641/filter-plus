@@ -1,4 +1,3 @@
-
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <div class="sidebar-row categories-wrap">
@@ -14,7 +13,10 @@
 							data-slug="<?php echo esc_attr($item['slug'])?>"
 						>
 							<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($item['term_id'])?>" id="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>">
-							<label for="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>"><?php  echo esc_html($item['name'])  ;?></label>
+							<label for="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>">
+								<?php echo esc_html($item['name']);?>
+								<?php if ($product_count == 'yes') { echo ' (' . esc_html($item['count']) . ')'; } ?>
+							</label>
 						</li>
 						<?php if( $sub_categories == 'yes' && !empty($item['sub_categories'])): ?>
 							<ul class="sub_categories">
@@ -25,7 +27,10 @@
 										data-cat_id="<?php echo esc_attr($sub['term_id'])?>"
 										data-slug="<?php echo esc_attr($sub['slug'])?>">
 										<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($sub['term_id'])?>" id="<?php  echo esc_attr("cat_li_child_".$sub['term_id'])?>">
-										<label for="<?php  echo esc_attr("cat_li_child_".$sub['term_id'])?>"><?php  echo esc_html($sub['name'])  ;?></label>
+										<label for="<?php  echo esc_attr("cat_li_child_".$sub['term_id'])?>">
+											<?php echo esc_html($sub['name']); ?>
+											<?php if ($product_count == 'yes') { echo ' (' . esc_html($sub['count']) . ')'; } ?>
+										</label>
 									</li>
 								<?php endforeach; ?>
 							</ul>

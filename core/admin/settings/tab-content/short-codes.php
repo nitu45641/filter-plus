@@ -62,6 +62,8 @@ use \FilterPlus\Utils\Helper as Helper;
 			$args = array('label'=>esc_html__("Display Sub Categories:","filter-plus"),'id' => 'woo_sub_categories','data_label' => 'sub_categories');
 			filter_plus_checkbox_field($args);
 
+			$args = array('label'=>esc_html__("Display Product Count:","filter-plus"),'id' => 'woo_product_count','data_label' => 'product_count');
+			filter_plus_checkbox_field($args);
 			// colors
 			$args = array('label'=>esc_html__("Display Colors:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
 			filter_plus_checkbox_field($args);

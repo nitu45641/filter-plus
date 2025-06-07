@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					data-slug="<?php echo esc_attr($item['slug'])?>"
 				>
 					<?php echo esc_html($item['name']);?>
+					<?php if ($product_count == 'yes') { echo ' (' . esc_html($item['count']) . ')'; } ?>
 				</li>
 					<?php if( $sub_categories == 'yes' && !empty($item['sub_categories'])): ?>
 						<ul class="sub_categories">
@@ -25,6 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 									data-cat_id="<?php echo esc_attr($sub['term_id'])?>"
 									data-slug="<?php echo esc_attr($sub['slug'])?>">
 									<?php echo esc_html($sub['name']);?>
+									<?php if ($product_count == 'yes') { echo ' (' . esc_html($sub['count']) . ')'; } ?>
 								</li>
 							<?php endforeach; ?>
 						</ul>
