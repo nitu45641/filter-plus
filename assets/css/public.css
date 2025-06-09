@@ -1523,11 +1523,11 @@ a.added_to_cart.wc-forward {
 }
 .showing p{
 	font-size: 14px;
-	color: #c4c4c4;
+	color: #6d6d6d;
 	margin: 0;
 }
 .sorting .showing p span {
-	color: #333;
+	color: #6d6d6d;
 }
 .sorting .sort-by select {
 	height: 45px;
