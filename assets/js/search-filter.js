@@ -271,8 +271,18 @@
 					if (key == 'product_cat' && value !== '') {
 						let cat_tag = value.split(',');
 						cat_tag.forEach(element => {
-							selected_html += `<div class='filter-tag' data-node='.category-list li'>${element}${cross}</div>`;
+							selected_html += `<div class='filter-tag' data-node='.category-list li' data-cat='${element}'>${element}${cross}</div>`;
 						});
+						// Remove category tag on click
+						setTimeout(function() {
+							$('.filter-tag[data-node=".category-list li"]').off('click').on('click', function() {
+								const cat = $(this).data('cat');
+								// Uncheck the corresponding checkbox if exists
+								$(`.category-list li[data-name='${cat}'] input[type='checkbox']`).prop('checked', false).trigger('change');
+								// Remove the tag visually
+								$(this).remove();
+							});
+						}, 0);
 					}
 					if (key == 'search_value' && value !== '') {
 						selected_html += `<div class='filter-tag' data-node='.search-form'>${filter_client.localize.search}${cross}</div>`;
@@ -771,24 +781,36 @@
 		mobile_filter_slide();
 		function mobile_filter_slide() {
 			const $sidebarAndWrapper = $('.shop-sidebar');
+			const animationDuration = 350; // ms
 
-			$('.filter-mb').click(function (e) {
+			$('.filter-mb-search').on('click', function (e) {
 				e.stopPropagation();
-				$sidebarAndWrapper.toggleClass('active-sidebar');
+				// Make sure the event only triggers when clicking the block itself, not its children
+				if (e.target !== this) return;
+				if (!$sidebarAndWrapper.hasClass('active-sidebar')) {
+					$sidebarAndWrapper.addClass('active-sidebar').stop(true, true).animate({ left: 0, opacity: 1 }, animationDuration);
+				} else {
+					$sidebarAndWrapper.removeClass('active-sidebar').stop(true, true).animate({ left: '-100%', opacity: 0 }, animationDuration);
+				}
 			});
 			$('.side-cart-close').click(function (e) {
-				$('.shop-sidebar').removeClass('active-sidebar');
+				$sidebarAndWrapper.removeClass('active-sidebar').stop(true, true).animate({ left: '-100%', opacity: 0 }, animationDuration);
 			});
 
 			$('body,html').click(function (e) {
-				const container = $('.active-sidebar');
+				const container = $sidebarAndWrapper.filter('.active-sidebar');
 				if (
+					container.length &&
 					!container.is(e.target) &&
 					container.has(e.target).length === 0
 				) {
-					container.removeClass('active-sidebar');
+					container.removeClass('active-sidebar').stop(true, true).animate({ left: '-100%', opacity: 0 }, animationDuration);
 				}
 			});
+			// Ensure sidebar is hidden initially on mobile
+			if ($(window).width() < 700) {
+				$sidebarAndWrapper.css({ left: '-100%', opacity: 0 });
+			}
 		}
 		//watch window resize
 		$(window).on('resize', function() {

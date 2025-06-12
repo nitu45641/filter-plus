@@ -47,7 +47,7 @@
 .radio-wrap .radio-item {
 	display: inline-flex;
     align-items: center;
-	outline: 1px solid var(--filter-secondary-color,"#d7d7d7");
+	outline: 1px solid var(--filter-border-color,"#d7d7d7");
 	padding: 5px 10px;
 	border-radius: 5px;
 	font-size: 14px;
@@ -307,7 +307,7 @@ ul.ratings {
 	display: flex;
 	flex-wrap: wrap;
 	color: #666666;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 .sidebar-style-2 .ratings li svg {
@@ -445,7 +445,6 @@ ul.ratings {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 250px;
 	background-color: #f8f8f8;
 }
 .hpcc-image img {
@@ -585,7 +584,7 @@ ul.pagination {
 .selected-filter{
     margin: 0 10px 0 0;
 	cursor: pointer;
-	color: var(--filter-border-color,#2d73e7);
+	color: var(--filter-font-color,#2d73e7);
 }
 .selected-filter .clear-filter{
 	font-size: 13px;
@@ -597,7 +596,7 @@ ul.pagination {
 }
 .filter-tag{
 	border: 1px solid var(--filter-border-color, #d3d3d3);
-	color: var(--filter-border-color, #000);
+	color: var(--filter-font-color, #000);
     border-radius: 6px;
 	font-size: 13px;
     padding: 3px 9px;
@@ -940,7 +939,7 @@ a {
 	font-size: 14px;
 }
 .shop-sidebar .search-form button {
-	position: absolute;
+	position: absolute !important;
 	right: 7px;
 	top: 5px;
 	bottom: 4px;
@@ -1649,7 +1648,6 @@ ul.sub_categories{
 }
 
 .color-item.tooltips {
-	display: inline;
 	position: relative;
 }
 
@@ -1803,7 +1801,7 @@ ul.sub_categories{
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 	}
 	.filter-mb-search{
-		display: block;
+		display: inline-block;
 	}
 	.filter-bar-mb-search{
 		display: inline-flex;

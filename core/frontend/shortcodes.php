@@ -184,7 +184,6 @@ class Shortcodes {
 		}
 		else if ( $template == "3" ) {
 			$cart_icon = '#fff';
-			// $secondary_color = $filter_type !== "product" ? "#fff" : "rgb(225, 223, 223)"; 
 			$secondary_color = $filter_type !== "product" ? "#fff" : "#5c5555"; 
 			$filter_type !== "product" ? "#ff0000" : "#ab1616"; 
 			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000"; 
@@ -208,6 +207,8 @@ class Shortcodes {
 		}
 
 		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
+		$filter_border_color = 'rgb(225, 223, 223)';
+		$filter_font_color = '#333';
 		$filter_custom_css = '
 		:root {
 			--filter-primary-color: '.$primary_color.';
@@ -217,7 +218,8 @@ class Shortcodes {
 			--filter-price-range : '.$price_range.';
 			--filter-loader-color : '.$loader_color.';
 			--filter-price-range: '.$secondary_color.';
-			--filter-border-color: '.$secondary_color.';
+			--filter-border-color: '.$filter_border_color.';
+			--filter-font-color: '.$filter_font_color.';
 			--filter-header-border: '.$primary_color.';
 			--filter-tab-color: '.$tab_pan_item_color.';
 			--filter-blog-header: '.$blog_header.';
