@@ -48,7 +48,7 @@
 	display: inline-flex;
     align-items: center;
 	outline: 1px solid var(--filter-secondary-color,"#d7d7d7");
-	padding: 3px 5px;
+	padding: 5px 10px;
 	border-radius: 5px;
 	font-size: 14px;
 	font-weight: 500;
@@ -981,7 +981,7 @@ a {
     list-style-type: none;
     cursor: pointer;
     color: #666666;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .sidebar-style-2 .price-range {
