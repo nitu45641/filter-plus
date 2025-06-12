@@ -184,7 +184,8 @@ class Shortcodes {
 		}
 		else if ( $template == "3" ) {
 			$cart_icon = '#fff';
-			$secondary_color = $filter_type !== "product" ? "#fff" : "rgb(225, 223, 223)"; 
+			// $secondary_color = $filter_type !== "product" ? "#fff" : "rgb(225, 223, 223)"; 
+			$secondary_color = $filter_type !== "product" ? "#fff" : "#5c5555"; 
 			$filter_type !== "product" ? "#ff0000" : "#ab1616"; 
 			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000"; 
 			$primary_color = $price_range = '#333'; 
@@ -207,7 +208,6 @@ class Shortcodes {
 		}
 
 		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
-
 		$filter_custom_css = '
 		:root {
 			--filter-primary-color: '.$primary_color.';
