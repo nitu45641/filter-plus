@@ -83,7 +83,7 @@
 	position: relative;
 }
 .shop-sidebar .sidebar-label {
-	font-weight: bold;
+	font-weight: 600;
 	line-height: 22px;
 	font-size: 20px;
 	margin-bottom: 25px;
@@ -388,6 +388,14 @@ ul.ratings {
 
 .vpcc-image img {
 	width: 100%;
+	object-fit: cover;
+	/* Ensures all images are the same size and aspect ratio */
+}
+.product-style-3 .vpcc-image img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	/* Ensures all images are the same size and aspect ratio */
 }
 .vpcc-footer {
 	text-align: center;
@@ -965,7 +973,7 @@ a {
 
 .title-and-clean-area p {
 	cursor: pointer;
-	color: var(--filter-border-color,#17c6aa);
+	color: var(--filter-clean-all,#6d6d6d);
 	font-size: 14px;
 }
 

@@ -184,10 +184,10 @@ class Shortcodes {
 		}
 		else if ( $template == "3" ) {
 			$cart_icon = '#fff';
-			$secondary_color = $filter_type !== "product" ? "#fff" : "#ab1616"; 
+			$secondary_color = $filter_type !== "product" ? "#fff" : "rgb(225, 223, 223)"; 
 			$filter_type !== "product" ? "#ff0000" : "#ab1616"; 
 			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000"; 
-			$primary_color = $price_range = '#ab1616'; 
+			$primary_color = $price_range = '#333'; 
 		}
 		else if ( $template == "4" ) {
 			$primary_color = $price_range = $cart_content = '#ff69b4'; 
