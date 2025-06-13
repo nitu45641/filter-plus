@@ -25,10 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			{{{ post_image }}}
 		</div>
 		<div class="hpcc-content">
-			<div class="hpcc-name">
-			{{{ post_title }}}
-			</div>
-			
+			<div class="hpcc-name"><a href="{{post_permalink}}">{{{ post_title }}}</a></div>
 			{{{ post_price }}}
 			{{{ rating }}}
 			<div class="hpcc-description">{{ post_description }}</div>

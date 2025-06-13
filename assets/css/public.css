@@ -372,8 +372,8 @@ ul.ratings {
 	font-weight: bold;
 	color: var(--filter-primary-color,#2d73e7);
 }
-.vpcc-name:hover,.hpcc-name:hover {
-	color: var(--filter-secondary-color,#2d73e7);
+.vpcc-name a:hover,.hpcc-name a:hover {
+	color: var(--filter-hover-color,#336);
 	cursor: pointer;
 }
 .vpcc-price {
@@ -454,7 +454,10 @@ ul.ratings {
 .hpcc-content {
 	padding: 0 20px;
 }
-.hpcc-name {
+.vpcc-name a {
+	color: var(--filter-primary-color,#2d73e7);
+}
+.hpcc-name a{
 	font-weight: bold;
 	font-size: 18px;
 	transition: 0.3s;
@@ -567,19 +570,15 @@ ul.pagination {
 	fill: #fff;
 }
 /* Reset */
-.reset-1{
-	color: var(--filter-border-color,"#2d73e7");
-	border-bottom: 1px solid var(--filter-border-color,"#2d73e7");
-}
-.reset-2{
-	color: var(--filter-border-color,"#17c6aa");
-	border-bottom: 1px solid var(--filter-border-color,"#17c6aa");
-}
+
 .reset {
 	float: right;
 	cursor: pointer;
 	margin-top: 10px;
 	line-height: 18px;
+	font-size: 13px;
+	color: var(--filter-reset-color, rgb(158, 158, 158));
+	border-bottom: 1px solid var(--filter-reset-border-color, rgb(158, 158, 158));
 }
 .selected-filter{
     margin: 0 10px 0 0;
@@ -948,7 +947,8 @@ a {
 	border-radius: 4px;
 	-webkit-transition: all 0.2s linear;
 	transition: all 0.2s linear;
-	background: var( --filter-border-color);
+	background: var( --filter-secondary-color);
+	border-color: var( --filter-border-color);
 }
 .search-form-3 button{
 	background: transparent !important;

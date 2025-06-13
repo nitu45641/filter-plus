@@ -1,6 +1,5 @@
 (function ($) {
 	'use strict';
-	console.trace = null; 
 
 	$(document).ready(function () {
 		/*
@@ -149,7 +148,7 @@
 		 * Fetch products
 		 * @param {*} params
 		 */
-		function get_products(params = {}) {
+		function get_products(params = {}) {			
 			let products_wrap 	= $('.products-wrap');
 			let prod_grid_wrap 	= $('.prods-grid-view');
 			let prod_list_wrap 	= $('.wp-list-view,.prods-list-view');
@@ -185,7 +184,7 @@
 				success(response) {
 					if (response?.success) {
 						const products 	= response?.data?.data?.products;
-						const total 	= response?.data?.data?.total;
+						const total 	= response?.data?.data?.total;						
 						$('.total').html('').html(total);
 						$('.pages').html('').html(products.length);
 						// clear product data
@@ -269,16 +268,17 @@
 						selected_html += `<div class='filter-tag' data-node='.ratings'>${filter_client.localize.rating}${cross}</div>`;
 					}
 					if (key == 'product_cat' && value !== '') {
+
 						let cat_tag = value.split(',');
-						cat_tag.forEach(element => {
-							selected_html += `<div class='filter-tag' data-node='.category-list li' data-cat='${element}'>${element}${cross}</div>`;
+						cat_tag.forEach((element,index) => {
+							selected_html += `<div class='filter-tag' data-node='.category-list li' data-cat='${element}' data-cat_id='${selected_data['cat_id'][index]}'>${element}${cross}</div>`;
 						});
 						// Remove category tag on click
 						setTimeout(function() {
 							$('.filter-tag[data-node=".category-list li"]').off('click').on('click', function() {
-								const cat = $(this).data('cat');
+								const cat_id = $(this).data('cat_id');
 								// Uncheck the corresponding checkbox if exists
-								$(`.category-list li[data-name='${cat}'] input[type='checkbox']`).prop('checked', false).trigger('change');
+								$(`.category-list li[data-cat_id='${cat_id}'] input[type='checkbox']`).prop('checked', false).trigger('change');
 								// Remove the tag visually
 								$(this).remove();
 							});

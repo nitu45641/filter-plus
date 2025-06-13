@@ -385,7 +385,7 @@ class Helper {
 		$taxonomy = !empty($taxonomy) ? $taxonomy : 'product_cat';
 		$args_cat = array(
 			'taxonomy'     => $taxonomy,
-			'number'       => 50,
+			'number'       => 100,
 			'hide_empty'   => 0,
 		);
 		if ( !empty($categories)) {
@@ -401,7 +401,9 @@ class Helper {
 		$result_cat = array();
 		foreach ($cat as $key => $value) {
 			$sub_cats = self::get_sub_categories($value->term_id,$taxonomy , $type );
-			if ( $type == "assoc" || $type == "" ) {
+
+			if ( $type == "assoc" || $type == "" && 
+			( $value->parent == 0 && $value->slug !== 'uncategorized' ) ) {
 				$result_cat[$key]['term_id'] = $value->term_id;
 				$result_cat[$key]['name'] = $value->name;
 				$result_cat[$key]['slug'] = $value->slug;
