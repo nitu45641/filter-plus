@@ -785,13 +785,12 @@
 
 			$('.filter-mb-search,.filter-bar-mb-search').on('click', function (e) {
 				e.stopPropagation();
-				console.log("yes");
 				
-				// Make sure the event only triggers when clicking the block itself, not its children
-				if (e.target !== this) return;
 				if (!$sidebarAndWrapper.hasClass('active-sidebar')) {
+					$sidebarAndWrapper.css('left:100%; opacity: 1;');
 					$sidebarAndWrapper.addClass('active-sidebar').stop(true, true).animate({ left: 0, opacity: 1 }, animationDuration);
 				} else {
+					$sidebarAndWrapper.css('left: -100%; opacity: 0;');
 					$sidebarAndWrapper.removeClass('active-sidebar').stop(true, true).animate({ left: '-100%', opacity: 0 }, animationDuration);
 				}
 			});
