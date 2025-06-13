@@ -776,6 +776,7 @@ input[type="checkbox"]:checked + label.checkbox-item
 .shop-sidebar.active-sidebar {
     margin-left: 0;
 	transition: width 1s linear;
+	z-index: 99999;
 }
 .panel{
 	box-shadow: none;
@@ -1809,7 +1810,11 @@ ul.sub_categories{
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
 	}
 	.filter-mb-search{
-		display: inline-block;
+		display: flex;
+        position: absolute;
+        top: 94px;
+        z-index: 9999;
+        cursor: pointer;
 	}
 	.filter-bar-mb-search{
 		display: inline-flex;
