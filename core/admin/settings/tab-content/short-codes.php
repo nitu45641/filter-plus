@@ -14,7 +14,7 @@ use \FilterPlus\Utils\Helper as Helper;
 		<h1 class="mt-1 mb-0 font_bold font_18"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></h1>
 		<?php
 			// templates
-			$doc_url 	= '<a target="_blank" href="https://docs.woooplugin.com/docs/filter-plus/show-woocommerce-product-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
+			$doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/woocommerce/product-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 			$docs 		= '<div class="documentation mb-1"><div class="doc">'.esc_html__('Gutenberg Block,Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
 			echo Helper::kses( $docs );
 

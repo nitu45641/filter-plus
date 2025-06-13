@@ -1,4 +1,4 @@
-# Copyright (C) 2024 Woooplugin
+# Copyright (C) 2024 Wpbens
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
@@ -33,7 +33,7 @@ msgstr ""
 
 #. Author of the plugin
 #: filter-plus.php
-msgid "Woooplugin"
+msgid "wpbens"
 msgstr ""
 
 #. Author URI of the plugin
