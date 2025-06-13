@@ -783,8 +783,10 @@
 			const $sidebarAndWrapper = $('.shop-sidebar');
 			const animationDuration = 350; // ms
 
-			$('.filter-mb-search').on('click', function (e) {
+			$('.filter-mb-search,.filter-bar-mb-search').on('click', function (e) {
 				e.stopPropagation();
+				console.log("yes");
+				
 				// Make sure the event only triggers when clicking the block itself, not its children
 				if (e.target !== this) return;
 				if (!$sidebarAndWrapper.hasClass('active-sidebar')) {
