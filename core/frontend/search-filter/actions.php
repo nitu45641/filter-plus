@@ -525,13 +525,13 @@ class Actions {
 	public static function product_size($template){
 		switch ($template) {
 			case 1:
-				$size = array(255,255);
+				$size = array(250,255);
 				break;
 			case 2:
-				$size = array(255,315);
+				$size = array(250,315);
 				break;
 			default:
-				$size = array(255,315);
+				$size = array(250,315);
 			break;
 		}
 

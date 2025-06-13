@@ -7,5 +7,5 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<h2 class="m-0"><?php echo esc_html($title);?></h2>
 	<?php endif; ?>
 
-	<p class="clear_all"><?php echo esc_html__("Clean All","filter-plus");?></p>
+	<p class="clear_all"><?php echo esc_html__("Reset All","filter-plus");?></p>
 </div>
