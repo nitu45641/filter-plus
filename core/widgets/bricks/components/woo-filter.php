@@ -120,6 +120,17 @@ class Woo_Filter extends \Bricks\Element {
 		);
 
 		// sub categories
+		$this->controls['hide_empty_cat'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Hide Empty Category', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
+
+		// sub categories
 		$this->controls['sub_categories'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',

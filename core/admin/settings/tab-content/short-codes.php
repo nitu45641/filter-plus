@@ -58,6 +58,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
 			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories);
 			filter_plus_select_field($args);
+			// hide empty categories
+			$args = array('label'=>esc_html__("Hide Empty Category:","filter-plus"),'id' => 'hide_empty_cat','data_label' => 'hide_empty_cat');
+			filter_plus_checkbox_field($args);
 			// sub categories
 			$args = array('label'=>esc_html__("Display Sub Categories:","filter-plus"),'id' => 'woo_sub_categories','data_label' => 'sub_categories');
 			filter_plus_checkbox_field($args);

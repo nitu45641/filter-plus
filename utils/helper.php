@@ -383,10 +383,15 @@ class Helper {
 	public static function get_categories( $categories = "" , $type = false , $args = array() ) {
 		extract($args);
 		$taxonomy = !empty($taxonomy) ? $taxonomy : 'product_cat';
+		$hide_empty = true;
+		if ( !empty( $args['hide_empty']) && $args['hide_empty'] == 'no' ) {
+			$hide_empty = false;
+		}
+		
 		$args_cat = array(
 			'taxonomy'     => $taxonomy,
 			'number'       => 100,
-			'hide_empty'   => 0,
+			'hide_empty'   => $hide_empty,
 		);
 		if ( !empty($categories)) {
 			$args_cat['include'] = explode(",",$categories);
