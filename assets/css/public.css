@@ -1713,23 +1713,17 @@ ul.sub_categories{
 	color: #727272;
     font-weight: 600;
 }
-.woocommerce .woocommerce-product-rating .star-rating{
-    margin: 0.5em 4px 15px 0;
-}
 .woocommerce .woocommerce-product-rating {
     font-size: 14px;
 }
 /* Rating css left side start */
-.rating-section .woocommerce-product-rating .star-rating {
-	float: none;
-	display: inline-block;
-}
-.ratings {
-	cursor: pointer;
-}
 .rating {
+	cursor: pointer;
 	fill: #e3a405;
 	display: inline-block;
+}
+.hpcc-content .rating {
+	display: block;
 }
 .rating_light {
 	fill: #ebdcb5;
