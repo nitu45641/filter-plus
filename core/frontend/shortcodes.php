@@ -196,7 +196,7 @@ class Shortcodes {
 			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
 		}
 		else if( $template == "5" ){
-			$secondary_color = '#ab1616';
+			$hover_color = $secondary_color = '#ff0000';
 		}
 
 		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();
@@ -211,6 +211,7 @@ class Shortcodes {
 		$filter_font_color = '#333';
 		$filter_custom_css = '
 		:root {
+			--filter-hover-color: '.$hover_color.';
 			--filter-primary-color: '.$primary_color.';
 			--filter-secondary-color : '.$secondary_color.';
 			--filter-cart-icon-color : '.$cart_icon.';
