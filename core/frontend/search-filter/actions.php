@@ -342,6 +342,7 @@ class Actions {
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price']       = $product_instance->get_price_html();
 				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] );
+				$products[$key]['type']    			= $product_instance->get_type();
 				$products[$key]['rating_status']    = $product_instance->get_average_rating() > 0 ? true: false;
 				$products[$key]['template']    		= $param['template'];
 			endforeach;
