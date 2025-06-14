@@ -1721,6 +1721,7 @@ ul.sub_categories{
 	cursor: pointer;
 	fill: #e3a405;
 	display: inline-block;
+	display: inline-block;
 }
 .hpcc-content .rating {
 	display: block;
