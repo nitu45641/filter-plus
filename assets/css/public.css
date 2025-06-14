@@ -710,13 +710,14 @@ input[type="checkbox"]:checked + label.checkbox-item
 	background: var(--filter-price-range,"#2d0607") !important;
 }
 .filter-tab-pane{
-	display: flex;
-	list-style-type: none;
-	cursor: pointer;
+    display: flex;
+    justify-content: center;
+	gap: 10px;
+    list-style: none;
 }
 .filter-tab-pane li{
+	cursor: pointer;
     list-style: none;
-	padding: 8px;
     text-transform: uppercase;
     font-weight: 600;
     position: relative;
@@ -728,7 +729,7 @@ input[type="checkbox"]:checked + label.checkbox-item
     left: 0;
     right: 0;
     bottom: 0;
-    height: 3px;
+    height: 2px;
     background: var(--filter-secondary-color, #2d73e7);
     border-radius: 2px;
     transform: scaleX(0);
@@ -780,6 +781,7 @@ input[type="checkbox"]:checked + label.checkbox-item
 .shopContainer {
 	display: flex;
 	column-gap: 15px;
+	margin-top: 20px;
 }
 .shopContainer.right,
 .mainWrapper.right
@@ -1796,12 +1798,17 @@ ul.sub_categories{
 	.filter-mb-search{
 		display: flex;
         position: absolute;
-        top: 94px;
+        top: 110px;
         z-index: 9999;
         cursor: pointer;
 	}
 	.filter-bar-mb-search{
 		display: inline-flex;
+	}
+	.post-grid-view-5{
+		display: grid;
+    	grid-template-columns: auto auto auto !important;
+    	gap: 15px 10px;
 	}
 }
 @media screen and (max-width: 425px) {

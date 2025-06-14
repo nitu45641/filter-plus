@@ -196,7 +196,7 @@ class Shortcodes {
 			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
 		}
 		else if( $template == "5" ){
-			$hover_color = $secondary_color = '#ff0000';
+			$hover_color = $secondary_color = '#EB662B';
 		}
 
 		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();
