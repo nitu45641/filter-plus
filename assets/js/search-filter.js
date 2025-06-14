@@ -12,23 +12,34 @@
 		if (category_li.find('input[type="checkbox"]').length !== 0 ) {
 			action = 'change';
 		}
-
+		
 		category_li.on(action, function (event) {
-			event.stopPropagation();
+			event.preventDefault();
 			let _this = $(this);
 			let active_li = $('#cat_li_parent_' + _this.data('cat_id'));
 			if (_this.parent().hasClass('sub_categories')) {
 				active_li = $('#cat_li_child_' + _this.data('cat_id'));
 			}
+		
 			if (active_li.length > 0) {
-				if (active_li.is(':checked')) {
-					_this.addClass('active');
-				}else{
-					_this.removeClass('active');
+				if (active_li.is('input')) {
+					if (active_li.is(':checked') || active_li.is(':focus')) {
+						_this.addClass('active');
+					} else {
+						_this.removeClass('active');
+					}
+				} else if (active_li.is('li')) {
+					category_li.removeClass('active');
+					if (!active_li.hasClass('active')) {
+						_this.addClass('active');
+					} else {
+						_this.removeClass('active');
+					}
 				}
-			} else {
-				_this.addClass('active');
 			}
+			// else {
+			// 	_this.addClass('active');
+			// }
 
 			get_products();
 			// reset block
@@ -277,8 +288,15 @@
 						setTimeout(function() {
 							$('.filter-tag[data-node=".category-list li"]').off('click').on('click', function() {
 								const cat_id = $(this).data('cat_id');
-								// Uncheck the corresponding checkbox if exists
-								$(`.category-list li[data-cat_id='${cat_id}'] input[type='checkbox']`).prop('checked', false).trigger('change');
+								// Check if the category is represented by an input or a list item
+                                const $input = $(`.category-list li[data-cat_id='${cat_id}'] input[type='checkbox']`);
+                                const $li = $(`.category-list li[data-cat_id='${cat_id}']`);
+                                if ($input.length) {
+                                    $input.prop('checked', false).trigger('change');
+                                } else if ($li.length) {
+                                    $li.removeClass('active');
+									get_products()
+                                }
 								// Remove the tag visually
 								$(this).remove();
 							});
