@@ -174,7 +174,8 @@ class Shortcodes {
 		$cart_content = '#2d73e7';$price_range = '#2d73e7';
 		$param_direction = 'row';
 		$tab_pan_item_color = '#fff';$loading_icon_position = 'absolute';
-
+		$hover_color = '#222';
+		
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
 			$secondary_color = $primary_color = '#17c6aa'; 
