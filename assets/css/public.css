@@ -267,7 +267,7 @@ ul.category-list li.active label,
 ul.category-list li label:hover 
 {
 	font-weight: bold;
-	color: var(--filter-secondary-color,#2d73e7) !important;
+	color: #fff;
 	transition: all 0.10s ease-in-out;
 }
 .categories-wrapper .cat-group input[type="checkbox"]:checked {
