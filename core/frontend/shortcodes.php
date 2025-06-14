@@ -174,7 +174,8 @@ class Shortcodes {
 		$cart_content = '#2d73e7';$price_range = '#2d73e7';
 		$param_direction = 'row';
 		$tab_pan_item_color = '#fff';$loading_icon_position = 'absolute';
-
+		$hover_color = '#222';
+		
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
 			$secondary_color = $primary_color = '#17c6aa'; 
@@ -196,7 +197,7 @@ class Shortcodes {
 			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
 		}
 		else if( $template == "5" ){
-			$secondary_color = '#ab1616';
+			$hover_color = $secondary_color = '#EB662B';
 		}
 
 		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();
@@ -211,6 +212,7 @@ class Shortcodes {
 		$filter_font_color = '#333';
 		$filter_custom_css = '
 		:root {
+			--filter-hover-color: '.$hover_color.';
 			--filter-primary-color: '.$primary_color.';
 			--filter-secondary-color : '.$secondary_color.';
 			--filter-cart-icon-color : '.$cart_icon.';

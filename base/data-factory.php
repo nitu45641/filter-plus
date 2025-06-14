@@ -25,6 +25,7 @@ class DataFactory {
             'template'         	=> '1',
             'category_label'    => esc_html__('Categories','filter-plus'),
             'categories'       	=> '',
+            'hide_empty_cat'	=> 'yes',
             'sub_categories'	=> 'no',
             'colors'           	=> 'yes',
             'color_label'       => esc_html__('Colors','filter-plus'),
@@ -101,6 +102,8 @@ class DataFactory {
 		$default_data['show_tags']  = ! empty( $show_tags ) ? $show_tags : '';
 		$default_data['tag_label']  = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Tags', 'filter-plus' );
 		$default_data['color_label'] = ! empty( $color_label ) ? $color_label : esc_html__( 'Colors', 'filter-plus' );
+		$default_data['product_count']      = !empty($settings['product_count']) && $settings['product_count'] == true ? 'yes' : 'no';
+		$default_data['hide_empty_cat']     = !empty($settings['hide_empty_cat']) && $settings['hide_empty_cat'] == true ? 'yes' : 'no';
 		$default_data['sub_categories']     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
 		$default_data['colors']             = ! empty( $colors ) ? $colors : '';
 		$default_data['size']               = ! empty( $size ) ? $size : '';
