@@ -11,6 +11,41 @@
 	--filter-badge-bg: #EAEAEA;
 }
 
+input[type="checkbox"].regular-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  background-color: white;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+input[type="checkbox"].regular-checkbox:hover {
+  border-color: var(--filter-secondary-color,#2d73e7); /* hover border */
+  background-color: #fff; /* optional hover bg */
+}
+
+input[type="checkbox"].regular-checkbox:checked {
+  background-color: var(--filter-secondary-color,#2d73e7);
+  border-color: var(--filter-secondary-color,#2d73e7);
+}
+
+input[type="checkbox"].regular-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 4px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
 .font_14 {
 	font-size: 14px;
 }
@@ -283,12 +318,6 @@ ul.category-list li label:hover
 {
 	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
-	transition: all 0.10s ease-in-out;
-}
-.cat-group input[type="checkbox"],
-.cat-group label:hover input[type="checkbox"]{
-	accent-color: var(--filter-secondary-color,#2d73e7);
-	border-color: var(--filter-secondary-color,#2d73e7);
 }
 
 ul.ratings,.dropdown-box {
@@ -711,11 +740,7 @@ ul.pagination {
 	padding: 0;
 	border: none;
 }
-input[type="checkbox"]:checked + label.checkbox-item
-{
-	background-color: #2d73e7;
-	color: #fff;
-} 
+
 .post-tax-1{
 	padding: 5px;
 	display: flex;
