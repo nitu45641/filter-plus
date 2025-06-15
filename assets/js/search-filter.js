@@ -201,6 +201,7 @@
 			let prod_list_wrap 	= $('.wp-list-view,.prods-list-view');
 			let message_info 		= $('.message');
 			let pagination_style 	= $('#shopContainer').data('pagination_style');
+			let masonry_style 		= $('#shopContainer').data('masonry_style');
 			let template 			= $('#shopContainer').data('template');
 			let limit 			= $('#shopContainer').data('limit');
 			let product_categories =
@@ -239,7 +240,8 @@
 							 && pagination_style == 'loadmore' ) ||
 						 pagination_style == 'numbers') {
 							// Ensure grid-sizer and gutter-sizer are present for Isotope
-							prod_grid_wrap.html('<div class="grid-sizer"></div><div class="gutter-sizer"></div>');
+							let $isotop_html = masonry_style == 'yes' ? '<div class="grid-sizer"></div><div class="gutter-sizer"></div>' : '';
+							prod_grid_wrap.html( $isotop_html );
 							prod_list_wrap.html('');
 						}
 
@@ -282,26 +284,33 @@
 						// disable tags
 						disable_items(response?.data?.disable_terms);
 					}
-					// Masonary style
-					var $isotopeGrid = $('.prods-grid-view');
-					if ($isotopeGrid.data('isotope')) {
-						$isotopeGrid.isotope('destroy');
-					}
-					$isotopeGrid.isotope({
-						itemSelector: '.product-style-' + template,
-						layoutMode: 'masonry',
-						percentPosition: true,
-						masonry: {
-							columnWidth: '.grid-sizer',
-							gutter: ".gutter-sizer"
-
-						}
-					});
+					loadIsotope( template , masonry_style );
 					products_wrap.removeClass('loader_box');
 					
 				},
 			});
 
+		}
+
+		function loadIsotope( template , masonry_style ){
+			if ( masonry_style !== 'yes' ) {
+				return;
+			}
+			// Masonary style
+			var $isotopeGrid = $('.prods-grid-view');
+			if ($isotopeGrid.data('isotope')) {
+				$isotopeGrid.isotope('destroy');
+			}
+			$isotopeGrid.isotope({
+				itemSelector: '.product-style-' + template,
+				layoutMode: 'masonry',
+				percentPosition: true,
+				masonry: {
+					columnWidth: '.grid-sizer',
+					gutter: ".gutter-sizer"
+
+				}
+			});
 		}
 
 		/**

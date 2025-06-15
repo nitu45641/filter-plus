@@ -55,6 +55,19 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 
+		// masonry style
+		$this->add_control(
+			'masonry_style',
+			array(
+				'label' => esc_html__( 'Masonry Style', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
+
 		$this->add_control(
 			'template',
 			array(

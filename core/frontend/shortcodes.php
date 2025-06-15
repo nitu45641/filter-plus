@@ -53,11 +53,12 @@ class Shortcodes {
 		} 
 
 		
-		$this->custom_css($template);
+		$this->custom_css($template , 'product' , array( 'masonry_style' => $masonry_style ));
 		?>
 			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template)?>"
 			id="shopContainer"
 			data-filter_type='product' 
+			data-masonry_style="<?php echo esc_attr($masonry_style)?>"
 			data-pagination_style="<?php echo esc_attr($pagination_style)?>"
 			data-limit="<?php echo intval($no_of_items)?>"
 			data-template="<?php echo esc_attr($template)?>"
@@ -97,7 +98,7 @@ class Shortcodes {
 
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
 		$main_wrapper   = $template == '3' ? 'mainWrapper' : 'shopContainer';
-		$this->custom_css($template,$filter_type);
+		$this->custom_css($template,$filter_type, array( 'masonry_style' => $masonry_style ) );
 		?>
 			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?>" id="shopContainer"
 				data-pagination_style="<?php echo esc_html($pagination_style)?>"
@@ -167,7 +168,7 @@ class Shortcodes {
 	 * @param string $template
 	 * @return void
 	 */
-	public function custom_css($template = "1", $filter_type = "product") {
+	public function custom_css($template = "1", $filter_type = "product" , $args=array() ) {
 		global $filter_custom_css;
 		$secondary_color = '#1164cb'; $primary_color ='#2d73e7';$tag_color ='';
 		$blog_header = "#1164cb"; $cart_icon =  '#fff'; 
@@ -210,6 +211,31 @@ class Shortcodes {
 		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
 		$filter_border_color = 'rgb(225, 223, 223)';
 		$filter_font_color = '#333';
+
+		if ($args['masonry_style'] == 'yes' ) {
+			$grid_style = '
+			.product-style{
+				margin-bottom: 20px;
+				float: left;
+				box-sizing: border-box;
+			}
+			.prods-grid-view .gutter-sizer {
+			width: 20px;
+			}
+			.product-style,.grid-sizer{
+			width: calc((100% - 40px) / 3); /* 2 gutters × 20px = 40px total space between items */
+			}
+			';
+		}else{
+			$grid_style = '
+			.grid-view-2 {
+				display: grid;
+				grid-template: auto / 255px 255px 255px;
+				gap: 30px 15px;
+				position: relative;
+			}
+			';
+		}
 		$filter_custom_css = '
 		:root {
 			--filter-hover-color: '.$hover_color.';
@@ -227,7 +253,9 @@ class Shortcodes {
 			--filter-blog-header: '.$blog_header.';
 			--filter-tag-color: '.$tag_color.';
 			--filter-param-box-direction: '.$param_direction.';
-		}';
+		}
+			'.$grid_style.'
+		';
 
 		wp_register_style( 'filter-plus-custom-css', false );
 		wp_enqueue_style( 'filter-plus-custom-css' );

@@ -52,7 +52,18 @@ class Wp_Filter extends Widget_Base {
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
-
+		// masonry style
+		$this->add_control(
+			'masonry_style',
+			array(
+				'label' => esc_html__( 'Masonry Style', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
 
 		$pro = "";
 		if ( !class_exists('FilterPlusPro') ) {

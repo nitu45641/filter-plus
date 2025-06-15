@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <script id="search_products_grid" type="text/x-handlebars-template">
-	<div class="vartical-prod-card-container">
+	<div class="product-style vartical-prod-card-container">
 		<div class="vpcc-image">
 			{{{ post_image }}}
 			<div class="card-action-btn-container">

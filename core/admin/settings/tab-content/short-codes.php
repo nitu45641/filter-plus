@@ -17,6 +17,10 @@ use \FilterPlus\Utils\Helper as Helper;
 			$doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/woocommerce/product-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 			$docs 		= '<div class="documentation mb-1"><div class="doc">'.esc_html__('Gutenberg Block,Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
 			echo Helper::kses( $docs );
+	       	
+			// masonry style
+			$args = array('label'=>esc_html__("Masonry Style:","filter-plus"),'id' => 'masonry_style','data_label' => 'masonry_style');
+			filter_plus_checkbox_field($args);
 
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
 			'data_label' => 'template','options'=>[1,2,3,4,5,6,7],'type'=>'template' );

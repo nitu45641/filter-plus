@@ -34,6 +34,16 @@ class Wp_Filter extends \Bricks\Element {
 
 	// Set builder controls
 	public function set_controls() {
+		// masonry style
+		$this->controls['masonry_style'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Masonry Style', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
 		// templates
 		$this->controls['template'] = array(
 			'tab' => 'content',

@@ -13,6 +13,11 @@
 			$doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/wordpress/display-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 			$docs 		= '<div class="documentation mb-1"><div class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
+			
+			// masonry style
+			$args = array('label'=>esc_html__("Masonry Style:","filter-plus"),'id' => 'masonry_style','data_label' => 'masonry_style');
+			filter_plus_checkbox_field($args);
+
 			// templates
 			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'post_template',
 			'data_label' => 'template','options'=>[1,2,3],'type'=>'template' );
@@ -25,7 +30,6 @@
 			$args        = array('label'=>esc_html__("Title:","filter-plus"),'id' => 'title',
 			'placeholder'=>esc_html__("Place Title","filter-plus"),
 			'data_label' => 'title');
-			
 			filter_plus_number_input_field($args);
 
 			// Limit
