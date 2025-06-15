@@ -240,7 +240,7 @@
 							 && pagination_style == 'loadmore' ) ||
 						 pagination_style == 'numbers') {
 							// Ensure grid-sizer and gutter-sizer are present for Isotope
-							let $isotop_html = masonry_style == 'yes' ? '<div class="grid-sizer"></div><div class="gutter-sizer"></div>' : '';
+							let $isotop_html = masonry_style == 'yes' ? '<div class="grid-sizer"></div><div class="gutter-sizer"></div>' : '';							
 							prod_grid_wrap.html( $isotop_html );
 							prod_list_wrap.html('');
 						}
@@ -258,17 +258,13 @@
 								$('.sort-bar').fadeIn();
 							}
 							// product data
-							const source_grid = $(
-								'#search_products_grid'
-							).html();
-							const source_list = $(
-								'#search_products_list'
-							).html();
+							const source_grid = $('#search_products_grid').html();
+							const source_list = $('#search_products_list').html();
 							for (let i = 0; i < products.length; i++) {
 								if (source_grid) {
 									var template_grid = Handlebars.compile(source_grid);
 									var template_grid = template_grid(products[i]);
-									prod_grid_wrap.append(template_grid);
+									prod_grid_wrap.append(template_grid);																		
 								}
 
 								if (source_list) {
@@ -284,6 +280,7 @@
 						// disable tags
 						disable_items(response?.data?.disable_terms);
 					}
+
 					loadIsotope( template , masonry_style );
 					products_wrap.removeClass('loader_box');
 					

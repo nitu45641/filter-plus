@@ -228,11 +228,36 @@ class Shortcodes {
 			';
 		}else{
 			$grid_style = '
+			.grid-view-1 {
+				display: grid;
+				grid-template: auto / 24% 24% 24% 24%;
+				gap: 15px 11px;
+			}
 			.grid-view-2 {
 				display: grid;
 				grid-template: auto / 255px 255px 255px;
 				gap: 30px 15px;
 				position: relative;
+			}
+			.post-grid-view-1{
+				display: grid;
+				grid-template: auto / 32.5% 32.5% 32.5%;
+				gap: 15px 11px;
+			}
+			.grid-view-3{
+				display: grid;
+				grid-template-columns: auto auto auto;
+				column-gap: 20px;
+			}
+			.product-style-3 .vpcc-image img {
+				width: 100%;
+				height: 300px;
+				object-fit: cover;
+			}
+			.tab-item.product-style-5{
+				display: grid;
+				grid-template-columns: auto auto auto auto;
+				gap: 8px 20px;
 			}
 			';
 		}

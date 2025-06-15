@@ -3,7 +3,7 @@ Contributors: markutos987
 Donate link: https://wpbens.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Tested up to: 6.8
-Stable tag: 1.0.88
+Stable tag: 1.0.89
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -136,6 +136,9 @@ If you are familiar with WordPress interface and how to use plugins in WordPress
 
 
 == Changelog ==
+
+= 1.0.89 (June 15, 2025)=
+Added  : Masonry style
 
 = 1.0.88 (June 14, 2025)=
 Added  : Hide empty category option in product filter
