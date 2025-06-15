@@ -121,8 +121,13 @@ class Enqueue {
                 'version'   => \FilterPlus::get_version(),
                 'deps'      => ['jquery'],
             ),
-			'jquery.range-min'     => array(
+			'jquery-range-min'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/jquery.range-min.js',
+                'version' => \FilterPlus::get_version(),
+                'deps'    => ['jquery'],
+            ),
+            'filter-isotope'     => array(
+                'src'     => \FilterPlus::assets_url() . 'js/filter.isotope.pkgd.min.js',
                 'version' => \FilterPlus::get_version(),
                 'deps'    => ['jquery'],
             )

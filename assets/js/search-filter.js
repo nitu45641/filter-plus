@@ -2,10 +2,24 @@
 	'use strict';
 
 	$(document).ready(function () {
-		/*
-		 * Get Product dat from filter
-		 */
 
+		// Masonary style
+		$('.prods-grid-view').isotope({
+			// options
+			itemSelector: 'vartical-prod-card-container',
+			// layoutMode: 'fitRows',
+			percentPosition: true,
+			 masonry: {
+				// use element for option
+				columnWidth: '.grid-sizer'
+			}
+
+		});
+
+		/*
+		 * Get Product 
+		 from filter
+		 */
 		//list click/change
 		const category_li = $('.category-list li');
 		let action = 'click';
@@ -266,7 +280,7 @@
 									var template_grid = template_grid(
 										products[i]
 									);
-									prod_grid_wrap.append(template_grid);
+									prod_grid_wrap.append('<div class="grid-sizer"></div><div class="grid-item"></div>'+template_grid);
 								}
 
 								if (source_list) {
