@@ -8,12 +8,16 @@
 			array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => 'product_cat'  ) );
 			if ( !empty( $get_categories ) ) :
 				foreach($get_categories as $item): ?>
-						<li class="cat-group" 
+						<li class="cat-group parent" 
 							data-name="<?php echo esc_attr($item['name'])?>"
 							data-cat_id="<?php echo esc_attr($item['term_id'])?>"
 							data-slug="<?php echo esc_attr($item['slug'])?>"
+							data-parent="<?php  echo esc_attr($item['term_id'])?>"
 						>
-							<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($item['term_id'])?>" id="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>">
+							<input type="checkbox" class="regular-checkbox" 
+							value="<?php  echo esc_attr($item['term_id'])?>"
+							id="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>"
+							>
 							<label for="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>">
 								<?php echo esc_html($item['name']);?>
 								<?php if ($product_count == 'yes') { echo ' (' . esc_html($item['count']) . ')'; } ?>
@@ -24,6 +28,7 @@
 								<?php foreach($item['sub_categories'] as $sub): ?>
 									<li 
 										class="cat-group"
+										data-parent="<?php  echo esc_attr($item['term_id'])?>"
 										data-name="<?php echo esc_attr($sub['name'])?>"
 										data-cat_id="<?php echo esc_attr($sub['term_id'])?>"
 										data-slug="<?php echo esc_attr($sub['slug'])?>">

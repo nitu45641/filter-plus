@@ -23,10 +23,44 @@
 		
 			if (active_li.length > 0) {
 				if (active_li.is('input')) {
-					if (active_li.is(':checked') || active_li.is(':focus')) {
+					let parent = _this.data("parent");
+
+					if (active_li.is(':checked')) {
 						_this.addClass('active');
+						// If this is a parent category, select all child sub categories
+						if (_this.hasClass('parent')) {
+							let parent = _this.data('cat_id');
+							// Try to find child li elements in all .sub_categories lists
+							let child_li = $(".sub_categories li[data-parent='" + parent + "']");							
+							child_li.addClass('active');
+							child_li.find("input[type='checkbox']").prop('checked', true);
+						}
+						// sub category child category un-check
+						if (_this.data("parent")) {
+							let parent_li = $('.category-list li[data-parent="' + parent + '"]');
+							let child_cat = _this.parent("ul.sub_categories").find("li");							
+							if (child_cat.length == child_cat.find("input:checked").length) {
+								parent_li.find("input").prop("checked", true);
+								parent_li.addClass("active");
+							}
+						}
 					} else {
 						_this.removeClass('active');
+						// sub category parent category un-check
+						if (_this.hasClass("parent")) {
+							let child_li = $('.sub_categories li[data-parent="' + parent + '"]');
+							child_li.removeClass("active");
+							child_li.find("input").prop("checked", false);
+						}
+
+						// sub category child category un-check
+						if (_this.data("parent")) {
+							let parent = _this.data("parent");
+							let parent_li = $('.category-list li[data-parent="' + parent + '"]');							
+							parent_li.find("input").prop("checked", false);
+							parent_li.removeClass("active");
+						}
+						
 					}
 				} else if (active_li.is('li')) {
 					category_li.removeClass('active');
