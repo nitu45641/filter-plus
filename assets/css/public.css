@@ -10,7 +10,14 @@
 	--filter-font-color: #181b2b;
 	--filter-badge-bg: #EAEAEA;
 }
-.grid-sizer div { width: 20%; }
+
+.product-style-2{
+  	float: left;
+	width: 200px;
+}
+.product-style-2,.grid-sizer{
+	width: 33.33%;
+}
 input[type="checkbox"].regular-checkbox {
   appearance: none;
   -webkit-appearance: none;
@@ -370,11 +377,13 @@ ul.ratings {
 	text-transform: uppercase;
 	margin-right: 4px;
 }
-.grid-view-2 {
+/* .grid-view-2 {
 	display: grid;
 	grid-template: auto / 255px 255px 255px;
 	gap: 30px 15px;
-}
+	position: relative;
+} */
+
 .grid-view-3{
     display: grid;
     grid-template-columns: auto auto auto;

@@ -3,18 +3,6 @@
 
 	$(document).ready(function () {
 
-		// Masonary style
-		$('.prods-grid-view').isotope({
-			// options
-			itemSelector: 'vartical-prod-card-container',
-			// layoutMode: 'fitRows',
-			percentPosition: true,
-			 masonry: {
-				// use element for option
-				columnWidth: '.grid-sizer'
-			}
-
-		});
 
 		/*
 		 * Get Product 
@@ -250,7 +238,8 @@
 						if ( ( typeof params?.load_more === 'undefined'
 							 && pagination_style == 'loadmore' ) ||
 						 pagination_style == 'numbers') {
-							prod_grid_wrap.html('');
+							// Ensure grid-sizer and gutter-sizer are present for Isotope
+							prod_grid_wrap.html('<div class="grid-sizer"></div><div class="gutter-sizer"></div>');
 							prod_list_wrap.html('');
 						}
 
@@ -275,32 +264,41 @@
 							).html();
 							for (let i = 0; i < products.length; i++) {
 								if (source_grid) {
-									var template_grid =
-										Handlebars.compile(source_grid);
-									var template_grid = template_grid(
-										products[i]
-									);
-									prod_grid_wrap.append('<div class="grid-sizer"></div><div class="grid-item"></div>'+template_grid);
+									var template_grid = Handlebars.compile(source_grid);
+									var template_grid = template_grid(products[i]);
+									prod_grid_wrap.append(template_grid);
 								}
 
 								if (source_list) {
-									var template_list =
-										Handlebars.compile(source_list);
-									var template_list = template_list(
-										products[i]
-									);
+									var template_list = Handlebars.compile(source_list);
+									var template_list = template_list(products[i]);
 									prod_list_wrap.append(template_list);
 								}
 							}
+							
 							// pagination
 							pagination_html(response?.data?.data?.pagination_markup);
 						}
 						// disable tags
 						disable_items(response?.data?.disable_terms);
 					}
+					// Masonary style
+					$('.prods-grid-view').isotope({
+						itemSelector: '.product-style-'+template,
+						layoutMode: 'masonry',
+						// percentPosition: true,
+						// stagger: 0,
+						// horizontalOrder: true,
+						masonry: {
+							columnWidth: ".grid-sizer",
+							gutter: ".gutter-sizer"
+						}
+					});
 					products_wrap.removeClass('loader_box');
+					
 				},
 			});
+
 		}
 
 		/**
