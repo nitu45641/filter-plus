@@ -392,7 +392,7 @@ class Actions {
 	 */
 	public static function process_wp_data( $posts , $param ) {
 		$products 	= array();
-		$size  		= $param['filter_type'] == "product" ? self::product_size($param['template']) : 'full';
+		$size  		= $param['filter_type'] == "product" ?? 'full';
 		$cats  		= $param['filter_type'] == "product" ? 'product_cat' : 'category';
 		$tags 		= $param['filter_type'] == "product" ? 'product_tag' : 'post_tag';
 		if ( !empty($posts) ) {
@@ -524,18 +524,8 @@ class Actions {
 	 * @return array
 	 */
 	public static function product_size($template){
-		switch ($template) {
-			case 1:
-				$size = array(250,255);
-				break;
-			case 2:
-				$size = array(250,315);
-				break;
-			default:
-				$size = array(250,315);
-			break;
-		}
-
+		// Use a larger, square size for better Isotope rendering
+		$size = array(300, 300);
 		return $size;
 	}
 

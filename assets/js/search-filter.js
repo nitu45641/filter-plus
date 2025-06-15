@@ -50,7 +50,7 @@
 						_this.removeClass('active');
 						// sub category parent category un-check
 						if (_this.hasClass("parent")) {
-							let child_li = $('.sub_categories li[data-parent="' + parent + '"]');
+							let child_li = $('.sub_categories li[data-parent="' + parent + "']");
 							child_li.removeClass("active");
 							child_li.find("input").prop("checked", false);
 						}
@@ -283,15 +283,18 @@
 						disable_items(response?.data?.disable_terms);
 					}
 					// Masonary style
-					$('.prods-grid-view').isotope({
-						itemSelector: '.product-style-'+template,
+					var $isotopeGrid = $('.prods-grid-view');
+					if ($isotopeGrid.data('isotope')) {
+						$isotopeGrid.isotope('destroy');
+					}
+					$isotopeGrid.isotope({
+						itemSelector: '.product-style-' + template,
 						layoutMode: 'masonry',
-						// percentPosition: true,
-						// stagger: 0,
-						// horizontalOrder: true,
+						percentPosition: true,
 						masonry: {
-							columnWidth: ".grid-sizer",
+							columnWidth: '.grid-sizer',
 							gutter: ".gutter-sizer"
+
 						}
 					});
 					products_wrap.removeClass('loader_box');
