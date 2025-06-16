@@ -126,6 +126,7 @@ ul.category-list li label:hover
 	font-size: 14px;
 	font-weight: 500;
 	cursor: pointer;
+	margin: 0 10px 10px 0;
 }
 .color-item {
 	width: 30px;
@@ -163,6 +164,7 @@ ul.category-list li label:hover
 	line-height: 22px;
 	font-size: 20px;
 	cursor: pointer;
+	margin-bottom: 0;
 }
 .shop-sidebar .sidebar-input {
 	width: 100%;
@@ -744,10 +746,13 @@ ul.pagination {
 }
 /* Price Range Template 1 start*/
 .checkbox-item{
+	display: inline-flex;
+	gap: 5px;
 	cursor: pointer;
+    margin: 0 10px 10px 0;
 }
 .dropdown-box .checkbox-item input{
-	padding: 0;
+	/* padding: 0; */
 	border: none;
 }
 
