@@ -825,14 +825,20 @@ ul.pagination {
 	transition: width 1s linear;
 	z-index: 99999;
 }
+.dropdown-label{
+	margin-top: 30px !important;
+}
 .panel{
     display: flex;
     flex-direction: column;
-	margin-top: 30px;
+	margin-top: 30px !important;
 }
 .rating-section .panel,
 .radio-wrap .panel{
-	margin-top: 0;
+	margin-top: 0 !important;
+}
+.param-box-3{
+	margin-top: 10px !important;
 }
 .shopContainer {
 	display: flex;
