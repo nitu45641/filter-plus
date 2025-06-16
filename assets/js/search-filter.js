@@ -64,8 +64,11 @@
 						}
 						
 					}
-				} else if (active_li.is('li')) {
+				} 
+				else if (active_li.is('li')) {
 					category_li.removeClass('active');
+					console.log(!active_li.hasClass('active'));
+					
 					if (!active_li.hasClass('active')) {
 						_this.addClass('active');
 					} else {
@@ -73,9 +76,6 @@
 					}
 				}
 			}
-			// else {
-			// 	_this.addClass('active');
-			// }
 
 			get_products();
 			// reset block
@@ -498,7 +498,7 @@
 				params.min = prices[0];
 				params.max = prices[1];
 				params.price_range =
-					price_range.attr('data-action') == 'true' ? true : false;
+				price_range.attr('data-action') == 'true' ? true : false;
 			}
 
 			return params;
@@ -587,7 +587,7 @@
 				$('ul.ratings').attr('id', $this.data('star'));
 				get_products();
 				// reset block
-				reset_block($this, $this.parents('.ratings'));
+				reset_block($this, $this.closest('.panel'));
 			});
 		}
 
@@ -618,9 +618,8 @@
 
 		function section_reset($parent, $this, clear_all = false, action = '') {
 			const reset_button = $this.find('.reset');
-
-			if ($this.hasClass('ratings')) {
-				$this.attr('id', '');
+			if ($this.find('ul').hasClass('ratings')) {
+				$this.find('ul').attr('id', '');
 				$('.ratings li').removeClass('rating_disable');
 				$('.rating-label').html('');
 			}

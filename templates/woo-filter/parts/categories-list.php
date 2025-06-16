@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				foreach($get_categories as $item): 
 				?>
 				<li 
+					id="<?php echo 'cat_li_parent_' . esc_attr($item['term_id'])?>"
 					data-name="<?php echo esc_attr($item['name'])?>"
 					data-cat_id="<?php echo esc_attr($item['term_id'])?>"
 					data-slug="<?php echo esc_attr($item['slug'])?>"
@@ -22,6 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 						<ul class="sub_categories">
 							<?php foreach($item['sub_categories'] as $sub): ?>
 								<li 
+									id="<?php  echo esc_attr("cat_li_child_".$sub['term_id'])?>"
 									data-name="<?php echo esc_attr($sub['name'])?>"
 									data-cat_id="<?php echo esc_attr($sub['term_id'])?>"
 									data-slug="<?php echo esc_attr($sub['slug'])?>">

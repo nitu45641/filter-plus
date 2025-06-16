@@ -132,9 +132,11 @@ ul.category-list li label:hover
 	-webkit-transition: all 0.4s ease-in-out;
 }
 .shop-sidebar .sidebar-row {
-	color: var(--filter-font-color);
-	margin-bottom: 40px;
-	position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--filter-font-color);
+    margin-bottom: 40px;
+    position: relative;
 }
 .shop-sidebar .sidebar-label {
 	font-weight: 600;
@@ -326,12 +328,10 @@ ul.ratings,.dropdown-box {
 	border-radius: 6px;
 	font-size: 14px;
     color: #0d1218;
-}
-ul.ratings {
-	margin: 0 0 45px;
+	margin-bottom: 5px;
 	list-style: none;
-	margin: 0;
 }
+
 .ratings li {
 	display: flex;
 	flex-wrap: wrap;
@@ -579,16 +579,15 @@ ul.pagination {
 	fill: #fff;
 }
 /* Reset */
-
-.reset {
-	float: right;
+.sidebar-row .reset{
+	margin-left: auto;
 	cursor: pointer;
-	margin-top: 10px;
 	line-height: 18px;
 	font-size: 13px;
 	color: var(--filter-reset-color, rgb(158, 158, 158));
 	border-bottom: 1px solid var(--filter-reset-border-color, rgb(158, 158, 158));
 }
+
 .selected-filter{
 	display: inline-flex;
 	flex-wrap: wrap;
@@ -791,8 +790,8 @@ ul.pagination {
 	z-index: 99999;
 }
 .panel{
-	box-shadow: none;
-	-webkit-box-shadow: none !important;
+    display: flex;
+    flex-direction: column;
 }
 .shopContainer {
 	display: flex;
@@ -1656,10 +1655,6 @@ ul.sub_categories{
 
 .color-item.tooltips {
 	position: relative;
-}
-
-.param-box.color-meta {
-	margin-top: 40px;
 }
 
 .color-item.tooltips:hover:after {
