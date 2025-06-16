@@ -68,6 +68,25 @@ input[type="checkbox"].regular-checkbox:checked::after {
 	display: flex;
 }
 
+.sort-bar-left .sorting-bar {
+	background-color: inherit;
+	padding: 3px;
+	height: 30px;
+	width: 30px;
+	font-size: 16px;
+	margin-right: 10px;
+	border-radius: 5px;
+	color: #1164cb;
+	border: 1px solid var(--filter-primary-color,#1164cb);
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+	align-items: center;
+}
+.sort-bar-left .sorting-bar:hover {
+	background-color: #fff;
+}
+
 .sort-bar-right div {
 	display: grid;
 	grid-template-columns: 3fr 9fr;
@@ -135,14 +154,13 @@ ul.category-list li label:hover
     display: flex;
     flex-direction: column;
     color: var(--filter-font-color);
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     position: relative;
 }
 .shop-sidebar .sidebar-label {
 	font-weight: 600;
 	line-height: 22px;
 	font-size: 20px;
-	margin-bottom: 25px;
 	cursor: pointer;
 }
 .shop-sidebar .sidebar-input {
@@ -626,6 +644,12 @@ ul.pagination {
     color: #2d73e7;
 }
 
+.shop-sidebar .sidebar-label{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 /* Add to cart css */
 .wheel{
 	fill: var(--filter-secondary-color,'#fff');
@@ -792,6 +816,11 @@ ul.pagination {
 .panel{
     display: flex;
     flex-direction: column;
+	margin-top: 30px;
+}
+.rating-section .panel,
+.radio-wrap .panel{
+	margin-top: 0;
 }
 .shopContainer {
 	display: flex;
@@ -889,8 +918,8 @@ a {
 	display: flex;
 	flex-direction: var(--filter-param-box-direction,row);
 	flex-wrap: wrap;
-	grid-column-gap: 10px;
 	grid-row-gap: 10px;
+	margin-top: 30px;
 }
 .radio-wrap .radio-item.color-item {
 	border-radius: 40px;
@@ -1618,12 +1647,28 @@ a.added_to_cart.wc-forward {
 	color: #e3a405 !important;
 }
 
-.down-arrow,
-.up-arrow {
-	display: inline-block;
-	position: absolute;
-	top: 2px;
-	right: 5px;
+.heading-wrap {
+	cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-label {
+    margin: 0;
+    font-size: 16px; /* adjust as needed */
+}
+
+.arrows {
+    display: flex;
+    gap: 5px;
+}
+
+.up-arrow,
+.down-arrow {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .down-arrow svg,

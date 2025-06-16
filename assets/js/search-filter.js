@@ -820,16 +820,21 @@
 		 * Slider
 		 */
 		$('.down-arrow').css('display', 'none');
-		sidebar_slider($('.sidebar-label'));
+		sidebar_slider($('.heading-wrap'));
 		sidebar_slider($('.dropdown-label'));
 		function sidebar_slider($handle) {
 			$handle.on('click', function () {
 				const _this = $(this);
 
-				_this.siblings('.down-arrow').slideToggle();
-				_this.siblings('.up-arrow').slideToggle();
+				// Find the closest heading-wrap and toggle arrows and panel
+				const headingWrap = _this.closest('.heading-wrap');
+				const downArrow = headingWrap.find('.down-arrow');
+				const upArrow = headingWrap.find('.up-arrow');
+				const panel = headingWrap.parent().find('.panel').first();
 
-				_this.siblings('.panel').slideToggle(700, function () {
+				downArrow.slideToggle();
+				upArrow.slideToggle();
+				panel.slideToggle(700, function () {
 					if (_this.hasClass('closed')) {
 						_this.removeClass('closed').addClass('open');
 					} else {

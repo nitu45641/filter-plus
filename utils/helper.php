@@ -376,6 +376,22 @@ class Helper {
 		return $data;
 	}
 
+	public static function size_attribut() {	
+		$attrs      =  self::get_attributes( 'pa_size' );
+		$title      = ! empty( $size_label ) ? $size_label : esc_html__( 'Best Match Item', 'filter-plus' );
+		$get_attr   = array();
+		foreach ( $attrs['terms'] as $key => $value ) {
+			if ( ! empty( $value->term_id ) ) {
+				$get_attr[ $key ]  = $value->term_id;
+			}
+		}
+
+		return array(
+			'get_attr' 	=> $get_attr,
+			'label' 	=> $title,
+		);
+	}
+
 	/**
 	 * Get categories
 	 *
