@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="sidebar-row radio-wrap">
 	<h4 class="sidebar-label"><?php echo esc_html($title); ?></h4>
-	<div class="param-box">
+	<div class="param-box param-box-<?php echo esc_attr($template);?>">
 		<?php
 			foreach ($get_attr as $key => $term_id) {
 				if (!empty( get_term( $term_id ) ) ) {

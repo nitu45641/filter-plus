@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	?>
 	<h4 class="sidebar-label"><?php echo esc_html($title);?></h4>
 	
-	<ul class="category-list">
+	<ul class="category-list panel">
 		<?php 
 			$get_categories = \FilterPlus\Utils\Helper::get_categories($categories, '' , 
 			array('taxonomy'=> 'category') );

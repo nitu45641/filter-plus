@@ -825,19 +825,21 @@ ul.pagination {
 	transition: width 1s linear;
 	z-index: 99999;
 }
-.dropdown-label{
+.dropdown-label,.rating-wrap{
 	margin-top: 30px !important;
+}
+.checkbox-item-1{
+	margin: 0 10px 10px 0;
 }
 .panel{
     display: flex;
     flex-direction: column;
 	margin-top: 30px !important;
 }
-.rating-section .panel,
 .radio-wrap .panel{
 	margin-top: 0 !important;
 }
-.param-box-3{
+.panel-2,.panel-3{
 	margin-top: 10px !important;
 }
 .shopContainer {
@@ -936,8 +938,12 @@ a {
 	display: flex;
 	flex-direction: var(--filter-param-box-direction,row);
 	flex-wrap: wrap;
-	grid-row-gap: 10px;
+	grid-row-gap: 15px;
 	margin-top: 30px;
+}
+.param-box-6 .radio-item{
+	padding: 0;
+    margin: 0;
 }
 .radio-wrap .radio-item.color-item {
 	border-radius: 40px;
@@ -953,8 +959,10 @@ a {
 	border-color: transparent !important;
 	outline: 1px solid #d7d7d7 !important;
 }
-
-
+.panel.rating-section,
+.panel-6,.panel-7{
+	margin-top: 10px !important;
+}
 .shop-sidebar {
 	width: 280px;
 	padding: 0 15px;

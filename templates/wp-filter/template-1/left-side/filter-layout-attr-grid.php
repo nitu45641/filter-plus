@@ -8,7 +8,7 @@ foreach ($attributes as $key => $item ) {
 ?>
 <div class="sidebar-row radio-wrap">
 	<h4 class="sidebar-label"><?php echo esc_html__('Filter By ','filter-plus') .esc_html($get_attr['label']); ?></h4>
-	<div class="param-box">
+	<div class="param-box param-box-<?php echo esc_attr($template);?>">
 		<?php
 			foreach ($get_attr['terms'] as $key => $term) {
 				if (!empty( $term ) ) {
