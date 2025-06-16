@@ -828,7 +828,7 @@ ul.pagination {
 .dropdown-label,.rating-wrap{
 	margin-top: 30px !important;
 }
-.checkbox-item-1{
+.checkbox-item-1,.checkbox-item-5,.checkbox-item-4{
 	margin: 0 10px 10px 0;
 }
 .panel{
@@ -959,8 +959,7 @@ a {
 	border-color: transparent !important;
 	outline: 1px solid #d7d7d7 !important;
 }
-.panel.rating-section,
-.panel-6,.panel-7{
+.panel-6,.panel-7,.panel-5{
 	margin-top: 10px !important;
 }
 .shop-sidebar {
