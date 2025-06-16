@@ -746,16 +746,17 @@ ul.pagination {
 }
 /* Price Range Template 1 start*/
 .checkbox-item{
+	cursor: pointer;
+}
+.checkbox-item-2{
 	display: inline-flex;
 	gap: 5px;
 	cursor: pointer;
     margin: 0 10px 10px 0;
 }
 .dropdown-box .checkbox-item input{
-	/* padding: 0; */
 	border: none;
 }
-
 .post-tax-1{
 	padding: 5px;
 	display: flex;

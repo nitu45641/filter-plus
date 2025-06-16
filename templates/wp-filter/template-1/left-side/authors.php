@@ -8,7 +8,7 @@
 				return;
 			}
 		?>
-        <label class="checkbox-item author">
+        <label class="checkbox-item checkbox-item-<?php echo esc_html($template);?> author">
             <input type="checkbox" data-author_text="<?php echo esc_html($author);?>"
             value="<?php echo esc_attr($key);?>"/>
             <?php echo esc_html($author);?>

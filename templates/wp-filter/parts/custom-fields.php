@@ -31,7 +31,7 @@
                 if ( $item['style'] !== 'select') {
                     foreach ($field_list as $key => $field) {
                         ?>
-                            <label class="checkbox-item custom-field">
+                            <label class="checkbox-item checkbox-item-<?php echo esc_html($template);?> custom-field">
                                 <input 
                                 name="custom-field"
                                 type="<?php echo esc_attr($item['style'])?>" 
