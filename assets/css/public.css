@@ -151,6 +151,7 @@ ul.category-list li label:hover
 	-webkit-transition: all 0.4s ease-in-out;
 }
 .shop-sidebar .sidebar-row {
+	min-width: 250px;
     display: flex;
     flex-direction: column;
     color: var(--filter-font-color);
@@ -169,6 +170,11 @@ ul.category-list li label:hover
 	font-size: 14px;
 	padding: 10px 20px 10px 20px;
 	border-radius: 4px;
+}
+.price-range-area {
+    min-width: 220px; /* or your preferred width */
+    width: 100%;
+    box-sizing: border-box;
 }
 .price-range-area h4.sidebar-label{
 	margin-bottom: 40px;

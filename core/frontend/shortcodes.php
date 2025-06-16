@@ -200,6 +200,9 @@ class Shortcodes {
 		else if( $template == "5" ){
 			$hover_color = $secondary_color = '#EB662B';
 		}
+		else if ( $template == "6" || $template == "7" ) {
+			$price_range = '#333'; 
+		}
 
 		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();
 		
@@ -211,7 +214,7 @@ class Shortcodes {
 		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
 		$filter_border_color = 'rgb(225, 223, 223)';
 		$filter_font_color = '#333';
-
+	
 		if ($args['masonry_style'] == 'yes' ) {
 			$grid_style = '
 			.product-style{
@@ -270,7 +273,6 @@ class Shortcodes {
 			--filter-cart-content: '.$cart_content.';
 			--filter-price-range : '.$price_range.';
 			--filter-loader-color : '.$loader_color.';
-			--filter-price-range: '.$secondary_color.';
 			--filter-border-color: '.$filter_border_color.';
 			--filter-font-color: '.$filter_font_color.';
 			--filter-header-border: '.$primary_color.';
