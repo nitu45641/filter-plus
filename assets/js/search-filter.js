@@ -832,15 +832,28 @@
 				const upArrow = headingWrap.find('.up-arrow');
 				const panel = headingWrap.parent().find('.panel').first();
 
-				downArrow.slideToggle();
-				upArrow.slideToggle();
-				panel.slideToggle(700, function () {
-					if (_this.hasClass('closed')) {
-						_this.removeClass('closed').addClass('open');
-					} else {
-						_this.removeClass('open').addClass('closed');
-					}
-				});
+			// Always hide both arrows initially
+			downArrow.hide();
+			upArrow.hide();
+
+			downArrow.slideToggle();
+			upArrow.slideToggle();
+			// Show/hide arrows based on open/close state
+			if (_this.hasClass('closed')) {
+				downArrow.show();
+				upArrow.hide();
+			} else {
+				downArrow.hide();
+				upArrow.show();
+			}
+
+			panel.slideToggle(700, function () {
+				if (_this.hasClass('closed')) {
+					_this.removeClass('closed').addClass('open');
+				} else {
+					_this.removeClass('open').addClass('closed');
+				}
+			});
 			});
 		}
 
