@@ -180,7 +180,7 @@ class Shortcodes {
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
 			$secondary_color = $primary_color = '#17c6aa'; 
-			$price_range = '#2d0607'; 
+			$price_range = '#17c6aa'; 
 			$cart_content = '#080808'; 
 			$tag_color = '#ff1f25';
 		}

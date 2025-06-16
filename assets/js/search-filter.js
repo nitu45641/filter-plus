@@ -819,19 +819,19 @@
 		/**
 		 * Slider
 		 */
-		$('.down-arrow').css('display', 'none');
+		$('.up-arrow').css('display', 'none');
 		sidebar_slider($('.heading-wrap'));
 		sidebar_slider($('.dropdown-label'));
 		function sidebar_slider($handle) {
 			$handle.on('click', function () {
-				const _this = $(this);
+			const _this = $(this);
 
-				// Find the closest heading-wrap and toggle arrows and panel
-				const headingWrap = _this.closest('.heading-wrap');
-				const downArrow = headingWrap.find('.down-arrow');
-				const upArrow = headingWrap.find('.up-arrow');
-				const panel = headingWrap.parent().find('.panel').first();
-
+			// Find the closest heading-wrap and toggle arrows and panel
+			const headingWrap = _this.closest('.heading-wrap');
+			const downArrow = headingWrap.find('.down-arrow');
+			const upArrow = headingWrap.find('.up-arrow');
+			const panel = headingWrap.parent().find('.panel').first();
+			
 			// Always hide both arrows initially
 			downArrow.hide();
 			upArrow.hide();
