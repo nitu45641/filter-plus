@@ -1,8 +1,5 @@
-<?php
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-?>
 <script id="search_products_grid" type="text/x-handlebars-template">
 	<div class="product-style product-style-<?php echo intval( $template );?>">
 		<div class="vartical-prod-card-container">

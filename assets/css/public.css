@@ -874,7 +874,7 @@ a {
 	height: 20px;
 	display: flex;
     align-items: center;
-	margin: 9px;
+    margin: 9px 3px 9px 9px;
 }
 .cart-icon-path {
 	fill: var(--filter-cart-icon-color,'#fff') !important;
@@ -1669,9 +1669,11 @@ a.added_to_cart.wc-forward {
 
 .woocommerce .star-rating::before,
 .woocommerce .star-rating span::before {
-	color: #e3a405 !important;
+	color: var(--filter-rating-color,#e3a405) !important;
 }
-
+.woocommerce .woocommerce-product-rating .star-rating{
+	color: var(--filter-rating-size,14px) !important;
+}
 .heading-wrap {
 	cursor: pointer;
     display: flex;

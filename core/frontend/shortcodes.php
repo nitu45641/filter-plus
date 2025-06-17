@@ -200,7 +200,12 @@ class Shortcodes {
 		else if( $template == "5" ){
 			$hover_color = $secondary_color = '#EB662B';
 		}
-		else if ( $template == "6" || $template == "7" ) {
+		else if ( $template == "6" ) {
+			$price_range = '#333'; 
+			$cart_content = $rating_color = '#089ec7'; 
+			$rating_size = '.875em'; 
+		}
+		else if ( $template == "7" ) {
 			$price_range = '#333'; 
 		}
 
@@ -214,7 +219,7 @@ class Shortcodes {
 		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
 		$filter_border_color = 'rgb(225, 223, 223)';
 		$filter_font_color = '#333';
-	
+
 		if ($args['masonry_style'] == 'yes' ) {
 			$grid_style = '
 			.product-style{
@@ -242,9 +247,9 @@ class Shortcodes {
 				gap: 30px 15px;
 				position: relative;
 			}
-			.post-grid-view-1{
+			.post-grid-view-1,.grid-view-6{
 				display: grid;
-				grid-template: auto / 32.5% 32.5% 32.5%;
+				grid-template: auto / 32.5% 32.5% 32%;
 				gap: 15px 11px;
 			}
 			.grid-view-3{
@@ -266,6 +271,8 @@ class Shortcodes {
 		}
 		$filter_custom_css = '
 		:root {
+			--filter-rating-color: '.$rating_color.';
+			--filter-rating-size: '.$rating_size.';
 			--filter-hover-color: '.$hover_color.';
 			--filter-primary-color: '.$primary_color.';
 			--filter-secondary-color : '.$secondary_color.';
