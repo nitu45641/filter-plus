@@ -345,6 +345,8 @@ class Actions {
 				$products[$key]['type']    			= $product_instance->get_type();
 				$products[$key]['rating_status']    = $product_instance->get_average_rating() > 0 ? true: false;
 				$products[$key]['template']    		= $param['template'];
+				$products[$key]['on_sale']    		= $product_instance->is_on_sale();
+				$products[$key]['on_sale_text']    	= esc_html__('Sale!', 'filter-plus');
 			endforeach;
 		}
 
