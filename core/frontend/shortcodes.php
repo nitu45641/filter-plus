@@ -174,9 +174,9 @@ class Shortcodes {
 		$blog_header = "#1164cb"; $cart_icon =  '#fff'; 
 		$cart_content = '#2d73e7';$price_range = '#2d73e7';
 		$param_direction = 'row';
-		$tab_pan_item_color = '#fff';$loading_icon_position = 'absolute';
+		$tab_pan_item_color = '#fff';
 		$hover_color = '#222';
-		
+		$rating_color = '#FFCA27'; $rating_size = '13px';
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
 			$secondary_color = $primary_color = '#17c6aa'; 
@@ -251,6 +251,10 @@ class Shortcodes {
 				display: grid;
 				grid-template: auto / 32.5% 32.5% 32%;
 				gap: 15px 11px;
+			}
+			.product-style-6 .vpcc-image img{
+				width: 255px;
+				height: 315px;
 			}
 			.grid-view-3{
 				display: grid;
