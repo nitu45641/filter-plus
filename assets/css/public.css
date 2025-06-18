@@ -107,6 +107,7 @@ ul.category-list {
 	padding-left: 0;
 	list-style-type: none;
 	cursor: pointer;
+	margin: 0;
 }
 ul.category-list li.active,
 ul.category-list li:hover,
@@ -336,6 +337,7 @@ ul.category-list li label:hover
 ul.sub_categories {
 	list-style-type: none;
 	cursor: pointer;
+	margin: 0;
 }
 
 ul.category-list li.active,
