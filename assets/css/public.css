@@ -866,7 +866,6 @@ a {
 	height: 20px;
 	display: flex;
     align-items: center;
-    margin: 9px 3px 9px 9px;
 }
 .cart-icon-path {
 	fill: var(--filter-cart-icon-color,'#fff') !important;

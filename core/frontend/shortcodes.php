@@ -252,6 +252,12 @@ class Shortcodes {
 				grid-template: auto / 32.5% 32.5% 32%;
 				gap: 15px 11px;
 			}
+			.grid-view-7{
+				display: grid;
+				grid-template: auto / auto auto auto auto;
+				gap: 20px;
+				position: relative;
+			}
 			.product-style-6 .vpcc-image img{
 				width: 255px;
 				height: 315px;
