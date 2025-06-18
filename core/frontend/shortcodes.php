@@ -254,8 +254,7 @@ class Shortcodes {
 			}
 			.grid-view-7{
 				display: grid;
-				grid-template: auto / auto auto auto auto;
-				gap: 20px;
+				grid-template-columns: auto auto auto auto;
 				position: relative;
 			}
 			.product-style-6 .vpcc-image img{

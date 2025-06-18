@@ -394,7 +394,7 @@ class Actions {
 	 */
 	public static function process_wp_data( $posts , $param ) {
 		$products 	= array();
-		$size  		= $param['filter_type'] == "product" ?? 'full';
+		$size  		= $param['filter_type'] == "product" ? self::product_size( $param['template'] ) : 'full';
 		$cats  		= $param['filter_type'] == "product" ? 'product_cat' : 'category';
 		$tags 		= $param['filter_type'] == "product" ? 'product_tag' : 'post_tag';
 		if ( !empty($posts) ) {
@@ -475,7 +475,9 @@ class Actions {
 		$average      = $product_instance->get_average_rating();
 		$rating_count = $product_instance->get_rating_count();
 		$review_count = $product_instance->get_review_count();
-
+		if ( $rating_count == 0 ) {
+			return '';
+		}
 		$rating = '<div class="rating"><div class="woocommerce">';
 		if ( $rating_count > 0 ) :
 		$rating .= '<div class="woocommerce-product-rating">';
@@ -528,6 +530,9 @@ class Actions {
 	public static function product_size($template){
 		// Use a larger, square size for better Isotope rendering
 		$size = array(300, 300);
+		if ( $template == '7') {
+			$size = array(190, 190);
+		}
 		return $size;
 	}
 
