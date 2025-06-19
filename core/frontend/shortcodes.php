@@ -177,6 +177,8 @@ class Shortcodes {
 		$tab_pan_item_color = '#fff';
 		$hover_color = '#222';
 		$rating_color = '#FFCA27'; $rating_size = '13px';
+		$badge_bg = '#E7272D'; $price_color = '#e3106e';
+
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
 			$secondary_color = $primary_color = '#17c6aa'; 
@@ -207,6 +209,9 @@ class Shortcodes {
 		}
 		else if ( $template == "7" ) {
 			$price_range = '#333'; 
+			$price_color =  $badge_bg = '#b3af54'; 
+			$filter_border_color = '#eaeaea';
+			$rating_color = '#007bff'; 
 		}
 
 		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();
@@ -280,7 +285,9 @@ class Shortcodes {
 		}
 		$filter_custom_css = '
 		:root {
+			--filter-price-color: '.$price_color.';
 			--filter-rating-color: '.$rating_color.';
+			--filter-badge-bg: '.$badge_bg.';
 			--filter-rating-size: '.$rating_size.';
 			--filter-hover-color: '.$hover_color.';
 			--filter-primary-color: '.$primary_color.';
