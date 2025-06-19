@@ -261,6 +261,8 @@ class Shortcodes {
 				display: grid;
 				grid-template-columns: auto auto auto auto;
 				position: relative;
+				column-gap: 20px;
+				row-gap: 25px;
 			}
 			.product-style-6 .vpcc-image img{
 				width: 255px;
