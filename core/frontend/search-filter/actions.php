@@ -531,7 +531,7 @@ class Actions {
 		// Use a larger, square size for better Isotope rendering
 		$size = array(300, 300);
 		if ( $template == '7') {
-			$size = array(190, 190);
+			$size = array(200, 200);
 		}
 		return $size;
 	}

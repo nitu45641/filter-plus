@@ -679,7 +679,7 @@ ul.pagination {
     top: 5px;
 }
 .cart_button-1.loading::after {
-    left: 5px;
+    left: 9px !important;
 }
 .add_to_cart_button.added::after{
     content: url(../../assets/images/check-mark.svg);
