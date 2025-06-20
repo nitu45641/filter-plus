@@ -198,7 +198,7 @@
 		function get_products(params = {}) {			
 			let products_wrap 	= $('.products-wrap');
 			let prod_grid_wrap 	= $('.prods-grid-view');
-			let prod_list_wrap 	= $('.wp-list-view,.prods-list-view');
+			let prod_list_wrap 	= $('.prods-list-view');
 			let message_info 		= $('.message');
 			let pagination_style 	= $('#shopContainer').data('pagination_style');
 			let masonry_style 		= $('#shopContainer').data('masonry_style');
@@ -244,6 +244,7 @@
 							prod_grid_wrap.html( $isotop_html );
 							prod_list_wrap.html('');
 						}
+						
 						message_info.html('');
 						if (response?.data?.message !== '') {
 							$('.sort-bar').fadeOut();
