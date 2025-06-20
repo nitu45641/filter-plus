@@ -360,9 +360,9 @@ class Actions {
 	 */
 	public static function filter_item_description( $id  ) {
 		$read_more = '<a href="'.get_permalink($id).'" class="wp-read-more">'.esc_html__('[...]','filter-plus').'</a>';
-		$desc = wp_trim_words( get_post_field('post_excerpt', $id  ) , 30 , $read_more );
+		$desc = wp_trim_words( get_post_field('post_excerpt', $id  ) , 12 , $read_more );
 		if ($desc == '' ) {
-			$desc = wp_trim_words( get_post_field('post_content', $id  ) , 30 , 
+			$desc = wp_trim_words( get_post_field('post_content', $id  ) , 12 , 
 			$read_more );
 		}
 
@@ -370,7 +370,7 @@ class Actions {
 	}
 
 	public static function filter_item_author( $post , $post_author ) {
-		$by = esc_html__('By','filter-plus').' ';
+		$author = '';
 		if ( $post_author == 'yes' ) {
 			if ( get_the_author_meta( 'first_name',$post->post_author ) == '' ) {
 				$author_name =  get_the_author_meta( 'display_name',$post->post_author );
@@ -378,10 +378,8 @@ class Actions {
 				$author_name =  get_the_author_meta( 'first_name',$post->post_author ) .' '. get_the_author_meta( 'last_name', $post->post_author );;
 			}
 			
-			$author = $by . $author_name;
+			$author = $author_name;
 
-		}else{
-			$author = '';
 		}
 
 		return $author;

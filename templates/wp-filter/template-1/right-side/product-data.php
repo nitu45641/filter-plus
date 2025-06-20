@@ -4,33 +4,31 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 
 <script id="search_products_list" type="text/x-handlebars-template">
-	<div class="horizontal-prod-card-container horizontal-wp-card">
-		<div class="hpcc-image">
-			{{{ post_image }}}
-		</div>
-		<div class="hpcc-content">
-			<div class="filter-wp-title">
-				<a href="{{post_permalink}}" target="_blank" class="hpcc-name"><h2>{{{ post_title }}}</h2></a>
-			</div>
-			{{#if author}}
-			<a href="{{posts_author_link}}" target="_blank" class="author">{{author}}</a>
-			{{/if}}
-			<div class="hpcc-description">
-				{{{ post_description }}}
-			</div>
-			<div>
-				<div class="cats mt-1">
-					{{#each categories }}
-						<a href="{{link}}" target="_blank" class="filter-tag">{{ name }}</a>
-					{{/each}}
-				</div>
-				<div class="tags mt-1">
+	<div class="horizontal-wp-card">
+		<a href="{{post_permalink}}" target="_blank">
+			<div class="hpcc-image">
+				{{{ post_image }}}
+				<div class="tags-section">
 					{{#each tags }}
-						<a href="{{link}}" target="_blank" class="filter-tag">{{ name }}</a>
+						<a href="{{link}}" target="_blank" class="badge">{{ name }}</a>
 					{{/each}}
 				</div>
 			</div>
-		</div>
-	</div>
+			<div class="hpcc-content">
+				<div class="filter-wp-title">
+					<a href="{{post_permalink}}" target="_blank" class="hpcc-name"><h2>{{{ post_title }}}</h2></a>
+				</div>
+				{{#if author}}
+				<div class="meta-section">
+					<span><?php echo esc_html__('By','filter-plus')?></span>
+					<a href="{{posts_author_link}}" target="_blank" class="author">{{author}}</a>
+				</div>
+				{{/if}}
+				<div class="hpcc-description">
+					{{{ post_description }}}
+				</div>
+			</div>
+		</a>
+	</div>	
 </script>
 

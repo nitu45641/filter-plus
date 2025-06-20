@@ -9,6 +9,7 @@
 	--filter-header-border: #2d73e7;
 	--filter-font-color: #181b2b;
 	--filter-badge-bg: #EAEAEA;
+	--filter-lns-unit: 0.5rem;
 }
 
 input[type="checkbox"].regular-checkbox {
@@ -479,6 +480,7 @@ ul.ratings,.dropdown-box {
 	grid-template-columns: 200px auto;
 }
 .hpcc-image {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -830,7 +832,10 @@ ul.pagination {
 	margin-top: 30px !important;
 }
 .checkbox-item-1,.checkbox-item-5,.checkbox-item-4{
-	margin: 0 10px 10px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 .panel{
     display: flex;
@@ -1257,10 +1262,6 @@ a {
 	-webkit-box-shadow: 0 0 6px 0 rgba(1, 1, 1, 0.1);
 	box-shadow: 0 0 6px 0 rgba(1, 1, 1, 0.1);
 }
-.hpcc-content {
-	padding: 0 20px;
-}
-
 .hpcc-rating {
 	margin-bottom: 10px;
 }
@@ -1816,8 +1817,14 @@ ul.sub_categories{
 #document_svg .document_svg{
 	fill: #ff0000;
 }
-.author{
-	color:#080808
+.meta-section{
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.meta-section a{
+	color: var(--filter-meta-color, #080808);
 }
 .blog-content-2{
 	padding: 30px;
@@ -1841,6 +1848,36 @@ ul.sub_categories{
 }
 .product-tag a,.product-tag a:hover{
     color: #fff;
+}
+.post-grid-view-1 .horizontal-wp-card{
+	border-radius: calc(2 * var(--filter-lns-unit, 8px));
+    border: 1px solid #eee;	
+    box-shadow: inset 0 0 0 1px var(--lns-color-border,hsla(225.5, 57%, 10%, 0.14));
+    height: 100%;
+}
+.post-grid-view-1 .horizontal-wp-card img {
+    border-radius: calc(2 * var(--filter-lns-unit, 8px));
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.post-grid-view-1 .horizontal-wp-card:hover{
+	border: 2px solid var(--filter-border-hover-color, hsla(242, 88.4%, 66.3%, 0.8));
+}
+.post-grid-view-1 .filter-wp-title > a > h2{
+	font-size: 14px;
+	margin: 20px 0 10px 0;
+}
+.filter-wp-title > a > h2:hover {
+    color: var(--filter-hover-color, #1164cb) !important;
+}
+.filter-wp-title > a > h2{
+    color: #000000;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all ease 0.3s;
+    margin-bottom: 10px;
 }
 @media screen and (max-width: 1024px) {
 	.grid-view-2 {
