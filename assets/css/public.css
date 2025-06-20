@@ -11,7 +11,22 @@
 	--filter-badge-bg: #EAEAEA;
 	--filter-lns-unit: 0.5rem;
 }
-
+.badge{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 11px;
+    line-height: 18px;
+    margin-bottom: 5px;
+    background: #e3106e;
+    padding: 0 7px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-right: 5px;
+    border-radius: 36px;
+}
 input[type="checkbox"].regular-checkbox {
   appearance: none;
   -webkit-appearance: none;
@@ -120,7 +135,6 @@ input[type="checkbox"].regular-checkbox:checked::after {
 ul.category-list {
 	padding-left: 0;
 	list-style-type: none;
-	cursor: pointer;
 	margin: 0;
 }
 ul.category-list li.active,
@@ -131,6 +145,7 @@ ul.category-list li label:hover
 	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
 	transition: all 0.10s ease-in-out;
+	cursor: pointer;
 }
 .radio-wrap .radio-item {
 	display: inline-flex;
@@ -354,15 +369,6 @@ ul.sub_categories {
 	margin: 0;
 }
 
-ul.category-list li.active,
-ul.category-list li:hover,
-ul.category-list li.active label,
-ul.category-list li label:hover 
-{
-	font-weight: bold;
-	color: var(--filter-secondary-color,#2d73e7) !important;
-}
-
 ul.ratings,.dropdown-box {
 	cursor: pointer;
 	padding: 15px;
@@ -514,10 +520,15 @@ ul.ratings,.dropdown-box {
 }
 .hpcc-description {
 	border-top: 1px solid rgba(0,0,0,.05);;
-	padding: 10px 0;
+	padding: 10px 0 25px 0;
 	margin-top: 15px;
 	color: #555;
 	font-weight: 300;
+	font-size: 14px;
+}
+.wp-read-more{
+	margin-left: 5px;
+	color: var(--filter-readmore-color,hsla(242, 88.4%, 66.3%, 0.8));
 }
 .post-border{
 	border-top: 1px solid rgba(0,0,0,.05);
