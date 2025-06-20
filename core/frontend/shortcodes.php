@@ -103,6 +103,7 @@ class Shortcodes {
 			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?>" id="shopContainer"
 				data-pagination_style="<?php echo esc_html($pagination_style)?>"
 				data-filter_type='<?php echo esc_html($filtering_type)?>'
+				data-masonry_style="<?php echo esc_attr($masonry_style)?>"
 				data-limit="<?php echo intval($no_of_items)?>"
 				data-template="<?php echo esc_html($template)?>"
 				data-product_categories="<?php echo esc_html($post_categories) ?>"

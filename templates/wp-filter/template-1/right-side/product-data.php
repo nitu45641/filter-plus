@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 
 <script id="search_products_list" type="text/x-handlebars-template">
-	<div class="horizontal-wp-card">
+<div class="product-style-<?php echo esc_attr($template);?> horizontal-wp-card">
 		<div class="hpcc-image">
 			<a href="{{post_permalink}}" target="_blank" class="hpcc-name">
 				{{{ post_image }}}

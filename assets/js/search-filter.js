@@ -237,14 +237,13 @@
 						$('.pages').html('').html(products.length);
 						// clear product data
 						if ( ( typeof params?.load_more === 'undefined'
-							 && pagination_style == 'loadmore' ) ||
-						 pagination_style == 'numbers') {
+								&& pagination_style == 'loadmore' ) ||
+							pagination_style == 'numbers') {								
 							// Ensure grid-sizer and gutter-sizer are present for Isotope
-							let $isotop_html = masonry_style == 'yes' ? '<div class="grid-sizer"></div><div class="gutter-sizer"></div>' : '';							
+							let $isotop_html = masonry_style == 'yes' ? '<div class="grid-sizer"></div><div class="gutter-sizer"></div>' : '';														
 							prod_grid_wrap.html( $isotop_html );
 							prod_list_wrap.html('');
 						}
-
 						message_info.html('');
 						if (response?.data?.message !== '') {
 							$('.sort-bar').fadeOut();
@@ -289,7 +288,7 @@
 
 		}
 
-		function loadIsotope( template , masonry_style ){
+		function loadIsotope( template , masonry_style ){			
 			if ( masonry_style !== 'yes' ) {
 				return;
 			}
