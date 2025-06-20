@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		<a href="{{post_permalink}}" target="_blank">
 			<div class="hpcc-image">
 				{{{ post_image }}}
-				<div class="tags-section">
+				<div class="filter-meta-wrapper">
 					{{#each tags }}
-						<a href="{{link}}" target="_blank" class="badge">{{ name }}</a>
+						<a href="{{link}}" target="_blank" class="">{{ name }}</a>
 					{{/each}}
 				</div>
 			</div>
