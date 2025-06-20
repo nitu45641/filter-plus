@@ -424,13 +424,14 @@ class Actions {
 
 	public static function tags_info( $id , $tags )  {
 		$tags = get_the_terms ( $id , $tags  );
+
 		if (empty($tags)) {
 			return array();
 		}
 		foreach ($tags as $key => &$tag) {
 			$tag->link = get_tag_link($tag->term_id);
 		}
-
+		
 		return $tags;
 	}
 
