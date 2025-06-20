@@ -114,7 +114,7 @@ class Enqueue {
 			'filter-js'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/search-filter.js',
                 'version'   => \FilterPlus::get_version(),
-                'deps'      => ['jquery','filter-option'],
+                'deps'      => ['jquery', 'masonry', 'imagesloaded','filter-option'],
             ),
             'filter-option'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/filter-option.js',
@@ -123,11 +123,6 @@ class Enqueue {
             ),
 			'jquery-range-min'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/jquery.range-min.js',
-                'version' => \FilterPlus::get_version(),
-                'deps'    => ['jquery'],
-            ),
-            'filter-isotope'     => array(
-                'src'     => \FilterPlus::assets_url() . 'js/filter.isotope.pkgd.min.js',
                 'version' => \FilterPlus::get_version(),
                 'deps'    => ['jquery'],
             )
@@ -155,10 +150,13 @@ class Enqueue {
     }
 
     /**
-     * Enqueue admin js and css function
+     * Enqueue frontend js and css function
      */
     public function frontend_enqueue_assets() {
         // js
+        wp_enqueue_script('masonry');
+        wp_enqueue_script('imagesloaded');
+        
         $scripts = $this->frontend_get_scripts();
 
         foreach ( $scripts as $key => $value ) {

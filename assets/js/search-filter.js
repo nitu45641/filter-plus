@@ -210,11 +210,13 @@
 			let post_author 	= $('#shopContainer').data('post_author');
 			let selected_data 	= selected_param(params);
 			show_selected_data(selected_data);
+			
 			const data = {
 				action: 'get_filtered_data',
 				filter_plus_nonce: filter_client.filter_plus_nonce,
 				pagination_style: pagination_style,
 				template,
+				masonry_style,
 				limit,
 				product_categories,
 				product_tags,
@@ -281,7 +283,7 @@
 						disable_items(response?.data?.disable_terms);
 					}
 
-					loadIsotope( template , masonry_style );
+					loadIsotope( template , masonry_style , selected_data.filter_type );
 					products_wrap.removeClass('loader_box');
 					
 				},
@@ -295,19 +297,18 @@
 			}
 			// Masonary style
 			var $isotopeGrid = $('.prods-grid-view');
-			if ($isotopeGrid.data('isotope')) {
-				$isotopeGrid.isotope('destroy');
-			}
-			$isotopeGrid.isotope({
-				itemSelector: '.product-style-' + template,
-				layoutMode: 'masonry',
-				percentPosition: true,
-				masonry: {
+			
+			$isotopeGrid.imagesLoaded(function(){
+				$isotopeGrid.masonry({
+					itemSelector: '.product-style-' + template,
+					layoutMode: 'masonry',
+					percentPosition: true,
 					columnWidth: '.grid-sizer',
 					gutter: ".gutter-sizer"
-
-				}
+				});
 			});
+
+	
 		}
 
 		/**

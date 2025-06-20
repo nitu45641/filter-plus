@@ -31,7 +31,7 @@
 			include_once \FilterPlus::plugin_dir() . 'templates/parts/filter-top.php'; 
 		}
 	?>
-	<div class="prods-grid-view post-grid-view-<?php echo esc_attr($template)?>"></div>
+	<div class="post-grid-view-<?php echo esc_attr($template)?> prods-grid-view"></div>
 	<div class="message"></div>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/right-side/product-data.php"; ?>
 	<!-- pagination -->

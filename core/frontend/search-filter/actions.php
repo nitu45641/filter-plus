@@ -60,6 +60,7 @@ class Actions {
 		$filter_type  = ! empty( $post_arr['filter_type'] ) ? $post_arr['filter_type'] : 'woo-filter';
 		$author  	  = ! empty( $post_arr['author'] ) ? $post_arr['author'] : '';
 		$cf_list  	  = ! empty( $post_arr['cf_list'] ) ? $post_arr['cf_list'] : [];
+		$masonry_style  = ! empty( $post_data['masonry_style'] ) ? $post_data['masonry_style'] : 'no';
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
 
 		$args = array(
@@ -83,6 +84,7 @@ class Actions {
 			'stock'  		=> $stock,
 			'on_sale'  		=> $on_sale,
 			'cf_list'		=> $cf_list,
+			'masonry_style' => $masonry_style,
 			'taxonomy'  	=> $taxonomy
 		);
 
@@ -392,7 +394,8 @@ class Actions {
 	 */
 	public static function process_wp_data( $posts , $param ) {
 		$products 	= array();
-		$size  		= $param['filter_type'] == "product" ? self::product_size( $param['template'] ) : 'full';
+
+		$size  		= ( $param['filter_type'] == "product" && $param['masonry_style'] !== "yes" ) ? self::product_size( $param['template'] ) : 'full';
 		$cats  		= $param['filter_type'] == "product" ? 'product_cat' : 'category';
 		$tags 		= $param['filter_type'] == "product" ? 'product_tag' : 'post_tag';
 		if ( !empty($posts) ) {
