@@ -1838,14 +1838,20 @@ ul.sub_categories{
     padding: 4px;
     border: 1px solid #d5d5d5;
 }
-.tags-3::before{
-	content: url(../../assets/images/documents.svg);
-	color: #ff0000;
-	margin-right: 3px;
+.filter-post-tags-3{
+    position: relative;
+	margin: 10px 0 0 20px;
+}
+.filter-post-tags-3::before{
+    width: 15px !important;
+    content: url(../../assets/images/tag.svg);
+    position: absolute;
+    top: 70%;
+    left: -20px;
+    transform: translateY(-50%);
 }
 .blog-cat-3::before{
 	content: url(../../assets/images/category.svg);
-	color: #ff0000;
 	margin-right: 3px;
 }
 .author-3::before{
