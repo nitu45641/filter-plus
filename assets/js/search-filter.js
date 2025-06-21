@@ -600,6 +600,9 @@
 		 * @param     action
 		 */
 		function reset_block($parent, $this, clear_all = false, action = '') {
+			if ($this.has('filter-tab-pane')) {
+				return
+			}
 			const reset_button = $this.find('.reset');
 			if (action == '') {
 				if (reset_button.hasClass('d-none')) {

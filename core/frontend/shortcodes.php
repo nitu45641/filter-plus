@@ -245,7 +245,7 @@ class Shortcodes {
 			$grid_style = '
 			.post-grid-view-3{
 				display: grid;
-				grid-template-columns: auto auto auto;
+				grid-template-columns: 345px 345px 345px;
 				gap: 25px;
 			}
 			.grid-view-1 {
@@ -287,7 +287,7 @@ class Shortcodes {
 			}
 			.tab-item.product-style-5{
 				display: grid;
-				grid-template-columns: auto auto auto auto;
+				grid-template-columns: 200px 200px 200px 200px;
 				gap: 8px 20px;
 			}
 			';
