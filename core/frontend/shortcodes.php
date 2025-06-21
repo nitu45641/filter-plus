@@ -98,7 +98,7 @@ class Shortcodes {
 
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
 		$main_wrapper   = $template == '3' ? 'mainWrapper' : 'shopContainer';
-		$this->custom_css($template,$filter_type, array( 'masonry_style' => $masonry_style ) );
+		$this->custom_css($template,'content-filter', array( 'masonry_style' => $masonry_style ) );
 		?>
 			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?>" id="shopContainer"
 				data-pagination_style="<?php echo esc_html($pagination_style)?>"
@@ -175,8 +175,8 @@ class Shortcodes {
 		$blog_header = "#1164cb"; $cart_icon =  '#fff'; 
 		$cart_content = '#2d73e7';$price_range = '#2d73e7';
 		$param_direction = 'row';
-		$tab_pan_item_color = '#fff';
-		$hover_color = '#222';
+		$tab_pan_item_color = '#fff'; $title_color = '#222';
+		$readmore_color = $hover_color = 'hsla(242, 88.4%, 66.3%, 0.8)';
 		$rating_color = '#FFCA27'; $rating_size = '13px';
 		$badge_bg = '#E7272D'; $price_color = '#e3106e';
 
@@ -189,7 +189,8 @@ class Shortcodes {
 		}
 		else if ( $template == "3" ) {
 			$cart_icon = '#fff';
-			$secondary_color = $filter_type !== "product" ? "#fff" : "#5c5555"; 
+			$secondary_color = $filter_type !== "product" ? "#e82935" : "#5c5555"; 
+			$readmore_color = $hover_color  = $filter_type !== "product" ? '#e82935' : 'hsla(242, 88.4%, 66.3%, 0.8)'; 
 			$filter_type !== "product" ? "#ff0000" : "#ab1616"; 
 			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000"; 
 			$primary_color = $price_range = '#333'; 
@@ -200,7 +201,7 @@ class Shortcodes {
 			$cart_icon = '#fff'; 
 			$blog_header = $filter_type !== "product" ? "#ff0000" : "#000"; 
 		}
-		else if( $template == "5" ){
+		else if( $filter_type == "product" && $template == "5" ){
 			$hover_color = $secondary_color = '#EB662B';
 		}
 		else if ( $template == "6" ) {
@@ -225,7 +226,7 @@ class Shortcodes {
 		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
 		$filter_border_color = 'rgb(225, 223, 223)';
 		$filter_font_color = '#333';
-
+		
 		if ($args['masonry_style'] == 'yes' ) {
 			$grid_style = '
 			.product-style{
@@ -242,6 +243,11 @@ class Shortcodes {
 			';
 		}else{
 			$grid_style = '
+			.post-grid-view-3{
+				display: grid;
+				grid-template-columns: auto auto auto;
+				gap: 25px;
+			}
 			.grid-view-1 {
 				display: grid;
 				grid-template: auto / 24% 24% 24% 24%;
@@ -286,8 +292,11 @@ class Shortcodes {
 			}
 			';
 		}
+
 		$filter_custom_css = '
 		:root {
+			--filter-readmore-color: '.$readmore_color.';
+			--filter-title-color: '.$title_color.';
 			--filter-price-color: '.$price_color.';
 			--filter-rating-color: '.$rating_color.';
 			--filter-badge-bg: '.$badge_bg.';

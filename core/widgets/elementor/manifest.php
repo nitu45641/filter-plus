@@ -10,7 +10,7 @@ Class Manifest {
 
     use \FilterPlus\Utils\Singleton;
 
-    private $categories = ['plus' => 'Filter Plus'];
+    private $categories = ['plus' => 'FilterPlus'];
 
     public function init() {
         add_action( 'elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories'] );

@@ -86,10 +86,10 @@ $more_products = array(
 <div class="block first-block">
     <div class="left-block mb-5">
         <h1 class="first-header"><?php esc_html_e('Powerful Filtering Features for WordPress and WooCommerce','filter-plus');?></h1>
-        <p><?php esc_html_e('Filter Plus is the WordPress and WooCommerce Product Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. ','filter-plus');?></p>
+        <p><?php esc_html_e('FilterPlus is the WordPress and WooCommerce Product Plugin. Allow users to filter and shortlist the products in the store easily and effortlessly. ','filter-plus');?></p>
         <div class="cta">
         <a target="_blank" href="https://www.wpbens.com/filter-plus/">
-            <button class="btn ctn-button"><?php esc_html_e('Explore Filter Plus Pro','filter-plus');?></button>
+            <button class="btn ctn-button"><?php esc_html_e('Explore FilterPlus Pro','filter-plus');?></button>
         </a>
     </div>
     </div>
@@ -104,7 +104,7 @@ $more_products = array(
     <div class="features-section mt-5">
         <div class="text-center pt-5 pb-2">
             <div class="block-header"><?php esc_html_e('Advanced Filtering Features','filter-plus');?></div>
-            <p><?php esc_html_e('Available at Filter Plus Pro','filter-plus');?></p>
+            <p><?php esc_html_e('Available at FilterPlus Pro','filter-plus');?></p>
         </div>
         <div class="block-wrapper mb-5">
             <?php foreach ($features as $key => $value) { ?>

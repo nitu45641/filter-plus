@@ -41,7 +41,7 @@ class Menus {
 			$logo = \FilterPlus::assets_url() . 'images/filter-logo.png' ;
 			add_menu_page(
 				esc_html__( 'Shortcodes', 'filter-plus' ),
-				esc_html__( 'Filter Plus', 'filter-plus' ),
+				esc_html__( 'FilterPlus', 'filter-plus' ),
 				$capability,
 				$slug,
 				array( $this, 'filter_plus_view' ),

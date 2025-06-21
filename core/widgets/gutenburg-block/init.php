@@ -15,7 +15,7 @@ function filter_plus_category( $categories, $post ) {
         [
             [
                 'slug'  => 'filter-plus-blocks',
-                'title' => __( 'Filter Plus', 'filter-plus' ),
+                'title' => __( 'FilterPlus', 'filter-plus' ),
             ],
         ]
     );
