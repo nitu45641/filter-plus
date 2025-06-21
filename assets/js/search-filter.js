@@ -281,7 +281,9 @@
 						disable_items(response?.data?.disable_terms);
 					}
 
-					loadIsotope( template , masonry_style , selected_data.filter_type );					
+					loadIsotope( template , masonry_style , selected_data.filter_type );
+					// (Re)initialize Swiper after AJAX loads new carousel
+					filterCorosuel({element: '.post-coursel-view-2'});
 					products_wrap.removeClass('loader_box');
 					
 				},
@@ -317,24 +319,31 @@
 			});
 		}
 
-		filterCorosuel({element: '.post-coursel-view-2'});
-		function filterCorosuel(params) {			
-			  new Swiper(params.element, {
-				loop: true,
-				navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev'
-				},
-				pagination: {
-				el: '.swiper-pagination',
-				clickable: true
-				},
-				slidesPerView: 1,
-				spaceBetween: 10,
-				autoplay: {
-				delay: 3000,
-				},
-			});
+		function filterCorosuel(params) {
+			// Destroy previous Swiper instance if exists
+			if (window._swiperInstance && typeof window._swiperInstance.destroy === 'function') {
+				window._swiperInstance.destroy(true, true);
+			}
+			// Only initialize if element exists
+			if ($(params.element).length > 0) {
+				window._swiperInstance = new Swiper(params.element, {
+					loop: true,
+					navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev'
+					},
+					pagination: {
+						el: '.swiper-pagination',
+						clickable: true
+					},
+					slidesPerView: 1,
+					spaceBetween: 10,
+					autoplay: {
+						delay: 4000,
+					},
+					
+				});
+			}
 		}
 
 		/**
