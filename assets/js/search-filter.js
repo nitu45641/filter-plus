@@ -66,9 +66,7 @@
 					}
 				} 
 				else if (active_li.is('li')) {
-					category_li.removeClass('active');
-					console.log(!active_li.hasClass('active'));
-					
+					category_li.removeClass('active');					
 					if (!active_li.hasClass('active')) {
 						_this.addClass('active');
 					} else {
@@ -240,9 +238,9 @@
 						// clear product data
 						if ( ( typeof params?.load_more === 'undefined'
 								&& pagination_style == 'loadmore' ) ||
-							pagination_style == 'numbers') {								
+							pagination_style == 'numbers') {
 							// Ensure grid-sizer and gutter-sizer are present for Isotope
-							let $isotop_html = masonry_style == 'yes' ? '<div class="grid-sizer"></div><div class="gutter-sizer"></div>' : '';														
+							let $isotop_html = not_masonry(params, masonry_style, template);
 							prod_grid_wrap.html( $isotop_html );
 							prod_list_wrap.html('');
 						}
@@ -283,7 +281,7 @@
 						disable_items(response?.data?.disable_terms);
 					}
 
-					loadIsotope( template , masonry_style , selected_data.filter_type );
+					loadIsotope( template , masonry_style , selected_data.filter_type );					
 					products_wrap.removeClass('loader_box');
 					
 				},
@@ -292,11 +290,18 @@
 		}
 
 		function loadIsotope( template , masonry_style ){			
+
 			if ( masonry_style !== 'yes' ) {
 				return;
 			}
+
+			let $isotopeGrid = $('.prods-grid-view');
+			let $notMasonry = $('.post-coursel-view-2');
+
 			// Masonary style
-			var $isotopeGrid = $('.prods-grid-view');
+			if ($notMasonry.length > 0) {
+				return;
+			}
 			// Destroy previous Masonry instance if exists
 			if ($isotopeGrid.data('masonry')) {
 				$isotopeGrid.masonry('destroy');
@@ -310,8 +315,26 @@
 					gutter: ".gutter-sizer"
 				});
 			});
+		}
 
-	
+		filterCorosuel({element: '.post-coursel-view-2'});
+		function filterCorosuel(params) {			
+			  new Swiper(params.element, {
+				loop: true,
+				navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev'
+				},
+				pagination: {
+				el: '.swiper-pagination',
+				clickable: true
+				},
+				slidesPerView: 1,
+				spaceBetween: 10,
+				autoplay: {
+				delay: 3000,
+				},
+			});
 		}
 
 		/**
@@ -923,3 +946,17 @@
 
 	});
 })(jQuery);
+
+function not_masonry(params, masonry_style , template) {
+    let $html = '';
+	if ( masonry_style =='yes' && ( params?.filter_type !== 'product' && template !== '2' ) ) {
+		if ( ( params?.filter_type !== 'product' && template == '2' ) ) {
+			$html = '';
+		}
+		else{			
+			$html = '<div class="grid-sizer"></div><div class="gutter-sizer"></div>'
+		}
+	}
+
+	return $html;
+}

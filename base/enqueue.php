@@ -114,7 +114,7 @@ class Enqueue {
 			'filter-js'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/search-filter.js',
                 'version'   => \FilterPlus::get_version(),
-                'deps'      => ['jquery', 'masonry', 'imagesloaded','filter-option'],
+                'deps'      => ['jquery', 'masonry', 'imagesloaded','filter-option','filter-swiper-bundle'],
             ),
             'filter-option'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/filter-option.js',
@@ -123,6 +123,11 @@ class Enqueue {
             ),
 			'jquery-range-min'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/jquery.range-min.js',
+                'version' => \FilterPlus::get_version(),
+                'deps'    => ['jquery'],
+            ),
+            'filter-swiper-bundle'     => array(
+                'src'     => \FilterPlus::assets_url() . 'js/filter-swiper-bundle.min.js',
                 'version' => \FilterPlus::get_version(),
                 'deps'    => ['jquery'],
             )
@@ -142,6 +147,10 @@ class Enqueue {
             ),
 			'jquery.range-min' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/jquery.range.css',
+                'version' => \FilterPlus::get_version(),
+            ),
+            'filter-swiper-bundle' => array(
+                'src'     => \FilterPlus::assets_url() . 'css/filter-swiper-bundle.min.css',
                 'version' => \FilterPlus::get_version(),
             )
         );
