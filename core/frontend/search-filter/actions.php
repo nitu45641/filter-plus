@@ -538,6 +538,10 @@ class Actions {
 		else if ( $filter_type !== 'product' && ( $template == '3' ) ) {
 			$size = array(380, 210);
 		}
+				// Fix: add template 2 and 3 for non-product types
+		else if ( $filter_type !== 'product' && ( $template == '2' ) ) {
+			$size = array(380, 210);
+		}
 		return $size;
 	}
 

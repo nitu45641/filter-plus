@@ -11,6 +11,31 @@
 	--filter-badge-bg: #EAEAEA;
 	--filter-lns-unit: 0.5rem;
 }
+.product-wrap{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.swiper-outer-wrapper{
+	padding: 0 100px;
+}
+.swiper-button-next:after, .swiper-button-prev:after{
+    font-size: 16px !important;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+	border-radius: 50%;
+    padding: 8px 12px;
+}
+
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after {
+  background-color: hsla(242, 88.4%, 66.3%, 0.8);
+  border: hsla(242, 88.4%, 66.3%, 0.8);
+  color: #fff;
+}
 .filter-meta-wrapper {
     display: flex;
     flex-direction: row;
@@ -33,6 +58,12 @@
     color: #fff;
     text-transform: uppercase;
     border-radius: 36px;
+}
+.content-filter-meta-2 a{
+	background: #fff;
+	color: #222;
+	border-radius: 0;
+	padding: 5px 13px 5px 13px;
 }
 .badge{
     position: absolute;
@@ -1291,7 +1322,14 @@ a {
 }
 
 .products-wrap{
-	width: 100%;
+	width: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.fp-blog-category-list-2{
+    visibility: hidden;
+    display: inline;
 }
 
 /* Grid view css end*/

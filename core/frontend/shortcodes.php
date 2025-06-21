@@ -97,7 +97,7 @@ class Shortcodes {
 		extract( $data );
 
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
-		$main_wrapper   = $template == '3' ? 'mainWrapper' : 'shopContainer';
+		$main_wrapper   = ($template == '3' || '2') ? 'mainWrapper' : 'shopContainer';
 		$this->custom_css($template,'content-filter', array( 'masonry_style' => $masonry_style ) );
 		?>
 			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?>" id="shopContainer"

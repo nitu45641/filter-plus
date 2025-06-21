@@ -2,12 +2,10 @@
 	'use strict';
 
 	$(document).ready(function () {
-
-
 		/*
-		 * Get Product 
-		 from filter
+		 * Get Product from filter
 		 */
+
 		//list click/change
 		const category_li = $('.category-list li');
 		let action = 'click';
@@ -336,8 +334,9 @@
 						el: '.swiper-pagination',
 						clickable: true
 					},
-					slidesPerView: 1,
+					slidesPerView: 3,
 					spaceBetween: 10,
+					paginationClickable: true,
 					autoplay: {
 						delay: 4000,
 					},
@@ -958,9 +957,12 @@
 
 function not_masonry(params, masonry_style , template) {
     let $html = '';
-	if ( masonry_style =='yes' && ( params?.filter_type !== 'product' && template !== '2' ) ) {
+	if ( masonry_style =='yes'  ) {
 		if ( ( params?.filter_type !== 'product' && template == '2' ) ) {
 			$html = '';
+		}
+		else if ( ( params?.filter_type == 'product' && template == '2' ) ) {
+			$html = '<div class="grid-sizer"></div><div class="gutter-sizer"></div>'
 		}
 		else{			
 			$html = '<div class="grid-sizer"></div><div class="gutter-sizer"></div>'
