@@ -280,12 +280,12 @@ class Helper {
 	 */
 	public static function admin_unique_id( ) {
 		$admin_pages =  array(
-			'filter-plus_page_filter-plus-settings',
+			'filterplus_page_filter-plus-settings',
 			'toplevel_page_filter_plus',
-			'filter-plus_page_filter-plus-overview',
-			'filter-plus_page_filter-sets',
-			'filter-plus_page_filter-options',
-			'filter-plus_page_filter-plus-license'
+			'filterplus_page_filter-plus-overview',
+			'filterplus_page_filter-sets',
+			'filterplus_page_filter-options',
+			'filterplus_page_filter-plus-license'
 		);
 
 		return $admin_pages;

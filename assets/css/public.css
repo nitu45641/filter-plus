@@ -922,6 +922,9 @@ ul.pagination {
 	column-gap: 15px;
 	margin-top: 20px;
 }
+.mainWrapper{
+	display: flex;
+}
 .shopContainer.right,
 .mainWrapper.right
 {
