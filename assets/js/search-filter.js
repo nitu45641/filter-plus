@@ -297,7 +297,10 @@
 			}
 			// Masonary style
 			var $isotopeGrid = $('.prods-grid-view');
-			
+			// Destroy previous Masonry instance if exists
+			if ($isotopeGrid.data('masonry')) {
+				$isotopeGrid.masonry('destroy');
+			}
 			$isotopeGrid.imagesLoaded(function(){
 				$isotopeGrid.masonry({
 					itemSelector: '.product-style-' + template,
