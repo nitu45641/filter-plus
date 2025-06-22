@@ -325,7 +325,7 @@
 			// Only initialize if element exists
 			if ($(params.element).length > 0) {
 				window._swiperInstance = new Swiper(params.element, {
-					loop: true,
+					loop: false,
 					navigation: {
 						nextEl: '.swiper-button-next',
 						prevEl: '.swiper-button-prev'
@@ -337,9 +337,9 @@
 					slidesPerView: 3,
 					spaceBetween: 10,
 					paginationClickable: true,
-					// autoplay: {
-					// 	delay: 4000,
-					// },
+					autoplay: {
+						delay: 4000,
+					},
 					
 				});
 			}
