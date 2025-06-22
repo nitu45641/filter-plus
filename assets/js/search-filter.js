@@ -337,9 +337,9 @@
 					slidesPerView: 3,
 					spaceBetween: 10,
 					paginationClickable: true,
-					autoplay: {
-						delay: 4000,
-					},
+					// autoplay: {
+					// 	delay: 4000,
+					// },
 					
 				});
 			}

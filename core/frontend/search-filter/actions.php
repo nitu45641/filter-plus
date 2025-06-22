@@ -406,7 +406,9 @@ class Actions {
 					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
 				}
 				
-				$products[$key]['id'] = $post->ID;
+				$products[$key]['id'] 	= $post->ID;
+				$post_date       		 = get_post_datetime( $post->ID );
+				$products[$key]['post_date']       	= $post_date->format( 'F j, Y' );
 				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$products[$key]['post_image']       = $image;
 				$products[$key]['post_description'] = self::filter_item_description($post->ID);
