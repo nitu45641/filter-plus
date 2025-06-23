@@ -15,19 +15,25 @@ if ( 'yes' == $colors ) {
 			}
 		?>
 		<div class="panel">
-			<div class="param-box color-meta">
+			<div class="param-box color-meta color-style-<?php echo esc_attr( $color_template ); ?>">
 			<?php
 			if ( ! empty( $get_attr['terms'] ) ) {
+				$tooltip = ( '1' == $color_template ) ? 'tooltips' : '';
 				foreach ( $get_attr['terms'] as $key => $value ) {
 					if ( ! empty( $value->name ) ) {
 						?>
-								<div class="radio-item color-item tooltips" title="<?php echo esc_attr( $value->name ); ?>"
+						<div class="color-item-wrap">
+							<div class="radio-item color-item <?php echo esc_attr( $tooltip ); ?>" title="<?php echo esc_attr( $value->name ); ?>"
 								data-term_id="<?php echo esc_attr( $value->term_id ); ?>"
 								data-taxonomy="<?php echo esc_attr( $value->taxonomy ); ?>"
 								data-name="<?php echo esc_attr( $value->name ); ?>"
 								data-slug="<?php echo esc_attr( $value->slug ); ?>"
-								style="background-color: <?php echo esc_attr( strtolower( $value->name ) ); ?>">
+								style="background-color: <?php echo esc_attr( strtolower( str_replace('-', '', $value->slug )) ); ?>">
 							</div>
+							<?php if (  $color_template == "2" ) { ?>
+								<div class="meta-count"><?php echo '(' . intval( $value->count ) . ')'; ?></div>
+							<?php } ?>
+						</div>
 						<?php
 					}
 				}
