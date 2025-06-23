@@ -87,8 +87,8 @@
 input[type="checkbox"].regular-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border: 2px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
@@ -366,10 +366,6 @@ ul.category-list li label:hover
 }
 .shop-sidebar .price-range .range-go:hover {
 	background-color: #1164cb;
-}
-.shop-sidebar .search-wrap .search-form {
-	position: relative;
-	width: 100%;
 }
 .shop-sidebar .search-wrap .search-form .sidebar-input {
 	padding-right: 25%;
@@ -1231,11 +1227,6 @@ a {
 }
 .shop-sidebar .price-range .range-go:hover {
 	background-color: #17c6aa;
-}
-
-.shop-sidebar .search-wrap .search-form {
-	position: relative;
-	width: calc(100% - 20px);
 }
 
 .shop-sidebar .search-wrap .search-form .sidebar-input {

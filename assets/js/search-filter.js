@@ -892,6 +892,9 @@
 
 			panel.slideToggle(700, function () {
 				if (_this.hasClass('closed')) {
+					if (panel.hasClass('d-none')) {
+						panel.removeClass('d-none');
+					}
 					_this.removeClass('closed').addClass('open');
 				} else {
 					_this.removeClass('open').addClass('closed');
