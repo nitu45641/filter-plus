@@ -1,5 +1,8 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
-
+<?php
+error_log( print_r( $categories, true ) );
+error_log( print_r( $hide_empty_cat, true ) );
+?>
 <div class="sidebar-row categories-wrap">
 <h4 class="sidebar-label"><?php echo !empty( $category_label ) ?  $category_label : esc_html__('Categories','filter-plus');?></h4>
 	<ul class="category-list panel categories-wrapper">

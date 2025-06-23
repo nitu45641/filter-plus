@@ -501,6 +501,8 @@
 			}
 			const price_range = $('.range-slider');
 			// category
+			console.log(filterOption.category_formatted_text($));
+			
 			params.filter_type = $('#shopContainer').data('filter_type');
 			params.cat_id = filterOption.get_category_list($);
 			params.product_cat = filterOption.category_formatted_text($);
@@ -863,9 +865,11 @@
 		function sidebar_slider($handle) {
 			$handle.on('click', function () {
 			const _this = $(this);
-
 			// Find the closest heading-wrap and toggle arrows and panel
-			const headingWrap = _this.closest('.heading-wrap');
+			let headingWrap = _this.closest('.heading-wrap');
+			if (headingWrap.length === 0) {
+				headingWrap = _this.closest('.dropdown-label');
+			}
 			const downArrow = headingWrap.find('.down-arrow');
 			const upArrow = headingWrap.find('.up-arrow');
 			const panel = headingWrap.parent().find('.panel').first();

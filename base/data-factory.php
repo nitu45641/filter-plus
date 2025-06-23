@@ -12,6 +12,11 @@ defined( 'ABSPATH' ) || exit;
 class DataFactory {
 
     use Singleton;
+    public static $disable;
+
+    public function __construct() { 
+        self::$disable = !class_exists( 'FilterPlusPro' ) ? true : false;
+    }
 
     /**
      * Woo filter default data
@@ -23,6 +28,8 @@ class DataFactory {
             'title'         	=> esc_html__('Filters','filter-plus'),
             'no_of_items'       => 9,
             'template'         	=> '1',
+            'category_template' => '1',
+            'color_template'    => '1',
             'category_label'    => esc_html__('Categories','filter-plus'),
             'categories'       	=> '',
             'hide_empty_cat'	=> 'yes',
@@ -209,6 +216,70 @@ class DataFactory {
         custom_field_list={$custom_fields} post_tags='{$post_tags}'
         filter_position={$filter_position} pagination_style='{$pagination_style}'
         post_categories='{$post_categories}' post_author='{$post_author}']"); 
+    }
+
+    /**
+     * Category template data
+     * 
+     * @return array
+     */
+
+    public static function category_template() {
+        $args = array(
+            "template" => array(1,2,3),
+            "template_disable" => 1,
+        );
+
+        if ( self::$disable ) {
+            $args['template_disable'] = 1;
+        }
+
+        return $args;
+    }
+
+    public static function category_template_url( $args ) {
+        extract( $args );
+
+        $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
+
+        switch ( $category_template ) {
+            case 1:
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
+                break;
+            case 2:
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-list.php";
+                break;
+            case 3:
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-select.php";
+                break;
+            default:
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
+                break;
+
+        }
+
+		if (file_exists( $url )) {
+			include $url ;
+		}
+    }
+
+    /**
+     * Color template data
+     * 
+     * @return array
+     */
+
+    public static function color_template() {
+        $args = array(
+            "template" => array(1,2),
+            "template_disable" => 1,
+        );
+
+        if ( self::$disable ) {
+            $args['template_disable'] = 1;
+        }
+
+        return $args;
     }
 
 }

@@ -909,6 +909,9 @@ ul.pagination {
     gap: 5px;
 	margin-right: 7px;
 }
+.category-list.panel{
+	padding-left: 15px;
+}
 .panel{
     display: flex;
     flex-direction: column;
@@ -917,7 +920,7 @@ ul.pagination {
 .radio-wrap .panel{
 	margin-top: 0 !important;
 }
-.panel-2,.panel-3{
+.panel-2,.panel-3,.category-list.panel{
 	margin-top: 10px !important;
 }
 .shopContainer {

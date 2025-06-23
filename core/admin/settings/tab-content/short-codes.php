@@ -7,6 +7,7 @@
  */
 defined( 'ABSPATH' ) || exit;
 
+use \FilterPlus\Base\DataFactory;
 use \FilterPlus\Utils\Helper as Helper;
 ?>
 <div class="content-wrapper">
@@ -50,6 +51,12 @@ use \FilterPlus\Utils\Helper as Helper;
 			'placeholder'=>esc_html__("Place No of Items Per Page","filter-plus"), 'field_type'=> 'number',
 			'data_label' => 'no_of_items');
 			filter_plus_number_input_field($args);
+			
+			// categories template
+			$args 		= array('label'=>esc_html__("Select Category Filter Template:","filter-plus"),'id' => 'category_template',
+			'data_label' => 'category_template','options'=> DataFactory::category_template()['template'],
+			'type'=>'template' , $args['template_disable'] = DataFactory::category_template()['template_disable'] );
+			filter_plus_select_field($args);
 
 			// categories
 			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
@@ -81,6 +88,15 @@ use \FilterPlus\Utils\Helper as Helper;
 			'placeholder'=>esc_html__("Place Color Label Here","filter-plus"),
 			'data_label' => 'color_label');
 			filter_plus_number_input_field($args);
+
+			// color template
+			$args 		= array(
+			'label'=>esc_html__("Select Category Filter Template:","filter-plus"),'id' => 'color_template',
+			'data_label' => 'color_template','options'=> DataFactory::color_template()['template'],'type'=>'template',
+			'condition_class' => "show_colors d-none", $args['template_disable'] = DataFactory::color_template()['template_disable']
+			);
+
+			filter_plus_select_field($args);
 
 			// sizes
 			$args = array('label'=>esc_html__("Display Size:","filter-plus"),'id' => 'show_size','data_label' => 'size');

@@ -1,5 +1,7 @@
 <?php
 
+use FilterPlus\Base\DataFactory;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
@@ -8,9 +10,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
 		}
-		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/categories-checkbox.php" )) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/categories-checkbox.php" ;
-		}
+		// category template
+		DataFactory::category_template_url(array(
+			'template' => $template,
+			'category_template' => $category_template,
+			'categories' => $categories,
+			'hide_empty_cat' => $hide_empty_cat,
+			'product_count' => $product_count,
+			'sub_categories' => $sub_categories,
+		));
+
 		// reviews
 		if ( 'yes'== $show_reviews ) {
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/rating.php";
