@@ -19,8 +19,7 @@
 			let active_li = $('#cat_li_parent_' + _this.data('cat_id'));
 			if (_this.parent().hasClass('sub_categories')) {
 				active_li = $('#cat_li_child_' + _this.data('cat_id'));
-			}
-		
+			}		
 			if (active_li.length > 0) {
 				if (active_li.is('input')) {
 					let parent = _this.data("parent");
@@ -55,10 +54,10 @@
 
 						// sub category child category un-check
 						if (_this.data("parent")) {
-							let parent = _this.data("parent");
-							let parent_li = $('.category-list li[data-parent="' + parent + '"]');							
-							parent_li.find("input").prop("checked", false);
-							parent_li.removeClass("active");
+							// Only uncheck the clicked subcategory, not all
+							_this.find("input").prop("checked", false);
+							_this.removeClass("active");
+							// Optionally, update parent if needed (do not uncheck all siblings)
 						}
 						
 					}
@@ -377,11 +376,11 @@
 						// Remove category tag on click
 						setTimeout(function() {
 							$('.filter-tag[data-node=".category-list li"]').off('click').on('click', function() {
-								const cat_id = $(this).data('cat_id');
+								const cat_id = $(this).data('cat_id');								
 								// Check if the category is represented by an input or a list item
                                 const $input = $(`.category-list li[data-cat_id='${cat_id}'] input[type='checkbox']`);
-                                const $li = $(`.category-list li[data-cat_id='${cat_id}']`);
-                                if ($input.length) {
+                                const $li = $(`.category-list li[data-cat_id='${cat_id}']`);								
+								if ($input.length) {
                                     $input.prop('checked', false).trigger('change');
                                 } else if ($li.length) {
                                     $li.removeClass('active');
