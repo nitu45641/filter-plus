@@ -500,9 +500,7 @@
 				return params;
 			}
 			const price_range = $('.range-slider');
-			// category
-			console.log(filterOption.category_formatted_text($));
-			
+			// category			
 			params.filter_type = $('#shopContainer').data('filter_type');
 			params.cat_id = filterOption.get_category_list($);
 			params.product_cat = filterOption.category_formatted_text($);
@@ -636,10 +634,13 @@
 		 * @param     action
 		 */
 		function reset_block($parent, $this, clear_all = false, action = '') {
-			if ($this.has('filter-tab-pane')) {
+
+			if ($this.has('filter-tab-pane').length > 0) {
 				return
 			}
+
 			const reset_button = $this.find('.reset');
+			
 			if (action == '') {
 				if (reset_button.hasClass('d-none')) {
 					reset_button.removeClass('d-none');

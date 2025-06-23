@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
 		}
+		
 		// category template
 		DataFactory::category_template_url(array(
 			'template' => $template,

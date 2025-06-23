@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <div class="sidebar-row categories-wrap">
 	<h4 class="sidebar-label"><?php echo !empty( $category_label ) ?  $category_label : esc_html__('Categories','filter-plus');?></h4>
 	<div class="dropdown-label closed" data-category_label="Select..."><?php esc_html_e('Select...','filter-plus')?></div>
-	<ul class="category-list panel dropdown-box">
+	<ul class="category-list panel dropdown-box d-none">
 		<?php 
 			$get_categories = \FilterPlus\Utils\Helper::get_categories($categories,false,array( 'hide_empty' => $hide_empty_cat));
 			if ( !empty( $get_categories ) ) :

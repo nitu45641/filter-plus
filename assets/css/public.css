@@ -87,8 +87,8 @@
 input[type="checkbox"].regular-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border: 2px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
@@ -193,7 +193,7 @@ input[type="checkbox"].regular-checkbox:checked::after {
     align-items: center;
 }
 ul.category-list {
-	padding-left: 0;
+    padding: 15px 0 0 0;
 	list-style-type: none;
 	margin: 0;
 }
