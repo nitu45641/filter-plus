@@ -97,13 +97,16 @@
 					// reset block
 					reset_block(_this, _this.parents('.sidebar-row'));
 				});
-				param_box.on('change', '.checkbox-item input,select[name="custom-field"]', function () {
+				param_box.on('change', '.color-item input,.checkbox-item input,select[name="custom-field"]', function () {
 					const _this = $(this);
 					if ( _this.attr('type') !== 'select' ) {
 						if (_this.is(':checked') ) {
 							_this.prop('checked', true);
+							_this.parents('.color-item').addClass('active');
 						} else {
 							_this.prop('checked', false);
+							_this.parents('.color-item').removeClass('active');
+
 						}
 					}
 					get_products();

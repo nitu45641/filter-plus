@@ -2122,8 +2122,8 @@ ul.sub_categories{
 	flex-wrap: wrap;
 	gap: 10px;
 }
-.color-style-2 .color-item-wrap,
-.color-style-3 .color-item-wrap{
+.color-style-2 .color-item,
+.color-style-3 .color-item{
     margin: 0;
     border-radius: 5px !important;
     width: 48% !important;
@@ -2134,7 +2134,7 @@ ul.sub_categories{
 	font-size: 14px;
 	cursor: pointer;
 }
-.color-style-2 .color-item-wrap .meta-count{
+.color-style-2 .color-item .meta-count{
 	color: #6d6d6d;
 	font-size: 13px;
 }
@@ -2147,7 +2147,7 @@ ul.sub_categories{
 	cursor: pointer;
 	margin: 0;
 }
-.color-style-1 .color-item-wrap{
+.color-style-1 .color-item{
 	margin-right: 5px;
 }
 .color-style-1{

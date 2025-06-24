@@ -23,7 +23,6 @@ if ( 'yes' == $colors ) {
 					if ( ! empty( $value->name ) ) {
 						$style = ( $color_template !== '3' ) ? 'style="background-color: ' . esc_attr( $value->name ) . ';"' : '';
 						?>
-						<div class="color-item-wrap">
 							<div class="color-item <?php echo esc_attr( $tooltip ); ?>" title="<?php echo esc_attr( $value->name ); ?>"
 								data-term_id="<?php echo esc_attr( $value->term_id ); ?>"
 								data-taxonomy="<?php echo esc_attr( $value->taxonomy ); ?>"
@@ -45,7 +44,6 @@ if ( 'yes' == $colors ) {
 							<?php if (  $color_template == "2" ) { ?>
 								<div class="meta-count"><?php echo '(' . intval( $value->count ) . ')'; ?></div>
 							<?php } ?>
-						</div>
 						<?php
 					}
 				}
