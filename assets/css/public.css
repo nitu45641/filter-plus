@@ -2122,7 +2122,14 @@ ul.sub_categories{
 	flex-wrap: wrap;
 	gap: 10px;
 }
-.color-style-2 .color-item,
+.color-style-2 .color-item{
+	width: 30px !important;
+    height: 30px;
+    border-radius: 5px;
+}
+.color-style-2 .meta-count{
+	width: 27% !important;
+}
 .color-style-3 .color-item{
     margin: 0;
     border-radius: 5px !important;
@@ -2138,15 +2145,6 @@ ul.sub_categories{
 	color: #6d6d6d;
 	font-size: 13px;
 }
-.color-style-2 .color-item{
-	position: relative;
-	border: 1px solid rgb(225, 223, 223);
-	border-radius: 5px !important;
-	width: 30px;
-	height: 30px;
-	cursor: pointer;
-	margin: 0;
-}
 .color-style-1 .color-item{
 	margin-right: 5px;
 }
@@ -2154,9 +2152,7 @@ ul.sub_categories{
 	flex-direction: row !important;
 	position: relative !important;
 }
-.color-style-1 .color-item,
-.color-style-2 .color-item
- {
+.color-style-1 .color-item{
 	width: 30px !important;
 	height: 30px !important;
 	cursor: pointer;

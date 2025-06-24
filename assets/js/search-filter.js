@@ -89,9 +89,9 @@
 		if (sidebar_row.length > 0) {
 			$.each(sidebar_row, function (index, value) {
 				const param_box = $(this).find('.param-box');
-				param_box.on('click', '.radio-item', function () {
+				param_box.on('click', '.radio-item,.color-item', function () {
 					const _this = $(this);
-					param_box.find('.radio-item').removeClass('active');
+					param_box.find('.radio-item,.color-item').removeClass('active');
 					_this.addClass('active');
 					get_products();
 					// reset block
