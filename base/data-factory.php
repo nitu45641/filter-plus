@@ -30,6 +30,7 @@ class DataFactory {
             'template'         	=> '1',
             'category_template' => '1',
             'color_template'    => '1',
+            'review_template'   => '1',
             'category_label'    => esc_html__('Categories','filter-plus'),
             'categories'       	=> '',
             'hide_empty_cat'	=> 'yes',
@@ -272,6 +273,25 @@ class DataFactory {
     public static function color_template() {
         $args = array(
             "template" => array(1,2),
+            "template_disable" => 1,
+        );
+
+        if ( self::$disable ) {
+            $args['template_disable'] = 1;
+        }
+
+        return $args;
+    }
+
+    /**
+     * Review template data
+     * 
+     * @return array
+     */
+
+    public static function review_template() {
+        $args = array(
+            "template" => array(1,2,3),
             "template_disable" => 1,
         );
 

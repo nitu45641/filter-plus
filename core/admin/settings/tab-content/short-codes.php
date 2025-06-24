@@ -95,7 +95,6 @@ use \FilterPlus\Utils\Helper as Helper;
 			'data_label' => 'color_template','options'=> DataFactory::color_template()['template'],'type'=>'template',
 			'condition_class' => "show_colors d-none", $args['template_disable'] = DataFactory::color_template()['template_disable']
 			);
-
 			filter_plus_select_field($args);
 
 			// sizes
@@ -162,6 +161,14 @@ use \FilterPlus\Utils\Helper as Helper;
 			'id' => 'review_label','data_label' => 'review_label',
 			'condition_class' => "show_reviews d-none");
 			filter_plus_number_input_field($args);
+
+			// review template
+			$args 		= array(
+			'label'=>esc_html__("Select Review Filter Template:","filter-plus"),'id' => 'review_template',
+			'data_label' => 'review_template','options'=> DataFactory::review_template()['template'],'type'=>'template',
+			'condition_class' => "show_reviews d-none", $args['template_disable'] = DataFactory::review_template()['template_disable']
+			);
+			filter_plus_select_field($args);
 
 			// filter by stock
 			$args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock');
