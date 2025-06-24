@@ -1023,6 +1023,7 @@ a {
 	display: flex;
 	flex-direction: var(--filter-param-box-direction,row);
 	flex-wrap: wrap;
+	grid-column-gap: 10px;
 	grid-row-gap: 15px;
 	margin-top: 30px;
 }
