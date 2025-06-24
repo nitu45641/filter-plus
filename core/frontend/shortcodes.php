@@ -214,6 +214,7 @@ class Shortcodes {
 			$price_color =  $badge_bg = '#b3af54'; 
 			$filter_border_color = '#eaeaea';
 			$rating_color = '#007bff'; 
+			$secondary_color = '#000'; 
 		}
 
 		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();

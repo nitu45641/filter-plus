@@ -24,7 +24,7 @@ if ( 'yes' == $colors ) {
 						$style = ( $color_template !== '3' ) ? 'style="background-color: ' . esc_attr( $value->name ) . ';"' : '';
 						?>
 						<div class="color-item-wrap">
-							<div class="radio-item color-item <?php echo esc_attr( $tooltip ); ?>" title="<?php echo esc_attr( $value->name ); ?>"
+							<div class=" color-item <?php echo esc_attr( $tooltip ); ?>" title="<?php echo esc_attr( $value->name ); ?>"
 								data-term_id="<?php echo esc_attr( $value->term_id ); ?>"
 								data-taxonomy="<?php echo esc_attr( $value->taxonomy ); ?>"
 								data-name="<?php echo esc_attr( $value->name ); ?>"
@@ -32,7 +32,10 @@ if ( 'yes' == $colors ) {
 								<?php echo \FilterPlus\Utils\Helper::kses( $style ); ?>
 								>
 								<?php if (  $color_template == "3" ) { ?>
-									<span><?php echo esc_attr( $value->name ); ?></span>
+									<label>
+										<input type="checkbox" />
+										<span><?php echo esc_attr( $value->name ); ?></span>
+									</label>
 								<?php } ?>
 							</div>
 							<?php if (  $color_template == "2" ) { ?>
