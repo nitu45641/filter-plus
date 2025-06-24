@@ -15,7 +15,7 @@ if ( 'yes' == $colors ) {
 			}
 		?>
 		<div class="panel">
-			<div class="param-box color-meta color-style-<?php echo esc_attr( $color_template ); ?>">
+			<div class="param-box checkbox-item color-meta color-style-<?php echo esc_attr( $color_template ); ?>">
 			<?php
 			if ( ! empty( $get_attr['terms'] ) ) {
 				$tooltip = ( '1' == $color_template ) ? 'tooltips' : '';
@@ -24,7 +24,7 @@ if ( 'yes' == $colors ) {
 						$style = ( $color_template !== '3' ) ? 'style="background-color: ' . esc_attr( $value->name ) . ';"' : '';
 						?>
 						<div class="color-item-wrap">
-							<div class=" color-item <?php echo esc_attr( $tooltip ); ?>" title="<?php echo esc_attr( $value->name ); ?>"
+							<div class="color-item <?php echo esc_attr( $tooltip ); ?>" title="<?php echo esc_attr( $value->name ); ?>"
 								data-term_id="<?php echo esc_attr( $value->term_id ); ?>"
 								data-taxonomy="<?php echo esc_attr( $value->taxonomy ); ?>"
 								data-name="<?php echo esc_attr( $value->name ); ?>"
@@ -33,7 +33,11 @@ if ( 'yes' == $colors ) {
 								>
 								<?php if (  $color_template == "3" ) { ?>
 									<label>
-										<input type="checkbox" />
+										<input type="checkbox" 
+											data-taxonomy="<?php echo esc_attr($value->taxonomy); ?>"
+											data-term_id="<?php echo esc_attr($value->term_id); ?>"
+											data-slug="<?php echo esc_attr($value->slug); ?>"
+										/>
 										<span><?php echo esc_attr( $value->name ); ?></span>
 									</label>
 								<?php } ?>

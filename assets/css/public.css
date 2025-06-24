@@ -11,6 +11,9 @@
 	--filter-badge-bg: #EAEAEA;
 	--filter-lns-unit: 0.5rem;
 }
+label {
+	cursor: pointer;
+}
 .product-wrap{
 	width: 100%;
 	overflow: hidden;
