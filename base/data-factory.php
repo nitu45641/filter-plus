@@ -272,7 +272,7 @@ class DataFactory {
 
     public static function color_template() {
         $args = array(
-            "template" => array(1,2),
+            "template" => array(1,2,3),
             "template_disable" => 1,
         );
 

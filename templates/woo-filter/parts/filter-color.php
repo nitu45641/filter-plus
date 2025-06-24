@@ -21,6 +21,7 @@ if ( 'yes' == $colors ) {
 				$tooltip = ( '1' == $color_template ) ? 'tooltips' : '';
 				foreach ( $get_attr['terms'] as $key => $value ) {
 					if ( ! empty( $value->name ) ) {
+						$style = ( $color_template !== '3' ) ? 'style="background-color: ' . esc_attr( $value->name ) . ';"' : '';
 						?>
 						<div class="color-item-wrap">
 							<div class="radio-item color-item <?php echo esc_attr( $tooltip ); ?>" title="<?php echo esc_attr( $value->name ); ?>"
@@ -28,7 +29,11 @@ if ( 'yes' == $colors ) {
 								data-taxonomy="<?php echo esc_attr( $value->taxonomy ); ?>"
 								data-name="<?php echo esc_attr( $value->name ); ?>"
 								data-slug="<?php echo esc_attr( $value->slug ); ?>"
-								style="background-color: <?php echo esc_attr( strtolower( str_replace('-', '', $value->slug )) ); ?>">
+								<?php echo \FilterPlus\Utils\Helper::kses( $style ); ?>
+								>
+								<?php if (  $color_template == "3" ) { ?>
+									<span><?php echo esc_attr( $value->name ); ?></span>
+								<?php } ?>
 							</div>
 							<?php if (  $color_template == "2" ) { ?>
 								<div class="meta-count"><?php echo '(' . intval( $value->count ) . ')'; ?></div>

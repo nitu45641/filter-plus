@@ -435,7 +435,9 @@ ul.ratings,.dropdown-box {
 	margin-bottom: 5px;
 	list-style: none;
 }
-
+.panel-7 ul.ratings{
+	margin-top: 0 !important;
+}
 .ratings li {
 	display: flex;
 	flex-wrap: wrap;
@@ -1834,6 +1836,10 @@ ul.sub_categories{
 	transform: translateX(-50%);
 	z-index: 11;
 	pointer-events: none;
+}
+.color-style-3{
+	display: flex;
+	flex-direction: column;
 }
 .dropdown-label::after{
 	background-size: 100% auto;

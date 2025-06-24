@@ -16,4 +16,3 @@ if ( file_exists( \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter
 if ( file_exists( \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-color.php') ) {
 	include \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-color.php';
 }
-?>
