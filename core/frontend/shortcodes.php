@@ -268,7 +268,7 @@ class Shortcodes {
 			}
 			.grid-view-7{
 				display: grid;
-				grid-template-columns: auto auto auto auto;
+				grid-template-columns: 225px 225px 225px 225px;
 				position: relative;
 				column-gap: 20px;
 				row-gap: 25px;
@@ -279,7 +279,7 @@ class Shortcodes {
 			}
 			.grid-view-3{
 				display: grid;
-				grid-template-columns: auto auto auto;
+				grid-template-columns: 300px 300px 300px;
 				column-gap: 20px;
 			}
 			.product-style-3 .vpcc-image img {

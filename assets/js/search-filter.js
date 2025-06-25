@@ -825,6 +825,7 @@
 
 		function clear_all(element = $('.clear_all'), action = '') {
 			const clear_all = element;
+			
 			if (clear_all.length > 0) {
 				// reset block
 				const sidebar = $('.sidebar-row');
@@ -837,6 +838,7 @@
 				category.removeClass('active');
 				search.val('');
 				param_box.find('.radio-item').removeClass('active');
+				param_box.find('.color-item').removeClass('active');
 
 				if (ratings.length > 0) {
 					ratings.attr('id', '');
@@ -852,6 +854,7 @@
 				}
 				$('input[type=checkbox]').removeAttr('checked');
 				sidebar.find('.reset').fadeOut();
+				
 				if (action == '') {
 					get_products({ default_call: true });
 				} else {
