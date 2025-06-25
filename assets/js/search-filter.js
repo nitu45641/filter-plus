@@ -637,7 +637,8 @@
 		 */
 		function reset_block($parent, $this, clear_all = false, action = '') {
 
-			if ($this.has('filter-tab-pane').length > 0) {
+			if ( $this.find('.filter-tab-pane').length > 0 ) {
+				$('.filter-top').addClass('d-none');
 				return
 			}
 

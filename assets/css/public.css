@@ -436,7 +436,7 @@ ul.ratings,.dropdown-box {
 	border-radius: 6px;
 	font-size: 14px;
     color: #0d1218;
-	margin-bottom: 5px;
+	margin: 0 0 5px 0;
 	list-style: none;
 }
 .panel-7 ul.ratings{
@@ -447,6 +447,7 @@ ul.ratings,.dropdown-box {
 	flex-wrap: wrap;
 	color: #666666;
 	margin-bottom: 10px;
+
 }
 
 .sidebar-style-2 .ratings li svg {
@@ -1329,7 +1330,7 @@ a {
 }
 
 .products-wrap{
-	width: auto;
+	width: 100%;
 	overflow: hidden;
 	position: relative;
 }
@@ -1955,7 +1956,7 @@ ul.sub_categories{
 	cursor: pointer;
 	fill: #e3a405;
 	display: inline-block;
-	display: inline-block;
+	text-align: center;
 }
 .hpcc-content .rating {
 	display: block;

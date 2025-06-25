@@ -208,6 +208,7 @@ class Shortcodes {
 			$price_range = '#333'; 
 			$cart_content = $rating_color = '#089ec7'; 
 			$rating_size = '.875em'; 
+			$badge_bg = '#fff'; 
 		}
 		else if ( $template == "7" ) {
 			$price_range = '#333'; 
