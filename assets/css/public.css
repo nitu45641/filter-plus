@@ -923,7 +923,9 @@ ul.pagination {
 .radio-wrap .panel{
 	margin-top: 0 !important;
 }
-.panel-2,.panel-3,.category-list.panel{
+.panel-2,.panel-3,.category-list.panel,
+.rating-section .panel-4
+{
 	margin-top: 10px !important;
 }
 .shopContainer {
@@ -2168,6 +2170,9 @@ ul.sub_categories{
     flex-wrap: wrap !important;
     gap: 10px !important;
 	flex-direction: row !important;
+}
+.checkbox-item-3 input[type='checkbox']{
+	appearance: none;
 }
 
 
