@@ -5,7 +5,7 @@
 	<ul class="category-list categories-wrapper">
 		<?php 
 			$get_categories = \FilterPlus\Utils\Helper::get_categories($categories,false,
-			array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => 'product_cat'  ) );
+			array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => $taxonomy  ) );
 			if ( !empty( $get_categories ) ) :
 				foreach($get_categories as $item): ?>
 					<li class="cat-group parent" 

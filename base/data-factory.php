@@ -73,6 +73,9 @@ class DataFactory {
             'filter_type'       => 'post',
             'custom_post'       => '',
             'template'         	=> '1',
+            'hide_empty_cat'    => 'yes',
+            'product_count'     => 'yes',
+            'category_template' => '1',
             'title'         	=> esc_html__('Filters','filter-plus'),
             'no_of_items'       => 9,
             'show_categories'   => 'yes',
@@ -240,6 +243,8 @@ class DataFactory {
 
     public static function category_template_url( $args ) {
         extract( $args );
+        $taxonomy       = ! empty( $args['taxonomy'] ) ? $args['taxonomy'] : 'product_cat';
+        $product_count  = ! empty( $args['product_count'] ) ? $args['product_count'] : 'no';
 
         $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
 

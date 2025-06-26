@@ -321,22 +321,22 @@
 
 		function filterCorosuel(params) {
 			// Destroy previous Swiper instance if exists
-			if (window._swiperInstance && typeof window._swiperInstance.destroy === 'function') {
-				window._swiperInstance.destroy(true, true);
+			if (window.swiperInstance) {
+				window.swiperInstance.destroy(true, true); // destroy previous instance
 			}
 			// Only initialize if element exists
 			if ($(params.element).length > 0) {
 				window._swiperInstance = new Swiper(params.element, {
-					loop: false,
 					navigation: {
 						nextEl: '.swiper-button-next',
 						prevEl: '.swiper-button-prev'
 					},
 					pagination: {
 						el: '.swiper-pagination',
-						clickable: true
+						clickable: true,
 					},
 					slidesPerView: 3,
+					slidesPerGroup: 3, 
 					spaceBetween: 10,
 					paginationClickable: true,
 					autoplay: {

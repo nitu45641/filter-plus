@@ -1,7 +1,22 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+<?php 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+use FilterPlus\Base\DataFactory;
+
+?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
 	<?php include_once \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/product-search.php"; ?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/wp-filter/parts/categories-list.php"; 
+	<?php 
+
+		// category template
+		DataFactory::category_template_url(array(
+			'taxonomy' => 'category',
+			'template' => $template,
+			'category_template' => $category_template,
+			'categories' => $categories,
+			'hide_empty_cat' => $hide_empty_cat,
+			'sub_categories' => $sub_categories,
+		));
+
 		// custom tags
 		if ( 'yes'== $show_tags ) {
 			$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
