@@ -303,6 +303,7 @@
 			$('.total').html('').html(total);
 			let page_markup = $('.pages').html('');
 			if (pagination_style == 'loadmore') {
+				offset = typeof offset !== 'undefined' ? offset : 1;
 				page_markup.html( pages * offset );
 			} else {
 				page_markup.html( pages );

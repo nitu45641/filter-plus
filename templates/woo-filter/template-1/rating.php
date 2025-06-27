@@ -1,7 +1,11 @@
 <!-- rating -->
-<?php
+<?php if ( ! defined( 'ABSPATH' ) ) exit;
 
 use FilterPlus\Utils\Helper;
+
+if ( $review_template !== '1' ) {
+	return;
+}
 ?>
 <div class="sidebar-row">
 	<h4 class="sidebar-label"><?php echo !empty( $review_label ) ?  $review_label : esc_html__('Rating','filter-plus');?></h4>
