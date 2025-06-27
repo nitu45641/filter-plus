@@ -108,6 +108,8 @@ class DataFactory {
      */
     public function woo_process_data( $settings ) {
         extract($settings);
+        error_log( print_r( $color_template, true ) );
+
         $default_data = $this->woo_default_data();
         $default_data['review_template'] = ! empty( $review_template ) ? $review_template : '1';
         $default_data['color_template'] = ! empty( $color_template ) ? $color_template : '1';
@@ -282,8 +284,8 @@ class DataFactory {
         $template_length = array();
         
         if ($type === 'elementor') {
-            for ($i=1; $i < $count ; $i++) { 
-                array_push($template_length,  esc_html__('Tempate ' . $i . $pro, 'filter-plus') );
+            for ($i=0; $i < $count ; $i++) { 
+                $template_length[$i+1] = esc_html__('Tempate ' . ($i+1) . $pro, 'filter-plus');
             }
             $args['template'] = $template_length;
         }
