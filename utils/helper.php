@@ -161,6 +161,22 @@ class Helper {
 				'class' => [],
 				'for' => [],
 			],
+			'svg'   => array(
+				'class'           => true,
+				'aria-hidden'     => true,
+				'aria-labelledby' => true,
+				'role'            => true,
+				'xmlns'           => true,
+				'width'           => true,
+				'height'          => true,
+				'viewbox'         => true // <= Must be lower case!
+			),
+			'g'     => array( 'fill' => true ),
+			'title' => array( 'title' => true ),
+			'path'  => array( 
+				'd'               => true, 
+				'fill'            => true  
+			)
 		];
 
 		if ( function_exists( 'wp_kses' ) ) { // WP is here
@@ -810,7 +826,7 @@ class Helper {
 		<span>".$star." Star</span>
 		</li>";
 		
-		echo $html;
+		echo self::render( $html )( $html );
 	}
 
 	/**

@@ -4,6 +4,9 @@
 use FilterPlus\Utils\Helper;
 
 if ( $review_template !== '1' ) {
+	if ( class_exists('FilterPlusPro') && file_exists(\FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/rating.php")) {
+		include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/rating.php";
+	}
 	return;
 }
 ?>

@@ -224,7 +224,13 @@ ul.category-list li label:hover
 	font-weight: 500;
 	cursor: pointer;
 }
-
+ul.ratings.rating-wrapper{
+	display: inline-flex;
+    gap: 5px;
+    list-style: none;
+	padding-left: 0 !important;
+	border: none !important;
+}
 .side-cart-close{
 	display: none;
 	background: #fff;
@@ -1943,6 +1949,25 @@ ul.sub_categories{
     font-size: 14px;
 }
 /* Rating css left side start */
+.review::after {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-color: #e0e0e0; /* ★ Change this to any color */
+  mask: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjk5IDMuNjhsMy4xNiA2LjQ2IDcuMSAxLjAzLTUuMTggNS4xMiAxLjIyIDcuMTQtNi4zMS0zLjMtNi4zMSAzLjMgMS4yMi03LjE0LTUuMTgtNS4xMiA3LjEtMS4wMyAzLjE2LTYuNDZ6Ii8+PC9zdmc+");
+  -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjk5IDMuNjhsMy4xNiA2LjQ2IDcuMSAxLjAzLTUuMTggNS4xMiAxLjIyIDcuMTQtNi4zMS0zLjMtNi4zMSAzLjMgMS4yMi03LjE0LTUuMTgtNS4xMiA3LjEtMS4wMyAzLjE2LTYuNDZ6Ii8+PC9zdmc+");
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.review:hover::after,
+.review.active::after{
+  background-color: gold; 
+  transform: scale(1.2); 
+}
 .rating {
 	cursor: pointer;
 	fill: #e3a405;
