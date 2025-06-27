@@ -233,8 +233,9 @@
 					if (response?.success) {
 						const products 	= response?.data?.data?.products;
 						const total 	= response?.data?.data?.total;						
-						$('.total').html('').html(total);
-						$('.pages').html('').html(products.length);
+
+						showing_nav_num( total ,  products.length , selected_data['offset'] , pagination_style );
+
 						// clear product data
 						if ( ( typeof params?.load_more === 'undefined'
 								&& pagination_style == 'loadmore' ) ||
@@ -288,6 +289,24 @@
 					
 				},
 			});
+
+		}
+
+		/**
+		 * Showing number of products
+		 * @param {*} total 
+		 * @param {*} pages 
+		 * @param {*} offset 
+		 * @param {*} pagination_style 
+		 */
+		function showing_nav_num(total,pages,offset,pagination_style) {
+			$('.total').html('').html(total);
+			let page_markup = $('.pages').html('');
+			if (pagination_style == 'loadmore') {
+				page_markup.html( pages * offset );
+			} else {
+				page_markup.html( pages );
+			}
 
 		}
 
@@ -547,9 +566,9 @@
 		 * @param     offset
 		 */
 		function pagination_html(pagination_markup) {
-			let pagination = $('.naviation');
-			let $footer = $('.pagination-footer');
-			let $inside = $footer.find('.showing');
+			let pagination 	= $('.naviation');
+			let $footer 	= $('.pagination-footer');
+			let $inside 	= $footer.find('.showing');
 			
 			if ($inside.length > 0) {
 				$footer.addClass('two-section').removeClass('one-section');
