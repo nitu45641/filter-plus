@@ -231,6 +231,7 @@
 				},
 				success(response) {
 					if (response?.success) {
+						$('.naviation').html('');
 						const products 	= response?.data?.data?.products;
 						const total 	= response?.data?.data?.total;						
 
@@ -273,8 +274,7 @@
 									var template_list = template_list(products[i]);
 									prod_list_wrap.append(template_list);
 								}
-							}
-							
+							}							
 							// pagination
 							pagination_html(response?.data?.data?.pagination_markup);
 						}
@@ -567,6 +567,7 @@
 		 * @param     offset
 		 */
 		function pagination_html(pagination_markup) {
+			
 			let pagination 	= $('.naviation');
 			let $footer 	= $('.pagination-footer');
 			let $inside 	= $footer.find('.showing');
@@ -576,8 +577,8 @@
 			} else {
 				$footer.addClass('one-section').removeClass('two-section');
 			}
-
-			pagination.html('').html(pagination_markup);
+			
+			pagination.html(pagination_markup);
 			$('.products-wrap').find('.naviation li').on('click', function () {
 				let load_more = false;
 				let _this = $(this);
@@ -688,9 +689,10 @@
 		function section_reset($parent, $this, clear_all = false, action = '') {
 			const reset_button = $this.find('.reset');
 			if ($this.find('ul').hasClass('ratings')) {
+				let label = $('.rating-label');
 				$this.find('ul').attr('id', '');
 				$('.ratings li').removeClass('rating_disable');
-				$('.rating-label').html('');
+				label.html('').html(label.data('rating_label'));
 			}
 			if ($parent.hasClass('ratings')) {
 				$parent.attr('id', '');

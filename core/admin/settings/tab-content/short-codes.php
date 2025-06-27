@@ -78,10 +78,19 @@ use \FilterPlus\Utils\Helper as Helper;
 
 			$args = array('label'=>esc_html__("Display Product Count:","filter-plus"),'id' => 'woo_product_count','data_label' => 'product_count');
 			filter_plus_checkbox_field($args);
+			
 			// colors
 			$args = array('label'=>esc_html__("Display Colors:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
 			filter_plus_checkbox_field($args);
 			
+			// color template
+			$args 		= array(
+			'label'=>esc_html__("Select Color Filter Template:","filter-plus"),'id' => 'color_template',
+			'data_label' => 'color_template','options'=> DataFactory::color_template()['template'],'type'=>'template',
+			'condition_class' => "show_colors d-none", $args['template_disable'] = DataFactory::color_template()['template_disable']
+			);
+			filter_plus_select_field($args);
+
 			$args        = array('label'=>esc_html__("Color Label:","filter-plus"),
 			'id' => 'color_label',
 			'condition_class' => "show_colors d-none",
@@ -89,13 +98,6 @@ use \FilterPlus\Utils\Helper as Helper;
 			'data_label' => 'color_label');
 			filter_plus_number_input_field($args);
 
-			// color template
-			$args 		= array(
-			'label'=>esc_html__("Select Category Filter Template:","filter-plus"),'id' => 'color_template',
-			'data_label' => 'color_template','options'=> DataFactory::color_template()['template'],'type'=>'template',
-			'condition_class' => "show_colors d-none", $args['template_disable'] = DataFactory::color_template()['template_disable']
-			);
-			filter_plus_select_field($args);
 
 			// sizes
 			$args = array('label'=>esc_html__("Display Size:","filter-plus"),'id' => 'show_size','data_label' => 'size');
@@ -156,12 +158,6 @@ use \FilterPlus\Utils\Helper as Helper;
 			$args = array('label'=>esc_html__("Display Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews');
 			filter_plus_checkbox_field($args);
 
-			$args = array('label'=>esc_html__("Review Label:","filter-plus"),
-			'placeholder'=>esc_html__("Place Review Label Here","filter-plus"),
-			'id' => 'review_label','data_label' => 'review_label',
-			'condition_class' => "show_reviews d-none");
-			filter_plus_number_input_field($args);
-
 			// review template
 			$args 		= array(
 			'label'=>esc_html__("Select Review Filter Template:","filter-plus"),'id' => 'review_template',
@@ -169,6 +165,13 @@ use \FilterPlus\Utils\Helper as Helper;
 			'condition_class' => "show_reviews d-none", $args['template_disable'] = DataFactory::review_template()['template_disable']
 			);
 			filter_plus_select_field($args);
+
+			$args = array('label'=>esc_html__("Review Label:","filter-plus"),
+			'placeholder'=>esc_html__("Place Review Label Here","filter-plus"),
+			'id' => 'review_label','data_label' => 'review_label',
+			'condition_class' => "show_reviews d-none");
+			filter_plus_number_input_field($args);
+
 
 			// filter by stock
 			$args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock');

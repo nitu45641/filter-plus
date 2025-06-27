@@ -6,6 +6,7 @@ defined( 'ABSPATH' ) || exit;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use FilterPlus\Base\DataFactory;
 use FilterPlus\Utils\Helper as Helper;
 class Woo_Filter extends Widget_Base {
 
@@ -116,7 +117,15 @@ class Woo_Filter extends Widget_Base {
 				'default' => 'numbers'
 			)
 		);
-
+		$this->add_control(
+			'category_template',
+			array(
+				'label' => esc_html__( 'Select Category Filter Template', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => DataFactory::category_template('elementor')['template'],
+			)
+		);
 		$this->add_control(
 			'category_label',
 			array(
@@ -156,7 +165,7 @@ class Woo_Filter extends Widget_Base {
 				'default' => 'yes',
 			)
 		);
-
+		
 		$this->add_control(
 			'product_count',
 			array(
@@ -178,6 +187,16 @@ class Woo_Filter extends Widget_Base {
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
+			)
+		);
+		$this->add_control(
+			'color_template',
+			array(
+				'label' => esc_html__( 'Select Color Filter Template', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => DataFactory::color_template('elementor')['template'],
+				'condition' => array( 'colors' => 'yes' )
 			)
 		);
 		$this->add_control(
@@ -310,7 +329,16 @@ class Woo_Filter extends Widget_Base {
 				'default' => 'yes',
 			)
 		);
-
+		$this->add_control(
+			'review_template',
+			array(
+				'label' => esc_html__( 'Select Review Filter Template', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => DataFactory::review_template('elementor')['template'],
+				'condition' => array( 'show_reviews' => 'yes' )
+			)
+		);
 		$this->add_control(
 			'review_label',
 			array(

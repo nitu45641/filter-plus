@@ -109,6 +109,9 @@ class DataFactory {
     public function woo_process_data( $settings ) {
         extract($settings);
         $default_data = $this->woo_default_data();
+        $default_data['review_template'] = ! empty( $review_template ) ? $review_template : '1';
+        $default_data['color_template'] = ! empty( $color_template ) ? $color_template : '1';
+        $default_data['category_template'] = ! empty( $category_template ) ? $category_template : '1';
         $default_data['category_label'] = ! empty( $category_label ) ? $category_label : esc_html__( 'Categories', 'filter-plus' );
 		$default_data['categories'] = ( ! empty( $categories ) && is_array( $categories ) ) ? implode( ',', $categories ) : '';
 		$default_data['tags']       = ! empty( $tags ) && is_array( $tags ) ? implode( ',', $tags ) : '';
@@ -156,6 +159,9 @@ class DataFactory {
 		echo do_shortcode("[filter_products category_label='".$category_label."' 
 		sub_categories='".$sub_categories."' title ={$title} no_of_items={$no_of_items} 
 		tag_label='".$tag_label."' 
+		category_template='".$category_template."' 
+		color_template='".$color_template."' 
+		review_template='".$review_template."' 
 		color_label='".$color_label."' 
 		size_label='".$size_label."' attribute_label='".$attribute_label."' 
 		review_label='".$review_label."' price_range_label='".$price_range_label."'
@@ -228,11 +234,13 @@ class DataFactory {
      * @return array
      */
 
-    public static function category_template() {
+    public static function category_template($type='shortcode') {
         $args = array(
             "template" => array(1,2,3),
             "template_disable" => 1,
         );
+                
+        $args = self::tempalte_arr( $args , $type , 3 );
 
         if ( self::$disable ) {
             $args['template_disable'] = 1;
@@ -269,17 +277,33 @@ class DataFactory {
 		}
     }
 
+    public static function tempalte_arr( $args , $type = 'shortcode' , $count = 3 ) {
+        $pro = class_exists( 'FilterPlusPro' ) ? '' : ' '.'('.esc_html__('Pro','filter-plus').')';
+        $template_length = array();
+        
+        if ($type === 'elementor') {
+            for ($i=1; $i < $count ; $i++) { 
+                array_push($template_length,  esc_html__('Tempate ' . $i . $pro, 'filter-plus') );
+            }
+            $args['template'] = $template_length;
+        }
+
+        return $args;
+    }
+
     /**
      * Color template data
      * 
      * @return array
      */
 
-    public static function color_template() {
+    public static function color_template( $type = 'shortcode' ) {
         $args = array(
             "template" => array(1,2,3),
             "template_disable" => 1,
         );
+
+        $args = self::tempalte_arr( $args , $type , 3 );
 
         if ( self::$disable ) {
             $args['template_disable'] = 1;
@@ -294,11 +318,13 @@ class DataFactory {
      * @return array
      */
 
-    public static function review_template() {
+    public static function review_template( $type = 'shortcode' ) {
         $args = array(
             "template" => array(1,2,3),
             "template_disable" => 1,
         );
+
+        $args = self::tempalte_arr( $args , $type , 3 );
 
         if ( self::$disable ) {
             $args['template_disable'] = 1;
