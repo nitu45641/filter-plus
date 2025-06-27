@@ -268,7 +268,7 @@ class Shortcodes {
 			.post-grid-view-1,.grid-view-6{
 				display: grid;
 				grid-template: auto / 32.5% 32.5% 32%;
-				gap: 15px 11px;
+				gap: 30px 11px;
 			}
 			.grid-view-7{
 				display: grid;
