@@ -206,7 +206,7 @@ class Shortcodes {
 		else if( $filter_type == "product" && $template == "5" ){
 			$hover_color = $secondary_color = '#EB662B';
 			$loadmore_bg = '#fff';
-			$loadmore_bg_hover = '#000';
+			$price_range = $loadmore_bg_hover = '#000';
 		}
 		else if ( $template == "6" ) {
 			$price_range = '#333'; 

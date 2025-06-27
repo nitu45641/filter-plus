@@ -840,7 +840,11 @@ ul.pagination {
     justify-content: space-between;
 }
 .range .slider-container.theme-green{
-	background: var(--filter-price-range,"#2d0607") !important;
+	background: var(--filter-price-range,#2d0607) !important;
+}
+.theme-green .back-bar .pointer{
+	background: var(--filter-price-range,#2d0607) !important;
+	border-color: var(--filter-price-range,#AAA) !important;
 }
 .filter-tab-pane{
     display: flex;

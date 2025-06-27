@@ -558,7 +558,7 @@
 			}
 
 			pagination.html('').html(pagination_markup);
-			$('.products-wrap').find('ul.pagination li').on('click', function () {
+			$('.products-wrap').find('.naviation li').on('click', function () {
 				let load_more = false;
 				let _this = $(this);
 				if (_this.hasClass('load-more')) {
