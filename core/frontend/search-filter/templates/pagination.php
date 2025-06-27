@@ -4,6 +4,12 @@
 
    $prev = $page - 1;
    $next = $page + 1;
+
+   // Fix: Only render pagination if $totalPages is set and > 1
+   if (!isset($totalPages) || $totalPages < 2) {
+       return;
+   }
+
 ?>
 <ul class="pagination">
    <?php

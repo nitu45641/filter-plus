@@ -113,6 +113,7 @@ class Actions {
 	 * @return array
 	 */
     public function get_products( $param = array() ) {
+
 		$args = array(
 			'post_type'             => $param['filter_type'],
 			'post_status'           => 'publish',
@@ -145,16 +146,19 @@ class Actions {
 		// total products
 		$args['posts_per_page'] = -1;
 		$posts_count            = count(get_posts($args));
+
 		if ( $param['filter_type'] == "product") {
 			$products   = $this->process_product_data( $posts , $param );
 		}else{
 			$products   = $this->process_wp_data( $posts , $param );
 		}
+
 		$pagination_markup = \FilterPlus\Core\Frontend\SearchFilter\Templates\Templates::instance()->pagination( array(
 			'totalPages' 	=> ceil($posts_count / $param['limit']),
 			'page' 			=> $param['offset'],
 			'template' 		=> $param['pagination_style'],
 		) );
+
 		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $param['limit'])
 		, 'pagination_markup' => $pagination_markup );
 	}
@@ -534,7 +538,7 @@ class Actions {
 		// Use a larger, square size for better Isotope rendering
 		$size = array(300, 300);
 		if ( $filter_type == 'product' && $template == '7') {
-			$size = array(200, 200);
+			$size = array(220, 220);
 		}
 		// Fix: add template 2 and 3 for non-product types
 		else if ( $filter_type !== 'product' && ( $template == '3' ) ) {

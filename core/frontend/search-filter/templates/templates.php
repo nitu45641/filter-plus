@@ -26,14 +26,15 @@ class Templates {
 			return $html = '';
 		}
 
-		if ( $template == 'numbers' ) {
+		if ( $template == 'pagination' ) {
+
 			ob_start();
 			if ( file_exists(plugin_dir_path( __FILE__ ) . '/pagination.php') ) {
 				include __DIR__ . '/pagination.php';
 			}
 			$html = ob_get_clean();
 		}
-		if ( $template == 'loadmore' ) {
+		else if ( $template == 'loadmore' ) {
 			$loadmore = esc_html__( 'Load More', 'filter-plus' );
 			if ( $page < $totalPages ) {
 				$html = '<li

@@ -61,8 +61,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<div class="prods-list-view"></div>
 	<div class="message"></div>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-data.php"; ?>
-	<!-- pagination -->
-	<ul class="pagination pagination-1"></ul>
+	<?php include_once \FilterPlus::plugin_dir() . "templates/parts/pagination.php"; ?>
 </div>
 
 
