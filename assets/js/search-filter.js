@@ -645,17 +645,11 @@
 			$('ul.ratings').on('click', 'li', function () {
 				const $this = $(this);
 				$(this).addClass('active').siblings().removeClass('active');
-				// remove active class from all li
-				const $template = $('.ratings').data('template');
-				if ($template == 1) {
-					$('.ratings li').not($this).addClass('rating_disable');
-				} else {
-					$('.rating-label').html('').html($(this).html());
-				}
+				$('.rating-label').html('').html($(this).html());
 				$('ul.ratings').attr('id', $this.data('star'));
 				get_products();
 				// reset block
-				reset_block($this, $this.closest('.panel'));
+				reset_block($this, $this.closest('.panel') );
 			});
 		}
 
@@ -672,7 +666,7 @@
 				$('.filter-top').addClass('d-none');
 				return
 			}
-
+			
 			const reset_button = $this.find('.reset');
 			
 			if (action == '') {
@@ -701,7 +695,7 @@
 			if ($parent.hasClass('ratings')) {
 				$parent.attr('id', '');
 				$('.ratings li').removeClass('rating_disable');
-				$('.rating-label').html('');
+				$('.rating-label').html('Any Rating');
 			} else if ($parent.hasClass('range-slider')) {
 				$parent.attr('data-action', false);
 				const min = $parent.data('min');

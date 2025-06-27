@@ -826,7 +826,7 @@ class Helper {
 		<span>".$star." Star</span>
 		</li>";
 		
-		echo self::render( $html )( $html );
+		echo Helper::render( $html );
 	}
 
 	/**
