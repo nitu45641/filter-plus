@@ -547,7 +547,16 @@
 		 * @param     offset
 		 */
 		function pagination_html(pagination_markup) {
-			let pagination = $('.pagination');
+			let pagination = $('.naviation');
+			let $footer = $('.pagination-footer');
+			let $inside = $footer.find('.showing');
+			
+			if ($inside.length > 0) {
+				$footer.addClass('two-section').removeClass('one-section');
+			} else {
+				$footer.addClass('one-section').removeClass('two-section');
+			}
+
 			pagination.html('').html(pagination_markup);
 			$('.products-wrap').find('ul.pagination li').on('click', function () {
 				let load_more = false;

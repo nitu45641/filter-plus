@@ -179,6 +179,8 @@ class Shortcodes {
 		$readmore_color = $hover_color = 'hsla(242, 88.4%, 66.3%, 0.8)';
 		$rating_color = '#FFCA27'; $rating_size = '13px';
 		$badge_bg = '#E7272D'; $price_color = '#e3106e';
+		$loadmore_bg = '#fff';
+		$loadmore_bg_hover = '#000';
 
 		if ( $template == "2" ) {
 			$cart_icon =  '#fff'; 
@@ -203,6 +205,8 @@ class Shortcodes {
 		}
 		else if( $filter_type == "product" && $template == "5" ){
 			$hover_color = $secondary_color = '#EB662B';
+			$loadmore_bg = '#fff';
+			$loadmore_bg_hover = '#000';
 		}
 		else if ( $template == "6" ) {
 			$price_range = '#333'; 
@@ -297,6 +301,8 @@ class Shortcodes {
 
 		$filter_custom_css = '
 		:root {
+			--filter-loadmore-bg: '.$loadmore_bg.';
+			--filter-loadmore-bg-hover: '.$loadmore_bg_hover.';
 			--filter-readmore-color: '.$readmore_color.';
 			--filter-title-color: '.$title_color.';
 			--filter-price-color: '.$price_color.';

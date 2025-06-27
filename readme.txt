@@ -3,7 +3,7 @@ Contributors: markutos987
 Donate link: https://wpbens.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Tested up to: 6.8
-Stable tag: 1.0.94
+Stable tag: 1.0.95
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -136,6 +136,9 @@ If you are familiar with WordPress interface and how to use plugins in WordPress
 
 
 == Changelog ==
+
+= 1.0.95 (June 27, 2025)=
+Tweak  : Improve Ux of filter template
 
 = 1.0.94 (June 24, 2025)=
 Tweak  : Color style added

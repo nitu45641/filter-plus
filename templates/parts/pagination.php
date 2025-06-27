@@ -12,5 +12,5 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             include FilterPlusPro::template_dir(). 'woo-filter/parts/filter-result-count.php';
         }
     ?>
-    <div class="pagination <?php echo esc_attr( $pagination_style) ;?> pagination-<?php echo esc_attr($template)?>"></div>
+    <div class="naviation pagination-<?php echo esc_attr($template)?>"></div>
 </div>

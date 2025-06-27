@@ -1846,21 +1846,6 @@ ul.sub_categories{
 	pointer-events: none;
 }
 
-
-/* .color-style-3 input[type='checkbox'],
-.color-style-3 .radio-wrap .radio-item {
-    appearance: none;
-    width: 14px; 
-    height: 14px;
-    background-color: var(--filter-tab-color);
-    border: 1px solid black;
-    padding: 5px;
-    border-radius: 0; 
-    display: inline-block;
-    position: relative;
-    cursor: pointer;           
-} */
-
 .sidebar-style-7 .category-list li input[type='checkbox'],
 .sidebar-style-7 .param-box input[type='checkbox'],
 .sidebar-style-7 .radio-wrap .radio-item {
@@ -2174,5 +2159,30 @@ ul.sub_categories{
 .checkbox-item-3 input[type='checkbox']{
 	appearance: none;
 }
+.pagination-footer{
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+}
+.pagination-footer.two-section{
+   justify-content: space-between;
+}
+.pagination-footer.one-section{
+   justify-content: center;
+}
+.pagination-footer .load-more{
+	width: 100% !important;
+	padding: 10px 20px;
+	list-style: none;
+	cursor: pointer;
+	color: var(--filter-loadmore-color,#636363) !important;
+	background-color: var(--filter-loadmore-bg,#fff) !important;
+    transition: all 0.6s ease-in-out;
+	border-radius: 0px !important;
+	border: 1px solid var(--filter-loadmore-bg-hover,#d6d6d6) !important;
+}
+.pagination-footer .load-more:hover{
+	background: var(--filter-loadmore-bg-hover,#d6d6d6) !important;
+	color: var(--filter-loadmore-color-hover,#fff) !important;
 
-
+}

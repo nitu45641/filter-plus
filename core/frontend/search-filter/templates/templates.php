@@ -21,13 +21,13 @@ class Templates {
 	 */
 	public function pagination( $args ) {
 		extract( $args );
+
 		$html = '';
 		if ( ($totalPages == 0) || ($totalPages == 1) ) {
 			return $html = '';
 		}
 
-		if ( $template == 'pagination' ) {
-
+		if ( $template == 'numbers' ) {
 			ob_start();
 			if ( file_exists(plugin_dir_path( __FILE__ ) . '/pagination.php') ) {
 				include __DIR__ . '/pagination.php';
