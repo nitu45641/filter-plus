@@ -319,7 +319,6 @@ class Shortcodes {
 				.tab-item
 				{
 					grid-template: auto / 100%;
-					place-items: center;
 				}
 				.horizontal-prod-card{
 					display: grid;
