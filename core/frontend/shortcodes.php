@@ -283,7 +283,7 @@ class Shortcodes {
 			}
 			.grid-view-3{
 				display: grid;
-				grid-template-columns: 300px 300px 300px;
+				grid-template-columns: 290px 290px 290px;
 				column-gap: 20px;
 			}
 			.product-style-3 .vpcc-image img {

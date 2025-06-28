@@ -548,6 +548,9 @@ class Actions {
 		else if ( $filter_type !== 'product' && ( $template == '2' ) ) {
 			$size = array(380, 210);
 		}
+		if ( $filter_type !== 'product' && $template == '3') {
+			$size = array(340, 210 );
+		}
 		return $size;
 	}
 
