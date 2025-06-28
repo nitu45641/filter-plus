@@ -293,6 +293,11 @@ class Shortcodes {
 				grid-template-columns: 200px 200px 200px 200px;
 				gap: 8px 20px;
 			}
+			.product-style-4{
+				display: grid;
+				grid-template-columns: 29% auto;
+				gap: 30px 15px;
+			}
 
 			@media screen and (max-width: 1024px) {
 				.grid-view-1 {
