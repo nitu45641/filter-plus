@@ -312,6 +312,9 @@ class Shortcodes {
 				.grid-view-2,.grid-view-3 {
 					grid-template: auto / 220px 220px 220px;
 				}
+				.product-style-5{
+				    grid-template-columns: 220px 220px 220px !important;
+				}
 			}
 			@media (max-width: 768px) {
 				.post-grid-view-5{
@@ -327,7 +330,7 @@ class Shortcodes {
 				.prods-grid-view,
 				.tab-item
 				{
-					grid-template: auto / 100%;
+					grid-template: auto / 100% !important;
 				}
 				.horizontal-prod-card{
 					display: grid;
