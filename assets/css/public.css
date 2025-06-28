@@ -2179,7 +2179,22 @@ ul.sub_categories{
 .range-slider,.slider-container {
   width: 100%; 
 }
+@media (max-width: 1024) {
+	.shop-container-2{
+		opacity: 1; 
+		left: 100%; 
+	}
+}
 @media (max-width: 768px) {
+	.shop-container-2 .filter-bar-mb-search {
+		display: block; 
+	}
+	.filter-mb-search{
+		display: flex;
+        position: absolute;
+        z-index: 9999;
+        cursor: pointer;
+	}
 	.side-cart-close{
 		display: block;
 	}
@@ -2197,12 +2212,6 @@ ul.sub_categories{
 		top: 0;
 		overflow-y: scroll;
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
-	}
-	.filter-mb-search{
-		display: flex;
-        position: absolute;
-        z-index: 9999;
-        cursor: pointer;
 	}
 }
 @media screen and (max-width: 425px) {
