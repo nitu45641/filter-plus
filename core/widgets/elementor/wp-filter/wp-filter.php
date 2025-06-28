@@ -6,6 +6,7 @@ defined("ABSPATH") || exit;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use FilterPlus\Base\DataFactory;
 use \FilterPlus\Core\Admin\FilterOptions\Helper as OptionHelper;
 use FilterPlus\Utils\Helper as Helper;
 
@@ -144,6 +145,15 @@ class Wp_Filter extends Widget_Base {
 				'options' => Helper::custom_post_type(''),
 				'condition' => ['filter_type' => 'custom_post']
 			]
+		);
+		$this->add_control(
+			'category_template',
+			array(
+				'label' => esc_html__( 'Select Category Filter Template', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => DataFactory::category_template('elementor')['template'],
+			)
 		);
 		$this->add_control(
 			'show_categories',

@@ -108,18 +108,17 @@ class DataFactory {
      */
     public function woo_process_data( $settings ) {
         extract($settings);
-        error_log( print_r( $color_template, true ) );
 
         $default_data = $this->woo_default_data();
-        $default_data['review_template'] = ! empty( $review_template ) ? $review_template : '1';
-        $default_data['color_template'] = ! empty( $color_template ) ? $color_template : '1';
-        $default_data['category_template'] = ! empty( $category_template ) ? $category_template : '1';
-        $default_data['category_label'] = ! empty( $category_label ) ? $category_label : esc_html__( 'Categories', 'filter-plus' );
-		$default_data['categories'] = ( ! empty( $categories ) && is_array( $categories ) ) ? implode( ',', $categories ) : '';
-		$default_data['tags']       = ! empty( $tags ) && is_array( $tags ) ? implode( ',', $tags ) : '';
-		$default_data['show_tags']  = ! empty( $show_tags ) ? $show_tags : '';
-		$default_data['tag_label']  = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Tags', 'filter-plus' );
-		$default_data['color_label'] = ! empty( $color_label ) ? $color_label : esc_html__( 'Colors', 'filter-plus' );
+        $default_data['review_template']    = ! empty( $settings['review_template'] ) ? $settings['review_template'] : '1';
+        $default_data['color_template']     = ! empty( $settings['color_template'] ) ? $settings['color_template'] : '1';
+        $default_data['category_template']  = ! empty( $settings['category_template'] ) ? $settings['category_template'] : '1';
+        $default_data['category_label']     = ! empty( $category_label ) ? $category_label : esc_html__( 'Categories', 'filter-plus' );
+		$default_data['categories']         = ( ! empty( $categories ) && is_array( $categories ) ) ? implode( ',', $categories ) : '';
+		$default_data['tags']               = ! empty( $tags ) && is_array( $tags ) ? implode( ',', $tags ) : '';
+		$default_data['show_tags']          = ! empty( $show_tags ) ? $show_tags : '';
+		$default_data['tag_label']          = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Tags', 'filter-plus' );
+		$default_data['color_label']        = ! empty( $color_label ) ? $color_label : esc_html__( 'Colors', 'filter-plus' );
 		$default_data['product_count']      = !empty($settings['product_count']) && $settings['product_count'] == true ? 'yes' : 'no';
 		$default_data['hide_empty_cat']     = !empty($settings['hide_empty_cat']) && $settings['hide_empty_cat'] == true ? 'yes' : 'no';
 		$default_data['sub_categories']     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
@@ -182,6 +181,7 @@ class DataFactory {
 			$default_data['custom_fields']  = is_array($custom_field_list) ? implode(',',$custom_field_list) : $custom_field_list;
 		}
 
+        $default_data['category_template']  = ! empty( $settings['category_template'] ) ? $settings['category_template'] : '1';
 		$default_data['filter_type']        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
 		$default_data['custom_post']        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
 		$default_data['template']           = !empty($settings['template']) ? $settings['template'] : '1';
@@ -219,6 +219,7 @@ class DataFactory {
         extract( $process_data );
 
 		echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
+        category_template='".$category_template."' 
         category_label='".$category_label."' 
 		sub_categories='{$sub_categories}'
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'

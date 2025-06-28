@@ -4,6 +4,7 @@ namespace FilterPlus\Core\Widgets\Bricks;
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+use FilterPlus\Base\DataFactory;
 use \FilterPlus\Core\Admin\FilterOptions\Helper as OptionHelper;
 
 class Wp_Filter extends \Bricks\Element {
@@ -149,6 +150,21 @@ class Wp_Filter extends \Bricks\Element {
 			'small' => true,
 			'default' => true,
 		);
+
+		$this->controls['category_template'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Select Category Filter Template', 'filter-plus' ),
+			'type' => 'select',
+			'options' => DataFactory::category_template('elementor')['template'],
+			'inline' => true,
+			'placeholder' => esc_html__( 'Select Template', 'filter-plus' ),
+			'single' => true,
+			'searchable' => true,
+			'clearable' => true,
+			'default' => '1',
+		);
+
 		$this->controls['category_label'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',

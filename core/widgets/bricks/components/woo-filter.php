@@ -6,6 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use FilterPlus\Base\DataFactory;
+
 class Woo_Filter extends \Bricks\Element {
 	public $category     = 'filter plus';
 	public $name         = 'fplus-woo';
@@ -108,6 +110,19 @@ class Woo_Filter extends \Bricks\Element {
 		);
 
 		// Category
+		$this->controls['category_template'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Select Category Filter Template', 'filter-plus' ),
+			'type' => 'select',
+			'options' => DataFactory::category_template('elementor')['template'],
+			'inline' => true,
+			'placeholder' => esc_html__( 'Select Template', 'filter-plus' ),
+			'single' => true,
+			'searchable' => true,
+			'clearable' => true,
+			'default' => '1',
+		);
 		$this->controls['category_label'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',
@@ -172,6 +187,21 @@ class Woo_Filter extends \Bricks\Element {
 			'inline' => true,
 			'small' => true,
 			'default' => true,
+		);
+
+		$this->controls['color_template'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Select Color Filter Template', 'filter-plus' ),
+			'type' => 'select',
+			'options' => DataFactory::color_template('elementor')['template'],
+			'inline' => true,
+			'placeholder' => esc_html__( 'Select Template', 'filter-plus' ),
+			'single' => true,
+			'searchable' => true,
+			'clearable' => true,
+			'default' => '1',
+			'required' => array( 'colors', '=', true ),
 		);
 
 		$this->controls['color_label'] = array(
@@ -274,7 +304,6 @@ class Woo_Filter extends \Bricks\Element {
 		);
 
 		// price range
-
 		$this->controls['show_price_range'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',
@@ -304,6 +333,21 @@ class Woo_Filter extends \Bricks\Element {
 			'inline' => true,
 			'small' => true,
 			'default' => true,
+		);
+
+		$this->controls['review_template'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Select Review Filter Template', 'filter-plus' ),
+			'type' => 'select',
+			'options' => DataFactory::review_template('elementor')['template'],
+			'inline' => true,
+			'placeholder' => esc_html__( 'Select Template', 'filter-plus' ),
+			'single' => true,
+			'searchable' => true,
+			'clearable' => true,
+			'default' => '1',
+			'required' => array( 'show_reviews', '=', true ),
 		);
 
 		$this->controls['review_label'] = array(
