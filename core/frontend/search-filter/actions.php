@@ -535,7 +535,7 @@ class Actions {
 	 * @return array
 	 */
 	public static function product_size( $filter_type , $template){
-		// Use a larger, square size for better Isotope rendering
+
 		$size = array(300, 300);
 		if ( $filter_type == 'product' && $template == '7') {
 			$size = array(220, 220);
@@ -548,7 +548,7 @@ class Actions {
 		else if ( $filter_type !== 'product' && ( $template == '2' ) ) {
 			$size = array(380, 210);
 		}
-		if ( $filter_type !== 'product' && $template == '3') {
+		else if ( $filter_type == 'product' && $template == '3') {
 			$size = array(340, 210 );
 		}
 		return $size;

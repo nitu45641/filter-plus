@@ -294,9 +294,13 @@ class Shortcodes {
 				gap: 8px 20px;
 			}
 			.product-style-4{
-				display: grid;
-				grid-template-columns: 29% auto;
+				display: inline-flex;
+				flex-direction: row;
 				gap: 30px 15px;
+			}
+			.product-style-4 .product-thumbnail{
+			    align-items: center;
+    			display: flex;
 			}
 
 			@media screen and (max-width: 1024px) {
@@ -318,10 +322,9 @@ class Shortcodes {
 				.grid-view-3{
 				    grid-template-columns: 320px 320px;
 				}
-
 			}
 			@media screen and (max-width: 425px) {
-				.grid-view-1,.grid-view-2,.grid-view-3,
+				.prods-grid-view,
 				.tab-item
 				{
 					grid-template: auto / 100%;
