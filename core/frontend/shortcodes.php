@@ -279,7 +279,6 @@ class Shortcodes {
 			}
 			.product-style-6 .vpcc-image img{
 				width: 255px;
-				height: 315px;
 			}
 			.grid-view-3{
 				display: grid;
@@ -288,8 +287,6 @@ class Shortcodes {
 			}
 			.product-style-3 .vpcc-image img {
 				width: 100%;
-				height: 300px;
-				object-fit: cover;
 			}
 			.tab-item.product-style-5{
 				display: grid;
@@ -303,7 +300,7 @@ class Shortcodes {
 					grid-template-columns: 32% 32% 32%;
 					gap: 15px 11px;
 				}
-				.grid-view-2 {
+				.grid-view-2,.grid-view-3 {
 					grid-template: auto / 220px 220px 220px;
 				}
 			}
@@ -313,6 +310,10 @@ class Shortcodes {
 					grid-template-columns: auto auto auto !important;
 					gap: 15px 10px;
 				}
+				.grid-view-3{
+				    grid-template-columns: 320px 320px;
+				}
+
 			}
 			@media screen and (max-width: 425px) {
 				.grid-view-1,.grid-view-2,.grid-view-3,
@@ -327,7 +328,7 @@ class Shortcodes {
 				.shop-sidebar {
 					width: 60%;
 				}
-				.grid-view-1 img{
+				.prods-grid-view img{
 					width: 100%;
 					height: auto;
 				}
