@@ -296,6 +296,42 @@ class Shortcodes {
 				grid-template-columns: 200px 200px 200px 200px;
 				gap: 8px 20px;
 			}
+
+			@media screen and (max-width: 1024px) {
+				.grid-view-1 {
+					display: grid;
+					grid-template-columns: 32% 32% 32%;
+					gap: 15px 11px;
+				}
+				.grid-view-2 {
+					grid-template: auto / 220px 220px 220px;
+				}
+			}
+			@media (max-width: 768px) {
+				.post-grid-view-5{
+					display: grid;
+					grid-template-columns: auto auto auto !important;
+					gap: 15px 10px;
+				}
+			}
+			@media screen and (max-width: 425px) {
+				.grid-view-1,.grid-view-2,.grid-view-3,
+				.tab-item
+				{
+					grid-template: auto / 100%;
+				}
+				.horizontal-prod-card{
+					display: grid;
+					grid-template-columns: 105px auto 15% !important;
+				}
+				.shop-sidebar {
+					width: 60%;
+				}
+				.grid-view-1 img{
+					width: 100%;
+					height: auto;
+				}
+			}
 			';
 		}
 

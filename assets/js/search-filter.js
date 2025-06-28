@@ -115,19 +115,27 @@
 				});
 			});
 		}
-
+		
 		// price range
 		const price_range = $('.range-slider');
 		const min = price_range.data('min');
 		const max = price_range.data('max');
+
 		price_range_picker();
 		function price_range_picker() {
+			
+			let width = $('.shop-sidebar').width();
+			if ($(window).width() < 430) {
+				width = 220; 
+			}
+			
 			price_range.jRange({
 				from: min,
 				to: max,
 				step: 1,
 				scale: [min, max],
-				width: '250',
+				format: '%s',
+				width: width,
 				showLabels: true,
 				isRange: true,
 				ondragend(val) {
@@ -139,6 +147,18 @@
 			});
 			price_range.jRange('setValue', min + ',' + max);
 		}
+
+		/**
+		 * Re-initialize the range slider on window resize
+		 */
+
+		let resizeTimeout;
+		$(window).on('resize', function () {
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(function () {
+			price_range_picker();
+		}, 200); // wait 200ms after resize ends
+		});
 
 		function price_range_actions(val, price_range) {
 			price_range.attr('data-action', true);
