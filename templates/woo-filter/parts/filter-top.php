@@ -5,7 +5,7 @@
 <?php endif;?>
 
 <?php 
-$not_in = array('5','2');
+$not_in = array('5','2','6','7');
 if( !in_array($template,$not_in)  ) : ?>
 <div class="filter-mb filter-mb-search"></div>
 <?php endif; ?>

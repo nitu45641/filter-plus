@@ -866,8 +866,10 @@ ul.pagination {
 .filter-tab-pane{
     display: flex;
     justify-content: center;
-	gap: 15px;
+    flex-wrap: wrap;
+    column-gap: 15px;
     list-style: none;
+	margin-bottom: 15px !important;
 }
 .filter-tab-pane li{
 	cursor: pointer;
@@ -2207,7 +2209,7 @@ ul.sub_categories{
 	.filter-top {
     	margin-top: 45px;
 	}
-	.shop-sidebar {
+	.shop-sidebar:not(.wp-sidebar-style-3) {
 		width: 35%;
 		padding: 15px;
 		background: #fff;

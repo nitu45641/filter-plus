@@ -265,20 +265,22 @@ class Shortcodes {
 				gap: 30px 15px;
 				position: relative;
 			}
-			.post-grid-view-1,.grid-view-6{
+			.post-grid-view-1{
 				display: grid;
 				grid-template: auto / 32.5% 32.5% 32%;
 				gap: 30px 11px;
 			}
+			.grid-view-6{
+				display: grid;
+				grid-template: auto / 33% 33% 33%;
+				gap: 30px 22px;
+			}
 			.grid-view-7{
 				display: grid;
-				grid-template-columns: 225px 225px 225px 225px;
+				grid-template-columns: 210px 210px 210px 210px;
 				position: relative;
 				column-gap: 20px;
 				row-gap: 25px;
-			}
-			.product-style-6 .vpcc-image img{
-				width: 255px;
 			}
 			.grid-view-3{
 				display: grid;
@@ -309,7 +311,7 @@ class Shortcodes {
 					grid-template-columns: 32% 32% 32%;
 					gap: 15px 11px;
 				}
-				.grid-view-2,.grid-view-3 {
+				.grid-view-2,.grid-view-3,.grid-view-7 {
 					grid-template: auto / 220px 220px 220px;
 				}
 				.product-style-5{
@@ -324,6 +326,10 @@ class Shortcodes {
 				}
 				.grid-view-3{
 				    grid-template-columns: 320px 320px;
+				}
+				.post-grid-view-3 .hpcc-image{
+				    display: inline-flex;
+    				align-items: center;
 				}
 			}
 			@media screen and (max-width: 425px) {
