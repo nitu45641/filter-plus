@@ -382,6 +382,11 @@
 					autoplay: {
 						delay: 4000,
 					},
+					breakpoints: {
+						1024: {slidesPerView: 3},
+						768: {slidesPerView: 2},
+						425: { slidesPerView: 1},
+					},
 					
 				});
 			}
@@ -1000,6 +1005,9 @@
 			// Ensure sidebar is hidden initially on mobile
 			if ($(window).width() < 700) {
 				$sidebarAndWrapper.css({ left: '-100%', opacity: 0 });
+			}else{
+				$sidebarAndWrapper.css({ left: '0%', opacity: 1 });
+
 			}
 		}
 		//watch window resize

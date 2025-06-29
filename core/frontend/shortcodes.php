@@ -338,6 +338,9 @@ class Shortcodes {
 				{
 					grid-template: auto / 100% !important;
 				}
+				.hpcc-image{
+					display:block !important;
+				}
 				.horizontal-prod-card{
 					display: grid;
 					grid-template-columns: 105px auto 15% !important;

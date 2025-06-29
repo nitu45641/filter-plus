@@ -41,6 +41,7 @@ use FilterPlus\Base\DataFactory;
 	?>
 </div>
 <div class="row products-wrap">
+	<div class="filter-mb-search"></div>
 	<?php 
 		if (file_exists(\FilterPlus::plugin_dir() . 'templates/parts/filter-top.php')) {
 			include_once \FilterPlus::plugin_dir() . 'templates/parts/filter-top.php'; 

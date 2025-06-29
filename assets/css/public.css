@@ -20,7 +20,7 @@ label {
 	position: relative;
 }
 .swiper-outer-wrapper{
-	padding: 0 100px;
+	/* padding: 0 100px; */
 }
 .swiper-button-next:after, .swiper-button-prev:after{
     font-size: 16px !important;
@@ -1360,8 +1360,7 @@ a {
 }
 
 .fp-blog-category-list-2{
-    visibility: hidden;
-    display: inline;
+    display: none;
 }
 
 /* Grid view css end*/
@@ -2209,7 +2208,7 @@ ul.sub_categories{
 	.filter-top {
     	margin-top: 45px;
 	}
-	.shop-sidebar:not(.wp-sidebar-style-3) {
+	.shop-sidebar {
 		width: 35%;
 		padding: 15px;
 		background: #fff;
