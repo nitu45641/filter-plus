@@ -317,6 +317,9 @@ class Shortcodes {
 				.product-style-5{
 				    grid-template-columns: 220px 220px 220px !important;
 				}
+				.color-style-2{
+					gap: 8px !important;
+				}
 			}
 			@media (max-width: 768px) {
 				.post-grid-view-5{
