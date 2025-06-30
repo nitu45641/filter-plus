@@ -398,7 +398,7 @@ class Actions {
 	 */
 	public static function process_wp_data( $posts , $param ) {
 		$products 	= array();
-		$size  		= $param['masonry_style'] !== "yes" ? self::product_size( $param['filter_type'] , $param['template'] ) : 'full';
+		$size  		= $param['masonry_style'] !== "yes" ? self::product_size( $param['filter_type'] , $param['template'] ) : '';
 		$cats  		= $param['filter_type'] == "product" ? 'product_cat' : 'category';
 		$tags 		= $param['filter_type'] == "product" ? 'product_tag' : 'post_tag';
 		if ( !empty($posts) ) {

@@ -249,10 +249,14 @@ class Shortcodes {
 			';
 		}else{
 			$grid_style = '
+			.product-style-3 .hpcc-image img{
+				width: 340px;
+			}
 			.post-grid-view-3{
 				display: grid;
 				grid-template-columns: 345px 345px 345px;
 				gap: 25px;
+				place-content: center;
 			}
 			.grid-view-1 {
 				display: grid;
