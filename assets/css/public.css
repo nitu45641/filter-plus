@@ -754,8 +754,7 @@ ul.pagination {
 	fill: var(--filter-secondary-color,'#fff');
 }
 .add_to_cart_button.loading svg,
-.add_to_cart_button.added svg
-{
+.add_to_cart_button.added svg{
 	display: none;
 }
 
@@ -765,7 +764,7 @@ ul.pagination {
     -webkit-animation: spin 2s linear infinite; 
     animation: spin 2s linear infinite;
     border-radius: 290486px;
-    left: 5px;
+    left: 10px;
     top: 5px;
 }
 .cart_button-1.loading::after {
