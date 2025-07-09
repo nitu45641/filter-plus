@@ -50,11 +50,13 @@ class Banner {
             error_log('API POST failed: ' . $response->get_error_message());
             return;
         }
-        // $response_body = wp_remote_retrieve_body($response);
-        $status = 1;
-
-        update_option( $this->status_key , $status );
-        
+        $response_body = wp_remote_retrieve_body($response);
+        $json = json_decode($response_body, true);
+        if (isset($json['success'])) {
+            update_option( $this->status_key , $json['success']);
+        } else {
+            error_log('API response missing status key: ' . $response_body);
+        }        
     }
 
 }
