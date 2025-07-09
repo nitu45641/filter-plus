@@ -5,47 +5,51 @@ $features = array(
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-category"></span>',
         'title' =>esc_html__('Filter WooCommerce Product','filter-plus'),
-        'desc' =>esc_html__('Unlock Powerful Filtering Options for Your Store.Easily Manage and Sort Products and Boost Sales','filter-plus')
+        'desc' => ''
     ),
     array(
         'icon' => '<span class="fr-icon dashicons dashicons-image-filter"></span>',
         'title' =>esc_html__('Filter WP Custom Post','filter-plus'),
-        'desc' =>esc_html__('Simplify Content Management with the WordPress Custom Post Filters.Enhance User Experience by Filtering','filter-plus')
+        'desc' => ''
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-buddicons-groups"></span>',
         'title' =>esc_html__('Filter Woo Admin Order','filter-plus'),
-        'desc' =>esc_html__('Improve Your WooCommerce Workflow with Order Filtering Master Order Management','filter-plus')
+        'desc' => ''
     ),
     array(
         'icon' => '<span class="fr-icon dashicons dashicons-admin-page"></span>',
         'title' =>esc_html__('SEO Optimized Url','filter-plus'),
-        'desc' =>esc_html__('Boost Your Search Engine Rankings with Effective URL Optimization','filter-plus')
+        'desc' => ''
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-filter"></span>',
         'title' =>esc_html__('Filter by Multiple Custom Field','filter-plus'),
-        'desc' =>esc_html__('Find the Best Deals with Multiple Custom Field.Easily Sort Products to Fit Your Budget.','filter-plus')
+        'desc' => ''
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-star-filled"></span>',
         'title' =>esc_html__('Multiple Product Filter Templates','filter-plus'),
-        'desc' =>esc_html__('Quickly Find What You Need by Using More Effective product search templates','filter-plus')
+        'desc' => '',
+        'related_icon' => '<span class="related-icon dashicons dashicons-products"></span>'
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-menu-alt3"></span>',
         'title' =>esc_html__('Support Multiple Builder','filter-plus'),
-        'desc' =>esc_html__('Support ShortCode,Elementor,BricksBuilder to setup best searching widgets,','filter-plus')
+        'desc' => '',
+        'related_icon' => '<span class="related-icon dashicons dashicons-admin-tools"></span>'
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-screenoptions"></span>',
         'title' =>esc_html__('Multiple Blog Filter Templates','filter-plus'),
-        'desc' =>esc_html__('Enhance User experience with best Searching options.Easily Manage and Sort Your Content','filter-plus')
+        'desc' => '',
+        'related_icon' => '<span class="related-icon dashicons dashicons-edit"></span>'
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
         'title' =>esc_html__('Many More Features','filter-plus'),
-        'desc' =>esc_html__('Find the Best Deals with Our Price Range, Attributes, Tag, Taxonomies.Easily Sort Products to Fit Your Budget.','filter-plus')
+        'desc' => '',
+        'related_icon' => '<span class="related-icon dashicons dashicons-plus"></span>'
     ),
 );
 
@@ -109,9 +113,16 @@ $more_products = array(
         <div class="block-wrapper mb-5">
             <?php foreach ($features as $key => $value) { ?>
                 <div class="single-item">
-                        <?php echo FilterPlus\Utils\Helper::kses($value['icon']); ?>  
-                        <h3><?php echo esc_html($value['title']); ?></h3>   
-                        <p><?php echo esc_html($value['desc']); ?></p>   
+                    <?php 
+                        // Show only related_icon if set, otherwise fallback to icon
+                        if (!empty($value['related_icon'])) {
+                            echo FilterPlus\Utils\Helper::kses($value['related_icon']);
+                        } else {
+                            echo FilterPlus\Utils\Helper::kses($value['icon']);
+                        }
+                    ?>
+                    <h3><?php echo esc_html($value['title']); ?></h3>
+                    <p><?php echo esc_html($value['desc']); ?></p>
                 </div>
             <?php } ?>
         </div>

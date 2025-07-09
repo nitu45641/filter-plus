@@ -4,7 +4,6 @@ namespace FilterPlus\Core;
 
 use FilterPlus\Utils\Singleton;
 use FilterPlus\Core\Widgets\Elementor\Manifest as Elementor_Manifest;
-
 /**
  * Base Class
  *
@@ -23,6 +22,8 @@ class Core {
      */
     public function init() {
       if ( is_admin() ) {
+
+        \FilterPlus\Core\Lib\Banner::instance()->init();
         // Load admin menus
         \FilterPlus\Core\Admin\Menus::instance()->init();
         // Ajax submit
