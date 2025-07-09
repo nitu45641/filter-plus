@@ -29,13 +29,13 @@ $features = array(
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-star-filled"></span>',
-        'title' =>esc_html__('Multiple Product Filter Templates','filter-plus'),
+        'title' =>esc_html__('10+ Filter Templates','filter-plus'),
         'desc' => '',
         'related_icon' => '<span class="related-icon dashicons dashicons-products"></span>'
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-menu-alt3"></span>',
-        'title' =>esc_html__('Support Multiple Builder','filter-plus'),
+        'title' =>esc_html__('Support Shortcode,Elementor,Guetenburg,BricksBuilder ','filter-plus'),
         'desc' => '',
         'related_icon' => '<span class="related-icon dashicons dashicons-admin-tools"></span>'
     ),
@@ -56,7 +56,7 @@ $features = array(
 $more_products = array(
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-        'url_demo' => 'https://wpbens.com/memberhub/',
+        'url_demo' => 'https://wpbens.com/plugins/memberhub/',
         'url_free' => 'https://downloads.wordpress.org/plugin/memberhub.latest-stable.zip',
         'title' =>esc_html__('MemberHub','filter-plus'),
         'logo'   => 'membership.png',
@@ -66,7 +66,7 @@ $more_products = array(
     ),
     array(
         'icon'          =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-        'url_demo'      => 'https://wpbens.com/discountify/',
+        'url_demo'      => 'https://wpbens.com/plugins/discountify/',
         'url_free'      => 'https://downloads.wordpress.org/plugin/discountify.latest-stable.zip',
         'title'         =>esc_html__('Discount and Coupon Management','filter-plus'),
         'logo'          => 'discountify.png',
@@ -76,7 +76,7 @@ $more_products = array(
     ),
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
-        'url_demo' => 'https://wpbens.com/quicker/',
+        'url_demo' => 'https://wpbens.com/plugins/quicker/',
         'url_free' => 'https://downloads.wordpress.org/plugin/quicker.latest-stable.zip',
         'title' =>esc_html__('Quick Checkout Plugin','filter-plus'),
         'logo'   => 'quicker.png',
@@ -129,7 +129,7 @@ $more_products = array(
     </div>
     <div class="block cta-block p-7 mb-5 mt-5">
         <div class="heading-block">
-            <h1 class="cta-block-header"><?php esc_html_e('Explore the premium version to experience our countless advanced features.','filter-plus');?></h1>
+            <h1 class="cta-block-header"><?php esc_html_e('Explore the premium version to experience our countless advanced features','filter-plus');?></h1>
         </div>
         <div class="cta-action">
             <a target="_blank" href="https://www.wpbens.com/filter-plus/">
