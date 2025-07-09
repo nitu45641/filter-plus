@@ -4,8 +4,8 @@
 	<a href="<?php echo esc_url( 'https://wpbens.com/filter-plus/' ); ?>" target="_blank">
 		<div class="logo">
 			<img src = "<?php echo esc_url( FilterPlus::assets_url() . 'images/filter-plus-logo.svg' ); ?>"
-				alt="filter-plus-banner" 
-                width="35px"
+				alt="filter-plus-logo" 
+                width="45px"
 			/>
 			<span class='version'><?php echo esc_html( 'v ' . FilterPlus::get_version() ); ?></span>
 		</div>
