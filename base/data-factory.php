@@ -59,7 +59,12 @@ class DataFactory {
             'sorting'          	=> 'yes',
             'filter_position'   => 'left',
             'pagination_style'  => 'numbers',
-            'product_count'     => 'yes'
+            'product_count'     => 'yes',
+            'hide_prod_title'   => 'yes',
+            'hide_prod_desc'    => 'yes',
+            'hide_prod_price'   => 'yes',
+            'hide_prod_add_cart'=> 'yes',
+            'hide_prod_rating'  => 'yes',
         );
     }
 
@@ -83,6 +88,8 @@ class DataFactory {
             'categories'       	=> '',
             'sub_categories'	=> 'yes',
             'masonry_style'	    => 'no',
+            'hide_wp_title'	    => 'yes',
+            'hide_wp_desc'	    => 'yes',
             'show_tags'        	=> '',
             'tag_label'        	=> esc_html__('Tags','filter-plus-pro'),
             'tags'             	=> '',

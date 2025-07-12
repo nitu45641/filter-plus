@@ -14,11 +14,12 @@
 						data-slug="<?php echo esc_attr($item['slug'])?>"
 						data-parent="<?php  echo esc_attr($item['term_id'])?>"
 					>
-						<input type="checkbox" class="regular-checkbox" 
-						value="<?php  echo esc_attr($item['term_id'])?>"
-						id="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>"
-						>
 						<label for="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>">
+							<input type="checkbox" 
+								class="regular-checkbox" 
+								value="<?php  echo esc_attr($item['term_id'])?>"
+								id="<?php  echo esc_attr("cat_li_parent_".$item['term_id'])?>"
+							/>
 							<?php echo esc_html($item['name']);?>
 							<?php if ($product_count == 'yes') { echo ' (' . esc_html($item['count']) . ')'; } ?>
 						</label>

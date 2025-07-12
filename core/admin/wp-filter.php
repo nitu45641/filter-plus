@@ -146,6 +146,17 @@
 		<h1 class="font_bold font_20 mb-1"><?php esc_html_e("Filter Result","filter-plus"); ?></h1>
 		
 		<?php
+			// show title
+			$args = array('label'=>esc_html__("Display Title:","filter-plus"),'id' => 'hide_wp_title',
+			'data_label' => 'hide_wp_title','checked' => 'yes',);
+			filter_plus_checkbox_field($args);
+
+			// show descrtiption
+			$args = array('label'=>esc_html__("Display Descrtiption:","filter-plus"),
+			'id' => 'hide_wp_desc','checked' => 'yes',
+			'data_label' => 'hide_wp_desc');
+			filter_plus_checkbox_field($args);
+
 			// show tags
 			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'post_tags','data_label' => 'post_tags');
 			filter_plus_checkbox_field($args);

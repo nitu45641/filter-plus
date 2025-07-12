@@ -200,6 +200,31 @@ use \FilterPlus\Utils\Helper as Helper;
 		
 		<?php
 
+			// show title
+			$args = array('label'=>esc_html__("Display Title:","filter-plus"),'id' => 'hide_prod_title',
+			'data_label' => 'hide_prod_title','checked' => 'yes');
+			filter_plus_checkbox_field($args);
+
+			// show descrtiption
+			$args = array('label'=>esc_html__("Display Descrtiption:","filter-plus"),'id' => 'hide_prod_desc',
+			'data_label' => 'hide_prod_desc','checked' => 'yes');
+			filter_plus_checkbox_field($args);
+
+			// show price
+			$args = array('label'=>esc_html__("Display Price:","filter-plus"),'id' => 'hide_prod_price',
+			'data_label' => 'hide_prod_price','checked' => 'yes');
+			filter_plus_checkbox_field($args);
+			
+			// show Add to Cart
+			$args = array('label'=>esc_html__("Display Add to Cart:","filter-plus"),'id' => 'hide_prod_add_cart',
+			'data_label' => 'hide_prod_add_cart','checked' => 'yes');
+			filter_plus_checkbox_field($args);
+
+			// show Rating
+			$args = array('label'=>esc_html__("Display Rating:","filter-plus"),'id' => 'hide_prod_rating',
+			'data_label' => 'hide_prod_rating','checked' => 'yes');
+			filter_plus_checkbox_field($args);
+
 			// show sorting
 			$args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting');
 			filter_plus_checkbox_field($args);
@@ -210,8 +235,8 @@ use \FilterPlus\Utils\Helper as Helper;
 			// show product categories
 			$args = array('label'=>esc_html__("Display Categories:","filter-plus"),'id' => 'product_categories',
 			'data_label' => 'product_categories');
-			
 			filter_plus_checkbox_field($args);
+
 		?>
 		<div class="single-block">
 			<div class="generate-block"><button class="button button-primary"><?php esc_html_e("Copy Filter Shortcodes","filter-plus");?></button></div>

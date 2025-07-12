@@ -4,9 +4,11 @@
 	<div class="product-style product-style-<?php echo intval( $template );?>">
 		<div class="vartical-prod-card-container">
 			<div class="product-thumbnail">
-				<div class="vpcc-image">
-					{{{ post_image }}}
-				</div>
+				<a href="{{post_permalink}}" target="_blank">
+					<div class="vpcc-image">
+						{{{ post_image }}}
+					</div>
+				</a>
 				<div class="product-meta">
 					<div class="offer">
 						{{#each tags}}
@@ -30,9 +32,12 @@
 						</div>
 					{{/if}}
 				</div>
-				<div class="card-action-btn-container">
-					{{{ cart_btn }}}
-				</div>
+				<?php if( $hide_prod_add_cart == 'yes' ): ?>
+					<div class="card-action-btn-container">
+						{{{ cart_btn }}}
+					</div>
+				<?php endif; ?>
+
 			</div>
 			<div class="product-content">
 				<div class="cat">
@@ -40,13 +45,16 @@
 						<a href="#">{{ name }}</a>
 					{{/each}}
 				</div>	
+				<?php if( $hide_prod_title == 'yes' ): ?>
 				<div class="product-name">
 					<a href="{{post_permalink}}">{{{ post_title }}}</a>
 				</div>
-				<div class="product-price">
-					{{{ post_price }}}
-				</div>
-				{{{ rating }}}
+				<?php endif; ?>
+
+				<?php if( $hide_prod_price == 'yes' ): ?>
+				<div class="product-price">{{{ post_price }}}</div>
+				<?php endif; ?>
+				<?php if( $hide_prod_rating == 'yes' ): ?> {{{ rating }}} <?php endif; ?>
 			</div>
 		</div>
 	</div>
