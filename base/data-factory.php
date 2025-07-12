@@ -145,7 +145,12 @@ class DataFactory {
 		$default_data['stock_label']        = ! empty( $stock_label ) ? $stock_label : esc_html__( 'Stock', 'filter-plus' );
 		$default_data['on_sale']            = ! empty( $on_sale ) ? $on_sale : 'yes';
 		$default_data['on_sale_label']      = ! empty( $on_sale_label ) ? $on_sale_label : esc_html__( 'Sale', 'filter-plus' );
-		$default_data['sorting']            = ! empty( $sorting ) ? $sorting : '';
+		$default_data['hide_prod_title']    = ! empty( $hide_prod_title ) && ( $hide_prod_title == true ||  $hide_prod_title == 'yes' )  ?  'yes' : 'no';
+		$default_data['hide_prod_desc']     = ! empty( $hide_prod_desc ) && ( $hide_prod_desc == true ||  $hide_prod_desc == 'yes' )  ?  'yes' : 'no';
+		$default_data['hide_prod_price']    = ! empty( $hide_prod_price ) && ( $hide_prod_price == true || $hide_prod_price == 'yes' ) ?  'yes' : 'no';
+		$default_data['hide_prod_add_cart'] = ! empty( $hide_prod_add_cart ) && ( $hide_prod_add_cart == true || $hide_prod_add_cart == 'yes' ) ?  'yes' : 'no';
+		$default_data['hide_prod_rating']   = ! empty( $hide_prod_rating ) && ( $hide_prod_rating == true || $hide_prod_rating == 'yes' ) ?  'yes' : 'no';
+		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
 		$default_data['product_tags']       = ! empty( $product_tags ) ? $product_tags : '';
 		$default_data['product_categories'] = ! empty( $product_categories ) ? $product_categories : '';
 		$default_data['template'] 			= ! empty( $template ) ? $template : '';
@@ -171,6 +176,11 @@ class DataFactory {
 		color_template='".$color_template."' 
 		review_template='".$review_template."' 
 		color_label='".$color_label."' 
+		hide_prod_title='".$hide_prod_title."' 
+		hide_prod_desc='".$hide_prod_desc."' 
+		hide_prod_price='".$hide_prod_price."' 
+		hide_prod_add_cart='".$hide_prod_add_cart."' 
+		hide_prod_rating='".$hide_prod_rating."' 
 		size_label='".$size_label."' attribute_label='".$attribute_label."' 
 		review_label='".$review_label."' price_range_label='".$price_range_label."'
 		stock_label='".$stock_label."' on_sale_label='".$on_sale_label."' 
@@ -207,7 +217,8 @@ class DataFactory {
 		$default_data['custom_field']	    = !empty($custom_field) ? $custom_field : 'no';
 		$default_data['custom_field_label']	= !empty($custom_field_label) ? $custom_field_label : esc_html__('Custom Field','filter-plus');
 		$default_data['meta_condition']	    = !empty($meta_condition) ? $meta_condition : 'OR';
-		$default_data['post_categories']    = !empty($settings['post_categories']) && $settings['post_categories'] == true ? 'yes' : 'no';
+		$default_data['hide_wp_title']      = !empty($settings['hide_wp_title']) && $settings['hide_wp_title'] == true ? 'yes' : 'no';
+		$default_data['hide_wp_desc']       = !empty($settings['hide_wp_desc']) && $settings['hide_wp_desc'] == true ? 'yes' : 'no';
 		$default_data['post_tags']          = !empty($settings['post_tags']) && $settings['post_tags'] == true ? 'yes' : 'no';
 		$default_data['post_author']        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
 		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
@@ -229,6 +240,8 @@ class DataFactory {
         category_template='".$category_template."' 
         category_label='".$category_label."' 
 		sub_categories='{$sub_categories}'
+		hide_wp_desc='{$hide_wp_desc}'
+		hide_wp_title='{$hide_wp_title}'
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
         template ={$template} title={$title} no_of_items={$no_of_items} 
 		author={$author} author_label='".$author_label."' author_list={$author_list} 

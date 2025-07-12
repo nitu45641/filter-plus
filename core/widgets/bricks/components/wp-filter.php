@@ -304,7 +304,25 @@ class Wp_Filter extends \Bricks\Element {
 		);
 
 		// Filter Results
+		$this->controls['hide_wp_title'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Display Title', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
 
+		$this->controls['hide_wp_desc'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Display Descrtiption', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
 		$this->controls['post_categories'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',

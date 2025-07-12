@@ -404,8 +404,57 @@ class Woo_Filter extends Widget_Base {
 		);
 
 		// Right Side
-		$this->add_control(
-			'sorting',
+		$this->add_control('hide_prod_title',
+			array(
+				'label' => esc_html__( 'Display Title', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
+		$this->add_control('hide_prod_desc',
+			array(
+				'label' => esc_html__( 'Display Descrtiption', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
+		$this->add_control('hide_prod_price',
+			array(
+				'label' => esc_html__( 'Display Price', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
+		$this->add_control('hide_prod_add_cart',
+			array(
+				'label' => esc_html__( 'Display Add to Cart', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
+		$this->add_control('hide_prod_rating',
+			array(
+				'label' => esc_html__( 'Display Rating', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			)
+		);
+		$this->add_control('sorting',
 			array(
 				'label' => esc_html__( 'Display Sorting', 'filter-plus' ),
 				'type' => Controls_Manager::SWITCHER,

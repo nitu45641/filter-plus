@@ -403,6 +403,53 @@ class Woo_Filter extends \Bricks\Element {
 
 		// Filter Results
 
+		$this->controls['hide_prod_title'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Display Title', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
+
+		$this->controls['hide_prod_desc'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Display Descrtiption', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
+		
+		$this->controls['hide_prod_price'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Display Price', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
+		$this->controls['hide_prod_add_cart'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Display Add to Cart', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
+		$this->controls['hide_prod_rating'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Display Rating', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
 		$this->controls['sorting'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',
