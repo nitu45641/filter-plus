@@ -110,6 +110,7 @@ If you like Filter Plus, then consider checking out  other WordPress Plugins mad
 🔔 **[MemberHub](https://wordpress.org/plugins/memberhub/)** – MemberHub for Wordpress and WooCommerce and Boost your sales
 🔔 **[Discountify](https://wordpress.org/plugins/discountify/)** – Discount Rules, Dynamic Pricing and Coupon management for WooCommerce
 🔔 **[Quicker](https://wordpress.org/plugins/quicker/)** – Convert Your Browsers into Buyers and Maximize Conversions
+🔔 **[Bens Email Marketing & Automation](https://wordpress.org/plugins/bens-email-marketing-automation/)** – Fast and simple Email Marketing, Newsletters, Automation & CRM for WordPress
 
 == Frequently Asked Questions ==
 
