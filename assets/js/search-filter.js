@@ -279,22 +279,7 @@
 							if ($('.sort-bar').css('display') == 'none') {
 								$('.sort-bar').fadeIn();
 							}
-							// product data
-							const source_grid = $('#search_products_grid').html();
-							const source_list = $('#search_products_list').html();
-							for (let i = 0; i < products.length; i++) {
-								if (source_grid) {
-									var template_grid = Handlebars.compile(source_grid);
-									var template_grid = template_grid(products[i]);
-									prod_grid_wrap.append(template_grid);																		
-								}
-
-								if (source_list) {
-									var template_list = Handlebars.compile(source_list);
-									var template_list = template_list(products[i]);
-									prod_list_wrap.append(template_list);
-								}
-							}							
+							
 							// pagination
 							pagination_html(response?.data?.data?.pagination_markup);
 						}
