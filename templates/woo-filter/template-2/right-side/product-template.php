@@ -1,21 +1,27 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+<?php if ( ! defined( 'ABSPATH' ) ) exit;
 
-<script id="search_products_grid" type="text/x-handlebars-template">
-	<div class="product-style product-style-<?php echo intval( $template );?>">
+/**
+ * Grid template for products
+ */
+function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
+	?>
+	<div class="product-style product-style-<?php echo intval($product['template']); ?>">
 		<div class="vartical-prod-card-container">
 			<div class="product-thumbnail">
-				<a href="{{post_permalink}}" target="_blank">
+				<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank">
 					<div class="vpcc-image">
-						{{{ post_image }}}
+						<?php echo $product['post_image']; ?>
 					</div>
 				</a>
 				<div class="product-meta">
 					<div class="offer">
-						{{#each tags}}
-							<span>{{ name }}</span>
-						{{/each}}
+						<?php if (!empty($product['tags'])): ?>
+							<?php foreach ($product['tags'] as $tag): ?>
+								<span><?php echo esc_html(is_object($tag) ? $tag->name : $tag['name']); ?></span>
+							<?php endforeach; ?>
+						<?php endif; ?>
 					</div>
-					{{#if wish_quick }}
+					<?php if (!empty($product['wish_quick'])): ?>
 						<div class="quickview-and-wishlist">
 							<ul>
 								<li>
@@ -30,32 +36,42 @@
 								</li>
 							</ul>
 						</div>
-					{{/if}}
+					<?php endif; ?>
 				</div>
 				<?php if( $hide_prod_add_cart == 'yes' ): ?>
 					<div class="card-action-btn-container">
-						{{{ cart_btn }}}
+						<?php echo $product['cart_btn']; ?>
 					</div>
 				<?php endif; ?>
 
 			</div>
 			<div class="product-content">
 				<div class="cat">
-					{{#each categories }}
-						<a href="#">{{ name }}</a>
-					{{/each}}
-				</div>	
+					<?php if (!empty($product['categories'])): ?>
+						<?php foreach ($product['categories'] as $category): ?>
+							<a href="#"><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></a>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</div>
 				<?php if( $hide_prod_title == 'yes' ): ?>
 				<div class="product-name">
-					<a href="{{post_permalink}}">{{{ post_title }}}</a>
+					<a href="<?php echo esc_url($product['post_permalink']); ?>"><?php echo $product['post_title']; ?></a>
 				</div>
 				<?php endif; ?>
 
 				<?php if( $hide_prod_price == 'yes' ): ?>
-				<div class="product-price">{{{ post_price }}}</div>
+				<div class="product-price"><?php echo $product['post_price']; ?></div>
 				<?php endif; ?>
-				<?php if( $hide_prod_rating == 'yes' ): ?> {{{ rating }}} <?php endif; ?>
+				<?php if( $hide_prod_rating == 'yes' ): ?> <?php echo $product['rating']; ?> <?php endif; ?>
 			</div>
 		</div>
 	</div>
-</script>
+	<?php
+}
+
+/**
+ * List template for products
+ */
+function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
+	// No list template for template-2
+}

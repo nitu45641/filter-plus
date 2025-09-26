@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<div class="prods-grid-view grid-view-<?php echo esc_attr($template)?>"></div>
 	<div class="prods-list-view"></div>
 	<div class="message"></div>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-data.php"; ?>
+	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-template.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/parts/pagination.php"; ?>
 </div>
 

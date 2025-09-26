@@ -1,63 +1,73 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<script id="search_products_grid" type="text/x-handlebars-template">
-	<div class="product-style product-style-{{template}} vartical-prod-card-container">
+
+/**
+ * Grid template for products
+ */
+function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
+	?>
+	<div class="product-style product-style-<?php echo esc_attr($product['template']); ?> vartical-prod-card-container">
 		<div class="vpcc-image">
-			<a href="{{post_permalink}}" target="_blank">{{{ post_image }}}</a>
+			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank"><?php echo $product['post_image']; ?></a>
 			<?php if( $hide_prod_add_cart == 'yes' ): ?>
 				<div class="card-action-btn-container">
-					<div class="vpcc-btns btn-1">{{{ cart_btn }}}</div>
+					<div class="vpcc-btns btn-1"><?php echo $product['cart_btn']; ?></div>
 				</div>
 			<?php endif; ?>
 		</div>
 		<?php if( $hide_prod_title == 'yes' ): ?>
-			<div class="vpcc-name"><a href="{{post_permalink}}">{{{ post_title }}}</a></div>
+			<div class="vpcc-name"><a href="<?php echo esc_url($product['post_permalink']); ?>"><?php echo $product['post_title']; ?></a></div>
 		<?php endif; ?>
 		<?php if( $hide_prod_desc == 'yes' ): ?>
-			<p>{{ post_description }}</p>
+			<p><?php echo esc_html($product['post_description']); ?></p>
 		<?php endif; ?>
 		<?php if( $hide_prod_rating == 'yes' ): ?>
-			{{{ rating }}}
+			<?php echo $product['rating']; ?>
 		<?php endif; ?>
 
 		<?php if( $hide_prod_price == 'yes' ): ?>
 			<div class="vpcc-footer">
-				<div class="vpcc-price">{{{ post_price }}}</div>
+				<div class="vpcc-price"><?php echo $product['post_price']; ?></div>
 			</div>
 		<?php endif; ?>
 	</div>
-</script>
+	<?php
+}
 
-<script id="search_products_list" type="text/x-handlebars-template">
+/**
+ * List template for products
+ */
+function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
+	?>
 	<div class="horizontal-prod-card-container horizontal-prod-card">
-		<a href="{{post_permalink}}" target="_blank">
+		<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank">
 			<div class="hpcc-image">
-				{{{ post_image }}}
+				<?php echo $product['post_image']; ?>
 			</div>
 		</a>
 		<div class="hpcc-content">
 			<?php if( $hide_prod_title == 'yes' ): ?>
-				<div class="hpcc-name"><a href="{{post_permalink}}">{{{ post_title }}}</a></div>
+				<div class="hpcc-name"><a href="<?php echo esc_url($product['post_permalink']); ?>"><?php echo $product['post_title']; ?></a></div>
 			<?php endif; ?>
 
 			<?php if( $hide_prod_price == 'yes' ): ?>
-				{{{ post_price }}}
+				<?php echo $product['post_price']; ?>
 			<?php endif; ?>
 
 			<?php if( $hide_prod_rating == 'yes' ): ?>
-				{{{ rating }}}
+				<?php echo $product['rating']; ?>
 			<?php endif; ?>
 
 			<?php if( $hide_prod_desc == 'yes' ): ?>
-				<div class="hpcc-description">{{ post_description }}</div>
+				<div class="hpcc-description"><?php echo esc_html($product['post_description']); ?></div>
 			<?php endif; ?>
 		</div>
 		<?php if( $hide_prod_add_cart == 'yes' ): ?>
 			<div class="hpcc-btns">
-				<span class="vpcc-btns">{{{ cart_btn }}}</span>
+				<span class="vpcc-btns"><?php echo $product['cart_btn']; ?></span>
 			</div>
 		<?php endif; ?>
 	</div>
-</script>
+	<?php
+}

@@ -106,11 +106,6 @@ class Enqueue {
      */
     public function frontend_get_scripts() {
         $script_arr = array(
-			'tmpl-js'     => array(
-                'src'     => \FilterPlus::assets_url() . 'js/jquery.tmpl.min.js',
-                'version' => \FilterPlus::get_version(),
-                'deps'    => ['jquery'],
-            ),
 			'filter-js'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/search-filter.js',
                 'version'   => \FilterPlus::get_version(),

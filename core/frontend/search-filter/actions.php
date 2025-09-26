@@ -94,6 +94,11 @@ class Actions {
 		'filter_param' => $filter_param ,'default_call' => $default_call , 'filter_type' => $filter_type ,
 		'taxonomy' => $taxonomy ) );
 
+		// Render product HTML
+		$rendered_html = $this->render_products_html($get_products['products'], $filter_type, $template);
+		$get_products['products_grid_html'] = $rendered_html['grid'];
+		$get_products['products_list_html'] = $rendered_html['list'];
+
 		$message = $get_products['total'] == 0  ? esc_html__( 'No Matching Result Found', 'filter-plus' ) : '';
 		$response = array(
 			'success'        => true,
@@ -553,5 +558,90 @@ class Actions {
 		}
 		return $size;
 	}
+
+	/**
+	 * Render products HTML
+	 *
+	 * @param array $products
+	 * @param string $filter_type
+	 * @param int $template
+	 * @return array
+	 */
+	public function render_products_html($products, $filter_type, $template) {
+		$html = array(
+			'grid' => '',
+			'list' => ''
+		);
+
+		if (empty($products)) {
+			return $html;
+		}
+
+		$template_path = FilterPlus::plugin_dir() . "templates/";
+
+		if ($filter_type == 'product') {
+			$template_path .= "woo-filter/template-{$template}/right-side/product-template.php";
+		} else {
+			$template_path .= "wp-filter/template-{$template}/right-side/product-template.php";
+		}
+
+		if (file_exists($template_path)) {
+			// Include the template file to load the functions
+			include_once $template_path;
+
+			// Get template variables from POST data
+			$post_data = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
+
+			// Render each product using the new functions
+			foreach ($products as $product) {
+				// Grid template
+				if (function_exists('render_grid_product')) {
+					ob_start();
+					if ($filter_type == 'product') {
+						render_grid_product(
+							$product,
+							isset($post_data['hide_prod_add_cart']) ? $post_data['hide_prod_add_cart'] : 'yes',
+							isset($post_data['hide_prod_title']) ? $post_data['hide_prod_title'] : 'yes',
+							isset($post_data['hide_prod_desc']) ? $post_data['hide_prod_desc'] : 'yes',
+							isset($post_data['hide_prod_rating']) ? $post_data['hide_prod_rating'] : 'yes',
+							isset($post_data['hide_prod_price']) ? $post_data['hide_prod_price'] : 'yes'
+						);
+					} else {
+						render_grid_product(
+							$product,
+							isset($post_data['hide_wp_title']) ? $post_data['hide_wp_title'] : 'yes',
+							isset($post_data['hide_wp_desc']) ? $post_data['hide_wp_desc'] : 'yes'
+						);
+					}
+					$html['grid'] .= ob_get_clean();
+				}
+
+				// List template
+				if (function_exists('render_list_product')) {
+					ob_start();
+					if ($filter_type == 'product') {
+						render_list_product(
+							$product,
+							isset($post_data['hide_prod_add_cart']) ? $post_data['hide_prod_add_cart'] : 'yes',
+							isset($post_data['hide_prod_title']) ? $post_data['hide_prod_title'] : 'yes',
+							isset($post_data['hide_prod_desc']) ? $post_data['hide_prod_desc'] : 'yes',
+							isset($post_data['hide_prod_rating']) ? $post_data['hide_prod_rating'] : 'yes',
+							isset($post_data['hide_prod_price']) ? $post_data['hide_prod_price'] : 'yes'
+						);
+					} else {
+						render_list_product(
+							$product,
+							isset($post_data['hide_wp_title']) ? $post_data['hide_wp_title'] : 'yes',
+							isset($post_data['hide_wp_desc']) ? $post_data['hide_wp_desc'] : 'yes'
+						);
+					}
+					$html['list'] .= ob_get_clean();
+				}
+			}
+		}
+
+		return $html;
+	}
+
 
 }

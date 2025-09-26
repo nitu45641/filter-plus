@@ -279,7 +279,16 @@
 							if ($('.sort-bar').css('display') == 'none') {
 								$('.sort-bar').fadeIn();
 							}
-							
+
+							// product data from server response
+							if (response?.data?.data?.products_grid_html) {
+								prod_grid_wrap.append(response.data.data.products_grid_html);
+							}
+
+							if (response?.data?.data?.products_list_html) {
+								prod_list_wrap.append(response.data.data.products_list_html);
+							}
+
 							// pagination
 							pagination_html(response?.data?.data?.pagination_markup);
 						}
