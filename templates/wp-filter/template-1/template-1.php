@@ -49,7 +49,7 @@ use FilterPlus\Base\DataFactory;
 	?>
 	<div class="post-grid-view-<?php echo esc_attr($template)?> prods-grid-view"></div>
 	<div class="message"></div>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/right-side/product-data.php"; ?>
+	<?php include_once \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/right-side/product-template.php"; ?>
 	<!-- pagination -->
 	<ul class="pagination pagination-1"></ul>
 </div>
