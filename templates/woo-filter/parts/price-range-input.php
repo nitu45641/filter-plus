@@ -12,11 +12,11 @@
                     type="number"
                     id="price-min-<?php echo esc_attr($template);?>"
                     class="input-min price-input"
-                    value="<?php echo absint($min)?>"
-                    min="1"
-                    max="<?php echo absint($max)?>"
+                    value="<?php echo floatval($min)?>"
+                    min="0"
+                    max="<?php echo floatval($max)?>"
                     step="0.01"
-                    placeholder="<?php echo absint($min)?>"
+                    placeholder="<?php echo floatval($min)?>"
                     aria-label="<?php esc_attr_e('Minimum price','filter-plus-pro');?>"
                 >
             </div>
@@ -37,10 +37,10 @@
                     type="number"
                     id="price-max-<?php echo esc_attr($template);?>"
                     class="input-max price-input"
-                    value="<?php echo absint($max)?>"
-                    min="<?php echo absint($min)?>"
+                    value="<?php echo floatval($max)?>"
+                    min="<?php echo floatval($min)?>"
                     step="0.01"
-                    placeholder="<?php echo absint($max)?>"
+                    placeholder="<?php echo floatval($max)?>"
                     aria-label="<?php esc_attr_e('Maximum price','filter-plus-pro');?>"
                 >
             </div>

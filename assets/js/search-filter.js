@@ -285,19 +285,21 @@
 				container.removeClass('error success');
 				errorSpan.text('');
 
-				// Validate value
-				if (value === '' || isNaN(value) || value < 1) {
-					isValid = false;
-					errorMessage = isMin ? 'Min price must be at least 1' : 'Max price is required';
-				} else if (isMin && value > max) {
-					isValid = false;
-					errorMessage = `Min price cannot exceed ${max}`;
-				} else if (!isMin && value < min) {
-					isValid = false;
-					errorMessage = `Max price must be at least ${min}`;
-				} else if (!isMin && value <= parseFloat($('.input-min').val() || min)) {
-					isValid = false;
-					errorMessage = 'Max price must be greater than min price';
+				// Validate value - allow empty for clearing
+				if (value !== '' && value !== null && !isNaN(value)) {
+					if (value < 0) {
+						isValid = false;
+						errorMessage = 'Price cannot be negative';
+					} else if (isMin && value > max) {
+						isValid = false;
+						errorMessage = `Min price cannot exceed ${max}`;
+					} else if (!isMin && value < min) {
+						isValid = false;
+						errorMessage = `Max price must be at least ${min}`;
+					} else if (!isMin && value <= parseFloat($('.input-min').val() || min)) {
+						isValid = false;
+						errorMessage = 'Max price must be greater than min price';
+					}
 				}
 
 				// Apply visual feedback
@@ -314,8 +316,14 @@
 			// Real-time input validation and sync
 			$('.field .input-min,.field .input-max').on('input', function () {
 				const $this = $(this);
-				const value = parseFloat($this.val()) || 0;
+				const rawValue = $this.val();
+				const value = parseFloat(rawValue) || 0;
 				const isMin = $this.hasClass('input-min');
+
+				// Skip validation for partial decimal entries (e.g., "5.")
+				if (rawValue.endsWith('.') || rawValue.endsWith('.0')) {
+					return;
+				}
 
 				// Validate input
 				const isValid = validatePriceInput($this, value, isMin);
@@ -353,20 +361,27 @@
 
 			// Legacy input handling for backwards compatibility
 			$('.field .input-min,.field .input-max').on(
-				'change paste keyup',
+				'change blur',
 				function () {
 					const $this = $(this);
+					const rawValue = $this.val();
+
+					// Skip if empty or partial decimal
+					if (rawValue === '' || rawValue.endsWith('.')) {
+						return;
+					}
+
 					let latest_min = min;
 					let latest_max = max;
 					if ($this.hasClass('input-min')) {
-						latest_min = Math.max(0.01, Math.min(parseFloat($this.val()) || min, max - 0.01));
+						latest_min = Math.max(0, Math.min(parseFloat($this.val()) || min, max));
 						$this.val(latest_min);
 						if (price_range.customSetValue) {
 							price_range.customSetValue(latest_min + ',' + max);
 						}
 					} else {
 						const currentMin = parseFloat($('.input-min').val()) || min;
-						latest_max = Math.max(currentMin + 0.01, parseFloat($this.val()) || max);
+						latest_max = Math.max(currentMin, parseFloat($this.val()) || max);
 						$this.val(latest_max);
 					}
 					price_range.attr('data-action', true);

@@ -1809,6 +1809,12 @@ a.added_to_cart.wc-forward {
 	color: #cccccc;
 }
 
+.categories-wrapper .cat-group,
+.sub_categories li {
+	display: flex;
+	align-items: center;
+}
+
 .categories-wrapper .cat-group label,
 .sub_categories label
  {
@@ -1818,7 +1824,17 @@ a.added_to_cart.wc-forward {
     font-weight: 500;
     cursor: pointer;
 	padding-left: 5px;
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
 }
+
+.categories-wrapper .cat-group input[type="checkbox"],
+.sub_categories input[type="checkbox"] {
+	margin: 0;
+	vertical-align: middle;
+}
+
 ul.sub_categories{
 	padding-left: 10px;
 }
