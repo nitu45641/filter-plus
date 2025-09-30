@@ -2180,6 +2180,39 @@ ul.sub_categories{
   width: 100%;
 }
 
+/* Disabled pagination buttons */
+.pagination li.page-item.disabled,
+.pagination li.disabled {
+	opacity: 0.4 !important;
+	cursor: not-allowed !important;
+	pointer-events: none !important;
+	background: #999 !important;
+	color: #555 !important;
+	user-select: none !important;
+	-webkit-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+	border: 1px solid #999 !important;
+}
+
+.pagination li.page-item.disabled:hover,
+.pagination li.disabled:hover {
+	background: #999 !important;
+	color: #555 !important;
+	cursor: not-allowed !important;
+	opacity: 0.4 !important;
+}
+
+.pagination li.page-item.disabled:active,
+.pagination li.page-item.disabled:focus,
+.pagination li.disabled:active,
+.pagination li.disabled:focus {
+	background: #999 !important;
+	color: #555 !important;
+	pointer-events: none !important;
+	opacity: 0.4 !important;
+}
+
 /* Custom Price Range Slider Styles */
 .custom-range-slider {
 	position: relative;

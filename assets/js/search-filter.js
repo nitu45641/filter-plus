@@ -698,14 +698,34 @@
 			}
 			
 			pagination.html(pagination_markup);
-			$('.products-wrap').find('.naviation li').on('click', function () {
+			$('.products-wrap').find('.naviation li:not(.disabled)').on('click', function () {
 				let load_more = false;
 				let _this = $(this);
+
+				// Check if button is disabled
+				if (_this.hasClass('disabled')) {
+					return false;
+				}
+
+				// Check for invalid page data
+				let offset = _this.data('page');
+				if (offset === 0 || offset === '#' || !offset) {
+					return false;
+				}
+
 				if (_this.hasClass('load-more')) {
 					load_more = true;
 				}
-				let offset = _this.data('page');
+
 				get_products({offset:offset,load_more:load_more});
+			});
+
+			// Explicitly prevent clicks on disabled pagination buttons
+			$('.products-wrap').find('.naviation li.disabled').on('click', function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+				return false;
 			});
 		}
 
