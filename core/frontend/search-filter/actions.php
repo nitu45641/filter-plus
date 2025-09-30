@@ -585,8 +585,8 @@ class Actions {
 			$template_path .= "wp-filter/template-{$template}/right-side/product-template.php";
 		}
 
-		// Check if template exists in main plugin, if not check pro plugin for templates 6 and 7
-		if (!file_exists($template_path) && ($template == 6 || $template == 7)) {
+		// Check if template exists in main plugin, if not check pro plugin for templates 3, 4, 5, 6 and 7
+		if (!file_exists($template_path) && in_array($template, [3, 4, 5, 6, 7])) {
 			if (class_exists('FilterPlusPro') && $filter_type == 'product') {
 				$template_path = \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-{$template}/right-side/product-template.php";
 			}

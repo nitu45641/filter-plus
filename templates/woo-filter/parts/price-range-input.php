@@ -15,7 +15,7 @@
                     value="<?php echo absint($min)?>"
                     min="1"
                     max="<?php echo absint($max)?>"
-                    step="1"
+                    step="0.01"
                     placeholder="<?php echo absint($min)?>"
                     aria-label="<?php esc_attr_e('Minimum price','filter-plus-pro');?>"
                 >
@@ -39,7 +39,7 @@
                     class="input-max price-input"
                     value="<?php echo absint($max)?>"
                     min="<?php echo absint($min)?>"
-                    step="1"
+                    step="0.01"
                     placeholder="<?php echo absint($max)?>"
                     aria-label="<?php esc_attr_e('Maximum price','filter-plus-pro');?>"
                 >
