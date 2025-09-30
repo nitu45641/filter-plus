@@ -274,6 +274,84 @@
 		}
 		const min_input = $('.input-min');
 		if (min_input.length > 0) {
+			// Enhanced price input validation and UX
+			function validatePriceInput($input, value, isMin = true) {
+				const container = $input.closest('.input-container');
+				const errorSpan = $input.closest('.field').find('.input-error');
+				let isValid = true;
+				let errorMessage = '';
+
+				// Clear previous states
+				container.removeClass('error success');
+				errorSpan.text('');
+
+				// Validate value
+				if (value === '' || isNaN(value) || value < 1) {
+					isValid = false;
+					errorMessage = isMin ? 'Min price must be at least 1' : 'Max price is required';
+				} else if (isMin && value > max) {
+					isValid = false;
+					errorMessage = `Min price cannot exceed ${max}`;
+				} else if (!isMin && value < min) {
+					isValid = false;
+					errorMessage = `Max price must be at least ${min}`;
+				} else if (!isMin && value <= parseInt($('.input-min').val() || min)) {
+					isValid = false;
+					errorMessage = 'Max price must be greater than min price';
+				}
+
+				// Apply visual feedback
+				if (isValid) {
+					container.addClass('success');
+				} else {
+					container.addClass('error');
+					errorSpan.text(errorMessage);
+				}
+
+				return isValid;
+			}
+
+			// Real-time input validation and sync
+			$('.field .input-min,.field .input-max').on('input', function () {
+				const $this = $(this);
+				const value = parseInt($this.val()) || 0;
+				const isMin = $this.hasClass('input-min');
+
+				// Validate input
+				const isValid = validatePriceInput($this, value, isMin);
+
+				// Sync with slider if valid
+				if (isValid && price_range.customSetValue) {
+					const currentMin = isMin ? value : (parseInt($('.input-min').val()) || min);
+					const currentMax = isMin ? (parseInt($('.input-max').val()) || max) : value;
+					price_range.customSetValue(currentMin + ',' + currentMax);
+				}
+
+				// Trigger real-time filtering
+				triggerFilter();
+			});
+
+			// Real-time filtering with debounce
+			let filterTimeout;
+			function triggerFilter() {
+				clearTimeout(filterTimeout);
+				filterTimeout = setTimeout(() => {
+					const minVal = parseInt($('.input-min').val()) || min;
+					const maxVal = parseInt($('.input-max').val()) || max;
+
+					// Validate both inputs
+					const minValid = validatePriceInput($('.input-min'), minVal, true);
+					const maxValid = validatePriceInput($('.input-max'), maxVal, false);
+
+					if (minValid && maxValid) {
+						price_range.attr('data-action', true);
+						get_products();
+						reset_block(price_range, price_range.parents('.sidebar-row'));
+					}
+				}, 800); // Wait 800ms after user stops typing
+			}
+
+			// Legacy input handling for backwards compatibility
 			$('.field .input-min,.field .input-max').on(
 				'change paste keyup',
 				function () {
@@ -281,25 +359,20 @@
 					let latest_min = min;
 					let latest_max = max;
 					if ($this.hasClass('input-min')) {
-						latest_min = $this.val() > max ? min : $this.val();
-						$this.val('').val(latest_min);
+						latest_min = Math.max(1, Math.min(parseInt($this.val()) || min, max - 1));
+						$this.val(latest_min);
 						if (price_range.customSetValue) {
 							price_range.customSetValue(latest_min + ',' + max);
 						}
 					} else {
-						latest_max = $this.val() > max ? max : $this.val();
-						$this.val('').val(latest_max);
+						const currentMin = parseInt($('.input-min').val()) || min;
+						latest_max = Math.max(currentMin + 1, parseInt($this.val()) || max);
+						$this.val(latest_max);
 					}
 					price_range.attr('data-action', true);
 					if (price_range.customSetValue) {
 						price_range.customSetValue(latest_min + ',' + latest_max);
 					}
-					get_products();
-					// reset block
-					reset_block(
-						price_range,
-						price_range.parents('.sidebar-row')
-					);
 				}
 			);
 		}

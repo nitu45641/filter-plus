@@ -2292,6 +2292,161 @@ ul.sub_categories{
 .sidebar-style-2 .range-thumb:active {
 	box-shadow: 0 0 0 6px rgba(23, 198, 170, 0.3);
 }
+
+/* Enhanced Price Range Input Styles */
+.price-range-input {
+	margin: 20px 0;
+}
+
+.price-input-wrapper {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin-bottom: 15px;
+}
+
+.field {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.field-label {
+	font-size: 12px;
+	font-weight: 600;
+	color: #666;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.input-container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	background: #fff;
+	border: 2px solid #e0e0e0;
+	border-radius: 6px;
+	transition: all 0.3s ease;
+	overflow: hidden;
+}
+
+.input-container:focus-within {
+	border-color: #3264fe;
+	box-shadow: 0 0 0 3px rgba(50, 100, 254, 0.1);
+}
+
+.currency-symbol {
+	padding: 0 8px;
+	background: #f8f9fa;
+	border-right: 1px solid #e0e0e0;
+	color: #666;
+	font-weight: 500;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	height: 40px;
+}
+
+.price-input {
+	border: none !important;
+	outline: none !important;
+	padding: 12px 10px;
+	font-size: 14px;
+	font-weight: 500;
+	width: 100%;
+	background: transparent;
+	color: #333;
+}
+
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.price-input[type=number] {
+	-moz-appearance: textfield;
+}
+
+.price-input::placeholder {
+	color: #999;
+	font-weight: 400;
+}
+
+.separator-wrapper {
+	display: flex;
+	align-items: center;
+	padding-top: 25px;
+}
+
+.separator {
+	color: #999;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.input-error {
+	font-size: 11px;
+	color: #e74c3c;
+	margin-top: 4px;
+	min-height: 16px;
+	display: block;
+}
+
+
+/* Error state styling */
+.input-container.error {
+	border-color: #e74c3c;
+	background: #fff5f5;
+}
+
+.input-container.error:focus-within {
+	box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* Success state styling */
+.input-container.success {
+	border-color: #27ae60;
+}
+
+.input-container.success:focus-within {
+	box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+	.price-input-wrapper {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.separator-wrapper {
+		display: none;
+	}
+
+	.field-label {
+		font-size: 11px;
+	}
+
+	.price-input {
+		padding: 10px 8px;
+		font-size: 13px;
+	}
+
+	.currency-symbol {
+		padding: 0 6px;
+		font-size: 13px;
+		height: 36px;
+	}
+
+}
+
+/* Template 2 specific styles */
+.sidebar-style-2 .input-container:focus-within {
+	border-color: #17c6aa;
+	box-shadow: 0 0 0 3px rgba(23, 198, 170, 0.1);
+}
 @media (max-width: 1024) {
 	.shop-container-2{
 		opacity: 1; 
