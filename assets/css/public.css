@@ -655,6 +655,7 @@ li.first-page{
 }
 .pagination li {
 	display: flex;
+	align-items: center;
     justify-content: center;
 	margin: 0 5px;
     padding: 5px 15px;
