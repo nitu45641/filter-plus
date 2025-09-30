@@ -689,6 +689,12 @@ ul.pagination {
 	color: #fff;
 }
 
+.pagination li svg {
+	width: 16px;
+	height: 16px;
+	fill: #11152c;
+}
+
 .pagination li:hover svg {
 	fill: #fff;
 }
