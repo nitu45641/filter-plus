@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		}
 		// price range
 		if ( 'yes'== $show_price_range ) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/price-range.php";
+			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/price-range.php";
 		}
 		// custom tags
 		if ( 'yes'== $show_tags ) {

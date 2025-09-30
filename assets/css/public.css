@@ -2293,16 +2293,10 @@ ul.sub_categories{
 	box-shadow: 0 0 0 6px rgba(23, 198, 170, 0.3);
 }
 
-/* Enhanced Price Range Input Styles */
-.price-range-input {
-	margin: 20px 0;
-}
-
 .price-input-wrapper {
 	display: flex;
 	align-items: flex-start;
 	gap: 12px;
-	margin-bottom: 15px;
 }
 
 .field {

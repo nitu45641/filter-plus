@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Grid template for products
  */
+if (!function_exists('render_grid_product')) {
 function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
 	?>
 	<div class="product-style product-style-<?php echo esc_attr($product['template']); ?> vartical-prod-card-container">
@@ -34,10 +35,12 @@ function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 	</div>
 	<?php
 }
+}
 
 /**
  * List template for products
  */
+if (!function_exists('render_list_product')) {
 function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
 	?>
 	<div class="horizontal-prod-card-container horizontal-prod-card">
@@ -70,4 +73,5 @@ function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 		<?php endif; ?>
 	</div>
 	<?php
+}
 }

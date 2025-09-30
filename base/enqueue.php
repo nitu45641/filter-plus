@@ -135,10 +135,6 @@ class Enqueue {
                 'src'     => \FilterPlus::assets_url() . 'css/public.css',
                 'version' => \FilterPlus::get_version(),
             ),
-			'jquery.range-min' => array(
-                'src'     => \FilterPlus::assets_url() . 'css/jquery.range.css',
-                'version' => \FilterPlus::get_version(),
-            ),
             'filter-swiper-bundle' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/filter-swiper-bundle.min.css',
                 'version' => \FilterPlus::get_version(),
