@@ -116,11 +116,6 @@ class Enqueue {
                 'version'   => \FilterPlus::get_version(),
                 'deps'      => ['jquery'],
             ),
-			'jquery-range-min'     => array(
-                'src'     => \FilterPlus::assets_url() . 'js/jquery.range-min.js',
-                'version' => \FilterPlus::get_version(),
-                'deps'    => ['jquery'],
-            ),
             'filter-swiper-bundle'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/filter-swiper-bundle.min.js',
                 'version' => \FilterPlus::get_version(),

@@ -118,34 +118,133 @@
 		
 		// price range
 		const price_range = $('.range-slider');
-		const min = price_range.data('min');
+		const min = Math.max(1, price_range.data('min') || 1);
 		const max = price_range.data('max');
 
 		price_range_picker();
 		function price_range_picker() {
-			
-			let width = $('.shop-sidebar').width();
-			if ($(window).width() < 430) {
-				width = 220; 
+			// Custom price range picker implementation
+			const slider = $('.custom-range-slider');
+			if (slider.length === 0) return;
+
+			const track = slider.find('.range-track');
+			const fill = slider.find('.range-fill');
+			const minThumb = slider.find('.range-thumb-min');
+			const maxThumb = slider.find('.range-thumb-max');
+			const minLabel = $('.range-label-min');
+			const maxLabel = $('.range-label-max');
+
+			let isDragging = false;
+			let activeThumb = null;
+			let currentMin = min;
+			let currentMax = max;
+
+			// Set initial positions
+			updateSlider();
+
+			function getPositionFromValue(value) {
+				return ((value - min) / (max - min)) * 100;
 			}
-			
-			price_range.jRange({
-				from: min,
-				to: max,
-				step: 1,
-				scale: [min, max],
-				format: '%s',
-				width: width,
-				showLabels: true,
-				isRange: true,
-				ondragend(val) {
+
+			function getValueFromPosition(position) {
+				const value = min + (position / 100) * (max - min);
+				return Math.round(value);
+			}
+
+			function updateSlider() {
+				const minPos = getPositionFromValue(currentMin);
+				const maxPos = getPositionFromValue(currentMax);
+
+				minThumb.css('left', minPos + '%');
+				maxThumb.css('left', maxPos + '%');
+				fill.css({
+					'left': minPos + '%',
+					'width': (maxPos - minPos) + '%'
+				});
+
+				// Update labels with currency formatting
+				const currency = price_range.siblings('.default-range').find('.min').text().replace(/[0-9]/g, '');
+				minLabel.text(currency + currentMin);
+				maxLabel.text(currency + currentMax);
+			}
+
+			function handleMouseMove(e) {
+				if (!isDragging || !activeThumb) return;
+
+				const rect = track[0].getBoundingClientRect();
+				const position = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+				const value = getValueFromPosition(position);
+
+				if (activeThumb.hasClass('range-thumb-min')) {
+					currentMin = Math.max(1, Math.min(value, currentMax - 1));
+				} else {
+					currentMax = Math.max(value, Math.max(1, currentMin) + 1);
+				}
+
+				updateSlider();
+			}
+
+			function handleMouseUp() {
+				if (isDragging) {
+					isDragging = false;
+					activeThumb = null;
+
+					// Trigger the same action as jRange
+					const val = currentMin + ',' + currentMax;
 					price_range_actions(val, price_range);
-				},
-				onbarclicked(val) {
-					price_range_actions(val, price_range);
-				},
+				}
+			}
+
+			// Event listeners
+			minThumb.on('mousedown', function(e) {
+				e.preventDefault();
+				isDragging = true;
+				activeThumb = $(this);
 			});
-			price_range.jRange('setValue', min + ',' + max);
+
+			maxThumb.on('mousedown', function(e) {
+				e.preventDefault();
+				isDragging = true;
+				activeThumb = $(this);
+			});
+
+			track.on('click', function(e) {
+				if (isDragging) return;
+
+				const rect = this.getBoundingClientRect();
+				const position = ((e.clientX - rect.left) / rect.width) * 100;
+				const value = getValueFromPosition(position);
+
+				// Determine which thumb to move based on proximity
+				const minDistance = Math.abs(value - currentMin);
+				const maxDistance = Math.abs(value - currentMax);
+
+				if (minDistance < maxDistance) {
+					currentMin = Math.max(1, Math.min(value, currentMax - 1));
+				} else {
+					currentMax = Math.max(value, Math.max(1, currentMin) + 1);
+				}
+
+				updateSlider();
+
+				// Trigger action
+				const val = currentMin + ',' + currentMax;
+				price_range_actions(val, price_range);
+			});
+
+			$(document).on('mousemove', handleMouseMove);
+			$(document).on('mouseup', handleMouseUp);
+
+			// Custom setValue method for compatibility
+			price_range.customSetValue = function(value) {
+				const values = value.split(',');
+				currentMin = Math.max(1, parseInt(values[0]) || min);
+				currentMax = parseInt(values[1]) || max;
+				updateSlider();
+			};
+
+			// Set initial values
+			price_range.customSetValue(min + ',' + max);
 		}
 
 		/**
@@ -184,16 +283,17 @@
 					if ($this.hasClass('input-min')) {
 						latest_min = $this.val() > max ? min : $this.val();
 						$this.val('').val(latest_min);
-						price_range.jRange('setValue', latest_min + ',' + max);
+						if (price_range.customSetValue) {
+							price_range.customSetValue(latest_min + ',' + max);
+						}
 					} else {
 						latest_max = $this.val() > max ? max : $this.val();
 						$this.val('').val(latest_max);
 					}
 					price_range.attr('data-action', true);
-					price_range.jRange(
-						'setValue',
-						latest_min + ',' + latest_max
-					);
+					if (price_range.customSetValue) {
+						price_range.customSetValue(latest_min + ',' + latest_max);
+					}
 					get_products();
 					// reset block
 					reset_block(
@@ -722,7 +822,9 @@
 				const min = $parent.data('min');
 				const max = $parent.data('max');
 				$parent.val(min + ',' + max);
-				$parent.jRange('setValue', min + ',' + max);
+				if ($parent.customSetValue) {
+					$parent.customSetValue(min + ',' + max);
+				}
 			} else if ($parent.hasClass('sidebar-input')) {
 				$parent.val('');
 			} else {
@@ -893,10 +995,11 @@
 					$('.ratings li').removeClass('rating_disable');
 				}
 				if (price_range.length > 0) {
-					price_range.jRange(
-						'setValue',
-						price_range.data('min') + ',' + price_range.data('max')
-					);
+					if (price_range.customSetValue) {
+						price_range.customSetValue(
+							price_range.data('min') + ',' + price_range.data('max')
+						);
+					}
 				}
 				$('input[type=checkbox]').removeAttr('checked');
 				sidebar.find('.reset').fadeOut();

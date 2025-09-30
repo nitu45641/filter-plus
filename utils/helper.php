@@ -879,7 +879,10 @@ class Helper {
 		$get_price = \FilterPlus\Utils\Helper::instance()->get_min_max_price();
 		$min = $settings['min_price_range'] == '' ? $get_price['min'] : $settings['min_price_range'];
 		$max = $settings['max_price_range'] == '' ? $get_price['max'] : $settings['max_price_range'];
-		
+
+		// Ensure minimum value is at least 1
+		$min = max(1, intval($min));
+
 		return array('min'=>$min,'max'=>$max);
 	}
 
