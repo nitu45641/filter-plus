@@ -1796,7 +1796,8 @@ a.added_to_cart.wc-forward {
 
 .down-arrow svg,
 .up-arrow svg {
-	font-size: 13px;
+	width: 13px;
+	height: 13px;
 	fill: #b3b3b3;
 }
 

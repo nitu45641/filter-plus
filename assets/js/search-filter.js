@@ -295,7 +295,7 @@
 				} else if (!isMin && value < min) {
 					isValid = false;
 					errorMessage = `Max price must be at least ${min}`;
-				} else if (!isMin && value <= parseInt($('.input-min').val() || min)) {
+				} else if (!isMin && value <= parseFloat($('.input-min').val() || min)) {
 					isValid = false;
 					errorMessage = 'Max price must be greater than min price';
 				}
@@ -314,7 +314,7 @@
 			// Real-time input validation and sync
 			$('.field .input-min,.field .input-max').on('input', function () {
 				const $this = $(this);
-				const value = parseInt($this.val()) || 0;
+				const value = parseFloat($this.val()) || 0;
 				const isMin = $this.hasClass('input-min');
 
 				// Validate input
@@ -322,8 +322,8 @@
 
 				// Sync with slider if valid
 				if (isValid && price_range.customSetValue) {
-					const currentMin = isMin ? value : (parseInt($('.input-min').val()) || min);
-					const currentMax = isMin ? (parseInt($('.input-max').val()) || max) : value;
+					const currentMin = isMin ? value : (parseFloat($('.input-min').val()) || min);
+					const currentMax = isMin ? (parseFloat($('.input-max').val()) || max) : value;
 					price_range.customSetValue(currentMin + ',' + currentMax);
 				}
 
@@ -336,8 +336,8 @@
 			function triggerFilter() {
 				clearTimeout(filterTimeout);
 				filterTimeout = setTimeout(() => {
-					const minVal = parseInt($('.input-min').val()) || min;
-					const maxVal = parseInt($('.input-max').val()) || max;
+					const minVal = parseFloat($('.input-min').val()) || min;
+					const maxVal = parseFloat($('.input-max').val()) || max;
 
 					// Validate both inputs
 					const minValid = validatePriceInput($('.input-min'), minVal, true);
@@ -359,14 +359,14 @@
 					let latest_min = min;
 					let latest_max = max;
 					if ($this.hasClass('input-min')) {
-						latest_min = Math.max(1, Math.min(parseInt($this.val()) || min, max - 1));
+						latest_min = Math.max(0.01, Math.min(parseFloat($this.val()) || min, max - 0.01));
 						$this.val(latest_min);
 						if (price_range.customSetValue) {
 							price_range.customSetValue(latest_min + ',' + max);
 						}
 					} else {
-						const currentMin = parseInt($('.input-min').val()) || min;
-						latest_max = Math.max(currentMin + 1, parseInt($this.val()) || max);
+						const currentMin = parseFloat($('.input-min').val()) || min;
+						latest_max = Math.max(currentMin + 0.01, parseFloat($this.val()) || max);
 						$this.val(latest_max);
 					}
 					price_range.attr('data-action', true);
