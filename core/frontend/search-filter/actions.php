@@ -585,12 +585,18 @@ class Actions {
 			$template_path .= "wp-filter/template-{$template}/right-side/product-template.php";
 		}
 
-		// Check if template exists in main plugin, if not check pro plugin for templates 3, 4, 5, 6 and 7
-		if (!file_exists($template_path) && in_array($template, [3, 4, 5, 6, 7])) {
-			if (class_exists('FilterPlusPro') && $filter_type == 'product') {
-				// Templates 5 and 7 use bottom folder, others use right-side
-				$folder = in_array($template, [5, 7]) ? 'bottom' : 'right-side';
-				$template_path = \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-{$template}/{$folder}/product-template.php";
+		// Check if template exists in main plugin, if not check pro plugin for templates 2, 3, 4, 5, 6 and 7
+		if (!file_exists($template_path) && in_array($template, [2, 3, 4, 5, 6, 7])) {
+			if (class_exists('FilterPlusPro')) {
+				if ($filter_type == 'product') {
+					// Templates 5 and 7 use bottom folder, others use right-side
+					$folder = in_array($template, [5, 7]) ? 'bottom' : 'right-side';
+					$template_path = \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-{$template}/{$folder}/product-template.php";
+				} else {
+					// For wp-filter: template-3 uses bottom folder, others use right-side
+					$folder = $template == 3 ? 'bottom' : 'right-side';
+					$template_path = \FilterPlusPro::plugin_dir() . "templates/wp-filter/template-{$template}/{$folder}/product-template.php";
+				}
 			}
 		}
 
