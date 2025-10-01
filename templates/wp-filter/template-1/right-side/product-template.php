@@ -13,6 +13,12 @@ function render_grid_product($product, $hide_wp_title, $hide_wp_desc) {
 				<?php echo $product['post_image']; ?>
 			</a>
 			<div class="filter-meta-wrapper">
+				<?php if (!empty($product['categories'])): ?>
+					<?php foreach ($product['categories'] as $category): ?>
+						<?php $link = is_object($category) ? (isset($category->link) ? $category->link : '#') : (isset($category['link']) ? $category['link'] : '#'); ?>
+						<a href="<?php echo esc_url($link); ?>" target="_blank" class=""><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></a>
+					<?php endforeach; ?>
+				<?php endif; ?>
 				<?php if (!empty($product['tags'])): ?>
 					<?php foreach ($product['tags'] as $tag): ?>
 						<?php $link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#'); ?>

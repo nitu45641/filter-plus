@@ -439,14 +439,14 @@ class Helper {
 		foreach ($cat as $key => $value) {
 			$sub_cats = self::get_sub_categories($value->term_id,$taxonomy , $type );
 
-			if ( $type == "assoc" || $type == "" && 
+			if ( ( $type == "assoc" || $type == "" || $type == false ) &&
 			( $value->parent == 0 && $value->slug !== 'uncategorized' ) ) {
 				$result_cat[$key]['term_id'] = $value->term_id;
 				$result_cat[$key]['name'] = $value->name;
 				$result_cat[$key]['slug'] = $value->slug;
 				$result_cat[$key]['count'] = $value->count;
 				$result_cat[$key]['sub_categories'] = $sub_cats;
-			} 
+			}
 			else if ($type == "widget" ) {
 				$result_cat[$value->term_id] 	= $value->name;
 			}
@@ -454,7 +454,7 @@ class Helper {
 				$result_cat[$key]['value'] 		= $value->term_id;
 				$result_cat[$key]['label'] 		= $value->name;
 				$result_cat[$key]['sub_categories'] = $sub_cats;
-			} 
+			}
 		}
 		return $result_cat;
 	}

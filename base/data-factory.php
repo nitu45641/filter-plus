@@ -276,6 +276,12 @@ class DataFactory {
         extract( $args );
         $taxonomy       = ! empty( $args['taxonomy'] ) ? $args['taxonomy'] : 'product_cat';
         $product_count  = ! empty( $args['product_count'] ) ? $args['product_count'] : 'no';
+        $hide_empty_cat = ! empty( $args['hide_empty_cat'] ) ? $args['hide_empty_cat'] : 'no';
+        $categories     = ! empty( $args['categories'] ) ? $args['categories'] : '';
+        $sub_categories = ! empty( $args['sub_categories'] ) ? $args['sub_categories'] : 'yes';
+        $category_label = ! empty( $args['category_label'] ) ? $args['category_label'] : esc_html__('Categories','filter-plus');
+        $category_template = ! empty( $args['category_template'] ) ? $args['category_template'] : '1';
+        $template       = ! empty( $args['template'] ) ? $args['template'] : '1';
 
         $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
 
@@ -294,7 +300,7 @@ class DataFactory {
                 break;
 
         }
-
+        
 		if (file_exists( $url )) {
 			include $url ;
 		}
