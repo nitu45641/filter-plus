@@ -18,6 +18,7 @@ const paths = {
     '!phpcs.xml',
     '!phpcs.xml.dist',
     '!LICENSE.txt',
+    '!DEVELOPMENT.md',
     '!js.LICENSE.txt',          // Exclude webpack license file at root
     '!**/js.LICENSE.txt',       // Exclude any nested js.LICENSE.txt
     '!**/js.LICENSE.*.txt',     // Exclude hashed variants (e.g., js.LICENSE.12345.txt)
