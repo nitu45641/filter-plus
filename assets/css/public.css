@@ -771,9 +771,6 @@ ul.pagination {
     left: 10px;
     top: 5px;
 }
-.cart_button-1.loading::after {
-    left: 9px !important;
-}
 .add_to_cart_button.added::after{
     content: url(../../assets/images/check-mark.svg);
 	position: relative;
@@ -1344,42 +1341,207 @@ a {
 	left: 0;
 	width: 100%;
 	gap: 10px;
+	z-index: 10;
 	-webkit-transition: 0.5s;
 	transition: 0.5s;
 }
 .vartical-prod-card-container:hover .card-action-btn-container,
 .product-style:hover .card-action-btn-container,
 .product-style-1:hover .card-action-btn-container {
-	height: 70px;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	text-align: center;
+	background-color: rgba(0, 0, 0, 0.05);
 }
 
-.product-style-1 .cart.cart-1 {
-	margin-top: 15px;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 0.3s ease, visibility 0.3s ease;
+/* Template 1 - Overall product card */
+.product-style-1 {
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.product-style-1:hover .cart.cart-1 {
-	opacity: 1;
-	visibility: visible;
+.product-style-1:hover {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	transform: translateY(-2px);
 }
 
-.product-style-1 .cart.cart-1 a {
-	display: inline-block;
-	padding: 8px 20px;
+/* Template 1 - Product thumbnail positioning */
+.product-style-1 .product-thumbnail {
+	position: relative;
+	overflow: hidden;
+	background: #f8f8f8;
+}
+
+.product-style-1 .vpcc-image {
+	position: relative;
+	transition: transform 0.3s ease;
+}
+
+.product-style-1:hover .vpcc-image {
+	transform: scale(1.05);
+}
+
+.product-style-1 .vpcc-image img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Template 1 - Cart button in thumbnail */
+.product-style-1 .card-action-btn-container a,
+.product-style-1 .card-action-btn-container .button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: 11px 14px;
 	background-color: var(--filter-secondary-color, #1164cb);
-	color: #fff;
+	color: #fff !important;
 	text-decoration: none;
-	border-radius: 4px;
-	transition: background-color 0.3s ease;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	position: relative;
+	border: none;
+	cursor: pointer;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.product-style-1 .cart.cart-1 a:hover {
+.product-style-1 .card-action-btn-container a:hover,
+.product-style-1 .card-action-btn-container .button:hover {
 	background-color: var(--filter-primary-color, #2d73e7);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Cart icon in button */
+.product-style-1 .card-action-btn-container a svg,
+.product-style-1 .card-action-btn-container .button svg,
+.product-style-1 .card-action-btn-container a i,
+.product-style-1 .card-action-btn-container .button i {
+	display: inline-block;
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+}
+
+/* Loading state for template 1 */
+.product-style-1 .card-action-btn-container a.loading::after,
+.product-style-1 .card-action-btn-container .button.loading::after {
+	content: "";
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: 50%;
+	left: 50%;
+	margin-top: -8px;
+	margin-left: -8px;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	border-top-color: #fff;
+	animation: spinner 0.6s linear infinite;
+}
+
+.product-style-1 .card-action-btn-container a.loading,
+.product-style-1 .card-action-btn-container .button.loading {
+	color: transparent !important;
+}
+
+.product-style-1 .card-action-btn-container a.loading *,
+.product-style-1 .card-action-btn-container .button.loading * {
+	opacity: 0;
+}
+
+/* Added state for template 1 */
+.product-style-1 .card-action-btn-container a.added::after,
+.product-style-1 .card-action-btn-container .button.added::after {
+	content: "✓";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.product-style-1 .card-action-btn-container a.added,
+.product-style-1 .card-action-btn-container .button.added {
+	color: transparent !important;
+}
+
+.product-style-1 .card-action-btn-container a.added *,
+.product-style-1 .card-action-btn-container .button.added * {
+	opacity: 0;
+}
+
+/* Hide cart button below product in template 1 */
+.product-style-1 .cart.cart-1 {
+	display: none;
+}
+
+/* Template 1 - Product content area */
+.product-style-1 .product-content {
+	padding: 16px;
+}
+
+/* Template 1 - Product name styling */
+.product-style-1 .product-name {
+	margin-top: 0;
+	margin-bottom: 10px;
+	line-height: 1.4;
+}
+
+.product-style-1 .product-name a {
+	color: #000;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 15px;
+	transition: color 0.3s ease;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.product-style-1 .product-name a:hover {
+	color: var(--filter-secondary-color, #1164cb);
+}
+
+/* Template 1 - Product rating */
+.product-style-1 .product-content > div:has(svg) {
+	margin: 8px 0;
+}
+
+/* Template 1 - Product price styling */
+.product-style-1 .product-price {
+	color: #000;
+	font-weight: 600;
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+.product-style-1 .product-price del {
+	opacity: 0.6;
+	font-weight: 400;
+	margin-right: 8px;
+}
+
+.product-style-1 .product-price ins {
+	text-decoration: none;
+}
+
+@keyframes spinner {
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .fp-blog-category-list-2{
