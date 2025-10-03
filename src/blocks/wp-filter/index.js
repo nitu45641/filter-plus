@@ -1,6 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, TextControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 registerBlockType('filter-plus/wp-filter', {
@@ -95,6 +95,14 @@ registerBlockType('filter-plus/wp-filter', {
         post_author: {
             type: 'boolean',
             default: true
+        },
+        hide_wp_title: {
+            type: 'boolean',
+            default: true
+        },
+        hide_wp_desc: {
+            type: 'boolean',
+            default: true
         }
     },
 
@@ -182,13 +190,24 @@ registerBlockType('filter-plus/wp-filter', {
                                     placeholder={__('Place Category Label', 'filter-plus')}
                                 />
 
-                                <SelectControl
-                                    multiple
-                                    label={__('Category List', 'filter-plus')}
-                                    value={attributes.categories}
-                                    options={window.filterPlus?.wp_cats || []}
-                                    onChange={(value) => setAttributes({ categories: value })}
-                                />
+                                <div style={{ marginBottom: '12px' }}>
+                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>
+                                        {__('Category List', 'filter-plus')}
+                                    </label>
+                                    {(window.filterPlus?.wp_cats || []).map((option) => (
+                                        <CheckboxControl
+                                            key={option.value}
+                                            label={option.label}
+                                            checked={attributes.categories.includes(option.value)}
+                                            onChange={(checked) => {
+                                                const newCategories = checked
+                                                    ? [...attributes.categories, option.value]
+                                                    : attributes.categories.filter(v => v !== option.value);
+                                                setAttributes({ categories: newCategories });
+                                            }}
+                                        />
+                                    ))}
+                                </div>
 
                                 <ToggleControl
                                     label={__('Display Sub Categories', 'filter-plus')}
@@ -212,13 +231,24 @@ registerBlockType('filter-plus/wp-filter', {
                                     onChange={(value) => setAttributes({ tag_label: value })}
                                 />
 
-                                <SelectControl
-                                    multiple
-                                    label={__('Tags', 'filter-plus')}
-                                    value={attributes.tags}
-                                    options={window.filterPlus?.post_tag || []}
-                                    onChange={(value) => setAttributes({ tags: value })}
-                                />
+                                <div style={{ marginBottom: '12px' }}>
+                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>
+                                        {__('Tags', 'filter-plus')}
+                                    </label>
+                                    {(window.filterPlus?.post_tag || []).map((option) => (
+                                        <CheckboxControl
+                                            key={option.value}
+                                            label={option.label}
+                                            checked={attributes.tags.includes(option.value)}
+                                            onChange={(checked) => {
+                                                const newTags = checked
+                                                    ? [...attributes.tags, option.value]
+                                                    : attributes.tags.filter(v => v !== option.value);
+                                                setAttributes({ tags: newTags });
+                                            }}
+                                        />
+                                    ))}
+                                </div>
                             </>
                         )}
 
@@ -237,13 +267,24 @@ registerBlockType('filter-plus/wp-filter', {
                                     placeholder={__('Place Author Label', 'filter-plus')}
                                 />
 
-                                <SelectControl
-                                    multiple
-                                    label={__('Author List', 'filter-plus')}
-                                    value={attributes.author_list}
-                                    options={window.filterPlus?.author_list || []}
-                                    onChange={(value) => setAttributes({ author_list: value })}
-                                />
+                                <div style={{ marginBottom: '12px' }}>
+                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>
+                                        {__('Author List', 'filter-plus')}
+                                    </label>
+                                    {(window.filterPlus?.author_list || []).map((option) => (
+                                        <CheckboxControl
+                                            key={option.value}
+                                            label={option.label}
+                                            checked={attributes.author_list.includes(option.value)}
+                                            onChange={(checked) => {
+                                                const newAuthors = checked
+                                                    ? [...attributes.author_list, option.value]
+                                                    : attributes.author_list.filter(v => v !== option.value);
+                                                setAttributes({ author_list: newAuthors });
+                                            }}
+                                        />
+                                    ))}
+                                </div>
                             </>
                         )}
 
@@ -284,6 +325,18 @@ registerBlockType('filter-plus/wp-filter', {
 
                     <PanelBody title={__('Filter Result Options', 'filter-plus')}>
                         <ToggleControl
+                            label={__('Hide Title', 'filter-plus')}
+                            checked={attributes.hide_wp_title}
+                            onChange={(value) => setAttributes({ hide_wp_title: value })}
+                        />
+
+                        <ToggleControl
+                            label={__('Hide Description', 'filter-plus')}
+                            checked={attributes.hide_wp_desc}
+                            onChange={(value) => setAttributes({ hide_wp_desc: value })}
+                        />
+
+                        <ToggleControl
                             label={__('Display Categories in Filter Result', 'filter-plus')}
                             checked={attributes.post_categories}
                             onChange={(value) => setAttributes({ post_categories: value })}
@@ -304,11 +357,59 @@ registerBlockType('filter-plus/wp-filter', {
                 </InspectorControls>
 
                 <div {...blockProps}>
-                    <div className="filter-plus-block-placeholder">
-                        <p>{__('WordPress Content Filter', 'filter-plus')}</p>
-                        <p className="description">
+                    <div className="filter-plus-block-placeholder" style={{
+                        border: '2px dashed #ccc',
+                        borderRadius: '8px',
+                        padding: '40px 20px',
+                        textAlign: 'center',
+                        backgroundColor: '#f9f9f9',
+                        minHeight: '300px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <div style={{
+                            fontSize: '48px',
+                            marginBottom: '16px',
+                            opacity: '0.5'
+                        }}>🔍</div>
+                        <h3 style={{
+                            margin: '0 0 8px 0',
+                            fontSize: '18px',
+                            fontWeight: '600',
+                            color: '#1e1e1e'
+                        }}>{__('WordPress Content Filter', 'filter-plus')}</h3>
+                        <p style={{
+                            margin: '0 0 20px 0',
+                            color: '#757575',
+                            fontSize: '14px'
+                        }}>
                             {__('Customize the filtering options from the block settings', 'filter-plus')}
                         </p>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gap: '10px',
+                            width: '100%',
+                            maxWidth: '400px',
+                            marginTop: '10px',
+                            fontSize: '12px',
+                            color: '#666'
+                        }}>
+                            <div style={{ padding: '8px', backgroundColor: '#fff', borderRadius: '4px', border: '1px solid #e0e0e0' }}>
+                                📁 {attributes.show_categories ? __('Categories', 'filter-plus') : ''}
+                            </div>
+                            <div style={{ padding: '8px', backgroundColor: '#fff', borderRadius: '4px', border: '1px solid #e0e0e0' }}>
+                                🏷️ {attributes.show_tags ? __('Tags', 'filter-plus') : ''}
+                            </div>
+                            <div style={{ padding: '8px', backgroundColor: '#fff', borderRadius: '4px', border: '1px solid #e0e0e0' }}>
+                                👤 {attributes.author ? __('Authors', 'filter-plus') : ''}
+                            </div>
+                            <div style={{ padding: '8px', backgroundColor: '#fff', borderRadius: '4px', border: '1px solid #e0e0e0' }}>
+                                ⚙️ {attributes.custom_field ? __('Custom Fields', 'filter-plus') : ''}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </>

@@ -139,7 +139,6 @@ If you are familiar with WordPress interface and how to use plugins in WordPress
 == Changelog ==
 
 = 1.1.3 (October 03, 2025)=
-
 Tweak  : Improve product filter UX
 
 = 1.1.2 (October 01, 2025)=

@@ -100,10 +100,10 @@ class Shortcodes {
 		extract( $data );
 
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
-		$main_wrapper   = ($template == '3' || '2') ? 'mainWrapper' : 'shopContainer';
+		$main_wrapper   = 'shopContainer';
 		$this->custom_css($template,'content-filter', array( 'masonry_style' => $masonry_style ) );
 		?>
-			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?>" id="shopContainer"
+			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?> shop-container-<?php echo esc_attr($template)?>" id="shopContainer"
 				data-pagination_style="<?php echo esc_html($pagination_style)?>"
 				data-filter_type='<?php echo esc_html($filtering_type)?>'
 				data-masonry_style="<?php echo esc_attr($masonry_style)?>"

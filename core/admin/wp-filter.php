@@ -147,12 +147,12 @@
 		
 		<?php
 			// show title
-			$args = array('label'=>esc_html__("Display Title:","filter-plus"),'id' => 'hide_wp_title',
+			$args = array('label'=>esc_html__("Hide Title:","filter-plus"),'id' => 'hide_wp_title',
 			'data_label' => 'hide_wp_title','checked' => 'yes',);
 			filter_plus_checkbox_field($args);
 
 			// show descrtiption
-			$args = array('label'=>esc_html__("Display Descrtiption:","filter-plus"),
+			$args = array('label'=>esc_html__("Hide Descrtiption:","filter-plus"),
 			'id' => 'hide_wp_desc','checked' => 'yes',
 			'data_label' => 'hide_wp_desc');
 			filter_plus_checkbox_field($args);

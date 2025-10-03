@@ -766,6 +766,14 @@ __webpack_require__.r(__webpack_exports__);
     post_author: {
       type: 'boolean',
       default: true
+    },
+    hide_wp_title: {
+      type: 'boolean',
+      default: true
+    },
+    hide_wp_desc: {
+      type: 'boolean',
+      default: true
     }
   },
   edit({
@@ -850,15 +858,27 @@ __webpack_require__.r(__webpack_exports__);
         category_label: value
       }),
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Place Category Label', 'filter-plus')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-      multiple: true,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Category List', 'filter-plus'),
-      value: attributes.categories,
-      options: window.filterPlus?.wp_cats || [],
-      onChange: value => setAttributes({
-        categories: value
-      })
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '12px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      style: {
+        display: 'block',
+        marginBottom: '8px',
+        fontWeight: '500'
+      }
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Category List', 'filter-plus')), (window.filterPlus?.wp_cats || []).map(option => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
+      key: option.value,
+      label: option.label,
+      checked: attributes.categories.includes(option.value),
+      onChange: checked => {
+        const newCategories = checked ? [...attributes.categories, option.value] : attributes.categories.filter(v => v !== option.value);
+        setAttributes({
+          categories: newCategories
+        });
+      }
+    }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Display Sub Categories', 'filter-plus'),
       checked: attributes.sub_categories,
       onChange: value => setAttributes({
@@ -876,15 +896,27 @@ __webpack_require__.r(__webpack_exports__);
       onChange: value => setAttributes({
         tag_label: value
       })
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-      multiple: true,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Tags', 'filter-plus'),
-      value: attributes.tags,
-      options: window.filterPlus?.post_tag || [],
-      onChange: value => setAttributes({
-        tags: value
-      })
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '12px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      style: {
+        display: 'block',
+        marginBottom: '8px',
+        fontWeight: '500'
+      }
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Tags', 'filter-plus')), (window.filterPlus?.post_tag || []).map(option => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
+      key: option.value,
+      label: option.label,
+      checked: attributes.tags.includes(option.value),
+      onChange: checked => {
+        const newTags = checked ? [...attributes.tags, option.value] : attributes.tags.filter(v => v !== option.value);
+        setAttributes({
+          tags: newTags
+        });
+      }
+    })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Display Authors', 'filter-plus'),
       checked: attributes.author,
       onChange: value => setAttributes({
@@ -897,15 +929,27 @@ __webpack_require__.r(__webpack_exports__);
         author_label: value
       }),
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Place Author Label', 'filter-plus')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-      multiple: true,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Author List', 'filter-plus'),
-      value: attributes.author_list,
-      options: window.filterPlus?.author_list || [],
-      onChange: value => setAttributes({
-        author_list: value
-      })
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '12px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      style: {
+        display: 'block',
+        marginBottom: '8px',
+        fontWeight: '500'
+      }
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Author List', 'filter-plus')), (window.filterPlus?.author_list || []).map(option => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
+      key: option.value,
+      label: option.label,
+      checked: attributes.author_list.includes(option.value),
+      onChange: checked => {
+        const newAuthors = checked ? [...attributes.author_list, option.value] : attributes.author_list.filter(v => v !== option.value);
+        setAttributes({
+          author_list: newAuthors
+        });
+      }
+    })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Display Custom Field', 'filter-plus'),
       checked: attributes.custom_field,
       onChange: value => setAttributes({
@@ -941,6 +985,18 @@ __webpack_require__.r(__webpack_exports__);
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Filter Result Options', 'filter-plus')
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Hide Title', 'filter-plus'),
+      checked: attributes.hide_wp_title,
+      onChange: value => setAttributes({
+        hide_wp_title: value
+      })
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Hide Description', 'filter-plus'),
+      checked: attributes.hide_wp_desc,
+      onChange: value => setAttributes({
+        hide_wp_desc: value
+      })
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Display Categories in Filter Result', 'filter-plus'),
       checked: attributes.post_categories,
       onChange: value => setAttributes({
@@ -961,10 +1017,78 @@ __webpack_require__.r(__webpack_exports__);
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "filter-plus-block-placeholder"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('WordPress Content Filter', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-      className: "description"
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Customize the filtering options from the block settings', 'filter-plus')))));
+      className: "filter-plus-block-placeholder",
+      style: {
+        border: '2px dashed #ccc',
+        borderRadius: '8px',
+        padding: '40px 20px',
+        textAlign: 'center',
+        backgroundColor: '#f9f9f9',
+        minHeight: '300px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontSize: '48px',
+        marginBottom: '16px',
+        opacity: '0.5'
+      }
+    }, "\uD83D\uDD0D"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+      style: {
+        margin: '0 0 8px 0',
+        fontSize: '18px',
+        fontWeight: '600',
+        color: '#1e1e1e'
+      }
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('WordPress Content Filter', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      style: {
+        margin: '0 0 20px 0',
+        color: '#757575',
+        fontSize: '14px'
+      }
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Customize the filtering options from the block settings', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '10px',
+        width: '100%',
+        maxWidth: '400px',
+        marginTop: '10px',
+        fontSize: '12px',
+        color: '#666'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        padding: '8px',
+        backgroundColor: '#fff',
+        borderRadius: '4px',
+        border: '1px solid #e0e0e0'
+      }
+    }, "\uD83D\uDCC1 ", attributes.show_categories ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Categories', 'filter-plus') : ''), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        padding: '8px',
+        backgroundColor: '#fff',
+        borderRadius: '4px',
+        border: '1px solid #e0e0e0'
+      }
+    }, "\uD83C\uDFF7\uFE0F ", attributes.show_tags ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Tags', 'filter-plus') : ''), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        padding: '8px',
+        backgroundColor: '#fff',
+        borderRadius: '4px',
+        border: '1px solid #e0e0e0'
+      }
+    }, "\uD83D\uDC64 ", attributes.author ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Authors', 'filter-plus') : ''), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        padding: '8px',
+        backgroundColor: '#fff',
+        borderRadius: '4px',
+        border: '1px solid #e0e0e0'
+      }
+    }, "\u2699\uFE0F ", attributes.custom_field ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Custom Fields', 'filter-plus') : '')))));
   },
   save() {
     return null; // Server-side rendering
