@@ -675,8 +675,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('filter-plus/wp-filter', {
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('WordPress Content Filter', 'filter-plus'),
-  icon: 'image-filter',
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Filter Plus - WP Content Filter', 'filter-plus'),
+  icon: 'filter',
   category: 'filter-plus-blocks',
   attributes: {
     filter_type: {
@@ -1019,76 +1019,432 @@ __webpack_require__.r(__webpack_exports__);
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "filter-plus-block-placeholder",
       style: {
-        border: '2px dashed #ccc',
-        borderRadius: '8px',
-        padding: '40px 20px',
-        textAlign: 'center',
-        backgroundColor: '#f9f9f9',
-        minHeight: '300px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
+        border: '1px solid #e0e0e0',
+        borderRadius: '4px',
+        padding: '20px',
+        backgroundColor: '#fff',
+        minHeight: '400px'
       }
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
-        fontSize: '48px',
-        marginBottom: '16px',
-        opacity: '0.5'
+        display: 'flex',
+        gap: '20px',
+        flexDirection: attributes.filter_position === 'top' ? 'column' : 'row'
       }
-    }, "\uD83D\uDD0D"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
-        margin: '0 0 8px 0',
-        fontSize: '18px',
+        width: attributes.filter_position === 'top' ? '100%' : '250px',
+        backgroundColor: '#f9f9f9',
+        padding: '15px',
+        borderRadius: '4px',
+        border: '1px solid #e0e0e0'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '20px',
+        textAlign: 'center',
+        color: '#666',
+        fontSize: '12px'
+      }
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Filter Section', 'filter-plus')), attributes.show_categories && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '15px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
         fontWeight: '600',
+        fontSize: '14px',
+        marginBottom: '8px',
+        color: '#333'
+      }
+    }, attributes.category_label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Categories', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontSize: '12px',
+        color: '#666',
+        paddingLeft: '10px'
+      }
+    }, ['□ Category 1', '□ Category 2', '□ Category 3'].map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: i,
+      style: {
+        padding: '4px 0'
+      }
+    }, item)))), attributes.show_tags && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '15px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontWeight: '600',
+        fontSize: '14px',
+        marginBottom: '8px',
+        color: '#333'
+      }
+    }, attributes.tag_label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Tags', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontSize: '12px',
+        color: '#666',
+        paddingLeft: '10px'
+      }
+    }, ['□ Tag 1', '□ Tag 2', '□ Tag 3'].map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: i,
+      style: {
+        padding: '4px 0'
+      }
+    }, item)))), attributes.author && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '15px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontWeight: '600',
+        fontSize: '14px',
+        marginBottom: '8px',
+        color: '#333'
+      }
+    }, attributes.author_label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Authors', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontSize: '12px',
+        color: '#666',
+        paddingLeft: '10px'
+      }
+    }, ['□ Author 1', '□ Author 2'].map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: i,
+      style: {
+        padding: '4px 0'
+      }
+    }, item)))), attributes.custom_field && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '15px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontWeight: '600',
+        fontSize: '14px',
+        marginBottom: '8px',
+        color: '#333'
+      }
+    }, attributes.custom_field_label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Custom Field', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontSize: '12px',
+        color: '#666',
+        paddingLeft: '10px'
+      }
+    }, ['□ Option 1', '□ Option 2'].map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: i,
+      style: {
+        padding: '4px 0'
+      }
+    }, item))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        flex: 1
+      }
+    }, attributes.title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+      style: {
+        fontSize: '24px',
+        fontWeight: '600',
+        marginBottom: '20px',
         color: '#1e1e1e'
       }
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('WordPress Content Filter', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-      style: {
-        margin: '0 0 20px 0',
-        color: '#757575',
-        fontSize: '14px'
-      }
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Customize the filtering options from the block settings', 'filter-plus')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, attributes.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '10px',
-        width: '100%',
-        maxWidth: '400px',
-        marginTop: '10px',
-        fontSize: '12px',
-        color: '#666'
+        gridTemplateColumns: attributes.template === '1' ? 'repeat(auto-fill, minmax(280px, 1fr))' : attributes.template === '2' ? 'repeat(auto-fill, minmax(250px, 1fr))' : 'repeat(auto-fill, minmax(300px, 1fr))',
+        gap: attributes.template === '1' ? '20px' : attributes.template === '2' ? '15px' : '25px'
       }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: {
-        padding: '8px',
-        backgroundColor: '#fff',
-        borderRadius: '4px',
-        border: '1px solid #e0e0e0'
+    }, [{
+      title: 'Getting Started with WordPress',
+      cat: 'Tutorial',
+      tag: 'Beginner',
+      author: 'John Doe',
+      date: 'March 15, 2024'
+    }, {
+      title: 'Advanced Filter Techniques',
+      cat: 'Guide',
+      tag: 'Advanced',
+      author: 'Jane Smith',
+      date: 'March 14, 2024'
+    }, {
+      title: 'Building Custom Post Types',
+      cat: 'Development',
+      tag: 'Developer',
+      author: 'Mike Johnson',
+      date: 'March 13, 2024'
+    }, {
+      title: 'Content Strategy Tips',
+      cat: 'Marketing',
+      tag: 'Content',
+      author: 'Sarah Lee',
+      date: 'March 12, 2024'
+    }, {
+      title: 'SEO Best Practices',
+      cat: 'SEO',
+      tag: 'Optimization',
+      author: 'Tom Wilson',
+      date: 'March 11, 2024'
+    }, {
+      title: 'Plugin Development Guide',
+      cat: 'Development',
+      tag: 'Plugin',
+      author: 'John Doe',
+      date: 'March 10, 2024'
+    }].slice(0, parseInt(attributes.no_of_items) || 6).map((item, index) => {
+      // Template 1 - Card Style
+      if (attributes.template === '1') {
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          key: index,
+          style: {
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            backgroundColor: '#fff',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+            transition: 'transform 0.2s'
+          }
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          style: {
+            height: '160px',
+            backgroundColor: '#f0f0f1',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative'
+          }
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+          width: "60",
+          height: "60",
+          viewBox: "0 0 60 60",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg"
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+          width: "60",
+          height: "60",
+          fill: "#a7aaad"
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+          d: "M36.5 32.5L30 25L20 37.5H40L36.5 32.5Z",
+          fill: "#f0f0f1"
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
+          cx: "25",
+          cy: "22.5",
+          r: "3.5",
+          fill: "#f0f0f1"
+        }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          style: {
+            padding: '16px'
+          }
+        }, attributes.post_categories && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+          style: {
+            display: 'inline-block',
+            padding: '4px 10px',
+            backgroundColor: '#e0e7ff',
+            color: '#4338ca',
+            borderRadius: '12px',
+            fontSize: '11px',
+            fontWeight: '600',
+            marginBottom: '8px'
+          }
+        }, item.cat), attributes.hide_wp_title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+          style: {
+            fontSize: '16px',
+            fontWeight: '600',
+            color: '#1e1e1e',
+            marginBottom: '8px',
+            lineHeight: '1.4'
+          }
+        }, item.title), attributes.hide_wp_desc && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+          style: {
+            fontSize: '13px',
+            color: '#6b7280',
+            lineHeight: '1.6',
+            marginBottom: '12px'
+          }
+        }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          style: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            fontSize: '12px',
+            color: '#9ca3af',
+            borderTop: '1px solid #f3f4f6',
+            paddingTop: '12px'
+          }
+        }, attributes.post_author && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\uD83D\uDC64 ", item.author), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\uD83D\uDCC5 ", item.date)), attributes.post_tags && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          style: {
+            marginTop: '8px'
+          }
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+          style: {
+            display: 'inline-block',
+            padding: '2px 8px',
+            backgroundColor: '#f3f4f6',
+            color: '#6b7280',
+            borderRadius: '4px',
+            fontSize: '10px'
+          }
+        }, item.tag))));
       }
-    }, "\uD83D\uDCC1 ", attributes.show_categories ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Categories', 'filter-plus') : ''), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: {
-        padding: '8px',
-        backgroundColor: '#fff',
-        borderRadius: '4px',
-        border: '1px solid #e0e0e0'
+
+      // Template 2 - Minimal Style
+      if (attributes.template === '2') {
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          key: index,
+          style: {
+            border: '1px solid #e5e7eb',
+            borderRadius: '4px',
+            overflow: 'hidden',
+            backgroundColor: '#fff',
+            padding: '16px'
+          }
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          style: {
+            width: '100%',
+            height: '140px',
+            backgroundColor: '#f0f0f1',
+            borderRadius: '4px',
+            marginBottom: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+          width: "50",
+          height: "50",
+          viewBox: "0 0 60 60",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg"
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+          width: "60",
+          height: "60",
+          fill: "#a7aaad"
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+          d: "M36.5 32.5L30 25L20 37.5H40L36.5 32.5Z",
+          fill: "#f0f0f1"
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
+          cx: "25",
+          cy: "22.5",
+          r: "3.5",
+          fill: "#f0f0f1"
+        }))), attributes.hide_wp_title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+          style: {
+            fontSize: '15px',
+            fontWeight: '600',
+            color: '#111827',
+            marginBottom: '6px'
+          }
+        }, item.title), attributes.hide_wp_desc && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+          style: {
+            fontSize: '12px',
+            color: '#6b7280',
+            lineHeight: '1.5',
+            marginBottom: '10px'
+          }
+        }, "Brief description of the content goes here..."), attributes.post_categories && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          style: {
+            fontSize: '11px',
+            color: '#3b82f6',
+            fontWeight: '500',
+            marginBottom: '6px'
+          }
+        }, "\uD83D\uDCC1 ", item.cat), attributes.post_author && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          style: {
+            fontSize: '11px',
+            color: '#9ca3af'
+          }
+        }, "By ", item.author));
       }
-    }, "\uD83C\uDFF7\uFE0F ", attributes.show_tags ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Tags', 'filter-plus') : ''), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: {
-        padding: '8px',
-        backgroundColor: '#fff',
-        borderRadius: '4px',
-        border: '1px solid #e0e0e0'
-      }
-    }, "\uD83D\uDC64 ", attributes.author ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Authors', 'filter-plus') : ''), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: {
-        padding: '8px',
-        backgroundColor: '#fff',
-        borderRadius: '4px',
-        border: '1px solid #e0e0e0'
-      }
-    }, "\u2699\uFE0F ", attributes.custom_field ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Custom Fields', 'filter-plus') : '')))));
+
+      // Template 3 - Modern Style
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        key: index,
+        style: {
+          borderRadius: '12px',
+          overflow: 'hidden',
+          backgroundColor: '#fff',
+          boxShadow: '0 4px 6px rgba(0,0,0,0.07)',
+          transition: 'all 0.3s'
+        }
+      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        style: {
+          height: '180px',
+          backgroundColor: '#f0f0f1',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative'
+        }
+      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+        width: "70",
+        height: "70",
+        viewBox: "0 0 60 60",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+        width: "60",
+        height: "60",
+        fill: "#a7aaad"
+      }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+        d: "M36.5 32.5L30 25L20 37.5H40L36.5 32.5Z",
+        fill: "#f0f0f1"
+      }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
+        cx: "25",
+        cy: "22.5",
+        r: "3.5",
+        fill: "#f0f0f1"
+      })), attributes.post_categories && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        style: {
+          position: 'absolute',
+          top: '12px',
+          right: '12px',
+          backgroundColor: 'rgba(255,255,255,0.9)',
+          color: '#1e1e1e',
+          padding: '6px 12px',
+          borderRadius: '20px',
+          fontSize: '11px',
+          fontWeight: '600'
+        }
+      }, item.cat)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        style: {
+          padding: '20px'
+        }
+      }, attributes.hide_wp_title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+        style: {
+          fontSize: '17px',
+          fontWeight: '700',
+          color: '#1e1e1e',
+          marginBottom: '10px',
+          lineHeight: '1.4'
+        }
+      }, item.title), attributes.hide_wp_desc && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+        style: {
+          fontSize: '13px',
+          color: '#6b7280',
+          lineHeight: '1.6',
+          marginBottom: '14px'
+        }
+      }, "Discover amazing content and learn new techniques..."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        style: {
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingTop: '12px',
+          borderTop: '1px solid #f3f4f6'
+        }
+      }, attributes.post_author && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        style: {
+          fontSize: '12px',
+          color: '#6b7280',
+          fontWeight: '500'
+        }
+      }, item.author), attributes.post_tags && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        style: {
+          fontSize: '10px',
+          backgroundColor: '#f3f4f6',
+          color: '#4b5563',
+          padding: '4px 10px',
+          borderRadius: '12px',
+          fontWeight: '600'
+        }
+      }, item.tag))));
+    })))))));
   },
   save() {
     return null; // Server-side rendering

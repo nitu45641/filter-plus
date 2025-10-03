@@ -4,8 +4,8 @@ import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl }
 import { __ } from '@wordpress/i18n';
 
 registerBlockType('filter-plus/wp-filter', {
-    title: __('WordPress Content Filter', 'filter-plus'),
-    icon: 'image-filter',
+    title: __('Filter Plus - WP Content Filter', 'filter-plus'),
+    icon: 'filter',
     category: 'filter-plus-blocks',
     attributes: {
         filter_type: {
@@ -358,56 +358,360 @@ registerBlockType('filter-plus/wp-filter', {
 
                 <div {...blockProps}>
                     <div className="filter-plus-block-placeholder" style={{
-                        border: '2px dashed #ccc',
-                        borderRadius: '8px',
-                        padding: '40px 20px',
-                        textAlign: 'center',
-                        backgroundColor: '#f9f9f9',
-                        minHeight: '300px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center'
+                        border: '1px solid #e0e0e0',
+                        borderRadius: '4px',
+                        padding: '20px',
+                        backgroundColor: '#fff',
+                        minHeight: '400px'
                     }}>
                         <div style={{
-                            fontSize: '48px',
-                            marginBottom: '16px',
-                            opacity: '0.5'
-                        }}>🔍</div>
-                        <h3 style={{
-                            margin: '0 0 8px 0',
-                            fontSize: '18px',
-                            fontWeight: '600',
-                            color: '#1e1e1e'
-                        }}>{__('WordPress Content Filter', 'filter-plus')}</h3>
-                        <p style={{
-                            margin: '0 0 20px 0',
-                            color: '#757575',
-                            fontSize: '14px'
+                            display: 'flex',
+                            gap: '20px',
+                            flexDirection: attributes.filter_position === 'top' ? 'column' : 'row'
                         }}>
-                            {__('Customize the filtering options from the block settings', 'filter-plus')}
-                        </p>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: '1fr 1fr',
-                            gap: '10px',
-                            width: '100%',
-                            maxWidth: '400px',
-                            marginTop: '10px',
-                            fontSize: '12px',
-                            color: '#666'
-                        }}>
-                            <div style={{ padding: '8px', backgroundColor: '#fff', borderRadius: '4px', border: '1px solid #e0e0e0' }}>
-                                📁 {attributes.show_categories ? __('Categories', 'filter-plus') : ''}
+                            {/* Left Sidebar - Filters */}
+                            <div style={{
+                                width: attributes.filter_position === 'top' ? '100%' : '250px',
+                                backgroundColor: '#f9f9f9',
+                                padding: '15px',
+                                borderRadius: '4px',
+                                border: '1px solid #e0e0e0'
+                            }}>
+                                <div style={{ marginBottom: '20px', textAlign: 'center', color: '#666', fontSize: '12px' }}>
+                                    {__('Filter Section', 'filter-plus')}
+                                </div>
+
+                                {attributes.show_categories && (
+                                    <div style={{ marginBottom: '15px' }}>
+                                        <div style={{ fontWeight: '600', fontSize: '14px', marginBottom: '8px', color: '#333' }}>
+                                            {attributes.category_label || __('Categories', 'filter-plus')}
+                                        </div>
+                                        <div style={{ fontSize: '12px', color: '#666', paddingLeft: '10px' }}>
+                                            {['□ Category 1', '□ Category 2', '□ Category 3'].map((item, i) => (
+                                                <div key={i} style={{ padding: '4px 0' }}>{item}</div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {attributes.show_tags && (
+                                    <div style={{ marginBottom: '15px' }}>
+                                        <div style={{ fontWeight: '600', fontSize: '14px', marginBottom: '8px', color: '#333' }}>
+                                            {attributes.tag_label || __('Tags', 'filter-plus')}
+                                        </div>
+                                        <div style={{ fontSize: '12px', color: '#666', paddingLeft: '10px' }}>
+                                            {['□ Tag 1', '□ Tag 2', '□ Tag 3'].map((item, i) => (
+                                                <div key={i} style={{ padding: '4px 0' }}>{item}</div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {attributes.author && (
+                                    <div style={{ marginBottom: '15px' }}>
+                                        <div style={{ fontWeight: '600', fontSize: '14px', marginBottom: '8px', color: '#333' }}>
+                                            {attributes.author_label || __('Authors', 'filter-plus')}
+                                        </div>
+                                        <div style={{ fontSize: '12px', color: '#666', paddingLeft: '10px' }}>
+                                            {['□ Author 1', '□ Author 2'].map((item, i) => (
+                                                <div key={i} style={{ padding: '4px 0' }}>{item}</div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {attributes.custom_field && (
+                                    <div style={{ marginBottom: '15px' }}>
+                                        <div style={{ fontWeight: '600', fontSize: '14px', marginBottom: '8px', color: '#333' }}>
+                                            {attributes.custom_field_label || __('Custom Field', 'filter-plus')}
+                                        </div>
+                                        <div style={{ fontSize: '12px', color: '#666', paddingLeft: '10px' }}>
+                                            {['□ Option 1', '□ Option 2'].map((item, i) => (
+                                                <div key={i} style={{ padding: '4px 0' }}>{item}</div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            <div style={{ padding: '8px', backgroundColor: '#fff', borderRadius: '4px', border: '1px solid #e0e0e0' }}>
-                                🏷️ {attributes.show_tags ? __('Tags', 'filter-plus') : ''}
-                            </div>
-                            <div style={{ padding: '8px', backgroundColor: '#fff', borderRadius: '4px', border: '1px solid #e0e0e0' }}>
-                                👤 {attributes.author ? __('Authors', 'filter-plus') : ''}
-                            </div>
-                            <div style={{ padding: '8px', backgroundColor: '#fff', borderRadius: '4px', border: '1px solid #e0e0e0' }}>
-                                ⚙️ {attributes.custom_field ? __('Custom Fields', 'filter-plus') : ''}
+
+                            {/* Right Content - Grid */}
+                            <div style={{ flex: 1 }}>
+                                {attributes.title && (
+                                    <h2 style={{
+                                        fontSize: '24px',
+                                        fontWeight: '600',
+                                        marginBottom: '20px',
+                                        color: '#1e1e1e'
+                                    }}>
+                                        {attributes.title}
+                                    </h2>
+                                )}
+
+                                <div style={{
+                                    display: 'grid',
+                                    gridTemplateColumns: attributes.template === '1' ? 'repeat(auto-fill, minmax(280px, 1fr))' :
+                                                         attributes.template === '2' ? 'repeat(auto-fill, minmax(250px, 1fr))' :
+                                                         'repeat(auto-fill, minmax(300px, 1fr))',
+                                    gap: attributes.template === '1' ? '20px' : attributes.template === '2' ? '15px' : '25px'
+                                }}>
+                                    {[
+                                        { title: 'Getting Started with WordPress', cat: 'Tutorial', tag: 'Beginner', author: 'John Doe', date: 'March 15, 2024' },
+                                        { title: 'Advanced Filter Techniques', cat: 'Guide', tag: 'Advanced', author: 'Jane Smith', date: 'March 14, 2024' },
+                                        { title: 'Building Custom Post Types', cat: 'Development', tag: 'Developer', author: 'Mike Johnson', date: 'March 13, 2024' },
+                                        { title: 'Content Strategy Tips', cat: 'Marketing', tag: 'Content', author: 'Sarah Lee', date: 'March 12, 2024' },
+                                        { title: 'SEO Best Practices', cat: 'SEO', tag: 'Optimization', author: 'Tom Wilson', date: 'March 11, 2024' },
+                                        { title: 'Plugin Development Guide', cat: 'Development', tag: 'Plugin', author: 'John Doe', date: 'March 10, 2024' }
+                                    ].slice(0, parseInt(attributes.no_of_items) || 6).map((item, index) => {
+                                        // Template 1 - Card Style
+                                        if (attributes.template === '1') {
+                                            return (
+                                                <div key={index} style={{
+                                                    border: '1px solid #e5e7eb',
+                                                    borderRadius: '8px',
+                                                    overflow: 'hidden',
+                                                    backgroundColor: '#fff',
+                                                    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                                                    transition: 'transform 0.2s'
+                                                }}>
+                                                    <div style={{
+                                                        height: '160px',
+                                                        backgroundColor: '#f0f0f1',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        position: 'relative'
+                                                    }}>
+                                                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect width="60" height="60" fill="#a7aaad"/>
+                                                            <path d="M36.5 32.5L30 25L20 37.5H40L36.5 32.5Z" fill="#f0f0f1"/>
+                                                            <circle cx="25" cy="22.5" r="3.5" fill="#f0f0f1"/>
+                                                        </svg>
+                                                    </div>
+                                                    <div style={{ padding: '16px' }}>
+                                                        {attributes.post_categories && (
+                                                            <span style={{
+                                                                display: 'inline-block',
+                                                                padding: '4px 10px',
+                                                                backgroundColor: '#e0e7ff',
+                                                                color: '#4338ca',
+                                                                borderRadius: '12px',
+                                                                fontSize: '11px',
+                                                                fontWeight: '600',
+                                                                marginBottom: '8px'
+                                                            }}>
+                                                                {item.cat}
+                                                            </span>
+                                                        )}
+                                                        {attributes.hide_wp_title && (
+                                                            <h3 style={{
+                                                                fontSize: '16px',
+                                                                fontWeight: '600',
+                                                                color: '#1e1e1e',
+                                                                marginBottom: '8px',
+                                                                lineHeight: '1.4'
+                                                            }}>
+                                                                {item.title}
+                                                            </h3>
+                                                        )}
+                                                        {attributes.hide_wp_desc && (
+                                                            <p style={{
+                                                                fontSize: '13px',
+                                                                color: '#6b7280',
+                                                                lineHeight: '1.6',
+                                                                marginBottom: '12px'
+                                                            }}>
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                                                            </p>
+                                                        )}
+                                                        <div style={{
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center',
+                                                            fontSize: '12px',
+                                                            color: '#9ca3af',
+                                                            borderTop: '1px solid #f3f4f6',
+                                                            paddingTop: '12px'
+                                                        }}>
+                                                            {attributes.post_author && <span>👤 {item.author}</span>}
+                                                            <span>📅 {item.date}</span>
+                                                        </div>
+                                                        {attributes.post_tags && (
+                                                            <div style={{ marginTop: '8px' }}>
+                                                                <span style={{
+                                                                    display: 'inline-block',
+                                                                    padding: '2px 8px',
+                                                                    backgroundColor: '#f3f4f6',
+                                                                    color: '#6b7280',
+                                                                    borderRadius: '4px',
+                                                                    fontSize: '10px'
+                                                                }}>
+                                                                    {item.tag}
+                                                                </span>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            );
+                                        }
+
+                                        // Template 2 - Minimal Style
+                                        if (attributes.template === '2') {
+                                            return (
+                                                <div key={index} style={{
+                                                    border: '1px solid #e5e7eb',
+                                                    borderRadius: '4px',
+                                                    overflow: 'hidden',
+                                                    backgroundColor: '#fff',
+                                                    padding: '16px'
+                                                }}>
+                                                    <div style={{
+                                                        width: '100%',
+                                                        height: '140px',
+                                                        backgroundColor: '#f0f0f1',
+                                                        borderRadius: '4px',
+                                                        marginBottom: '12px',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center'
+                                                    }}>
+                                                        <svg width="50" height="50" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect width="60" height="60" fill="#a7aaad"/>
+                                                            <path d="M36.5 32.5L30 25L20 37.5H40L36.5 32.5Z" fill="#f0f0f1"/>
+                                                            <circle cx="25" cy="22.5" r="3.5" fill="#f0f0f1"/>
+                                                        </svg>
+                                                    </div>
+                                                    {attributes.hide_wp_title && (
+                                                        <h3 style={{
+                                                            fontSize: '15px',
+                                                            fontWeight: '600',
+                                                            color: '#111827',
+                                                            marginBottom: '6px'
+                                                        }}>
+                                                            {item.title}
+                                                        </h3>
+                                                    )}
+                                                    {attributes.hide_wp_desc && (
+                                                        <p style={{
+                                                            fontSize: '12px',
+                                                            color: '#6b7280',
+                                                            lineHeight: '1.5',
+                                                            marginBottom: '10px'
+                                                        }}>
+                                                            Brief description of the content goes here...
+                                                        </p>
+                                                    )}
+                                                    {attributes.post_categories && (
+                                                        <div style={{
+                                                            fontSize: '11px',
+                                                            color: '#3b82f6',
+                                                            fontWeight: '500',
+                                                            marginBottom: '6px'
+                                                        }}>
+                                                            📁 {item.cat}
+                                                        </div>
+                                                    )}
+                                                    {attributes.post_author && (
+                                                        <div style={{
+                                                            fontSize: '11px',
+                                                            color: '#9ca3af'
+                                                        }}>
+                                                            By {item.author}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        }
+
+                                        // Template 3 - Modern Style
+                                        return (
+                                            <div key={index} style={{
+                                                borderRadius: '12px',
+                                                overflow: 'hidden',
+                                                backgroundColor: '#fff',
+                                                boxShadow: '0 4px 6px rgba(0,0,0,0.07)',
+                                                transition: 'all 0.3s'
+                                            }}>
+                                                <div style={{
+                                                    height: '180px',
+                                                    backgroundColor: '#f0f0f1',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    position: 'relative'
+                                                }}>
+                                                    <svg width="70" height="70" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="60" height="60" fill="#a7aaad"/>
+                                                        <path d="M36.5 32.5L30 25L20 37.5H40L36.5 32.5Z" fill="#f0f0f1"/>
+                                                        <circle cx="25" cy="22.5" r="3.5" fill="#f0f0f1"/>
+                                                    </svg>
+                                                    {attributes.post_categories && (
+                                                        <div style={{
+                                                            position: 'absolute',
+                                                            top: '12px',
+                                                            right: '12px',
+                                                            backgroundColor: 'rgba(255,255,255,0.9)',
+                                                            color: '#1e1e1e',
+                                                            padding: '6px 12px',
+                                                            borderRadius: '20px',
+                                                            fontSize: '11px',
+                                                            fontWeight: '600'
+                                                        }}>
+                                                            {item.cat}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div style={{ padding: '20px' }}>
+                                                    {attributes.hide_wp_title && (
+                                                        <h3 style={{
+                                                            fontSize: '17px',
+                                                            fontWeight: '700',
+                                                            color: '#1e1e1e',
+                                                            marginBottom: '10px',
+                                                            lineHeight: '1.4'
+                                                        }}>
+                                                            {item.title}
+                                                        </h3>
+                                                    )}
+                                                    {attributes.hide_wp_desc && (
+                                                        <p style={{
+                                                            fontSize: '13px',
+                                                            color: '#6b7280',
+                                                            lineHeight: '1.6',
+                                                            marginBottom: '14px'
+                                                        }}>
+                                                            Discover amazing content and learn new techniques...
+                                                        </p>
+                                                    )}
+                                                    <div style={{
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        alignItems: 'center',
+                                                        paddingTop: '12px',
+                                                        borderTop: '1px solid #f3f4f6'
+                                                    }}>
+                                                        {attributes.post_author && (
+                                                            <div style={{ fontSize: '12px', color: '#6b7280', fontWeight: '500' }}>
+                                                                {item.author}
+                                                            </div>
+                                                        )}
+                                                        {attributes.post_tags && (
+                                                            <div style={{
+                                                                fontSize: '10px',
+                                                                backgroundColor: '#f3f4f6',
+                                                                color: '#4b5563',
+                                                                padding: '4px 10px',
+                                                                borderRadius: '12px',
+                                                                fontWeight: '600'
+                                                            }}>
+                                                                {item.tag}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
