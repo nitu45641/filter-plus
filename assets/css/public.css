@@ -1356,6 +1356,32 @@ a {
 	text-align: center;
 }
 
+.product-style-1 .cart.cart-1 {
+	margin-top: 15px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.product-style-1:hover .cart.cart-1 {
+	opacity: 1;
+	visibility: visible;
+}
+
+.product-style-1 .cart.cart-1 a {
+	display: inline-block;
+	padding: 8px 20px;
+	background-color: var(--filter-secondary-color, #1164cb);
+	color: #fff;
+	text-decoration: none;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+
+.product-style-1 .cart.cart-1 a:hover {
+	background-color: var(--filter-primary-color, #2d73e7);
+}
+
 .fp-blog-category-list-2{
     display: none;
 }
