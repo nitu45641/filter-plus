@@ -6,6 +6,7 @@ function content_filter_block() {
         'filter-plus/wp-filter',
         [
             'editor_script'   => 'filter-plus-wp-filter',
+            'editor_style'    => 'filter-plus-public-css',
             'render_callback' => 'content_filter_callback',
             'attributes'      => array(),
         ]

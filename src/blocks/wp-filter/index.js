@@ -103,6 +103,10 @@ registerBlockType('filter-plus/wp-filter', {
         hide_wp_desc: {
             type: 'boolean',
             default: true
+        },
+        filter_position: {
+            type: 'string',
+            default: 'left'
         }
     },
 
@@ -173,6 +177,17 @@ registerBlockType('filter-plus/wp-filter', {
                             value={attributes.no_of_items}
                             onChange={(value) => setAttributes({ no_of_items: parseInt(value) })}
                             placeholder={__('Place No of Items Per Page', 'filter-plus')}
+                        />
+
+                        <SelectControl
+                            label={__('Filter Position', 'filter-plus')}
+                            value={attributes.filter_position}
+                            options={[
+                                { value: 'left', label: __('Left', 'filter-plus') },
+                                { value: 'right', label: __('Right', 'filter-plus') },
+                                { value: 'top', label: __('Top', 'filter-plus') }
+                            ]}
+                            onChange={(value) => setAttributes({ filter_position: value })}
                         />
 
                         <ToggleControl
@@ -357,7 +372,7 @@ registerBlockType('filter-plus/wp-filter', {
                 </InspectorControls>
 
                 <div {...blockProps}>
-                    <div className="filter-plus-block-placeholder" style={{
+                    <div style={{
                         border: '1px solid #e0e0e0',
                         borderRadius: '4px',
                         padding: '20px',
@@ -504,23 +519,23 @@ registerBlockType('filter-plus/wp-filter', {
                                                         )}
                                                         {attributes.hide_wp_title && (
                                                             <h3 style={{
-                                                                fontSize: '16px',
-                                                                fontWeight: '600',
-                                                                color: '#1e1e1e',
-                                                                marginBottom: '8px',
-                                                                lineHeight: '1.4'
+                                                                fontSize: '18px',
+                                                                fontWeight: '700',
+                                                                color: '#111827',
+                                                                marginBottom: '10px',
+                                                                lineHeight: '1.3'
                                                             }}>
                                                                 {item.title}
                                                             </h3>
                                                         )}
                                                         {attributes.hide_wp_desc && (
                                                             <p style={{
-                                                                fontSize: '13px',
-                                                                color: '#6b7280',
+                                                                fontSize: '14px',
+                                                                color: '#4b5563',
                                                                 lineHeight: '1.6',
                                                                 marginBottom: '12px'
                                                             }}>
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
                                                             </p>
                                                         )}
                                                         <div style={{
@@ -582,22 +597,23 @@ registerBlockType('filter-plus/wp-filter', {
                                                     </div>
                                                     {attributes.hide_wp_title && (
                                                         <h3 style={{
-                                                            fontSize: '15px',
-                                                            fontWeight: '600',
+                                                            fontSize: '17px',
+                                                            fontWeight: '700',
                                                             color: '#111827',
-                                                            marginBottom: '6px'
+                                                            marginBottom: '8px',
+                                                            lineHeight: '1.3'
                                                         }}>
                                                             {item.title}
                                                         </h3>
                                                     )}
                                                     {attributes.hide_wp_desc && (
                                                         <p style={{
-                                                            fontSize: '12px',
-                                                            color: '#6b7280',
-                                                            lineHeight: '1.5',
+                                                            fontSize: '14px',
+                                                            color: '#4b5563',
+                                                            lineHeight: '1.6',
                                                             marginBottom: '10px'
                                                         }}>
-                                                            Brief description of the content goes here...
+                                                            Brief description of the content goes here for this post.
                                                         </p>
                                                     )}
                                                     {attributes.post_categories && (
@@ -663,23 +679,23 @@ registerBlockType('filter-plus/wp-filter', {
                                                 <div style={{ padding: '20px' }}>
                                                     {attributes.hide_wp_title && (
                                                         <h3 style={{
-                                                            fontSize: '17px',
+                                                            fontSize: '19px',
                                                             fontWeight: '700',
-                                                            color: '#1e1e1e',
+                                                            color: '#111827',
                                                             marginBottom: '10px',
-                                                            lineHeight: '1.4'
+                                                            lineHeight: '1.3'
                                                         }}>
                                                             {item.title}
                                                         </h3>
                                                     )}
                                                     {attributes.hide_wp_desc && (
                                                         <p style={{
-                                                            fontSize: '13px',
-                                                            color: '#6b7280',
+                                                            fontSize: '14px',
+                                                            color: '#4b5563',
                                                             lineHeight: '1.6',
                                                             marginBottom: '14px'
                                                         }}>
-                                                            Discover amazing content and learn new techniques...
+                                                            Discover amazing content and learn new techniques with this comprehensive guide.
                                                         </p>
                                                     )}
                                                     <div style={{
