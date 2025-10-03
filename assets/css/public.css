@@ -1347,7 +1347,9 @@ a {
 	-webkit-transition: 0.5s;
 	transition: 0.5s;
 }
-.vartical-prod-card-container:hover .card-action-btn-container {
+.vartical-prod-card-container:hover .card-action-btn-container,
+.product-style:hover .card-action-btn-container,
+.product-style-1:hover .card-action-btn-container {
 	height: 70px;
 	display: flex;
 	align-items: center;

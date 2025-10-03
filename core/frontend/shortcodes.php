@@ -42,8 +42,11 @@ class Shortcodes {
 	public function filter_plus( $atts ) {
 		if ( ! class_exists( 'Woocommerce' ) ) {return;}
 		$data_factory = \FilterPlus\Base\DataFactory::instance()->woo_default_data();
+
 		// shortcode option
-		$atts = extract( shortcode_atts( $data_factory , $atts ) );
+		$merged_atts = shortcode_atts( $data_factory , $atts );
+
+		extract( $merged_atts );
 
 		ob_start();
 		$is_pro_active = $this->pro_template_check($template);

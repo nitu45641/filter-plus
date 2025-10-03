@@ -1,6 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, TextControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 registerBlockType('filter-plus/woo-filter', {
@@ -173,6 +173,9 @@ registerBlockType('filter-plus/woo-filter', {
     edit({ attributes, setAttributes }) {
         const blockProps = useBlockProps();
 
+        // Debug: Log attributes whenever they change
+        console.log('WooCommerce Filter Block Attributes:', attributes);
+
         const isPro = () => {
             return window.filterPlus?.is_pro_active == 1 ? __('(Pro)', 'filter-plus') : '';
         };
@@ -268,13 +271,67 @@ registerBlockType('filter-plus/woo-filter', {
                             placeholder={__('Place Category Label Here', 'filter-plus')}
                         />
 
-                        <SelectControl
-                            multiple
-                            label={__('Categories', 'filter-plus')}
-                            value={attributes.categories}
-                            options={window.filterPlus?.woo_categories || []}
-                            onChange={(value) => setAttributes({ categories: value })}
-                        />
+                        <div style={{ marginBottom: '16px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                                <label style={{ fontWeight: '500', margin: 0 }}>
+                                    {__('Categories', 'filter-plus')}
+                                </label>
+                                {attributes.categories.length > 0 && (
+                                    <button
+                                        type="button"
+                                        className="button button-small"
+                                        onClick={() => setAttributes({ categories: [] })}
+                                        style={{ fontSize: '11px', padding: '2px 8px', height: 'auto' }}
+                                    >
+                                        {__('Clear All', 'filter-plus')}
+                                    </button>
+                                )}
+                            </div>
+                            <div style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid #ddd', padding: '8px', borderRadius: '4px', backgroundColor: '#fff' }}>
+                                {(window.filterPlus?.woo_categories || []).map((cat) => {
+                                    // Normalize: ensure we're always working with strings
+                                    const catValue = String(cat.value);
+                                    const normalizedCategories = attributes.categories.map(c => String(c));
+                                    const isChecked = normalizedCategories.includes(catValue);
+
+                                    return (
+                                        <CheckboxControl
+                                            key={cat.value}
+                                            label={cat.label}
+                                            checked={isChecked}
+                                            onChange={(checked) => {
+                                                // Normalize all existing categories to strings
+                                                let normalizedCurrent = attributes.categories.map(c => String(c));
+                                                let newCategories;
+
+                                                if (checked) {
+                                                    // Add category if not already present
+                                                    if (!normalizedCurrent.includes(catValue)) {
+                                                        newCategories = [...normalizedCurrent, catValue];
+                                                    } else {
+                                                        newCategories = normalizedCurrent;
+                                                    }
+                                                } else {
+                                                    // Remove category
+                                                    newCategories = normalizedCurrent.filter(c => c !== catValue);
+                                                }
+
+                                                console.log('Category toggled:', cat.label, 'Checked:', checked, 'New categories:', newCategories);
+                                                setAttributes({ categories: newCategories });
+                                            }}
+                                        />
+                                    );
+                                })}
+                            </div>
+                            {attributes.categories.length > 0 && (
+                                <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>
+                                    Selected: {attributes.categories.length} categor{attributes.categories.length === 1 ? 'y' : 'ies'}
+                                    <div style={{ fontSize: '11px', color: '#999', marginTop: '4px' }}>
+                                        IDs: {attributes.categories.map(c => String(c)).join(', ')}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
 
                         <ToggleControl
                             label={__('Hide Empty Category', 'filter-plus')}
@@ -511,11 +568,58 @@ registerBlockType('filter-plus/woo-filter', {
                 </InspectorControls>
 
                 <div {...blockProps}>
-                    <div className="filter-plus-block-placeholder">
-                        <p>{__('WooCommerce Product Filter', 'filter-plus')}</p>
-                        <p className="description">
-                            {__('Customize the filtering options from the block settings', 'filter-plus')}
-                        </p>
+                    <div style={{
+                        border: '2px dashed #ddd',
+                        borderRadius: '8px',
+                        padding: '40px 20px',
+                        textAlign: 'center',
+                        backgroundColor: '#f9f9f9',
+                        minHeight: '300px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <div>
+                            <div style={{
+                                fontSize: '48px',
+                                marginBottom: '16px',
+                                opacity: '0.5'
+                            }}>
+                                🛍️
+                            </div>
+                            <h3 style={{
+                                margin: '0 0 12px 0',
+                                fontSize: '20px',
+                                fontWeight: '600',
+                                color: '#1e1e1e'
+                            }}>
+                                {__('WooCommerce Product Filter', 'filter-plus')}
+                            </h3>
+                            <p style={{
+                                margin: '0 0 8px 0',
+                                color: '#757575',
+                                fontSize: '14px'
+                            }}>
+                                {__('Template:', 'filter-plus')} <strong>{attributes.template}</strong>
+                            </p>
+                            {attributes.title && (
+                                <p style={{
+                                    margin: '0 0 8px 0',
+                                    color: '#757575',
+                                    fontSize: '14px'
+                                }}>
+                                    {__('Title:', 'filter-plus')} <strong>{attributes.title}</strong>
+                                </p>
+                            )}
+                            <p style={{
+                                margin: '8px 0 0 0',
+                                color: '#999',
+                                fontSize: '12px',
+                                fontStyle: 'italic'
+                            }}>
+                                {__('Use the block settings panel to configure filter options →', 'filter-plus')}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </>

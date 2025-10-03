@@ -419,7 +419,7 @@ class Helper {
 		if ( !empty( $args['hide_empty']) && $args['hide_empty'] == 'no' ) {
 			$hide_empty = false;
 		}
-		
+
 		$args_cat = array(
 			'taxonomy'     => $taxonomy,
 			'number'       => 100,
@@ -428,7 +428,7 @@ class Helper {
 		if ( !empty($categories)) {
 			$args_cat['include'] = explode(",",$categories);
 		}
-		if ( $type == "" ) {
+		if ( $type == "" && empty($categories) ) {
 			$category = get_term_by( 'slug' , 'uncategorized' , $taxonomy );
 			$uncategorized 	= !empty($category) ? $category->term_id : null;
 			$args_cat['exclude'] = array($uncategorized);
@@ -439,13 +439,15 @@ class Helper {
 		foreach ($cat as $key => $value) {
 			$sub_cats = self::get_sub_categories($value->term_id,$taxonomy , $type );
 
-			if ( ( $type == "assoc" || $type == "" || $type == false ) &&
-			( $value->parent == 0 && $value->slug !== 'uncategorized' ) ) {
-				$result_cat[$key]['term_id'] = $value->term_id;
-				$result_cat[$key]['name'] = $value->name;
-				$result_cat[$key]['slug'] = $value->slug;
-				$result_cat[$key]['count'] = $value->count;
-				$result_cat[$key]['sub_categories'] = $sub_cats;
+			if ( ( $type == "assoc" || $type == "" || $type == false ) ) {
+				// When specific categories are requested via include, return them regardless of parent status
+				if ( !empty($categories) || ($value->parent == 0 && $value->slug !== 'uncategorized') ) {
+					$result_cat[$key]['term_id'] = $value->term_id;
+					$result_cat[$key]['name'] = $value->name;
+					$result_cat[$key]['slug'] = $value->slug;
+					$result_cat[$key]['count'] = $value->count;
+					$result_cat[$key]['sub_categories'] = $sub_cats;
+				}
 			}
 			else if ($type == "widget" ) {
 				$result_cat[$value->term_id] 	= $value->name;

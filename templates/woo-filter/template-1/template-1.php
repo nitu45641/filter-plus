@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		DataFactory::category_template_url(array(
 			'template' => $template,
 			'category_template' => $category_template,
+			'category_label' => $category_label,
 			'categories' => $categories,
 			'hide_empty_cat' => $hide_empty_cat,
 			'product_count' => $product_count,

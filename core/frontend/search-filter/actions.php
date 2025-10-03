@@ -414,7 +414,7 @@ class Actions {
 					$image_url = ( class_exists('WooCommerce') && $param['filter_type'] == "product") ? wc_placeholder_img_src( 'woocommerce_single' ) : get_post_meta($post->ID, 'featured_image', true);
 					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
 				}
-				
+
 				$products[$key]['id'] 	= $post->ID;
 				$post_date       		 = get_post_datetime( $post->ID );
 				$products[$key]['post_date']       	= $post_date->format( 'F j, Y' );
@@ -422,6 +422,7 @@ class Actions {
 				$products[$key]['post_image']       = $image;
 				$products[$key]['post_description'] = self::filter_item_description($post->ID);
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
+				$products[$key]['template']    		= $param['template'];
 				$products[$key]['author'] 			= self::filter_item_author( $post , $param['post_author'] );
 				$products[$key]['posts_author_link']= $param['post_author'] =='yes' ? get_author_posts_url( $post->post_author ) : '#';
 				$products[$key]['categories']       =  $param['product_categories'] == "yes" ? self::tags_info ( $post->ID , $cats ) : [];
