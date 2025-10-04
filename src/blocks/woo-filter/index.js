@@ -4,8 +4,8 @@ import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl }
 import { __ } from '@wordpress/i18n';
 
 registerBlockType('filter-plus/woo-filter', {
-    title: __('WooCommerce Product Filter', 'filter-plus'),
-    icon: 'image-filter',
+    title: __('Woo Product Filter', 'filter-plus'),
+    icon: 'filter',
     category: 'filter-plus-blocks',
     attributes: {
         template: {
@@ -569,56 +569,238 @@ registerBlockType('filter-plus/woo-filter', {
 
                 <div {...blockProps}>
                     <div style={{
-                        border: '2px dashed #ddd',
-                        borderRadius: '8px',
-                        padding: '40px 20px',
-                        textAlign: 'center',
-                        backgroundColor: '#f9f9f9',
-                        minHeight: '300px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
+                        border: '2px solid #e0e0e0',
+                        borderRadius: '4px',
+                        padding: '20px',
+                        backgroundColor: '#fff',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif'
                     }}>
-                        <div>
-                            <div style={{
-                                fontSize: '48px',
-                                marginBottom: '16px',
-                                opacity: '0.5'
-                            }}>
-                                🛍️
-                            </div>
+                        {/* Header */}
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginBottom: '20px',
+                            padding: '12px',
+                            backgroundColor: '#f5f5f5',
+                            borderRadius: '4px'
+                        }}>
+                            <span style={{ fontSize: '20px', marginRight: '10px' }}>🛍️</span>
                             <h3 style={{
-                                margin: '0 0 12px 0',
-                                fontSize: '20px',
+                                margin: '0',
+                                fontSize: '16px',
                                 fontWeight: '600',
                                 color: '#1e1e1e'
                             }}>
-                                {__('WooCommerce Product Filter', 'filter-plus')}
+                                {attributes.title || __('Woo Product Filter', 'filter-plus')}
                             </h3>
-                            <p style={{
-                                margin: '0 0 8px 0',
-                                color: '#757575',
-                                fontSize: '14px'
-                            }}>
-                                {__('Template:', 'filter-plus')} <strong>{attributes.template}</strong>
-                            </p>
-                            {attributes.title && (
-                                <p style={{
-                                    margin: '0 0 8px 0',
-                                    color: '#757575',
-                                    fontSize: '14px'
-                                }}>
-                                    {__('Title:', 'filter-plus')} <strong>{attributes.title}</strong>
-                                </p>
-                            )}
-                            <p style={{
-                                margin: '8px 0 0 0',
-                                color: '#999',
+                            <div style={{
+                                marginLeft: 'auto',
                                 fontSize: '12px',
-                                fontStyle: 'italic'
+                                color: '#666',
+                                backgroundColor: '#fff',
+                                padding: '4px 10px',
+                                borderRadius: '3px',
+                                border: '1px solid #ddd'
                             }}>
-                                {__('Use the block settings panel to configure filter options →', 'filter-plus')}
-                            </p>
+                                {__('Template', 'filter-plus')} {attributes.template}
+                            </div>
+                        </div>
+
+                        {/* Filter Layout Preview */}
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: attributes.filter_position === 'top' ? '1fr' : (attributes.filter_position === 'left' ? '250px 1fr' : '1fr 250px'),
+                            gap: '20px'
+                        }}>
+                            {/* Filters Sidebar */}
+                            {attributes.filter_position !== 'top' && (
+                                <div style={{
+                                    order: attributes.filter_position === 'right' ? 2 : 1,
+                                    padding: '15px',
+                                    backgroundColor: '#fafafa',
+                                    borderRadius: '4px',
+                                    border: '1px solid #e0e0e0'
+                                }}>
+                                    <div style={{ fontSize: '13px', fontWeight: '600', marginBottom: '10px', color: '#555' }}>
+                                        {__('Filters', 'filter-plus')}
+                                    </div>
+
+                                    {attributes.product_count && (
+                                        <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>
+                                            ✓ {attributes.category_label || __('Categories', 'filter-plus')}
+                                        </div>
+                                    )}
+                                    {attributes.colors && (
+                                        <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>
+                                            ✓ {attributes.color_label || __('Colors', 'filter-plus')}
+                                        </div>
+                                    )}
+                                    {attributes.size && (
+                                        <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>
+                                            ✓ {attributes.size_label || __('Size', 'filter-plus')}
+                                        </div>
+                                    )}
+                                    {attributes.show_price_range && (
+                                        <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>
+                                            ✓ {attributes.price_range_label || __('Price Range', 'filter-plus')}
+                                        </div>
+                                    )}
+                                    {attributes.show_reviews && (
+                                        <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>
+                                            ✓ {attributes.review_label || __('Reviews', 'filter-plus')}
+                                        </div>
+                                    )}
+                                    {attributes.stock && (
+                                        <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>
+                                            ✓ {attributes.stock_label || __('Stock', 'filter-plus')}
+                                        </div>
+                                    )}
+                                    {attributes.on_sale && (
+                                        <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>
+                                            ✓ {attributes.on_sale_label || __('On Sale', 'filter-plus')}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+                            {/* Products Area */}
+                            <div style={{
+                                order: attributes.filter_position === 'right' ? 1 : 2,
+                                padding: '15px',
+                                backgroundColor: '#fafafa',
+                                borderRadius: '4px',
+                                border: '1px solid #e0e0e0'
+                            }}>
+                                {/* Top Filters (if position is top) */}
+                                {attributes.filter_position === 'top' && (
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '10px',
+                                        marginBottom: '15px',
+                                        padding: '10px',
+                                        backgroundColor: '#fff',
+                                        borderRadius: '4px',
+                                        fontSize: '11px',
+                                        color: '#666'
+                                    }}>
+                                        {attributes.product_count && <span>✓ {__('Categories', 'filter-plus')}</span>}
+                                        {attributes.colors && <span>✓ {__('Colors', 'filter-plus')}</span>}
+                                        {attributes.size && <span>✓ {__('Size', 'filter-plus')}</span>}
+                                        {attributes.show_price_range && <span>✓ {__('Price', 'filter-plus')}</span>}
+                                    </div>
+                                )}
+
+                                {/* Sorting & Results Count */}
+                                {attributes.sorting && (
+                                    <div style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
+                                        marginBottom: '15px',
+                                        fontSize: '12px',
+                                        color: '#666'
+                                    }}>
+                                        <span>{__('Showing results', 'filter-plus')}</span>
+                                        <span>{__('Sort by:', 'filter-plus')} ▼</span>
+                                    </div>
+                                )}
+
+                                {/* Product Grid Preview */}
+                                <div style={{
+                                    display: 'grid',
+                                    gridTemplateColumns: 'repeat(3, 1fr)',
+                                    gap: '10px',
+                                    marginBottom: '15px'
+                                }}>
+                                    {[1, 2, 3].map((item) => (
+                                        <div key={item} style={{
+                                            backgroundColor: '#fff',
+                                            padding: '10px',
+                                            borderRadius: '4px',
+                                            border: '1px solid #e0e0e0',
+                                            textAlign: 'center'
+                                        }}>
+                                            <div style={{
+                                                width: '100%',
+                                                height: '80px',
+                                                backgroundColor: '#f0f0f0',
+                                                borderRadius: '3px',
+                                                marginBottom: '8px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                fontSize: '24px'
+                                            }}>📦</div>
+                                            {attributes.hide_prod_title && (
+                                                <div style={{ fontSize: '11px', fontWeight: '500', marginBottom: '4px' }}>
+                                                    {__('Product', 'filter-plus')} {item}
+                                                </div>
+                                            )}
+                                            {attributes.hide_prod_price && (
+                                                <div style={{ fontSize: '10px', color: '#666', marginBottom: '4px' }}>$99</div>
+                                            )}
+                                            {attributes.hide_prod_rating && (
+                                                <div style={{ fontSize: '10px', color: '#ffa500' }}>★★★★★</div>
+                                            )}
+                                            {attributes.hide_prod_add_cart && (
+                                                <div style={{
+                                                    fontSize: '10px',
+                                                    marginTop: '6px',
+                                                    padding: '4px',
+                                                    backgroundColor: '#0073aa',
+                                                    color: '#fff',
+                                                    borderRadius: '2px'
+                                                }}>
+                                                    {__('Add to Cart', 'filter-plus')}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Pagination Preview */}
+                                <div style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    gap: '8px',
+                                    fontSize: '11px',
+                                    color: '#666'
+                                }}>
+                                    {attributes.pagination_style === 'numbers' && (
+                                        <>
+                                            <span style={{ padding: '4px 8px', backgroundColor: '#0073aa', color: '#fff', borderRadius: '2px' }}>1</span>
+                                            <span style={{ padding: '4px 8px', backgroundColor: '#fff', border: '1px solid #ddd', borderRadius: '2px' }}>2</span>
+                                            <span style={{ padding: '4px 8px', backgroundColor: '#fff', border: '1px solid #ddd', borderRadius: '2px' }}>3</span>
+                                        </>
+                                    )}
+                                    {attributes.pagination_style === 'load_more' && (
+                                        <span style={{ padding: '6px 16px', backgroundColor: '#0073aa', color: '#fff', borderRadius: '3px' }}>
+                                            {__('Load More', 'filter-plus')}
+                                        </span>
+                                    )}
+                                    {attributes.pagination_style === 'infinite' && (
+                                        <span style={{ color: '#999', fontSize: '10px' }}>
+                                            {__('Infinite Scroll', 'filter-plus')}
+                                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Footer Info */}
+                        <div style={{
+                            marginTop: '15px',
+                            padding: '10px',
+                            backgroundColor: '#e7f5fe',
+                            borderRadius: '4px',
+                            fontSize: '11px',
+                            color: '#0073aa',
+                            textAlign: 'center'
+                        }}>
+                            {__('Filter Position:', 'filter-plus')} <strong>{attributes.filter_position.toUpperCase()}</strong> |
+                            {__(' Items per page:', 'filter-plus')} <strong>{attributes.no_of_items}</strong> |
+                            {__(' Masonry:', 'filter-plus')} <strong>{attributes.masonry_style ? __('ON', 'filter-plus') : __('OFF', 'filter-plus')}</strong>
                         </div>
                     </div>
                 </div>

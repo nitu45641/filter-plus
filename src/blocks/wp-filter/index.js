@@ -4,7 +4,7 @@ import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl }
 import { __ } from '@wordpress/i18n';
 
 registerBlockType('filter-plus/wp-filter', {
-    title: __('Filter Plus - WP Content Filter', 'filter-plus'),
+    title: __('WP Content Filter', 'filter-plus'),
     icon: 'filter',
     category: 'filter-plus-blocks',
     attributes: {
