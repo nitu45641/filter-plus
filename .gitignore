@@ -2,7 +2,6 @@
 README.md
 node_modules/
 build/
-dist/
 *.log
 .DS_Store
 package-lock.json
