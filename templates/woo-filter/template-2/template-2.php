@@ -15,7 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	</div>
 	<div>
 		<?php
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/title.php"; 
+			// apply/reset buttons at top
+			if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php")) {
+				include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php";
+			}
+
+			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/title.php";
 			if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
 				include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
 			}
