@@ -25,7 +25,7 @@ class Wp_Filter extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__('Wordpress Filter', 'filter-plus');
+		return esc_html__('WordPress Content Filter', 'filter-plus');
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Wp_Filter extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-menu-card';
+		return 'eicon-filter';
 	}
 
 	/**
@@ -326,7 +326,7 @@ class Wp_Filter extends Widget_Base {
 		// Right Side
 		$this->add_control('hide_wp_title',
 			array(
-				'label' => esc_html__( 'Display Title', 'filter-plus' ),
+				'label' => esc_html__( 'Hide Title', 'filter-plus' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
@@ -336,7 +336,7 @@ class Wp_Filter extends Widget_Base {
 		);
 		$this->add_control('hide_wp_desc',
 			array(
-				'label' => esc_html__( 'Display Descrtiption', 'filter-plus' ),
+				'label' => esc_html__( 'Hide Descrtiption', 'filter-plus' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),

@@ -5,8 +5,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <div class="sidebar-row categories-wrap">
 	<h4 class="sidebar-label"><?php echo !empty( $category_label ) ?  $category_label : esc_html__('Categories','filter-plus');?></h4>
 	<ul class="category-list panel">
-		<?php 
-			$get_categories = \FilterPlus\Utils\Helper::get_categories($categories,false,array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => $taxonomy));
+		<?php
+			// Debug: Check what parameters are being passed
+			$hide_empty_value = isset($hide_empty_cat) && $hide_empty_cat == 'no' ? false : true;
+			$get_categories = \FilterPlus\Utils\Helper::get_categories(
+				isset($categories) ? $categories : '',
+				false,
+				array(
+					'hide_empty' => isset($hide_empty_cat) ? $hide_empty_cat : 'yes',
+					'taxonomy' => isset($taxonomy) ? $taxonomy : 'category'
+				)
+			);
 			if ( !empty( $get_categories ) ) :
 				foreach($get_categories as $item): 
 				?>

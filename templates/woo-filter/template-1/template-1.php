@@ -6,7 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
 
-	<?php 
+	<?php
+		// apply/reset buttons at top
+		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php")) {
+			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php";
+		}
+
 		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
 		}
@@ -15,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		DataFactory::category_template_url(array(
 			'template' => $template,
 			'category_template' => $category_template,
+			'category_label' => $category_label,
 			'categories' => $categories,
 			'hide_empty_cat' => $hide_empty_cat,
 			'product_count' => $product_count,
@@ -27,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		}
 		// price range
 		if ( 'yes'== $show_price_range ) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/price-range.php";
+			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/price-range.php";
 		}
 		// custom tags
 		if ( 'yes'== $show_tags ) {
@@ -51,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		// stock
 		if ( 'yes'== $stock ) {
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/stock.php";
-		} 
+		}
 	?>
 </div>
 <div class="products-wrap">
@@ -60,7 +66,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<div class="prods-grid-view grid-view-<?php echo esc_attr($template)?>"></div>
 	<div class="prods-list-view"></div>
 	<div class="message"></div>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-data.php"; ?>
+	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-template.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/parts/pagination.php"; ?>
 </div>
 

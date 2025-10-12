@@ -69,6 +69,39 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 
+		// apply button mode
+		$this->add_control(
+			'apply_button_mode',
+			array(
+				'label' => esc_html__( 'Apply Button Mode', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'filter-plus' ),
+				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => '',
+			)
+		);
+
+		$this->add_control(
+			'apply_button_label',
+			array(
+				'label'     => esc_html__( 'Apply Button Label', 'filter-plus' ),
+				'type'      => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Apply', 'filter-plus' ),
+				'condition' => array( 'apply_button_mode' => 'yes' ),
+			)
+		);
+
+		$this->add_control(
+			'reset_button_label',
+			array(
+				'label'     => esc_html__( 'Reset Button Label', 'filter-plus' ),
+				'type'      => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Reset', 'filter-plus' ),
+				'condition' => array( 'apply_button_mode' => 'yes' ),
+			)
+		);
+
 		$this->add_control(
 			'template',
 			array(

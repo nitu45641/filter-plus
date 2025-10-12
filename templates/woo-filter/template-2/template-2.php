@@ -15,7 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	</div>
 	<div>
 		<?php
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/title.php"; 
+			// apply/reset buttons at top
+			if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php")) {
+				include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php";
+			}
+
+			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/title.php";
 			if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
 				include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
 			}
@@ -89,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/sort-bar.php"; ?>
 	<div class="prods-grid-view grid-view-<?php echo esc_attr($template)?>"></div>
 	<div class="message"></div>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-data.php"; ?>
+	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-template.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/parts/pagination.php"; ?>
 
 </div>

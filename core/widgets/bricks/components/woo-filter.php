@@ -46,6 +46,35 @@ class Woo_Filter extends \Bricks\Element {
 			'default' => true,
 		);
 
+		// apply button mode
+		$this->controls['apply_button_mode'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Apply Button Mode', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => false,
+		);
+
+		$this->controls['apply_button_label'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Apply Button Label', 'filter-plus' ),
+			'type' => 'text',
+			'default' => esc_html__( 'Apply', 'filter-plus' ),
+			'required' => array( 'apply_button_mode', '=', true ),
+		);
+
+		$this->controls['reset_button_label'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Reset Button Label', 'filter-plus' ),
+			'type' => 'text',
+			'default' => esc_html__( 'Reset', 'filter-plus' ),
+			'required' => array( 'apply_button_mode', '=', true ),
+		);
+
 		// templates
 		$this->controls['template'] = array(
 			'tab' => 'content',

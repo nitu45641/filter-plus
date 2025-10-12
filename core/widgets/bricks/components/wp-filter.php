@@ -307,7 +307,7 @@ class Wp_Filter extends \Bricks\Element {
 		$this->controls['hide_wp_title'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',
-			'label' => esc_html__( 'Display Title', 'filter-plus' ),
+			'label' => esc_html__( 'Hide Title', 'filter-plus' ),
 			'type' => 'checkbox',
 			'inline' => true,
 			'small' => true,
@@ -317,7 +317,7 @@ class Wp_Filter extends \Bricks\Element {
 		$this->controls['hide_wp_desc'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',
-			'label' => esc_html__( 'Display Descrtiption', 'filter-plus' ),
+			'label' => esc_html__( 'Hide Descrtiption', 'filter-plus' ),
 			'type' => 'checkbox',
 			'inline' => true,
 			'small' => true,

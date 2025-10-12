@@ -42,8 +42,11 @@ class Shortcodes {
 	public function filter_plus( $atts ) {
 		if ( ! class_exists( 'Woocommerce' ) ) {return;}
 		$data_factory = \FilterPlus\Base\DataFactory::instance()->woo_default_data();
+
 		// shortcode option
-		$atts = extract( shortcode_atts( $data_factory , $atts ) );
+		$merged_atts = shortcode_atts( $data_factory , $atts );
+
+		extract( $merged_atts );
 
 		ob_start();
 		$is_pro_active = $this->pro_template_check($template);
@@ -57,7 +60,10 @@ class Shortcodes {
 		?>
 			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template)?>"
 			id="shopContainer"
-			data-filter_type='product' 
+			data-filter_type='product'
+			data-apply_button_mode="<?php echo esc_attr($apply_button_mode)?>"
+			data-apply_button_label="<?php echo esc_attr($apply_button_label)?>"
+			data-reset_button_label="<?php echo esc_attr($reset_button_label)?>"
 			data-masonry_style="<?php echo esc_attr($masonry_style)?>"
 			data-pagination_style="<?php echo esc_attr($pagination_style)?>"
 			data-limit="<?php echo intval($no_of_items)?>"
@@ -97,10 +103,10 @@ class Shortcodes {
 		extract( $data );
 
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
-		$main_wrapper   = ($template == '3' || '2') ? 'mainWrapper' : 'shopContainer';
+		$main_wrapper   = 'shopContainer';
 		$this->custom_css($template,'content-filter', array( 'masonry_style' => $masonry_style ) );
 		?>
-			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?>" id="shopContainer"
+			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?> shop-container-<?php echo esc_attr($template)?>" id="shopContainer"
 				data-pagination_style="<?php echo esc_html($pagination_style)?>"
 				data-filter_type='<?php echo esc_html($filtering_type)?>'
 				data-masonry_style="<?php echo esc_attr($masonry_style)?>"

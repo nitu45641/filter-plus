@@ -106,11 +106,6 @@ class Enqueue {
      */
     public function frontend_get_scripts() {
         $script_arr = array(
-			'tmpl-js'     => array(
-                'src'     => \FilterPlus::assets_url() . 'js/jquery.tmpl.min.js',
-                'version' => \FilterPlus::get_version(),
-                'deps'    => ['jquery'],
-            ),
 			'filter-js'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/search-filter.js',
                 'version'   => \FilterPlus::get_version(),
@@ -120,11 +115,6 @@ class Enqueue {
                 'src'       => \FilterPlus::assets_url() . 'js/filter-option.js',
                 'version'   => \FilterPlus::get_version(),
                 'deps'      => ['jquery'],
-            ),
-			'jquery-range-min'     => array(
-                'src'     => \FilterPlus::assets_url() . 'js/jquery.range-min.js',
-                'version' => \FilterPlus::get_version(),
-                'deps'    => ['jquery'],
             ),
             'filter-swiper-bundle'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/filter-swiper-bundle.min.js',
@@ -143,10 +133,6 @@ class Enqueue {
         $enqueue =  array(
 			'filter-public-free' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/public.css',
-                'version' => \FilterPlus::get_version(),
-            ),
-			'jquery.range-min' => array(
-                'src'     => \FilterPlus::assets_url() . 'css/jquery.range.css',
                 'version' => \FilterPlus::get_version(),
             ),
             'filter-swiper-bundle' => array(

@@ -6,6 +6,7 @@ function content_filter_block() {
         'filter-plus/wp-filter',
         [
             'editor_script'   => 'filter-plus-wp-filter',
+            'editor_style'    => 'filter-plus-public-css',
             'render_callback' => 'content_filter_callback',
             'attributes'      => array(),
         ]
@@ -39,6 +40,8 @@ function content_filter_callback( $settings ) {
     $post_categories    = !empty($settings['post_categories']) && $settings['post_categories'] == true ? 'yes' : 'no';
     $post_tags          = !empty($settings['post_tags']) && $settings['post_tags'] == true ? 'yes' : 'no';
     $post_author        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
+    $hide_wp_title      = !empty($settings['hide_wp_title']) && $settings['hide_wp_title'] == true ? 'yes' : 'no';
+    $hide_wp_desc       = !empty($settings['hide_wp_desc']) && $settings['hide_wp_desc'] == true ? 'yes' : 'no';
     $title           	= !empty($settings['title']) ? $settings['title'] : esc_html__('Filters','filter-plus');
     $no_of_items 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
 
@@ -57,14 +60,14 @@ function content_filter_callback( $settings ) {
 
     if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 ) {
 
-        echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
-        category_label='".$category_label."' title={$title} no_of_items={$no_of_items} 
-        sub_categories='".$sub_categories."' 
+        echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories}
+        category_label='".$category_label."' title={$title} no_of_items={$no_of_items}
+        sub_categories='".$sub_categories."'
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
-        template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list} 
+        template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list}
         custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
         custom_field_list={$custom_field_list} post_tags='{$post_tags}'
-        post_categories='{$post_categories} post_author={$post_author}']"); 
+        post_categories='{$post_categories} post_author={$post_author} hide_wp_title={$hide_wp_title} hide_wp_desc={$hide_wp_desc}']"); 
 
     }
 }

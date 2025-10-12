@@ -419,7 +419,7 @@ class Helper {
 		if ( !empty( $args['hide_empty']) && $args['hide_empty'] == 'no' ) {
 			$hide_empty = false;
 		}
-		
+
 		$args_cat = array(
 			'taxonomy'     => $taxonomy,
 			'number'       => 100,
@@ -428,7 +428,7 @@ class Helper {
 		if ( !empty($categories)) {
 			$args_cat['include'] = explode(",",$categories);
 		}
-		if ( $type == "" ) {
+		if ( $type == "" && empty($categories) ) {
 			$category = get_term_by( 'slug' , 'uncategorized' , $taxonomy );
 			$uncategorized 	= !empty($category) ? $category->term_id : null;
 			$args_cat['exclude'] = array($uncategorized);
@@ -439,14 +439,16 @@ class Helper {
 		foreach ($cat as $key => $value) {
 			$sub_cats = self::get_sub_categories($value->term_id,$taxonomy , $type );
 
-			if ( $type == "assoc" || $type == "" && 
-			( $value->parent == 0 && $value->slug !== 'uncategorized' ) ) {
-				$result_cat[$key]['term_id'] = $value->term_id;
-				$result_cat[$key]['name'] = $value->name;
-				$result_cat[$key]['slug'] = $value->slug;
-				$result_cat[$key]['count'] = $value->count;
-				$result_cat[$key]['sub_categories'] = $sub_cats;
-			} 
+			if ( ( $type == "assoc" || $type == "" || $type == false ) ) {
+				// When specific categories are requested via include, return them regardless of parent status
+				if ( !empty($categories) || ($value->parent == 0 && $value->slug !== 'uncategorized') ) {
+					$result_cat[$key]['term_id'] = $value->term_id;
+					$result_cat[$key]['name'] = $value->name;
+					$result_cat[$key]['slug'] = $value->slug;
+					$result_cat[$key]['count'] = $value->count;
+					$result_cat[$key]['sub_categories'] = $sub_cats;
+				}
+			}
 			else if ($type == "widget" ) {
 				$result_cat[$value->term_id] 	= $value->name;
 			}
@@ -454,7 +456,7 @@ class Helper {
 				$result_cat[$key]['value'] 		= $value->term_id;
 				$result_cat[$key]['label'] 		= $value->name;
 				$result_cat[$key]['sub_categories'] = $sub_cats;
-			} 
+			}
 		}
 		return $result_cat;
 	}
@@ -879,7 +881,10 @@ class Helper {
 		$get_price = \FilterPlus\Utils\Helper::instance()->get_min_max_price();
 		$min = $settings['min_price_range'] == '' ? $get_price['min'] : $settings['min_price_range'];
 		$max = $settings['max_price_range'] == '' ? $get_price['max'] : $settings['max_price_range'];
-		
+
+		// Ensure minimum value is at least 1
+		$min = max(1, intval($min));
+
 		return array('min'=>$min,'max'=>$max);
 	}
 

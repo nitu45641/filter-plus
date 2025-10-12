@@ -13,7 +13,23 @@
 			$doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/wordpress/display-filter/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
 			$docs 		= '<div class="documentation mb-1"><div class="doc">'.esc_html__('Gutenberg Block , Elementor widget is available for filter features. ','filter-plus') . $doc_url . '</div></div>';
 			echo FilterPlus\Utils\Helper::kses( $docs );
-			
+
+			// apply button mode
+			$args = array('label'=>esc_html__("Apply Button Mode:","filter-plus"),'id' => 'wp_apply_button_mode','data_label' => 'apply_button_mode');
+			filter_plus_checkbox_field($args);
+
+			// apply button label
+			$args = array('label'=>esc_html__("Apply Button Label:","filter-plus"),'id' => 'wp_apply_button_label',
+			'placeholder'=>esc_html__("Apply","filter-plus"),
+			'data_label' => 'apply_button_label','condition_class' => 'wp_apply_button_mode d-none');
+			filter_plus_number_input_field($args);
+
+			// reset button label
+			$args = array('label'=>esc_html__("Reset Button Label:","filter-plus"),'id' => 'wp_reset_button_label',
+			'placeholder'=>esc_html__("Reset","filter-plus"),
+			'data_label' => 'reset_button_label','condition_class' => 'wp_apply_button_mode d-none');
+			filter_plus_number_input_field($args);
+
 			// masonry style
 			$args = array('label'=>esc_html__("Masonry Style:","filter-plus"),'id' => 'masonry_style','data_label' => 'masonry_style');
 			filter_plus_checkbox_field($args);
@@ -147,12 +163,12 @@
 		
 		<?php
 			// show title
-			$args = array('label'=>esc_html__("Display Title:","filter-plus"),'id' => 'hide_wp_title',
+			$args = array('label'=>esc_html__("Hide Title:","filter-plus"),'id' => 'hide_wp_title',
 			'data_label' => 'hide_wp_title','checked' => 'yes',);
 			filter_plus_checkbox_field($args);
 
 			// show descrtiption
-			$args = array('label'=>esc_html__("Display Descrtiption:","filter-plus"),
+			$args = array('label'=>esc_html__("Hide Descrtiption:","filter-plus"),
 			'id' => 'hide_wp_desc','checked' => 'yes',
 			'data_label' => 'hide_wp_desc');
 			filter_plus_checkbox_field($args);

@@ -6,6 +6,10 @@
 		 * Get Product from filter
 		 */
 
+		// Check if apply button mode is enabled
+		const applyButtonMode = $('#shopContainer').data('apply_button_mode');
+		const isApplyMode = (applyButtonMode === 'yes');
+
 		//list click/change
 		const category_li = $('.category-list li');
 		let action = 'click';
@@ -72,7 +76,13 @@
 				}
 			}
 
-			get_products();
+			// Only auto-filter if apply button mode is disabled
+			if (!isApplyMode) {
+				get_products();
+			} else {
+				// In apply mode, just update the selected filter tags
+				show_selected_data(selected_param({}));
+			}
 			// reset block
 			reset_block(_this, _this.parents('.sidebar-row'));
 		});
@@ -80,7 +90,13 @@
 		//search product
 		$('.sidebar-input').on('keyup', function () {
 			const _this = $(this);
-			get_products();
+			// Only auto-filter if apply button mode is disabled
+			if (!isApplyMode) {
+				get_products();
+			} else {
+				// In apply mode, just update the selected filter tags
+				show_selected_data(selected_param({}));
+			}
 			reset_block(_this, _this.parents('.sidebar-row'));
 		});
 
@@ -93,7 +109,13 @@
 					const _this = $(this);
 					param_box.find('.radio-item,.color-item').removeClass('active');
 					_this.addClass('active');
-					get_products();
+					// Only auto-filter if apply button mode is disabled
+					if (!isApplyMode) {
+						get_products();
+					} else {
+						// In apply mode, just update the selected filter tags
+						show_selected_data(selected_param({}));
+					}
 					// reset block
 					reset_block(_this, _this.parents('.sidebar-row'));
 				});
@@ -109,7 +131,13 @@
 
 						}
 					}
-					get_products();
+					// Only auto-filter if apply button mode is disabled
+					if (!isApplyMode) {
+						get_products();
+					} else {
+						// In apply mode, just update the selected filter tags
+						show_selected_data(selected_param({}));
+					}
 					//reset block
 					reset_block(_this, _this.parents('.sidebar-row'));
 				});
@@ -118,34 +146,133 @@
 		
 		// price range
 		const price_range = $('.range-slider');
-		const min = price_range.data('min');
+		const min = Math.max(1, price_range.data('min') || 1);
 		const max = price_range.data('max');
 
 		price_range_picker();
 		function price_range_picker() {
-			
-			let width = $('.shop-sidebar').width();
-			if ($(window).width() < 430) {
-				width = 220; 
+			// Custom price range picker implementation
+			const slider = $('.custom-range-slider');
+			if (slider.length === 0) return;
+
+			const track = slider.find('.range-track');
+			const fill = slider.find('.range-fill');
+			const minThumb = slider.find('.range-thumb-min');
+			const maxThumb = slider.find('.range-thumb-max');
+			const minLabel = $('.range-label-min');
+			const maxLabel = $('.range-label-max');
+
+			let isDragging = false;
+			let activeThumb = null;
+			let currentMin = min;
+			let currentMax = max;
+
+			// Set initial positions
+			updateSlider();
+
+			function getPositionFromValue(value) {
+				return ((value - min) / (max - min)) * 100;
 			}
-			
-			price_range.jRange({
-				from: min,
-				to: max,
-				step: 1,
-				scale: [min, max],
-				format: '%s',
-				width: width,
-				showLabels: true,
-				isRange: true,
-				ondragend(val) {
+
+			function getValueFromPosition(position) {
+				const value = min + (position / 100) * (max - min);
+				return Math.round(value);
+			}
+
+			function updateSlider() {
+				const minPos = getPositionFromValue(currentMin);
+				const maxPos = getPositionFromValue(currentMax);
+
+				minThumb.css('left', minPos + '%');
+				maxThumb.css('left', maxPos + '%');
+				fill.css({
+					'left': minPos + '%',
+					'width': (maxPos - minPos) + '%'
+				});
+
+				// Update labels with currency formatting
+				const currency = price_range.siblings('.default-range').find('.min').text().replace(/[0-9]/g, '');
+				minLabel.text(currency + currentMin);
+				maxLabel.text(currency + currentMax);
+			}
+
+			function handleMouseMove(e) {
+				if (!isDragging || !activeThumb) return;
+
+				const rect = track[0].getBoundingClientRect();
+				const position = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+				const value = getValueFromPosition(position);
+
+				if (activeThumb.hasClass('range-thumb-min')) {
+					currentMin = Math.max(1, Math.min(value, currentMax - 1));
+				} else {
+					currentMax = Math.max(value, Math.max(1, currentMin) + 1);
+				}
+
+				updateSlider();
+			}
+
+			function handleMouseUp() {
+				if (isDragging) {
+					isDragging = false;
+					activeThumb = null;
+
+					// Trigger the same action as jRange
+					const val = currentMin + ',' + currentMax;
 					price_range_actions(val, price_range);
-				},
-				onbarclicked(val) {
-					price_range_actions(val, price_range);
-				},
+				}
+			}
+
+			// Event listeners
+			minThumb.on('mousedown', function(e) {
+				e.preventDefault();
+				isDragging = true;
+				activeThumb = $(this);
 			});
-			price_range.jRange('setValue', min + ',' + max);
+
+			maxThumb.on('mousedown', function(e) {
+				e.preventDefault();
+				isDragging = true;
+				activeThumb = $(this);
+			});
+
+			track.on('click', function(e) {
+				if (isDragging) return;
+
+				const rect = this.getBoundingClientRect();
+				const position = ((e.clientX - rect.left) / rect.width) * 100;
+				const value = getValueFromPosition(position);
+
+				// Determine which thumb to move based on proximity
+				const minDistance = Math.abs(value - currentMin);
+				const maxDistance = Math.abs(value - currentMax);
+
+				if (minDistance < maxDistance) {
+					currentMin = Math.max(1, Math.min(value, currentMax - 1));
+				} else {
+					currentMax = Math.max(value, Math.max(1, currentMin) + 1);
+				}
+
+				updateSlider();
+
+				// Trigger action
+				const val = currentMin + ',' + currentMax;
+				price_range_actions(val, price_range);
+			});
+
+			$(document).on('mousemove', handleMouseMove);
+			$(document).on('mouseup', handleMouseUp);
+
+			// Custom setValue method for compatibility
+			price_range.customSetValue = function(value) {
+				const values = value.split(',');
+				currentMin = Math.max(1, parseInt(values[0]) || min);
+				currentMax = parseInt(values[1]) || max;
+				updateSlider();
+			};
+
+			// Set initial values
+			price_range.customSetValue(min + ',' + max);
 		}
 
 		/**
@@ -162,51 +289,194 @@
 
 		function price_range_actions(val, price_range) {
 			price_range.attr('data-action', true);
+			// Set the value on the price_range element
+			price_range.val(val);
 			const prices = val.split(',');
 			if ($('.input-min').length > 0) {
 				$('.input-min').val('').val(prices[0]);
 				$('.input-max').val('').val(prices[1]);
 			}
 			if (prices[1]) {
-				get_products();
+				// Only auto-filter if apply button mode is disabled
+				if (!isApplyMode) {
+					get_products();
+				} else {
+					// In apply mode, just update the selected filter tags
+					show_selected_data(selected_param({}));
+				}
 				// reset block
 				reset_block(price_range, price_range.parents('.sidebar-row'));
 			}
 		}
 		const min_input = $('.input-min');
 		if (min_input.length > 0) {
+			// Enhanced price input validation and UX
+			function validatePriceInput($input, value, isMin = true) {
+				const container = $input.closest('.input-container');
+				const errorSpan = $input.closest('.field').find('.input-error');
+				let isValid = true;
+				let errorMessage = '';
+
+				// Clear previous states
+				container.removeClass('error success');
+				errorSpan.text('');
+
+				// Validate value - allow empty for clearing
+				if (value !== '' && value !== null && !isNaN(value)) {
+					if (value < 0) {
+						isValid = false;
+						errorMessage = 'Price cannot be negative';
+					} else if (isMin && value > max) {
+						isValid = false;
+						errorMessage = `Min price cannot exceed ${max}`;
+					} else if (!isMin && value < min) {
+						isValid = false;
+						errorMessage = `Max price must be at least ${min}`;
+					} else if (!isMin && value <= parseFloat($('.input-min').val() || min)) {
+						isValid = false;
+						errorMessage = 'Max price must be greater than min price';
+					}
+				}
+
+				// Apply visual feedback
+				if (isValid) {
+					container.addClass('success');
+				} else {
+					container.addClass('error');
+					errorSpan.text(errorMessage);
+				}
+
+				return isValid;
+			}
+
+			// Real-time input validation and sync
+			$('.field .input-min,.field .input-max').on('input', function () {
+				const $this = $(this);
+				const rawValue = $this.val();
+				const value = parseFloat(rawValue) || 0;
+				const isMin = $this.hasClass('input-min');
+
+				// Skip validation for partial decimal entries (e.g., "5.")
+				if (rawValue.endsWith('.') || rawValue.endsWith('.0')) {
+					return;
+				}
+
+				// Validate input
+				const isValid = validatePriceInput($this, value, isMin);
+
+				// Sync with slider if valid
+				if (isValid && price_range.customSetValue) {
+					const currentMin = isMin ? value : (parseFloat($('.input-min').val()) || min);
+					const currentMax = isMin ? (parseFloat($('.input-max').val()) || max) : value;
+					price_range.customSetValue(currentMin + ',' + currentMax);
+				}
+
+				// Trigger real-time filtering
+				triggerFilter();
+			});
+
+			// Real-time filtering with debounce
+			let filterTimeout;
+			function triggerFilter() {
+				clearTimeout(filterTimeout);
+				filterTimeout = setTimeout(() => {
+					const minVal = parseFloat($('.input-min').val()) || min;
+					const maxVal = parseFloat($('.input-max').val()) || max;
+
+					// Validate both inputs
+					const minValid = validatePriceInput($('.input-min'), minVal, true);
+					const maxValid = validatePriceInput($('.input-max'), maxVal, false);
+
+					if (minValid && maxValid) {
+						price_range.attr('data-action', true);
+						// Only auto-filter if apply button mode is disabled
+						if (!isApplyMode) {
+							get_products();
+						} else {
+							// In apply mode, just update the selected filter tags
+							show_selected_data(selected_param({}));
+						}
+						reset_block(price_range, price_range.parents('.sidebar-row'));
+					}
+				}, 800); // Wait 800ms after user stops typing
+			}
+
+			// Legacy input handling for backwards compatibility
 			$('.field .input-min,.field .input-max').on(
-				'change paste keyup',
+				'change blur',
 				function () {
 					const $this = $(this);
+					const rawValue = $this.val();
+
+					// Skip if empty or partial decimal
+					if (rawValue === '' || rawValue.endsWith('.')) {
+						return;
+					}
+
 					let latest_min = min;
 					let latest_max = max;
 					if ($this.hasClass('input-min')) {
-						latest_min = $this.val() > max ? min : $this.val();
-						$this.val('').val(latest_min);
-						price_range.jRange('setValue', latest_min + ',' + max);
+						latest_min = Math.max(0, Math.min(parseFloat($this.val()) || min, max));
+						$this.val(latest_min);
+						if (price_range.customSetValue) {
+							price_range.customSetValue(latest_min + ',' + max);
+						}
 					} else {
-						latest_max = $this.val() > max ? max : $this.val();
-						$this.val('').val(latest_max);
+						const currentMin = parseFloat($('.input-min').val()) || min;
+						latest_max = Math.max(currentMin, parseFloat($this.val()) || max);
+						$this.val(latest_max);
 					}
 					price_range.attr('data-action', true);
-					price_range.jRange(
-						'setValue',
-						latest_min + ',' + latest_max
-					);
-					get_products();
-					// reset block
-					reset_block(
-						price_range,
-						price_range.parents('.sidebar-row')
-					);
+					if (price_range.customSetValue) {
+						price_range.customSetValue(latest_min + ',' + latest_max);
+					}
 				}
 			);
 		}
 
 		//default call
 		if ($('.prods-grid-view').length > 0) {
+			// Always load products on initial page load
 			get_products({ default_call: true });
+		}
+
+		/**
+		 * Show empty state with total count in apply button mode
+		 */
+		function show_empty_state_with_count() {
+			let products_wrap = $('.products-wrap');
+			let prod_grid_wrap = $('.prods-grid-view');
+			let message_info = $('.message');
+			let template = $('#shopContainer').data('template');
+			let limit = $('#shopContainer').data('limit');
+			let product_categories = $('#shopContainer').data('product_categories');
+			let product_tags = $('#shopContainer').data('product_categories');
+			let post_author = $('#shopContainer').data('post_author');
+
+			const data = {
+				action: 'get_filtered_data',
+				filter_plus_nonce: filter_client.filter_plus_nonce,
+				template,
+				limit,
+				product_categories,
+				product_tags,
+				post_author,
+				params: { default_call: true, count_only: true },
+			};
+
+			$.ajax({
+				url: filter_client.ajax_url,
+				method: 'POST',
+				data,
+				success(response) {
+					if (response?.success) {
+						const total = response?.data?.data?.total || 0;
+						$('.total').html('').html(total);
+						prod_grid_wrap.html('');
+						message_info.html(`<div class="filter-plus woocommerce-info">${total} items found. Click "Apply" to show results.</div>`);
+					}
+				},
+			});
 		}
 
 		/**
@@ -279,22 +549,16 @@
 							if ($('.sort-bar').css('display') == 'none') {
 								$('.sort-bar').fadeIn();
 							}
-							// product data
-							const source_grid = $('#search_products_grid').html();
-							const source_list = $('#search_products_list').html();
-							for (let i = 0; i < products.length; i++) {
-								if (source_grid) {
-									var template_grid = Handlebars.compile(source_grid);
-									var template_grid = template_grid(products[i]);
-									prod_grid_wrap.append(template_grid);																		
-								}
 
-								if (source_list) {
-									var template_list = Handlebars.compile(source_list);
-									var template_list = template_list(products[i]);
-									prod_list_wrap.append(template_list);
-								}
-							}							
+							// product data from server response
+							if (response?.data?.data?.products_grid_html) {
+								prod_grid_wrap.append(response.data.data.products_grid_html);
+							}
+
+							if (response?.data?.data?.products_list_html) {
+								prod_list_wrap.append(response.data.data.products_list_html);
+							}
+
 							// pagination
 							pagination_html(response?.data?.data?.pagination_markup);
 						}
@@ -576,9 +840,25 @@
 
 			params = filterOption.customFieldValue($,params);
 			if (price_range.length > 0) {
-				const prices = price_range.val().split(',');
-				params.min = prices[0];
-				params.max = prices[1];
+				const priceValue = price_range.val();
+				const defaultMin = price_range.data('min') || 1;
+				const defaultMax = price_range.data('max') || 1000;
+
+				// Parse price values with proper handling of empty strings
+				if (priceValue && priceValue.trim() !== '' && priceValue.includes(',')) {
+					const prices = priceValue.split(',');
+					// Parse and validate both min and max
+					const parsedMin = prices[0] ? parseFloat(prices[0].trim()) : null;
+					const parsedMax = prices[1] ? parseFloat(prices[1].trim()) : null;
+
+					params.min = (!isNaN(parsedMin) && parsedMin !== null) ? parsedMin : defaultMin;
+					params.max = (!isNaN(parsedMax) && parsedMax !== null) ? parsedMax : defaultMax;
+				} else {
+					// If no valid value, use defaults
+					params.min = defaultMin;
+					params.max = defaultMax;
+				}
+
 				params.price_range =
 				price_range.attr('data-action') == 'true' ? true : false;
 			}
@@ -604,14 +884,34 @@
 			}
 			
 			pagination.html(pagination_markup);
-			$('.products-wrap').find('.naviation li').on('click', function () {
+			$('.products-wrap').find('.naviation li:not(.disabled)').on('click', function () {
 				let load_more = false;
 				let _this = $(this);
+
+				// Check if button is disabled
+				if (_this.hasClass('disabled')) {
+					return false;
+				}
+
+				// Check for invalid page data
+				let offset = _this.data('page');
+				if (offset === 0 || offset === '#' || !offset) {
+					return false;
+				}
+
 				if (_this.hasClass('load-more')) {
 					load_more = true;
 				}
-				let offset = _this.data('page');
+
 				get_products({offset:offset,load_more:load_more});
+			});
+
+			// Explicitly prevent clicks on disabled pagination buttons
+			$('.products-wrap').find('.naviation li.disabled').on('click', function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+				return false;
 			});
 		}
 
@@ -673,7 +973,13 @@
 				$(this).addClass('active').siblings().removeClass('active');
 				$('.rating-label').html('').html($(this).html());
 				$('ul.ratings').attr('id', $this.data('star'));
-				get_products();
+				// Only auto-filter if apply button mode is disabled
+				if (!isApplyMode) {
+					get_products();
+				} else {
+					// In apply mode, just update the selected filter tags
+					show_selected_data(selected_param({}));
+				}
 				// reset block
 				reset_block($this, $this.closest('.panel') );
 			});
@@ -728,7 +1034,9 @@
 				const min = $parent.data('min');
 				const max = $parent.data('max');
 				$parent.val(min + ',' + max);
-				$parent.jRange('setValue', min + ',' + max);
+				if ($parent.customSetValue) {
+					$parent.customSetValue(min + ',' + max);
+				}
 			} else if ($parent.hasClass('sidebar-input')) {
 				$parent.val('');
 			} else {
@@ -899,10 +1207,11 @@
 					$('.ratings li').removeClass('rating_disable');
 				}
 				if (price_range.length > 0) {
-					price_range.jRange(
-						'setValue',
-						price_range.data('min') + ',' + price_range.data('max')
-					);
+					if (price_range.customSetValue) {
+						price_range.customSetValue(
+							price_range.data('min') + ',' + price_range.data('max')
+						);
+					}
 				}
 				$('input[type=checkbox]').removeAttr('checked');
 				sidebar.find('.reset').fadeOut();
@@ -968,7 +1277,10 @@
 		function sorting() {
 			const filter_by = $('#filter-sort-by');
 			filter_by.on('change', function () {
-				get_products();
+				// Only auto-filter if apply button mode is disabled
+				if (!isApplyMode) {
+					get_products();
+				}
 			});
 		}
 
@@ -1020,6 +1332,93 @@
 				$('.sidebar-label').addClass('closed');
 			}
 		}
+
+		/**
+		 * Filter Reset Button - Reset all filters
+		 */
+		$(document).on('click', '.filter-reset-btn', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			// Reset all filters
+			const sidebar = $('.sidebar-row');
+			const param_box = $('.param-box');
+			const ratings = $('.ratings');
+			const category = $('.category-list li');
+			const search = $('.sidebar-input');
+			const price_range = $('.range-slider');
+
+			// Remove active states
+			category.removeClass('active');
+			category.find('input[type="checkbox"]').prop('checked', false);
+
+			// Clear search
+			search.val('');
+
+			// Reset attribute/tag selections
+			param_box.find('.radio-item').removeClass('active');
+			param_box.find('.color-item').removeClass('active');
+			param_box.find('input[type="checkbox"]').prop('checked', false);
+
+			// Reset ratings
+			if (ratings.length > 0) {
+				ratings.attr('id', '');
+				const rating_label = $('.rating-label');
+				rating_label.html(rating_label.data('rating_label'));
+				$('.ratings li').removeClass('rating_disable active');
+			}
+
+			// Reset price range
+			if (price_range.length > 0) {
+				const minPrice = price_range.data('min');
+				const maxPrice = price_range.data('max');
+				price_range.attr('data-action', false);
+				price_range.val(minPrice + ',' + maxPrice);
+				if (price_range.customSetValue) {
+					price_range.customSetValue(minPrice + ',' + maxPrice);
+				}
+				if ($('.input-min').length > 0) {
+					$('.input-min').val(minPrice);
+					$('.input-max').val(maxPrice);
+				}
+			}
+
+			// Uncheck all checkboxes
+			$('input[type=checkbox]').prop('checked', false);
+
+			// Hide reset buttons
+			sidebar.find('.reset').fadeOut();
+
+			// Clear selected filter tags
+			$('.selected-filter').html('');
+
+			// Reload products with default settings
+			get_products({ default_call: true });
+		});
+
+		/**
+		 * Filter Apply Button - Trigger filtering
+		 */
+		$(document).on('click', '.filter-apply-btn', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			// Ensure price range data-action is set if price has changed from default
+			const price_range = $('.range-slider');
+			if (price_range.length > 0) {
+				const currentPrices = price_range.val().split(',');
+				const minPrice = price_range.data('min');
+				const maxPrice = price_range.data('max');
+
+				// If price has changed from default, set data-action to true
+				if (currentPrices[0] != minPrice || currentPrices[1] != maxPrice) {
+					price_range.attr('data-action', 'true');
+				}
+			}
+
+			// Trigger product filtering with current selections
+			get_products();
+		});
 
 	});
 })(jQuery);

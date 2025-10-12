@@ -34,6 +34,9 @@ class DataFactory {
             'category_label'    => esc_html__('Categories','filter-plus'),
             'categories'       	=> '',
             'hide_empty_cat'	=> 'yes',
+            'apply_button_mode'	=> 'no',
+            'apply_button_label'=> esc_html__('Apply','filter-plus'),
+            'reset_button_label'=> esc_html__('Reset','filter-plus'),
             'masonry_style'	    => 'no',
             'sub_categories'	=> 'no',
             'colors'           	=> 'yes',
@@ -87,6 +90,9 @@ class DataFactory {
             'category_label'    => esc_html__('Categories','filter-plus-pro'),
             'categories'       	=> '',
             'sub_categories'	=> 'yes',
+            'apply_button_mode'	=> 'no',
+            'apply_button_label'=> esc_html__('Apply','filter-plus'),
+            'reset_button_label'=> esc_html__('Reset','filter-plus'),
             'masonry_style'	    => 'no',
             'hide_wp_title'	    => 'yes',
             'hide_wp_desc'	    => 'yes',
@@ -169,22 +175,25 @@ class DataFactory {
     public function woo_render_html($settings) {
         $process_data = $this->woo_process_data( $settings );
         extract( $process_data );
-		echo do_shortcode("[filter_products category_label='".$category_label."' 
-		sub_categories='".$sub_categories."' title ={$title} no_of_items={$no_of_items} 
-		tag_label='".$tag_label."' 
-		category_template='".$category_template."' 
-		color_template='".$color_template."' 
-		review_template='".$review_template."' 
-		color_label='".$color_label."' 
-		hide_prod_title='".$hide_prod_title."' 
-		hide_prod_desc='".$hide_prod_desc."' 
-		hide_prod_price='".$hide_prod_price."' 
-		hide_prod_add_cart='".$hide_prod_add_cart."' 
-		hide_prod_rating='".$hide_prod_rating."' 
-		size_label='".$size_label."' attribute_label='".$attribute_label."' 
+		echo do_shortcode("[filter_products category_label='".$category_label."'
+		sub_categories='".$sub_categories."' title ={$title} no_of_items={$no_of_items}
+		tag_label='".$tag_label."'
+		category_template='".$category_template."'
+		color_template='".$color_template."'
+		review_template='".$review_template."'
+		color_label='".$color_label."'
+		apply_button_mode='".$apply_button_mode."'
+		apply_button_label='".$apply_button_label."'
+		reset_button_label='".$reset_button_label."'
+		hide_prod_title='".$hide_prod_title."'
+		hide_prod_desc='".$hide_prod_desc."'
+		hide_prod_price='".$hide_prod_price."'
+		hide_prod_add_cart='".$hide_prod_add_cart."'
+		hide_prod_rating='".$hide_prod_rating."'
+		size_label='".$size_label."' attribute_label='".$attribute_label."'
 		review_label='".$review_label."' price_range_label='".$price_range_label."'
-		stock_label='".$stock_label."' on_sale_label='".$on_sale_label."' 
-		stock={$stock} on_sale={$on_sale} template ={$template} 
+		stock_label='".$stock_label."' on_sale_label='".$on_sale_label."'
+		stock={$stock} on_sale={$on_sale} template ={$template}
         filter_position={$filter_position} pagination_style='{$pagination_style}'
 		categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");  
     }
@@ -276,6 +285,12 @@ class DataFactory {
         extract( $args );
         $taxonomy       = ! empty( $args['taxonomy'] ) ? $args['taxonomy'] : 'product_cat';
         $product_count  = ! empty( $args['product_count'] ) ? $args['product_count'] : 'no';
+        $hide_empty_cat = ! empty( $args['hide_empty_cat'] ) ? $args['hide_empty_cat'] : 'no';
+        $categories     = ! empty( $args['categories'] ) ? $args['categories'] : '';
+        $sub_categories = ! empty( $args['sub_categories'] ) ? $args['sub_categories'] : 'yes';
+        $category_label = ! empty( $args['category_label'] ) ? $args['category_label'] : esc_html__('Categories','filter-plus');
+        $category_template = ! empty( $args['category_template'] ) ? $args['category_template'] : '1';
+        $template       = ! empty( $args['template'] ) ? $args['template'] : '1';
 
         $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
 
@@ -294,7 +309,7 @@ class DataFactory {
                 break;
 
         }
-
+        
 		if (file_exists( $url )) {
 			include $url ;
 		}
