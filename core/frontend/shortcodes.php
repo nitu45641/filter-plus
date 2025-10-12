@@ -60,7 +60,10 @@ class Shortcodes {
 		?>
 			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template)?>"
 			id="shopContainer"
-			data-filter_type='product' 
+			data-filter_type='product'
+			data-apply_button_mode="<?php echo esc_attr($apply_button_mode)?>"
+			data-apply_button_label="<?php echo esc_attr($apply_button_label)?>"
+			data-reset_button_label="<?php echo esc_attr($reset_button_label)?>"
 			data-masonry_style="<?php echo esc_attr($masonry_style)?>"
 			data-pagination_style="<?php echo esc_attr($pagination_style)?>"
 			data-limit="<?php echo intval($no_of_items)?>"

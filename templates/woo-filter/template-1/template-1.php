@@ -6,7 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
 
-	<?php 
+	<?php
+		// apply/reset buttons at top
+		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php")) {
+			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php";
+		}
+
 		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
 		}
@@ -52,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		// stock
 		if ( 'yes'== $stock ) {
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/stock.php";
-		} 
+		}
 	?>
 </div>
 <div class="products-wrap">

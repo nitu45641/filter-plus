@@ -6,6 +6,10 @@
 		 * Get Product from filter
 		 */
 
+		// Check if apply button mode is enabled
+		const applyButtonMode = $('#shopContainer').data('apply_button_mode');
+		const isApplyMode = (applyButtonMode === 'yes');
+
 		//list click/change
 		const category_li = $('.category-list li');
 		let action = 'click';
@@ -72,7 +76,13 @@
 				}
 			}
 
-			get_products();
+			// Only auto-filter if apply button mode is disabled
+			if (!isApplyMode) {
+				get_products();
+			} else {
+				// In apply mode, just update the selected filter tags
+				show_selected_data(selected_param({}));
+			}
 			// reset block
 			reset_block(_this, _this.parents('.sidebar-row'));
 		});
@@ -80,7 +90,13 @@
 		//search product
 		$('.sidebar-input').on('keyup', function () {
 			const _this = $(this);
-			get_products();
+			// Only auto-filter if apply button mode is disabled
+			if (!isApplyMode) {
+				get_products();
+			} else {
+				// In apply mode, just update the selected filter tags
+				show_selected_data(selected_param({}));
+			}
 			reset_block(_this, _this.parents('.sidebar-row'));
 		});
 
@@ -93,7 +109,13 @@
 					const _this = $(this);
 					param_box.find('.radio-item,.color-item').removeClass('active');
 					_this.addClass('active');
-					get_products();
+					// Only auto-filter if apply button mode is disabled
+					if (!isApplyMode) {
+						get_products();
+					} else {
+						// In apply mode, just update the selected filter tags
+						show_selected_data(selected_param({}));
+					}
 					// reset block
 					reset_block(_this, _this.parents('.sidebar-row'));
 				});
@@ -109,7 +131,13 @@
 
 						}
 					}
-					get_products();
+					// Only auto-filter if apply button mode is disabled
+					if (!isApplyMode) {
+						get_products();
+					} else {
+						// In apply mode, just update the selected filter tags
+						show_selected_data(selected_param({}));
+					}
 					//reset block
 					reset_block(_this, _this.parents('.sidebar-row'));
 				});
@@ -261,13 +289,21 @@
 
 		function price_range_actions(val, price_range) {
 			price_range.attr('data-action', true);
+			// Set the value on the price_range element
+			price_range.val(val);
 			const prices = val.split(',');
 			if ($('.input-min').length > 0) {
 				$('.input-min').val('').val(prices[0]);
 				$('.input-max').val('').val(prices[1]);
 			}
 			if (prices[1]) {
-				get_products();
+				// Only auto-filter if apply button mode is disabled
+				if (!isApplyMode) {
+					get_products();
+				} else {
+					// In apply mode, just update the selected filter tags
+					show_selected_data(selected_param({}));
+				}
 				// reset block
 				reset_block(price_range, price_range.parents('.sidebar-row'));
 			}
@@ -353,7 +389,13 @@
 
 					if (minValid && maxValid) {
 						price_range.attr('data-action', true);
-						get_products();
+						// Only auto-filter if apply button mode is disabled
+						if (!isApplyMode) {
+							get_products();
+						} else {
+							// In apply mode, just update the selected filter tags
+							show_selected_data(selected_param({}));
+						}
 						reset_block(price_range, price_range.parents('.sidebar-row'));
 					}
 				}, 800); // Wait 800ms after user stops typing
@@ -394,7 +436,47 @@
 
 		//default call
 		if ($('.prods-grid-view').length > 0) {
+			// Always load products on initial page load
 			get_products({ default_call: true });
+		}
+
+		/**
+		 * Show empty state with total count in apply button mode
+		 */
+		function show_empty_state_with_count() {
+			let products_wrap = $('.products-wrap');
+			let prod_grid_wrap = $('.prods-grid-view');
+			let message_info = $('.message');
+			let template = $('#shopContainer').data('template');
+			let limit = $('#shopContainer').data('limit');
+			let product_categories = $('#shopContainer').data('product_categories');
+			let product_tags = $('#shopContainer').data('product_categories');
+			let post_author = $('#shopContainer').data('post_author');
+
+			const data = {
+				action: 'get_filtered_data',
+				filter_plus_nonce: filter_client.filter_plus_nonce,
+				template,
+				limit,
+				product_categories,
+				product_tags,
+				post_author,
+				params: { default_call: true, count_only: true },
+			};
+
+			$.ajax({
+				url: filter_client.ajax_url,
+				method: 'POST',
+				data,
+				success(response) {
+					if (response?.success) {
+						const total = response?.data?.data?.total || 0;
+						$('.total').html('').html(total);
+						prod_grid_wrap.html('');
+						message_info.html(`<div class="filter-plus woocommerce-info">${total} items found. Click "Apply" to show results.</div>`);
+					}
+				},
+			});
 		}
 
 		/**
@@ -758,9 +840,25 @@
 
 			params = filterOption.customFieldValue($,params);
 			if (price_range.length > 0) {
-				const prices = price_range.val().split(',');
-				params.min = prices[0];
-				params.max = prices[1];
+				const priceValue = price_range.val();
+				const defaultMin = price_range.data('min') || 1;
+				const defaultMax = price_range.data('max') || 1000;
+
+				// Parse price values with proper handling of empty strings
+				if (priceValue && priceValue.trim() !== '' && priceValue.includes(',')) {
+					const prices = priceValue.split(',');
+					// Parse and validate both min and max
+					const parsedMin = prices[0] ? parseFloat(prices[0].trim()) : null;
+					const parsedMax = prices[1] ? parseFloat(prices[1].trim()) : null;
+
+					params.min = (!isNaN(parsedMin) && parsedMin !== null) ? parsedMin : defaultMin;
+					params.max = (!isNaN(parsedMax) && parsedMax !== null) ? parsedMax : defaultMax;
+				} else {
+					// If no valid value, use defaults
+					params.min = defaultMin;
+					params.max = defaultMax;
+				}
+
 				params.price_range =
 				price_range.attr('data-action') == 'true' ? true : false;
 			}
@@ -875,7 +973,13 @@
 				$(this).addClass('active').siblings().removeClass('active');
 				$('.rating-label').html('').html($(this).html());
 				$('ul.ratings').attr('id', $this.data('star'));
-				get_products();
+				// Only auto-filter if apply button mode is disabled
+				if (!isApplyMode) {
+					get_products();
+				} else {
+					// In apply mode, just update the selected filter tags
+					show_selected_data(selected_param({}));
+				}
 				// reset block
 				reset_block($this, $this.closest('.panel') );
 			});
@@ -1173,7 +1277,10 @@
 		function sorting() {
 			const filter_by = $('#filter-sort-by');
 			filter_by.on('change', function () {
-				get_products();
+				// Only auto-filter if apply button mode is disabled
+				if (!isApplyMode) {
+					get_products();
+				}
 			});
 		}
 
@@ -1225,6 +1332,93 @@
 				$('.sidebar-label').addClass('closed');
 			}
 		}
+
+		/**
+		 * Filter Reset Button - Reset all filters
+		 */
+		$(document).on('click', '.filter-reset-btn', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			// Reset all filters
+			const sidebar = $('.sidebar-row');
+			const param_box = $('.param-box');
+			const ratings = $('.ratings');
+			const category = $('.category-list li');
+			const search = $('.sidebar-input');
+			const price_range = $('.range-slider');
+
+			// Remove active states
+			category.removeClass('active');
+			category.find('input[type="checkbox"]').prop('checked', false);
+
+			// Clear search
+			search.val('');
+
+			// Reset attribute/tag selections
+			param_box.find('.radio-item').removeClass('active');
+			param_box.find('.color-item').removeClass('active');
+			param_box.find('input[type="checkbox"]').prop('checked', false);
+
+			// Reset ratings
+			if (ratings.length > 0) {
+				ratings.attr('id', '');
+				const rating_label = $('.rating-label');
+				rating_label.html(rating_label.data('rating_label'));
+				$('.ratings li').removeClass('rating_disable active');
+			}
+
+			// Reset price range
+			if (price_range.length > 0) {
+				const minPrice = price_range.data('min');
+				const maxPrice = price_range.data('max');
+				price_range.attr('data-action', false);
+				price_range.val(minPrice + ',' + maxPrice);
+				if (price_range.customSetValue) {
+					price_range.customSetValue(minPrice + ',' + maxPrice);
+				}
+				if ($('.input-min').length > 0) {
+					$('.input-min').val(minPrice);
+					$('.input-max').val(maxPrice);
+				}
+			}
+
+			// Uncheck all checkboxes
+			$('input[type=checkbox]').prop('checked', false);
+
+			// Hide reset buttons
+			sidebar.find('.reset').fadeOut();
+
+			// Clear selected filter tags
+			$('.selected-filter').html('');
+
+			// Reload products with default settings
+			get_products({ default_call: true });
+		});
+
+		/**
+		 * Filter Apply Button - Trigger filtering
+		 */
+		$(document).on('click', '.filter-apply-btn', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			// Ensure price range data-action is set if price has changed from default
+			const price_range = $('.range-slider');
+			if (price_range.length > 0) {
+				const currentPrices = price_range.val().split(',');
+				const minPrice = price_range.data('min');
+				const maxPrice = price_range.data('max');
+
+				// If price has changed from default, set data-action to true
+				if (currentPrices[0] != minPrice || currentPrices[1] != maxPrice) {
+					price_range.attr('data-action', 'true');
+				}
+			}
+
+			// Trigger product filtering with current selections
+			get_products();
+		});
 
 	});
 })(jQuery);

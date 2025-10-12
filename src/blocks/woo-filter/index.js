@@ -167,6 +167,18 @@ registerBlockType('filter-plus/woo-filter', {
         masonry_style: {
             type: 'boolean',
             default: true
+        },
+        apply_button_mode: {
+            type: 'boolean',
+            default: false
+        },
+        apply_button_label: {
+            type: 'string',
+            default: ''
+        },
+        reset_button_label: {
+            type: 'string',
+            default: ''
         }
     },
 
@@ -208,6 +220,30 @@ registerBlockType('filter-plus/woo-filter', {
                             checked={attributes.masonry_style}
                             onChange={(value) => setAttributes({ masonry_style: value })}
                         />
+
+                        <ToggleControl
+                            label={__('Apply Button Mode', 'filter-plus')}
+                            checked={attributes.apply_button_mode}
+                            onChange={(value) => setAttributes({ apply_button_mode: value })}
+                        />
+
+                        {attributes.apply_button_mode && (
+                            <>
+                                <TextControl
+                                    label={__('Apply Button Label', 'filter-plus')}
+                                    value={attributes.apply_button_label}
+                                    onChange={(value) => setAttributes({ apply_button_label: value })}
+                                    placeholder={__('Apply', 'filter-plus')}
+                                />
+
+                                <TextControl
+                                    label={__('Reset Button Label', 'filter-plus')}
+                                    value={attributes.reset_button_label}
+                                    onChange={(value) => setAttributes({ reset_button_label: value })}
+                                    placeholder={__('Reset', 'filter-plus')}
+                                />
+                            </>
+                        )}
 
                         <SelectControl
                             label={__('Select Style', 'filter-plus')}

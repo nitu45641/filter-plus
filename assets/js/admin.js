@@ -171,6 +171,8 @@
 		 *
 		 */
 		var ids = [
+			'apply_button_mode',
+			'wp_apply_button_mode',
 			'show_tags',
 			'show_attributes',
 			'show_wp_tags',
@@ -200,6 +202,8 @@
 					$('.' + data).addClass('d-none');
 				}
 			});
+			// Trigger on page load to set initial state
+			value.trigger('change');
 		});
 
 		/**
