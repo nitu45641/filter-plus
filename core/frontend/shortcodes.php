@@ -107,6 +107,9 @@ class Shortcodes {
 		$this->custom_css($template,'content-filter', array( 'masonry_style' => $masonry_style ) );
 		?>
 			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?> shop-container-<?php echo esc_attr($template)?>" id="shopContainer"
+				data-apply_button_mode="<?php echo esc_attr($apply_button_mode)?>"
+				data-apply_button_label="<?php echo esc_attr($apply_button_label)?>"
+				data-reset_button_label="<?php echo esc_attr($reset_button_label)?>"	
 				data-pagination_style="<?php echo esc_html($pagination_style)?>"
 				data-filter_type='<?php echo esc_html($filtering_type)?>'
 				data-masonry_style="<?php echo esc_attr($masonry_style)?>"
