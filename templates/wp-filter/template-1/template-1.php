@@ -4,8 +4,14 @@ use FilterPlus\Base\DataFactory;
 
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
-	<?php include_once \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/product-search.php"; ?>
-	<?php
+	<?php 
+		// Add apply and reset buttons if apply button mode is enabled
+		if ($apply_button_mode == 'yes') {
+			if (file_exists(\FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-buttons.php')) {
+				include_once \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-buttons.php';
+			}
+		}
+		include_once \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/product-search.php"; 
 
 		// category template
 		if ( 'yes'== $show_categories ) {
