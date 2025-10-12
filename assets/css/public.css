@@ -1151,6 +1151,11 @@ a {
 	font-size: 14px;
 }
 
+/* Hide title-and-clean-area when apply button mode is enabled */
+#shopContainer[data-apply_button_mode="yes"] .title-and-clean-area {
+	display: none;
+}
+
 .shop-sidebar .search-form button svg {
 	fill: var(--filter-cart-icon-color,#c4c4c4);
 	align-items: center;
@@ -1346,13 +1351,11 @@ a {
 	transition: 0.5s;
 }
 .vartical-prod-card-container:hover .card-action-btn-container,
-.product-style:hover .card-action-btn-container,
 .product-style-1:hover .card-action-btn-container {
 	height: 100%;
 	display: flex;
 	align-items: center;
 	text-align: center;
-	background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Template 1 - Overall product card */
@@ -2702,7 +2705,7 @@ ul.sub_categories{
 .filter-buttons-wrap {
 	display: flex;
 	gap: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	padding: 0 15px;
 }
 .filter-reset-btn{
