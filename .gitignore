@@ -3,8 +3,8 @@
 /node_modules
 /vendor
 
-# Build output
-/build
+# Keep build directory for development
+# /build
 /dist
 
 # Logs
