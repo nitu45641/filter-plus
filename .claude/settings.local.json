@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "WebFetch(domain:product.wpbens.com)",
+      "Bash(mkdir:*)",
+      "Read(//Applications/MAMP/htdocs/wordpress/wp-content/**)",
+      "Bash(find:*)",
+      "Read(//Applications/MAMP/htdocs/zone7/wp-content/plugins/woo-essential-d4/assets/js/**)",
+      "Read(//Applications/MAMP/htdocs/zone7/wp-content/plugins/woo-essential-d4/includes/modules/NextWooFilterMasonry/**)",
+      "Bash(npm install)",
+      "Bash(npm start)",
+      "Read(//Applications/MAMP/htdocs/wordpress/**)",
+      "Bash(npm install:*)",
+      "Bash(test:*)",
+      "Bash(npm run gulp:build:*)",
+      "Bash(npm run build:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

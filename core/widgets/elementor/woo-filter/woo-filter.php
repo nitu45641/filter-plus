@@ -784,7 +784,7 @@ class Woo_Filter extends Widget_Base {
 	 */
 	protected function render() {
 		$settings   = $this->get_settings();
-		echo \FilterPlus\Base\DataFactory::instance()->woo_render_html( $settings );
+		echo wp_kses_post( \FilterPlus\Base\DataFactory::instance()->woo_render_html( $settings ) );
 	}
 
 }

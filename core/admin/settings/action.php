@@ -19,13 +19,24 @@ class Action {
 		$callback = array( 'filter_save_settings','add_filter_options' );
 		if ( ! empty( $callback ) ) {
 			foreach ( $callback as $key => $value ) {
+				// Only register for authenticated users - these are admin-only actions
 				add_action( 'wp_ajax_' . $value , array( $this, $value ) );
-				add_action( 'wp_ajax_nopriv_' . $value, array( $this, $value ) );
 			}
 		}
 	}
 
 	public function add_filter_options() {
+		// Capability check - only administrators can add filter options
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'You do not have permission to perform this action.', 'filter-plus' ),
+				),
+				403
+			);
+			wp_die();
+		}
+
 		$post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
 		FilterPlus\Utils\Helper::instance()->verify_nonce( 'filter_plus_nonce', $post_data['filter_plus_nonce'] );
 		if (!empty($post_data['params'])) {
@@ -53,33 +64,44 @@ class Action {
 
 		if ( $ID == "" ) {
 		  $id = wp_insert_post(array(
-			  'post_title'=> $label  , 
-			  'post_type'=>'filter_plus_option', 
+			  'post_title'=> $label  ,
+			  'post_type'=>'filter_plus_option',
 			  'post_content'=>'',
 			  'post_status' => 'publish'
 		  ));
 		}else{
 		  $post_update = array(
 			  'ID'         => $ID,
-			  'post_title' => $label 
+			  'post_title' => $label
 			);
-		  
+
 			wp_update_post( $post_update );
 			$id = $ID;
 		}
-  
+
 		if (!empty( $id ) ) {
 		  foreach ($params as $meta_key => $value) {
 			update_post_meta( $id, $meta_key, $value );
 		  }
 		}
 	}
-  
+
 
 	/**
 	 * Filter Settings
 	 */
 	public function filter_save_settings() {
+		// Capability check - only administrators can save settings
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'You do not have permission to perform this action.', 'filter-plus' ),
+				),
+				403
+			);
+			wp_die();
+		}
+
 		$post_data    = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
 		FilterPlus\Utils\Helper::instance()->verify_nonce( 'filter_plus_nonce', $post_data['filter_plus_nonce'] );
 		$params       = ! empty( $post_data['params'] ) ? $post_data['params'] : array();

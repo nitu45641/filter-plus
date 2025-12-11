@@ -87,7 +87,7 @@ class DataFactory {
             'title'         	=> esc_html__('Filters','filter-plus'),
             'no_of_items'       => 9,
             'show_categories'   => 'yes',
-            'category_label'    => esc_html__('Categories','filter-plus-pro'),
+            'category_label'    => esc_html__('Categories','filter-plus'),
             'categories'       	=> '',
             'sub_categories'	=> 'yes',
             'apply_button_mode'	=> 'no',
@@ -97,15 +97,15 @@ class DataFactory {
             'hide_wp_title'	    => 'yes',
             'hide_wp_desc'	    => 'yes',
             'show_tags'        	=> '',
-            'tag_label'        	=> esc_html__('Tags','filter-plus-pro'),
+            'tag_label'        	=> esc_html__('Tags','filter-plus'),
             'tags'             	=> '',
             'author'            => '',
-            'author_label'      => esc_html__('Authors','filter-plus-pro'),
+            'author_label'      => esc_html__('Authors','filter-plus'),
             'author_list'       => '',
             'post_categories'	=> 'yes',
             'post_tags'      	=> 'yes',
             'post_author'      	=> 'yes',
-            'custom_field_label' 	=> esc_html__('Custom Field','filter-plus-pro'),
+            'custom_field_label' 	=> esc_html__('Custom Field','filter-plus'),
             'custom_field'      	=> 'no',
             'meta_condition'     	=> 'OR',
             'custom_field_list'     => '',
@@ -316,12 +316,13 @@ class DataFactory {
     }
 
     public static function tempalte_arr( $args , $type = 'shortcode' , $count = 3 ) {
-        $pro = class_exists( 'FilterPlusPro' ) ? '' : ' '.'('.esc_html__('Pro','filter-plus').')';
+        $pro = class_exists( 'FilterPlusPro' ) ? '' : ' ' . '(' . esc_html__( 'Pro', 'filter-plus' ) . ')';
         $template_length = array();
-        
+
         if ($type === 'elementor') {
-            for ($i=0; $i < $count ; $i++) { 
-                $template_length[$i+1] = esc_html__('Tempate ' . ($i+1) . $pro, 'filter-plus');
+            for ($i=0; $i < $count ; $i++) {
+                /* translators: %d: template number */
+                $template_length[$i+1] = sprintf( esc_html__( 'Template %d', 'filter-plus' ), $i + 1 ) . $pro;
             }
             $args['template'] = $template_length;
         }

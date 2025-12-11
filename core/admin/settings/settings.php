@@ -25,7 +25,7 @@
                 <?php foreach ($tabs as $key => $value) { 
                     $active = $key == "settings" ? "active" : "";
                 ?>
-                    <li class="<?php echo esc_attr( $active )?>" data-item="<?php echo esc_attr( $key );?>"><?php echo($value) ?></li>
+                    <li class="<?php echo esc_attr( $active )?>" data-item="<?php echo esc_attr( $key );?>"><?php echo esc_html( $value ); ?></li>
                 <?php } ?>
             </ul>
             <div class="tab-content">

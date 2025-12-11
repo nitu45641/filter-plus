@@ -9,8 +9,15 @@ function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 		<div class="vartical-prod-card-container">
 			<div class="product-thumbnail">
 				<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank">
-					<div class="vpcc-image">
-						<?php echo $product['post_image']; ?>
+					<div class="vpcc-image" style="width: 220px; height: 220px; margin: 0 auto;">
+						<?php
+						$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), array(220, 220), false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
+						if (empty($grid_image)) {
+							echo preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']);
+						} else {
+							echo $grid_image;
+						}
+						?>
 					</div>
 				</a>
 				<div class="product-meta">
@@ -73,5 +80,61 @@ function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $h
  * List template for products
  */
 function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
-	// No list template for template-2
+	?>
+	<div class="horizontal-prod-card">
+		<div class="hpcc-image" style="width: 220px; min-width: 220px; height: 220px;">
+			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" style="display: block; width: 100%; height: 100%;">
+				<?php
+				// Get product thumbnail with appropriate size for list view
+				$list_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), array(220, 220), false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
+				if (empty($list_image)) {
+					// Fallback: modify existing image to fit
+					echo preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']);
+				} else {
+					echo $list_image;
+				}
+				?>
+				<?php if (!empty($product['on_sale'])): ?>
+					<div class="badge on-sale-badge-<?php echo esc_attr($product['template']); ?>"><?php echo esc_html($product['on_sale_text']); ?></div>
+				<?php endif; ?>
+			</a>
+		</div>
+		<div class="hpcc-content">
+			<div class="cat">
+				<?php if (!empty($product['categories'])): ?>
+					<?php foreach ($product['categories'] as $category): ?>
+						<a href="#"><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></a>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+			<?php if( $hide_prod_title == 'yes' ): ?>
+			<div class="hpcc-name">
+				<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank"><?php echo esc_html($product['post_title']); ?></a>
+			</div>
+			<?php endif; ?>
+			<?php if( $hide_prod_rating == 'yes' && !empty($product['rating']) ): ?>
+			<div class="hpcc-rating">
+				<?php echo $product['rating']; ?>
+			</div>
+			<?php endif; ?>
+			<?php if( $hide_prod_price == 'yes' ): ?>
+			<div class="hpcc-price">
+				<?php echo $product['post_price']; ?>
+			</div>
+			<?php endif; ?>
+			<?php if( $hide_prod_desc == 'yes' && !empty($product['post_description']) ): ?>
+			<div class="hpcc-description">
+				<?php echo wp_kses_post($product['post_description']); ?>
+			</div>
+			<?php endif; ?>
+		</div>
+		<?php if( $hide_prod_add_cart == 'yes' ): ?>
+		<div class="hpcc-actions">
+			<div class="hpcc-btns">
+				<?php echo $product['cart_btn']; ?>
+			</div>
+		</div>
+		<?php endif; ?>
+	</div>
+	<?php
 }

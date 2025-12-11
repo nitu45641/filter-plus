@@ -828,7 +828,7 @@ class Helper {
 		<span>".$star." Star</span>
 		</li>";
 		
-		echo Helper::render( $html );
+		echo wp_kses_post( Helper::render( $html ) );
 	}
 
 	/**
@@ -899,9 +899,10 @@ class Helper {
 			$pro  = esc_html__( 'Pro', 'filter-plus' );
 		}
 		$templates = array( 1  => esc_html__( 'Template 1', 'filter-plus' ) );
-		for ($i=1; $i <= $limit ; $i++) { 
+		for ($i=1; $i <= $limit ; $i++) {
 			$pro_tag = $i == 1 ? '' : ' '. $pro;
-			$templates[$i] = esc_html__( 'Template '.$i, 'filter-plus' ) . $pro_tag;
+			/* translators: %d: template number */
+			$templates[$i] = sprintf( esc_html__( 'Template %d', 'filter-plus' ), $i ) . $pro_tag;
 		}
 
 		return $templates;

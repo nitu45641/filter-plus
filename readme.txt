@@ -1,9 +1,9 @@
-=== Product Filtering by Categories, Tags, Price Range for WooCommerce - Filter Plus ===
+=== Filter Plus ===
 Contributors: markutos987
 Donate link: https://wpbens.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
-Tested up to: 6.8
-Stable tag: 1.1.5
+Tested up to: 6.9
+Stable tag: 1.1.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -137,6 +137,9 @@ If you are familiar with WordPress interface and how to use plugins in WordPress
 
 
 == Changelog ==
+
+= 1.1.6 (November 25, 2025)=
+Added  : Filter list view 
 
 = 1.1.5 (October 12, 2025)=
 Added  : Apply button mode in product and post filter

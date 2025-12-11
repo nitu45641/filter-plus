@@ -1,7 +1,7 @@
 
 <?php
 
-$features = array(
+$filterplus_features = array(
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-category"></span>',
         'title' =>esc_html__('Filter WooCommerce Product','filter-plus'),
@@ -53,7 +53,7 @@ $features = array(
     ),
 );
 
-$more_products = array(
+$filterplus_more_products = array(
     array(
         'icon' =>'<span class="fr-icon dashicons dashicons-controls-repeat"></span>',
         'url_demo' => 'https://wpbens.com/plugins/memberhub/',
@@ -98,8 +98,8 @@ $more_products = array(
     </div>
     </div>
     <div class="right-block p-2">
-        <img src = "<?php echo FilterPlus::assets_url().'images/filter-plus-banner.png' ?>"
-            alt="filter-plus-banner" 
+        <img src="<?php echo esc_url( FilterPlus::assets_url() . 'images/filter-plus-banner.png' ); ?>"
+            alt="filter-plus-banner"
             width="500px"
         />
     </div>
@@ -111,18 +111,18 @@ $more_products = array(
             <p><?php esc_html_e('Available at FilterPlus Pro','filter-plus');?></p>
         </div>
         <div class="block-wrapper mb-5">
-            <?php foreach ($features as $key => $value) { ?>
+            <?php foreach ( $filterplus_features as $filterplus_key => $filterplus_value ) { ?>
                 <div class="single-item">
-                    <?php 
+                    <?php
                         // Show only related_icon if set, otherwise fallback to icon
-                        if (!empty($value['related_icon'])) {
-                            echo FilterPlus\Utils\Helper::kses($value['related_icon']);
+                        if ( ! empty( $filterplus_value['related_icon'] ) ) {
+                            echo wp_kses_post( $filterplus_value['related_icon'] );
                         } else {
-                            echo FilterPlus\Utils\Helper::kses($value['icon']);
+                            echo wp_kses_post( $filterplus_value['icon'] );
                         }
                     ?>
-                    <h3><?php echo esc_html($value['title']); ?></h3>
-                    <p><?php echo esc_html($value['desc']); ?></p>
+                    <h3><?php echo esc_html( $filterplus_value['title'] ); ?></h3>
+                    <p><?php echo esc_html( $filterplus_value['desc'] ); ?></p>
                 </div>
             <?php } ?>
         </div>
@@ -143,35 +143,23 @@ $more_products = array(
             <p><?php esc_html_e('We also have other solutions for growing your store conversion.','filter-plus');?></p>
         </div>
         <div class="card-wrapper mb-5">
-            <?php foreach ($more_products as $key => $value) {
+            <?php foreach ( $filterplus_more_products as $filterplus_key => $filterplus_value ) {
                 ?>
                 <div class="card-block">
-                    <img src="<?php echo esc_url(FilterPlus::assets_url().'images/'.$value['logo']); ?> " 
-                    alt="<?php echo esc_html($value['title']);?>"/>
+                    <img src="<?php echo esc_url( FilterPlus::assets_url() . 'images/' . $filterplus_value['logo'] ); ?> "
+                    alt="<?php echo esc_html( $filterplus_value['title'] ); ?>"/>
                     <div class="description">
                         <div class="desc">
-                            <a href="<?php echo esc_url($value['url_demo']); ?>" target="_blank"><h3><?php esc_html_e($value['title'],'filter-plus'); ?></h3></a>
-                            <p><?php echo esc_html($value['desc']); ?></p>  
+                            <a href="<?php echo esc_url( $filterplus_value['url_demo'] ); ?>" target="_blank"><h3><?php echo esc_html( $filterplus_value['title'] ); ?></h3></a>
+                            <p><?php echo esc_html( $filterplus_value['desc'] ); ?></p>
                         </div>
                         <div class="explore-plugin">
-                            <a class="btn free-button" href="<?php echo esc_url($value['url_free']); ?>"  target="_blank">
-                                <?php 
-                                    printf(
-                                        /* translators: %s: cta button text */
-                                        esc_html__( '%s', 'filter-plus' ),
-                                        esc_html( $value['cta_free'] )
-                                    );
-                                ?>
-                                </a>  
-                            <a class="btn pro-button" href="<?php echo esc_url($value['url_demo']); ?>"  target="_blank">
-                                <?php 
-                                    printf(
-                                        /* translators: %s: demo button text */
-                                        esc_html__( '%s', 'filter-plus' ),
-                                        esc_html( $value['cta_demo'] )
-                                    );
-                                ?>
-                            </a>  
+                            <a class="btn free-button" href="<?php echo esc_url( $filterplus_value['url_free'] ); ?>" target="_blank">
+                                <?php echo esc_html( $filterplus_value['cta_free'] ); ?>
+                            </a>
+                            <a class="btn pro-button" href="<?php echo esc_url( $filterplus_value['url_demo'] ); ?>" target="_blank">
+                                <?php echo esc_html( $filterplus_value['cta_demo'] ); ?>
+                            </a>
                         </div>
                     </div>
                 </div>

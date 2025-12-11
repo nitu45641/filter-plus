@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="sidebar-row categories-wrap">
 	<?php
-		$title = !empty($category_label) ? $category_label : esc_html__("Categories","filter-plus-pro");
+		$title = !empty($category_label) ? $category_label : esc_html__("Categories","filter-plus");
 	?>
 	<h4 class="sidebar-label"><?php echo esc_html($title);?></h4>
 	
@@ -45,5 +45,5 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			endif;
 		?>
 	</ul>
-	<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus-pro');?></span>
+	<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
 </div>

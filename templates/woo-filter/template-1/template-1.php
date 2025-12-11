@@ -36,17 +36,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/price-range.php";
 		}
 		// custom tags
-		if ( 'yes'== $show_tags ) {
-			$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
-			if (count($get_attr)>0) {
-				$title =  !empty( $tag_label ) ? $tag_label : esc_html__("Filter By Brand","filter-plus");
-				include \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/filter-layout-grid.php";
+		if ( 'yes' == $show_tags ) {
+			$filter_plus_get_attr = \FilterPlus\Utils\Helper::array_data( $tags );
+			if ( count( $filter_plus_get_attr ) > 0 ) {
+				$title = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Filter By Brand', 'filter-plus' );
+				include \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/left-side/filter-layout-grid.php";
 			}
 		}
 		// custom attributes
-		if ( 'yes'== $show_attributes ) {
-			$attributes = \FilterPlus\Utils\Helper::array_data($attributes);
-			include \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/filter-layout-attr-grid.php";
+		if ( 'yes' == $show_attributes ) {
+			$filter_plus_attributes = \FilterPlus\Utils\Helper::array_data( $attributes );
+			include \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/left-side/filter-layout-attr-grid.php";
 		}
 		include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-param.php"; 
 

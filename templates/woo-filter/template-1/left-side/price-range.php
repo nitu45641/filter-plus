@@ -3,8 +3,8 @@
 <!-- Price range -->
 <?php
 
-$get_price = \FilterPlus\Utils\Helper::instance()->get_price_range();
-extract($get_price);
+$filter_plus_price = \FilterPlus\Utils\Helper::instance()->get_price_range();
+extract( $filter_plus_price );
 ?>
 <div class="sidebar-row price-range-area">
 	<h4 class="sidebar-label"><?php echo !empty( $price_range_label ) ?  $price_range_label : esc_html__('Price Range','filter-plus');?></h4>

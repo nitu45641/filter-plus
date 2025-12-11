@@ -51,7 +51,7 @@ class Shortcodes {
 		ob_start();
 		$is_pro_active = $this->pro_template_check($template);
 		if ($is_pro_active !== '' ) {
-			echo $is_pro_active;
+			echo wp_kses_post( $is_pro_active );
 			return ob_get_clean();
 		} 
 
@@ -133,7 +133,7 @@ class Shortcodes {
 		}else{
 			$is_pro_active = $this->is_pro_active();
 			if ($is_pro_active !== '' ) {
-				echo $is_pro_active;
+				echo wp_kses_post( $is_pro_active );
 				return ob_get_clean();
 			}
 			if ( file_exists(\FilterPlusPro::plugin_dir() . "templates/wp-filter/template-".$template."/template-" . $template . ".php") ) {
@@ -179,7 +179,7 @@ class Shortcodes {
 	 * @return void
 	 */
 	public function custom_css($template = "1", $filter_type = "product" , $args=array() ) {
-		global $filter_custom_css;
+		global $filter_plus_custom_css;
 		$secondary_color = '#1164cb'; $primary_color ='#2d73e7';$tag_color ='';
 		$blog_header = "#1164cb"; $cart_icon =  '#fff'; 
 		$cart_content = '#2d73e7';$price_range = '#2d73e7';
@@ -372,7 +372,7 @@ class Shortcodes {
 			';
 		}
 
-		$filter_custom_css = '
+		$filter_plus_custom_css = '
 		:root {
 			--filter-loadmore-bg: '.$loadmore_bg.';
 			--filter-loadmore-bg-hover: '.$loadmore_bg_hover.';
@@ -402,6 +402,6 @@ class Shortcodes {
 
 		wp_register_style( 'filter-plus-custom-css', false );
 		wp_enqueue_style( 'filter-plus-custom-css' );
-		wp_add_inline_style('filter-plus-custom-css',$filter_custom_css);
+		wp_add_inline_style( 'filter-plus-custom-css', $filter_plus_custom_css );
 	}
 }

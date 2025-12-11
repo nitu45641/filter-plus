@@ -2,9 +2,9 @@
 
 <h1 class="font_bold font_18"><?php esc_html_e('SEO Rules','filter-plus'); ?></h1>
 <?php
-$doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/seo-rules/overview/"> ['.__( "Documentation Link", "filter-plus" ).'] </a>';
-$docs 		= '<div class="documentation mb-1"><i class="doc">'.esc_html__('SEO Rules ','filter-plus') . $doc_url . '</i></div>';
-echo FilterPlus\Utils\Helper::kses( $docs );
+$doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/seo-rules/overview/"> [' . esc_html__( 'Documentation Link', 'filter-plus' ) . '] </a>';
+$docs 		= '<div class="documentation mb-1"><i class="doc">' . esc_html__( 'SEO Rules', 'filter-plus' ) . $doc_url . '</i></div>';
+echo wp_kses_post( $docs );
 
 // SEO global settings
 if (!function_exists('filter_seo_doc')) {

@@ -4,7 +4,7 @@
     <div class="price-input-wrapper">
         <div class="field field-min">
             <label for="price-min-<?php echo esc_attr($template);?>" class="field-label">
-                <?php esc_html_e('Min','filter-plus-pro');?>
+                <?php esc_html_e('Min','filter-plus');?>
             </label>
             <div class="input-container">
                 <span class="currency-symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>
@@ -17,7 +17,7 @@
                     max="<?php echo floatval($max)?>"
                     step="0.01"
                     placeholder="<?php echo floatval($min)?>"
-                    aria-label="<?php esc_attr_e('Minimum price','filter-plus-pro');?>"
+                    aria-label="<?php esc_attr_e('Minimum price','filter-plus');?>"
                 >
             </div>
             <span class="input-error" id="min-error-<?php echo esc_attr($template);?>"></span>
@@ -29,7 +29,7 @@
 
         <div class="field field-max">
             <label for="price-max-<?php echo esc_attr($template);?>" class="field-label">
-                <?php esc_html_e('Max','filter-plus-pro');?>
+                <?php esc_html_e('Max','filter-plus');?>
             </label>
             <div class="input-container">
                 <span class="currency-symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>
@@ -41,7 +41,7 @@
                     min="<?php echo floatval($min)?>"
                     step="0.01"
                     placeholder="<?php echo floatval($max)?>"
-                    aria-label="<?php esc_attr_e('Maximum price','filter-plus-pro');?>"
+                    aria-label="<?php esc_attr_e('Maximum price','filter-plus');?>"
                 >
             </div>
             <span class="input-error" id="max-error-<?php echo esc_attr($template);?>"></span>

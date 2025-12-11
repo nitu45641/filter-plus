@@ -204,6 +204,6 @@ function product_filter_callback( $settings ) {
     }
 
     if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 ) {
-        echo \FilterPlus\Core\Frontend\Shortcodes::instance()->filter_plus( $settings );
+        echo wp_kses_post( \FilterPlus\Core\Frontend\Shortcodes::instance()->filter_plus( $settings ) );
     }
 }

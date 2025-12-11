@@ -368,8 +368,8 @@ class Wp_Filter extends \Bricks\Element {
 		}
 		$this->set_attribute( '_root', 'class', $root_classes );
 
-		echo "<div {$this->render_attributes( '_root' )}>";
-		echo \FilterPlus\Base\DataFactory::instance()->wp_render_html( $settings );
+		echo "<div " . wp_kses_post( $this->render_attributes( '_root' ) ) . ">";
+		echo wp_kses_post( \FilterPlus\Base\DataFactory::instance()->wp_render_html( $settings ) );
 		echo '</div>';
 	}
 }

@@ -8,7 +8,7 @@
     }
     $lists = array();
     if ( !class_exists('FilterPlusPro') ) {
-        $custom_field_label == '' ? esc_html__('Custom Field','filter-plus-pro'): esc_html($custom_field_label);
+        $custom_field_label == '' ? esc_html__('Custom Field','filter-plus'): esc_html($custom_field_label);
 
         $lists[] = array( 'label' => $custom_field_label , 'style'=> 'checkbox' , 'custom_field_list' => $custom_field_list );
     }
@@ -60,7 +60,7 @@
                 }
             ?>
         </div>
-        <span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus-pro');?></span>	
+        <span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>	
     </div>
 
     <?php endforeach; ?>

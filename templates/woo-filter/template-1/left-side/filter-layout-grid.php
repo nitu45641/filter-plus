@@ -7,14 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<h4 class="sidebar-label"><?php echo esc_html($title); ?></h4>
 	<div class="param-box param-box-<?php echo esc_attr($template);?>">
 		<?php
-			foreach ($get_attr as $key => $term_id) {
-				if (!empty( get_term( $term_id ) ) ) {
+			foreach ( $filter_plus_get_attr as $filter_plus_key => $filter_plus_term_id ) {
+				if ( ! empty( get_term( $filter_plus_term_id ) ) ) {
 					?>
-						<div class="radio-item taxonomy-item-<?php echo esc_attr($template);?>" 
-						data-term_id="<?php echo esc_attr($term_id); ?>"
-						data-taxonomy="<?php echo esc_attr(get_term( $term_id )->taxonomy ); ?>"
-						data-slug="<?php echo esc_attr(get_term( $term_id )->slug ); ?>"
-						><?php echo esc_html( get_term( $term_id )->name ); ?></div>
+						<div class="radio-item taxonomy-item-<?php echo esc_attr( $template ); ?>"
+						data-term_id="<?php echo esc_attr( $filter_plus_term_id ); ?>"
+						data-taxonomy="<?php echo esc_attr( get_term( $filter_plus_term_id )->taxonomy ); ?>"
+						data-slug="<?php echo esc_attr( get_term( $filter_plus_term_id )->slug ); ?>"
+						><?php echo esc_html( get_term( $filter_plus_term_id )->name ); ?></div>
 					<?php
 				}
 			}
