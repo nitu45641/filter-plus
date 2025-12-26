@@ -11,11 +11,11 @@ if ( $review_template !== '1' ) {
 }
 ?>
 <div class="panel sidebar-row">
-	<h4 class="sidebar-label"><?php echo !empty( $review_label ) ?  $review_label : esc_html__('Rating','filter-plus');?></h4>
+	<h4 class="sidebar-label"><?php echo !empty( $review_label ) ? esc_html( $review_label ) : esc_html__('Rating','filter-plus');?></h4>
 	<ul class=" ratings rating-wrap" id="">
 		<?php
-			for ( $filter_plus_i = 5; $filter_plus_i >= 1; $filter_plus_i-- ) {
-				Helper::rating_html( $filter_plus_i, $template );
+			for ( $filterplus_i = 5; $filterplus_i >= 1; $filterplus_i-- ) {
+				Helper::rating_html( $filterplus_i, $template );
 			}
 		?>
 	</ul>

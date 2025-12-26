@@ -431,6 +431,7 @@ class Helper {
 		if ( $type == "" && empty($categories) ) {
 			$category = get_term_by( 'slug' , 'uncategorized' , $taxonomy );
 			$uncategorized 	= !empty($category) ? $category->term_id : null;
+			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Excluding uncategorized is necessary for proper category display
 			$args_cat['exclude'] = array($uncategorized);
 		}
 
@@ -530,6 +531,7 @@ class Helper {
 		}
 
 		if ( !empty( $param['taxonomy']) ) {
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for taxonomy filtering
 			$args['tax_query'] = array(
 				array(
 					'taxonomy' => $param['taxonomy'],
@@ -541,6 +543,7 @@ class Helper {
 
 		//filter by attributes
 		if ( ! empty( $param['taxonomies'] ) ) {
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for attribute filtering
 			$args['tax_query'] = array('relation' => 'AND' );
 			if ( ! empty( $param['cat_id'] ) ) {
 				$product_cat = array(

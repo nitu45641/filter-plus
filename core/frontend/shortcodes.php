@@ -372,7 +372,7 @@ class Shortcodes {
 			';
 		}
 
-		$filter_plus_custom_css = '
+		$filterplus_custom_css = '
 		:root {
 			--filter-loadmore-bg: '.$loadmore_bg.';
 			--filter-loadmore-bg-hover: '.$loadmore_bg_hover.';
@@ -400,8 +400,8 @@ class Shortcodes {
 			'.$grid_style.'
 		';
 
-		wp_register_style( 'filter-plus-custom-css', false );
+		wp_register_style( 'filter-plus-custom-css', false, array(), \FilterPlus::get_version() );
 		wp_enqueue_style( 'filter-plus-custom-css' );
-		wp_add_inline_style( 'filter-plus-custom-css', $filter_plus_custom_css );
+		wp_add_inline_style( 'filter-plus-custom-css', $filterplus_custom_css );
 	}
 }

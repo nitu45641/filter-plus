@@ -11,7 +11,7 @@
 		</div>
 	</a>
 	<?php
-		$menus = array(
+		$filterplus_menus = array(
 			array(
 				'name' => esc_html__('Filter Options','filter-plus'),
 				'url' => admin_url() . 'admin.php?page=filter-options',
@@ -49,7 +49,7 @@
 		);
 
 		if ( ! class_exists( 'FilterPlusPro' ) ) {
-			$menus[] = array(
+			$filterplus_menus[] = array(
 				'name' => esc_html__( 'Upgrade to Pro','filter-plus' ),
 				'url' => 'https://wpbens.com/filter-plus/',
 				'target' => '_blank',
@@ -58,16 +58,17 @@
 		?>
 	<div class="navigation">
 		<?php
-			$filter_menus = array( 'filter-sets', 'filter-plus-settings' );
-			$current_page = ! empty( $_GET['page'] ) ? sanitize_text_field($_GET['page']) : '';
-		foreach ( $menus as $key => $value ) {
-			$active = ( ! empty( $value['slug'] ) && $value['slug'] == $current_page ) ? 'active' : '';
-			$class = $value === end( $menus ) ? 'upgrade_pro' : '';
+			$filterplus_filter_menus = array( 'filter-sets', 'filter-plus-settings' );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Menu highlighting doesn't require nonce verification
+			$filterplus_current_page = ! empty( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+		foreach ( $filterplus_menus as $filterplus_key => $filterplus_value ) {
+			$filterplus_active = ( ! empty( $filterplus_value['slug'] ) && $filterplus_value['slug'] == $filterplus_current_page ) ? 'active' : '';
+			$filterplus_class = $filterplus_value === end( $filterplus_menus ) ? 'upgrade_pro' : '';
 			?>
 				<li>
-					<a class="<?php echo esc_attr( $class ) . ' ' . esc_attr( $active ); ?>" href="<?php echo esc_url( $value['url'] ); ?>"
-					 target="<?php echo esc_attr( $value['target'] ); ?>">
-						<?php echo esc_html($value['name']);?>
+					<a class="<?php echo esc_attr( $filterplus_class ) . ' ' . esc_attr( $filterplus_active ); ?>" href="<?php echo esc_url( $filterplus_value['url'] ); ?>"
+					 target="<?php echo esc_attr( $filterplus_value['target'] ); ?>">
+						<?php echo esc_html($filterplus_value['name']);?>
 					</a>
 				</li>
 				<?php

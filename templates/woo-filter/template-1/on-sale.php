@@ -2,7 +2,7 @@
 
 <!-- on sale -->
 <div class="sidebar-row">
-    <h4 class="sidebar-label"><?php echo !empty( $on_sale_label ) ?  $on_sale_label : esc_html__('Sales','filter-plus');?></h4>
+    <h4 class="sidebar-label"><?php echo !empty( $on_sale_label ) ? esc_html( $on_sale_label ) : esc_html__('Sales','filter-plus');?></h4>
 	<div class="param-box">
         <label class="checkbox-item on_sale checkbox-item-<?php echo esc_html($template);?>">
             <input type="checkbox"  data-on_sale_text="<?php esc_html_e('On Sale','filter-plus');?>"

@@ -5,12 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Grid template for wp posts
  */
-function render_grid_product($product, $hide_wp_title, $hide_wp_desc) {
+function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc) {
 	?>
 	<div class="horizontal-wp-card product-style product-style-<?php echo esc_attr($product['template']); ?>">
 		<div class="hpcc-image">
 			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" class="hpcc-name">
-				<?php echo $product['post_image']; ?>
+				<?php echo wp_kses_post( $product['post_image'] ); ?>
 			</a>
 			<div class="filter-meta-wrapper">
 				<?php if (!empty($product['categories'])): ?>
@@ -30,7 +30,7 @@ function render_grid_product($product, $hide_wp_title, $hide_wp_desc) {
 		<div class="hpcc-content">
 			<?php if( $hide_wp_title == 'yes' ): ?>
 			<div class="filter-wp-title">
-				<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" class="hpcc-name"><h2><?php echo $product['post_title']; ?></h2></a>
+				<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" class="hpcc-name"><h2><?php echo esc_html( $product['post_title'] ); ?></h2></a>
 			</div>
 			<?php endif; ?>
 
@@ -42,7 +42,7 @@ function render_grid_product($product, $hide_wp_title, $hide_wp_desc) {
 			<?php endif; ?>
 			<?php if( $hide_wp_desc == 'yes' ): ?>
 				<div class="hpcc-description">
-					<?php echo $product['post_description']; ?>
+					<?php echo wp_kses_post( $product['post_description'] ); ?>
 				</div>
 			<?php endif; ?>
 
@@ -54,6 +54,6 @@ function render_grid_product($product, $hide_wp_title, $hide_wp_desc) {
 /**
  * List template for wp posts
  */
-function render_list_product($product, $hide_wp_title, $hide_wp_desc) {
+function filterplus_render_list_product($product, $hide_wp_title, $hide_wp_desc) {
 	// No list template for wp-filter template-1
 }

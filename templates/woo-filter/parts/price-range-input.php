@@ -7,7 +7,7 @@
                 <?php esc_html_e('Min','filter-plus');?>
             </label>
             <div class="input-container">
-                <span class="currency-symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>
+                <span class="currency-symbol"><?php echo esc_html( get_woocommerce_currency_symbol() ); ?></span>
                 <input
                     type="number"
                     id="price-min-<?php echo esc_attr($template);?>"
@@ -32,7 +32,7 @@
                 <?php esc_html_e('Max','filter-plus');?>
             </label>
             <div class="input-container">
-                <span class="currency-symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>
+                <span class="currency-symbol"><?php echo esc_html( get_woocommerce_currency_symbol() ); ?></span>
                 <input
                     type="number"
                     id="price-max-<?php echo esc_attr($template);?>"

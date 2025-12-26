@@ -3,7 +3,7 @@
 /**
  * Grid template for products
  */
-function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
+function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
 	?>
 	<div class="product-style product-style-<?php echo intval($product['template']); ?>">
 		<div class="vartical-prod-card-container">
@@ -13,9 +13,9 @@ function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 						<?php
 						$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), array(220, 220), false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
 						if (empty($grid_image)) {
-							echo preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']);
+							echo wp_kses_post( preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']) );
 						} else {
-							echo $grid_image;
+							echo wp_kses_post( $grid_image );
 						}
 						?>
 					</div>
@@ -47,7 +47,7 @@ function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 				</div>
 				<?php if( $hide_prod_add_cart == 'yes' ): ?>
 					<div class="card-action-btn-container">
-						<?php echo $product['cart_btn']; ?>
+						<?php echo wp_kses_post( $product['cart_btn'] ); ?>
 					</div>
 				<?php endif; ?>
 
@@ -62,14 +62,14 @@ function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 				</div>
 				<?php if( $hide_prod_title == 'yes' ): ?>
 				<div class="product-name">
-					<a href="<?php echo esc_url($product['post_permalink']); ?>"><?php echo $product['post_title']; ?></a>
+					<a href="<?php echo esc_url($product['post_permalink']); ?>"><?php echo esc_html( $product['post_title'] ); ?></a>
 				</div>
 				<?php endif; ?>
 
 				<?php if( $hide_prod_price == 'yes' ): ?>
-				<div class="product-price"><?php echo $product['post_price']; ?></div>
+				<div class="product-price"><?php echo wp_kses_post( $product['post_price'] ); ?></div>
 				<?php endif; ?>
-				<?php if( $hide_prod_rating == 'yes' ): ?> <?php echo $product['rating']; ?> <?php endif; ?>
+				<?php if( $hide_prod_rating == 'yes' ): ?> <?php echo wp_kses_post( $product['rating'] ); ?> <?php endif; ?>
 			</div>
 		</div>
 	</div>
@@ -79,7 +79,7 @@ function render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 /**
  * List template for products
  */
-function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
+function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
 	?>
 	<div class="horizontal-prod-card">
 		<div class="hpcc-image" style="width: 220px; min-width: 220px; height: 220px;">
@@ -89,9 +89,9 @@ function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 				$list_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), array(220, 220), false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
 				if (empty($list_image)) {
 					// Fallback: modify existing image to fit
-					echo preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']);
+					echo wp_kses_post( preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']) );
 				} else {
-					echo $list_image;
+					echo wp_kses_post( $list_image );
 				}
 				?>
 				<?php if (!empty($product['on_sale'])): ?>
@@ -114,12 +114,12 @@ function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 			<?php endif; ?>
 			<?php if( $hide_prod_rating == 'yes' && !empty($product['rating']) ): ?>
 			<div class="hpcc-rating">
-				<?php echo $product['rating']; ?>
+				<?php echo wp_kses_post( $product['rating'] ); ?>
 			</div>
 			<?php endif; ?>
 			<?php if( $hide_prod_price == 'yes' ): ?>
 			<div class="hpcc-price">
-				<?php echo $product['post_price']; ?>
+				<?php echo wp_kses_post( $product['post_price'] ); ?>
 			</div>
 			<?php endif; ?>
 			<?php if( $hide_prod_desc == 'yes' && !empty($product['post_description']) ): ?>
@@ -131,7 +131,7 @@ function render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $h
 		<?php if( $hide_prod_add_cart == 'yes' ): ?>
 		<div class="hpcc-actions">
 			<div class="hpcc-btns">
-				<?php echo $product['cart_btn']; ?>
+				<?php echo wp_kses_post( $product['cart_btn'] ); ?>
 			</div>
 		</div>
 		<?php endif; ?>

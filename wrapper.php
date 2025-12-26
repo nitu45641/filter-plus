@@ -63,7 +63,7 @@ Class Wrapper {
 			}
 		';
 
-		wp_register_style( 'filter-go-pro', false );
+		wp_register_style( 'filter-go-pro', false, array(), \FilterPlus::get_version() );
 		wp_enqueue_style( 'filter-go-pro' );
 		wp_add_inline_style( 'filter-go-pro', $custom_css );
 	}

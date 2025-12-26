@@ -50,10 +50,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				) {
 					include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/price-range.php";
 				}
-				$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
+				$filterplus_get_attr = \FilterPlus\Utils\Helper::array_data($tags);
 
 				// custom tags
-				if ( 'yes'== $show_tags && count($get_attr)> 0 &&
+				if ( 'yes'== $show_tags && count($filterplus_get_attr)> 0 &&
 					file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-grid.php")
 				) {
 					$title =  !empty( $tag_label ) ? $tag_label : esc_html__("Find Favorite Item","filter-plus");
@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				if ( 'yes'== $show_attributes &&
 					file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-attr-grid.php")
 				) {
-					$attributes = \FilterPlus\Utils\Helper::array_data($attributes);
+					$filterplus_attributes = \FilterPlus\Utils\Helper::array_data($attributes);
 					include \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-attr-grid.php";
 				}
 			}

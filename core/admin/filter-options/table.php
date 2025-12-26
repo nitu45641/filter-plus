@@ -87,18 +87,23 @@ class Table extends \WP_List_Table{
         return $actions;
     }
 
-    /** 
+    /**
      * Delete data
     */
     public function process_bulk_action() {
         $action = $this->current_action();
         if( 'trash'===$action ) {
-            $delete_ids = esc_sql( sanitize_text_field($_POST['bulk-delete']) );
-            foreach ( $delete_ids as $did ) {
-                wp_delete_post ($did, true);
+            if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'bulk-' . $this->_args['plural'] ) ) {
+                return;
             }
-            wp_redirect( esc_url( add_query_arg() ) );
-
+            if ( ! isset( $_POST['bulk-delete'] ) ) {
+                return;
+            }
+            $delete_ids = array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) );
+            foreach ( $delete_ids as $did ) {
+                wp_delete_post( $did, true );
+            }
+            wp_safe_redirect( esc_url( add_query_arg() ) );
             exit;
         }
     }
@@ -116,11 +121,12 @@ class Table extends \WP_List_Table{
         $offset       = ( $current_page - 1) * $per_page;
         $this->process_bulk_action();
 
-        if ( isset( $_REQUEST['orderby']) && isset( $_REQUEST['order']) ) 
-        {
-            $args['orderby']    = sanitize_key($_REQUEST['orderby']);
-            $args['order']      = sanitize_key($_REQUEST['order']);
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Sorting parameters don't require nonce verification
+        if ( isset( $_REQUEST['orderby'] ) && isset( $_REQUEST['order'] ) ) {
+            $args['orderby'] = sanitize_key( wp_unslash( $_REQUEST['orderby'] ) );
+            $args['order']   = sanitize_key( wp_unslash( $_REQUEST['order'] ) );
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         $args['limit']  = $per_page;
         $args['offset'] = $offset;

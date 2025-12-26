@@ -38,7 +38,7 @@ class Banner {
         $body = [
             'plugin_name'  => 'FilterPlus',
             'type'  => 'org',
-            'date'  => date('Y-m-d H:i:s'),
+            'date'  => gmdate('Y-m-d H:i:s'),
             'email' => esc_html($admin_email),
         ];
 
@@ -47,15 +47,12 @@ class Banner {
             'body'      => $body,
         ]);
         if (is_wp_error($response)) {
-            error_log('API POST failed: ' . $response->get_error_message());
             return;
         }
         $response_body = wp_remote_retrieve_body($response);
         $json = json_decode($response_body, true);
         if (isset($json['success'])) {
             update_option( $this->status_key , $json['success']);
-        } else {
-            error_log('API response missing status key: ' . $response_body);
         }        
     }
 

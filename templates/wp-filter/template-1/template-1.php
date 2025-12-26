@@ -28,8 +28,8 @@ use FilterPlus\Base\DataFactory;
 
 		// custom tags
 		if ( 'yes'== $show_tags ) {
-			$get_attr = \FilterPlus\Utils\Helper::array_data($tags);
-			if (count($get_attr)>0) {
+			$filterplus_get_attr = \FilterPlus\Utils\Helper::array_data($tags);
+			if (count($filterplus_get_attr)>0) {
 				$title = !empty($tag_label) ? $tag_label : esc_html__("Filter By Tag","filter-plus");
 				include \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/filter-layout-grid.php";
 			}
@@ -40,9 +40,9 @@ use FilterPlus\Base\DataFactory;
 		}
 		// author
 		if ( 'yes'== $author ) {
-			$authors = \FilterPlus\Utils\Helper::instance()->author_list($author_list);
-			
-			if (count($authors)>0) {
+			$filterplus_authors = \FilterPlus\Utils\Helper::instance()->author_list($author_list);
+
+			if (count($filterplus_authors)>0) {
 				$title =   !empty($author_label) ? $author_label : esc_html__("Authors","filter-plus");
 				include \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/authors.php";
 			}

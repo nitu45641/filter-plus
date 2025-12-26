@@ -11,15 +11,15 @@ if ( 'yes' != $apply_button_mode ) {
 	return;
 }
 
-$apply_label = ! empty( $apply_button_label ) ? $apply_button_label : esc_html__( 'Apply', 'filter-plus' );
-$reset_label = ! empty( $reset_button_label ) ? $reset_button_label : esc_html__( 'Reset', 'filter-plus' );
+$filterplus_apply_label = ! empty( $apply_button_label ) ? $apply_button_label : esc_html__( 'Apply', 'filter-plus' );
+$filterplus_reset_label = ! empty( $reset_button_label ) ? $reset_button_label : esc_html__( 'Reset', 'filter-plus' );
 ?>
 
 <div class="filter-buttons-wrap">
 	<button type="button" class="filter-reset-btn">
-		<?php echo esc_html( $reset_label ); ?>
+		<?php echo esc_html( $filterplus_reset_label ); ?>
 	</button>
 	<button type="button" class="filter-apply-btn">
-		<?php echo esc_html( $apply_label ); ?>
+		<?php echo esc_html( $filterplus_apply_label ); ?>
 	</button>
 </div>

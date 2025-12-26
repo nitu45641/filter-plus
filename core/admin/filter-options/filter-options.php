@@ -21,7 +21,7 @@
 	/**
 	 * Shows Rules
 	 */
-    $columns = array(
+    $filterplus_columns = array(
         'cb'        => '<input name="bulk-delete[]" type="checkbox" />',
         'type'      => esc_html__( 'Filter Type', 'filter-plus' ),
         'style'     => esc_html__( 'Style', 'filter-plus' ),
@@ -29,19 +29,19 @@
         'actions'   => esc_html__( 'Action', 'filter-plus' )
     );
 
-    $rules_list = array(
+    $filterplus_rules_list = array(
         'singular_name' => esc_html__( 'All Filter Options', 'filter-plus' ),
         'plural_name'   => esc_html__( 'All Filter Options', 'filter-plus' ),
-        'columns'       => $columns,
+        'columns'       => $filterplus_columns,
     );
 
     ?>
     <div class="filter-options-list">
         <form method="POST">
             <?php
-                $table = new \FilterPlus\Core\Admin\FilterOptions\Table( $rules_list );
-                $table->preparing_items();
-                $table->display();
+                $filterplus_table = new \FilterPlus\Core\Admin\FilterOptions\Table( $filterplus_rules_list );
+                $filterplus_table->preparing_items();
+                $filterplus_table->display();
             ?>
         </form>
     </div>

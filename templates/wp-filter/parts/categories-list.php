@@ -10,38 +10,38 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<h4 class="sidebar-label"><?php echo esc_html($title);?></h4>
 	
 	<ul class="category-list panel">
-		<?php 
-			$get_categories = \FilterPlus\Utils\Helper::get_categories($categories, '' , 
+		<?php
+			$filterplus_get_categories = \FilterPlus\Utils\Helper::get_categories($categories, '' ,
 			array('taxonomy'=> 'category') );
 
-			if ( !empty( $get_categories ) ) :
-				foreach($get_categories as $item): 
+			if ( !empty( $filterplus_get_categories ) ) :
+				foreach($filterplus_get_categories as $filterplus_item):
 				?>
-				<li 
-					data-name="<?php echo esc_attr($item['name'])?>"
-					data-cat_id="<?php echo esc_attr($item['term_id'])?>"
-					data-slug="<?php echo esc_attr($item['slug'])?>"
+				<li
+					data-name="<?php echo esc_attr($filterplus_item['name'])?>"
+					data-cat_id="<?php echo esc_attr($filterplus_item['term_id'])?>"
+					data-slug="<?php echo esc_attr($filterplus_item['slug'])?>"
 				>
-					<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($item['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$item['term_id'])?>">
-					<label for="<?php  echo esc_attr("cat_li_".$item['term_id'])?>"><?php  echo esc_html($item['name'])  ;?></label>
-					<?php if( $sub_categories == 'yes' && !empty($item['sub_categories'])): ?>
+					<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($filterplus_item['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$filterplus_item['term_id'])?>">
+					<label for="<?php  echo esc_attr("cat_li_".$filterplus_item['term_id'])?>"><?php  echo esc_html($filterplus_item['name'])  ;?></label>
+					<?php if( $sub_categories == 'yes' && !empty($filterplus_item['sub_categories'])): ?>
 					<ul class="sub_categories"
 					class="cat-group"
 					>
-					<?php foreach($item['sub_categories'] as $sub): ?>
-						<li 
-							data-name="<?php echo esc_attr($sub['name'])?>"
-							data-cat_id="<?php echo esc_attr($sub['term_id'])?>"
-							data-slug="<?php echo esc_attr($sub['slug'])?>">
-							<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($sub['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$sub['term_id'])?>">
-							<label for="<?php  echo esc_attr("cat_li_".$sub['term_id'])?>"><?php  echo esc_html($sub['name'])  ;?></label>
+					<?php foreach($filterplus_item['sub_categories'] as $filterplus_sub): ?>
+						<li
+							data-name="<?php echo esc_attr($filterplus_sub['name'])?>"
+							data-cat_id="<?php echo esc_attr($filterplus_sub['term_id'])?>"
+							data-slug="<?php echo esc_attr($filterplus_sub['slug'])?>">
+							<input type="checkbox" class="regular-checkbox" value="<?php  echo esc_attr($filterplus_sub['term_id'])?>" id="<?php  echo esc_attr("cat_li_".$filterplus_sub['term_id'])?>">
+							<label for="<?php  echo esc_attr("cat_li_".$filterplus_sub['term_id'])?>"><?php  echo esc_html($filterplus_sub['name'])  ;?></label>
 						</li>
 					<?php endforeach; ?>
 					</ul>
 					<?php endif; ?>
 				</li>
-				<?php 
-				endforeach; 
+				<?php
+				endforeach;
 			endif;
 		?>
 	</ul>

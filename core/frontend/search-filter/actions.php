@@ -188,6 +188,7 @@ class Actions {
 			}
 
 			if (!empty($all_list)) {
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for custom field filtering
 				$args['meta_query'] = $all_list;
 			}
 		}
@@ -202,6 +203,7 @@ class Actions {
 	 */
 	public function product_on_stock( $param , $args ) {
 		if(!empty($param['stock'])){
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for stock status filtering
 			$args['meta_query'] =array(
                 array(
                    'key'     => '_stock_status',
@@ -249,11 +251,13 @@ class Actions {
 				case 'price':
 					$args['order']      = 'ASC';
 					$args['orderby']    = 'meta_value_num';
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Required for price ordering
 					$args['meta_key']   = '_price';
 					break;
 				case 'price-desc':
 					$args['order']      = 'DESC';
 					$args['orderby']    = 'meta_value_num';
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Required for price ordering
 					$args['meta_key']   = '_price';
 					break;
 				case 'rating':
@@ -262,6 +266,7 @@ class Actions {
 					break;
 				case 'popularity':
 					$args['orderby']  = ['menu_order' => 'DESC', 'meta_value_num' => 'DESC'];
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Required for popularity ordering
 					$args['meta_key'] = 'total_sales';
 					break;
 				default:
@@ -284,6 +289,7 @@ class Actions {
 	 */
 	public function product_reviews( $param , $args ) {
 		if(!empty($param['rating'])){
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for rating filtering
 			$args['meta_query'] =array(
                 array(
                    'key'     => '_wc_average_rating',
@@ -323,6 +329,7 @@ class Actions {
 	 */
 	public function product_min_max_price( $param , $args ) {
 		if ( ! empty( $param['min'] ) && ! empty( $param['max'] ) ) {
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for price range filtering
 			$args['meta_query'] = array(
 				array(
 					'key'       => '_price',
@@ -611,10 +618,10 @@ class Actions {
 			// Render each product using the new functions
 			foreach ($products as $product) {
 				// Grid template
-				if (function_exists('render_grid_product')) {
+				if (function_exists('filterplus_render_grid_product')) {
 					ob_start();
 					if ($filter_type == 'product') {
-						render_grid_product(
+						filterplus_render_grid_product(
 							$product,
 							isset($post_data['hide_prod_add_cart']) ? $post_data['hide_prod_add_cart'] : 'yes',
 							isset($post_data['hide_prod_title']) ? $post_data['hide_prod_title'] : 'yes',
@@ -623,7 +630,7 @@ class Actions {
 							isset($post_data['hide_prod_price']) ? $post_data['hide_prod_price'] : 'yes'
 						);
 					} else {
-						render_grid_product(
+						filterplus_render_grid_product(
 							$product,
 							isset($post_data['hide_wp_title']) ? $post_data['hide_wp_title'] : 'yes',
 							isset($post_data['hide_wp_desc']) ? $post_data['hide_wp_desc'] : 'yes'
@@ -633,10 +640,10 @@ class Actions {
 				}
 
 				// List template
-				if (function_exists('render_list_product')) {
+				if (function_exists('filterplus_render_list_product')) {
 					ob_start();
 					if ($filter_type == 'product') {
-						render_list_product(
+						filterplus_render_list_product(
 							$product,
 							isset($post_data['hide_prod_add_cart']) ? $post_data['hide_prod_add_cart'] : 'yes',
 							isset($post_data['hide_prod_title']) ? $post_data['hide_prod_title'] : 'yes',
@@ -645,7 +652,7 @@ class Actions {
 							isset($post_data['hide_prod_price']) ? $post_data['hide_prod_price'] : 'yes'
 						);
 					} else {
-						render_list_product(
+						filterplus_render_list_product(
 							$product,
 							isset($post_data['hide_wp_title']) ? $post_data['hide_wp_title'] : 'yes',
 							isset($post_data['hide_wp_desc']) ? $post_data['hide_wp_desc'] : 'yes'

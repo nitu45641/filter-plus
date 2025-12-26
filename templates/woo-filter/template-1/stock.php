@@ -2,7 +2,7 @@
 
 <!-- stock -->
 <div class="sidebar-row">
-    <h4 class="sidebar-label"><?php echo !empty( $stock_label ) ?  $stock_label : esc_html__('Stock','filter-plus');?></h4>
+    <h4 class="sidebar-label"><?php echo !empty( $stock_label ) ? esc_html( $stock_label ) : esc_html__('Stock','filter-plus');?></h4>
 	<div class="param-box">
         <label class="stock checkbox-item checkbox-item-<?php echo esc_html($template);?>">
             <input type="checkbox" data-stock_text="<?php esc_html_e('In Stock','filter-plus');?>"

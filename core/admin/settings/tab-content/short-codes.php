@@ -15,243 +15,243 @@ use \FilterPlus\Utils\Helper as Helper;
 		<h1 class="mt-1 mb-0 font_bold font_18"><?php esc_html_e("Available WooCommerce Filter Section","filter-plus"); ?></h1>
 		<?php
 			// templates
-			$doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/woocommerce/product-filter/"> [' . esc_html__( 'Documentation Link', 'filter-plus' ) . '] </a>';
-			$docs 		= '<div class="documentation mb-1"><div class="doc">' . esc_html__( 'Gutenberg Block,Elementor widget is available for filter features.', 'filter-plus' ) . ' ' . $doc_url . '</div></div>';
-			echo wp_kses_post( $docs );
+			$filterplus_doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/woocommerce/product-filter/"> [' . esc_html__( 'Documentation Link', 'filter-plus' ) . '] </a>';
+			$filterplus_docs 		= '<div class="documentation mb-1"><div class="doc">' . esc_html__( 'Gutenberg Block,Elementor widget is available for filter features.', 'filter-plus' ) . ' ' . $filterplus_doc_url . '</div></div>';
+			echo wp_kses_post( $filterplus_docs );
 
 			// apply button mode
-			$args = array('label'=>esc_html__("Apply Button Mode:","filter-plus"),'id' => 'apply_button_mode','data_label' => 'apply_button_mode');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Apply Button Mode:","filter-plus"),'id' => 'apply_button_mode','data_label' => 'apply_button_mode');
+			filterplus_checkbox_field($filterplus_args);
 
 			// apply button label
-			$args = array('label'=>esc_html__("Apply Button Label:","filter-plus"),'id' => 'apply_button_label',
+			$filterplus_args = array('label'=>esc_html__("Apply Button Label:","filter-plus"),'id' => 'apply_button_label',
 			'placeholder'=>esc_html__("Apply","filter-plus"),
 			'data_label' => 'apply_button_label','condition_class' => 'apply_button_mode d-none');
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
 			// reset button label
-			$args = array('label'=>esc_html__("Reset Button Label:","filter-plus"),'id' => 'reset_button_label',
+			$filterplus_args = array('label'=>esc_html__("Reset Button Label:","filter-plus"),'id' => 'reset_button_label',
 			'placeholder'=>esc_html__("Reset","filter-plus"),
 			'data_label' => 'reset_button_label','condition_class' => 'apply_button_mode d-none');
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
 			// masonry style
-			$args = array('label'=>esc_html__("Masonry Style:","filter-plus"),'id' => 'masonry_style','data_label' => 'masonry_style');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Masonry Style:","filter-plus"),'id' => 'masonry_style','data_label' => 'masonry_style');
+			filterplus_checkbox_field($filterplus_args);
 
-			$args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
+			$filterplus_args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
 			'data_label' => 'template','options'=>[1,2,3,4,5,6,7],'type'=>'template' );
 
-			if ( $disable ) {
-				$args['template_disable'] = 1;
+			if ( $filterplus_disable ) {
+				$filterplus_args['template_disable'] = 1;
 			}
-			filter_plus_select_field($args);
+			filterplus_select_field($filterplus_args);
 
 			// Title
-			$args        = array('label'=>esc_html__("Title:","filter-plus"),'id' => 'title',
+			$filterplus_args        = array('label'=>esc_html__("Title:","filter-plus"),'id' => 'title',
 			'placeholder'=>esc_html__("Place Title","filter-plus"),
 			'data_label' => 'title');
-			
-			filter_plus_number_input_field($args);
 
-			$args 		= array('label'=>esc_html__("Filter Position:","filter-plus"),'id' => 'filter_position',
+			filterplus_number_input_field($filterplus_args);
+
+			$filterplus_args 		= array('label'=>esc_html__("Filter Position:","filter-plus"),'id' => 'filter_position',
 			'data_label' => 'filter_position','options'=> Helper::filter_position(),'type'=>'random' );
-			filter_plus_select_field($args);
+			filterplus_select_field($filterplus_args);
 
-			$args 		= array('label'=>esc_html__("Pagination Style:","filter-plus"),'id' => 'pagination_style',
+			$filterplus_args 		= array('label'=>esc_html__("Pagination Style:","filter-plus"),'id' => 'pagination_style',
 			'data_label' => 'pagination_style','options'=> Helper::pagination_style(),'type'=>'random' );
-			filter_plus_select_field($args);
+			filterplus_select_field($filterplus_args);
 
 			// Limit
-			$args        = array('label'=>esc_html__("No of Items Per Page:","filter-plus"),'id' => 'no_of_items',
+			$filterplus_args        = array('label'=>esc_html__("No of Items Per Page:","filter-plus"),'id' => 'no_of_items',
 			'placeholder'=>esc_html__("Place No of Items Per Page","filter-plus"), 'field_type'=> 'number',
 			'data_label' => 'no_of_items');
-			filter_plus_number_input_field($args);
-			
+			filterplus_number_input_field($filterplus_args);
+
 			// categories template
-			$args 		= array('label'=>esc_html__("Select Category Filter Template:","filter-plus"),'id' => 'category_template',
+			$filterplus_args 		= array('label'=>esc_html__("Select Category Filter Template:","filter-plus"),'id' => 'category_template',
 			'data_label' => 'category_template','options'=> DataFactory::category_template()['template'],
-			'type'=>'template' , $args['template_disable'] = DataFactory::category_template()['template_disable'] );
-			filter_plus_select_field($args);
+			'type'=>'template' , 'template_disable' => DataFactory::category_template()['template_disable'] );
+			filterplus_select_field($filterplus_args);
 
 			// categories
-			$args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
+			$filterplus_args        = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
 			'placeholder'=>esc_html__("Place Category Label Here","filter-plus"),
 			'data_label' => 'category_label');
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
-			$get_categories = Helper::get_categories();
+			$filterplus_get_categories = Helper::get_categories();
 
-			$args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
-			'select_type'=>'multiple','data_label' => 'categories','options'=>$get_categories);
-			filter_plus_select_field($args);
+			$filterplus_args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
+			'select_type'=>'multiple','data_label' => 'categories','options'=>$filterplus_get_categories);
+			filterplus_select_field($filterplus_args);
 			// hide empty categories
-			$args = array('label'=>esc_html__("Hide Empty Category:","filter-plus"),'id' => 'hide_empty_cat','data_label' => 'hide_empty_cat');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Hide Empty Category:","filter-plus"),'id' => 'hide_empty_cat','data_label' => 'hide_empty_cat');
+			filterplus_checkbox_field($filterplus_args);
 			// sub categories
-			$args = array('label'=>esc_html__("Display Sub Categories:","filter-plus"),'id' => 'woo_sub_categories','data_label' => 'sub_categories');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Display Sub Categories:","filter-plus"),'id' => 'woo_sub_categories','data_label' => 'sub_categories');
+			filterplus_checkbox_field($filterplus_args);
 
-			$args = array('label'=>esc_html__("Display Product Count:","filter-plus"),'id' => 'woo_product_count','data_label' => 'product_count');
-			filter_plus_checkbox_field($args);
-			
+			$filterplus_args = array('label'=>esc_html__("Display Product Count:","filter-plus"),'id' => 'woo_product_count','data_label' => 'product_count');
+			filterplus_checkbox_field($filterplus_args);
+
 			// colors
-			$args = array('label'=>esc_html__("Display Colors:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
-			filter_plus_checkbox_field($args);
-			
+			$filterplus_args = array('label'=>esc_html__("Display Colors:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
+			filterplus_checkbox_field($filterplus_args);
+
 			// color template
-			$args 		= array(
+			$filterplus_args 		= array(
 			'label'=>esc_html__("Select Color Filter Template:","filter-plus"),'id' => 'color_template',
 			'data_label' => 'color_template','options'=> DataFactory::color_template()['template'],'type'=>'template',
-			'condition_class' => "show_colors d-none", $args['template_disable'] = DataFactory::color_template()['template_disable']
+			'condition_class' => "show_colors d-none", 'template_disable' => DataFactory::color_template()['template_disable']
 			);
-			filter_plus_select_field($args);
+			filterplus_select_field($filterplus_args);
 
-			$args        = array('label'=>esc_html__("Color Label:","filter-plus"),
+			$filterplus_args        = array('label'=>esc_html__("Color Label:","filter-plus"),
 			'id' => 'color_label',
 			'condition_class' => "show_colors d-none",
 			'placeholder'=>esc_html__("Place Color Label Here","filter-plus"),
 			'data_label' => 'color_label');
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
 
 			// sizes
-			$args = array('label'=>esc_html__("Display Size:","filter-plus"),'id' => 'show_size','data_label' => 'size');
-		 	filter_plus_checkbox_field($args);
-			
-			$args        = array('label'=>esc_html__("Size Label:","filter-plus"),
+			$filterplus_args = array('label'=>esc_html__("Display Size:","filter-plus"),'id' => 'show_size','data_label' => 'size');
+		 	filterplus_checkbox_field($filterplus_args);
+
+			$filterplus_args        = array('label'=>esc_html__("Size Label:","filter-plus"),
 			'id' => 'size_label',
 			'condition_class' => "show_size d-none",
 			'placeholder'=>esc_html__("Place Size Label Here","filter-plus"),
 			'data_label' => 'size_label');
-			filter_plus_number_input_field($args);
-			
-			// show tags
-			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'show_tags','data_label' => 'show_tags');
-			filter_plus_checkbox_field($args);
+			filterplus_number_input_field($filterplus_args);
 
-			$args = array('label'=>esc_html__("Tag Label:","filter-plus"),'id' => 'tag_label',
+			// show tags
+			$filterplus_args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'show_tags','data_label' => 'show_tags');
+			filterplus_checkbox_field($filterplus_args);
+
+			$filterplus_args = array('label'=>esc_html__("Tag Label:","filter-plus"),'id' => 'tag_label',
 			'placeholder'=>esc_html__("Place Tag Label Here","filter-plus"),
 			'data_label' => 'tag_label','condition_class' => "show_tags d-none",
 			'value' => '');
-			filter_plus_number_input_field($args);
-			
+			filterplus_number_input_field($filterplus_args);
+
 			// get tag list
-			$get_tags   = Helper::get_product_tags('product_tag');
+			$filterplus_get_tags   = Helper::get_product_tags('product_tag');
 
-			$args       = array('label'=>esc_html__("Tag List:","filter-plus"),'id' => 'woo_pro_tags',
-			'data_label' => 'tags','options'=>$get_tags , 'select_type' => 'multiple',  'condition_class' => "show_tags d-none");
+			$filterplus_args       = array('label'=>esc_html__("Tag List:","filter-plus"),'id' => 'woo_pro_tags',
+			'data_label' => 'tags','options'=>$filterplus_get_tags , 'select_type' => 'multiple',  'condition_class' => "show_tags d-none");
 
-			filter_plus_select_field($args);
+			filterplus_select_field($filterplus_args);
 
 			// show attributes
-			$args = array('label'=>esc_html__("Display Attributes:","filter-plus"),'id' => 'show_attributes','data_label' => 'show_attributes');
-			filter_plus_checkbox_field($args);
-			$args = array('label'=>esc_html__("Attribute Label:","filter-plus"),'id' => 'attribute_label',
+			$filterplus_args = array('label'=>esc_html__("Display Attributes:","filter-plus"),'id' => 'show_attributes','data_label' => 'show_attributes');
+			filterplus_checkbox_field($filterplus_args);
+			$filterplus_args = array('label'=>esc_html__("Attribute Label:","filter-plus"),'id' => 'attribute_label',
 			'placeholder'=>esc_html__("Place Attribute Label Here","filter-plus"),
 			'data_label' => 'attribute_label',
 			'condition_class' => "show_attributes d-none");
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
 			// get attributes list
 			global $product;
-			$get_attributes     = class_exists('WooCommerce') ? wc_get_attribute_taxonomies() : array();
-			$args               = array('label'=>esc_html__("Attribute List:","filter-plus"),'id' => 'woo_pro_attributes',
-			'data_label' => 'attributes', 'options'=>$get_attributes , 'select_type' => 'multiple', 'condition_class' => "show_attributes d-none" , 'type'=>'attributes');
-			filter_plus_select_field($args);
+			$filterplus_get_attributes     = class_exists('WooCommerce') ? wc_get_attribute_taxonomies() : array();
+			$filterplus_args               = array('label'=>esc_html__("Attribute List:","filter-plus"),'id' => 'woo_pro_attributes',
+			'data_label' => 'attributes', 'options'=>$filterplus_get_attributes , 'select_type' => 'multiple', 'condition_class' => "show_attributes d-none" , 'type'=>'attributes');
+			filterplus_select_field($filterplus_args);
 
 			// show price range
-			$args = array('label'=>esc_html__("Display Price Range:","filter-plus"),'id' => 'show_price_range','data_label' => 'show_price_range');
-			filter_plus_checkbox_field($args);
-			$args = array('label'=>esc_html__("Price Range Label:","filter-plus"),
+			$filterplus_args = array('label'=>esc_html__("Display Price Range:","filter-plus"),'id' => 'show_price_range','data_label' => 'show_price_range');
+			filterplus_checkbox_field($filterplus_args);
+			$filterplus_args = array('label'=>esc_html__("Price Range Label:","filter-plus"),
 			'placeholder'=>esc_html__("Place Price Range Label Here","filter-plus"),
 			'id' => 'price_range_label','data_label' => 'price_range_label',
 			'condition_class' => "show_price_range d-none");
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
 
 			// show reviews
-			$args = array('label'=>esc_html__("Display Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Display Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews');
+			filterplus_checkbox_field($filterplus_args);
 
 			// review template
-			$args 		= array(
+			$filterplus_args 		= array(
 			'label'=>esc_html__("Select Review Filter Template:","filter-plus"),'id' => 'review_template',
 			'data_label' => 'review_template','options'=> DataFactory::review_template()['template'],'type'=>'template',
-			'condition_class' => "show_reviews d-none", $args['template_disable'] = DataFactory::review_template()['template_disable']
+			'condition_class' => "show_reviews d-none", 'template_disable' => DataFactory::review_template()['template_disable']
 			);
-			filter_plus_select_field($args);
+			filterplus_select_field($filterplus_args);
 
-			$args = array('label'=>esc_html__("Review Label:","filter-plus"),
+			$filterplus_args = array('label'=>esc_html__("Review Label:","filter-plus"),
 			'placeholder'=>esc_html__("Place Review Label Here","filter-plus"),
 			'id' => 'review_label','data_label' => 'review_label',
 			'condition_class' => "show_reviews d-none");
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
 
 			// filter by stock
-			$args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock');
+			filterplus_checkbox_field($filterplus_args);
 
-			$args = array('label'=>esc_html__("Stock Label:","filter-plus"),'id' => 'stock_label',
+			$filterplus_args = array('label'=>esc_html__("Stock Label:","filter-plus"),'id' => 'stock_label',
 			'placeholder'=>esc_html__("Place Stock Label Here","filter-plus"),
 			'data_label' => 'stock_label','condition_class' => 'stock d-none' );
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
 			// filter by on sale
-			$args = array('label'=>esc_html__("Filter By On Sale:","filter-plus"),'id' =>'on_sale','data_label' => 'on_sale');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Filter By On Sale:","filter-plus"),'id' =>'on_sale','data_label' => 'on_sale');
+			filterplus_checkbox_field($filterplus_args);
 
-			$args = array('label'=>esc_html__("On Sale Label:","filter-plus"),
+			$filterplus_args = array('label'=>esc_html__("On Sale Label:","filter-plus"),
 			'placeholder'=>esc_html__("Place On Sale Label Here","filter-plus"),
 			'id' => 'on_sale_label','data_label' => 'on_sale_label',
 			'condition_class' => "on_sale d-none");
 
-			filter_plus_number_input_field($args);
+			filterplus_number_input_field($filterplus_args);
 
 
 		?>
 
 		<h1 class="font_bold font_18 mb-1"><?php esc_html_e("Filter Result Products","filter-plus"); ?></h1>
-		
+
 		<?php
 
 			// show title
-			$args = array('label'=>esc_html__("Display Title:","filter-plus"),'id' => 'hide_prod_title',
+			$filterplus_args = array('label'=>esc_html__("Display Title:","filter-plus"),'id' => 'hide_prod_title',
 			'data_label' => 'hide_prod_title','checked' => 'yes');
-			filter_plus_checkbox_field($args);
+			filterplus_checkbox_field($filterplus_args);
 
 			// show descrtiption
-			$args = array('label'=>esc_html__("Display Descrtiption:","filter-plus"),'id' => 'hide_prod_desc',
+			$filterplus_args = array('label'=>esc_html__("Display Descrtiption:","filter-plus"),'id' => 'hide_prod_desc',
 			'data_label' => 'hide_prod_desc','checked' => 'yes');
-			filter_plus_checkbox_field($args);
+			filterplus_checkbox_field($filterplus_args);
 
 			// show price
-			$args = array('label'=>esc_html__("Display Price:","filter-plus"),'id' => 'hide_prod_price',
+			$filterplus_args = array('label'=>esc_html__("Display Price:","filter-plus"),'id' => 'hide_prod_price',
 			'data_label' => 'hide_prod_price','checked' => 'yes');
-			filter_plus_checkbox_field($args);
-			
+			filterplus_checkbox_field($filterplus_args);
+
 			// show Add to Cart
-			$args = array('label'=>esc_html__("Display Add to Cart:","filter-plus"),'id' => 'hide_prod_add_cart',
+			$filterplus_args = array('label'=>esc_html__("Display Add to Cart:","filter-plus"),'id' => 'hide_prod_add_cart',
 			'data_label' => 'hide_prod_add_cart','checked' => 'yes');
-			filter_plus_checkbox_field($args);
+			filterplus_checkbox_field($filterplus_args);
 
 			// show Rating
-			$args = array('label'=>esc_html__("Display Rating:","filter-plus"),'id' => 'hide_prod_rating',
+			$filterplus_args = array('label'=>esc_html__("Display Rating:","filter-plus"),'id' => 'hide_prod_rating',
 			'data_label' => 'hide_prod_rating','checked' => 'yes');
-			filter_plus_checkbox_field($args);
+			filterplus_checkbox_field($filterplus_args);
 
 			// show sorting
-			$args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting');
+			filterplus_checkbox_field($filterplus_args);
 
 			// show tags
-			$args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'product_tags','data_label' => 'product_tags');
-			filter_plus_checkbox_field($args);
+			$filterplus_args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'product_tags','data_label' => 'product_tags');
+			filterplus_checkbox_field($filterplus_args);
 			// show product categories
-			$args = array('label'=>esc_html__("Display Categories:","filter-plus"),'id' => 'product_categories',
+			$filterplus_args = array('label'=>esc_html__("Display Categories:","filter-plus"),'id' => 'product_categories',
 			'data_label' => 'product_categories');
-			filter_plus_checkbox_field($args);
+			filterplus_checkbox_field($filterplus_args);
 
 		?>
 		<div class="single-block">

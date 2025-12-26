@@ -80,8 +80,15 @@ class Helper {
 	 * @return object
 	 */
 	public static function get_custom_fields_values( $key ) {
-		global $wpdb;
-		$meta_values = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT meta_value FROM '.$wpdb->postmeta.' WHERE meta_value !="" AND meta_value IS NOT NULL AND meta_key=%s',$key), OBJECT );
+		$cache_key = 'filterplus_custom_fields_' . md5( $key );
+		$meta_values = wp_cache_get( $cache_key, 'filterplus' );
+
+		if ( false === $meta_values ) {
+			global $wpdb;
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom query for distinct meta values not available via WP API
+			$meta_values = $wpdb->get_results( $wpdb->prepare( 'SELECT DISTINCT meta_value FROM ' . $wpdb->postmeta . ' WHERE meta_value !="" AND meta_value IS NOT NULL AND meta_key=%s', $key ), OBJECT );
+			wp_cache_set( $cache_key, $meta_values, 'filterplus', HOUR_IN_SECONDS );
+		}
 
 		return $meta_values;
 	}
