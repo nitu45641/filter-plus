@@ -1,9 +1,9 @@
-=== Filter Plus ===
+=== Filter Plus - Product Filter & WordPress Filter ===
 Contributors: markutos987
 Donate link: https://wpbens.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Tested up to: 6.9
-Stable tag: 1.1.6
+Stable tag: 1.1.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -137,6 +137,9 @@ If you are familiar with WordPress interface and how to use plugins in WordPress
 
 
 == Changelog ==
+
+= 1.1.8 (January 06, 2026)=
+Added  : PHPCS fix added
 
 = 1.1.6 (November 25, 2025)=
 Added  : Filter list view 
