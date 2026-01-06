@@ -4,7 +4,7 @@
  * Plugin Name:       Filter Plus
  * Plugin URI:        https://wpbens.com/filter-plus/
  * Description:       Advanced Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website. It allows users to filter anything based on different taxonomies.
- * Version:           1.1.9
+ * Version:           1.1.10
  * Requires PHP:      7.4
  * Author:            Wpbens
  * Author URI:        https://wpbens.com/
@@ -75,14 +75,14 @@ final class FilterPlus {
 	 * @since 1.1.0
 	 */
 	public function initialize_modules() {
-		do_action( 'filterplus_before_load' );
+		do_action( 'filter-plus/before_load' );
 		require_once plugin_dir_path( __FILE__ ) . 'autoloader.php';
 		require_once plugin_dir_path( __FILE__ ) . 'wrapper.php';
 
 		// Load Plugin modules and classes
 		\FilterPlus\Wrapper::instance();
 
-		do_action( 'filterplus_after_load' );
+		do_action( 'filter-plus/after_load' );
 	}
 
 	/**
