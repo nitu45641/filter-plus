@@ -35,9 +35,9 @@
 			filterplus_checkbox_field($filterplus_args);
 
 			// templates
-			$filterplus_args = array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'post_template',
-			'data_label' => 'template','options'=>[1,2,3],'type'=>'template' );
-			if ( $disable ) {
+			$filterplus_args = array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'post_template',                               
+			'data_label' => 'template','options'=>[1,2,3],'type'=>'template' );                                                                   
+			if ( isset( $filterplus_disable ) && $filterplus_disable ) {
 				$filterplus_args['template_disable'] = 1;
 			}
 			filterplus_select_field($filterplus_args);
