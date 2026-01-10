@@ -1106,7 +1106,7 @@ msgstr ""
 #: build/index.js:232
 #: src/blocks/woo-filter/index.js:213
 #: build/index.js:213
-msgid "Select Style"
+msgid "Select Template"
 msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:70

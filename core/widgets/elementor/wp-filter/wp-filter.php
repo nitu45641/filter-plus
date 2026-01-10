@@ -80,7 +80,7 @@ class Wp_Filter extends Widget_Base {
 		$this->add_control(
 			'template',
 			[
-				'label' => esc_html__('Select Style', 'filter-plus'),
+				'label' => esc_html__('Select Template', 'filter-plus'),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
 				'options' => $templates,

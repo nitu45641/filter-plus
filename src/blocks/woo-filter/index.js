@@ -246,7 +246,7 @@ registerBlockType('filter-plus/woo-filter', {
                         )}
 
                         <SelectControl
-                            label={__('Select Style', 'filter-plus')}
+                            label={__('Select Template', 'filter-plus')}
                             value={attributes.template}
                             options={getTemplateOptions()}
                             onChange={(value) => setAttributes({ template: value })}

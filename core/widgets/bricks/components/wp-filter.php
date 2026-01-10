@@ -53,7 +53,7 @@ class Wp_Filter extends \Bricks\Element {
 			'type' => 'select',
 			'options' => \FilterPlus\Utils\Helper::widgets_templates(3),
 			'inline' => true,
-			'placeholder' => esc_html__( 'Select Style', 'filter-plus' ),
+			'placeholder' => esc_html__( 'Select Template', 'filter-plus' ),
 			'single' => true,
 			'searchable' => false,
 			'clearable' => true,
