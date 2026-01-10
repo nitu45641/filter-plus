@@ -57,8 +57,8 @@ if ( ! function_exists( 'filterplus_checkbox_field' ) ) {
 				' . $pro_link_end . '
 			</div>
 		';
-
-		echo wp_kses_post( FilterPlus\Utils\Helper::kses( $html ) );
+		
+		echo FilterPlus\Utils\Helper::kses( $html );
 	}
 }
 
@@ -102,7 +102,7 @@ if ( ! function_exists( 'filterplus_number_input_field' ) ) {
 		</div>
 		';
 
-		echo wp_kses_post( FilterPlus\Utils\Helper::kses( $html ) );
+		echo FilterPlus\Utils\Helper::kses( $html );
 	}
 }
 
@@ -119,7 +119,10 @@ if ( ! function_exists( 'filterplus_select_field' ) ) {
 		if ( ! empty( $args['type'] ) && 'attributes' == $args['type'] ) {
 			if ( ! empty( $args['options'] ) ) :
 				foreach ( $args['options'] as $item ) :
-					$options_html .= '<option value="' . $item->attribute_id . '">' . $item->attribute_label . '</option>';
+					$opt_value = isset( $item->attribute_id ) ? $item->attribute_id : '';
+					$opt_label = isset( $item->attribute_label ) ? $item->attribute_label : '';
+					$selected_attr = is_array( $selected ) ? ( in_array( $opt_value, $selected ) ? ' selected' : '' ) : ( (string) $opt_value === (string) $selected ? ' selected' : '' );
+					$options_html .= '<option value="' . esc_attr( $opt_value ) . '"' . $selected_attr . '>' . esc_html( $opt_label ) . '</option>';
 				endforeach;
 			endif;
 		} else if ( ! empty( $args['type'] ) && ( 'template' == $args['type'] ) ) {
@@ -142,7 +145,7 @@ if ( ! function_exists( 'filterplus_select_field' ) ) {
 					}
 
 					$pro_text = ! empty( $disabled ) ? ' (' . esc_html__( 'Pro', 'filter-plus' ) . ')' : '';
-					$options_html .= '<option ' . $disabled . ' ' . $select_opt . ' ' . $disabled . ' value="' . $key . '">' . $item . $pro_text . '</option>';
+					$options_html .= '<option ' . $disabled . ' ' . $select_opt . ' ' . $disabled . ' value="' . esc_attr( $key ) . '">' . esc_html( $item ) . $pro_text . '</option>';
 				endforeach;
 			endif;
 		} else {
@@ -155,7 +158,8 @@ if ( ! function_exists( 'filterplus_select_field' ) ) {
 						$term_id = $item->term_id;
 						$name = $item->name;
 					}
-					$options_html .= '<option value="' . $term_id . '">' . $name . '</option>';
+					$selected_attr = is_array( $selected ) ? ( in_array( $term_id, $selected ) ? ' selected' : '' ) : ( (string) $term_id === (string) $selected ? ' selected' : '' );
+					$options_html .= '<option value="' . esc_attr( $term_id ) . '"' . $selected_attr . '>' . esc_html( $name ) . '</option>';
 				endforeach;
 			endif;
 		}
@@ -176,8 +180,7 @@ if ( ! function_exists( 'filterplus_select_field' ) ) {
 				'. $docs .'
 			</div>
 		';
-
-		echo wp_kses_post( FilterPlus\Utils\Helper::kses( $html ) );
+		echo FilterPlus\Utils\Helper::kses( $html );
 	}
 }
 
