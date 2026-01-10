@@ -269,13 +269,14 @@ class DataFactory {
     public static function category_template($type='shortcode') {
         $args = array(
             "template" => array(1,2,3),
-            "template_disable" => 1,
         );
                 
         $args = self::tempalte_arr( $args , $type , 3 );
 
-        if ( self::$disable ) {
+        if ( ! class_exists( 'FilterPlusPro' ) ) {
             $args['template_disable'] = 1;
+        }else{
+            $args['template_disable'] = '';
         }
 
         return $args;
@@ -339,13 +340,14 @@ class DataFactory {
     public static function color_template( $type = 'shortcode' ) {
         $args = array(
             "template" => array(1,2,3),
-            "template_disable" => 1,
         );
 
         $args = self::tempalte_arr( $args , $type , 3 );
 
-        if ( self::$disable ) {
+        if ( ! class_exists( 'FilterPlusPro' ) ) {
             $args['template_disable'] = 1;
+        }else{
+            $args['template_disable'] = '';
         }
 
         return $args;
@@ -360,13 +362,14 @@ class DataFactory {
     public static function review_template( $type = 'shortcode' ) {
         $args = array(
             "template" => array(1,2,3),
-            "template_disable" => 1,
         );
 
         $args = self::tempalte_arr( $args , $type , 3 );
 
-        if ( self::$disable ) {
+        if ( ! class_exists( 'FilterPlusPro' ) ) {
             $args['template_disable'] = 1;
+        }else{
+            $args['template_disable'] = '';
         }
 
         return $args;
