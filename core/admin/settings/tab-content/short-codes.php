@@ -96,7 +96,7 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_checkbox_field($filterplus_args);
 
 			// colors
-			$filterplus_args = array('label'=>esc_html__("Display Colors:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
+			$filterplus_args = array('label'=>esc_html__("Display Color:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
 			filterplus_checkbox_field($filterplus_args);
 
 			// color template

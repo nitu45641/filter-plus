@@ -719,7 +719,7 @@ msgid "Display Product Count:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:83
-msgid "Display Colors:"
+msgid "Display Color:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:88
