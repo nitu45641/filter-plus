@@ -450,7 +450,7 @@
 			let template = $('#shopContainer').data('template');
 			let limit = $('#shopContainer').data('limit');
 			let product_categories = $('#shopContainer').data('product_categories');
-			let product_tags = $('#shopContainer').data('product_categories');
+			let product_tags = $('#shopContainer').data('product_tags');
 			let post_author = $('#shopContainer').data('post_author');
 
 			const data = {
@@ -494,7 +494,7 @@
 			let limit 			= $('#shopContainer').data('limit');
 			let product_categories =
 				$('#shopContainer').data('product_categories');
-			let product_tags 	= $('#shopContainer').data('product_categories');
+			let product_tags 	= $('#shopContainer').data('product_tags');
 			let post_author 	= $('#shopContainer').data('post_author');
 			let selected_data 	= selected_param(params);
 			show_selected_data(selected_data);

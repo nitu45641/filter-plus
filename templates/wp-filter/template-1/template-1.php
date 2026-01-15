@@ -29,6 +29,16 @@ use FilterPlus\Base\DataFactory;
 		// custom tags
 		if ( 'yes'== $show_tags ) {
 			$filterplus_get_attr = \FilterPlus\Utils\Helper::array_data($tags);
+			// If no specific tags provided, get all post tags
+			if (count($filterplus_get_attr) === 0) {
+				$all_tags = get_terms(array(
+					'taxonomy' => 'post_tag',
+					'hide_empty' => true,
+				));
+				if (!is_wp_error($all_tags) && !empty($all_tags)) {
+					$filterplus_get_attr = wp_list_pluck($all_tags, 'term_id');
+				}
+			}
 			if (count($filterplus_get_attr)>0) {
 				$title = !empty($tag_label) ? $tag_label : esc_html__("Filter By Tag","filter-plus");
 				include \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/filter-layout-grid.php";

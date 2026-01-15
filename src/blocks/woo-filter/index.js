@@ -400,7 +400,8 @@ registerBlockType('filter-plus/woo-filter', {
                                     value={attributes.color_template}
                                     options={[
                                         { value: '1', label: __('Template 1', 'filter-plus') },
-                                        { value: '2', label: __('Template 2', 'filter-plus') }
+                                        { value: '2', label: __('Template 2', 'filter-plus') },
+                                        { value: '3', label: __('Template 3', 'filter-plus') }
                                     ]}
                                     onChange={(value) => setAttributes({ color_template: value })}
                                 />
@@ -507,7 +508,8 @@ registerBlockType('filter-plus/woo-filter', {
                                     value={attributes.review_template}
                                     options={[
                                         { value: '1', label: __('Template 1', 'filter-plus') },
-                                        { value: '2', label: __('Template 2', 'filter-plus') }
+                                        { value: '2', label: __('Template 2', 'filter-plus') },
+                                        { value: '3', label: __('Template 3', 'filter-plus') },
                                     ]}
                                     onChange={(value) => setAttributes({ review_template: value })}
                                 />

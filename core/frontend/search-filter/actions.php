@@ -449,10 +449,14 @@ class Actions {
 		if (empty($tags)) {
 			return array();
 		}
+
+		// Limit to 2 tags per post
+		$tags = array_slice($tags, 0, 2);
+
 		foreach ($tags as $key => &$tag) {
 			$tag->link = get_tag_link($tag->term_id);
 		}
-		
+
 		return $tags;
 	}
 
