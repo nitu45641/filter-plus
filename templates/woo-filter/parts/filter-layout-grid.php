@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<div class="panel">
 		<div class="param-box param-box-<?php echo esc_attr($template);?>">
 			<?php
-				foreach ($get_attr as $filterplus_key => $filterplus_term_id) {
+				foreach ($filterplus_get_attr as $filterplus_key => $filterplus_term_id) {
 					if (!empty( get_term( $filterplus_term_id ) ) && empty(get_term( $filterplus_term_id )->errors) ) {
 						?>
 							<div class="radio-item"

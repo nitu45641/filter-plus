@@ -167,7 +167,7 @@ function product_filter_block() {
                 ),
                 'masonry_style' => array(
                     'type' => 'boolean',
-                    'default' => true
+                    'default' => false
                 ),
             ),
         ]
@@ -203,7 +203,5 @@ function product_filter_callback( $settings ) {
         }
     }
 
-    if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 ) {
-        echo wp_kses_post( \FilterPlus\Core\Frontend\Shortcodes::instance()->filter_plus( $settings ) );
-    }
+    return \FilterPlus\Core\Frontend\Shortcodes::instance()->filter_plus( $settings );
 }
