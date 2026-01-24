@@ -71,12 +71,12 @@ class Shortcodes {
 			data-product_categories="<?php echo esc_attr($product_categories)?>"
 			data-product_tags="<?php echo esc_attr($product_tags)?>"
 			>
-			<?php 
+			<?php
 				$style = $template;
 				if ( file_exists( \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 					include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
 				}
-				else if ( file_exists( \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
+				else if ( class_exists( 'FilterPlusPro' ) && file_exists( \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
 					include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
 				}
 
@@ -136,7 +136,7 @@ class Shortcodes {
 				echo wp_kses_post( $is_pro_active );
 				return ob_get_clean();
 			}
-			if ( file_exists(\FilterPlusPro::plugin_dir() . "templates/wp-filter/template-".$template."/template-" . $template . ".php") ) {
+			if ( class_exists( 'FilterPlusPro' ) && file_exists(\FilterPlusPro::plugin_dir() . "templates/wp-filter/template-".$template."/template-" . $template . ".php") ) {
 				include_once \FilterPlusPro::plugin_dir() . "templates/wp-filter/template-".$template."/template-" . $template . ".php";
 			}
 		}
