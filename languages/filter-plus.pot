@@ -888,7 +888,7 @@ msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:209
 #: core/admin/wp-filter.php:155
-msgid "Display Descrtiption:"
+msgid "Display Description:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:214

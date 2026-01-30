@@ -122,9 +122,11 @@ registerBlockType('filter-plus/wp-filter', {
         };
 
         const getTemplateOptions = () => {
-            const disabled = isDisabled();
-            let options = [];
-            for (let i = 1; i <= 3; i++) {
+            const disabled = isDisabled();            
+            let options = [
+                { value: '1', label: __('Template-1', 'filter-plus') }
+            ];
+            for (let i = 2; i <= 3; i++) {
                 options.push({
                     value: i.toString(),
                     label: __('Template-' + i, 'filter-plus') + ' ' + isPro(),

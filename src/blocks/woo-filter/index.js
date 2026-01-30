@@ -197,9 +197,9 @@ registerBlockType('filter-plus/woo-filter', {
         };
 
         const getTemplateOptions = () => {
-            const disabled = isDisabled();
+            const disabled = isDisabled();            
             let options = [
-                { value: '1', label: __('Template-1', 'filter-plus') + ' ' + isPro(), disabled }
+                { value: '1', label: __('Template-1', 'filter-plus') }
             ];
             for (let i = 2; i <= 7; i++) {
                 options.push({

@@ -221,8 +221,8 @@ use \FilterPlus\Utils\Helper as Helper;
 			'data_label' => 'hide_prod_title','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
-			// show descrtiption
-			$filterplus_args = array('label'=>esc_html__("Display Descrtiption:","filter-plus"),'id' => 'hide_prod_desc',
+			// show description
+			$filterplus_args = array('label'=>esc_html__("Display Description:","filter-plus"),'id' => 'hide_prod_desc',
 			'data_label' => 'hide_prod_desc','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
