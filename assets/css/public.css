@@ -561,8 +561,11 @@ ul.ratings,.dropdown-box {
 	align-items: center;
 	justify-content: center;
 }
-.post-grid-view-3 .hpcc-image{
-	display: inline-block !important;
+.post-grid-view-3 .hpcc-image img{
+	width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 .hpcc-image img {
 	max-width: 100%;
