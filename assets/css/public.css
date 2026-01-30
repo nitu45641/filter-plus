@@ -2255,6 +2255,7 @@ ul.sub_categories{
 	fill: var(--filter-primary-color,"#2e74e8");
 }
 .product-tag{
+	width: fit-content;
 	font-size: 11px;
     line-height: 22px;
     margin-bottom: 5px;
