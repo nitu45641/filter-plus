@@ -68,6 +68,7 @@ const build = gulp.series(clean, purgeLicenseArtifacts, copyFiles, createZip);
 
 exports.clean = clean;
 exports.copy = copyFiles;
-exports.zip = createZip;
+// Run the full build pipeline when creating a zip to ensure files are present
+exports.zip = gulp.series(clean, purgeLicenseArtifacts, copyFiles, createZip);
 exports.purgeLicenses = purgeLicenseArtifacts;
 exports.default = build;
