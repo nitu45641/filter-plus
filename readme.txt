@@ -3,7 +3,7 @@ Contributors: markutos987
 Donate link: https://wpbens.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Tested up to: 6.9
-Stable tag: 1.1.13
+Stable tag: 1.1.14
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -138,6 +138,8 @@ If you are familiar with WordPress interface and how to use plugins in WordPress
 
 == Changelog ==
 
+= 1.1.14 (January 30, 2026)=
+Fix  : Elementor filter block warning
 
 = 1.1.12 (January 15, 2026)=
 Fix  : Gutenburg block

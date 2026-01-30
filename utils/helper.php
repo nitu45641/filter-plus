@@ -161,22 +161,67 @@ class Helper {
 				'class' => [],
 				'for' => [],
 			],
-			'svg'   => array(
-				'class'           => true,
-				'aria-hidden'     => true,
-				'aria-labelledby' => true,
-				'role'            => true,
-				'xmlns'           => true,
-				'width'           => true,
-				'height'          => true,
-				'viewbox'         => true // <= Must be lower case!
-			),
-			'g'     => array( 'fill' => true ),
-			'title' => array( 'title' => true ),
-			'path'  => array( 
-				'd'               => true, 
-				'fill'            => true  
-			)
+			'svg' => [
+					'class'           => [],
+					'aria-hidden'     => [],
+					'aria-labelledby' => [],
+					'role'            => [],
+					'xmlns'           => [],
+					'width'           => [],
+					'height'          => [],
+					'viewbox'         => [],
+					'viewBox'         => [],
+					'preserveAspectRatio' => [],
+					'focusable'       => [],
+				],
+				'g' => [
+					'fill' => [],
+					'transform' => [],
+					'stroke' => [],
+					'stroke-width' => [],
+				],
+				'title' => [],
+				'path' => [
+					'd' => [],
+					'fill' => [],
+					'stroke' => [],
+					'fill-rule' => [],
+					'transform' => [],
+				],
+				'circle' => [
+					'cx' => [],
+					'cy' => [],
+					'r' => [],
+					'fill' => [],
+				],
+				'rect' => [
+					'x' => [],
+					'y' => [],
+					'width' => [],
+					'height' => [],
+					'rx' => [],
+					'ry' => [],
+					'fill' => [],
+				],
+				'polygon' => [
+					'points' => [],
+					'fill' => [],
+				],
+				'line' => [
+					'x1'=>[],
+					'y1'=>[],
+					'x2'=>[],
+					'y2'=>[],
+					'stroke'=>[],
+				],
+				'polyline' => [
+					'points'=>[],
+					'fill'=>[],
+					'stroke'=>[],
+				],
+				'ellipse' => [
+					'cx'=>[], 'cy'=>[], 'rx'=>[], 'ry'=>[], 'fill'=>[],
+				],
 		];
 
 		if ( function_exists( 'wp_kses' ) ) { // WP is here
@@ -392,7 +437,7 @@ class Helper {
 		return $data;
 	}
 
-	public static function size_attribut() {	
+	public static function size_attribute() {	
 		$attrs      =  self::get_attributes( 'pa_size' );
 		$title      = ! empty( $size_label ) ? $size_label : esc_html__( 'Best Match Item', 'filter-plus' );
 		$get_attr   = array();

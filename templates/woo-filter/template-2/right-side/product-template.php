@@ -1,4 +1,8 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit;
+<?php
+
+use FilterPlus\Utils\Helper;
+
+ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Grid template for products
@@ -47,7 +51,7 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 				</div>
 				<?php if( $hide_prod_add_cart == 'yes' ): ?>
 					<div class="card-action-btn-container">
-						<?php echo wp_kses_post( $product['cart_btn'] ); ?>
+						<?php echo Helper::kses($product['cart_btn']); ?>
 					</div>
 				<?php endif; ?>
 
