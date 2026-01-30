@@ -644,7 +644,7 @@ class Wp_Filter extends Widget_Base {
      */
 	protected function render() {
 		$settings   = $this->get_settings();
-		echo wp_kses_post( \FilterPlus\Base\DataFactory::instance()->wp_render_html( $settings ) );
+		\FilterPlus\Base\DataFactory::instance()->wp_render_html( $settings );
 	}
 }
 
