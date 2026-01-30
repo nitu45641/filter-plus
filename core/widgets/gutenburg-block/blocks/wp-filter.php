@@ -60,14 +60,39 @@ function content_filter_callback( $settings ) {
 
     if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 ) {
 
-        echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories}
-        category_label='".$category_label."' title={$title} no_of_items={$no_of_items}
-        sub_categories='".$sub_categories."'
-        categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
-        template ={$template} author={$author} author_label='".$author_label."' author_list={$author_list}
-        custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
-        custom_field_list={$custom_field_list} post_tags='{$post_tags}'
-        post_categories='{$post_categories} post_author={$post_author} hide_wp_title={$hide_wp_title} hide_wp_desc={$hide_wp_desc}']"); 
+        $attrs = array(
+            'filter_type' => $filter_type,
+            'custom_post' => $custom_post,
+            'show_categories' => $show_categories,
+            'category_label' => $category_label,
+            'title' => $title,
+            'no_of_items' => $no_of_items,
+            'sub_categories' => $sub_categories,
+            'categories' => $categories,
+            'show_tags' => $show_tags,
+            'tags' => $tags,
+            'tag_label' => $tag_label,
+            'template' => $template,
+            'author' => $author,
+            'author_label' => $author_label,
+            'author_list' => $author_list,
+            'custom_field' => $custom_field,
+            'custom_field_label' => $custom_field_label,
+            'meta_condition' => $meta_condition,
+            'custom_field_list' => $custom_field_list,
+            'post_tags' => $post_tags,
+            'post_categories' => $post_categories,
+            'post_author' => $post_author,
+            'hide_wp_title' => $hide_wp_title,
+            'hide_wp_desc' => $hide_wp_desc,
+        );
+
+        $shortcode_parts = array();
+        foreach ( $attrs as $k => $v ) {
+            $shortcode_parts[] = $k . "='" . esc_attr( $v ) . "'";
+        }
+
+        echo do_shortcode( '[wp_filter_plus ' . implode( ' ', $shortcode_parts ) . ']' );
 
     }
 }

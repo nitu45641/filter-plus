@@ -96,7 +96,7 @@ class DataFactory {
             'masonry_style'	    => 'no',
             'hide_wp_title'	    => 'yes',
             'hide_wp_desc'	    => 'yes',
-            'show_tags'        	=> '',
+            'show_tags'         	=> '',
             'tag_label'        	=> esc_html__('Tags','filter-plus'),
             'tags'             	=> '',
             'author'            => '',
@@ -131,26 +131,26 @@ class DataFactory {
 		$default_data['tags']               = ! empty( $tags ) && is_array( $tags ) ? implode( ',', $tags ) : '';
 		$default_data['show_tags']          = ! empty( $show_tags ) ? $show_tags : '';
 		$default_data['tag_label']          = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Tags', 'filter-plus' );
-		$default_data['color_label']        = ! empty( $color_label ) ? $color_label : esc_html__( 'Colors', 'filter-plus' );
-		$default_data['product_count']      = !empty($settings['product_count']) && $settings['product_count'] == true ? 'yes' : 'no';
-		$default_data['hide_empty_cat']     = !empty($settings['hide_empty_cat']) && $settings['hide_empty_cat'] == true ? 'yes' : 'no';
-		$default_data['sub_categories']     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
-		$default_data['masonry_style']      = !empty($settings['masonry_style']) && $settings['masonry_style'] == true ? 'yes' : 'no';
-		$default_data['colors']             = ! empty( $colors ) ? $colors : '';
-		$default_data['size']               = ! empty( $size ) ? $size : '';
-		$default_data['size_label']         = ! empty( $size_label ) ? $size_label : esc_html__( 'Size', 'filter-plus' );
-		$default_data['product_categories'] = ! empty( $product_categories ) ? $product_categories : '';
-		$default_data['attributes']         = ! empty( $attributes ) ? implode( ',', $attributes ) : '';
-		$default_data['show_attributes']    = ! empty( $show_attributes ) ? $show_attributes : '';
-		$default_data['attribute_label']    = ! empty( $attribute_label ) ? $attribute_label : esc_html__( 'Attributes', 'filter-plus' );
-		$default_data['show_reviews']       = ! empty( $show_reviews ) ? $show_reviews : '';
-		$default_data['review_label']       = ! empty( $review_label ) ? $review_label : esc_html__( 'Review', 'filter-plus' );
-		$default_data['show_price_range']   = ! empty( $show_price_range ) ? $show_price_range : '';
-		$default_data['price_range_label']  = ! empty( $price_range_label ) ? $price_range_label : esc_html__( 'Price Range', 'filter-plus' );
-		$default_data['stock']              = ! empty( $stock ) ? $stock : 'yes';
-		$default_data['stock_label']        = ! empty( $stock_label ) ? $stock_label : esc_html__( 'Stock', 'filter-plus' );
-		$default_data['on_sale']            = ! empty( $on_sale ) ? $on_sale : 'yes';
-		$default_data['on_sale_label']      = ! empty( $on_sale_label ) ? $on_sale_label : esc_html__( 'Sale', 'filter-plus' );
+		$default_data['color_label'] = ! empty( $color_label ) ? $color_label : esc_html__( 'Colors', 'filter-plus' );
+		$default_data['product_count'] = ( isset( $settings['product_count'] ) && ( $settings['product_count'] === true || $settings['product_count'] === 'yes' || $settings['product_count'] === '1' || $settings['product_count'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['hide_empty_cat'] = ( isset( $settings['hide_empty_cat'] ) && ( $settings['hide_empty_cat'] === true || $settings['hide_empty_cat'] === 'yes' || $settings['hide_empty_cat'] === '1' || $settings['hide_empty_cat'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['sub_categories'] = ( isset( $settings['sub_categories'] ) && ( $settings['sub_categories'] === true || $settings['sub_categories'] === 'yes' || $settings['sub_categories'] === '1' || $settings['sub_categories'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['masonry_style'] = ( isset( $settings['masonry_style'] ) && ( $settings['masonry_style'] === true || $settings['masonry_style'] === 'yes' || $settings['masonry_style'] === '1' || $settings['masonry_style'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['colors'] = ( isset( $settings['colors'] ) && ( $settings['colors'] === true || $settings['colors'] === 'yes' || $settings['colors'] === '1' || $settings['colors'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['size'] = ( isset( $settings['size'] ) && ( $settings['size'] === true || $settings['size'] === 'yes' || $settings['size'] === '1' || $settings['size'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['size_label'] = ! empty( $size_label ) ? $size_label : esc_html__( 'Size', 'filter-plus' );
+		$default_data['product_categories'] = ( isset( $settings['product_categories'] ) && ( $settings['product_categories'] === true || $settings['product_categories'] === 'yes' || $settings['product_categories'] === '1' || $settings['product_categories'] == 1 ) ) ? 'yes' : ( ! empty( $product_categories ) ? $product_categories : '' );
+		$default_data['attributes'] = ! empty( $attributes ) ? implode( ',', $attributes ) : '';
+		$default_data['show_attributes'] = ( isset( $settings['show_attributes'] ) && ( $settings['show_attributes'] === true || $settings['show_attributes'] === 'yes' || $settings['show_attributes'] === '1' || $settings['show_attributes'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['attribute_label'] = ! empty( $attribute_label ) ? $attribute_label : esc_html__( 'Attributes', 'filter-plus' );
+		$default_data['show_reviews'] = ( isset( $settings['show_reviews'] ) && ( $settings['show_reviews'] === true || $settings['show_reviews'] === 'yes' || $settings['show_reviews'] === '1' || $settings['show_reviews'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['review_label'] = ! empty( $review_label ) ? $review_label : esc_html__( 'Review', 'filter-plus' );
+		$default_data['show_price_range'] = ( isset( $settings['show_price_range'] ) && ( $settings['show_price_range'] === true || $settings['show_price_range'] === 'yes' || $settings['show_price_range'] === '1' || $settings['show_price_range'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['price_range_label'] = ! empty( $price_range_label ) ? $price_range_label : esc_html__( 'Price Range', 'filter-plus' );
+		$default_data['stock'] = ( isset( $settings['stock'] ) && ( $settings['stock'] === true || $settings['stock'] === 'yes' || $settings['stock'] === '1' || $settings['stock'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['stock_label'] = ! empty( $stock_label ) ? $stock_label : esc_html__( 'Stock', 'filter-plus' );
+		$default_data['on_sale'] = ( isset( $settings['on_sale'] ) && ( $settings['on_sale'] === true || $settings['on_sale'] === 'yes' || $settings['on_sale'] === '1' || $settings['on_sale'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['on_sale_label'] = ! empty( $on_sale_label ) ? $on_sale_label : esc_html__( 'Sale', 'filter-plus' );
 		$default_data['hide_prod_title']    = ! empty( $hide_prod_title ) && ( $hide_prod_title == true ||  $hide_prod_title == 'yes' )  ?  'yes' : 'no';
 		$default_data['hide_prod_desc']     = ! empty( $hide_prod_desc ) && ( $hide_prod_desc == true ||  $hide_prod_desc == 'yes' )  ?  'yes' : 'no';
 		$default_data['hide_prod_price']    = ! empty( $hide_prod_price ) && ( $hide_prod_price == true || $hide_prod_price == 'yes' ) ?  'yes' : 'no';
@@ -175,31 +175,60 @@ class DataFactory {
     public function woo_render_html($settings) {
         $process_data = $this->woo_process_data( $settings );
         extract( $process_data );
-		echo do_shortcode("[filter_products category_label='".$category_label."'
-		sub_categories='".$sub_categories."' title ={$title} no_of_items={$no_of_items}
-		tag_label='".$tag_label."'
-		category_template='".$category_template."'
-		color_template='".$color_template."'
-		review_template='".$review_template."'
-		color_label='".$color_label."'
-		apply_button_mode='".$apply_button_mode."'
-		apply_button_label='".$apply_button_label."'
-		reset_button_label='".$reset_button_label."'
-		hide_prod_title='".$hide_prod_title."'
-		hide_prod_desc='".$hide_prod_desc."'
-		hide_prod_price='".$hide_prod_price."'
-		hide_prod_add_cart='".$hide_prod_add_cart."'
-		hide_prod_rating='".$hide_prod_rating."'
-		size_label='".$size_label."' attribute_label='".$attribute_label."'
-		review_label='".$review_label."' price_range_label='".$price_range_label."'
-		stock_label='".$stock_label."' on_sale_label='".$on_sale_label."'
-		stock={$stock} on_sale={$on_sale} template ={$template}
-        filter_position={$filter_position} pagination_style='{$pagination_style}'
-		categories='{$categories}' tags='{$tags}' attributes='{$attributes}' colors='{$colors}' size='{$size}' show_tags='{$show_tags}' show_attributes='{$show_attributes}' show_reviews='{$show_reviews}' show_price_range='{$show_price_range}' sorting='{$sorting}' product_tags='{$product_tags}' product_categories='{$product_categories}']");  
+		// Build shortcode with escaped attributes so checkbox values are passed reliably
+		$attrs = array(
+			'category_label' => $category_label,
+            'sub_categories' => $sub_categories,
+			'title' => $title,
+			'no_of_items' => $no_of_items,
+			'tag_label' => $tag_label,
+			'category_template' => $category_template,
+			'color_template' => $color_template,
+			'review_template' => $review_template,
+			'color_label' => $color_label,
+			'apply_button_mode' => $apply_button_mode,
+			'apply_button_label' => $apply_button_label,
+			'reset_button_label' => $reset_button_label,
+			'hide_prod_title' => $hide_prod_title,
+			'hide_prod_desc' => $hide_prod_desc,
+			'hide_prod_price' => $hide_prod_price,
+			'hide_prod_add_cart' => $hide_prod_add_cart,
+			'hide_prod_rating' => $hide_prod_rating,
+			'size_label' => $size_label,
+			'attribute_label' => $attribute_label,
+			'review_label' => $review_label,
+			'price_range_label' => $price_range_label,
+			'stock_label' => $stock_label,
+			'on_sale_label' => $on_sale_label,
+			'stock' => $stock,
+			'on_sale' => $on_sale,
+			'template' => $template,
+			'filter_position' => $filter_position,
+			'pagination_style' => $pagination_style,
+			'categories' => $categories,
+			'tags' => $tags,
+			'attributes' => $attributes,
+			'colors' => $colors,
+			'size' => $size,
+			'show_tags' => $show_tags,
+			'show_attributes' => $show_attributes,
+			'show_reviews' => $show_reviews,
+			'show_price_range' => $show_price_range,
+			'sorting' => $sorting,
+			'product_tags' => $product_tags,
+			'product_categories' => $product_categories,
+		);
+
+		$shortcode_parts = array();
+		foreach ( $attrs as $k => $v ) {
+			$shortcode_parts[] = $k . "='" . esc_attr( $v ) . "'";
+		}
+
+		$shortcode = '[filter_products ' . implode( ' ', $shortcode_parts ) . ']';
+		echo do_shortcode( $shortcode );  
     }
 
     function wp_process_data( $settings ) {
-        extract($settings);
         $default_data = $this->wp_default_data();
 
         $default_data['custom_fields'] = '';
@@ -213,8 +242,33 @@ class DataFactory {
 		$default_data['template']           = !empty($settings['template']) ? $settings['template'] : '1';
 		$default_data['title']           	= !empty($settings['title']) ? $settings['title'] : esc_html__('Filters','filter-plus');
 		$default_data['no_of_items'] 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
-		$default_data['show_categories']    = !empty($show_categories) ? $show_categories : 'yes';
-		$default_data['category_label']     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
+		// Normalize boolean-like settings to 'yes' / 'no' when provided
+		$bool_keys = array(
+			'masonry_style','product_count','hide_empty_cat','show_categories','sub_categories','show_tags',
+			'hide_wp_title','hide_wp_desc','post_categories','post_tags','post_author','on_sale','stock','author','show_reviews','show_price_range'
+		);
+		foreach ( $bool_keys as $k ) {
+			if ( isset( $settings[ $k ] ) ) {
+				$v = $settings[ $k ];
+				$default_data[ $k ] = ( $v === true || $v === 'yes' || $v === '1' || $v === 1 || $v === 'true' ) ? 'yes' : 'no';
+			}
+		}
+
+		$default_data['category_label']     = ! empty( $settings['category_label'] ) ? $settings['category_label'] : esc_html__('Categories','filter-plus');
+		$default_data['categories']         = ( ! empty( $settings['categories'] ) && is_array($settings['categories']) ) ? implode(',',$settings['categories']) : ( ! empty( $settings['categories'] ) ? $settings['categories'] : '' );
+		$default_data['tag_label'] 	        = ! empty( $settings['tag_label'] ) ? $settings['tag_label'] : esc_html__('Tags','filter-plus');
+		$default_data['tags']               = ( ! empty( $settings['tags'] ) && is_array($settings['tags']) ) ? implode(',',$settings['tags']) : ( ! empty( $settings['tags'] ) ? $settings['tags'] : '' );
+		$default_data['author']		    = ! empty( $settings['author'] ) && $settings['author'] !== '0' ? $settings['author'] : '';
+		$default_data['author_label']	    = ! empty( $settings['author_label'] ) ? $settings['author_label'] : esc_html__('Authors','filter-plus');
+		$default_data['author_list']	    = ( ! empty( $settings['author_list'] ) && is_array($settings['author_list']) ) ? implode(',',$settings['author_list']) : ( ! empty( $settings['author_list'] ) ? $settings['author_list'] : '' );
+		$default_data['custom_field']	    = ! empty( $settings['custom_field'] ) ? $settings['custom_field'] : 'no';
+		$default_data['custom_field_label']	= ! empty( $settings['custom_field_label'] ) ? $settings['custom_field_label'] : esc_html__('Custom Field','filter-plus');
+		$default_data['meta_condition']	    = ! empty( $settings['meta_condition'] ) ? $settings['meta_condition'] : 'OR';
+		$default_data['filter_position'] 	= ! empty( $settings['filter_position'] ) ? $settings['filter_position'] : 'left';
+		$default_data['pagination_style'] 	= ! empty( $settings['pagination_style'] ) ? $settings['pagination_style'] : 'numbers';
+		$default_data['no_of_items'] 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
+		$default_data['show_categories']    = isset( $default_data['show_categories'] ) ? $default_data['show_categories'] : 'yes';
+		$default_data['category_label']     = !empty($settings['category_label']) ? $settings['category_label'] : esc_html__('Categories','filter-plus');
 		$default_data['categories']         = ( ! empty( $categories ) && is_array($categories) ) ? implode(',',$categories) : '';
 		$default_data['sub_categories']     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
 		$default_data['show_tags']          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
@@ -243,20 +297,23 @@ class DataFactory {
     public function wp_render_html($settings) {
 		\FilterPlus\Utils\Helper::instance()->pro_active_message();
         $process_data = $this->wp_process_data( $settings );
-        extract( $process_data );
+		extract( $process_data );
 
-		echo do_shortcode("[wp_filter_plus filter_type={$filter_type} custom_post={$custom_post} show_categories={$show_categories} 
+		echo do_shortcode("[wp_filter_plus filter_type='{$filter_type}' custom_post='{$custom_post}' 
+        show_categories='{$show_categories}' 
         category_template='".$category_template."' 
         category_label='".$category_label."' 
 		sub_categories='{$sub_categories}'
 		hide_wp_desc='{$hide_wp_desc}'
 		hide_wp_title='{$hide_wp_title}'
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
-        template ={$template} title={$title} no_of_items={$no_of_items} 
-		author={$author} author_label='".$author_label."' author_list={$author_list} 
-        custom_field={$custom_field} custom_field_label='".$custom_field_label."' meta_condition={$meta_condition}
-        custom_field_list={$custom_fields} post_tags='{$post_tags}'
-        filter_position={$filter_position} pagination_style='{$pagination_style}'
+        template='{$template}' title='{$title}' no_of_items='{$no_of_items}' 
+		author='{$author}' author_label='".$author_label."' 
+        author_list='{$author_list}' 
+        custom_field='{$custom_field}' custom_field_label='".$custom_field_label."' 
+        meta_condition='{$meta_condition}'
+        custom_field_list='{$custom_fields}' post_tags='{$post_tags}'
+        filter_position='{$filter_position}' pagination_style='{$pagination_style}'
         post_categories='{$post_categories}' post_author='{$post_author}']"); 
     }
 

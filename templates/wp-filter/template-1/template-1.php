@@ -49,9 +49,8 @@ use FilterPlus\Base\DataFactory;
 			include \FilterPlus::plugin_dir() . "templates/wp-filter/parts/custom-fields.php";
 		}
 		// author
-		if ( 'yes'== $author ) {
+		if ( 'yes'== $post_author ) {
 			$filterplus_authors = \FilterPlus\Utils\Helper::instance()->author_list($author_list);
-
 			if (count($filterplus_authors)>0) {
 				$title =   !empty($author_label) ? $author_label : esc_html__("Authors","filter-plus");
 				include \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/authors.php";

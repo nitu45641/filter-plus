@@ -518,14 +518,13 @@ class Woo_Filter extends \Bricks\Element {
 	// Render element HTML
 	public function render() {
 		$settings = $this->settings;
-
 		$root_classes[] = 'fplus-woo-wrapper';
 		if ( ! empty( $this->settings['type'] ) ) {
 			$root_classes[] = "color-{$this->settings['type']}";
 		}
 		$this->set_attribute( '_root', 'class', $root_classes );
 
-		echo "<div " . wp_kses_post( $this->render_attributes( '_root' ) ) . ">";
+		echo "<div " .  $this->render_attributes( '_root' )  . ">";
 		echo \FilterPlus\Base\DataFactory::instance()->woo_render_html( $settings ) ;
 		echo '</div>';
 	}
