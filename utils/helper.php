@@ -17,11 +17,16 @@ class Helper {
 	public static function kses( $raw ) {
 		$allowed_tags = [
 			'a'                             => [
-				'class'  => [],
-				'href'   => [],
-				'rel'    => [],
-				'title'  => [],
-				'target' => [],
+				'class'            => [],
+				'href'             => [],
+				'rel'              => [],
+				'title'            => [],
+				'target'           => [],
+				'value'            => [],
+				'data-product_id'  => [],
+				'data-product_sku' => [],
+				'data-quantity'    => [],
+				'aria-label'       => [],
 			],
 			'input'                         => [
 				'value'       => [],

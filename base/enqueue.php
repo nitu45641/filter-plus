@@ -183,6 +183,8 @@ class Enqueue {
         $form_data['seo_elements_format']   = $settings['seo_elements_format'];
         $form_data['seo_slug_url']          = $settings['seo_slug_url'];
         $form_data['is_pro_active']         = class_exists('FilterPlusPro') ? true : false;
+        $form_data['wc_ajax_url']           = class_exists('WooCommerce') ? \WC()->ajax_url() : '';
+        $form_data['home_url']              = home_url( '/' );
 
         wp_localize_script( 'filter-js', 'filter_client', $form_data  ); 
     }

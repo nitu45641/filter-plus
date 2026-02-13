@@ -524,12 +524,14 @@ class Actions {
 
 		switch ( $product->get_type() ) {
 			case ($product->get_type() == 'simple' ) && ($cart_button == 'yes' ) && $product->is_in_stock() == true :
+				$add_to_cart_url = esc_url( add_query_arg( 'add-to-cart', $product->get_id(), $product->get_permalink() ) );
 				$cart_html = '
-				<a href="'.$product->add_to_cart_url().'" value="'.esc_attr( $product->get_id() ).'"
+				<a href="'.$add_to_cart_url.'" value="'.esc_attr( $product->get_id() ).'"
 				 class="ajax_add_to_cart add_to_cart_button cart_button-'.$template.'"
 				 data-product_id="'. $product->get_id().'"
 				 data-product_sku="'.esc_attr($product->get_sku()).'"
-				 aria-label="Add “'.the_title_attribute().'” to your cart"> 
+				 data-quantity="1"
+				 aria-label="Add "'.the_title_attribute().'" to your cart">
 					'. $icon . $btn_text .'
 				</a>
 				';

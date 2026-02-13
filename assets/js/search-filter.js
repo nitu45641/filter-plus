@@ -3,6 +3,46 @@
 
 	$(document).ready(function () {
 		/*
+		 * AJAX Add to Cart (delegated for dynamically loaded buttons)
+		 */
+		$(document).on('click', '.ajax_add_to_cart', function (e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			var $btn = $(this);
+
+			if ($btn.hasClass('loading')) return;
+
+			var product_id = $btn.data('product_id') || $btn.attr('data-product_id');
+			var quantity = $btn.data('quantity') || $btn.attr('data-quantity') || 1;
+
+			if (!product_id) return;
+
+			$btn.removeClass('added').addClass('loading');
+
+			$.ajax({
+				type: 'POST',
+				url: filter_client.home_url + '?wc-ajax=add_to_cart',
+				data: {
+					product_id: product_id,
+					quantity: quantity,
+				},
+				dataType: 'json',
+				success: function (response) {
+					$btn.removeClass('loading').addClass('added');
+					if (response && response.fragments) {
+						$.each(response.fragments, function (key, value) {
+							$(key).replaceWith(value);
+						});
+					}
+					$(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $btn]);
+				},
+				error: function () {
+					$btn.removeClass('loading');
+				}
+			});
+		});
+
+		/*
 		 * Get Product from filter
 		 */
 

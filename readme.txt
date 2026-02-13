@@ -3,7 +3,7 @@ Contributors: markutos987
 Donate link: https://wpbens.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
 Tested up to: 6.9
-Stable tag: 1.1.15
+Stable tag: 1.1.16
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -138,6 +138,8 @@ If you are familiar with WordPress interface and how to use plugins in WordPress
 
 == Changelog ==
 
+= 1.1.16 (February 13, 2026)=
+Fix  : Ajax add to cart for product filter
 = 1.1.15 (January 31, 2026)=
 Fix  : Filter by tag value
 
