@@ -976,7 +976,7 @@ a {
 	margin-top: 2%;
 }
 .cart-icon{
-	color: var(--filter-cart-icon-color,'#fff');
+	fill: var(--filter-cart-icon-color,'#fff');
 	width: 20px;
 	height: 20px;
 	display: flex;
