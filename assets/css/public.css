@@ -2801,17 +2801,6 @@ ul.categories-image-grid li.fp-img-card {
 	position: relative;
 }
 
-/* subcategory wrapper spans full width and forms its own 2-col grid */
-ul.categories-image-grid ul.fp-img-sub-grid {
-	grid-column: 1 / -1;
-	display: grid !important;
-	grid-template-columns: repeat(2, 1fr) !important;
-	gap: 8px !important;
-	list-style: none;
-	margin: 0 !important;
-	padding: 0 !important;
-}
-
 ul.categories-image-grid .fp-img-card-check {
 	position: absolute;
 	opacity: 0;

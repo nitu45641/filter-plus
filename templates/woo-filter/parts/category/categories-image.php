@@ -40,38 +40,36 @@
 					</label>
 				</li>
 				<?php if ( $sub_categories == 'yes' && !empty( $filterplus_item['sub_categories'] ) ) : ?>
-					<ul class="sub_categories fp-img-sub-grid">
 					<?php foreach ( $filterplus_item['sub_categories'] as $filterplus_sub ) :
 						$filterplus_sub_thumb_id = get_term_meta( $filterplus_sub['term_id'], 'thumbnail_id', true );
 						$filterplus_sub_img_src  = $filterplus_sub_thumb_id
 							? wp_get_attachment_image_url( $filterplus_sub_thumb_id, 'medium' )
 							: $filterplus_placeholder;
 					?>
-						<li class="cat-group fp-img-card"
-							data-parent="<?php echo esc_attr( $filterplus_item['term_id'] ); ?>"
-							data-name="<?php echo esc_attr( $filterplus_sub['name'] ); ?>"
-							data-cat_id="<?php echo esc_attr( $filterplus_sub['term_id'] ); ?>"
-							data-slug="<?php echo esc_attr( $filterplus_sub['slug'] ); ?>"
-						>
-							<input type="checkbox"
-								class="regular-checkbox fp-img-card-check"
-								value="<?php echo esc_attr( $filterplus_sub['term_id'] ); ?>"
-								id="<?php echo esc_attr( 'cat_li_child_' . $filterplus_sub['term_id'] ); ?>"
-							/>
-							<label for="<?php echo esc_attr( 'cat_li_child_' . $filterplus_sub['term_id'] ); ?>" class="fp-img-card-label">
-								<span class="fp-img-card-thumb">
-									<img src="<?php echo esc_url( $filterplus_sub_img_src ); ?>" alt="<?php echo esc_attr( $filterplus_sub['name'] ); ?>" />
-									<span class="fp-img-card-overlay">
-										<span class="fp-img-card-name"><?php echo esc_html( $filterplus_sub['name'] ); ?></span>
-										<?php if ( $product_count == 'yes' ) : ?>
-											<span class="fp-img-card-count">(<?php echo esc_html( $filterplus_sub['count'] ); ?>)</span>
-										<?php endif; ?>
-									</span>
+					<li class="cat-group fp-img-card sub_categories"
+						data-parent="<?php echo esc_attr( $filterplus_item['term_id'] ); ?>"
+						data-name="<?php echo esc_attr( $filterplus_sub['name'] ); ?>"
+						data-cat_id="<?php echo esc_attr( $filterplus_sub['term_id'] ); ?>"
+						data-slug="<?php echo esc_attr( $filterplus_sub['slug'] ); ?>"
+					>
+						<input type="checkbox"
+							class="regular-checkbox fp-img-card-check"
+							value="<?php echo esc_attr( $filterplus_sub['term_id'] ); ?>"
+							id="<?php echo esc_attr( 'cat_li_child_' . $filterplus_sub['term_id'] ); ?>"
+						/>
+						<label for="<?php echo esc_attr( 'cat_li_child_' . $filterplus_sub['term_id'] ); ?>" class="fp-img-card-label">
+							<span class="fp-img-card-thumb">
+								<img src="<?php echo esc_url( $filterplus_sub_img_src ); ?>" alt="<?php echo esc_attr( $filterplus_sub['name'] ); ?>" />
+								<span class="fp-img-card-overlay">
+									<span class="fp-img-card-name"><?php echo esc_html( $filterplus_sub['name'] ); ?></span>
+									<?php if ( $product_count == 'yes' ) : ?>
+										<span class="fp-img-card-count">(<?php echo esc_html( $filterplus_sub['count'] ); ?>)</span>
+									<?php endif; ?>
 								</span>
-							</label>
-						</li>
+							</span>
+						</label>
+					</li>
 					<?php endforeach; ?>
-					</ul>
 				<?php endif; ?>
 			<?php
 			endforeach;

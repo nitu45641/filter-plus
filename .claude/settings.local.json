@@ -15,7 +15,8 @@
       "Bash(test:*)",
       "Bash(npm run gulp:build:*)",
       "Bash(npm run build:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
