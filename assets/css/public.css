@@ -196,7 +196,7 @@ input[type="checkbox"].regular-checkbox:checked::after {
 	display: flex;
     align-items: center;
 }
-ul.category-list {
+ul.category-list{
     padding: 30px 0 0 0;
 	list-style-type: none;
 	margin-top: 30px !important;
@@ -2786,7 +2786,7 @@ ul.categories-text-list li.cat-group.active .fp-text-label {
 /* Category Image grid style */
 ul.categories-image-grid {
 	list-style: none;
-	margin: 0 !important;
+	margin-top: 30px !important;
 	padding: 0 !important;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -2794,9 +2794,21 @@ ul.categories-image-grid {
 }
 
 ul.categories-image-grid li.fp-img-card {
-	margin: 0;
-	padding: 0;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: block !important;
 	position: relative;
+}
+
+/* subcategory wrapper spans full width and forms its own 2-col grid */
+ul.categories-image-grid ul.fp-img-sub-grid {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 8px;
+	list-style: none;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 ul.categories-image-grid .fp-img-card-check {
@@ -2810,25 +2822,24 @@ ul.categories-image-grid .fp-img-card-check {
 ul.categories-image-grid .fp-img-card-label {
 	display: block;
 	cursor: pointer;
-	border-radius: 8px;
-	overflow: hidden;
-	transition: box-shadow 0.2s;
 }
 
-ul.categories-image-grid li.fp-img-card:hover .fp-img-card-label,
-ul.categories-image-grid li.fp-img-card.active .fp-img-card-label,
-ul.categories-image-grid .fp-img-card-check:checked + .fp-img-card-label {
-	box-shadow: 0 0 0 2px #333 inset;
+/* border lives on the thumb so it always wraps the image exactly */
+ul.categories-image-grid li.fp-img-card:hover .fp-img-card-thumb,
+ul.categories-image-grid li.fp-img-card.active .fp-img-card-thumb,
+ul.categories-image-grid .fp-img-card-check:checked + .fp-img-card-label .fp-img-card-thumb {
+	box-shadow: 0 0 0 3px #333 inset;
 }
 
 /* square card container */
 ul.categories-image-grid .fp-img-card-thumb {
 	display: block;
 	width: 100%;
+	height: 80px;
 	position: relative;
+	transition: box-shadow 0.2s;
 	overflow: hidden;
-	border-radius: 8px;
-	aspect-ratio: 1 / 1;
+	border-radius: 6px;
 }
 
 /* actual image fills the card */
@@ -2860,19 +2871,19 @@ ul.categories-image-grid .fp-img-card-overlay {
 
 ul.categories-image-grid .fp-img-card-name {
 	display: block;
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: 600;
 	color: #fff !important;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-	line-height: 1.3;
+	line-height: 1.2;
 	word-break: break-word;
 }
 
 ul.categories-image-grid .fp-img-card-count {
 	display: block;
-	font-size: 11px;
+	font-size: 10px;
 	font-weight: 400;
 	color: rgba(255,255,255,0.9) !important;
-	margin-top: 2px;
+	margin-top: 1px;
 	text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
