@@ -324,11 +324,18 @@ class DataFactory {
      */
 
     public static function category_template($type='shortcode') {
+        $pro = class_exists( 'FilterPlusPro' ) ? '' : ' ' . '(' . esc_html__( 'Pro', 'filter-plus' ) . ')';
+
         $args = array(
-            "template" => array(1,2,3),
+            "template" => array(
+                1 => esc_html__( 'List', 'filter-plus' ),
+                2 => esc_html__( 'Checkbox', 'filter-plus' ) . $pro,
+                3 => esc_html__( 'Dropdown', 'filter-plus' ) . $pro,
+                4 => esc_html__( 'Radio', 'filter-plus' ) . $pro,
+                5 => esc_html__( 'Image', 'filter-plus' ) . $pro,
+                6 => esc_html__( 'Text', 'filter-plus' ) . $pro,
+            ),
         );
-                
-        $args = self::tempalte_arr( $args , $type , 3 );
 
         if ( ! class_exists( 'FilterPlusPro' ) ) {
             $args['template_disable'] = 1;
@@ -350,17 +357,26 @@ class DataFactory {
         $category_template = ! empty( $args['category_template'] ) ? $args['category_template'] : '1';
         $template       = ! empty( $args['template'] ) ? $args['template'] : '1';
 
-        $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
+        $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-list.php";
 
         switch ( $category_template ) {
             case 1:
-                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-list.php";
                 break;
             case 2:
-                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-list.php";
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";
                 break;
             case 3:
                 $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-select.php";
+                break;
+            case 4:
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-radio.php";
+                break;
+            case 5:
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-image.php";
+                break;
+            case 6:
+                $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-text.php";
                 break;
             default:
                 $url = \FilterPlus::plugin_dir() . "templates/woo-filter/parts/category/categories-checkbox.php";

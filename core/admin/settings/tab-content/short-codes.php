@@ -71,7 +71,7 @@ use \FilterPlus\Utils\Helper as Helper;
 			// categories template
 			$filterplus_args 		= array('label'=>esc_html__("Select Category Filter Template:","filter-plus"),'id' => 'category_template',
 			'data_label' => 'category_template','options'=> DataFactory::category_template()['template'],
-			'type'=>'template' , 'template_disable' => DataFactory::category_template()['template_disable'] );
+			'type'=>'named_template' , 'template_disable' => DataFactory::category_template()['template_disable'] );
 			filterplus_select_field($filterplus_args);
 
 			// categories

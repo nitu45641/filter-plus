@@ -131,7 +131,16 @@ if ( ! function_exists( 'filterplus_select_field' ) ) {
 				foreach ( $args['options'] as $item ) :
 					$disabled = (int) $item > $template_disable ? 'disabled' : '';
 					$pro_text = ! empty( $disabled ) ? ' (' . esc_html__( 'Pro', 'filter-plus' ) . ')' : '';
-					$options_html .= '<option ' . $disabled . ' value="' . $item . '">' . esc_html__( 'Template', 'filter-plus' ) . '-' . $item . $pro_text . '</option>';
+					$options_html .= '<option ' . $disabled . ' value="' . $item . '">' . $item . $pro_text . '</option>';
+				endforeach;
+			endif;
+		} else if ( ! empty( $args['type'] ) && ( 'named_template' == $args['type'] ) ) {
+			$select_type = '';
+			if ( ! empty( $args['options'] ) ) :
+				foreach ( $args['options'] as $key => $label ) :
+					$disabled   = (int) $key > $template_disable ? 'disabled' : '';
+					$select_opt = (string) $key === (string) $selected ? 'selected' : '';
+					$options_html .= '<option ' . $disabled . ' ' . $select_opt . ' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
 				endforeach;
 			endif;
 		} else if ( ! empty( $args['type'] ) && ( 'random' == $args['type'] ) ) {

@@ -197,7 +197,7 @@ registerBlockType('filter-plus/woo-filter', {
         };
 
         const getTemplateOptions = () => {
-            const disabled = isDisabled();            
+            const disabled = isDisabled();
             let options = [
                 { value: '1', label: __('Template-1', 'filter-plus') }
             ];
@@ -209,6 +209,19 @@ registerBlockType('filter-plus/woo-filter', {
                 });
             }
             return options;
+        };
+
+        const getCategoryTemplateOptions = () => {
+            const pro   = isPro();
+            const disabled = isDisabled();
+            return [
+                { value: '1', label: __('List', 'filter-plus') },
+                { value: '2', label: __('Checkbox', 'filter-plus') + (pro ? ' ' + pro : ''), disabled },
+                { value: '3', label: __('Dropdown', 'filter-plus') + (pro ? ' ' + pro : ''), disabled },
+                { value: '4', label: __('Radio', 'filter-plus')    + (pro ? ' ' + pro : ''), disabled },
+                { value: '5', label: __('Image', 'filter-plus')    + (pro ? ' ' + pro : ''), disabled },
+                { value: '6', label: __('Text', 'filter-plus')     + (pro ? ' ' + pro : ''), disabled },
+            ];
         };
 
         return (
@@ -292,11 +305,7 @@ registerBlockType('filter-plus/woo-filter', {
                         <SelectControl
                             label={__('Select Category Filter Template', 'filter-plus')}
                             value={attributes.category_template}
-                            options={[
-                                { value: '1', label: __('Template 1', 'filter-plus') },
-                                { value: '2', label: __('Template 2', 'filter-plus') },
-                                { value: '3', label: __('Template 3', 'filter-plus') }
-                            ]}
+                            options={getCategoryTemplateOptions()}
                             onChange={(value) => setAttributes({ category_template: value })}
                         />
 

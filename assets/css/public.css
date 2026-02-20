@@ -199,7 +199,7 @@ input[type="checkbox"].regular-checkbox:checked::after {
 ul.category-list {
     padding: 30px 0 0 0;
 	list-style-type: none;
-	margin: 0;
+	margin-top: 30px !important;
 }
 ul.category-list li.active,
 ul.category-list li:hover,
@@ -2746,4 +2746,133 @@ ul.sub_categories{
 
 .filter-apply-btn:hover {
 	background-color: #333;
+}
+
+/* Category Text (tag/button) style */
+ul.categories-text-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+ul.categories-text-list li.cat-group {
+	margin: 0;
+	padding: 0;
+}
+
+ul.categories-text-list .fp-text-label {
+	display: inline-block;
+	padding: 4px 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #444;
+	background: #fff;
+	transition: border-color 0.2s, color 0.2s;
+	user-select: none;
+}
+
+ul.categories-text-list li.cat-group:hover .fp-text-label,
+ul.categories-text-list li.cat-group.active .fp-text-label {
+	border-color: #333;
+	color: #111;
+}
+
+/* Category Image grid style */
+ul.categories-image-grid {
+	list-style: none;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 8px;
+}
+
+ul.categories-image-grid li.fp-img-card {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+ul.categories-image-grid .fp-img-card-check {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
+ul.categories-image-grid .fp-img-card-label {
+	display: block;
+	cursor: pointer;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: box-shadow 0.2s;
+}
+
+ul.categories-image-grid li.fp-img-card:hover .fp-img-card-label,
+ul.categories-image-grid li.fp-img-card.active .fp-img-card-label,
+ul.categories-image-grid .fp-img-card-check:checked + .fp-img-card-label {
+	box-shadow: 0 0 0 2px #333 inset;
+}
+
+/* square card container */
+ul.categories-image-grid .fp-img-card-thumb {
+	display: block;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	border-radius: 8px;
+	aspect-ratio: 1 / 1;
+}
+
+/* actual image fills the card */
+ul.categories-image-grid .fp-img-card-thumb img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* dark overlay on top of img */
+ul.categories-image-grid .fp-img-card-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.28);
+	padding: 8px;
+	text-align: center;
+}
+
+ul.categories-image-grid .fp-img-card-name {
+	display: block;
+	font-size: 13px;
+	font-weight: 600;
+	color: #fff !important;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	line-height: 1.3;
+	word-break: break-word;
+}
+
+ul.categories-image-grid .fp-img-card-count {
+	display: block;
+	font-size: 11px;
+	font-weight: 400;
+	color: rgba(255,255,255,0.9) !important;
+	margin-top: 2px;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
