@@ -16,7 +16,8 @@
       "Bash(npm run gulp:build:*)",
       "Bash(npm run build:*)",
       "Bash(cat:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(xxd:*)"
     ],
     "deny": [],
     "ask": []
