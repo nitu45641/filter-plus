@@ -436,7 +436,9 @@ ul.sub_categories {
 	cursor: pointer;
 	margin: 0;
 }
-
+ul.dropdown-box{
+	padding-left: 10px;
+}
 ul.ratings,.dropdown-box {
 	cursor: pointer;
 	padding: 15px;
@@ -935,12 +937,11 @@ ul.pagination {
     gap: 5px;
 	margin-right: 7px;
 }
-.category-list.panel{
-	padding-left: 15px;
-}
+
 .radio-wrap .panel{
 	margin-top: 0 !important;
 }
+
 .panel-2,.panel-3,.category-list.panel,
 .rating-section .panel-4,
 .rating-section .panel-1{
@@ -2788,9 +2789,9 @@ ul.categories-image-grid {
 	list-style: none;
 	margin-top: 30px !important;
 	padding: 0 !important;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 8px;
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 8px !important;
 }
 
 ul.categories-image-grid li.fp-img-card {
@@ -2803,9 +2804,9 @@ ul.categories-image-grid li.fp-img-card {
 /* subcategory wrapper spans full width and forms its own 2-col grid */
 ul.categories-image-grid ul.fp-img-sub-grid {
 	grid-column: 1 / -1;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 8px;
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 8px !important;
 	list-style: none;
 	margin: 0 !important;
 	padding: 0 !important;
