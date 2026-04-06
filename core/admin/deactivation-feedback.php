@@ -29,7 +29,7 @@ class DeactivationFeedback {
 	 *
 	 * @var string
 	 */
-	private $api_url = 'https://wpbens.com/wp-json/filter-plus/v1/deactivation-feedback';
+	private $api_url = 'https://wpbens.com/wp-json/bens/v1/deactivation-feedback';
 
 	/**
 	 * Initialize hooks.
@@ -183,14 +183,10 @@ class DeactivationFeedback {
 		}
 
 		$body = array(
+			'plugin_name'    => 'filter-plus',
 			'reason'         => $reason,
-			'detail'         => $detail,
-			'plugin'         => 'filter-plus',
-			'plugin_version' => \FilterPlus::get_version(),
-			'wp_version'     => get_bloginfo( 'version' ),
-			'php_version'    => phpversion(),
+			'feedback'       => $detail,
 			'site_url'       => home_url(),
-			'site_lang'      => get_bloginfo( 'language' ),
 		);
 
 		wp_remote_post(
