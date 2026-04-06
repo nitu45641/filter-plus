@@ -25,6 +25,8 @@ Class Wrapper {
 		\FilterPlus\Core\Core::instance()->init();
 		// Enqueue Assets
 		\FilterPlus\Base\Enqueue::instance()->init();
+		// Deactivation Feedback
+		\FilterPlus\Core\Admin\DeactivationFeedback::instance()->init();
 
 		// Ajax submit
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
