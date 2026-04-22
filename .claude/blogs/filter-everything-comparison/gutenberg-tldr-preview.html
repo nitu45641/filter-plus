@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TL;DR Block Preview</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f5;
+    padding: 40px 20px;
+    margin: 0;
+  }
+  .preview-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .blog-wrapper {
+    max-width: 740px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  }
+  /* Simulated surrounding blog text */
+  .blog-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #333;
+    margin: 0 0 24px;
+  }
+
+  /* ═══════════════════════════════════════════
+     GUTENBERG BLOCK — PASTE THIS INTO WORDPRESS
+  ═══════════════════════════════════════════ */
+  .fp-tldr {
+    display: flex;
+    gap: 0;
+    background: #F0F6FF;
+    border-left: 4px solid #1E5799;
+    border-radius: 0 8px 8px 0;
+    padding: 22px 24px;
+    margin: 32px 0;
+    position: relative;
+  }
+  .fp-tldr__icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: #1E5799;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    margin-top: 2px;
+  }
+  .fp-tldr__icon svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+  }
+  .fp-tldr__body {
+    flex: 1;
+  }
+  .fp-tldr__label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #1E5799;
+    margin: 0 0 6px;
+    line-height: 1;
+  }
+  .fp-tldr__text {
+    font-size: 15px;
+    line-height: 1.72;
+    color: #1a1a2e;
+    margin: 0;
+  }
+  .fp-tldr__text strong {
+    color: #1E5799;
+    font-weight: 600;
+  }
+  /* ═══════════════════════════════════════════
+     END BLOCK
+  ═══════════════════════════════════════════ */
+</style>
+</head>
+<body>
+
+<div class="preview-label">Gutenberg Block Preview — wpbens.com</div>
+
+<div class="blog-wrapper">
+
+  <!-- Simulated preceding content -->
+  <p class="blog-text">
+    Searching for Filter Everything Pro pricing? You're likely deciding whether to renew or switch to a better-fit WooCommerce AJAX product filter plugin. This comparison covers pricing, features, and use cases side by side so you can make the right call for your store.
+  </p>
+
+  <!-- ════════════════════════════════════
+       GUTENBERG CUSTOM HTML BLOCK — COPY BELOW
+  ════════════════════════════════════ -->
+  <div class="fp-tldr">
+    <div class="fp-tldr__icon">
+      <!-- Lightning bolt icon -->
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L4.09 12.96A1 1 0 0 0 5 14.5h6.5L11 22l8.91-10.96A1 1 0 0 0 19 9.5H12.5L13 2z"/>
+      </svg>
+    </div>
+    <div class="fp-tldr__body">
+      <p class="fp-tldr__label">TL;DR — Quick Summary</p>
+      <p class="fp-tldr__text">
+        <strong>Filter Everything Pro</strong> works with any WordPress post type — useful for directory, portfolio, or real estate sites. <strong>FilterPlus</strong> is an advanced product filter built exclusively for WooCommerce, with native attribute, variation, stock, and rating filtering out of the box. For WooCommerce stores, FilterPlus delivers more at a comparable price. For non-WooCommerce filtering, Filter Everything holds the advantage.
+      </p>
+    </div>
+  </div>
+  <!-- ════════════════════════════════════
+       END GUTENBERG CUSTOM HTML BLOCK
+  ════════════════════════════════════ -->
+
+  <!-- Simulated following content -->
+  <p class="blog-text">
+    The core difference comes down to scope. Filter Everything Pro is a general-purpose WordPress filter that queries any post type. FilterPlus is an advanced product filter built exclusively for WooCommerce — tighter native integration, faster setup, and features designed specifically around WooCommerce's product data model.
+  </p>
+
+</div>
+
+</body>
+</html>
