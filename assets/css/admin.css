@@ -36,10 +36,10 @@ input::placeholder {
 }
 h2.content-header {
 	color: var(--filter-header-bg,#121212);
-	font-size: 26px !important;
+	font-size: 18px !important;
 	font-weight: 700 !important;
-	line-height: 33.18px !important;
-	margin-bottom: 20px !important;
+	line-height: 1.4 !important;
+	margin-bottom: 16px !important;
 }
 h1.font_20{
 	font-size: 20px ;
