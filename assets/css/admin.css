@@ -1035,14 +1035,14 @@ a.pro-link:focus{
 		display: flex;
 		justify-content: space-between;
 		background: #fff;
-		padding: 15px;
+		padding: 11px 15px;
 		border-radius: 6px;
 		.title{
-			font-size: 15px;
+			font-size: 13px;
 			font-weight: 600;
 		}
 		.closed,.opened{
-			font-size: 24px;
+			font-size: 18px;
 		}
 	}
 	.accordion-item.active{
