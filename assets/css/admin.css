@@ -1112,12 +1112,12 @@ a.pro-link:focus{
 	margin: 1% 0;
 	font-size: 15px;
 	font-weight: 700;
-	line-height: 33.18px;
+	line-height: 1.4;
 }
 .content-header .title{
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: 700;
-	line-height: 33.18px;
+	line-height: 1.4;
 }
 .tablenav {
 	margin: 6px 0 18px;
