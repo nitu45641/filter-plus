@@ -542,24 +542,28 @@ class Helper {
 		$args = array(
 			'public'   => true,
 			'_builtin' => false,
-			);
-		
-		$output = 'names'; 
-		$operator = 'and'; 
-	
-		$post_types = get_post_types( $args, $output, $operator ); 
-		if ( !empty($post_types) ) {
-			$first_index = array(''=>esc_html__('Select Custom Post Type','filter-plus'));
+		);
+
+		$operator        = 'and';
+		$post_type_objs  = get_post_types( $args, 'objects', $operator );
+
+		$post_types = array();
+		foreach ( $post_type_objs as $obj ) {
+			$post_types[ $obj->name ] = $obj->label;
+		}
+
+		if ( ! empty( $post_types ) ) {
+			$first_index = array( '' => esc_html__( 'Select Custom Post Type', 'filter-plus' ) );
 		} else {
-			$first_index = array(''=>esc_html__('No Custom Post Type Found','filter-plus'));
+			$first_index = array( '' => esc_html__( 'No Custom Post Type Found', 'filter-plus' ) );
 		}
 		$all_post_types = $first_index + $post_types;
 
 		if ( $type == 'label_value' ) {
-			foreach ($all_post_types as $key => $value) {
-				$result_data[] = array('label'=>$value,'value'=>$value);
-			} 
-		}else{
+			foreach ( $all_post_types as $key => $value ) {
+				$result_data[] = array( 'label' => $value, 'value' => $key );
+			}
+		} else {
 			$result_data = $all_post_types;
 		}
 

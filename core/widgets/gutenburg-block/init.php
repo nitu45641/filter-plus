@@ -66,8 +66,8 @@ if( version_compare($wp_version, '5.8') >= 0){
 	add_filter( 'block_categories', 'filterplus_category', 10, 2 );
 }
 
-// Hook: Block assets.
-add_action( 'init', 'filterplus_block_assets' );
+// Hook: Block assets — late priority so all CPTs from other plugins are registered first.
+add_action( 'init', 'filterplus_block_assets', 99 );
 
 // woo filter
 if ( file_exists( \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/blocks/woo-filter.php' ) ) {

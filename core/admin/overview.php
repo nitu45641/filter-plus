@@ -48,11 +48,10 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 		<svg viewBox="0 0 480 330" fill="none" xmlns="http://www.w3.org/2000/svg" class="flp-hero-svg" aria-hidden="true">
 
-			<!-- Outer card -->
-			<rect x="8" y="8" width="464" height="314" rx="20" fill="white" fill-opacity="0.14"/>
+			<!-- Single unified card -->
+			<rect x="6" y="6" width="468" height="318" rx="18" fill="white" fill-opacity="0.97"/>
 
 			<!-- ===== LEFT: Filter Panel ===== -->
-			<rect x="22" y="22" width="138" height="286" rx="14" fill="white" fill-opacity="0.97"/>
 
 			<!-- Header -->
 			<rect x="22" y="22" width="138" height="32" rx="10" fill="#EEF2FF"/>
@@ -158,8 +157,10 @@ defined( 'ABSPATH' ) || exit;
 			<!-- Results count -->
 			<text x="30" y="304" font-family="Arial,sans-serif" font-size="5.5" fill="#9ca3af">24 results found</text>
 
+			<!-- Vertical divider -->
+			<line x1="160" y1="6" x2="160" y2="324" stroke="#e8ecf4" stroke-width="1"/>
+
 			<!-- ===== RIGHT: Product Grid ===== -->
-			<rect x="172" y="22" width="298" height="286" rx="14" fill="white" fill-opacity="0.95"/>
 
 			<!-- Top bar -->
 			<rect x="172" y="22" width="298" height="28" rx="10" fill="#f8faff"/>
@@ -281,42 +282,42 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="flp-features-grid">
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-category" style="background:#EFF6FF;color:#3b82f6;box-shadow:0 4px 12px rgba(59,130,246,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-category" style="background:#EFF6FF;color:#3b82f6"></span>
 				<h3><?php esc_html_e( 'Filter by Category', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Let shoppers narrow products by category and subcategory with checkbox, radio, or dropdown displays.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-money-alt" style="background:#ECFDF5;color:#10b981;box-shadow:0 4px 12px rgba(16,185,129,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-money-alt" style="background:#ECFDF5;color:#10b981"></span>
 				<h3><?php esc_html_e( 'Price Range Slider', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Drag-to-filter price slider that updates results instantly — min, max, or dual-handle range.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-star-filled" style="background:#FFFBEB;color:#f59e0b;box-shadow:0 4px 12px rgba(245,158,11,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-star-filled" style="background:#FFFBEB;color:#f59e0b"></span>
 				<h3><?php esc_html_e( 'Filter by Rating', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Customers can filter by star rating to surface only the best-reviewed products in your store.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-tag" style="background:#F5F3FF;color:#8b5cf6;box-shadow:0 4px 12px rgba(139,92,246,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-tag" style="background:#F5F3FF;color:#8b5cf6"></span>
 				<h3><?php esc_html_e( 'Tags & Attributes', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Filter by WooCommerce tags, custom attributes, and variation options with a single widget.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-art" style="background:#FDF2F8;color:#ec4899;box-shadow:0 4px 12px rgba(236,72,153,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-art" style="background:#FDF2F8;color:#ec4899"></span>
 				<h3><?php esc_html_e( 'Color Swatch Filter', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Visual color picker lets shoppers filter by product color or variation with a single click.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-cart" style="background:#FFF7ED;color:#f97316;box-shadow:0 4px 12px rgba(249,115,22,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-cart" style="background:#FFF7ED;color:#f97316"></span>
 				<h3><?php esc_html_e( 'WooCommerce Order Filter', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Filter admin orders by any custom criteria to speed up order management workflows.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-update" style="background:#F0FDFA;color:#0d9488;box-shadow:0 4px 12px rgba(13,148,136,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-update" style="background:#F0FDFA;color:#0d9488"></span>
 				<h3><?php esc_html_e( 'AJAX Live Filtering', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Results refresh instantly without page reload, giving shoppers a smooth, app-like experience.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-sort" style="background:#F0F9FF;color:#0ea5e9;box-shadow:0 4px 12px rgba(14,165,233,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-sort" style="background:#F0F9FF;color:#0ea5e9"></span>
 				<h3><?php esc_html_e( 'Sort & Order Control', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Let shoppers sort results by price, popularity, rating, or newness — integrated with the filter widget.', 'filter-plus' ); ?></p>
 			</div>
@@ -331,42 +332,42 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="flp-features-grid">
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-image-filter" style="background:#EEF2FF;color:#6366f1;box-shadow:0 4px 12px rgba(99,102,241,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-image-filter" style="background:#EEF2FF;color:#6366f1"></span>
 				<h3><?php esc_html_e( 'Custom Post Type Filter', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Filter any WordPress CPT — portfolio, listings, events, and more — with fully configurable filter sets.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-screenoptions" style="background:#FFF1F2;color:#f43f5e;box-shadow:0 4px 12px rgba(244,63,94,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-screenoptions" style="background:#FFF1F2;color:#f43f5e"></span>
 				<h3><?php esc_html_e( 'Multiple Blog Templates', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Apply filters to blog archives with dedicated templates designed for content-heavy sites.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-menu-alt3" style="background:#F0F9FF;color:#0ea5e9;box-shadow:0 4px 12px rgba(14,165,233,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-menu-alt3" style="background:#F0F9FF;color:#0ea5e9"></span>
 				<h3><?php esc_html_e( 'Shortcode & Page Builder', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Place filter widgets anywhere via shortcodes, Elementor, Gutenberg, or Bricks Builder.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-admin-page" style="background:#F0FDF4;color:#16a34a;box-shadow:0 4px 12px rgba(22,163,74,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-admin-page" style="background:#F0FDF4;color:#16a34a"></span>
 				<h3><?php esc_html_e( 'SEO Optimized URLs', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Clean, indexable URLs for every filter combination so filtered pages rank in search engines.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-filter" style="background:#FDF4FF;color:#c026d3;box-shadow:0 4px 12px rgba(192,38,211,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-filter" style="background:#FDF4FF;color:#c026d3"></span>
 				<h3><?php esc_html_e( 'Multiple Custom Fields', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Filter by ACF fields, meta fields, or any custom data for ultimate post-type flexibility.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-star-half" style="background:#FFFBEB;color:#d97706;box-shadow:0 4px 12px rgba(217,119,6,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-star-half" style="background:#FFFBEB;color:#d97706"></span>
 				<h3><?php esc_html_e( '10+ Filter Templates', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Pick from a library of pre-built filter templates and launch a polished widget in minutes.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-networking" style="background:#F5F3FF;color:#7c3aed;box-shadow:0 4px 12px rgba(124,58,237,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-networking" style="background:#F5F3FF;color:#7c3aed"></span>
 				<h3><?php esc_html_e( 'Taxonomy Filter', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Filter by any registered taxonomy — tags, genres, locations, and more — on any post type.', 'filter-plus' ); ?></p>
 			</div>
 			<div class="flp-feature-card">
-				<span class="flp-feat-icon dashicons dashicons-calendar-alt" style="background:#ECFEFF;color:#0891b2;box-shadow:0 4px 12px rgba(8,145,178,0.15);"></span>
+				<span class="flp-feat-icon dashicons dashicons-calendar-alt" style="background:#ECFEFF;color:#0891b2"></span>
 				<h3><?php esc_html_e( 'Date Range Filter', 'filter-plus' ); ?></h3>
 				<p><?php esc_html_e( 'Filter posts and CPTs by publish date, year, or custom date range using an intuitive date picker.', 'filter-plus' ); ?></p>
 			</div>

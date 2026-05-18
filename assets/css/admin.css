@@ -1165,7 +1165,7 @@ tfoot > tr
 	align-items: center;
 	justify-content: space-between;
 	padding: 60px 5%;
-	background: linear-gradient(135deg, #0c1a8f 0%, #2448e0 30%, #3263f8 58%, #5b8cfa 80%, #93b5ff 100%);
+	background: linear-gradient(135deg, #2046c4 0%, #3262e8 30%, #4f80f5 58%, #7aabfc 80%, #b8d4ff 100%);
 	gap: 40px;
 	position: relative;
 	overflow: hidden;
@@ -1424,7 +1424,7 @@ tfoot > tr
 }
 .flp-features-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-columns: repeat(4, 1fr);
 	gap: 18px;
 }
 .flp-feature-card {
@@ -1457,7 +1457,6 @@ tfoot > tr
 	font-size: 22px;
 	background: #EFF6FF;
 	color: #3b82f6;
-	box-shadow: 0 4px 12px rgba(59,130,246,0.12);
 	margin-bottom: 2px;
 	padding: 0;
 }
@@ -1702,9 +1701,14 @@ tfoot > tr
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
+@media (max-width: 900px) {
+	.flp-features-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
 @media (max-width: 600px) {
 	.flp-features-grid {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 1fr);
 	}
 	.flp-plugin-cards {
 		grid-template-columns: 1fr;
