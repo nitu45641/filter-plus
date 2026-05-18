@@ -36,22 +36,22 @@ input::placeholder {
 }
 h2.content-header {
 	color: var(--filter-header-bg,#121212);
-	font-size: 18px !important;
+	font-size: 15px !important;
 	font-weight: 700 !important;
 	line-height: 1.4 !important;
-	margin-bottom: 16px !important;
+	margin-bottom: 12px !important;
 }
 h1.font_20{
-	font-size: 20px ;
-}
-h1.font_18{
-	font-size: 18px ;
-}
-h1.font_16{
 	font-size: 16px ;
 }
+h1.font_18{
+	font-size: 14px ;
+}
+h1.font_16{
+	font-size: 13px ;
+}
 .font_bold {
-	font-weight: 500 !important;
+	font-weight: 600 !important;
 }
 .ml-2{
 	margin-left: 2%;
@@ -119,9 +119,9 @@ h1.font_16{
 	cursor: pointer;
 }
 .form-label {
-	font-size: 14px;
+	font-size: 12.5px;
 	font-weight: 500;
-	padding: 10px 0px;
+	padding: 8px 0;
 }
 
 /* do not group these rules */
