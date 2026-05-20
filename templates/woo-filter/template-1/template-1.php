@@ -66,46 +66,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/sort-bar.php"; ?>
 	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-template.php"; ?>
 	<div class="prods-grid-view grid-view-<?php echo esc_attr($template)?>">
-		<?php
-		if ( defined( 'ELEMENTOR_VERSION' ) && isset( \Elementor\Plugin::$instance->editor ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-			$_editor_products = \FilterPlus\Core\Frontend\SearchFilter\Actions::instance()->get_products( array(
-				'filter_type'        => 'product',
-				'limit'              => ! empty( $no_of_items ) ? $no_of_items : 9,
-				'template'           => $template,
-				'offset'             => 1,
-				'filter_param'       => array(),
-				'cat_id'             => '',
-				'taxonomies'         => array(),
-				'search_value'       => '',
-				'min'                => '',
-				'max'                => '',
-				'rating'             => '',
-				'product_tags'       => ! empty( $product_tags ) ? $product_tags : 'yes',
-				'post_author'        => 'no',
-				'order_by'           => '',
-				'product_categories' => ! empty( $product_categories ) ? $product_categories : 'yes',
-				'stock'              => '',
-				'on_sale'            => '',
-				'cf_list'            => array(),
-				'masonry_style'      => ! empty( $masonry_style ) ? $masonry_style : 'no',
-				'taxonomy'           => 'product_cat',
-				'pagination_style'   => ! empty( $pagination_style ) ? $pagination_style : 'numbers',
-				'author'             => '',
-			) );
-			foreach ( $_editor_products['products'] as $_editor_product ) {
-				if ( function_exists( 'filterplus_render_grid_product' ) ) {
-					filterplus_render_grid_product(
-						$_editor_product,
-						isset( $hide_prod_add_cart ) ? $hide_prod_add_cart : 'yes',
-						isset( $hide_prod_title )    ? $hide_prod_title    : 'yes',
-						isset( $hide_prod_desc )     ? $hide_prod_desc     : 'yes',
-						isset( $hide_prod_rating )   ? $hide_prod_rating   : 'yes',
-						isset( $hide_prod_price )    ? $hide_prod_price    : 'yes'
-					);
-				}
-			}
-		}
-		?>
 	</div>
 	<div class="prods-list-view"></div>
 	<div class="message"></div>

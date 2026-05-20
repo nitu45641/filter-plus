@@ -486,8 +486,9 @@ class Helper {
 		if ( $type == "" && empty($categories) ) {
 			$category = get_term_by( 'slug' , 'uncategorized' , $taxonomy );
 			$uncategorized 	= !empty($category) ? $category->term_id : null;
+			$existing_exclude = ! empty( $args_cat['exclude'] ) ? (array) $args_cat['exclude'] : array();
 			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Excluding uncategorized is necessary for proper category display
-			$args_cat['exclude'] = array($uncategorized);
+			$args_cat['exclude'] = array_merge( $existing_exclude, array_filter( array( $uncategorized ) ) );
 		}
 
 		$cat = get_categories( $args_cat );
@@ -626,20 +627,23 @@ class Helper {
 			$exclude_ids = is_array( $param['exclude_cat_id'] )
 				? array_map( 'intval', $param['exclude_cat_id'] )
 				: array_map( 'intval', explode( ',', $param['exclude_cat_id'] ) );
-			if ( ! empty( $args['tax_query'] ) ) {
-				if ( ! isset( $args['tax_query']['relation'] ) ) {
-					$args['tax_query'] = array_merge( array( 'relation' => 'AND' ), array( $args['tax_query'][0] ) );
-				}
-			} else {
-				$args['tax_query'] = array( 'relation' => 'AND' );
-			}
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for category exclusion
-			$args['tax_query'][] = array(
+			$not_in_clause = array(
 				'taxonomy' => $param['taxonomy'],
 				'field'    => 'id',
 				'terms'    => $exclude_ids,
 				'operator' => 'NOT IN',
 			);
+			if ( isset( $args['tax_query']['relation'] ) ) {
+				// Already has AND relation (attribute filtering branch) — just append
+				$args['tax_query'][] = $not_in_clause;
+			} elseif ( ! empty( $args['tax_query'][0]['terms'] ) ) {
+				// Has a meaningful non-empty IN clause (user picked a category) — combine with AND
+				$args['tax_query'] = array( 'relation' => 'AND', $args['tax_query'][0], $not_in_clause );
+			} else {
+				// No meaningful existing clause (empty or missing terms) — NOT IN alone
+				$args['tax_query'] = array( $not_in_clause );
+			}
 		}
 
 		return $args;

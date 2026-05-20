@@ -793,8 +793,89 @@ class Woo_Filter extends Widget_Base {
 	 * Render widget
 	 */
 	protected function render() {
-		$settings   = $this->get_settings();
-		echo \FilterPlus\Base\DataFactory::instance()->woo_render_html( $settings ) ;
+		$settings = $this->get_settings();
+
+		if ( ! $this->is_elementor_preview() ) {
+			\FilterPlus\Base\DataFactory::instance()->woo_render_html( $settings );
+			return;
+		}
+
+		$products_html = $this->get_editor_products_html( $settings );
+
+		ob_start();
+		\FilterPlus\Base\DataFactory::instance()->woo_render_html( $settings );
+		$widget_html = ob_get_clean();
+
+		if ( ! empty( $products_html ) ) {
+			$widget_html = preg_replace_callback(
+				'/<div(\b[^>]*class="[^"]*prods-grid-view[^"]*"[^>]*)>/s',
+				function ( $matches ) use ( $products_html ) {
+					return '<div' . $matches[1] . ' data-editor-products="1">' . $products_html;
+				},
+				$widget_html,
+				1
+			);
+		}
+
+		echo $widget_html;
+	}
+
+	private function is_elementor_preview() {
+		return defined( 'ELEMENTOR_VERSION' ) && (
+			( isset( \Elementor\Plugin::$instance->editor ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) ||
+			isset( $_GET['elementor-preview'] ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		);
+	}
+
+	private function get_editor_products_html( $settings ) {
+		$data             = \FilterPlus\Base\DataFactory::instance()->woo_process_data( $settings );
+		$template         = ! empty( $data['template'] )           ? $data['template']           : '1';
+		$no_of_items      = ! empty( $data['no_of_items'] )        ? $data['no_of_items']         : 9;
+		$masonry_style    = ! empty( $data['masonry_style'] )      ? $data['masonry_style']       : 'no';
+		$pagination_style = ! empty( $data['pagination_style'] )   ? $data['pagination_style']    : 'numbers';
+		$product_tags     = ! empty( $data['product_tags'] )       ? $data['product_tags']        : 'yes';
+		$product_categories = ! empty( $data['product_categories'] ) ? $data['product_categories'] : 'yes';
+		$hide_prod_add_cart = ! empty( $data['hide_prod_add_cart'] ) ? $data['hide_prod_add_cart'] : 'yes';
+		$hide_prod_title  = ! empty( $data['hide_prod_title'] )    ? $data['hide_prod_title']     : 'yes';
+		$hide_prod_desc   = ! empty( $data['hide_prod_desc'] )     ? $data['hide_prod_desc']      : 'yes';
+		$hide_prod_rating = ! empty( $data['hide_prod_rating'] )   ? $data['hide_prod_rating']    : 'yes';
+		$hide_prod_price  = ! empty( $data['hide_prod_price'] )    ? $data['hide_prod_price']     : 'yes';
+
+		$tpl_file = \FilterPlus::plugin_dir() . "templates/woo-filter/template-{$template}/right-side/product-template.php";
+		if ( file_exists( $tpl_file ) ) {
+			include_once $tpl_file;
+		}
+
+		if ( ! function_exists( 'filterplus_render_grid_product' ) ) {
+			return '';
+		}
+
+		// Use a direct query to avoid the tax_query-with-empty-terms issue in the editor context.
+		$posts = get_posts( array(
+			'post_type'      => 'product',
+			'post_status'    => 'publish',
+			'posts_per_page' => $no_of_items,
+		) );
+
+		if ( empty( $posts ) ) {
+			return '';
+		}
+
+		$param    = array( 'template' => $template, 'post_author' => 'no' );
+		$products = \FilterPlus\Core\Frontend\SearchFilter\Actions::process_product_data( $posts, $param );
+
+		ob_start();
+		foreach ( $products as $product ) {
+			filterplus_render_grid_product(
+				$product,
+				$hide_prod_add_cart,
+				$hide_prod_title,
+				$hide_prod_desc,
+				$hide_prod_rating,
+				$hide_prod_price
+			);
+		}
+		return ob_get_clean();
 	}
 
 }

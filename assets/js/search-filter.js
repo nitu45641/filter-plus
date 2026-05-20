@@ -471,7 +471,7 @@
 		}
 
 		//default call
-		if ($('.prods-grid-view').length > 0) {
+		if ($('.prods-grid-view').length > 0 && !$('.prods-grid-view').data('editor-products')) {
 			// Always load products on initial page load
 			get_products({ default_call: true });
 		}
