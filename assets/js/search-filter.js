@@ -532,9 +532,10 @@
 				$('#shopContainer').data('product_categories');
 			let product_tags 	= $('#shopContainer').data('product_tags');
 			let post_author 	= $('#shopContainer').data('post_author');
+			let exclude_cat_id  = $('#shopContainer').data('exclude_categories') || '';
 			let selected_data 	= selected_param(params);
 			show_selected_data(selected_data);
-			
+
 			const data = {
 				action: 'get_filtered_data',
 				filter_plus_nonce: filter_client.filter_plus_nonce,
@@ -545,6 +546,7 @@
 				product_categories,
 				product_tags,
 				post_author,
+				exclude_cat_id,
 				params: selected_data,
 			};
 

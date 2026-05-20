@@ -61,6 +61,7 @@ class Actions {
 		$author  	  = ! empty( $post_arr['author'] ) ? $post_arr['author'] : '';
 		$cf_list  	  = ! empty( $post_arr['cf_list'] ) ? $post_arr['cf_list'] : [];
 		$masonry_style  = ! empty( $post_data['masonry_style'] ) ? $post_data['masonry_style'] : 'no';
+		$exclude_cat_id = ! empty( $post_data['exclude_cat_id'] ) ? $post_data['exclude_cat_id'] : '';
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
 
 		$args = array(
@@ -85,6 +86,7 @@ class Actions {
 			'on_sale'  		=> $on_sale,
 			'cf_list'		=> $cf_list,
 			'masonry_style' => $masonry_style,
+			'exclude_cat_id'=> $exclude_cat_id,
 			'taxonomy'  	=> $taxonomy
 		);
 

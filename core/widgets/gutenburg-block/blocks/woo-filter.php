@@ -41,6 +41,10 @@ function product_filter_block() {
                     'type' => 'array',
                     'default' => array()
                 ),
+                'exclude_categories' => array(
+                    'type' => 'array',
+                    'default' => array()
+                ),
                 'hide_empty_cat' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -180,6 +184,9 @@ function product_filter_callback( $settings ) {
     // Convert arrays to comma-separated strings
     if ( !empty($settings['categories']) && is_array($settings['categories']) ) {
         $settings['categories'] = implode(',', $settings['categories']);
+    }
+    if ( !empty($settings['exclude_categories']) && is_array($settings['exclude_categories']) ) {
+        $settings['exclude_categories'] = implode(',', $settings['exclude_categories']);
     }
     if ( !empty($settings['tags']) && is_array($settings['tags']) ) {
         $settings['tags'] = implode(',', $settings['tags']);

@@ -478,6 +478,11 @@ class Helper {
 		if ( !empty($categories)) {
 			$args_cat['include'] = explode(",",$categories);
 		}
+		if ( !empty($args['exclude_categories']) ) {
+			$exclude_ids = array_map( 'intval', explode( ',', $args['exclude_categories'] ) );
+			$existing_exclude = ! empty( $args_cat['exclude'] ) ? $args_cat['exclude'] : array();
+			$args_cat['exclude'] = array_merge( $existing_exclude, $exclude_ids );
+		}
 		if ( $type == "" && empty($categories) ) {
 			$category = get_term_by( 'slug' , 'uncategorized' , $taxonomy );
 			$uncategorized 	= !empty($category) ? $category->term_id : null;
@@ -617,9 +622,29 @@ class Helper {
 			}
 		}
 
+		if ( ! empty( $param['exclude_cat_id'] ) && ! empty( $param['taxonomy'] ) ) {
+			$exclude_ids = is_array( $param['exclude_cat_id'] )
+				? array_map( 'intval', $param['exclude_cat_id'] )
+				: array_map( 'intval', explode( ',', $param['exclude_cat_id'] ) );
+			if ( ! empty( $args['tax_query'] ) ) {
+				if ( ! isset( $args['tax_query']['relation'] ) ) {
+					$args['tax_query'] = array_merge( array( 'relation' => 'AND' ), array( $args['tax_query'][0] ) );
+				}
+			} else {
+				$args['tax_query'] = array( 'relation' => 'AND' );
+			}
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for category exclusion
+			$args['tax_query'][] = array(
+				'taxonomy' => $param['taxonomy'],
+				'field'    => 'id',
+				'terms'    => $exclude_ids,
+				'operator' => 'NOT IN',
+			);
+		}
+
 		return $args;
 	}
-	
+
 	/**
 	 * Get products terms
 	 *

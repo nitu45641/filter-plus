@@ -70,6 +70,7 @@ class Shortcodes {
 			data-template="<?php echo esc_attr($template)?>"
 			data-product_categories="<?php echo esc_attr($product_categories)?>"
 			data-product_tags="<?php echo esc_attr($product_tags)?>"
+			data-exclude_categories="<?php echo esc_attr($exclude_categories)?>"
 			>
 			<?php
 				$style = $template;

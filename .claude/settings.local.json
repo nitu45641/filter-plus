@@ -17,7 +17,9 @@
       "Bash(npm run build:*)",
       "Bash(cat:*)",
       "Bash(python3:*)",
-      "Bash(xxd:*)"
+      "Bash(xxd:*)",
+      "Bash(grep -E \"\\\\.\\(php|js\\)$\")",
+      "Bash(grep -E \"\\\\.\\(php\\)$\")"
     ],
     "deny": [],
     "ask": []

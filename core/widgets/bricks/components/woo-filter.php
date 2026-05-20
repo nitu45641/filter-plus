@@ -163,7 +163,7 @@ class Woo_Filter extends \Bricks\Element {
 		$this->controls['categories'] = array(
 			'tab' => 'content',
 			'group' => 'filter_options',
-			'label' => esc_html__( 'Categories', 'filter-plus' ),
+			'label' => esc_html__( 'Include Categories', 'filter-plus' ),
 			'type' => 'select',
 			'options' => \FilterPlus\Utils\Helper::get_categories( '', 'widget' ),
 			'inline' => true,
@@ -172,6 +172,19 @@ class Woo_Filter extends \Bricks\Element {
 			'searchable' => true,
 			'clearable' => true,
 			'default' => '',
+		);
+		$this->controls['exclude_categories'] = array(
+			'tab'         => 'content',
+			'group'       => 'filter_options',
+			'label'       => esc_html__( 'Exclude Categories', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
+			'type'        => 'select',
+			'options'     => \FilterPlus\Utils\Helper::get_categories( '', 'widget' ),
+			'inline'      => true,
+			'placeholder' => esc_html__( 'Select Categories to Exclude', 'filter-plus' ),
+			'multiple'    => true,
+			'searchable'  => true,
+			'clearable'   => true,
+			'default'     => '',
 		);
 
 		// sub categories

@@ -170,10 +170,20 @@ class Woo_Filter extends Widget_Base {
 		$this->add_control(
 			'categories',
 			array(
-				'label' => esc_html__( 'Categories', 'filter-plus' ),
+				'label' => esc_html__( 'Include Categories', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT2,
 				'options' => Helper::get_categories( '', 'widget' ),
 				'multiple' => true,
+			)
+		);
+		$this->add_control(
+			'exclude_categories',
+			array(
+				'label'       => esc_html__( 'Exclude Categories', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
+				'type'        => Controls_Manager::SELECT2,
+				'options'     => Helper::get_categories( '', 'widget' ),
+				'multiple'    => true,
+				'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
 			)
 		);
 		$this->add_control(

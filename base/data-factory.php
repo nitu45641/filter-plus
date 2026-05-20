@@ -33,6 +33,7 @@ class DataFactory {
             'review_template'   => '1',
             'category_label'    => esc_html__('Categories','filter-plus'),
             'categories'       	=> '',
+            'exclude_categories'=> '',
             'hide_empty_cat'	=> 'yes',
             'apply_button_mode'	=> 'no',
             'apply_button_label'=> esc_html__('Apply','filter-plus'),
@@ -128,6 +129,9 @@ class DataFactory {
         $default_data['category_template']  = ! empty( $settings['category_template'] ) ? $settings['category_template'] : '1';
         $default_data['category_label']     = ! empty( $category_label ) ? $category_label : esc_html__( 'Categories', 'filter-plus' );
 		$default_data['categories']         = ( ! empty( $categories ) && is_array( $categories ) ) ? implode( ',', $categories ) : '';
+		$default_data['exclude_categories'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['exclude_categories'] ) )
+			? ( is_array( $settings['exclude_categories'] ) ? implode( ',', $settings['exclude_categories'] ) : $settings['exclude_categories'] )
+			: '';
 		$default_data['tags']               = ! empty( $tags ) && is_array( $tags ) ? implode( ',', $tags ) : '';
 		$default_data['show_tags']          = ! empty( $show_tags ) ? $show_tags : '';
 		$default_data['tag_label']          = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Tags', 'filter-plus' );
@@ -163,6 +167,10 @@ class DataFactory {
 		$default_data['title'] 				= ! empty( $title ) ? $title : esc_html__( 'Filters', 'filter-plus' );
 		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
 		$default_data['pagination_style'] 	= ! empty( $pagination_style ) ? $pagination_style : 'numbers';
+		$default_data['no_of_items']        = ! empty( $settings['no_of_items'] ) ? intval( $settings['no_of_items'] ) : 9;
+		$default_data['apply_button_mode']  = ! empty( $settings['apply_button_mode'] ) ? $settings['apply_button_mode'] : 'no';
+		$default_data['apply_button_label'] = ! empty( $settings['apply_button_label'] ) ? $settings['apply_button_label'] : esc_html__( 'Apply', 'filter-plus' );
+		$default_data['reset_button_label'] = ! empty( $settings['reset_button_label'] ) ? $settings['reset_button_label'] : esc_html__( 'Reset', 'filter-plus' );
 
         return $default_data;
     }
@@ -200,12 +208,16 @@ class DataFactory {
 			'price_range_label' => $price_range_label,
 			'stock_label' => $stock_label,
 			'on_sale_label' => $on_sale_label,
+			'product_count' => $product_count,
+			'hide_empty_cat' => $hide_empty_cat,
+			'masonry_style' => $masonry_style,
 			'stock' => $stock,
 			'on_sale' => $on_sale,
 			'template' => $template,
 			'filter_position' => $filter_position,
 			'pagination_style' => $pagination_style,
 			'categories' => $categories,
+			'exclude_categories' => $exclude_categories,
 			'tags' => $tags,
 			'attributes' => $attributes,
 			'colors' => $colors,
@@ -348,11 +360,12 @@ class DataFactory {
 
     public static function category_template_url( $args ) {
         extract( $args );
-        $taxonomy       = ! empty( $args['taxonomy'] ) ? $args['taxonomy'] : 'product_cat';
-        $product_count  = ! empty( $args['product_count'] ) ? $args['product_count'] : 'no';
-        $hide_empty_cat = ! empty( $args['hide_empty_cat'] ) ? $args['hide_empty_cat'] : 'no';
-        $categories     = ! empty( $args['categories'] ) ? $args['categories'] : '';
-        $sub_categories = ! empty( $args['sub_categories'] ) ? $args['sub_categories'] : 'yes';
+        $taxonomy           = ! empty( $args['taxonomy'] ) ? $args['taxonomy'] : 'product_cat';
+        $product_count      = ! empty( $args['product_count'] ) ? $args['product_count'] : 'no';
+        $hide_empty_cat     = ! empty( $args['hide_empty_cat'] ) ? $args['hide_empty_cat'] : 'no';
+        $categories         = ! empty( $args['categories'] ) ? $args['categories'] : '';
+        $exclude_categories = ! empty( $args['exclude_categories'] ) ? $args['exclude_categories'] : '';
+        $sub_categories     = ! empty( $args['sub_categories'] ) ? $args['sub_categories'] : 'yes';
         $category_label = ! empty( $args['category_label'] ) ? $args['category_label'] : esc_html__('Categories','filter-plus');
         $category_template = ! empty( $args['category_template'] ) ? $args['category_template'] : '1';
         $template       = ! empty( $args['template'] ) ? $args['template'] : '1';

@@ -12,8 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				isset($categories) ? $categories : '',
 				false,
 				array(
-					'hide_empty' => isset($hide_empty_cat) ? $hide_empty_cat : 'yes',
-					'taxonomy' => isset($taxonomy) ? $taxonomy : 'category'
+					'hide_empty'          => isset($hide_empty_cat) ? $hide_empty_cat : 'yes',
+					'taxonomy'            => isset($taxonomy) ? $taxonomy : 'category',
+					'exclude_categories'  => isset($exclude_categories) ? $exclude_categories : '',
 				)
 			);
 			if ( !empty( $filterplus_get_categories ) ) :

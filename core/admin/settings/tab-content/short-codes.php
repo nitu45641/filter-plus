@@ -82,8 +82,13 @@ use \FilterPlus\Utils\Helper as Helper;
 
 			$filterplus_get_categories = Helper::get_categories();
 
-			$filterplus_args = array('label'=>esc_html__("Category List:","filter-plus"),'id' => 'woo_pro_categories',
+			$filterplus_args = array('label'=>esc_html__("Include Categories:","filter-plus"),'id' => 'woo_pro_categories',
 			'select_type'=>'multiple','data_label' => 'categories','options'=>$filterplus_get_categories);
+			filterplus_select_field($filterplus_args);
+
+			$filterplus_args = array('label'=>esc_html__("Exclude Categories:","filter-plus"),'id' => 'woo_exclude_categories',
+			'select_type'=>'multiple','data_label' => 'exclude_categories','options'=>$filterplus_get_categories,
+			'disable' => class_exists('FilterPlusPro') ? false : true);
 			filterplus_select_field($filterplus_args);
 			// hide empty categories
 			$filterplus_args = array('label'=>esc_html__("Hide Empty Category:","filter-plus"),'id' => 'hide_empty_cat','data_label' => 'hide_empty_cat');
