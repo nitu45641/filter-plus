@@ -21,6 +21,7 @@
 					data-cat_id="<?php echo esc_attr( $filterplus_item['term_id'] ); ?>"
 					data-slug="<?php echo esc_attr( $filterplus_item['slug'] ); ?>"
 					data-parent="<?php echo esc_attr( $filterplus_item['term_id'] ); ?>"
+					data-url="<?php echo esc_url( get_term_link( (int) $filterplus_item['term_id'], 'product_cat' ) ); ?>"
 				>
 					<input type="checkbox"
 						class="regular-checkbox fp-img-card-check"
@@ -51,6 +52,7 @@
 						data-name="<?php echo esc_attr( $filterplus_sub['name'] ); ?>"
 						data-cat_id="<?php echo esc_attr( $filterplus_sub['term_id'] ); ?>"
 						data-slug="<?php echo esc_attr( $filterplus_sub['slug'] ); ?>"
+						data-url="<?php echo esc_url( get_term_link( (int) $filterplus_sub['term_id'], 'product_cat' ) ); ?>"
 					>
 						<input type="checkbox"
 							class="regular-checkbox fp-img-card-check"

@@ -33,6 +33,10 @@ class Core {
       }
 
       \FilterPlus\Core\Frontend\Shortcodes::instance()->init();
+
+      // Category layout: replace WooCommerce category archive with the filter template (Pro only).
+      add_filter( 'template_include', array( $this, 'category_page_template' ), 99 );
+
       //register gutenberg blocks.
       if ( file_exists( \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/init.php' ) ) {
       	include_once \FilterPlus::plugin_dir() . 'core/widgets/gutenburg-block/init.php';
@@ -45,8 +49,26 @@ class Core {
       Elementor_Manifest::instance()->init();
     }
 
+    /**
+     * Override the WooCommerce category archive template with the filter template.
+     */
+    public function category_page_template( $template ) {
+        if ( ! function_exists( 'is_product_category' ) || ! is_product_category() ) {
+            return $template;
+        }
+        if ( ! class_exists( 'FilterPlusPro' ) ) {
+            return $template;
+        }
+        $settings = get_option( 'filter_plus_category_settings', array() );
+        if ( empty( $settings['enable_category_layout'] ) || $settings['enable_category_layout'] !== 'yes' ) {
+            return $template;
+        }
+        $custom = \FilterPlus::plugin_dir() . 'templates/woo-filter/category-layout.php';
+        return file_exists( $custom ) ? $custom : $template;
+    }
+
     public function element_js() {
-      
+
     }
 
     /**

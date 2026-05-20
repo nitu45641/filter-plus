@@ -25,6 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					data-name="<?php echo esc_attr($filterplus_item['name'])?>"
 					data-cat_id="<?php echo esc_attr($filterplus_item['term_id'])?>"
 					data-slug="<?php echo esc_attr($filterplus_item['slug'])?>"
+					data-url="<?php echo esc_url( get_term_link( (int) $filterplus_item['term_id'], 'product_cat' ) ); ?>"
 				>
 					<?php echo esc_html($filterplus_item['name']);?>
 					<?php if ($product_count == 'yes') { echo ' (' . esc_html($filterplus_item['count']) . ')'; } ?>
@@ -36,7 +37,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 									id="<?php  echo esc_attr("cat_li_child_".$filterplus_sub['term_id'])?>"
 									data-name="<?php echo esc_attr($filterplus_sub['name'])?>"
 									data-cat_id="<?php echo esc_attr($filterplus_sub['term_id'])?>"
-									data-slug="<?php echo esc_attr($filterplus_sub['slug'])?>">
+									data-slug="<?php echo esc_attr($filterplus_sub['slug'])?>"
+									data-url="<?php echo esc_url( get_term_link( (int) $filterplus_sub['term_id'], 'product_cat' ) ); ?>"
+								>
 									<?php echo esc_html($filterplus_sub['name']);?>
 									<?php if ($product_count == 'yes') { echo ' (' . esc_html($filterplus_sub['count']) . ')'; } ?>
 								</li>

@@ -49,6 +49,15 @@
 		// Check if apply button mode is enabled
 		const applyButtonMode = $('#shopContainer').data('apply_button_mode');
 		const isApplyMode = (applyButtonMode === 'yes');
+		const enableCategoryLayout = $('#shopContainer').data('enable_category_layout') === 'yes';
+		const currentCatId = $('#shopContainer').data('current_cat_id') || '';
+
+		// Pre-select the current category when rendering on a WooCommerce category page.
+		if ( currentCatId && enableCategoryLayout ) {
+			const $currentLi = $('.category-list li[data-cat_id="' + currentCatId + '"]');
+			$currentLi.addClass('active');
+			$currentLi.find('input[type="checkbox"], input[type="radio"]').prop('checked', true);
+		}
 
 		//list click/change
 		const category_li = $('.category-list li');
@@ -56,10 +65,19 @@
 		if (category_li.find('input[type="checkbox"]').length !== 0 ) {
 			action = 'change';
 		}
-		
+
 		category_li.on(action, function (event) {
 			event.preventDefault();
 			let _this = $(this);
+
+			// Navigate to the category page URL when category layout is enabled (Pro).
+			if ( enableCategoryLayout && filter_client.is_pro_active ) {
+				const catUrl = _this.data('url');
+				if ( catUrl ) {
+					window.location.href = catUrl;
+					return;
+				}
+			}
 			let active_li = $('#cat_li_parent_' + _this.data('cat_id'));
 			if (_this.hasClass('sub_categories')) {
 				active_li = $('#cat_li_child_' + _this.data('cat_id'));

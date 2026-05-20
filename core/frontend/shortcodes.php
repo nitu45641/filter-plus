@@ -76,6 +76,8 @@ class Shortcodes {
 			data-hide_prod_desc="<?php echo esc_attr($hide_prod_desc)?>"
 			data-hide_prod_price="<?php echo esc_attr($hide_prod_price)?>"
 			data-hide_prod_rating="<?php echo esc_attr($hide_prod_rating)?>"
+			data-enable_category_layout="<?php echo esc_attr($enable_category_layout)?>"
+			data-current_cat_id="<?php echo esc_attr($current_cat_id)?>"
 			>
 			<?php
 				$style = $template;
