@@ -19,7 +19,8 @@
       "Bash(python3:*)",
       "Bash(xxd:*)",
       "Bash(grep -E \"\\\\.\\(php|js\\)$\")",
-      "Bash(grep -E \"\\\\.\\(php\\)$\")"
+      "Bash(grep -E \"\\\\.\\(php\\)$\")",
+      "Bash(grep -n \"action: 'get_filtered_data'\\\\|get_filtered_data\\\\|$.ajax\\\\|product_tags\\\\|product_categories\" /Applications/MAMP/htdocs/wordpress/wp-content/plugins/filter-plus/assets/js/search-filter.js)"
     ],
     "deny": [],
     "ask": []

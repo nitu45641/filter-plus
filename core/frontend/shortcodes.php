@@ -71,6 +71,11 @@ class Shortcodes {
 			data-product_categories="<?php echo esc_attr($product_categories)?>"
 			data-product_tags="<?php echo esc_attr($product_tags)?>"
 			data-exclude_categories="<?php echo esc_attr($exclude_categories)?>"
+			data-hide_prod_add_cart="<?php echo esc_attr($hide_prod_add_cart)?>"
+			data-hide_prod_title="<?php echo esc_attr($hide_prod_title)?>"
+			data-hide_prod_desc="<?php echo esc_attr($hide_prod_desc)?>"
+			data-hide_prod_price="<?php echo esc_attr($hide_prod_price)?>"
+			data-hide_prod_rating="<?php echo esc_attr($hide_prod_rating)?>"
 			>
 			<?php
 				$style = $template;

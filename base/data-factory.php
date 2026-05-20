@@ -64,11 +64,13 @@ class DataFactory {
             'filter_position'   => 'left',
             'pagination_style'  => 'numbers',
             'product_count'     => 'yes',
-            'hide_prod_title'   => 'yes',
-            'hide_prod_desc'    => 'yes',
-            'hide_prod_price'   => 'yes',
-            'hide_prod_add_cart'=> 'yes',
-            'hide_prod_rating'  => 'yes',
+            'hide_prod_title'        => 'yes',
+            'hide_prod_desc'         => 'yes',
+            'hide_prod_price'        => 'yes',
+            'hide_prod_add_cart'     => 'yes',
+            'hide_prod_rating'       => 'yes',
+            'enable_category_layout' => 'no',
+            'current_cat_id'         => '',
         );
     }
 
@@ -161,6 +163,8 @@ class DataFactory {
 		$default_data['hide_prod_add_cart'] = ! empty( $hide_prod_add_cart ) && ( $hide_prod_add_cart == true || $hide_prod_add_cart == 'yes' ) ?  'yes' : 'no';
 		$default_data['hide_prod_rating']   = ! empty( $hide_prod_rating ) && ( $hide_prod_rating == true || $hide_prod_rating == 'yes' ) ?  'yes' : 'no';
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
+		$default_data['enable_category_layout'] = ( isset( $settings['enable_category_layout'] ) && $settings['enable_category_layout'] === 'yes' ) ? 'yes' : 'no';
+		$default_data['current_cat_id']     = ! empty( $settings['current_cat_id'] ) ? intval( $settings['current_cat_id'] ) : '';
 		$default_data['product_tags']       = ! empty( $product_tags ) ? $product_tags : '';
 		$default_data['product_categories'] = ! empty( $product_categories ) ? $product_categories : '';
 		$default_data['template'] 			= ! empty( $template ) ? $template : '';
@@ -226,10 +230,16 @@ class DataFactory {
 			'show_attributes' => $show_attributes,
 			'show_reviews' => $show_reviews,
 			'show_price_range' => $show_price_range,
-			'sorting' => $sorting,
-			'product_tags' => $product_tags,
-			'product_categories' => $product_categories,
+			'sorting'                => $sorting,
+			'product_tags'           => $product_tags,
+			'product_categories'     => $product_categories,
+			'enable_category_layout' => $enable_category_layout,
+			'current_cat_id'         => $current_cat_id,
 		);
+
+		if ( $enable_category_layout === 'yes' ) {
+			update_option( 'filter_plus_category_settings', $process_data, false );
+		}
 
 		$shortcode_parts = array();
 		foreach ( $attrs as $k => $v ) {
