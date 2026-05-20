@@ -471,9 +471,16 @@
 		}
 
 		//default call
-		if ($('.prods-grid-view').length > 0 && !$('.prods-grid-view').data('editor-products')) {
-			// Always load products on initial page load
-			get_products({ default_call: true });
+		if ($('.prods-grid-view').length > 0) {
+			if ($('.prods-grid-view').data('editor-products')) {
+				// Editor preview: products already PHP-rendered — just init Masonry layout.
+				let template      = $('#shopContainer').data('template');
+				let masonry_style = $('#shopContainer').data('masonry_style');
+				loadIsotope( template, masonry_style );
+			} else {
+				// Frontend: load products via AJAX.
+				get_products({ default_call: true });
+			}
 		}
 
 		/**

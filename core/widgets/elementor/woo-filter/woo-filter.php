@@ -861,10 +861,21 @@ class Woo_Filter extends Widget_Base {
 			return '';
 		}
 
-		$param    = array( 'template' => $template, 'post_author' => 'no' );
+		$param = array(
+			'template'           => $template,
+			'post_author'        => 'no',
+			'filter_type'        => 'product',
+			'masonry_style'      => $masonry_style,
+			'product_categories' => $product_categories,
+			'product_tags'       => $product_tags,
+		);
 		$products = \FilterPlus\Core\Frontend\SearchFilter\Actions::process_product_data( $posts, $param );
 
 		ob_start();
+		// Masonry requires these sizer elements to calculate column widths.
+		if ( 'yes' === $masonry_style ) {
+			echo '<div class="grid-sizer"></div><div class="gutter-sizer"></div>';
+		}
 		foreach ( $products as $product ) {
 			filterplus_render_grid_product(
 				$product,
