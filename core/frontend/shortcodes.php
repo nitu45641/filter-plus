@@ -350,14 +350,39 @@ class Shortcodes {
 				grid-template-columns: 200px 200px 200px 200px;
 				gap: 8px 20px;
 			}
-			.product-style-4{
-				display: inline-flex;
-				flex-direction: row;
-				gap: 30px 15px;
+			.grid-view-4 {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 15px;
 			}
-			.product-style-4 .product-thumbnail{
-			    align-items: center;
-    			display: flex;
+			.product-style-4 {
+				display: flex;
+				flex-direction: row;
+				gap: 18px;
+				align-items: flex-start;
+				padding: 16px;
+				border-radius: 12px;
+				background: #fff;
+				border: 1px solid rgba(0,0,0,0.07);
+			}
+			.product-style-4 .product-thumbnail {
+				flex-shrink: 0;
+				width: 130px;
+				height: 130px;
+				border-radius: 10px;
+				overflow: hidden;
+				background: #f5f5f5;
+			}
+			.product-style-4 .product-thumbnail .vpcc-image {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			.product-style-4 .product-thumbnail .vpcc-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
 			}
 
 			@media screen and (max-width: 1024px) {

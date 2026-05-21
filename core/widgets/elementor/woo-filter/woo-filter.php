@@ -897,12 +897,22 @@ class Woo_Filter extends Widget_Base {
 		$hide_prod_rating = ! empty( $data['hide_prod_rating'] )   ? $data['hide_prod_rating']    : 'yes';
 		$hide_prod_price  = ! empty( $data['hide_prod_price'] )    ? $data['hide_prod_price']     : 'yes';
 
+		// Try free plugin template first, then fall back to pro plugin template directory.
 		$tpl_file = \FilterPlus::plugin_dir() . "templates/woo-filter/template-{$template}/right-side/product-template.php";
+		if ( ! file_exists( $tpl_file ) && class_exists( 'FilterPlusPro' ) ) {
+			$folder   = in_array( (int) $template, [ 5, 7 ] ) ? 'bottom' : 'right-side';
+			$tpl_file = \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-{$template}/{$folder}/product-template.php";
+		}
 		if ( file_exists( $tpl_file ) ) {
 			include_once $tpl_file;
 		}
 
-		if ( ! function_exists( 'filterplus_render_grid_product' ) ) {
+		// Pro templates define filterplus_pro_render_grid_product; free templates define filterplus_render_grid_product.
+		$render_fn = function_exists( 'filterplus_pro_render_grid_product' )
+			? 'filterplus_pro_render_grid_product'
+			: ( function_exists( 'filterplus_render_grid_product' ) ? 'filterplus_render_grid_product' : null );
+
+		if ( ! $render_fn ) {
 			return '';
 		}
 
@@ -928,12 +938,12 @@ class Woo_Filter extends Widget_Base {
 		$products = \FilterPlus\Core\Frontend\SearchFilter\Actions::process_product_data( $posts, $param );
 
 		ob_start();
-		// Masonry requires these sizer elements to calculate column widths.
 		if ( 'yes' === $masonry_style ) {
 			echo '<div class="grid-sizer"></div><div class="gutter-sizer"></div>';
 		}
 		foreach ( $products as $product ) {
-			filterplus_render_grid_product(
+			call_user_func(
+				$render_fn,
 				$product,
 				$hide_prod_add_cart,
 				$hide_prod_title,

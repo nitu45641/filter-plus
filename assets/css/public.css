@@ -1481,8 +1481,8 @@ a {
 	flex-shrink: 0;
 }
 .product-price-row .inline-cart-btn .fplus-cart-icon {
-	width: 13px;
-	height: 13px;
+	width: 16px;
+	height: 16px;
 }
 
 /* Template 1 - Cart button in thumbnail */
@@ -1977,6 +1977,7 @@ a.added_to_cart.wc-forward {
 	color: #6d6d6d;
 }
 .sorting .sort-by select {
+	font-size: 14px;
 	height: 45px;
 	border: 1px solid #e5e5e5;
 	border-radius: 6px;
