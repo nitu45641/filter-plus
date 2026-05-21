@@ -13,11 +13,11 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 		<div class="vartical-prod-card-container">
 			<div class="product-thumbnail">
 				<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank">
-					<div class="vpcc-image" style="width: 220px; height: 220px; margin: 0 auto;">
+					<div class="vpcc-image">
 						<?php
-						$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), array(220, 220), false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
+						$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), 'large', false, array('style' => 'width:100%;height:100%;object-fit:cover;display:block;'));
 						if (empty($grid_image)) {
-							echo wp_kses_post( preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']) );
+							echo wp_kses_post( preg_replace('/<img/', '<img style="width:100%;height:100%;object-fit:cover;display:block;"', $product['post_image']) );
 						} else {
 							echo wp_kses_post( $grid_image );
 						}

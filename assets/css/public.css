@@ -187,7 +187,7 @@ input[type="checkbox"].regular-checkbox:checked::after {
 .filter-cat-badge span,
 .filter-cat-badge .fp-sale-badge {
 	display: inline-block;
-	background: #e3106e;
+	background: var(--filter-price-color, #e3106e);
 	color: #fff;
 	font-size: 11px;
 	line-height: 18px;
@@ -1364,23 +1364,11 @@ a {
 /* Product Css */
 
 .vartical-prod-card-container {
-	background: #fff;
 	text-align: center;
-	-webkit-transition: all ease 0.4s;
-	transition: all ease 0.4s;
-	border: 1px solid #eaeaea;
 	border-radius: 10px;
 }
 
-.vartical-prod-card-container:hover {
-	position: relative;
-	-webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.22));
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.22));
-	border-color: #d7d7d7;
-}
-
 .vartical-prod-card-container:hover .vpcc-image {
-	background-color: #fff;
 	border-radius: 10px;
 }
 
@@ -1422,18 +1410,10 @@ a {
 
 /* Template 1 - Overall product card */
 .product-style-1 {
-	background: #fff;
 	border-radius: 10px;
 	overflow: hidden;
-	transition: box-shadow 0.25s ease, transform 0.25s ease;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-	border: 1px solid rgba(0, 0, 0, 0.07);
 }
 
-.product-style-1:hover {
-	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
-	transform: translateY(-2px);
-}
 
 /* Template 1 - Product thumbnail */
 .product-style-1 .product-thumbnail {
@@ -1441,13 +1421,13 @@ a {
 	overflow: hidden;
 	background: #f5f5f5;
 	aspect-ratio: 1 / 1;
+	width: 100%;
 }
 
 .product-style-1 .vpcc-image {
 	position: relative;
-	width: 100% !important;
-	height: 100% !important;
-	margin: 0 !important;
+	width: 100%;
+	height: 100%;
 }
 
 .product-style-1 .vpcc-image img {
@@ -1475,7 +1455,39 @@ a {
 	font-weight: 600;
 	color: #1a1a1a;
 	line-height: 1.4;
-	margin-bottom: 6px;
+	margin-bottom: 4px;
+}
+
+/* Price + cart row — price left, button right */
+.product-price-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 6px;
+}
+.product-price-row .product-price {
+	flex: 1;
+	min-width: 0;
+}
+.product-price-row .inline-cart-btn a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: var(--filter-secondary-color, #1164cb);
+	color: #fff;
+	flex-shrink: 0;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.product-price-row .inline-cart-btn a:hover {
+	opacity: 0.85;
+	transform: scale(1.08);
+}
+.product-price-row .inline-cart-btn .fplus-cart-icon {
+	width: 16px;
+	height: 16px;
 }
 
 /* Template 1 - Cart button in thumbnail */

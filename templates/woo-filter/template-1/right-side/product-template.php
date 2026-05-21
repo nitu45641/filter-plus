@@ -13,11 +13,11 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 	<div class="product-style product-style-<?php echo esc_attr($product['template']); ?>">
 		<div class="product-thumbnail">
 			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank">
-				<div class="vpcc-image" style="width: 220px; height: 220px; margin: 0 auto;">
+				<div class="vpcc-image">
 					<?php
-					$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), array(220, 220), false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
+					$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), 'large', false, array('style' => 'width:100%;height:100%;object-fit:cover;display:block;'));
 					if (empty($grid_image)) {
-						echo wp_kses_post( preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']) );
+						echo wp_kses_post( preg_replace('/<img/', '<img style="width:100%;height:100%;object-fit:cover;display:block;"', $product['post_image']) );
 					} else {
 						echo wp_kses_post( $grid_image );
 					}
@@ -34,11 +34,6 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 					<?php endif; ?>
 				</div>
 			</a>
-			<?php if( $hide_prod_add_cart == 'yes' ): ?>
-			<div class="card-action-btn-container">
-				<?php echo Helper::kses($product['cart_btn']); ?>
-			</div>
-			<?php endif; ?>
 		</div>
 		<div class="product-content">
 			<?php if( $hide_prod_title == 'yes' ): ?>
@@ -49,11 +44,18 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 			<?php if( $hide_prod_rating == 'yes' ): ?>
 				<?php echo wp_kses_post( $product['rating'] ); ?>
 			<?php endif; ?>
-			<?php if( $hide_prod_price == 'yes' ): ?>
-			<div class="product-price">
-				<?php echo wp_kses_post( $product['post_price'] ); ?>
+			<div class="product-price-row">
+				<?php if( $hide_prod_price == 'yes' ): ?>
+				<div class="product-price">
+					<?php echo wp_kses_post( $product['post_price'] ); ?>
+				</div>
+				<?php endif; ?>
+				<?php if( $hide_prod_add_cart == 'yes' ): ?>
+				<div class="inline-cart-btn">
+					<?php echo Helper::kses($product['cart_btn']); ?>
+				</div>
+				<?php endif; ?>
 			</div>
-			<?php endif; ?>
 		</div>
 	</div>
 	<?php
