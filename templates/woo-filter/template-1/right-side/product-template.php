@@ -25,6 +25,13 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 					<?php if (!empty($product['on_sale'])): ?>
 						<div class="badge on-sale-badge-<?php echo esc_attr($product['template']); ?>"><?php echo esc_html($product['on_sale_text']); ?></div>
 					<?php endif; ?>
+					<?php if (!empty($product['categories'])): ?>
+						<div class="filter-cat-badge">
+							<?php foreach ($product['categories'] as $category): ?>
+								<span><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></span>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
 				</div>
 			</a>
 			<?php if( $hide_prod_add_cart == 'yes' ): ?>

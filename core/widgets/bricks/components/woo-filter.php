@@ -31,6 +31,11 @@ class Woo_Filter extends \Bricks\Element {
 			'title' => esc_html__( 'Filter Result Options', 'filter-plus' ),
 			'tab' => 'content',
 		);
+
+		$this->control_groups['product-grid'] = array(
+			'title' => esc_html__( 'Product Grid', 'filter-plus' ),
+			'tab' => 'content',
+		);
 	}
 
 	// Set builder controls
@@ -520,6 +525,39 @@ class Woo_Filter extends \Bricks\Element {
 			'inline' => true,
 			'small' => true,
 			'default' => true,
+		);
+
+		$this->controls['grid_columns_desktop'] = array(
+			'tab'         => 'content',
+			'group'       => 'product-grid',
+			'label'       => esc_html__( 'Desktop Columns', 'filter-plus' ),
+			'type'        => 'number',
+			'min'         => 1,
+			'max'         => 6,
+			'step'        => 1,
+			'placeholder' => 3,
+		);
+
+		$this->controls['grid_columns_tablet'] = array(
+			'tab'         => 'content',
+			'group'       => 'product-grid',
+			'label'       => esc_html__( 'Tablet Columns (≤1024px)', 'filter-plus' ),
+			'type'        => 'number',
+			'min'         => 1,
+			'max'         => 4,
+			'step'        => 1,
+			'placeholder' => 2,
+		);
+
+		$this->controls['grid_columns_mobile'] = array(
+			'tab'         => 'content',
+			'group'       => 'product-grid',
+			'label'       => esc_html__( 'Mobile Columns (≤480px)', 'filter-plus' ),
+			'type'        => 'number',
+			'min'         => 1,
+			'max'         => 2,
+			'step'        => 1,
+			'placeholder' => 1,
 		);
 	}
 

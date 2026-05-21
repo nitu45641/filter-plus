@@ -57,6 +57,26 @@ class Shortcodes {
 
 		
 		$this->custom_css($template , 'product' , array( 'masonry_style' => $masonry_style ));
+
+		// Output grid column CSS inline so it works in all page builders and frontend.
+		$col_desktop = ! empty( $grid_columns_desktop ) ? intval( $grid_columns_desktop ) : 0;
+		$col_tablet  = ! empty( $grid_columns_tablet )  ? intval( $grid_columns_tablet )  : 0;
+		$col_mobile  = ! empty( $grid_columns_mobile )  ? intval( $grid_columns_mobile )  : 0;
+
+		if ( $col_desktop > 0 || $col_tablet > 0 || $col_mobile > 0 ) {
+			echo '<style>';
+			echo '.prods-grid-view { display: grid !important; gap: 15px !important; }';
+			if ( $col_desktop > 0 ) {
+				echo '.prods-grid-view { grid-template-columns: repeat(' . intval( $col_desktop ) . ', 1fr) !important; }';
+			}
+			if ( $col_tablet > 0 ) {
+				echo '@media (max-width: 1024px) { .prods-grid-view { grid-template-columns: repeat(' . intval( $col_tablet ) . ', 1fr) !important; } }';
+			}
+			if ( $col_mobile > 0 ) {
+				echo '@media (max-width: 480px) { .prods-grid-view { grid-template-columns: repeat(' . intval( $col_mobile ) . ', 1fr) !important; } }';
+			}
+			echo '</style>';
+		}
 		?>
 			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template)?>"
 			id="shopContainer"
@@ -393,7 +413,7 @@ class Shortcodes {
 			--filter-hover-color: '.$hover_color.';
 			--filter-primary-color: '.$primary_color.';
 			--filter-secondary-color : '.$secondary_color.';
-			--filter-cart-icon-color : '.$cart_icon.';
+			--filter-fplus-cart-icon-color : '.$cart_icon.';
 			--filter-cart-content: '.$cart_content.';
 			--filter-price-range : '.$price_range.';
 			--filter-loader-color : '.$loader_color.';

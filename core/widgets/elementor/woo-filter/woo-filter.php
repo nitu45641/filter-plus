@@ -801,6 +801,48 @@ class Woo_Filter extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'product_grid_section',
+			array(
+				'label' => esc_html__( 'Product Grid', 'filter-plus' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'grid_columns_desktop',
+			array(
+				'label'       => esc_html__( 'Desktop Columns', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 6,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 3', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
+			'grid_columns_tablet',
+			array(
+				'label'       => esc_html__( 'Tablet Columns (≤1024px)', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 4,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 2', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
+			'grid_columns_mobile',
+			array(
+				'label'       => esc_html__( 'Mobile Columns (≤480px)', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 2,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 1', 'filter-plus' ),
+			)
+		);
+		$this->end_controls_section();
 	}
 
 	/**

@@ -1,7 +1,8 @@
 :root {
 	--filter-primary-color: #1164cb;
 	--filter-secondary-color : #1164cb;
-	--filter-cart-icon-color : #fff;
+	--filter-fplus-cart-icon-color : #fff;
+	--filter-cart-content: #080808;
 	--filter-price-range: #2d73e7;
 	--filter-border-color: #2d73e7;
 	--filter-tab-color: #fff;
@@ -137,6 +138,29 @@ input[type="checkbox"].regular-checkbox:checked::after {
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
+}
+.image-contianer {
+	position: relative;
+}
+.filter-cat-badge {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	z-index: 3;
+}
+.filter-cat-badge span {
+	display: inline-block;
+	background: var(--filter-badge-bg, #E7272D);
+	color: #fff;
+	font-size: 11px;
+	line-height: 18px;
+	padding: 0 7px;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-radius: 36px;
 }
 .sort-bar {
 	display: grid;
@@ -976,15 +1000,15 @@ a {
 .mt-2{
 	margin-top: 2%;
 }
-.cart-icon{
-	fill: var(--filter-cart-icon-color,'#fff');
+.fplus-cart-icon{
+	fill: var(--filter-fplus-cart-icon-color,'#fff');
 	width: 20px;
 	height: 20px;
 	display: flex;
     align-items: center;
 }
-.cart-icon-path {
-	fill: var(--filter-cart-icon-color,'#fff') !important;
+.fplus-cart-icon-path {
+	fill: var(--filter-fplus-cart-icon-color,'#fff') !important;
 }
 .font_14 {
 	font-size: 14px;
@@ -1161,7 +1185,7 @@ a {
 }
 
 .shop-sidebar .search-form button svg {
-	fill: var(--filter-cart-icon-color,#c4c4c4);
+	fill: var(--filter-fplus-cart-icon-color,#c4c4c4);
 	align-items: center;
     display: flex;
 }
@@ -1730,7 +1754,7 @@ a.added_to_cart.wc-forward {
 	a {
 	display: flex;
 	padding: 8px 26px 10px;
-	background-color: var(--filter-cart-content,'#080808');
+	background-color: var(--filter-cart-content, #080808);
 	color: #fff;
 	text-decoration: none;
 	border-radius: 4px;
@@ -1747,7 +1771,7 @@ a.added_to_cart.wc-forward {
 	.product-thumbnail
 	.card-action-btn-container
 	a
-	.cart-icon {
+	.fplus-cart-icon {
 	margin-top: 0;
 	position: relative;
 	top: 4px;

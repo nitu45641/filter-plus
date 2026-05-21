@@ -221,6 +221,36 @@ use \FilterPlus\Utils\Helper as Helper;
 
 		<?php
 
+			// Product Grid Columns
+			echo '<h2 class="font_bold font_14 mb-1 mt-1">' . esc_html__( 'Product Grid Columns', 'filter-plus' ) . '</h2>';
+
+			$filterplus_args = array(
+				'label'       => esc_html__( 'Desktop Columns:', 'filter-plus' ),
+				'id'          => 'grid_columns_desktop',
+				'placeholder' => esc_html__( 'e.g. 3', 'filter-plus' ),
+				'field_type'  => 'number',
+				'data_label'  => 'grid_columns_desktop',
+			);
+			filterplus_number_input_field( $filterplus_args );
+
+			$filterplus_args = array(
+				'label'       => esc_html__( 'Tablet Columns:', 'filter-plus' ),
+				'id'          => 'grid_columns_tablet',
+				'placeholder' => esc_html__( 'e.g. 2', 'filter-plus' ),
+				'field_type'  => 'number',
+				'data_label'  => 'grid_columns_tablet',
+			);
+			filterplus_number_input_field( $filterplus_args );
+
+			$filterplus_args = array(
+				'label'       => esc_html__( 'Mobile Columns:', 'filter-plus' ),
+				'id'          => 'grid_columns_mobile',
+				'placeholder' => esc_html__( 'e.g. 1', 'filter-plus' ),
+				'field_type'  => 'number',
+				'data_label'  => 'grid_columns_mobile',
+			);
+			filterplus_number_input_field( $filterplus_args );
+
 			// show title
 			$filterplus_args = array('label'=>esc_html__("Display Title:","filter-plus"),'id' => 'hide_prod_title',
 			'data_label' => 'hide_prod_title','checked' => 'yes');

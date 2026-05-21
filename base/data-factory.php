@@ -71,6 +71,9 @@ class DataFactory {
             'hide_prod_rating'       => 'yes',
             'enable_category_layout' => 'no',
             'current_cat_id'         => '',
+            'grid_columns_desktop'   => '',
+            'grid_columns_tablet'    => '',
+            'grid_columns_mobile'    => '',
         );
     }
 
@@ -165,9 +168,12 @@ class DataFactory {
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
 		$default_data['enable_category_layout'] = ( isset( $settings['enable_category_layout'] ) && $settings['enable_category_layout'] === 'yes' ) ? 'yes' : 'no';
 		$default_data['current_cat_id']     = ! empty( $settings['current_cat_id'] ) ? intval( $settings['current_cat_id'] ) : '';
-		$default_data['product_tags']       = ! empty( $product_tags ) ? $product_tags : '';
-		$default_data['product_categories'] = ! empty( $product_categories ) ? $product_categories : '';
-		$default_data['template'] 			= ! empty( $template ) ? $template : '';
+		$default_data['product_tags']          = ! empty( $product_tags ) ? $product_tags : '';
+		$default_data['product_categories']   = ! empty( $product_categories ) ? $product_categories : '';
+		$default_data['grid_columns_desktop']  = ! empty( $grid_columns_desktop ) ? intval( $grid_columns_desktop ) : '';
+		$default_data['grid_columns_tablet']   = ! empty( $grid_columns_tablet ) ? intval( $grid_columns_tablet ) : '';
+		$default_data['grid_columns_mobile']   = ! empty( $grid_columns_mobile ) ? intval( $grid_columns_mobile ) : '';
+		$default_data['template'] 			   = ! empty( $template ) ? $template : '';
 		$default_data['title'] 				= ! empty( $title ) ? $title : esc_html__( 'Filters', 'filter-plus' );
 		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
 		$default_data['pagination_style'] 	= ! empty( $pagination_style ) ? $pagination_style : 'numbers';
@@ -235,6 +241,9 @@ class DataFactory {
 			'product_categories'     => $product_categories,
 			'enable_category_layout' => $enable_category_layout,
 			'current_cat_id'         => $current_cat_id,
+			'grid_columns_desktop'   => $grid_columns_desktop,
+			'grid_columns_tablet'    => $grid_columns_tablet,
+			'grid_columns_mobile'    => $grid_columns_mobile,
 		);
 
 		if ( $enable_category_layout === 'yes' ) {

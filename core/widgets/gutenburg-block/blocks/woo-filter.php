@@ -173,6 +173,18 @@ function product_filter_block() {
                     'type' => 'boolean',
                     'default' => false
                 ),
+                'grid_columns_desktop' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'grid_columns_tablet' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'grid_columns_mobile' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
             ),
         ]
     );
