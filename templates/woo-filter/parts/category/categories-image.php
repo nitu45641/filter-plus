@@ -5,7 +5,7 @@
 	<ul class="category-list categories-image-grid">
 		<?php
 			$filterplus_get_categories = \FilterPlus\Utils\Helper::get_categories($categories, false,
-				array( 'hide_empty' => $hide_empty_cat, 'taxonomy' => $taxonomy, 'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '' ) );
+				array( 'hide_empty' => $hide_empty_cat, 'taxonomy' => $taxonomy, 'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '', 'category_orderby' => isset($category_orderby) ? $category_orderby : '' ) );
 
 			$filterplus_placeholder = function_exists('wc_placeholder_img_src') ? wc_placeholder_img_src('medium') : '';
 

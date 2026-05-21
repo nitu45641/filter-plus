@@ -74,6 +74,7 @@ class DataFactory {
             'grid_columns_desktop'   => '',
             'grid_columns_tablet'    => '',
             'grid_columns_mobile'    => '',
+            'category_orderby'       => '',
         );
     }
 
@@ -173,6 +174,7 @@ class DataFactory {
 		$default_data['grid_columns_desktop']  = ! empty( $grid_columns_desktop ) ? intval( $grid_columns_desktop ) : '';
 		$default_data['grid_columns_tablet']   = ! empty( $grid_columns_tablet ) ? intval( $grid_columns_tablet ) : '';
 		$default_data['grid_columns_mobile']   = ! empty( $grid_columns_mobile ) ? intval( $grid_columns_mobile ) : '';
+		$default_data['category_orderby']      = ! empty( $category_orderby ) ? sanitize_text_field( $category_orderby ) : '';
 		$default_data['template'] 			   = ! empty( $template ) ? $template : '';
 		$default_data['title'] 				= ! empty( $title ) ? $title : esc_html__( 'Filters', 'filter-plus' );
 		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
@@ -244,6 +246,7 @@ class DataFactory {
 			'grid_columns_desktop'   => $grid_columns_desktop,
 			'grid_columns_tablet'    => $grid_columns_tablet,
 			'grid_columns_mobile'    => $grid_columns_mobile,
+			'category_orderby'       => $category_orderby,
 		);
 
 		if ( $enable_category_layout === 'yes' ) {
@@ -385,6 +388,7 @@ class DataFactory {
         $categories         = ! empty( $args['categories'] ) ? $args['categories'] : '';
         $exclude_categories = ! empty( $args['exclude_categories'] ) ? $args['exclude_categories'] : '';
         $sub_categories     = ! empty( $args['sub_categories'] ) ? $args['sub_categories'] : 'yes';
+        $category_orderby   = ! empty( $args['category_orderby'] ) ? $args['category_orderby'] : '';
         $category_label = ! empty( $args['category_label'] ) ? $args['category_label'] : esc_html__('Categories','filter-plus');
         $category_template = ! empty( $args['category_template'] ) ? $args['category_template'] : '1';
         $template       = ! empty( $args['template'] ) ? $args['template'] : '1';

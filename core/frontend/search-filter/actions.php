@@ -262,6 +262,14 @@ class Actions {
 					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Required for price ordering
 					$args['meta_key']   = '_price';
 					break;
+				case 'title':
+					$args['order']   = 'ASC';
+					$args['orderby'] = 'title';
+					break;
+				case 'title-desc':
+					$args['order']   = 'DESC';
+					$args['orderby'] = 'title';
+					break;
 				case 'rating':
 					$args['order']      = 'DESC';
 					$args['orderby']    = 'rating';

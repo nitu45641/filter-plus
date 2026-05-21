@@ -192,6 +192,23 @@ class Woo_Filter extends \Bricks\Element {
 			'default'     => '',
 		);
 
+		if ( class_exists( 'FilterPlusPro' ) ) {
+			$this->controls['category_orderby'] = array(
+				'tab'     => 'content',
+				'group'   => 'filter_options',
+				'label'   => esc_html__( 'Category Sort By (Pro)', 'filter-plus' ),
+				'type'    => 'select',
+				'options' => array(
+					''          => esc_html__( 'Default', 'filter-plus' ),
+					'name'      => esc_html__( 'A-Z (Name)', 'filter-plus' ),
+					'name-desc' => esc_html__( 'Z-A (Name)', 'filter-plus' ),
+					'count'     => esc_html__( 'Product Count', 'filter-plus' ),
+				),
+				'inline'  => true,
+				'default' => '',
+			);
+		}
+
 		// sub categories
 		$this->controls['hide_empty_cat'] = array(
 			'tab' => 'content',

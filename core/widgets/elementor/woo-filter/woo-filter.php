@@ -187,6 +187,24 @@ class Woo_Filter extends Widget_Base {
 				'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
 			)
 		);
+
+		if ( class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'category_orderby',
+				array(
+					'label'   => esc_html__( 'Category Sort By', 'filter-plus' ),
+					'type'    => Controls_Manager::SELECT,
+					'default' => '',
+					'options' => array(
+						''          => esc_html__( 'Default', 'filter-plus' ),
+						'name'      => esc_html__( 'A-Z (Name)', 'filter-plus' ),
+						'name-desc' => esc_html__( 'Z-A (Name)', 'filter-plus' ),
+						'count'     => esc_html__( 'Product Count', 'filter-plus' ),
+					),
+				)
+			);
+		}
+
 		$this->add_control(
 			'hide_empty_cat',
 			array(

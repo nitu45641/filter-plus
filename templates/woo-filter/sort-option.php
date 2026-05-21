@@ -11,5 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		<option value="date"><?php esc_html_e('Sort by latest','filter-plus')?></option>
 		<option value="price"><?php esc_html_e('Sort by price: low to high','filter-plus')?></option>
 		<option value="price-desc"><?php esc_html_e('Sort by price: high to low','filter-plus')?></option>
+		<option value="title"><?php esc_html_e('Sort by name: A-Z','filter-plus')?></option>
+		<option value="title-desc"><?php esc_html_e('Sort by name: Z-A','filter-plus')?></option>
 	</select>
 </div>

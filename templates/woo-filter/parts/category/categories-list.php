@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					'hide_empty'          => isset($hide_empty_cat) ? $hide_empty_cat : 'yes',
 					'taxonomy'            => isset($taxonomy) ? $taxonomy : 'category',
 					'exclude_categories'  => isset($exclude_categories) ? $exclude_categories : '',
+					'category_orderby'    => isset($category_orderby) ? $category_orderby : '',
 				)
 			);
 			if ( !empty( $filterplus_get_categories ) ) :

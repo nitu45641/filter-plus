@@ -185,6 +185,10 @@ function product_filter_block() {
                     'type' => 'string',
                     'default' => ''
                 ),
+                'category_orderby' => array(
+                    'type'    => 'string',
+                    'default' => ''
+                ),
             ),
         ]
     );

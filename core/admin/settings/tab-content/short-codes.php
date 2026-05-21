@@ -90,6 +90,22 @@ use \FilterPlus\Utils\Helper as Helper;
 			'select_type'=>'multiple','data_label' => 'exclude_categories','options'=>$filterplus_get_categories,
 			'disable' => class_exists('FilterPlusPro') ? false : true);
 			filterplus_select_field($filterplus_args);
+
+			// Category Sort By
+			$filterplus_args = array(
+				'label'      => esc_html__( 'Category Sort By:', 'filter-plus' ),
+				'id'         => 'category_orderby',
+				'data_label' => 'category_orderby',
+				'options'    => array(
+					''          => esc_html__( 'Default', 'filter-plus' ),
+					'name'      => esc_html__( 'A-Z (Name)', 'filter-plus' ),
+					'name-desc' => esc_html__( 'Z-A (Name)', 'filter-plus' ),
+					'count'     => esc_html__( 'Product Count', 'filter-plus' ),
+				),
+				'type'       => 'random',
+			);
+			filterplus_select_field( $filterplus_args );
+
 			// hide empty categories
 			$filterplus_args = array('label'=>esc_html__("Hide Empty Category:","filter-plus"),'id' => 'hide_empty_cat','data_label' => 'hide_empty_cat');
 			filterplus_checkbox_field($filterplus_args);

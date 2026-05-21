@@ -471,10 +471,26 @@ class Helper {
 		}
 
 		$args_cat = array(
-			'taxonomy'     => $taxonomy,
-			'number'       => 100,
-			'hide_empty'   => $hide_empty,
+			'taxonomy'   => $taxonomy,
+			'number'     => 100,
+			'hide_empty' => $hide_empty,
 		);
+		if ( ! empty( $args['category_orderby'] ) ) {
+			switch ( $args['category_orderby'] ) {
+				case 'name':
+					$args_cat['orderby'] = 'name';
+					$args_cat['order']   = 'ASC';
+					break;
+				case 'name-desc':
+					$args_cat['orderby'] = 'name';
+					$args_cat['order']   = 'DESC';
+					break;
+				case 'count':
+					$args_cat['orderby'] = 'count';
+					$args_cat['order']   = 'DESC';
+					break;
+			}
+		}
 		if ( !empty($categories)) {
 			$args_cat['include'] = explode(",",$categories);
 		}

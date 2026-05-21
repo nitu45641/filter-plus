@@ -5,7 +5,7 @@
 	<ul class="category-list categories-wrapper">
 		<?php
 			$filterplus_get_categories = \FilterPlus\Utils\Helper::get_categories($categories,false,
-			array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => $taxonomy, 'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '' ) );
+			array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => $taxonomy, 'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '', 'category_orderby' => isset($category_orderby) ? $category_orderby : '' ) );
 
 			if ( !empty( $filterplus_get_categories ) ) :
 				foreach($filterplus_get_categories as $filterplus_item): ?>
