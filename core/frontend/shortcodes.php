@@ -317,30 +317,30 @@ class Shortcodes {
 			.grid-view-2 {
 				display: grid;
 				grid-template: auto / 255px 255px 255px;
-				gap: 30px 15px;
+				gap: 15px;
 				position: relative;
 			}
 			.post-grid-view-1{
 				display: grid;
 				grid-template: auto / 32.5% 32.5% 32%;
-				gap: 30px 11px;
+				gap: 15px 11px;
 			}
 			.grid-view-6{
 				display: grid;
 				grid-template: auto / 33% 33% 33%;
-				gap: 30px 22px;
+				gap: 15px 22px;
 			}
 			.grid-view-7{
 				display: grid;
 				grid-template-columns: 210px 210px 210px 210px;
 				position: relative;
-				column-gap: 20px;
-				row-gap: 25px;
+				column-gap: 15px;
+				row-gap: 15px;
 			}
 			.grid-view-3{
 				display: grid;
 				grid-template-columns: 290px 290px 290px;
-				column-gap: 20px;
+				column-gap: 15px;
 			}
 			.product-style-3 .vpcc-image img {
 				width: 100%;
