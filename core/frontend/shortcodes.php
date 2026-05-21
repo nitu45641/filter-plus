@@ -56,7 +56,12 @@ class Shortcodes {
 		} 
 
 		
-		$this->custom_css($template , 'product' , array( 'masonry_style' => $masonry_style ));
+		$this->custom_css($template , 'product' , array(
+			'masonry_style'        => $masonry_style,
+			'grid_columns_desktop' => $grid_columns_desktop,
+			'grid_columns_tablet'  => $grid_columns_tablet,
+			'grid_columns_mobile'  => $grid_columns_mobile,
+		));
 
 		$col_desktop = ! empty( $grid_columns_desktop ) ? intval( $grid_columns_desktop ) : 0;
 		$col_tablet  = ! empty( $grid_columns_tablet )  ? intval( $grid_columns_tablet )  : 0;
@@ -265,6 +270,10 @@ class Shortcodes {
 		$filter_border_color = 'rgb(225, 223, 223)';
 		$filter_font_color = '#333';
 		
+		$masonry_cols        = ! empty( $args['grid_columns_desktop'] ) ? max( 1, intval( $args['grid_columns_desktop'] ) ) : 3;
+		$masonry_cols_tablet = ! empty( $args['grid_columns_tablet'] )  ? max( 1, intval( $args['grid_columns_tablet'] ) )  : $masonry_cols;
+		$masonry_cols_mobile = ! empty( $args['grid_columns_mobile'] )  ? max( 1, intval( $args['grid_columns_mobile'] ) )  : 1;
+
 		if ($args['masonry_style'] == 'yes' ) {
 			$grid_style = '
 			.product-style{
@@ -273,10 +282,20 @@ class Shortcodes {
 				box-sizing: border-box;
 			}
 			.prods-grid-view .gutter-sizer {
-			width: 20px;
+				width: 20px;
 			}
 			.product-style,.grid-sizer{
-			width: calc((100% - 40px) / 3); /* 2 gutters × 20px = 40px total space between items */
+				width: calc((100% - ' . ( ( $masonry_cols - 1 ) * 20 ) . 'px) / ' . $masonry_cols . ');
+			}
+			@media (max-width: 1024px) {
+				.product-style,.grid-sizer{
+					width: calc((100% - ' . ( ( $masonry_cols_tablet - 1 ) * 20 ) . 'px) / ' . $masonry_cols_tablet . ');
+				}
+			}
+			@media (max-width: 480px) {
+				.product-style,.grid-sizer{
+					width: calc((100% - ' . ( ( $masonry_cols_mobile - 1 ) * 20 ) . 'px) / ' . $masonry_cols_mobile . ');
+				}
 			}
 			';
 		}else{
