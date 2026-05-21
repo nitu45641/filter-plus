@@ -1035,14 +1035,14 @@ a {
 	margin-top: 2%;
 }
 .fplus-cart-icon{
-	fill: var(--filter-fplus-cart-icon-color,'#fff');
+	fill: var(--filter-fplus-cart-icon-color, #fff);
 	width: 20px;
 	height: 20px;
-	display: flex;
-    align-items: center;
+	display: block;
+	flex-shrink: 0;
 }
 .fplus-cart-icon-path {
-	fill: var(--filter-fplus-cart-icon-color,'#fff') !important;
+	fill: var(--filter-fplus-cart-icon-color, #fff) !important;
 }
 .font_14 {
 	font-size: 14px;
