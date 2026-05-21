@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	$_fp_masonry = isset($masonry_style) && $masonry_style === 'yes';
 	$_fp_inline = '';
 	if ( ! $_fp_masonry && $_fp_col_d > 0 ) {
-		$_fp_inline  = 'display:grid;gap:15px;grid-template-columns:repeat(' . $_fp_col_d . ',1fr);';
+		$_fp_inline  = 'display:grid;grid-template-columns:repeat(' . $_fp_col_d . ',1fr);';
 		if ( $_fp_col_t > 0 ) { $_fp_inline .= '--fp-t:' . $_fp_col_t . ';'; }
 		if ( $_fp_col_m > 0 ) { $_fp_inline .= '--fp-m:' . $_fp_col_m . ';'; }
 	}

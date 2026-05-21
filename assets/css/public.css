@@ -143,9 +143,9 @@ input[type="checkbox"].regular-checkbox:checked::after {
 	position: relative;
 }
 /* Product Grid — responsive column overrides. Excluded from masonry (masonry uses float, not grid). */
+/* NOTE: no !important on display so jQuery fadeOut/fadeIn can hide/show the grid view normally. */
 .shopContainer.has-grid-cols:not([data-masonry_style="yes"]) .prods-grid-view {
-	display: grid !important;
-	gap: 15px !important;
+	display: grid;
 	grid-template-columns: repeat(var(--fp-cols-desktop), 1fr) !important;
 }
 @media (max-width: 1024px) {
