@@ -62,7 +62,7 @@ class Wp_Filter extends Widget_Base {
 				'label_on' => esc_html__( 'Show', 'filter-plus' ),
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
 			)
 		);
 

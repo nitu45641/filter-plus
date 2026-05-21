@@ -48,7 +48,7 @@ class Woo_Filter extends \Bricks\Element {
 			'type' => 'checkbox',
 			'inline' => true,
 			'small' => true,
-			'default' => true,
+			'default' => false,
 		);
 
 		// apply button mode

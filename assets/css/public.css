@@ -142,18 +142,49 @@ input[type="checkbox"].regular-checkbox:checked::after {
 .image-contianer {
 	position: relative;
 }
+/* Product Grid — responsive column overrides via CSS custom properties set inline on .shopContainer */
+.shopContainer.has-grid-cols .prods-grid-view {
+	display: grid !important;
+	gap: 15px !important;
+	grid-template-columns: repeat(var(--fp-cols-desktop), 1fr) !important;
+}
+@media (max-width: 1024px) {
+	.shopContainer.has-grid-cols .prods-grid-view {
+		grid-template-columns: repeat(var(--fp-cols-tablet, var(--fp-cols-desktop)), 1fr) !important;
+	}
+}
+@media (max-width: 480px) {
+	.shopContainer.has-grid-cols .prods-grid-view {
+		grid-template-columns: repeat(var(--fp-cols-mobile, 1), 1fr) !important;
+	}
+}
+/* Masonry grid columns */
+.shopContainer.has-grid-cols .product-style,
+.shopContainer.has-grid-cols .grid-sizer {
+	width: calc((100% - (var(--fp-cols-desktop) - 1) * 20px) / var(--fp-cols-desktop)) !important;
+}
 .filter-cat-badge {
 	position: absolute;
-	bottom: 10px;
-	left: 10px;
+	top: 15px;
+	left: 15px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 4px;
 	z-index: 3;
 }
+.badge ~ .filter-cat-badge,
+.on-sale-badge-1 ~ .filter-cat-badge,
+.on-sale-badge-2 ~ .filter-cat-badge,
+.on-sale-badge-3 ~ .filter-cat-badge,
+.on-sale-badge-4 ~ .filter-cat-badge,
+.on-sale-badge-5 ~ .filter-cat-badge,
+.on-sale-badge-6 ~ .filter-cat-badge,
+.on-sale-badge-7 ~ .filter-cat-badge {
+	top: 40px;
+}
 .filter-cat-badge span {
 	display: inline-block;
-	background: var(--filter-badge-bg, #E7272D);
+	background: #e3106e;
 	color: #fff;
 	font-size: 11px;
 	line-height: 18px;

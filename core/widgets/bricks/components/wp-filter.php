@@ -43,7 +43,7 @@ class Wp_Filter extends \Bricks\Element {
 			'type' => 'checkbox',
 			'inline' => true,
 			'small' => true,
-			'default' => true,
+			'default' => false,
 		);
 		// templates
 		$this->controls['template'] = array(

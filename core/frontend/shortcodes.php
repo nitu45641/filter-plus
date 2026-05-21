@@ -58,27 +58,22 @@ class Shortcodes {
 		
 		$this->custom_css($template , 'product' , array( 'masonry_style' => $masonry_style ));
 
-		// Output grid column CSS inline so it works in all page builders and frontend.
 		$col_desktop = ! empty( $grid_columns_desktop ) ? intval( $grid_columns_desktop ) : 0;
 		$col_tablet  = ! empty( $grid_columns_tablet )  ? intval( $grid_columns_tablet )  : 0;
 		$col_mobile  = ! empty( $grid_columns_mobile )  ? intval( $grid_columns_mobile )  : 0;
 
+		$grid_col_style  = '';
+		$grid_col_class  = '';
 		if ( $col_desktop > 0 || $col_tablet > 0 || $col_mobile > 0 ) {
-			echo '<style>';
-			echo '.prods-grid-view { display: grid !important; gap: 15px !important; }';
-			if ( $col_desktop > 0 ) {
-				echo '.prods-grid-view { grid-template-columns: repeat(' . intval( $col_desktop ) . ', 1fr) !important; }';
-			}
-			if ( $col_tablet > 0 ) {
-				echo '@media (max-width: 1024px) { .prods-grid-view { grid-template-columns: repeat(' . intval( $col_tablet ) . ', 1fr) !important; } }';
-			}
-			if ( $col_mobile > 0 ) {
-				echo '@media (max-width: 480px) { .prods-grid-view { grid-template-columns: repeat(' . intval( $col_mobile ) . ', 1fr) !important; } }';
-			}
-			echo '</style>';
+			$grid_col_class = ' has-grid-cols';
+			$vars = '';
+			if ( $col_desktop > 0 ) { $vars .= '--fp-cols-desktop:' . $col_desktop . ';'; }
+			if ( $col_tablet > 0 )  { $vars .= '--fp-cols-tablet:'  . $col_tablet  . ';'; }
+			if ( $col_mobile > 0 )  { $vars .= '--fp-cols-mobile:'  . $col_mobile  . ';'; }
+			$grid_col_style = ' style="' . esc_attr( $vars ) . '"';
 		}
 		?>
-			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template)?>"
+			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template) . esc_attr($grid_col_class); ?>"<?php echo $grid_col_style; ?>
 			id="shopContainer"
 			data-filter_type='product'
 			data-apply_button_mode="<?php echo esc_attr($apply_button_mode)?>"
