@@ -1443,7 +1443,7 @@ a {
 }
 
 .product-style-1 .product-content {
-	padding: 12px 14px 14px;
+	padding: 14px 16px 16px;
 }
 
 .product-style-1 .product-name a {
@@ -1473,21 +1473,16 @@ a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 32px;
-	height: 32px;
+	width: 30px;
+	height: 30px;
 	border-radius: 50%;
 	background-color: var(--filter-secondary-color, #1164cb);
 	color: #fff;
 	flex-shrink: 0;
-	transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.product-price-row .inline-cart-btn a:hover {
-	opacity: 0.85;
-	transform: scale(1.08);
 }
 .product-price-row .inline-cart-btn .fplus-cart-icon {
-	width: 16px;
-	height: 16px;
+	width: 13px;
+	height: 13px;
 }
 
 /* Template 1 - Cart button in thumbnail */
