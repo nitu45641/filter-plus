@@ -6,7 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <div class="sidebar-row categories-wrap">
 	<ul class="category-list filter-tab-pane">
 		<?php
-			$filterplus_categories = \FilterPlus\Utils\Helper::get_categories( $categories, '', array( 'taxonomy' => $taxonomy ) );
+			$filterplus_categories = \FilterPlus\Utils\Helper::get_categories(
+				$categories,
+				'',
+				array(
+					'taxonomy'         => $taxonomy,
+					'category_orderby' => isset( $category_orderby ) ? $category_orderby : '',
+				)
+			);
 
 			if ( ! empty( $filterplus_categories ) ) :
 				foreach ( $filterplus_categories as $filterplus_item ) : ?>

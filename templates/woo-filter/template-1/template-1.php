@@ -26,6 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			'hide_empty_cat' => $hide_empty_cat,
 			'product_count' => $product_count,
 			'sub_categories' => $sub_categories,
+			'category_orderby' => isset($category_orderby) ? $category_orderby : '',
 		));
 
 		// reviews

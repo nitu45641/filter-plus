@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<div class="dropdown-label closed" data-category_label="Select..."><?php esc_html_e('Select...','filter-plus')?></div>
 	<ul class="category-list panel dropdown-box d-none">
 		<?php
-			$filterplus_get_categories = \FilterPlus\Utils\Helper::get_categories($categories,false,array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => $taxonomy, 'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '' ));
+			$filterplus_get_categories = \FilterPlus\Utils\Helper::get_categories($categories,false,array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => $taxonomy, 'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '', 'category_orderby' => isset($category_orderby) ? $category_orderby : '' ));
 			if ( !empty( $filterplus_get_categories ) ) :
 				foreach($filterplus_get_categories as $filterplus_item):
 				?>

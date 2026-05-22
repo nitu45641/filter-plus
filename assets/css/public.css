@@ -1134,7 +1134,7 @@ a {
 }
 .products-wrap{
 	width: 100%;
-	overflow: hidden;
+	overflow: visible;
 	position: relative;
 }
 .shop-sidebar .search-form input {

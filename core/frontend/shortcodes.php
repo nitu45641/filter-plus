@@ -228,11 +228,11 @@ class Shortcodes {
 		}
 		else if ( $template == "3" ) {
 			$cart_icon = '#fff';
-			$secondary_color = $filter_type !== "product" ? "#e82935" : "#5c5555"; 
-			$readmore_color = $hover_color  = $filter_type !== "product" ? '#e82935' : 'hsla(242, 88.4%, 66.3%, 0.8)'; 
-			$filter_type !== "product" ? "#ff0000" : "#ab1616"; 
-			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000"; 
-			$primary_color = $price_range = '#333'; 
+			$secondary_color = $filter_type !== "product" ? "#e82935" : "#17c6aa";
+			$readmore_color = $hover_color  = $filter_type !== "product" ? '#e82935' : '#17c6aa';
+			$blog_header 	 = $filter_type !== "product" ? "#ff0000" : "#000";
+			$primary_color = $price_range = '#333';
+			$cart_content = '#17c6aa';
 		}
 		else if ( $template == "4" ) {
 			$primary_color = $price_range = $cart_content = '#ff69b4'; 
@@ -339,11 +339,14 @@ class Shortcodes {
 			}
 			.grid-view-3{
 				display: grid;
-				grid-template-columns: 290px 290px 290px;
-				column-gap: 15px;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 20px;
 			}
 			.product-style-3 .vpcc-image img {
 				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				display: block;
 			}
 			.tab-item.product-style-5{
 				display: grid;
@@ -408,7 +411,7 @@ class Shortcodes {
 					gap: 15px 10px;
 				}
 				.grid-view-3{
-				    grid-template-columns: 320px 320px;
+				    grid-template-columns: repeat(2, 1fr);
 				}
 				.post-grid-view-3 .hpcc-image{
 				    display: inline-flex;
