@@ -24,7 +24,15 @@
       "Bash(wp option *)",
       "Read(//Applications/MAMP/tmp/mysql/**)",
       "Bash(ps -ax)",
-      "Bash(/Applications/MAMP/Library/bin/mysql80/bin/mysql *)"
+      "Bash(/Applications/MAMP/Library/bin/mysql80/bin/mysql *)",
+      "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php /tmp/wp_dl_test.php)",
+      "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php /tmp/raw_curl_test.php)",
+      "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php /tmp/raw_curl_test2.php)",
+      "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php /tmp/raw_curl_test3.php)",
+      "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php /tmp/raw_curl_test4.php)",
+      "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php /tmp/wp_remote_test.php)",
+      "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php -r ' *)",
+      "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php *)"
     ],
     "deny": [],
     "ask": []
