@@ -856,7 +856,11 @@
 			) {
 				return;
 			}
-			const title = $('.fplus-title');
+			const $all_titles = $('.fplus-title');
+			if ($all_titles.length > 1) {
+				$all_titles.slice(1).remove();
+			}
+			const title = $all_titles.first();
 			const page_title = title.data('page_title');
 			const $result_text = filterOption.seo_data(
 				$,

@@ -1,6 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
-<?php if( get_the_title() !=='' ) : ?>
+<?php
+static $filterplus_title_rendered = false;
+if ( ! $filterplus_title_rendered && get_the_title() !== '' ) :
+	$filterplus_title_rendered = true;
+?>
 <span class="fplus-title" data-page_title="<?php echo esc_attr( get_the_title() ); ?>"></span>
 <?php endif;?>
 
