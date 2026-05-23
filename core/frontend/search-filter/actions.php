@@ -52,6 +52,7 @@ class Actions {
 		$template     = ! empty( $post_data['template'] ) ? $post_data['template'] : 1;
 		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : 'yes';
 		$product_tags = ! empty( $post_data['product_tags'] ) ? $post_data['product_tags'] : 'yes';
+		$show_sale_badge = isset( $post_data['show_sale_badge'] ) && $post_data['show_sale_badge'] === 'no' ? 'no' : 'yes';
 		$post_author  = ! empty( $post_data['post_author'] ) ? $post_data['post_author'] : 'yes';
 		$stock        = ! empty( $post_arr['stock'] ) ? $post_arr['stock'] : '';
 		$on_sale      = ! empty( $post_arr['on_sale'] ) ? $post_arr['on_sale'] : '';
@@ -79,6 +80,7 @@ class Actions {
 			'max'           => $max,
 			'rating'        => $rating,
 			'product_tags'  => $product_tags,
+			'show_sale_badge' => $show_sale_badge,
 			'post_author'   => $post_author,
 			'order_by'      => $order_by,
 			'product_categories'  => $product_categories,
@@ -373,7 +375,7 @@ class Actions {
 				$products[$key]['type']    			= $product_instance->get_type();
 				$products[$key]['rating_status']    = $product_instance->get_average_rating() > 0 ? true: false;
 				$products[$key]['template']    		= $param['template'];
-				$products[$key]['on_sale']    		= $product_instance->is_on_sale();
+				$products[$key]['on_sale']    		= ( empty( $param['show_sale_badge'] ) || $param['show_sale_badge'] === 'yes' ) ? $product_instance->is_on_sale() : false;
 				$products[$key]['on_sale_text']    	= esc_html__('Sale!', 'filter-plus');
 			endforeach;
 		}

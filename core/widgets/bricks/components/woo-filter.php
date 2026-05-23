@@ -534,6 +534,16 @@ class Woo_Filter extends \Bricks\Element {
 			'default' => true,
 		);
 
+		$this->controls['show_sale_badge'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Display On Sale', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+		);
+
 		$this->controls['product_tags'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',

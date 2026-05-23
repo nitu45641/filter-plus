@@ -2,7 +2,7 @@
 Contributors: markutos987
 Donate link: https://wpbens.com/filter-plus/
 Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
-Tested up to: 6.9
+Tested up to: 7
 Stable tag: 1.1.21
 Requires PHP: 7.4
 License: GPLv2 or later

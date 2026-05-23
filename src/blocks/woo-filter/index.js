@@ -168,6 +168,10 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'boolean',
             default: true
         },
+        show_sale_badge: {
+            type: 'boolean',
+            default: true
+        },
         masonry_style: {
             type: 'boolean',
             default: true
@@ -659,6 +663,12 @@ registerBlockType('filter-plus/woo-filter', {
                             label={__('Display Categories', 'filter-plus')}
                             checked={attributes.product_categories}
                             onChange={(value) => setAttributes({ product_categories: value })}
+                        />
+
+                        <ToggleControl
+                            label={__('Display On Sale', 'filter-plus')}
+                            checked={attributes.show_sale_badge}
+                            onChange={(value) => setAttributes({ show_sale_badge: value })}
                         />
 
                         <ToggleControl

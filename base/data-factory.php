@@ -172,6 +172,7 @@ class DataFactory {
 		$default_data['current_cat_id']     = ! empty( $settings['current_cat_id'] ) ? intval( $settings['current_cat_id'] ) : '';
 		$default_data['product_tags']          = ! empty( $product_tags ) ? $product_tags : '';
 		$default_data['product_categories']   = ! empty( $product_categories ) ? $product_categories : '';
+		$default_data['show_sale_badge']       = ( isset( $settings['show_sale_badge'] ) && ( $settings['show_sale_badge'] === true || $settings['show_sale_badge'] === 'yes' || $settings['show_sale_badge'] === '1' || $settings['show_sale_badge'] == 1 ) ) ? 'yes' : ( ! isset( $settings['show_sale_badge'] ) ? 'yes' : 'no' );
 		$default_data['grid_columns_desktop']  = ! empty( $grid_columns_desktop ) ? intval( $grid_columns_desktop ) : '';
 		$default_data['grid_columns_tablet']   = ! empty( $grid_columns_tablet ) ? intval( $grid_columns_tablet ) : '';
 		$default_data['grid_columns_mobile']   = ! empty( $grid_columns_mobile ) ? intval( $grid_columns_mobile ) : '';
@@ -242,6 +243,7 @@ class DataFactory {
 			'sorting'                => $sorting,
 			'product_tags'           => $product_tags,
 			'product_categories'     => $product_categories,
+			'show_sale_badge'        => $show_sale_badge,
 			'enable_category_layout' => $enable_category_layout,
 			'current_cat_id'         => $current_cat_id,
 			'grid_columns_desktop'   => $grid_columns_desktop,

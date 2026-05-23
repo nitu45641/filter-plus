@@ -8,6 +8,7 @@
 			'#wp_categories',
 			'#woo_pro_tags',
 			'#woo_pro_attributes',
+			'#woo_exclude_categories',
 			'#seo_elements',
 			'#post_tags',
 			'#author_list',

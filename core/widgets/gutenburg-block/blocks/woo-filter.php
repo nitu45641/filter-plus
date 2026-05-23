@@ -165,6 +165,10 @@ function product_filter_block() {
                     'type' => 'boolean',
                     'default' => true
                 ),
+                'show_sale_badge' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
                 'product_tags' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -217,7 +221,7 @@ function product_filter_callback( $settings ) {
         'colors', 'size', 'show_tags', 'show_attributes', 'show_price_range',
         'show_reviews', 'stock', 'on_sale', 'hide_prod_title', 'hide_prod_desc',
         'hide_prod_price', 'hide_prod_add_cart', 'hide_prod_rating', 'sorting',
-        'product_categories', 'product_tags'
+        'product_categories', 'show_sale_badge', 'product_tags'
     ];
 
     foreach ($boolean_fields as $field) {
