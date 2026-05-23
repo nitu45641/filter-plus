@@ -606,7 +606,7 @@ class Helper {
 			$cat_id = !empty($param['filter_param']) ? $param['filter_param']['product_cat'] : [];
 		}
 
-		if ( !empty( $param['taxonomy']) ) {
+		if ( !empty( $param['taxonomy']) && !empty( $cat_id ) ) {
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for taxonomy filtering
 			$args['tax_query'] = array(
 				array(

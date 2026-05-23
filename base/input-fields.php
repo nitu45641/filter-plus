@@ -81,6 +81,7 @@ if ( ! function_exists( 'filterplus_number_input_field' ) ) {
 		$data_label         = ! empty( $args['data_label'] ) ? $args['data_label'] : '';
 		$extra_label_class  = ! empty( $args['extra_label_class'] ) ? $args['extra_label_class'] : '';
 		$hidden_class       = $field_type == 'hidden' ? 'd-none' : '';
+		$min_attr           = isset( $args['min'] ) ? ' min="' . intval( $args['min'] ) . '"' : '';
 		extract( filterplus_pro_link_markup( $disable ) );
 
 		$html = '
@@ -89,9 +90,9 @@ if ( ! function_exists( 'filterplus_number_input_field' ) ) {
 			<div class="input-section">
 				' . $pro_link_start . '
 				<div class="input-wrap">
-					<input type="' . esc_attr($field_type) . '" name="' . esc_attr($id) . '" id="' . esc_attr($wrapper_type.$id) . '" value="' . $value . '"  
-						data-option="' . esc_attr($data_label) . '" 
-						placeholder="' . esc_attr($placeholder) . '"
+					<input type="' . esc_attr($field_type) . '" name="' . esc_attr($id) . '" id="' . esc_attr($wrapper_type.$id) . '" value="' . $value . '"
+						data-option="' . esc_attr($data_label) . '"
+						placeholder="' . esc_attr($placeholder) . '"' . $min_attr . '
 					/>
 					<span class="extra-label ' . $extra_label_class . '">' . $extra_label . '</span>
 				</div>

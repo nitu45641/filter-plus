@@ -238,14 +238,13 @@ use \FilterPlus\Utils\Helper as Helper;
 		<?php
 
 			// Product Grid Columns
-			echo '<h2 class="font_bold font_14 mb-1 mt-1">' . esc_html__( 'Product Grid Columns', 'filter-plus' ) . '</h2>';
-
 			$filterplus_args = array(
 				'label'       => esc_html__( 'Desktop Columns:', 'filter-plus' ),
 				'id'          => 'grid_columns_desktop',
 				'placeholder' => esc_html__( 'e.g. 3', 'filter-plus' ),
 				'field_type'  => 'number',
 				'data_label'  => 'grid_columns_desktop',
+				'min'         => 1,
 			);
 			filterplus_number_input_field( $filterplus_args );
 
@@ -255,6 +254,7 @@ use \FilterPlus\Utils\Helper as Helper;
 				'placeholder' => esc_html__( 'e.g. 2', 'filter-plus' ),
 				'field_type'  => 'number',
 				'data_label'  => 'grid_columns_tablet',
+				'min'         => 1,
 			);
 			filterplus_number_input_field( $filterplus_args );
 
@@ -264,6 +264,7 @@ use \FilterPlus\Utils\Helper as Helper;
 				'placeholder' => esc_html__( 'e.g. 1', 'filter-plus' ),
 				'field_type'  => 'number',
 				'data_label'  => 'grid_columns_mobile',
+				'min'         => 1,
 			);
 			filterplus_number_input_field( $filterplus_args );
 
@@ -302,6 +303,10 @@ use \FilterPlus\Utils\Helper as Helper;
 			// show product categories
 			$filterplus_args = array('label'=>esc_html__("Display Categories:","filter-plus"),'id' => 'product_categories',
 			'data_label' => 'product_categories');
+			filterplus_checkbox_field($filterplus_args);
+			// show on sale badge
+			$filterplus_args = array('label'=>esc_html__("Display On Sale:","filter-plus"),'id' => 'show_sale_badge',
+			'data_label' => 'show_sale_badge','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
 		?>

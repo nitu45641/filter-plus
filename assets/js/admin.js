@@ -136,19 +136,23 @@
 		}
 
 		function shortcode_input_value(input_data,input_num, result) {
-			if (input_data.length > 0) {
-				input_data.push(input_num);
-				input_data.each(function () {
+			const merged = $.merge(input_data, input_num);
+			if (merged.length > 0) {
+				merged.each(function () {
 					const $this = $(this);
 					const is_true = shortcode_input_disable($this);
 					if (is_true) {
 						return;
 					}
-					// input value
-					if ($.isArray($this.val())) {
-						result += ` ${$this.data('option')}="${$this.val().toString()}"`;
+					// input value — skip empty text/number fields so PHP defaults apply
+					const val = $this.val();
+					if (val === null || val === '') {
+						return;
+					}
+					if ($.isArray(val)) {
+						result += ` ${$this.data('option')}="${val.toString()}"`;
 					} else {
-						result += ` ${$this.data('option')}="${$this.val()}"`;
+						result += ` ${$this.data('option')}="${val}"`;
 					}
 				});
 			}

@@ -60,6 +60,7 @@ class DataFactory {
             'stock_label' 		=> esc_html__('Stock','filter-plus'),
             'product_categories'=> '',
             'product_tags'      => '',
+            'show_sale_badge'   => 'yes',
             'sorting'          	=> 'yes',
             'filter_position'   => 'left',
             'pagination_style'  => 'numbers',

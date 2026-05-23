@@ -63,9 +63,9 @@ class Shortcodes {
 			'grid_columns_mobile'  => $grid_columns_mobile,
 		));
 
-		$col_desktop = ! empty( $grid_columns_desktop ) ? intval( $grid_columns_desktop ) : 0;
-		$col_tablet  = ! empty( $grid_columns_tablet )  ? intval( $grid_columns_tablet )  : 0;
-		$col_mobile  = ! empty( $grid_columns_mobile )  ? intval( $grid_columns_mobile )  : 0;
+		$col_desktop = ! empty( $grid_columns_desktop ) ? max( 1, intval( $grid_columns_desktop ) ) : 0;
+		$col_tablet  = ! empty( $grid_columns_tablet )  ? max( 1, intval( $grid_columns_tablet ) )  : 0;
+		$col_mobile  = ! empty( $grid_columns_mobile )  ? max( 1, intval( $grid_columns_mobile ) )  : 0;
 
 		$grid_col_style  = '';
 		$grid_col_class  = '';
