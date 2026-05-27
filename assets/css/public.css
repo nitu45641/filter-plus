@@ -178,7 +178,7 @@ input[type="checkbox"].regular-checkbox:checked::after {
 .filter-cat-badge {
 	position: absolute;
 	top: 15px;
-	left: 15px;
+	right: 15px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 4px;
