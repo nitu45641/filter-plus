@@ -62,7 +62,11 @@
 		//list click/change
 		const category_li = $('.category-list li');
 		let action = 'click';
-		if (category_li.find('input[type="checkbox"]').length !== 0 ) {
+
+		if (category_li.find('input[type="checkbox"]').length !== 0) {
+			action = 'change';
+		} else if (category_li.find('input[type="radio"]').length !== 0) {
+			// FIX: also use 'change' for radio buttons so selection fires reliably
 			action = 'change';
 		}
 
@@ -78,18 +82,38 @@
 					return;
 				}
 			}
-			
+
 			// Get the input within this li (checkbox or radio)
 			const $input = _this.find('input[type="checkbox"], input[type="radio"]');
-			
+
+			// FIX: Handle radio buttons separately — single select, clear others
+			if ($input.attr('type') === 'radio') {
+				// Deactivate all category items
+				category_li.removeClass('active');
+				category_li.find('input[type="radio"]').prop('checked', false);
+
+				// Activate only this one
+				_this.addClass('active');
+				$input.prop('checked', true);
+
+				// Trigger filter or update tags
+				if (!isApplyMode) {
+					get_products();
+				} else {
+					show_selected_data(selected_param({}));
+				}
+				reset_block(_this, _this.parents('.sidebar-row'));
+				return; // skip checkbox logic below
+			}
+
 			// Determine if this is a parent or child based on class or parent attribute
 			const isParent = _this.hasClass('parent');
 			const isChild = _this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'));
-			
+
 			if ($input.length > 0) {
 				// Get the current checked state of the input
 				const isNowChecked = $input.prop('checked');
-				
+
 				if (isParent && isNowChecked) {
 					// Parent checked: check all child categories
 					const parentId = _this.data('cat_id');
@@ -108,7 +132,7 @@
 					const $parentLi = $('.category-list li[data-cat_id="' + parentId + '"]');
 					const $allChildren = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
 					const $checkedChildren = $allChildren.find('input[type="checkbox"]:checked');
-					
+
 					if (isNowChecked) {
 						_this.addClass('active');
 						// If all children are now checked, check parent
@@ -123,7 +147,7 @@
 						$parentLi.find('input[type="checkbox"]').prop('checked', false);
 					}
 				}
-				
+
 				// Update active class for current element
 				if (isNowChecked) {
 					_this.addClass('active');
@@ -199,7 +223,7 @@
 				});
 			});
 		}
-		
+
 		// price range
 		const price_range = $('.range-slider');
 		const min = Math.max(1, price_range.data('min') || 1);
@@ -334,13 +358,12 @@
 		/**
 		 * Re-initialize the range slider on window resize
 		 */
-
 		let resizeTimeout;
 		$(window).on('resize', function () {
-		clearTimeout(resizeTimeout);
-		resizeTimeout = setTimeout(function () {
-			price_range_picker();
-		}, 200); // wait 200ms after resize ends
+			clearTimeout(resizeTimeout);
+			resizeTimeout = setTimeout(function () {
+				price_range_picker();
+			}, 200); // wait 200ms after resize ends
 		});
 
 		function price_range_actions(val, price_range) {
@@ -364,6 +387,7 @@
 				reset_block(price_range, price_range.parents('.sidebar-row'));
 			}
 		}
+
 		const min_input = $('.input-min');
 		if (min_input.length > 0) {
 			// Enhanced price input validation and UX
@@ -548,17 +572,16 @@
 		 * Fetch products
 		 * @param {*} params
 		 */
-		function get_products(params = {}) {			
+		function get_products(params = {}) {
 			let products_wrap 	= $('.products-wrap');
 			let prod_grid_wrap 	= $('.prods-grid-view');
 			let prod_list_wrap 	= $('.prods-list-view');
-			let message_info 		= $('.message');
+			let message_info 	= $('.message');
 			let pagination_style 	= $('#shopContainer').data('pagination_style');
 			let masonry_style 		= $('#shopContainer').data('masonry_style');
-			let template 			= $('#shopContainer').data('template');
-			let limit 			= $('#shopContainer').data('limit');
-			let product_categories =
-				$('#shopContainer').data('product_categories');
+			let template 		= $('#shopContainer').data('template');
+			let limit 		= $('#shopContainer').data('limit');
+			let product_categories = $('#shopContainer').data('product_categories');
 			let product_tags 	= $('#shopContainer').data('product_tags');
 			let show_sale_badge = $('#shopContainer').data('show_sale_badge') || 'yes';
 			let post_author 	= $('#shopContainer').data('post_author');
@@ -602,9 +625,9 @@
 					if (response?.success) {
 						$('.naviation').html('');
 						const products 	= response?.data?.data?.products;
-						const total 	= response?.data?.data?.total;						
+						const total 	= response?.data?.data?.total;
 
-						showing_nav_num( total ,  products.length , selected_data['offset'] , pagination_style );
+						showing_nav_num( total, products.length, selected_data['offset'], pagination_style );
 
 						// clear product data
 						if ( ( typeof params?.load_more === 'undefined'
@@ -615,7 +638,7 @@
 							prod_grid_wrap.html( $isotop_html );
 							prod_list_wrap.html('');
 						}
-						
+
 						message_info.html('');
 						if (response?.data?.message !== '') {
 							$('.sort-bar').fadeOut();
@@ -645,24 +668,22 @@
 						disable_items(response?.data?.disable_terms);
 					}
 
-					loadIsotope( template , masonry_style , selected_data.filter_type );
+					loadIsotope( template, masonry_style, selected_data.filter_type );
 					// (Re)initialize Swiper after AJAX loads new carousel
 					filterCorosuel({element: '.post-coursel-view-2'});
 					products_wrap.removeClass('loader_box');
-					
 				},
 			});
-
 		}
 
 		/**
 		 * Showing number of products
-		 * @param {*} total 
-		 * @param {*} pages 
-		 * @param {*} offset 
-		 * @param {*} pagination_style 
+		 * @param {*} total
+		 * @param {*} pages
+		 * @param {*} offset
+		 * @param {*} pagination_style
 		 */
-		function showing_nav_num(total,pages,offset,pagination_style) {
+		function showing_nav_num(total, pages, offset, pagination_style) {
 			$('.total').html('').html(total);
 			let page_markup = $('.pages').html('');
 			if (pagination_style == 'loadmore') {
@@ -671,11 +692,9 @@
 			} else {
 				page_markup.html( pages );
 			}
-
 		}
 
-		function loadIsotope( template , masonry_style ){			
-
+		function loadIsotope( template, masonry_style ){
 			if ( masonry_style !== 'yes' ) {
 				return;
 			}
@@ -683,7 +702,7 @@
 			let $isotopeGrid = $('.prods-grid-view');
 			let $notMasonry = $('.post-coursel-view-2');
 
-			// Masonary style
+			// Masonry style
 			if ($notMasonry.length > 0) {
 				return;
 			}
@@ -705,7 +724,7 @@
 		function filterCorosuel(params) {
 			// Destroy previous Swiper instance if exists
 			if (window.swiperInstance) {
-				window.swiperInstance.destroy(true, true); // destroy previous instance
+				window.swiperInstance.destroy(true, true);
 			}
 			// Only initialize if element exists
 			if ($(params.element).length > 0) {
@@ -719,7 +738,7 @@
 						clickable: true,
 					},
 					slidesPerView: 3,
-					slidesPerGroup: 3, 
+					slidesPerGroup: 3,
 					spaceBetween: 10,
 					paginationClickable: true,
 					autoplay: {
@@ -730,7 +749,6 @@
 						768: {slidesPerView: 2},
 						425: { slidesPerView: 1},
 					},
-					
 				});
 			}
 		}
@@ -743,7 +761,7 @@
 			if (filter_client.refresh_url == 'yes') {
 				refresh_url(selected_data);
 			}
-			
+
 			let selected_html = '';
 			const cross = '<span>X</span>';
 			let clear_all = `<div class="clear-filter">${filter_client.localize.clear_all}</div>`;
@@ -759,25 +777,29 @@
 						selected_html += `<div class='filter-tag' data-node='.ratings'>${filter_client.localize.rating}${cross}</div>`;
 					}
 					if (key == 'product_cat' && value !== '') {
-
 						let cat_tag = value.split(',');
-						cat_tag.forEach((element,index) => {
+						cat_tag.forEach((element, index) => {
 							selected_html += `<div class='filter-tag' data-node='.category-list li' data-cat='${element}' data-cat_id='${selected_data['cat_id'][index]}'>${element}${cross}</div>`;
 						});
 						// Remove category tag on click
 						setTimeout(function() {
 							$('.filter-tag[data-node=".category-list li"]').off('click').on('click', function() {
-								const cat_id = $(this).data('cat_id');								
-								// Check if the category is represented by an input or a list item
-                                const $input = $(`.category-list li[data-cat_id='${cat_id}'] input[type='checkbox']`);
-                                const $li = $(`.category-list li[data-cat_id='${cat_id}']`);								
+								const cat_id = $(this).data('cat_id');
+								const $input = $(`.category-list li[data-cat_id='${cat_id}'] input[type='checkbox']`);
+								const $radioInput = $(`.category-list li[data-cat_id='${cat_id}'] input[type='radio']`);
+								const $li = $(`.category-list li[data-cat_id='${cat_id}']`);
+
 								if ($input.length) {
-                                    $input.prop('checked', false).trigger('change');
-                                } else if ($li.length) {
-                                    $li.removeClass('active');
-									get_products()
-                                }
-								// Remove the tag visually
+									$input.prop('checked', false).trigger('change');
+								} else if ($radioInput.length) {
+									// FIX: For radio, deactivate all and trigger re-filter without category
+									category_li.removeClass('active');
+									$radioInput.prop('checked', false);
+									get_products();
+								} else if ($li.length) {
+									$li.removeClass('active');
+									get_products();
+								}
 								$(this).remove();
 							});
 						}, 0);
@@ -807,7 +829,7 @@
 
 			if (selected_html == '') {
 				clear_all = '';
-			}			
+			}
 			$('.selected-filter').html('').html(`${clear_all}${selected_html}`);
 		}
 
@@ -894,7 +916,7 @@
 				return params;
 			}
 			const price_range = $('.range-slider');
-			// category			
+			// category
 			params.filter_type = $('#shopContainer').data('filter_type');
 			params.cat_id = filterOption.get_category_list($);
 			params.product_cat = filterOption.category_formatted_text($);
@@ -921,7 +943,7 @@
 				".on_sale input[type='checkbox']:checked"
 			).data('on_sale_text');
 
-			params = filterOption.customFieldValue($,params);
+			params = filterOption.customFieldValue($, params);
 			if (price_range.length > 0) {
 				const priceValue = price_range.val();
 				const defaultMin = price_range.data('min') || 1;
@@ -955,17 +977,16 @@
 		 * @param     offset
 		 */
 		function pagination_html(pagination_markup) {
-			
 			let pagination 	= $('.naviation');
 			let $footer 	= $('.pagination-footer');
 			let $inside 	= $footer.find('.showing');
-			
+
 			if ($inside.length > 0) {
 				$footer.addClass('two-section').removeClass('one-section');
 			} else {
 				$footer.addClass('one-section').removeClass('two-section');
 			}
-			
+
 			pagination.html(pagination_markup);
 			$('.products-wrap').find('.naviation li:not(.disabled)').on('click', function () {
 				let load_more = false;
@@ -986,7 +1007,7 @@
 					load_more = true;
 				}
 
-				get_products({offset:offset,load_more:load_more});
+				get_products({offset: offset, load_more: load_more});
 			});
 
 			// Explicitly prevent clicks on disabled pagination buttons
@@ -1027,7 +1048,7 @@
 				$('.prods-grid-view').removeClass('active').fadeOut();
 				$('.prods-list-view').addClass('active').fadeIn();
 
-				$('.sort-bar .product-grid').removeClass('active')
+				$('.sort-bar .product-grid').removeClass('active');
 				$('.sort-bar .product-list').addClass('active');
 
 				$('.wp-list-view.tab-item').fadeOut();
@@ -1079,11 +1100,11 @@
 
 			if ( $this.find('.filter-tab-pane').length > 0 ) {
 				$('.filter-top').addClass('d-none');
-				return
+				return;
 			}
-			
+
 			const reset_button = $this.find('.reset');
-			
+
 			if (action == '') {
 				if (reset_button.hasClass('d-none')) {
 					reset_button.removeClass('d-none');
@@ -1124,18 +1145,24 @@
 				$parent.val('');
 			} else {
 				$parent.removeClass('active');
-				if ( typeof $parent.attr('type') !=='undefined' && $parent.attr('type') !== 'select' ) {
-					$parent.prop('checked',false);
+				// FIX: Also uncheck radio inputs when resetting
+				if ( typeof $parent.attr('type') !== 'undefined' && $parent.attr('type') !== 'select' ) {
+					$parent.prop('checked', false);
 				} else {
-					let list_checkbox = $parent.find('input').attr('type');
-					if( list_checkbox !=='undefined' && list_checkbox == 'checkbox' ) {
-						$parent.find('input').prop('checked',false);
+					let list_input_type = $parent.find('input').attr('type');
+					if (list_input_type !== 'undefined' && (list_input_type == 'checkbox' || list_input_type == 'radio')) {
+						$parent.find('input').prop('checked', false);
+						// For radio: also remove active from all siblings
+						if (list_input_type == 'radio') {
+							$parent.siblings('li').removeClass('active');
+							$parent.siblings('li').find('input[type="radio"]').prop('checked', false);
+						}
 					}
 					$parent.val('');
 					let niceSelect = $('.nice-select');
 					$(".custom-field option:eq(0)").prop("selected", true);
-					if (niceSelect.length>0) {
-						$('select').niceSelect('update'); 
+					if (niceSelect.length > 0) {
+						$('select').niceSelect('update');
 					}
 				}
 			}
@@ -1178,8 +1205,8 @@
 						if (typeof active_tag.data('term_id') === 'undefined') {
 							return;
 						}
-						let property_name = selected == 'seo_taxonomy' ? label : active_tag.data('taxonomy'); 
- 	
+						let property_name = selected == 'seo_taxonomy' ? label : active_tag.data('taxonomy');
+
 						if (selected == 'name') {
 							if (active_tag.data('taxonomy') == 'pa_color') {
 								obj[property_name] = active_tag.data('name');
@@ -1268,7 +1295,7 @@
 
 		function clear_all(element = $('.clear_all'), action = '') {
 			const clear_all = element;
-			
+
 			if (clear_all.length > 0) {
 				// reset block
 				const sidebar = $('.sidebar-row');
@@ -1297,8 +1324,10 @@
 					}
 				}
 				$('input[type=checkbox]').removeAttr('checked');
+				// FIX: Also uncheck radio inputs on clear all
+				$('input[type=radio]').prop('checked', false);
 				sidebar.find('.reset').fadeOut();
-				
+
 				if (action == '') {
 					get_products({ default_call: true });
 				} else {
@@ -1315,41 +1344,41 @@
 		sidebar_slider($('.dropdown-label'));
 		function sidebar_slider($handle) {
 			$handle.on('click', function () {
-			const _this = $(this);
-			// Find the closest heading-wrap and toggle arrows and panel
-			let headingWrap = _this.closest('.heading-wrap');
-			if (headingWrap.length === 0) {
-				headingWrap = _this.closest('.dropdown-label');
-			}
-			const downArrow = headingWrap.find('.down-arrow');
-			const upArrow = headingWrap.find('.up-arrow');
-			const panel = headingWrap.parent().find('.panel').first();
-			
-			// Always hide both arrows initially
-			downArrow.hide();
-			upArrow.hide();
-
-			downArrow.slideToggle();
-			upArrow.slideToggle();
-			// Show/hide arrows based on open/close state
-			if (_this.hasClass('closed')) {
-				downArrow.show();
-				upArrow.hide();
-			} else {
-				downArrow.hide();
-				upArrow.show();
-			}
-
-			panel.slideToggle(700, function () {
-				if (_this.hasClass('closed')) {
-					if (panel.hasClass('d-none')) {
-						panel.removeClass('d-none');
-					}
-					_this.removeClass('closed').addClass('open');
-				} else {
-					_this.removeClass('open').addClass('closed');
+				const _this = $(this);
+				// Find the closest heading-wrap and toggle arrows and panel
+				let headingWrap = _this.closest('.heading-wrap');
+				if (headingWrap.length === 0) {
+					headingWrap = _this.closest('.dropdown-label');
 				}
-			});
+				const downArrow = headingWrap.find('.down-arrow');
+				const upArrow = headingWrap.find('.up-arrow');
+				const panel = headingWrap.parent().find('.panel').first();
+
+				// Always hide both arrows initially
+				downArrow.hide();
+				upArrow.hide();
+
+				downArrow.slideToggle();
+				upArrow.slideToggle();
+				// Show/hide arrows based on open/close state
+				if (_this.hasClass('closed')) {
+					downArrow.show();
+					upArrow.hide();
+				} else {
+					downArrow.hide();
+					upArrow.show();
+				}
+
+				panel.slideToggle(700, function () {
+					if (_this.hasClass('closed')) {
+						if (panel.hasClass('d-none')) {
+							panel.removeClass('d-none');
+						}
+						_this.removeClass('closed').addClass('open');
+					} else {
+						_this.removeClass('open').addClass('closed');
+					}
+				});
 			});
 		}
 
@@ -1374,7 +1403,7 @@
 
 			$('.filter-mb-search,.filter-bar-mb-search').on('click', function (e) {
 				e.stopPropagation();
-				
+
 				if (!$sidebarAndWrapper.hasClass('active-sidebar')) {
 					$sidebarAndWrapper.css('left:100%; opacity: 1;');
 					$sidebarAndWrapper.addClass('active-sidebar').stop(true, true).animate({ left: 0, opacity: 1 }, animationDuration);
@@ -1400,16 +1429,16 @@
 			// Ensure sidebar is hidden initially on mobile
 			if ($(window).width() < 700) {
 				$sidebarAndWrapper.css({ left: '-100%', opacity: 0 });
-			}else{
+			} else {
 				$sidebarAndWrapper.css({ left: '0%', opacity: 1 });
-
 			}
 		}
-		//watch window resize
+
+		// watch window resize
 		$(window).on('resize', function() {
-			resize()
+			resize();
 		});
-		//Resize window
+		// Resize window
 		function resize() {
 			if ($(window).width() < 700) {
 				$('.sidebar-label').addClass('closed');
@@ -1434,6 +1463,8 @@
 			// Remove active states
 			category.removeClass('active');
 			category.find('input[type="checkbox"]').prop('checked', false);
+			// FIX: Also reset radio inputs
+			category.find('input[type="radio"]').prop('checked', false);
 
 			// Clear search
 			search.val('');
@@ -1466,8 +1497,9 @@
 				}
 			}
 
-			// Uncheck all checkboxes
+			// Uncheck all checkboxes and radio buttons
 			$('input[type=checkbox]').prop('checked', false);
+			$('input[type=radio]').prop('checked', false);
 
 			// Hide reset buttons
 			sidebar.find('.reset').fadeOut();
@@ -1506,19 +1538,16 @@
 	});
 })(jQuery);
 
-function not_masonry(params, masonry_style , template) {
-    let $html = '';
-	if ( masonry_style =='yes'  ) {
+function not_masonry(params, masonry_style, template) {
+	let $html = '';
+	if ( masonry_style == 'yes' ) {
 		if ( ( params?.filter_type !== 'product' && template == '2' ) ) {
 			$html = '';
-		}
-		else if ( ( params?.filter_type == 'product' && template == '2' ) ) {
-			$html = '<div class="grid-sizer"></div><div class="gutter-sizer"></div>'
-		}
-		else{			
-			$html = '<div class="grid-sizer"></div><div class="gutter-sizer"></div>'
+		} else if ( ( params?.filter_type == 'product' && template == '2' ) ) {
+			$html = '<div class="grid-sizer"></div><div class="gutter-sizer"></div>';
+		} else {
+			$html = '<div class="grid-sizer"></div><div class="gutter-sizer"></div>';
 		}
 	}
-
 	return $html;
 }
