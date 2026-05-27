@@ -31,7 +31,7 @@ function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc)
 							<a href="<?php echo esc_url($fp_cat_link); ?>" target="_blank" class="fp-cat-link"><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></a>
 						<?php endif; ?>
 						<?php if (!empty($fp_first_tag_name)): ?>
-							<a href="<?php echo esc_url($fp_first_tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($fp_first_tag_name); ?></a>
+							<a href="<?php echo esc_url($fp_first_tag_link); ?>" target="_blank"><span><?php echo esc_html($fp_first_tag_name); ?></span></a>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>

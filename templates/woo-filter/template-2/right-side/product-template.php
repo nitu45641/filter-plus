@@ -42,7 +42,7 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 								<span><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></span>
 							<?php endif; ?>
 							<?php if (!empty($fp_first_tag_name)): ?>
-								<a href="<?php echo esc_url($fp_first_tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($fp_first_tag_name); ?></a>
+								<a href="<?php echo esc_url($fp_first_tag_link); ?>" target="_blank"><span><?php echo esc_html($fp_first_tag_name); ?></span></a>
 							<?php endif; ?>
 						</div>
 					<?php endif; ?>
@@ -127,7 +127,7 @@ function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_pro
 							<span><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></span>
 						<?php endif; ?>
 						<?php if (!empty($fp_first_tag_name)): ?>
-							<a href="<?php echo esc_url($fp_first_tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($fp_first_tag_name); ?></a>
+							<a href="<?php echo esc_url($fp_first_tag_link); ?>" target="_blank"><span><?php echo esc_html($fp_first_tag_name); ?></span></a>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
