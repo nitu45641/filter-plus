@@ -79,7 +79,8 @@
 				}
 			}
 			let active_li = $('#cat_li_parent_' + _this.data('cat_id'));
-			if (_this.hasClass('sub_categories')) {
+			// Check if this is a child category by looking at the parent ul or by checking if data-parent exists and differs from cat_id
+			if (_this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'))) {
 				active_li = $('#cat_li_child_' + _this.data('cat_id'));
 			}
 			if (active_li.length > 0) {
@@ -91,14 +92,15 @@
 						// If this is a parent category, select all child sub categories
 						if (_this.hasClass('parent')) {
 							let parent = _this.data('cat_id');
-							let child_li = $('li.sub_categories[data-parent="' + parent + '"]');
+							let child_li = $('ul.sub_categories').find('li[data-parent="' + parent + '"]');
 							child_li.addClass('active');
 							child_li.find("input[type='checkbox']").prop('checked', true);
 						}
 						// sub category: check parent if all siblings are checked
-						if (_this.hasClass('sub_categories')) {
+						if (_this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'))) {
+							let parent = _this.data("parent");
 							let parent_li = $('.category-list li[data-cat_id="' + parent + '"]');
-							let child_cat = $('li.sub_categories[data-parent="' + parent + '"]');
+							let child_cat = $('ul.sub_categories').find('li[data-parent="' + parent + '"]');
 							if (child_cat.length == child_cat.find("input:checked").length) {
 								parent_li.find("input").prop("checked", true);
 								parent_li.addClass("active");
@@ -108,12 +110,14 @@
 						_this.removeClass('active');
 						// parent unchecked: uncheck all sub categories
 						if (_this.hasClass("parent")) {
-							let child_li = $('li.sub_categories[data-parent="' + parent + '"]');
+							let parent = _this.data('cat_id');
+							let child_li = $('ul.sub_categories').find('li[data-parent="' + parent + '"]');
 							child_li.removeClass("active");
 							child_li.find("input").prop("checked", false);
 						}
 						// sub unchecked: uncheck parent
-						if (_this.hasClass('sub_categories')) {
+						if (_this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'))) {
+							let parent = _this.data('parent');
 							let parent_li = $('.category-list li[data-cat_id="' + parent + '"]');
 							parent_li.find("input").prop("checked", false);
 							parent_li.removeClass("active");
