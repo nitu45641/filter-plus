@@ -58,8 +58,8 @@ class DataFactory {
             'on_sale_label' 	=> esc_html__('Sale','filter-plus'),
             'stock' 			=> '',
             'stock_label' 		=> esc_html__('Stock','filter-plus'),
-            'product_categories'=> '',
-            'product_tags'      => '',
+            'product_categories'=> 'yes',
+            'product_tags'      => 'yes',
             'show_sale_badge'   => 'yes',
             'sorting'          	=> 'yes',
             'filter_position'   => 'left',
@@ -150,7 +150,7 @@ class DataFactory {
 		$default_data['colors'] = ( isset( $settings['colors'] ) && ( $settings['colors'] === true || $settings['colors'] === 'yes' || $settings['colors'] === '1' || $settings['colors'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['size'] = ( isset( $settings['size'] ) && ( $settings['size'] === true || $settings['size'] === 'yes' || $settings['size'] === '1' || $settings['size'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['size_label'] = ! empty( $size_label ) ? $size_label : esc_html__( 'Size', 'filter-plus' );
-		$default_data['product_categories'] = ( isset( $settings['product_categories'] ) && ( $settings['product_categories'] === true || $settings['product_categories'] === 'yes' || $settings['product_categories'] === '1' || $settings['product_categories'] == 1 ) ) ? 'yes' : ( ! empty( $product_categories ) ? $product_categories : '' );
+		$default_data['product_categories'] = ( isset( $settings['product_categories'] ) && ( $settings['product_categories'] === true || $settings['product_categories'] === 'yes' || $settings['product_categories'] === '1' || $settings['product_categories'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['attributes'] = ! empty( $attributes ) ? implode( ',', $attributes ) : '';
 		$default_data['show_attributes'] = ( isset( $settings['show_attributes'] ) && ( $settings['show_attributes'] === true || $settings['show_attributes'] === 'yes' || $settings['show_attributes'] === '1' || $settings['show_attributes'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['attribute_label'] = ! empty( $attribute_label ) ? $attribute_label : esc_html__( 'Attributes', 'filter-plus' );
@@ -170,8 +170,7 @@ class DataFactory {
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
 		$default_data['enable_category_layout'] = ( isset( $settings['enable_category_layout'] ) && $settings['enable_category_layout'] === 'yes' ) ? 'yes' : 'no';
 		$default_data['current_cat_id']     = ! empty( $settings['current_cat_id'] ) ? intval( $settings['current_cat_id'] ) : '';
-		$default_data['product_tags']          = ! empty( $product_tags ) ? $product_tags : '';
-		$default_data['product_categories']   = ! empty( $product_categories ) ? $product_categories : '';
+		$default_data['product_tags'] = ( isset( $settings['product_tags'] ) && ( $settings['product_tags'] === true || $settings['product_tags'] === 'yes' || $settings['product_tags'] === '1' || $settings['product_tags'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['show_sale_badge']       = ( isset( $settings['show_sale_badge'] ) && ( $settings['show_sale_badge'] === true || $settings['show_sale_badge'] === 'yes' || $settings['show_sale_badge'] === '1' || $settings['show_sale_badge'] == 1 ) ) ? 'yes' : ( ! isset( $settings['show_sale_badge'] ) ? 'yes' : 'no' );
 		$default_data['grid_columns_desktop']  = ! empty( $grid_columns_desktop ) ? intval( $grid_columns_desktop ) : '';
 		$default_data['grid_columns_tablet']   = ! empty( $grid_columns_tablet ) ? intval( $grid_columns_tablet ) : '';

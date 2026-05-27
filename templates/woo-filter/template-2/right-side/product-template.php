@@ -35,13 +35,7 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 					</div>
 				</a>
 				<div class="product-meta">
-					<div class="offer">
-						<?php if (!empty($product['tags'])): ?>
-							<?php foreach ($product['tags'] as $tag): ?>
-								<span><?php echo esc_html(is_object($tag) ? $tag->name : $tag['name']); ?></span>
-							<?php endforeach; ?>
-						<?php endif; ?>
-					</div>
+					<div class="offer"></div>
 					<?php if (!empty($product['wish_quick'])): ?>
 						<div class="quickview-and-wishlist">
 							<ul>
@@ -77,6 +71,17 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 				<div class="product-price"><?php echo wp_kses_post( $product['post_price'] ); ?></div>
 				<?php endif; ?>
 				<?php if( $hide_prod_rating == 'yes' ): ?> <?php echo wp_kses_post( $product['rating'] ); ?> <?php endif; ?>
+				<?php if (!empty($product['tags'])): ?>
+				<div class="fp-product-tags">
+					<?php foreach ($product['tags'] as $tag):
+						$tag_name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
+						$tag_link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#');
+						if (empty($tag_name)) continue;
+					?>
+						<a href="<?php echo esc_url($tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($tag_name); ?></a>
+					<?php endforeach; ?>
+				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
@@ -92,10 +97,8 @@ function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_pro
 		<div class="hpcc-image" style="width: 220px; min-width: 220px; height: 220px;">
 			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" style="display: block; width: 100%; height: 100%;">
 				<?php
-				// Get product thumbnail with appropriate size for list view
 				$list_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), array(220, 220), false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
 				if (empty($list_image)) {
-					// Fallback: modify existing image to fit
 					echo wp_kses_post( preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']) );
 				} else {
 					echo wp_kses_post( $list_image );
@@ -132,6 +135,17 @@ function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_pro
 			<?php if( $hide_prod_desc == 'yes' && !empty($product['post_description']) ): ?>
 			<div class="hpcc-description">
 				<?php echo wp_kses_post($product['post_description']); ?>
+			</div>
+			<?php endif; ?>
+			<?php if (!empty($product['tags'])): ?>
+			<div class="fp-product-tags">
+				<?php foreach ($product['tags'] as $tag):
+					$tag_name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
+					$tag_link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#');
+					if (empty($tag_name)) continue;
+				?>
+					<a href="<?php echo esc_url($tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($tag_name); ?></a>
+				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>
 		</div>

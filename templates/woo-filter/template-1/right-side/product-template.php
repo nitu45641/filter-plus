@@ -56,6 +56,17 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 				</div>
 				<?php endif; ?>
 			</div>
+			<?php if (!empty($product['tags'])): ?>
+			<div class="fp-product-tags">
+				<?php foreach ($product['tags'] as $tag):
+					$tag_name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
+					$tag_link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#');
+					if (empty($tag_name)) continue;
+				?>
+					<a href="<?php echo esc_url($tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($tag_name); ?></a>
+				<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 	<?php
@@ -105,6 +116,17 @@ function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_pro
 			<?php if( $hide_prod_desc == 'yes' && !empty($product['post_description']) ): ?>
 			<div class="hpcc-description">
 				<?php echo wp_kses_post($product['post_description']); ?>
+			</div>
+			<?php endif; ?>
+			<?php if (!empty($product['tags'])): ?>
+			<div class="fp-product-tags">
+				<?php foreach ($product['tags'] as $tag):
+					$tag_name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
+					$tag_link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#');
+					if (empty($tag_name)) continue;
+				?>
+					<a href="<?php echo esc_url($tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($tag_name); ?></a>
+				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>
 		</div>

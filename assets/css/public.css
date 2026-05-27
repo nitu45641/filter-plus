@@ -2363,6 +2363,56 @@ ul.sub_categories{
 .product-tag a,.product-tag a:hover{
     color: #fff;
 }
+/* WP filter: category links in meta area */
+.filter-cat-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+.fp-cat-link {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--filter-primary-color, #2d73e7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.fp-cat-link:hover {
+    text-decoration: underline;
+}
+/* Product tag chips */
+.fp-product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 7px;
+}
+.fp-tag-chip {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 3px 8px 3px 6px;
+    border-radius: 20px;
+    color: var(--filter-secondary-color, #2d73e7);
+    border: 1px solid currentColor;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .18s, color .18s;
+}
+.fp-tag-chip:hover {
+    background: var(--filter-secondary-color, #2d73e7);
+    color: #fff;
+    text-decoration: none;
+}
+.fp-tag-chip::before {
+    content: '#';
+    font-weight: 700;
+    margin-right: 1px;
+    opacity: 0.6;
+}
 .post-grid-view-1 .product-style-1{
 	border-radius: calc(2 * var(--filter-lns-unit, 8px));
     border: 1px solid #eee;	

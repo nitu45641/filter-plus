@@ -14,16 +14,23 @@ function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc)
 			</a>
 			<div class="filter-meta-wrapper">
 				<?php if (!empty($product['categories'])): ?>
-					<?php foreach ($product['categories'] as $category): ?>
-						<?php $link = is_object($category) ? (isset($category->link) ? $category->link : '#') : (isset($category['link']) ? $category['link'] : '#'); ?>
-						<a href="<?php echo esc_url($link); ?>" target="_blank" class=""><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></a>
-					<?php endforeach; ?>
+					<div class="filter-cat-links">
+						<?php foreach ($product['categories'] as $category): ?>
+							<?php $link = is_object($category) ? (isset($category->link) ? $category->link : '#') : (isset($category['link']) ? $category['link'] : '#'); ?>
+							<a href="<?php echo esc_url($link); ?>" target="_blank" class="fp-cat-link"><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></a>
+						<?php endforeach; ?>
+					</div>
 				<?php endif; ?>
 				<?php if (!empty($product['tags'])): ?>
-					<?php foreach ($product['tags'] as $tag): ?>
-						<?php $link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#'); ?>
-						<a href="<?php echo esc_url($link); ?>" target="_blank" class=""><?php echo esc_html(is_object($tag) ? $tag->name : $tag['name']); ?></a>
-					<?php endforeach; ?>
+					<div class="fp-product-tags">
+						<?php foreach ($product['tags'] as $tag):
+							$tag_name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
+							$tag_link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#');
+							if (empty($tag_name)) continue;
+						?>
+							<a href="<?php echo esc_url($tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($tag_name); ?></a>
+						<?php endforeach; ?>
+					</div>
 				<?php endif; ?>
 			</div>
 		</div>

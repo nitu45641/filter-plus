@@ -2,8 +2,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-foreach ($attributes as $filterplus_key => $filterplus_item ) {
-	$filterplus_get_attr = \FilterPlus\Utils\Helper::get_attributes( wc_get_attribute( $filterplus_item )->slug );
+foreach ( ( isset( $filterplus_attributes ) && is_array( $filterplus_attributes ) ? $filterplus_attributes : [] ) as $filterplus_key => $filterplus_item ) {
+	$filterplus_get_attr = \FilterPlus\Utils\Helper::get_attributes( ! empty( wc_get_attribute( $filterplus_item ) ) ? wc_get_attribute( $filterplus_item )->slug : '' );
 ?>
 <div class="sidebar-row radio-wrap">
 	<?php
