@@ -22,14 +22,28 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 							echo wp_kses_post( $grid_image );
 						}
 						?>
-					<?php if (!empty($product['on_sale']) || !empty($product['categories'])): ?>
+					<?php
+					$fp_cats = (array) $product['categories'];
+					$fp_first_cat = !empty($fp_cats) ? $fp_cats[0] : null;
+					$fp_tags = !empty($product['tags']) ? array_values($product['tags']) : array();
+					$fp_first_tag_name = '';
+					$fp_first_tag_link = '#';
+					foreach ($fp_tags as $fp_t) {
+						$n = is_object($fp_t) ? $fp_t->name : (isset($fp_t['name']) ? $fp_t['name'] : '');
+						if (!empty($n)) { $fp_first_tag_name = $n; $fp_first_tag_link = is_object($fp_t) ? (isset($fp_t->link) ? $fp_t->link : '#') : (isset($fp_t['link']) ? $fp_t['link'] : '#'); break; }
+					}
+					?>
+					<?php if (!empty($product['on_sale']) || $fp_first_cat || !empty($fp_first_tag_name)): ?>
 						<div class="filter-cat-badge">
 							<?php if (!empty($product['on_sale'])): ?>
 								<span class="fp-sale-badge"><?php echo esc_html($product['on_sale_text']); ?></span>
 							<?php endif; ?>
-							<?php foreach ((array)$product['categories'] as $category): ?>
-								<span><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></span>
-							<?php endforeach; ?>
+							<?php if ($fp_first_cat): ?>
+								<span><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></span>
+							<?php endif; ?>
+							<?php if (!empty($fp_first_tag_name)): ?>
+								<a href="<?php echo esc_url($fp_first_tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($fp_first_tag_name); ?></a>
+							<?php endif; ?>
 						</div>
 					<?php endif; ?>
 					</div>
@@ -71,17 +85,6 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 				<div class="product-price"><?php echo wp_kses_post( $product['post_price'] ); ?></div>
 				<?php endif; ?>
 				<?php if( $hide_prod_rating == 'yes' ): ?> <?php echo wp_kses_post( $product['rating'] ); ?> <?php endif; ?>
-				<?php if (!empty($product['tags'])): ?>
-				<div class="fp-product-tags">
-					<?php foreach ($product['tags'] as $tag):
-						$tag_name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
-						$tag_link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#');
-						if (empty($tag_name)) continue;
-					?>
-						<a href="<?php echo esc_url($tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($tag_name); ?></a>
-					<?php endforeach; ?>
-				</div>
-				<?php endif; ?>
 			</div>
 		</div>
 	</div>
@@ -104,14 +107,28 @@ function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_pro
 					echo wp_kses_post( $list_image );
 				}
 				?>
-				<?php if (!empty($product['on_sale']) || !empty($product['categories'])): ?>
+				<?php
+				$fp_cats = (array) $product['categories'];
+				$fp_first_cat = !empty($fp_cats) ? $fp_cats[0] : null;
+				$fp_tags = !empty($product['tags']) ? array_values($product['tags']) : array();
+				$fp_first_tag_name = '';
+				$fp_first_tag_link = '#';
+				foreach ($fp_tags as $fp_t) {
+					$n = is_object($fp_t) ? $fp_t->name : (isset($fp_t['name']) ? $fp_t['name'] : '');
+					if (!empty($n)) { $fp_first_tag_name = $n; $fp_first_tag_link = is_object($fp_t) ? (isset($fp_t->link) ? $fp_t->link : '#') : (isset($fp_t['link']) ? $fp_t['link'] : '#'); break; }
+				}
+				?>
+				<?php if (!empty($product['on_sale']) || $fp_first_cat || !empty($fp_first_tag_name)): ?>
 					<div class="filter-cat-badge">
 						<?php if (!empty($product['on_sale'])): ?>
 							<span class="fp-sale-badge"><?php echo esc_html($product['on_sale_text']); ?></span>
 						<?php endif; ?>
-						<?php foreach ((array)$product['categories'] as $category): ?>
-							<span><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></span>
-						<?php endforeach; ?>
+						<?php if ($fp_first_cat): ?>
+							<span><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></span>
+						<?php endif; ?>
+						<?php if (!empty($fp_first_tag_name)): ?>
+							<a href="<?php echo esc_url($fp_first_tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($fp_first_tag_name); ?></a>
+						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 			</a>
@@ -135,17 +152,6 @@ function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_pro
 			<?php if( $hide_prod_desc == 'yes' && !empty($product['post_description']) ): ?>
 			<div class="hpcc-description">
 				<?php echo wp_kses_post($product['post_description']); ?>
-			</div>
-			<?php endif; ?>
-			<?php if (!empty($product['tags'])): ?>
-			<div class="fp-product-tags">
-				<?php foreach ($product['tags'] as $tag):
-					$tag_name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
-					$tag_link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#');
-					if (empty($tag_name)) continue;
-				?>
-					<a href="<?php echo esc_url($tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($tag_name); ?></a>
-				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>
 		</div>

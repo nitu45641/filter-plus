@@ -37,7 +37,7 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 						}
 					}
 					?>
-					<?php if (!empty($product['on_sale']) || $fp_first_cat): ?>
+					<?php if (!empty($product['on_sale']) || $fp_first_cat || !empty($fp_first_tag_name)): ?>
 						<div class="filter-cat-badge">
 							<?php if (!empty($product['on_sale'])): ?>
 								<span class="fp-sale-badge"><?php echo esc_html($product['on_sale_text']); ?></span>
@@ -45,12 +45,10 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 							<?php if ($fp_first_cat): ?>
 								<span><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></span>
 							<?php endif; ?>
+							<?php if (!empty($fp_first_tag_name)): ?>
+								<a href="<?php echo esc_url($fp_first_tag_link); ?>" target="_blank"><span><?php echo esc_html($fp_first_tag_name); ?></span></a>
+							<?php endif; ?>
 						</div>
-					<?php endif; ?>
-					<?php if (!empty($fp_first_tag_name)): ?>
-					<div class="fp-product-tags fp-product-tags-overlay">
-						<a href="<?php echo esc_url($fp_first_tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($fp_first_tag_name); ?></a>
-					</div>
 					<?php endif; ?>
 				</div>
 			</a>

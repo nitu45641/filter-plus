@@ -13,23 +13,26 @@ function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc)
 				<?php echo wp_kses_post( $product['post_image'] ); ?>
 			</a>
 			<div class="filter-meta-wrapper">
-				<?php if (!empty($product['categories'])): ?>
+				<?php
+				$fp_cats = !empty($product['categories']) ? array_values((array)$product['categories']) : array();
+				$fp_first_cat = !empty($fp_cats) ? $fp_cats[0] : null;
+				$fp_tags = !empty($product['tags']) ? array_values($product['tags']) : array();
+				$fp_first_tag_name = '';
+				$fp_first_tag_link = '#';
+				foreach ($fp_tags as $fp_t) {
+					$n = is_object($fp_t) ? $fp_t->name : (isset($fp_t['name']) ? $fp_t['name'] : '');
+					if (!empty($n)) { $fp_first_tag_name = $n; $fp_first_tag_link = is_object($fp_t) ? (isset($fp_t->link) ? $fp_t->link : '#') : (isset($fp_t['link']) ? $fp_t['link'] : '#'); break; }
+				}
+				?>
+				<?php if ($fp_first_cat || !empty($fp_first_tag_name)): ?>
 					<div class="filter-cat-links">
-						<?php foreach ($product['categories'] as $category): ?>
-							<?php $link = is_object($category) ? (isset($category->link) ? $category->link : '#') : (isset($category['link']) ? $category['link'] : '#'); ?>
-							<a href="<?php echo esc_url($link); ?>" target="_blank" class="fp-cat-link"><?php echo esc_html(is_object($category) ? $category->name : $category['name']); ?></a>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
-				<?php if (!empty($product['tags'])): ?>
-					<div class="fp-product-tags">
-						<?php foreach ($product['tags'] as $tag):
-							$tag_name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
-							$tag_link = is_object($tag) ? (isset($tag->link) ? $tag->link : '#') : (isset($tag['link']) ? $tag['link'] : '#');
-							if (empty($tag_name)) continue;
-						?>
-							<a href="<?php echo esc_url($tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($tag_name); ?></a>
-						<?php endforeach; ?>
+						<?php if ($fp_first_cat): ?>
+							<?php $fp_cat_link = is_object($fp_first_cat) ? (isset($fp_first_cat->link) ? $fp_first_cat->link : '#') : (isset($fp_first_cat['link']) ? $fp_first_cat['link'] : '#'); ?>
+							<a href="<?php echo esc_url($fp_cat_link); ?>" target="_blank" class="fp-cat-link"><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></a>
+						<?php endif; ?>
+						<?php if (!empty($fp_first_tag_name)): ?>
+							<a href="<?php echo esc_url($fp_first_tag_link); ?>" class="fp-tag-chip" target="_blank"><?php echo esc_html($fp_first_tag_name); ?></a>
+						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 			</div>
