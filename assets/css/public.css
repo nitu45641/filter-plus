@@ -2381,12 +2381,29 @@ ul.sub_categories{
 .fp-cat-link:hover {
     text-decoration: underline;
 }
+.fplus-title {
+    display: none;
+}
 /* Product tag chips */
 .fp-product-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
     margin-top: 7px;
+}
+.fp-product-tags-overlay {
+    position: absolute;
+    top: 44px;
+    right: 15px;
+    margin-top: 0;
+    z-index: 3;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.fp-product-tags-overlay .fp-tag-chip {
+    background: var(--filter-secondary-color, #2d73e7);
+    color: #fff;
+    border-color: transparent;
 }
 .fp-tag-chip {
     display: inline-flex;

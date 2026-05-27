@@ -151,23 +151,6 @@ class Actions {
 
 		$args = $this->filter_by_custom_field( $param , $args );
 
-		// Exclude WooCommerce products hidden from catalog (respects visibility setting)
-		if ( $param['filter_type'] === 'product' ) {
-			$visibility_clause = array(
-				'taxonomy' => 'product_visibility',
-				'field'    => 'name',
-				'terms'    => array( 'exclude-from-catalog' ),
-				'operator' => 'NOT IN',
-			);
-			if ( empty( $args['tax_query'] ) ) {
-				$args['tax_query'] = array( $visibility_clause );
-			} elseif ( isset( $args['tax_query']['relation'] ) ) {
-				$args['tax_query'][] = $visibility_clause;
-			} else {
-				$args['tax_query'] = array( 'relation' => 'AND', $args['tax_query'][0], $visibility_clause );
-			}
-		}
-
 		$posts = get_posts( $args );
 
 		// total products
