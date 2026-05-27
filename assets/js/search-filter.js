@@ -86,69 +86,101 @@
 			// Get the input within this li (checkbox or radio)
 			const $input = _this.find('input[type="checkbox"], input[type="radio"]');
 
-			// FIX: Handle radio buttons separately — single select, clear others
+			// ---------------------------------------------------------------
+			// CASE A: Plain <li> with NO input inside (your current HTML)
+			// Single-select behaviour — toggle active on clicked, clear others
+			// ---------------------------------------------------------------
+			if ($input.length === 0) {
+				const isAlreadyActive = _this.hasClass('active');
+
+				// Deactivate every category li
+				category_li.removeClass('active');
+
+				if (!isAlreadyActive) {
+					// Select the clicked one
+					_this.addClass('active');
+					const selectedCatId   = _this.data('cat_id');
+					const selectedCatName = _this.data('name') || _this.text().trim().replace(/\([^)]*\)/g, '').trim();
+
+					if (!isApplyMode) {
+						get_products({ cat_id: [ selectedCatId ], product_cat: selectedCatName });
+					} else {
+						show_selected_data(selected_param({}));
+					}
+				} else {
+					// Clicking the already-active item deselects it → show all
+					if (!isApplyMode) {
+						get_products({ default_call: true });
+					} else {
+						show_selected_data(selected_param({}));
+					}
+				}
+
+				reset_block(_this, _this.parents('.sidebar-row'));
+				return; // done — skip input-based logic below
+			}
+
+			// ---------------------------------------------------------------
+			// CASE B: Radio input inside <li>
+			// ---------------------------------------------------------------
 			if ($input.attr('type') === 'radio') {
-				// Deactivate all category items
 				category_li.removeClass('active');
 				category_li.find('input[type="radio"]').prop('checked', false);
 
-				// Activate only this one
 				_this.addClass('active');
 				$input.prop('checked', true);
 
-				// Trigger filter or update tags
+				const selectedCatId   = _this.data('cat_id');
+				const selectedCatName = _this.data('name') || _this.find('label').text().trim() || _this.text().trim().replace(/\([^)]*\)/g, '').trim();
+
 				if (!isApplyMode) {
-					get_products();
+					get_products({ cat_id: [ selectedCatId ], product_cat: selectedCatName });
 				} else {
 					show_selected_data(selected_param({}));
 				}
 				reset_block(_this, _this.parents('.sidebar-row'));
-				return; // skip checkbox logic below
+				return;
 			}
 
-			// Determine if this is a parent or child based on class or parent attribute
+			// ---------------------------------------------------------------
+			// CASE C: Checkbox input inside <li> (multi-select with parent/child)
+			// ---------------------------------------------------------------
 			const isParent = _this.hasClass('parent');
-			const isChild = _this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'));
+			const isChild  = _this.parents('ul.sub_categories').length > 0 ||
+			                 (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'));
 
 			if ($input.length > 0) {
-				// Get the current checked state of the input
 				const isNowChecked = $input.prop('checked');
 
 				if (isParent && isNowChecked) {
-					// Parent checked: check all child categories
-					const parentId = _this.data('cat_id');
-					const $children = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
+					const parentId   = _this.data('cat_id');
+					const $children  = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
 					$children.addClass('active');
 					$children.find("input[type='checkbox']").prop('checked', true);
 				} else if (isParent && !isNowChecked) {
-					// Parent unchecked: uncheck all child categories
-					const parentId = _this.data('cat_id');
-					const $children = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
+					const parentId   = _this.data('cat_id');
+					const $children  = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
 					$children.removeClass('active');
 					$children.find("input[type='checkbox']").prop('checked', false);
 				} else if (isChild) {
-					// Child category: handle parent sync
-					const parentId = _this.data('parent');
-					const $parentLi = $('.category-list li[data-cat_id="' + parentId + '"]');
-					const $allChildren = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
+					const parentId       = _this.data('parent');
+					const $parentLi      = $('.category-list li[data-cat_id="' + parentId + '"]');
+					const $allChildren   = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
 					const $checkedChildren = $allChildren.find('input[type="checkbox"]:checked');
 
 					if (isNowChecked) {
 						_this.addClass('active');
-						// If all children are now checked, check parent
 						if ($allChildren.length === $checkedChildren.length) {
 							$parentLi.addClass('active');
 							$parentLi.find('input[type="checkbox"]').prop('checked', true);
 						}
 					} else {
 						_this.removeClass('active');
-						// If unchecking child, uncheck parent
 						$parentLi.removeClass('active');
 						$parentLi.find('input[type="checkbox"]').prop('checked', false);
 					}
 				}
 
-				// Update active class for current element
 				if (isNowChecked) {
 					_this.addClass('active');
 				} else {
@@ -918,8 +950,16 @@
 			const price_range = $('.range-slider');
 			// category
 			params.filter_type = $('#shopContainer').data('filter_type');
-			params.cat_id = filterOption.get_category_list($);
-			params.product_cat = filterOption.category_formatted_text($);
+
+			// FIX: Only call filterOption helpers when cat_id/product_cat were NOT
+			// already supplied by the radio-button handler. This prevents the helper
+			// from reading a stale DOM state and overwriting the correct value.
+			if ( typeof params.cat_id === 'undefined' ) {
+				params.cat_id = filterOption.get_category_list($);
+			}
+			if ( typeof params.product_cat === 'undefined' ) {
+				params.product_cat = filterOption.category_formatted_text($);
+			}
 			params.rating = $('ul.ratings').attr('id');
 			params.taxonomies = get_tags(true);
 			params.taxonomies_name = get_tags('name');
