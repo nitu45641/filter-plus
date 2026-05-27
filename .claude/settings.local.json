@@ -35,7 +35,11 @@
       "Bash(/Applications/MAMP/bin/php/php8.1.31/bin/php *)",
       "Bash(php -l /Applications/MAMP/htdocs/wordpress/wp-content/plugins/filter-plus/templates/woo-filter/template-1/right-side/product-template.php)",
       "Bash(php -l /Applications/MAMP/htdocs/wordpress/wp-content/plugins/filter-plus/templates/woo-filter/template-2/right-side/product-template.php)",
-      "Bash(php -l /Applications/MAMP/htdocs/wordpress/wp-content/plugins/filter-plus/templates/wp-filter/template-1/right-side/product-template.php)"
+      "Bash(php -l /Applications/MAMP/htdocs/wordpress/wp-content/plugins/filter-plus/templates/wp-filter/template-1/right-side/product-template.php)",
+      "Bash(/Applications/MAMP/bin/php/php8.2.0/bin/php -r \"echo PHP_VERSION;\")",
+      "Bash(php -r \"echo PHP_VERSION;\")",
+      "Bash(/Applications/MAMP/Library/bin/mysql *)",
+      "Bash(/Applications/MAMP/bin/php/php8.4.8/bin/php -r \"echo opcache_get_status\\(\\) ? 'OPcache ON' : 'OPcache OFF';\")"
     ],
     "deny": [],
     "ask": []

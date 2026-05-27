@@ -456,9 +456,12 @@ class Actions {
 	}
 
 	public static function tags_info( $id , $tags )  {
+		$taxonomy = $tags;
 		$tags = get_the_terms ( $id , $tags  );
 
-		if (empty($tags)) {
+		file_put_contents( WP_CONTENT_DIR . '/fp-tag-debug.log', date('H:i:s') . ' post_id=' . $id . ' taxonomy=' . $taxonomy . ' result=' . ( is_array($tags) ? count($tags) . ' terms: ' . implode(',', wp_list_pluck($tags,'name')) : ( is_wp_error($tags) ? 'WP_Error' : var_export($tags,true) ) ) . PHP_EOL, FILE_APPEND );
+
+		if ( empty($tags) || is_wp_error($tags) ) {
 			return array();
 		}
 
@@ -466,7 +469,8 @@ class Actions {
 		$tags = array_slice($tags, 0, 2);
 
 		foreach ($tags as $key => &$tag) {
-			$tag->link = get_tag_link($tag->term_id);
+			$link = get_term_link($tag);
+			$tag->link = is_wp_error($link) ? '#' : $link;
 		}
 
 		return $tags;
