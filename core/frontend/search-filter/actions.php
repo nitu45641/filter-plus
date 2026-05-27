@@ -149,8 +149,26 @@ class Actions {
 			$args = $this->product_order_by( $param , $args );
 		}
 
-		$args 	= $this->filter_by_custom_field( $param , $args );
-		$posts 	= get_posts( $args );
+		$args = $this->filter_by_custom_field( $param , $args );
+
+		// Exclude WooCommerce products hidden from catalog (respects visibility setting)
+		if ( $param['filter_type'] === 'product' ) {
+			$visibility_clause = array(
+				'taxonomy' => 'product_visibility',
+				'field'    => 'name',
+				'terms'    => array( 'exclude-from-catalog' ),
+				'operator' => 'NOT IN',
+			);
+			if ( empty( $args['tax_query'] ) ) {
+				$args['tax_query'] = array( $visibility_clause );
+			} elseif ( isset( $args['tax_query']['relation'] ) ) {
+				$args['tax_query'][] = $visibility_clause;
+			} else {
+				$args['tax_query'] = array( 'relation' => 'AND', $args['tax_query'][0], $visibility_clause );
+			}
+		}
+
+		$posts = get_posts( $args );
 
 		// total products
 		$args['posts_per_page'] = -1;
@@ -167,7 +185,6 @@ class Actions {
 			'page' 			=> $param['offset'],
 			'template' 		=> $param['pagination_style'],
 		) );
-
 		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $param['limit'])
 		, 'pagination_markup' => $pagination_markup );
 	}
@@ -301,14 +318,15 @@ class Actions {
 	 */
 	public function product_reviews( $param , $args ) {
 		if(!empty($param['rating'])){
+			$star = (int) $param['rating'];
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for rating filtering
-			$args['meta_query'] =array(
-                array(
-                   'key'     => '_wc_average_rating',
-                   'value'   => $param['rating'],
-                   'compare' => '=',
-				   'type'    => 'NUMERIC'
-                )
+			$args['meta_query'] = array(
+				array(
+					'key'     => '_wc_average_rating',
+					'value'   => array( $star, $star + 0.99 ),
+					'compare' => 'BETWEEN',
+					'type'    => 'DECIMAL(3,2)',
+				),
 			);
 		}
 
@@ -340,7 +358,8 @@ class Actions {
 	 * @return array
 	 */
 	public function product_min_max_price( $param , $args ) {
-		if ( ! empty( $param['min'] ) && ! empty( $param['max'] ) ) {
+		$price_range_active = isset( $param['price_range'] ) && filter_var( $param['price_range'], FILTER_VALIDATE_BOOLEAN );
+		if ( $price_range_active && ! empty( $param['min'] ) && ! empty( $param['max'] ) ) {
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for price range filtering
 			$args['meta_query'] = array(
 				array(
