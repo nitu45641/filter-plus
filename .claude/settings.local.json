@@ -39,7 +39,11 @@
       "Bash(/Applications/MAMP/bin/php/php8.2.0/bin/php -r \"echo PHP_VERSION;\")",
       "Bash(php -r \"echo PHP_VERSION;\")",
       "Bash(/Applications/MAMP/Library/bin/mysql *)",
-      "Bash(/Applications/MAMP/bin/php/php8.4.8/bin/php -r \"echo opcache_get_status\\(\\) ? 'OPcache ON' : 'OPcache OFF';\")"
+      "Bash(/Applications/MAMP/bin/php/php8.4.8/bin/php -r \"echo opcache_get_status\\(\\) ? 'OPcache ON' : 'OPcache OFF';\")",
+      "Bash(mysql *)",
+      "Read(//Applications/MAMP/Library/bin/**)",
+      "Read(//Applications/MAMP/db/**)",
+      "Read(//Applications/MAMP/**)"
     ],
     "deny": [],
     "ask": []
