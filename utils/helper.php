@@ -603,7 +603,7 @@ class Helper {
 		if ( ! empty($param['cat_id']) ) {
 			$cat_id = $param['cat_id'];
 		}else{
-			$cat_id = !empty($param['filter_param']) ? $param['filter_param']['product_cat'] : [];
+			$cat_id = !empty($param['filter_param']['product_cat']) ? $param['filter_param']['product_cat'] : [];
 		}
 
 		if ( !empty( $param['taxonomy']) && !empty( $cat_id ) ) {

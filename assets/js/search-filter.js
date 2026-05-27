@@ -1264,7 +1264,7 @@
 				});
 			}
 			if (!selected && $('.category-list').length > 0) {
-				obj.product_cat = $('.category-list li')
+				obj.product_cat = $('.category-list li.active')
 					.map(function () {
 						return $(this).data('cat_id');
 					})
