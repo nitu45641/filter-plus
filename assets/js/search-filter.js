@@ -78,59 +78,57 @@
 					return;
 				}
 			}
-			let active_li = $('#cat_li_parent_' + _this.data('cat_id'));
-			// Check if this is a child category by looking at the parent ul or by checking if data-parent exists and differs from cat_id
-			if (_this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'))) {
-				active_li = $('#cat_li_child_' + _this.data('cat_id'));
-			}
-			if (active_li.length > 0) {
-				if (active_li.is('input')) {
-					let parent = _this.data("parent");
-
-					if (active_li.is(':checked')) {
+			
+			// Get the input within this li (checkbox or radio)
+			const $input = _this.find('input[type="checkbox"], input[type="radio"]');
+			
+			// Determine if this is a parent or child based on class or parent attribute
+			const isParent = _this.hasClass('parent');
+			const isChild = _this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'));
+			
+			if ($input.length > 0) {
+				// Get the current checked state of the input
+				const isNowChecked = $input.prop('checked');
+				
+				if (isParent && isNowChecked) {
+					// Parent checked: check all child categories
+					const parentId = _this.data('cat_id');
+					const $children = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
+					$children.addClass('active');
+					$children.find("input[type='checkbox']").prop('checked', true);
+				} else if (isParent && !isNowChecked) {
+					// Parent unchecked: uncheck all child categories
+					const parentId = _this.data('cat_id');
+					const $children = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
+					$children.removeClass('active');
+					$children.find("input[type='checkbox']").prop('checked', false);
+				} else if (isChild) {
+					// Child category: handle parent sync
+					const parentId = _this.data('parent');
+					const $parentLi = $('.category-list li[data-cat_id="' + parentId + '"]');
+					const $allChildren = $('ul.sub_categories').find('li[data-parent="' + parentId + '"]');
+					const $checkedChildren = $allChildren.find('input[type="checkbox"]:checked');
+					
+					if (isNowChecked) {
 						_this.addClass('active');
-						// If this is a parent category, select all child sub categories
-						if (_this.hasClass('parent')) {
-							let parent = _this.data('cat_id');
-							let child_li = $('ul.sub_categories').find('li[data-parent="' + parent + '"]');
-							child_li.addClass('active');
-							child_li.find("input[type='checkbox']").prop('checked', true);
-						}
-						// sub category: check parent if all siblings are checked
-						if (_this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'))) {
-							let parent = _this.data("parent");
-							let parent_li = $('.category-list li[data-cat_id="' + parent + '"]');
-							let child_cat = $('ul.sub_categories').find('li[data-parent="' + parent + '"]');
-							if (child_cat.length == child_cat.find("input:checked").length) {
-								parent_li.find("input").prop("checked", true);
-								parent_li.addClass("active");
-							}
+						// If all children are now checked, check parent
+						if ($allChildren.length === $checkedChildren.length) {
+							$parentLi.addClass('active');
+							$parentLi.find('input[type="checkbox"]').prop('checked', true);
 						}
 					} else {
 						_this.removeClass('active');
-						// parent unchecked: uncheck all sub categories
-						if (_this.hasClass("parent")) {
-							let parent = _this.data('cat_id');
-							let child_li = $('ul.sub_categories').find('li[data-parent="' + parent + '"]');
-							child_li.removeClass("active");
-							child_li.find("input").prop("checked", false);
-						}
-						// sub unchecked: uncheck parent
-						if (_this.parents('ul.sub_categories').length > 0 || (_this.data('parent') && _this.data('parent') !== _this.data('cat_id'))) {
-							let parent = _this.data('parent');
-							let parent_li = $('.category-list li[data-cat_id="' + parent + '"]');
-							parent_li.find("input").prop("checked", false);
-							parent_li.removeClass("active");
-						}
+						// If unchecking child, uncheck parent
+						$parentLi.removeClass('active');
+						$parentLi.find('input[type="checkbox"]').prop('checked', false);
 					}
-				} 
-				else if (active_li.is('li')) {
-					category_li.removeClass('active');
-					if (!active_li.hasClass('active')) {
-						_this.addClass('active');
-					} else {
-						_this.removeClass('active');
-					}
+				}
+				
+				// Update active class for current element
+				if (isNowChecked) {
+					_this.addClass('active');
+				} else {
+					_this.removeClass('active');
 				}
 			}
 

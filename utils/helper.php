@@ -607,12 +607,23 @@ class Helper {
 		}
 
 		if ( !empty( $param['taxonomy']) && !empty( $cat_id ) ) {
+			// Expand only PARENT cat_ids to include their direct children
+			$cat_id_with_children = array();
+			foreach ( (array) $cat_id as $term_id ) {
+				$cat_id_with_children[] = $term_id;
+				// Only expand if this category is a parent (has children)
+				$children = get_term_children( (int) $term_id, $param['taxonomy'] );
+				if ( ! empty( $children ) && ! is_wp_error( $children ) ) {
+					// Only add children if this is actually a parent
+					$cat_id_with_children = array_merge( $cat_id_with_children, $children );
+				}
+			}
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for taxonomy filtering
 			$args['tax_query'] = array(
 				array(
 					'taxonomy' => $param['taxonomy'],
 					'field'    => 'id',
-					'terms'    => $cat_id,
+					'terms'    => $cat_id_with_children,
 				),
 			);
 		}
@@ -622,10 +633,21 @@ class Helper {
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for attribute filtering
 			$args['tax_query'] = array('relation' => 'AND' );
 			if ( ! empty( $param['cat_id'] ) ) {
+				// Expand only PARENT cat_ids to include their direct children
+				$cat_id_attr = $param['cat_id'];
+				$cat_id_with_children_attr = array();
+				foreach ( (array) $cat_id_attr as $term_id ) {
+					$cat_id_with_children_attr[] = $term_id;
+					// Only expand if this category has children
+					$children = get_term_children( (int) $term_id, $param['taxonomy'] );
+					if ( ! empty( $children ) && ! is_wp_error( $children ) ) {
+						$cat_id_with_children_attr = array_merge( $cat_id_with_children_attr, $children );
+					}
+				}
 				$product_cat = array(
 					'taxonomy' => $param['taxonomy'],
 					'field'    => 'id',
-					'terms'    => $param['cat_id'],
+					'terms'    => $cat_id_with_children_attr,
 				);
 				array_push( $args['tax_query'] , $product_cat );
 			}
