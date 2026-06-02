@@ -8,11 +8,11 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Filter Plus is a WordPress filter plugin and WooCommerce product filter. Add AJAX filtering by price, rating, attributes, and categories to any WordPress or WooCommerce site.
+Filter Plus is a WordPress filter plugin and WooCommerce product filter. Add AJAX filtering by price, rating, attributes, and categories.
 
 == Description ==
 
-**[Filter Plus](https://wpbens.com/plugins/filter-plus/)** is a  WordPress filter plugin and WooCommerce product filter. It lets shoppers find exactly what they need by filtering products by price range, ratings, attributes, categories, tags, stock status, color, and size — all with smooth AJAX filtering, no page reload required.
+**[Filter Plus](https://wpbens.com/plugins/filter-plus/)** is a free WordPress filter plugin and WooCommerce product filter. It lets shoppers find exactly what they need by filtering products by price range, ratings, attributes, categories, tags, stock status, color, and size — all with smooth AJAX filtering, no page reload required.
 
 Filter Plus is not only a WooCommerce product filter. It also works as a WordPress filter plugin for blogs, news sites, custom post types, and property listings — filter any content by categories, tags, authors, post meta, and custom fields.
 
@@ -27,7 +27,7 @@ Filter Plus is not only a WooCommerce product filter. It also works as a WordPre
 
 https://www.youtube.com/watch?v=MkbFDvwuG08&t=3s
 
-## WooCommerce Product Filter –  Features ##
+## WooCommerce Product Filter – Free Features ##
 
 * **AJAX Product Filter** — Results update instantly without a page reload
 * **Filter by Price Range** — Set minimum and maximum price to narrow results
@@ -47,7 +47,7 @@ https://www.youtube.com/watch?v=MkbFDvwuG08&t=3s
 * **WPML Compatible** — Works with multilingual WooCommerce sites
 * **RTL Support** — Full right-to-left language support
 
-## WordPress Content Filter –  Features ##
+## WordPress Content Filter – Free Features ##
 
 Filter Plus works as a WordPress filter plugin beyond WooCommerce. Use it to filter any content on your site:
 
@@ -101,15 +101,15 @@ If you like Filter Plus, check out these other plugins from the same team:
 
 = What is Filter Plus? =
 
-Filter Plus is a  WordPress filter plugin and WooCommerce product filter plugin. It adds AJAX filtering to WooCommerce product pages — filter by price, rating, attributes, category, color, size, tag, and stock status. It also works as a WordPress filter plugin for blog posts, custom post types, and any content using categories, tags, authors, and custom fields.
+Filter Plus is a free WordPress filter plugin and WooCommerce product filter plugin. It adds AJAX filtering to WooCommerce product pages — filter by price, rating, attributes, category, color, size, tag, and stock status. It also works as a WordPress filter plugin for blog posts, custom post types, and any content using categories, tags, authors, and custom fields.
 
-= Is Filter Plus ? =
+= Is Filter Plus free? =
 
-Yes. The WooCommerce Product Filter and the WordPress Content Filter are both . They include AJAX filtering, Elementor product filter widget, Gutenberg block, shortcode, WPML support, and RTL support at no cost. The WooCommerce Admin Order Filter is a Pro-only feature.
+Yes. The WooCommerce Product Filter and the WordPress Content Filter are both free. They include AJAX filtering, Elementor product filter widget, Gutenberg block, shortcode, WPML support, and RTL support at no cost. The WooCommerce Admin Order Filter is a Pro-only feature.
 
-= What is the best  WooCommerce product filter plugin for 2026? =
+= What is the best free WooCommerce product filter plugin for 2026? =
 
-Filter Plus is a top  WooCommerce product filter plugin in 2026. The  version includes AJAX filtering, price range slider, star rating filter, attribute filter, color and size swatches, category filter, and SEO-friendly filter URLs. Filter Plus Pro adds multiple templates and the Admin Order Filter.
+Filter Plus is a top free WooCommerce product filter plugin in 2026. The free version includes AJAX filtering, price range slider, star rating filter, attribute filter, color and size swatches, category filter, and SEO-friendly filter URLs. Filter Plus Pro adds multiple templates and the Admin Order Filter.
 
 = Does Filter Plus work with Elementor? =
 
