@@ -1,140 +1,147 @@
-=== Filter Plus - Product Filter & WordPress Filter ===
+=== Filter Plus - WordPress Filter Plugin & WooCommerce Product Filter ===
 Contributors: markutos987
-Donate link: https://wpbens.com/filter-plus/
-Tags: woocommerce filter, post filter, woocommerce product filter, product filter , blog filter
-Tested up to: 7
+Donate link: https://wpbens.com/plugins/filter-plus/
+Tags: woocommerce product filter, wordpress filter plugin, ajax product filter, product filter, filter by price
+Tested up to: 7.0
 Stable tag: 1.1.22
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Filter Plus is WordPress and WooCommerce Product Filter plugin that enable filter anything in your website.
+Filter Plus is a WordPress filter plugin and WooCommerce product filter. Add AJAX filtering by price, rating, attributes, and categories to any WordPress or WooCommerce site.
 
 == Description ==
 
-Introducing **[Filter Plus](https://wpbens.com/plugin/filter-plus/)**  – Your Ultimate WordPress & WooCommerce Product Filter Plugin!
+**[Filter Plus](https://wpbens.com/plugins/filter-plus/)** is a  WordPress filter plugin and WooCommerce product filter. It lets shoppers find exactly what they need by filtering products by price range, ratings, attributes, categories, tags, stock status, color, and size — all with smooth AJAX filtering, no page reload required.
 
-Easily empower your site with advanced filtering features: let users find exactly what they need by categories, ratings, tags, price range, stock status, and more.
-
-Filter Plus doesn’t stop at WooCommerce! Whether it's filtering blogs, custom post types, or anything else, you can refine content by categories, tags, authors, post meta, and custom fields.
-
-With Filter Plus, you can Filter Everything in WordPress!
-
-https://www.youtube.com/watch?v=MkbFDvwuG08&t=3s
-
-**[Filter Plus Pro](https://wpbens.com/plugin/filter-plus/) Features**
-
-**WooCommerce Admin Order Filter** is your go-to tool for pinpointing best-sellers! Easily analyze which burger (or any product) tops the list by filtering orders by product and status. Get clear insights into what’s driving sales and see exactly where to focus for maximum growth.
+Filter Plus is not only a WooCommerce product filter. It also works as a WordPress filter plugin for blogs, news sites, custom post types, and property listings — filter any content by categories, tags, authors, post meta, and custom fields.
 
 **Helpful links 👇**
 
-**⭐️ Check premium Features 👉 [Filter Plus Pro](https://wpbens.com/plugin/filter-plus/)**
-**⭐️ Need Any Help? 👉 [Contact Us](https://wpbens.com/support/).**
-**⭐️ Check Live Demo 👉 [Filter Plus WooCommerce Filter ](https://product.wpbens.com/filter-plus/)**
-**⭐️ Check Live Demo 👉 [Filter Plus Wordpress Filter ](https://product.wpbens.com/filter-plus/)**
-**⭐️ Check Live Demo 👉 [Filter Plus WooCommerce Admin Order Filter ](https://product.wpbens.com/filter-plus/)**
-**⭐️ Know How It Works 👉 [Documentation](https://wpbens.com/docs/filter-plus/)**
+**⭐️ Premium Features 👉 [Filter Plus Pro](https://wpbens.com/plugins/filter-plus/)**
+**⭐️ Need Help? 👉 [Contact Us](https://wpbens.com/support/)**
+**⭐️ WooCommerce Filter Demo 👉 [Live Demo](https://product.wpbens.com/filter-plus/)**
+**⭐️ WordPress Filter Demo 👉 [Live Demo](https://product.wpbens.com/filter-plus/)**
+**⭐️ Order Filter Demo 👉 [Live Demo](https://product.wpbens.com/filter-plus/)**
+**⭐️ Documentation 👉 [Docs](https://wpbens.com/docs/filter-plus/)**
 
-📌 [Before writing any review, Please be aware that, Filter Plus is still in its initial stage]
+https://www.youtube.com/watch?v=MkbFDvwuG08&t=3s
 
-##Unique features of Filter Plus##
+## WooCommerce Product Filter –  Features ##
 
-* **Filter Products WordPress eCommerce Store**
-* **Food Menu Filtering**
-* **WooCommerce Product Filtering**
-* **WooCommerce Filter By Price**
-* **Filter By Price Range**
-* **Filter By Ratings**
-* **Filter By Tag**
-* **AJAX Product Filter**
-* **Filter By Stock Status**
-* **Multiple Templates – PRO**
-* **Use for blogs, reviews sites, news sites, property sites and more – PRO**
-* **Wordpress Blog Filter – PRO**
-* **Wordpress Custom Post Type Filter – PRO**
-* **Search Wordpress Post,Custom Post by Custom Fields, Post Meta, Authors, Post Types, Post Dates, Taxonomies, Tags, Categories – PRO**
-* **WooCommerce Admin Order Filter by Product, Status – PRO**
-* **SEO Optimization – PRO**
+* **AJAX Product Filter** — Results update instantly without a page reload
+* **Filter by Price Range** — Set minimum and maximum price to narrow results
+* **Filter by Ratings** — Show only products that meet a minimum star rating
+* **Filter by Categories** — Let shoppers browse by product category or sub-category
+* **Filter by Attributes** — Filter by size, color, material, or any WooCommerce attribute
+* **Filter by Color** — Visual color swatch selector for instant product color filtering
+* **Filter by Size** — Filter apparel and accessories by available size options
+* **Filter by Tag** — Filter products by WooCommerce tags; active tags are displayed on page
+* **Filter by Stock Status** — Show in-stock, out-of-stock, or on-sale products only
+* **Reset Filter Button** — One click clears all active filters and returns to the full view
+* **SEO-Friendly Filter URLs** — Each filter state generates a unique, crawlable URL
+* **WooCommerce Product Filter Shortcode** — Add `[filterplus]` to any page or template
+* **Elementor Product Filter Widget** — Drop the WooCommerce product filter into any Elementor page
+* **Gutenberg Filter Block** — Add filtering to block-editor pages without touching code
+* **Bricks Builder Compatible** — Full support for Bricks Builder layouts
+* **WPML Compatible** — Works with multilingual WooCommerce sites
+* **RTL Support** — Full right-to-left language support
 
-##What you can do with Filter Plus?##
+## WordPress Content Filter –  Features ##
 
-Accelerate your store with Filter Plus – the WooCommerce plugin that brings powerful, advanced filtering options to your fingertips! Currently, enjoy these robust features for flawless WooCommerce filtering and sorting.
+Filter Plus works as a WordPress filter plugin beyond WooCommerce. Use it to filter any content on your site:
 
-**👉 [WooCommerce Filter By Price](https://wpbens.com/plugin/filter-plus/)** - With Filter Plus, users can fine-tune search results by setting a minimum and maximum price range. This feature is perfect for those shopping on a budget, allowing them to quickly find products within their desired price. Essential for eCommerce, it streamlines the search process, enhances user experience, and can even boost conversion rates by guiding visitors to the best deals that meet their needs.
+* **WordPress Blog Filter** — Filter blog posts by category, tag, author, or date
+* **Custom Post Type Filter** — Filter any registered CPT by taxonomy or meta value
+* **Post Meta & Custom Field Filter** — Filter posts by any custom field value
+* **WordPress Filter Shortcode** — Embed a filter widget on any page using a shortcode
+* **Filter by Author** — Let visitors narrow content by specific authors
+* **Filter by Post Date** — Filter posts and content by publish date ranges
 
-**👉 [Filter by Ratings](https://wpbens.com/plugin/filter-plus/)** - Sometimes users want to purchase only those products that have got more 5 star ratings. Without a ratings filter, they can't sort out that. But Filter plus makes it easy with the 'filter by rating' feature. In e-commerce or review-based websites, this feature is valuable as it allows visitors to filter and see only items that meet their preferred quality standards. This plugin allows to set a minimum rating, and it will display content or products with ratings equal to or above that threshold.
+## Pro Features ##
 
-**👉 [Filter by Attributes](https://wpbens.com/plugin/filter-plus/)** - Looking for products in just the right color, size, or style? Our plugin helps users find exactly what they want in seconds. Perfect for e-commerce stores, it narrows search results based on specific attributes—no more endless scrolling. Find, click, and buy faster with precision search features your customers will love!
+Upgrade to **[Filter Plus Pro](https://wpbens.com/plugins/filter-plus/)** to unlock:
 
-**👉 [WooComerce Filter by Tags](https://wpbens.com/plugin/filter-plus/)** - Help your audience find exactly what they're looking for! With our tagging feature, users can organize and filter content by keywords, bringing related posts and articles to the forefront. Perfect for blogs and content-rich sites—just select a tag, and watch relevant content appear instantly. Make navigation a breeze!
+* **WooCommerce Admin Order Filter** — Filter WooCommerce orders in the admin by product, status, date, and customer to identify your best-selling products and track fulfillment
+* **Multiple Advanced Filter Templates** — Choose from premium styled templates for WooCommerce and WordPress
+* **Category Layout Navigation** — Clicking a category navigates to the full WooCommerce category page and renders the same filter template
+* **Extended Custom Post Type Filter** — Advanced meta and taxonomy filtering for Pro users
+* **SEO Optimization Module** — Submit crawlable filter URLs to search engines for improved store indexing
 
-Moreover, **Filter Tag** will be displayed on the page after applying it. Users can see what tags has been effected on the page.
+## Elementor Product Filter Widget ##
 
-**👉 [Reset Filter Button](https://wpbens.com/plugin/filter-plus/)** - Make searching easy with a single click! Our Reset Filter feature lets users clear all applied filters and instantly return to the full view—perfect for seamless browsing. No more backtracking, just quick resets for a smooth shopping experience!
+Filter Plus includes a dedicated Elementor product filter widget for WooCommerce. After activating the plugin, the Filter Plus widget appears in your Elementor widget panel. Drag it onto any WooCommerce archive page, shop page, or custom page. Configure filter options — price range, ratings, categories, attributes, color, size — directly inside the Elementor editor.
 
-**👉 [Filter by Categories](https://wpbens.com/plugin/filter-plus/)** -Help your users shop smarter! Our Category Sorting feature allows them to quickly filter content and products by predefined categories. No more sifting through irrelevant items—just select a category, and instantly see what matters most. Speed up the buying decision and enhance their experience!
+The Elementor widget supports:
 
-**👉 [Filter by Color](https://wpbens.com/plugin/filter-plus/)** - Let your users shop by their favorite colors! Our Color Filter feature enables them to refine search results effortlessly. Ideal for e-commerce and design sites, users can pick a color from a palette, instantly displaying only products that match. Enhance their shopping experience with vibrant choices!
+* AJAX product filtering without page reload
+* Configurable price range slider
+* Category, tag, and attribute checkboxes
+* Color and size swatch selectors
+* Filter reset button
+* Pagination and load-more support
 
-**👉 [Filter by Size](https://wpbens.com/plugin/filter-plus/)** - Size matters! Our Size Filter feature lets users narrow down product searches based on their preferred sizes. Perfect for apparel and accessories, they can easily select small, medium, or large to see only what's available in their fit. Simplify shopping and ensure every item is just right!
+## Gutenberg Filter Block ##
 
-**👉 [Filter Anything](https://wpbens.com/plugin/filter-plus/)** - Empower your users with the Filter Anything feature! This powerful tool allows them to refine search results based on any criteria—price, color, size, ratings, and more. Perfect for diverse content offerings, it ensures users can tailor their searches to find exactly what they need. Enhance engagement and usability, making every visit count!
+Add the Filter Plus block to any block-editor page. Search for "Filter Plus" in the Gutenberg block inserter, add the block, and configure filter options — price, category, tag, rating — from the block sidebar settings panel. No shortcode or code editing required.
 
-**Advanced widgets for your WooCommerce Store**
+## WooCommerce Admin Order Filter (Pro) ##
 
-**⭐️ WooComerce Filter Elementor Widget** - Exciting news! Our latest release introduces Elementor widgets for seamless filtering functionality on your WordPress and WooCommerce site. Now, you can easily integrate filters into your Elementor-based website, enhancing user experience and making navigation a breeze. Upgrade today and simplify your site!
+The WooCommerce Admin Order Filter is a Pro-only tool for store managers. Filter WooCommerce orders in the admin panel by product name and order status. Identify which products generate the most orders, isolate pending or refunded orders, and analyze sales performance without exporting data.
 
-**⭐️ WooComerce Filter Gutenberg Block** - Great news for Gutenberg users! Our new update brings Gutenberg blocks for easy filter options. Now you can effortlessly add filters by price, tags, and more directly from the block section while editing your page. Enhance user experience with just a few clicks!
+### 🔥 WHAT'S NEXT ###
+If you like Filter Plus, check out these other plugins from the same team:
 
-**👉 WPML Compatible** - Filter Plus is now fully WPML compatible! This means you can seamlessly use our plugin on your translatable website. Whether your site is in a local language or not, you can enhance it with the Filter Plus WordPress Filter Plugin. If you're using WPML, you’re all set to elevate your site!
-
-**👉 RTL Support** - Attention all RTL users! Filter Plus is now fully RTL compatible, making it the perfect plugin for your WordPress site with right-to-left languages. Enhance your user experience effortlessly and ensure your filters work beautifully in any language format!
-
-**👉 Nice URL for Filter Page** - With our latest update, every time users adjust their filter criteria, the site generates a new SEO-friendly URL. This means better indexing and visibility for your content. Enhance user experience while improving your search engine rankings!
-
-**👉 Filter by Product** - Maximize your sales with our powerful filtering feature! Visitors can now view products from different categories, offers, and values all on the same page. Perfect for multivendor eCommerce sites, this functionality enhances user experience and boosts sales potential. Make shopping easier and more profitable today!
-
-**👉 Filter by Order Status** - Visitors can add filter based on the order status.
-
-**👉 Filter by Product in Woo Order Page** - This feature of Filter Plus allows you to enable filtering option on the WooCommerce order page.
-
-**👉 SEO Options** Filter Plus SEO option helps the store owner to submit SEO information to the search engine. We did the technical part so admin can just select and see the SEO boost on the store.
-
-More features are on the way!
-
-Filter Plus is the ultimate plugin for WordPress and WooCommerce product filtering. Allow the users to filter and shortlist the products in the store easily and effortlessly.
-
-### 🔥 WHAT’S NEXT
-If you like Filter Plus, then consider checking out  other WordPress Plugins made by the same team:
-
-🔔 **[MemberHub](https://wordpress.org/plugins/memberhub/)** – MemberHub for Wordpress and WooCommerce and Boost your sales
-🔔 **[Discountify](https://wordpress.org/plugins/discountify/)** – Discount Rules, Dynamic Pricing and Coupon management for WooCommerce
-🔔 **[Quicker](https://wordpress.org/plugins/quicker/)** – Convert Your Browsers into Buyers and Maximize Conversions
-🔔 **[Bens Email Marketing & Automation](https://wordpress.org/plugins/bens-email-marketing-automation/)** – Fast and simple Email Marketing, Newsletters, Automation & CRM for WordPress
+🔔 **[MemberHub](https://wordpress.org/plugins/memberhub/)** – Membership and access control for WordPress and WooCommerce
+🔔 **[Discountify](https://wordpress.org/plugins/discountify/)** – Discount Rules, Dynamic Pricing, and Coupon management for WooCommerce
+🔔 **[Quicker](https://wordpress.org/plugins/quicker/)** – Quick Buy and cart optimization to maximize WooCommerce conversions
+🔔 **[Bens Email Marketing & Automation](https://wordpress.org/plugins/bens-email-marketing-automation/)** – Email Marketing, Newsletters, Automation, and CRM for WordPress
 
 == Frequently Asked Questions ==
 
 = What is Filter Plus? =
 
-Filter Plus is an advanced WooCommerce and WordPress filter plugin. It enables multiple filtering options on the eCommerce store. You can also add a filtering option to the WordPress posts, pages, and other taxonomy.
+Filter Plus is a  WordPress filter plugin and WooCommerce product filter plugin. It adds AJAX filtering to WooCommerce product pages — filter by price, rating, attributes, category, color, size, tag, and stock status. It also works as a WordPress filter plugin for blog posts, custom post types, and any content using categories, tags, authors, and custom fields.
 
-= How does the plugin work? =
+= Is Filter Plus ? =
 
-After installation and activation, you will see a new option in the admin panel. Under the menu, Filter Plus has free and premium features available that you can add on the store.
+Yes. The WooCommerce Product Filter and the WordPress Content Filter are both . They include AJAX filtering, Elementor product filter widget, Gutenberg block, shortcode, WPML support, and RTL support at no cost. The WooCommerce Admin Order Filter is a Pro-only feature.
 
-= Is it compatible with all WordPress themes? =
+= What is the best  WooCommerce product filter plugin for 2026? =
 
-We have tested all the popular themes. And we believe it will work with your theme if that has been well developed for WordPress and WooCommerce. If you face any issue, drop us a message on our support link. Our team will take care of the compatibility issue.
+Filter Plus is a top  WooCommerce product filter plugin in 2026. The  version includes AJAX filtering, price range slider, star rating filter, attribute filter, color and size swatches, category filter, and SEO-friendly filter URLs. Filter Plus Pro adds multiple templates and the Admin Order Filter.
 
-= Are all the features available in the free version? =
-Some of the features of Filter Plus are free for everyone and some features have certain limitations.
+= Does Filter Plus work with Elementor? =
 
-= What about the page load speed? Does this plugin impact site loading speed? =
-Not at all! Filter Plus is developed with minimal and clean coding that ensures that the WordPress website or the WooCommerce store is loading smoothly.
+Yes. Filter Plus includes a dedicated Elementor product filter widget. After activating the plugin, find the Filter Plus widget in your Elementor panel. Drag it onto any WooCommerce or custom page, configure the filter options in the Elementor settings sidebar, and publish. AJAX filtering works fully within the Elementor widget.
 
-= Do I need some expertise to use this plugin? =
-If you are familiar with WordPress interface and how to use plugins in WordPress, you will be able to use our plugin.
+= How do I add a WooCommerce product filter? =
 
+After installing and activating Filter Plus, go to Filter Plus in your WordPress admin sidebar. Create a filter, choose your filter options (price, category, rating, attributes, etc.), and copy the generated shortcode. Paste it onto any product archive or shop page. You can also use the Elementor product filter widget or the Gutenberg block for a visual, no-code setup.
+
+= Does Filter Plus work with Gutenberg? =
+
+Yes. Filter Plus includes a Gutenberg filter block. In the block editor, search for "Filter Plus" in the block inserter, add the block to your page, and configure filter options from the block settings panel on the right.
+
+= Does Filter Plus work with Bricks Builder? =
+
+Yes. Filter Plus is fully compatible with Bricks Builder. You can add the filter via shortcode to any Bricks Builder page and it will render and function correctly.
+
+= Can I filter blog posts and custom post types — not just WooCommerce products? =
+
+Yes. Filter Plus includes a WordPress content filter for posts, pages, and custom post types. Filter by category, tag, author, date, post meta, and custom fields. Add it to any page using the shortcode or the Elementor / Gutenberg integration.
+
+= Does Filter Plus affect page load speed? =
+
+No. Filter Plus uses AJAX to update results without reloading the page and is built with minimal, clean code. It will not bloat your site with unnecessary scripts or styles.
+
+= Is Filter Plus compatible with all WordPress themes? =
+
+Filter Plus has been tested with all major WordPress and WooCommerce themes. If you run into a compatibility issue, contact the support team and it will be resolved.
+
+= Do I need technical skills to use Filter Plus? =
+
+No. If you can install and activate a WordPress plugin, you can use Filter Plus. The Elementor widget and Gutenberg block provide a visual, no-code setup. The shortcode option requires only copy-paste.
 
 == Changelog ==
 
@@ -387,7 +394,6 @@ Tweak   : WordPress filter elementor Widget
 Tweak   : UX improvement
 Fix     : Nonce issue fix
 
-
 = 1.0.33 (February 28, 2024)=
 Added   : WooCommerce filter Dynamic title added
 
@@ -471,7 +477,6 @@ Added : Filter Product UX improvement
 = 1.0.8 (December 14, 2023)=
 Added : Filter tag added
 
-
 = 1.0.7 (December 10, 2023)=
 Added : Overview page 
 
@@ -503,10 +508,8 @@ Added : Gutenberg Block added
 
 == Upgrade Notice ==
 
-
 == Installation ==
 
-
 1. Upload the plugin files to the `/wp-content/plugins/filter-plus` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-1. All Settings will be found in Admin sidebar -> filter-plus
+1. Activate the plugin through the 'Plugins' screen in WordPress.
+1. Go to Admin sidebar → Filter Plus to create and configure your first filter.
