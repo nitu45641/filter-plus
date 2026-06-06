@@ -43,7 +43,8 @@
       "Bash(mysql *)",
       "Read(//Applications/MAMP/Library/bin/**)",
       "Read(//Applications/MAMP/db/**)",
-      "Read(//Applications/MAMP/**)"
+      "Read(//Applications/MAMP/**)",
+      "Bash(git *)"
     ],
     "deny": [],
     "ask": []
