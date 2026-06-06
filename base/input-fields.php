@@ -132,7 +132,9 @@ if ( ! function_exists( 'filterplus_select_field' ) ) {
 				foreach ( $args['options'] as $item ) :
 					$disabled = (int) $item > $template_disable ? 'disabled' : '';
 					$pro_text = ! empty( $disabled ) ? ' (' . esc_html__( 'Pro', 'filter-plus' ) . ')' : '';
-					$options_html .= '<option ' . $disabled . ' value="' . $item . '">' . $item . $pro_text . '</option>';
+					/* translators: %d: template number */
+					$label = sprintf( esc_html__( 'Template %d', 'filter-plus' ), (int) $item );
+					$options_html .= '<option ' . $disabled . ' value="' . $item . '">' . $label . $pro_text . '</option>';
 				endforeach;
 			endif;
 		} else if ( ! empty( $args['type'] ) && ( 'named_template' == $args['type'] ) ) {

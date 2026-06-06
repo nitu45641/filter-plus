@@ -3,7 +3,7 @@ Contributors: markutos987
 Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, wordpress filter plugin, ajax product filter, product filter, filter by price
 Tested up to: 7.0
-Stable tag: 1.1.22
+Stable tag: 1.1.23
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -144,6 +144,9 @@ Filter Plus has been tested with all major WordPress and WooCommerce themes. If 
 No. If you can install and activate a WordPress plugin, you can use Filter Plus. The Elementor widget and Gutenberg block provide a visual, no-code setup. The shortcode option requires only copy-paste.
 
 == Changelog ==
+
+= 1.1.23 (May 27, 2026)=
+Fix : Category archive page override 
 
 = 1.1.22 (May 27, 2026)=
 Fix : Woo Product Filter Category filter fix

@@ -63,6 +63,15 @@ class Core {
         if ( empty( $settings['enable_category_layout'] ) || $settings['enable_category_layout'] !== 'yes' ) {
             return $template;
         }
+        // Only override for categories configured in the filter (if any are specified).
+        if ( ! empty( $settings['categories'] ) ) {
+            $term         = get_queried_object();
+            $term_id      = isset( $term->term_id ) ? (int) $term->term_id : 0;
+            $allowed_cats = array_map( 'intval', explode( ',', $settings['categories'] ) );
+            if ( ! in_array( $term_id, $allowed_cats, true ) ) {
+                return $template;
+            }
+        }
         $custom = \FilterPlus::plugin_dir() . 'templates/woo-filter/category-layout.php';
         return file_exists( $custom ) ? $custom : $template;
     }

@@ -251,8 +251,13 @@ class DataFactory {
 			'category_orderby'       => $category_orderby,
 		);
 
-		if ( $enable_category_layout === 'yes' ) {
-			update_option( 'filter_plus_category_settings', $process_data, false );
+		// Skip option update when rendering from inside category-layout.php to avoid circular saves.
+		if ( ! defined( 'FP_CATEGORY_LAYOUT_RENDERING' ) ) {
+			if ( $enable_category_layout === 'yes' ) {
+				update_option( 'filter_plus_category_settings', $process_data, false );
+			} else {
+				delete_option( 'filter_plus_category_settings' );
+			}
 		}
 
 		$shortcode_parts = array();

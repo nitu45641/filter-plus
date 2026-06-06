@@ -27,6 +27,9 @@ $filterplus_settings['current_cat_id'] = isset( $filterplus_term->term_id )
 	? (int) $filterplus_term->term_id
 	: '';
 
+if ( ! defined( 'FP_CATEGORY_LAYOUT_RENDERING' ) ) {
+	define( 'FP_CATEGORY_LAYOUT_RENDERING', true );
+}
 \FilterPlus\Base\DataFactory::instance()->woo_render_html( $filterplus_settings );
 
 /**
