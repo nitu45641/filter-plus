@@ -8,14 +8,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 	<?php
 		// apply/reset buttons at top
-		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php")) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php";
+		$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/filter-buttons.php" );
+		if ( file_exists( $_fp_tpl ) ) {
+			include_once $_fp_tpl;
 		}
 
-		if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
+		$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/product-search.php" );
+		if ( file_exists( $_fp_tpl ) ) {
+			include_once $_fp_tpl;
 		}
-		
+
 		// category template
 		DataFactory::category_template_url(array(
 			'template' => $template,
@@ -31,41 +33,41 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 		// reviews
 		if ( 'yes'== $show_reviews ) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/rating.php";
+			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/rating.php" );
 		}
 		// price range
 		if ( 'yes'== $show_price_range ) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/price-range.php";
+			include_once \FilterPlus::locate_template( "woo-filter/parts/price-range.php" );
 		}
 		// custom tags
 		if ( 'yes' == $show_tags ) {
 			$filterplus_get_attr = \FilterPlus\Utils\Helper::array_data( $tags );
 			if ( count( $filterplus_get_attr ) > 0 ) {
 				$title = ! empty( $tag_label ) ? $tag_label : esc_html__( 'Filter By Brand', 'filter-plus' );
-				include \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/left-side/filter-layout-grid.php";
+				include \FilterPlus::locate_template( "woo-filter/template-" . $template . "/left-side/filter-layout-grid.php" );
 			}
 		}
 		// custom attributes
 		if ( 'yes' == $show_attributes ) {
 			$filterplus_attributes = \FilterPlus\Utils\Helper::array_data( $attributes );
-			include \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/left-side/filter-layout-attr-grid.php";
+			include \FilterPlus::locate_template( "woo-filter/template-" . $template . "/left-side/filter-layout-attr-grid.php" );
 		}
-		include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-param.php"; 
+		include_once \FilterPlus::locate_template( "woo-filter/parts/filter-param.php" );
 
 		// on sale
 		if ( 'yes'== $on_sale ) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/on-sale.php";
+			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/on-sale.php" );
 		}
 		// stock
 		if ( 'yes'== $stock ) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/stock.php";
+			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/stock.php" );
 		}
 	?>
 </div>
 <div class="products-wrap">
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-top.php"; ?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/sort-bar.php"; ?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-template.php"; ?>
+	<?php include_once \FilterPlus::locate_template( "woo-filter/parts/filter-top.php" ); ?>
+	<?php include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/right-side/sort-bar.php" ); ?>
+	<?php include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/right-side/product-template.php" ); ?>
 	<?php
 	$_fp_col_d = isset($grid_columns_desktop) && intval($grid_columns_desktop) > 0 ? intval($grid_columns_desktop) : 0;
 	$_fp_col_t = isset($grid_columns_tablet)  && intval($grid_columns_tablet)  > 0 ? intval($grid_columns_tablet)  : 0;
@@ -82,7 +84,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	</div>
 	<div class="prods-list-view"></div>
 	<div class="message"></div>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/parts/pagination.php"; ?>
+	<?php include_once \FilterPlus::locate_template( "parts/pagination.php" ); ?>
 </div>
 
 

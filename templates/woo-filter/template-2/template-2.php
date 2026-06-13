@@ -16,13 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	<div>
 		<?php
 			// apply/reset buttons at top
-			if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php")) {
-				include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-buttons.php";
+			$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/filter-buttons.php" );
+			if ( file_exists( $_fp_tpl ) ) {
+				include_once $_fp_tpl;
 			}
 
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/left-side/title.php";
-			if (file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php")) {
-				include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/product-search.php";
+			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/left-side/title.php" );
+			$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/product-search.php" );
+			if ( file_exists( $_fp_tpl ) ) {
+				include_once $_fp_tpl;
 			}
 
 			// category template
@@ -38,67 +40,62 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			));
 
 		?>
-		<?php 
+		<?php
 			if (class_exists('FilterPlusPro')) {
 				// reviews
-				if ( 'yes'== $show_reviews &&
-				file_exists(\FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/rating.php")
-				) {
-					include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/rating.php";
+				$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/rating.php" );
+				if ( 'yes'== $show_reviews && file_exists( $_fp_tpl ) ) {
+					include_once $_fp_tpl;
 				}
 				// price range
-				if ( 'yes'== $show_price_range &&
-				file_exists(\FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/price-range.php")
-				) {
-					include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/price-range.php";
+				$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/price-range.php" );
+				if ( 'yes'== $show_price_range && file_exists( $_fp_tpl ) ) {
+					include_once $_fp_tpl;
 				}
 				$filterplus_get_attr = \FilterPlus\Utils\Helper::array_data($tags);
 
 				// custom tags
-				if ( 'yes'== $show_tags && count($filterplus_get_attr)> 0 &&
-					file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-grid.php")
-				) {
+				$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/filter-layout-grid.php" );
+				if ( 'yes'== $show_tags && count($filterplus_get_attr)> 0 && file_exists( $_fp_tpl ) ) {
 					$title =  !empty( $tag_label ) ? $tag_label : esc_html__("Find Favorite Item","filter-plus");
-					include \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-grid.php";
+					include $_fp_tpl;
 				}
 				// custom attributes
-				if ( 'yes'== $show_attributes &&
-					file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-attr-grid.php")
-				) {
+				$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/filter-layout-attr-grid.php" );
+				if ( 'yes'== $show_attributes && file_exists( $_fp_tpl ) ) {
 					$filterplus_attributes = \FilterPlus\Utils\Helper::array_data($attributes);
-					include \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-layout-attr-grid.php";
+					include $_fp_tpl;
 				}
 			}
 		?>
-		<?php 
-		if ( file_exists(\FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-param.php") ) {
-			include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-param.php";
+		<?php
+		$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/filter-param.php" );
+		if ( file_exists( $_fp_tpl ) ) {
+			include_once $_fp_tpl;
 		}
 		if (!class_exists('FilterPlusPro')) { return; }
 		// on sale
-		if ( 'yes'== $on_sale &&
-		file_exists(\FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/on-sale.php")
-		) {
-			include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/on-sale.php";
+		$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/on-sale.php" );
+		if ( 'yes'== $on_sale && file_exists( $_fp_tpl ) ) {
+			include_once $_fp_tpl;
 		}
 		// stock
-		if ( 'yes'== $stock  &&
-		file_exists(\FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/stock.php")
-		) {
-			include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/parts/stock.php";
-		} 
+		$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/stock.php" );
+		if ( 'yes'== $stock && file_exists( $_fp_tpl ) ) {
+			include_once $_fp_tpl;
+		}
 	?>
 	</div>
 </div>
 
 <div class="products-wrap">
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/parts/filter-top.php"; ?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/sort-bar.php"; ?>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-".$template."/right-side/product-template.php"; ?>
+	<?php include_once \FilterPlus::locate_template( "woo-filter/parts/filter-top.php" ); ?>
+	<?php include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/right-side/sort-bar.php" ); ?>
+	<?php include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/right-side/product-template.php" ); ?>
 	<div class="prods-grid-view grid-view-<?php echo esc_attr($template)?>">
 	</div>
 	<div class="message"></div>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/parts/pagination.php"; ?>
+	<?php include_once \FilterPlus::locate_template( "parts/pagination.php" ); ?>
 
 </div>
 <div class="filter-mb filter-bar-mb-search">

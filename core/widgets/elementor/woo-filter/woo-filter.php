@@ -927,10 +927,10 @@ class Woo_Filter extends Widget_Base {
 		$hide_prod_price  = ! empty( $data['hide_prod_price'] )    ? $data['hide_prod_price']     : 'yes';
 
 		// Try free plugin template first, then fall back to pro plugin template directory.
-		$tpl_file = \FilterPlus::plugin_dir() . "templates/woo-filter/template-{$template}/right-side/product-template.php";
+		$tpl_file = \FilterPlus::locate_template( "woo-filter/template-{$template}/right-side/product-template.php" );
 		if ( ! file_exists( $tpl_file ) && class_exists( 'FilterPlusPro' ) ) {
 			$folder   = in_array( (int) $template, [ 5, 7 ] ) ? 'bottom' : 'right-side';
-			$tpl_file = \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-{$template}/{$folder}/product-template.php";
+			$tpl_file = \FilterPlusPro::locate_template( "woo-filter/template-{$template}/{$folder}/product-template.php" );
 		}
 		if ( file_exists( $tpl_file ) ) {
 			include_once $tpl_file;

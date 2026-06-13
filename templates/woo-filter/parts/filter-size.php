@@ -14,6 +14,6 @@ foreach ( $filterplus_attrs['terms'] as $filterplus_key => $filterplus_value ) {
 		$filterplus_get_attr[ $filterplus_key ]  = $filterplus_value->term_id;
 	}
 }
-if ( file_exists( \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-layout-grid.php' ) ) {
-	include \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-layout-grid.php';
+if ( file_exists( \FilterPlus::locate_template( 'woo-filter/parts/filter-layout-grid.php' ) ) ) {
+	include \FilterPlus::locate_template( 'woo-filter/parts/filter-layout-grid.php' );
 }

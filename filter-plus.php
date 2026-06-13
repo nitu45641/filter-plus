@@ -134,6 +134,20 @@ final class FilterPlus {
 	}
 
 	/**
+	 * Locate a template file: child theme → parent theme → plugin fallback.
+	 *
+	 * @param string $relative_path  Path relative to the plugin's templates/ dir.
+	 * @return string  Absolute path to the resolved file.
+	 */
+	public static function locate_template( string $relative_path ): string {
+		$child  = get_stylesheet_directory() . '/filter-plus/templates/' . $relative_path;
+		$parent = get_template_directory()   . '/filter-plus/templates/' . $relative_path;
+		if ( file_exists( $child ) )  { return $child; }
+		if ( file_exists( $parent ) ) { return $parent; }
+		return self::plugin_dir() . 'templates/' . $relative_path;
+	}
+
+	/**
 	 * Plugin Core File Directory Url
 	 *
 	 * @since 1.0.0

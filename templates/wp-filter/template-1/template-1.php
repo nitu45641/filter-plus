@@ -1,17 +1,18 @@
-<?php 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+<?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 use FilterPlus\Base\DataFactory;
 
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
-	<?php 
+	<?php
 		// Add apply and reset buttons if apply button mode is enabled
 		if ($apply_button_mode == 'yes') {
-			if (file_exists(\FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-buttons.php')) {
-				include_once \FilterPlus::plugin_dir() . 'templates/woo-filter/parts/filter-buttons.php';
+			$_fp_tpl = \FilterPlus::locate_template( 'woo-filter/parts/filter-buttons.php' );
+			if ( file_exists( $_fp_tpl ) ) {
+				include_once $_fp_tpl;
 			}
 		}
-		include_once \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/product-search.php"; 
+		include_once \FilterPlus::locate_template( "wp-filter/template-".$template."/left-side/product-search.php" );
 
 		// category template
 		if ( 'yes'== $show_categories ) {
@@ -41,33 +42,34 @@ use FilterPlus\Base\DataFactory;
 			}
 			if (count($filterplus_get_attr)>0) {
 				$title = !empty($tag_label) ? $tag_label : esc_html__("Filter By Tag","filter-plus");
-				include \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/filter-layout-grid.php";
+				include \FilterPlus::locate_template( "wp-filter/template-".$template."/left-side/filter-layout-grid.php" );
 			}
 		}
 		// custom fields
 		if ( 'yes'== $custom_field ) {
-			include \FilterPlus::plugin_dir() . "templates/wp-filter/parts/custom-fields.php";
+			include \FilterPlus::locate_template( "wp-filter/parts/custom-fields.php" );
 		}
 		// author
 		if ( 'yes'== $post_author ) {
 			$filterplus_authors = \FilterPlus\Utils\Helper::instance()->author_list($author_list);
 			if (count($filterplus_authors)>0) {
 				$title =   !empty($author_label) ? $author_label : esc_html__("Authors","filter-plus");
-				include \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/left-side/authors.php";
+				include \FilterPlus::locate_template( "wp-filter/template-".$template."/left-side/authors.php" );
 			}
 		}
 	?>
 </div>
 <div class="row products-wrap">
 	<div class="filter-mb-search"></div>
-	<?php 
-		if (file_exists(\FilterPlus::plugin_dir() . 'templates/parts/filter-top.php')) {
-			include_once \FilterPlus::plugin_dir() . 'templates/parts/filter-top.php'; 
+	<?php
+		$_fp_tpl = \FilterPlus::locate_template( 'parts/filter-top.php' );
+		if ( file_exists( $_fp_tpl ) ) {
+			include_once $_fp_tpl;
 		}
 	?>
 	<div class="post-grid-view-<?php echo esc_attr($template)?> prods-grid-view"></div>
 	<div class="message"></div>
-	<?php include_once \FilterPlus::plugin_dir() . "templates/wp-filter/template-".$template."/right-side/product-template.php"; ?>
+	<?php include_once \FilterPlus::locate_template( "wp-filter/template-".$template."/right-side/product-template.php" ); ?>
 	<!-- pagination -->
 	<ul class="pagination pagination-1"></ul>
 </div>

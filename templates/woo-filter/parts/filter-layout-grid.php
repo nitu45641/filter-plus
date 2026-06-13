@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="sidebar-row radio-wrap">
 	<?php
-		if (file_exists(\FilterPlus::template_dir() . "parts/filter-param-header.php")) {
+		if (file_exists(\FilterPlus::locate_template( "parts/filter-param-header.php" ))) {
 			$filterplus_label = esc_html($title);
-			include \FilterPlus::template_dir() . "parts/filter-param-header.php";
+			include \FilterPlus::locate_template( "parts/filter-param-header.php" );
 		}
 	?>
 	<div class="panel">

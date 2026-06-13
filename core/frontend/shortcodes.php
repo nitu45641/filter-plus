@@ -102,11 +102,15 @@ class Shortcodes {
 			>
 			<?php
 				$style = $template;
-				if ( file_exists( \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
-					include_once \FilterPlus::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
-				}
-				else if ( class_exists( 'FilterPlusPro' ) && file_exists( \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php" ) ) {
-					include_once \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-" . $template . "/template-" . $template . ".php";
+				$_fp_relative = "woo-filter/template-{$template}/template-{$template}.php";
+				$_fp_free_tpl = \FilterPlus::locate_template( $_fp_relative );
+				if ( file_exists( $_fp_free_tpl ) ) {
+					include_once $_fp_free_tpl;
+				} elseif ( class_exists( 'FilterPlusPro' ) ) {
+					$_fp_pro_tpl = \FilterPlusPro::locate_template( $_fp_relative );
+					if ( file_exists( $_fp_pro_tpl ) ) {
+						include_once $_fp_pro_tpl;
+					}
 				}
 
 			?>
@@ -158,15 +162,18 @@ class Shortcodes {
 	public function wp_filter_file($template,$atts) {
 		extract($atts);
 		if ( '1' == $template ) {
-			include_once \FilterPlus::template_dir() . 'wp-filter/template-' . $template .'/template-' . $template . '.php';
+			include_once \FilterPlus::locate_template( 'wp-filter/template-' . $template . '/template-' . $template . '.php' );
 		}else{
 			$is_pro_active = $this->is_pro_active();
 			if ($is_pro_active !== '' ) {
 				echo wp_kses_post( $is_pro_active );
 				return ob_get_clean();
 			}
-			if ( class_exists( 'FilterPlusPro' ) && file_exists(\FilterPlusPro::plugin_dir() . "templates/wp-filter/template-".$template."/template-" . $template . ".php") ) {
-				include_once \FilterPlusPro::plugin_dir() . "templates/wp-filter/template-".$template."/template-" . $template . ".php";
+			if ( class_exists( 'FilterPlusPro' ) ) {
+				$_fp_pro_tpl = \FilterPlusPro::locate_template( "wp-filter/template-{$template}/template-{$template}.php" );
+				if ( file_exists( $_fp_pro_tpl ) ) {
+					include_once $_fp_pro_tpl;
+				}
 			}
 		}
 	}

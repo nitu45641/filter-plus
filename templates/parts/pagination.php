@@ -7,8 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         if (
             $pagination_style !== 'loadmore' &&
             in_array( $template, array( 6, 7 ), true ) &&
-            file_exists( FilterPlusPro::template_dir() . 'woo-filter/parts/filter-result-count.php' ) ) {
-            include FilterPlusPro::template_dir() . 'woo-filter/parts/filter-result-count.php';
+            ( $_fp_tpl = \FilterPlusPro::locate_template( 'woo-filter/parts/filter-result-count.php' ) ) && file_exists( $_fp_tpl ) ) {
+            include $_fp_tpl;
         }
     ?>
     <div class="naviation pagination-<?php echo esc_attr($template)?>"></div>

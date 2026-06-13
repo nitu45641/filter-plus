@@ -609,26 +609,19 @@ class Actions {
 			return $html;
 		}
 
-		$template_path = FilterPlus::plugin_dir() . "templates/";
-
 		if ($filter_type == 'product') {
-			$template_path .= "woo-filter/template-{$template}/right-side/product-template.php";
+			$template_path = \FilterPlus::locate_template( "woo-filter/template-{$template}/right-side/product-template.php" );
+			if ( !file_exists($template_path) && in_array($template, [2, 3, 4, 5, 6, 7]) && class_exists('FilterPlusPro') ) {
+				// Templates 5 and 7 use bottom folder, others use right-side
+				$folder = in_array($template, [5, 7]) ? 'bottom' : 'right-side';
+				$template_path = \FilterPlusPro::locate_template( "woo-filter/template-{$template}/{$folder}/product-template.php" );
+			}
 		} else {
-			$template_path .= "wp-filter/template-{$template}/right-side/product-template.php";
-		}
-
-		// Check if template exists in main plugin, if not check pro plugin for templates 2, 3, 4, 5, 6 and 7
-		if (!file_exists($template_path) && in_array($template, [2, 3, 4, 5, 6, 7])) {
-			if (class_exists('FilterPlusPro')) {
-				if ($filter_type == 'product') {
-					// Templates 5 and 7 use bottom folder, others use right-side
-					$folder = in_array($template, [5, 7]) ? 'bottom' : 'right-side';
-					$template_path = \FilterPlusPro::plugin_dir() . "templates/woo-filter/template-{$template}/{$folder}/product-template.php";
-				} else {
-					// For wp-filter: template-3 uses bottom folder, others use right-side
-					$folder = $template == 3 ? 'bottom' : 'right-side';
-					$template_path = \FilterPlusPro::plugin_dir() . "templates/wp-filter/template-{$template}/{$folder}/product-template.php";
-				}
+			$template_path = \FilterPlus::locate_template( "wp-filter/template-{$template}/right-side/product-template.php" );
+			if ( !file_exists($template_path) && in_array($template, [2, 3, 4, 5, 6, 7]) && class_exists('FilterPlusPro') ) {
+				// For wp-filter: template-3 uses bottom folder, others use right-side
+				$folder = $template == 3 ? 'bottom' : 'right-side';
+				$template_path = \FilterPlusPro::locate_template( "wp-filter/template-{$template}/{$folder}/product-template.php" );
 			}
 		}
 

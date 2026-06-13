@@ -9,9 +9,9 @@ if ( 'yes' == $colors ) {
 	?>
 	<div class="sidebar-row radio-wrap">
 		<?php
-			if (file_exists(\FilterPlus::template_dir() . "parts/filter-param-header.php")) {
+			if (file_exists(\FilterPlus::locate_template( "parts/filter-param-header.php" ))) {
 				$filterplus_label =  ! empty( $color_label ) ? $color_label : esc_html__( 'Filter By', 'filter-plus' ) . ' ' . esc_html( $filterplus_get_attr['label'] );
-				include \FilterPlus::template_dir() . "parts/filter-param-header.php";
+				include \FilterPlus::locate_template( "parts/filter-param-header.php" );
 			}
 		?>
 		<div class="panel">
