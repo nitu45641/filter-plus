@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Grid template for wp posts
  */
+if ( ! function_exists( 'filterplus_render_grid_product' ) ) :
 function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc) {
 	?>
 	<div class="horizontal-wp-card product-style product-style-<?php echo esc_attr($product['template']); ?>">
@@ -61,9 +62,13 @@ function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc)
 	<?php
 }
 
+endif;
+
 /**
  * List template for wp posts
  */
+if ( ! function_exists( 'filterplus_render_list_product' ) ) :
 function filterplus_render_list_product($product, $hide_wp_title, $hide_wp_desc) {
 	// No list template for wp-filter template-1
 }
+endif;

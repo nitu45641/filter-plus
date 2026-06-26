@@ -169,17 +169,19 @@ class Shortcodes {
 	public function wp_filter_file($template,$atts) {
 		extract($atts);
 		if ( '1' == $template ) {
-			include_once \FilterPlus::locate_template( 'wp-filter/template-' . $template . '/template-' . $template . '.php' );
+			include \FilterPlus::locate_template( 'wp-filter/template-' . $template . '/template-' . $template . '.php' );
 		}else{
 			$is_pro_active = $this->is_pro_active();
 			if ($is_pro_active !== '' ) {
 				echo wp_kses_post( $is_pro_active );
-				return ob_get_clean();
+				return;
 			}
 			if ( class_exists( 'FilterPlusPro' ) ) {
 				$_fp_pro_tpl = \FilterPlusPro::locate_template( "wp-filter/template-{$template}/template-{$template}.php" );
+				error_log( 'FP_DEBUG tpl=' . $template . ' path=' . $_fp_pro_tpl . ' exists=' . (int) file_exists( $_fp_pro_tpl ) );
 				if ( file_exists( $_fp_pro_tpl ) ) {
-					include_once $_fp_pro_tpl;
+					include $_fp_pro_tpl;
+					error_log( 'FP_DEBUG include done' );
 				}
 			}
 		}
