@@ -48,7 +48,14 @@
       "Bash(node *)",
       "Skill(claude-in-chrome)",
       "Bash(php -r ' *)",
-      "Bash(php -l /Applications/MAMP/htdocs/wordpress/wp-content/plugins/filter-plus/core/widgets/gutenburg-block/blocks/woo-filter.php)"
+      "Bash(php -l /Applications/MAMP/htdocs/wordpress/wp-content/plugins/filter-plus/core/widgets/gutenburg-block/blocks/woo-filter.php)",
+      "Bash(/Applications/MAMP/bin/php/php8.2.0/bin/php -r \"define\\('ABSPATH','/Applications/MAMP/htdocs/wordpress/'\\); include '/Applications/MAMP/htdocs/wordpress/wp-load.php'; echo get_option\\('siteurl'\\);\")",
+      "Bash(wp --path=/Applications/MAMP/htdocs/wordpress --allow-root eval 'echo do_blocks\\(\"<!-- wp:filter-plus/wp-filter /-->\"\\);')",
+      "Bash(wp --path=/Applications/MAMP/htdocs/wordpress --allow-root eval 'echo do_blocks\\(\"<!-- wp:filter-plus/wp-filter /-->\"\\);' --url=http://localhost:8888/wordpress)",
+      "Bash(wp --path=/Applications/MAMP/htdocs/wordpress eval 'echo do_blocks\\(\"<!-- wp:filter-plus/wp-filter /-->\"\\);')",
+      "Bash(WP_CLI_MYSQL_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock wp --path=/Applications/MAMP/htdocs/wordpress eval 'define\\(\"REST_REQUEST\",true\\); echo do_blocks\\(\"<!-- wp:filter-plus/wp-filter /-->\"\\);')",
+      "Bash(php *)",
+      "Bash(WP_CLI_MYSQL_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock php /usr/local/bin/wp --path=/Applications/MAMP/htdocs/wordpress eval ' *)"
     ],
     "deny": [],
     "ask": []

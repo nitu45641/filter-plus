@@ -23,7 +23,7 @@ function content_filter_block() {
                 'show_tags'          => array( 'type' => 'boolean', 'default' => true ),
                 'tag_label'          => array( 'type' => 'string',  'default' => '' ),
                 'tags'               => array( 'type' => 'array',   'default' => array(), 'items' => array( 'type' => 'string' ) ),
-                'author'             => array( 'type' => 'boolean', 'default' => false ),
+                'author'             => array( 'type' => 'boolean', 'default' => true ),
                 'author_label'       => array( 'type' => 'string',  'default' => '' ),
                 'author_list'        => array( 'type' => 'array',   'default' => array(), 'items' => array( 'type' => 'string' ) ),
                 'custom_field'       => array( 'type' => 'boolean', 'default' => false ),
@@ -51,7 +51,7 @@ function content_filter_callback( $settings ) {
     $filter_type        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
     $custom_post        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
     $template           = !empty($settings['template']) ? $settings['template'] : '1';
-    $show_categories    = !empty($show_categories) ? $show_categories : 'yes';
+    $show_categories    = ( ! isset( $settings['show_categories'] ) || $settings['show_categories'] == true ) ? 'yes' : 'no';
     $category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
     $categories         = !empty($settings['categories']) ? $settings['categories'] : '';
     $sub_categories     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
@@ -121,7 +121,7 @@ function content_filter_callback( $settings ) {
             $shortcode_parts[] = $k . "='" . esc_attr( $v ) . "'";
         }
 
-        echo do_shortcode( '[wp_filter_plus ' . implode( ' ', $shortcode_parts ) . ']' );
+        return do_shortcode( '[wp_filter_plus ' . implode( ' ', $shortcode_parts ) . ']' );
 
     }
 }

@@ -59,7 +59,7 @@ registerBlockType('filter-plus/wp-filter', {
         },
         author: {
             type: 'boolean',
-            default: false
+            default: true
         },
         author_label: {
             type: 'string',

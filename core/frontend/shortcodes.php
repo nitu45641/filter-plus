@@ -56,7 +56,7 @@ class Shortcodes {
 		} 
 
 		
-		$this->custom_css($template , 'product' , array(
+		$_fp_custom_css = $this->custom_css($template , 'product' , array(
 			'masonry_style'        => $masonry_style,
 			'grid_columns_desktop' => $grid_columns_desktop,
 			'grid_columns_tablet'  => $grid_columns_tablet,
@@ -116,9 +116,12 @@ class Shortcodes {
 			?>
 			</div>
 		<?php
-		
 
-		return ob_get_clean();
+		$_fp_html = ob_get_clean();
+		if ( defined( 'REST_REQUEST' ) && REST_REQUEST && ! empty( $_fp_custom_css ) ) {
+			$_fp_html = '<style>' . $_fp_custom_css . '</style>' . $_fp_html;
+		}
+		return $_fp_html;
 	}
 
 	/**
@@ -137,7 +140,7 @@ class Shortcodes {
 
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
 		$main_wrapper   = 'shopContainer';
-		$this->custom_css($template,'content-filter', array( 'masonry_style' => $masonry_style ) );
+		$_fp_custom_css = $this->custom_css($template,'content-filter', array( 'masonry_style' => $masonry_style ) );
 		?>
 			<div class="<?php echo esc_attr($main_wrapper).' '. esc_attr($filter_position) ?> shop-container-<?php echo esc_attr($template)?>" id="shopContainer"
 				data-apply_button_mode="<?php echo esc_attr($apply_button_mode)?>"
@@ -155,8 +158,12 @@ class Shortcodes {
 				<?php $this->wp_filter_file($template, $data );?>
 			</div>
 		<?php
-				
-		return ob_get_clean();
+
+		$_fp_html = ob_get_clean();
+		if ( defined( 'REST_REQUEST' ) && REST_REQUEST && ! empty( $_fp_custom_css ) ) {
+			$_fp_html = '<style>' . $_fp_custom_css . '</style>' . $_fp_html;
+		}
+		return $_fp_html;
 	}
 
 	public function wp_filter_file($template,$atts) {
@@ -481,5 +488,7 @@ class Shortcodes {
 		wp_register_style( 'filter-plus-custom-css', false, array(), \FilterPlus::get_version() );
 		wp_enqueue_style( 'filter-plus-custom-css' );
 		wp_add_inline_style( 'filter-plus-custom-css', $filterplus_custom_css );
+
+		return $filterplus_custom_css;
 	}
 }
