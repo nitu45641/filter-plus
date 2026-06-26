@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					data-name="<?php echo esc_attr($filterplus_item['name'])?>"
 					data-cat_id="<?php echo esc_attr($filterplus_item['term_id'])?>"
 					data-slug="<?php echo esc_attr($filterplus_item['slug'])?>"
-					data-url="<?php echo esc_url( get_term_link( (int) $filterplus_item['term_id'], 'product_cat' ) ); ?>"
+					data-url="<?php $filterplus_term_link = get_term_link( (int) $filterplus_item['term_id'], isset( $taxonomy ) ? $taxonomy : 'product_cat' ); echo is_wp_error( $filterplus_term_link ) ? '' : esc_url( $filterplus_term_link ); ?>"
 				>
 					<?php echo esc_html($filterplus_item['name']);?>
 					<?php if ($product_count == 'yes') { echo ' (' . esc_html($filterplus_item['count']) . ')'; } ?>

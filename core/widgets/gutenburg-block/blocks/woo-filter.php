@@ -8,7 +8,7 @@ function product_filter_block() {
         'filter-plus/woo-filter',
         [
             'editor_script'   => 'filter-plus-block-js',
-            'editor_style'    => 'filter-plus-public-css',
+            'style_handles'   => [ 'filter-plus-public-css', 'filter-plus-swiper-css' ],
             'render_callback' => 'product_filter_callback',
             'attributes'      => array(
                 'template' => array(
