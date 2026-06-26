@@ -55,7 +55,8 @@
       "Bash(wp --path=/Applications/MAMP/htdocs/wordpress eval 'echo do_blocks\\(\"<!-- wp:filter-plus/wp-filter /-->\"\\);')",
       "Bash(WP_CLI_MYSQL_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock wp --path=/Applications/MAMP/htdocs/wordpress eval 'define\\(\"REST_REQUEST\",true\\); echo do_blocks\\(\"<!-- wp:filter-plus/wp-filter /-->\"\\);')",
       "Bash(php *)",
-      "Bash(WP_CLI_MYSQL_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock php /usr/local/bin/wp --path=/Applications/MAMP/htdocs/wordpress eval ' *)"
+      "Bash(WP_CLI_MYSQL_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock php /usr/local/bin/wp --path=/Applications/MAMP/htdocs/wordpress eval ' *)",
+      "Bash(xargs ls)"
     ],
     "deny": [],
     "ask": []
