@@ -1,11 +1,13 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
 //register woo filter block
 function content_filter_block() {
     register_block_type(
         'filter-plus/wp-filter',
         [
-            'editor_script'   => 'filter-plus-wp-filter',
+            'editor_script'   => 'filter-plus-block-js',
             'editor_style'    => 'filter-plus-public-css',
             'render_callback' => 'content_filter_callback',
             'attributes'      => array(),
@@ -58,7 +60,8 @@ function content_filter_callback( $settings ) {
         $tags     =  join(", ",$tags);
     }
 
-    if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 ) {
+    $is_rest = defined( 'REST_REQUEST' ) && REST_REQUEST;
+    if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 || $is_rest ) {
 
         $attrs = array(
             'filter_type' => $filter_type,

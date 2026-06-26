@@ -1,4 +1,4 @@
-=== Filter Plus - WordPress Filter Plugin & WooCommerce Product Filter ===
+=== Filter Plus ===
 Contributors: markutos987
 Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, wordpress filter plugin, ajax product filter, product filter, filter by price

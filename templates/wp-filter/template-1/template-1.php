@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- template file included in function scope
 if ( ! defined( 'ABSPATH' ) ) exit;
 use FilterPlus\Base\DataFactory;
 

@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
 <div class="popup-modal" id="filter-options-modal">
     <div class="modal-content">
         <div class="modal-header">

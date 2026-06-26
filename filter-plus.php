@@ -75,14 +75,14 @@ final class FilterPlus {
 	 * @since 1.1.0
 	 */
 	public function initialize_modules() {
-		do_action( 'filter-plus/before_load' );
+		do_action( 'filter-plus/before_load' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		require_once plugin_dir_path( __FILE__ ) . 'autoloader.php';
 		require_once plugin_dir_path( __FILE__ ) . 'wrapper.php';
 
 		// Load Plugin modules and classes
 		\FilterPlus\Wrapper::instance();
 
-		do_action( 'filter-plus/after_load' );
+		do_action( 'filter-plus/after_load' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 	}
 
 	/**

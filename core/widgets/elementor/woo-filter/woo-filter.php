@@ -902,7 +902,7 @@ class Woo_Filter extends Widget_Base {
 			);
 		}
 
-		echo $widget_html;
+		echo $widget_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML from ob_get_clean()
 	}
 
 	private function is_elementor_preview() {

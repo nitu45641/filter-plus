@@ -1,5 +1,7 @@
 <!-- rating -->
-<?php if ( ! defined( 'ABSPATH' ) ) exit;
+<?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- template file included in function scope
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 use FilterPlus\Utils\Helper;
 

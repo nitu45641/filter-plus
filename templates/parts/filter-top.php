@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
 <div class="filter-top">
     <div class="selected-filter"></div>
     <div class="showing">

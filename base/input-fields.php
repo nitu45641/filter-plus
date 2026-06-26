@@ -58,7 +58,7 @@ if ( ! function_exists( 'filterplus_checkbox_field' ) ) {
 			</div>
 		';
 		
-		echo FilterPlus\Utils\Helper::kses( $html );
+		echo FilterPlus\Utils\Helper::kses( $html ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 
@@ -103,7 +103,7 @@ if ( ! function_exists( 'filterplus_number_input_field' ) ) {
 		</div>
 		';
 
-		echo FilterPlus\Utils\Helper::kses( $html );
+		echo FilterPlus\Utils\Helper::kses( $html ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 
@@ -192,7 +192,7 @@ if ( ! function_exists( 'filterplus_select_field' ) ) {
 				'. $docs .'
 			</div>
 		';
-		echo FilterPlus\Utils\Helper::kses( $html );
+		echo FilterPlus\Utils\Helper::kses( $html ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 

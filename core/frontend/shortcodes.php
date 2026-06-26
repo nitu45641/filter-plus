@@ -78,7 +78,7 @@ class Shortcodes {
 			$grid_col_style = ' style="' . esc_attr( $vars ) . '"';
 		}
 		?>
-			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template) . esc_attr($grid_col_class); ?>"<?php echo $grid_col_style; ?>
+			<div class="shopContainer <?php echo esc_attr($filter_position)?> shop-container-<?php echo esc_attr($template) . esc_attr($grid_col_class); ?>"<?php echo $grid_col_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- value built with esc_attr() ?>
 			id="shopContainer"
 			data-filter_type='product'
 			data-apply_button_mode="<?php echo esc_attr($apply_button_mode)?>"

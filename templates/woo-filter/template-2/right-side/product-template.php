@@ -69,7 +69,7 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 				</div>
 				<?php if( $hide_prod_add_cart == 'yes' ): ?>
 					<div class="card-action-btn-container">
-						<?php echo Helper::kses($product['cart_btn']); ?>
+						<?php echo Helper::kses($product['cart_btn']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 				<?php endif; ?>
 

@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
 
 <h2 class="content-header"><?php esc_html_e("Filter Sets","filter-plus");?></h2>
 <section class="accordion">

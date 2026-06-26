@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- template file included in function scope
 
 use FilterPlus\Base\DataFactory;
 

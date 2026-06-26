@@ -44,7 +44,11 @@
       "Read(//Applications/MAMP/Library/bin/**)",
       "Read(//Applications/MAMP/db/**)",
       "Read(//Applications/MAMP/**)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(node *)",
+      "Skill(claude-in-chrome)",
+      "Bash(php -r ' *)",
+      "Bash(php -l /Applications/MAMP/htdocs/wordpress/wp-content/plugins/filter-plus/core/widgets/gutenburg-block/blocks/woo-filter.php)"
     ],
     "deny": [],
     "ask": []

@@ -1,12 +1,14 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
 //register woo filter block
 function product_filter_block() {
     register_block_type(
         'filter-plus/woo-filter',
         [
-            // Enqueue blocks.build.js in the editor only.
             'editor_script'   => 'filter-plus-block-js',
+            'editor_style'    => 'filter-plus-public-css',
             'render_callback' => 'product_filter_callback',
             'attributes'      => array(
                 'template' => array(
@@ -175,7 +177,19 @@ function product_filter_block() {
                 ),
                 'masonry_style' => array(
                     'type' => 'boolean',
+                    'default' => true
+                ),
+                'apply_button_mode' => array(
+                    'type' => 'boolean',
                     'default' => false
+                ),
+                'apply_button_label' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'reset_button_label' => array(
+                    'type' => 'string',
+                    'default' => ''
                 ),
                 'grid_columns_desktop' => array(
                     'type' => 'string',
@@ -201,18 +215,11 @@ add_action( 'init', 'product_filter_block' );
 
 
 function product_filter_callback( $settings ) {
-    // Convert arrays to comma-separated strings
-    if ( !empty($settings['categories']) && is_array($settings['categories']) ) {
-        $settings['categories'] = implode(',', $settings['categories']);
-    }
-    if ( !empty($settings['exclude_categories']) && is_array($settings['exclude_categories']) ) {
-        $settings['exclude_categories'] = implode(',', $settings['exclude_categories']);
-    }
-    if ( !empty($settings['tags']) && is_array($settings['tags']) ) {
-        $settings['tags'] = implode(',', $settings['tags']);
-    }
-    if ( !empty($settings['attributes']) && is_array($settings['attributes']) ) {
-        $settings['attributes'] = implode(',', $settings['attributes']);
+    // Convert arrays to comma-separated strings (use is_array only — !empty([]) is false for empty arrays)
+    foreach ( ['categories', 'exclude_categories', 'tags', 'attributes'] as $field ) {
+        if ( isset( $settings[$field] ) && is_array( $settings[$field] ) ) {
+            $settings[$field] = implode( ',', $settings[$field] );
+        }
     }
 
     // Convert boolean values (1/0 or true/false) to 'yes'/'no' strings
@@ -221,7 +228,7 @@ function product_filter_callback( $settings ) {
         'colors', 'size', 'show_tags', 'show_attributes', 'show_price_range',
         'show_reviews', 'stock', 'on_sale', 'hide_prod_title', 'hide_prod_desc',
         'hide_prod_price', 'hide_prod_add_cart', 'hide_prod_rating', 'sorting',
-        'product_categories', 'show_sale_badge', 'product_tags'
+        'product_categories', 'show_sale_badge', 'product_tags', 'apply_button_mode'
     ];
 
     foreach ($boolean_fields as $field) {
@@ -230,5 +237,65 @@ function product_filter_callback( $settings ) {
         }
     }
 
-    return \FilterPlus\Core\Frontend\Shortcodes::instance()->filter_plus( $settings );
+    $html = \FilterPlus\Core\Frontend\Shortcodes::instance()->filter_plus( $settings );
+
+    // In the block editor (REST preview), search-filter.js is not loaded.
+    // Pre-render products into the grid/list divs so they show immediately.
+    if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+        $rendered = [ 'grid' => '', 'list' => '' ];
+        ob_start(); // capture any stray PHP warnings so they don't corrupt REST JSON
+        try {
+            $template = ! empty( $settings['template'] ) ? $settings['template'] : '1';
+            $actions  = \FilterPlus\Core\Frontend\SearchFilter\Actions::instance();
+            $preview  = $actions->get_products( [
+                'filter_type'        => 'product',
+                'limit'              => 6,
+                'offset'             => 1,
+                'template'           => $template,
+                'masonry_style'      => isset( $settings['masonry_style'] ) ? $settings['masonry_style'] : 'no',
+                'product_categories' => 'yes',
+                'product_tags'       => 'yes',
+                'show_sale_badge'    => 'yes',
+                'post_author'        => 'yes',
+                'order_by'           => '',
+                'cat_id'             => '',
+                'taxonomies'         => [],
+                'search_value'       => '',
+                'min'                => '',
+                'max'                => '',
+                'rating'             => '',
+                'stock'              => '',
+                'on_sale'            => '',
+                'filter_param'       => [],
+                'cf_list'            => [],
+                'author'             => '',
+                'pagination_style'   => 'numbers',
+                'taxonomy'           => 'product_cat',
+                'exclude_cat_id'     => '',
+            ] );
+            $rendered = $actions->render_products_html( $preview['products'], 'product', $template );
+        } catch ( \Throwable $e ) { // phpcs:ignore -- silently skip on any error
+        }
+        ob_end_clean(); // discard any PHP warnings / notices
+
+        if ( ! empty( $rendered['grid'] ) ) {
+            $grid_style = ' style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;"';
+            $html = preg_replace(
+                '/(<div[^>]*class="prods-grid-view[^"]*")([^>]*>)/',
+                '$1 data-editor-products="1"' . $grid_style . '$2' . $rendered['grid'],
+                $html,
+                1
+            );
+        }
+        if ( ! empty( $rendered['list'] ) ) {
+            $html = preg_replace(
+                '/(<div[^>]*class="prods-list-view"[^>]*>)/',
+                '$1' . $rendered['list'],
+                $html,
+                1
+            );
+        }
+    }
+
+    return $html;
 }

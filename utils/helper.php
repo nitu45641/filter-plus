@@ -398,8 +398,7 @@ class Helper {
 				$result[$value->attribute_id] = $value->attribute_name;
 			}
 			else if ($type == "label_value" ) {
-				$result[]['value'] = $value->attribute_id;
-				$result[]['label'] = $value->attribute_name;
+				$result[] = array( 'value' => $value->attribute_id, 'label' => $value->attribute_name );
 			}
 		}
 
