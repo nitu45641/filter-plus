@@ -243,11 +243,12 @@ function product_filter_callback( $settings ) {
     // Pre-render products into the grid/list divs so they show immediately.
     if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
         $rendered = [ 'grid' => '', 'list' => '' ];
+        $template = ! empty( $settings['template'] ) ? $settings['template'] : '1';
+
         ob_start(); // capture any stray PHP warnings so they don't corrupt REST JSON
         try {
-            $template = ! empty( $settings['template'] ) ? $settings['template'] : '1';
-            $actions  = \FilterPlus\Core\Frontend\SearchFilter\Actions::instance();
-            $preview  = $actions->get_products( [
+            $actions = \FilterPlus\Core\Frontend\SearchFilter\Actions::instance();
+            $preview = $actions->get_products( [
                 'filter_type'        => 'product',
                 'limit'              => 6,
                 'offset'             => 1,
@@ -273,7 +274,12 @@ function product_filter_callback( $settings ) {
                 'taxonomy'           => 'product_cat',
                 'exclude_cat_id'     => '',
             ] );
+
+            // Try selected template first; fall back to template 1 if Pro template not renderable
             $rendered = $actions->render_products_html( $preview['products'], 'product', $template );
+            if ( empty( $rendered['grid'] ) && $template !== '1' ) {
+                $rendered = $actions->render_products_html( $preview['products'], 'product', '1' );
+            }
         } catch ( \Throwable $e ) { // phpcs:ignore -- silently skip on any error
         }
         ob_end_clean(); // discard any PHP warnings / notices
