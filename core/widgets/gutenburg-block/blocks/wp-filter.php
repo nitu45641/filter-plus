@@ -44,8 +44,6 @@ add_action( 'init', 'content_filter_block' );
 
 
 function content_filter_callback( $settings ) {
-    error_log( 'FP_CB tpl=' . ( $settings['template'] ?? 'UNSET' ) . ' rest=' . ( defined('REST_REQUEST') && REST_REQUEST ? '1' : '0' ) );
-
     \FilterPlus\Utils\Helper::instance()->pro_active_message();
 
     extract($settings);

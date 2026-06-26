@@ -178,10 +178,8 @@ class Shortcodes {
 			}
 			if ( class_exists( 'FilterPlusPro' ) ) {
 				$_fp_pro_tpl = \FilterPlusPro::locate_template( "wp-filter/template-{$template}/template-{$template}.php" );
-				error_log( 'FP_DEBUG tpl=' . $template . ' path=' . $_fp_pro_tpl . ' exists=' . (int) file_exists( $_fp_pro_tpl ) );
 				if ( file_exists( $_fp_pro_tpl ) ) {
 					include $_fp_pro_tpl;
-					error_log( 'FP_DEBUG include done' );
 				}
 			}
 		}

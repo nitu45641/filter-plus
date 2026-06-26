@@ -719,5 +719,55 @@ class Actions {
 		return $html;
 	}
 
+	/**
+	 * Pre-render the product grid for the Gutenberg editor (REST context).
+	 * Call from wp-filter template files; returns empty string on the frontend.
+	 *
+	 * @param array $vars  Pass get_defined_vars() from the template scope.
+	 * @return string  Rendered grid HTML (empty string when not REST).
+	 */
+	public static function editor_preview_grid( array $vars ): string {
+		if ( ! ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+			return '';
+		}
+
+		$filter_type = isset( $vars['filter_type'] ) ? $vars['filter_type'] : 'post';
+		$custom_post = isset( $vars['custom_post'] ) ? $vars['custom_post'] : '';
+		$actual_type = ( $filter_type !== 'post' && ! empty( $custom_post ) ) ? $custom_post : 'post';
+		$template    = isset( $vars['template'] ) ? $vars['template'] : '1';
+
+		$actions = self::instance();
+		$result  = $actions->get_products( array(
+			'filter_type'        => $actual_type,
+			'offset'             => 1,
+			'limit'              => isset( $vars['no_of_items'] ) ? intval( $vars['no_of_items'] ) : 9,
+			'author'             => '',
+			'filter_param'       => array(),
+			'cat_id'             => '',
+			'taxonomies'         => array(),
+			'search_value'       => '',
+			'min'                => '',
+			'max'                => '',
+			'rating'             => '',
+			'product_tags'       => 'yes',
+			'show_sale_badge'    => 'yes',
+			'post_author'        => isset( $vars['post_author'] ) ? $vars['post_author'] : 'yes',
+			'order_by'           => '',
+			'product_categories' => isset( $vars['post_categories'] ) ? $vars['post_categories'] : 'yes',
+			'stock'              => '',
+			'on_sale'            => '',
+			'cf_list'            => array(),
+			'masonry_style'      => isset( $vars['masonry_style'] ) ? $vars['masonry_style'] : 'no',
+			'exclude_cat_id'     => '',
+			'taxonomy'           => 'category',
+			'pagination_style'   => 'numbers',
+			'template'           => $template,
+			'hide_wp_title'      => isset( $vars['hide_wp_title'] ) ? $vars['hide_wp_title'] : 'yes',
+			'hide_wp_desc'       => isset( $vars['hide_wp_desc'] ) ? $vars['hide_wp_desc'] : 'yes',
+		) );
+
+		$rendered = $actions->render_products_html( $result['products'], $actual_type, $template );
+		return $rendered['grid'];
+	}
 
 }
