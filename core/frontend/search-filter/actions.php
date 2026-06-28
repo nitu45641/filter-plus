@@ -49,7 +49,10 @@ class Actions {
 		$max          = ! empty( $post_arr['max'] ) ? $post_arr['max'] : '';
 		$min          = ! empty( $post_arr['min'] ) ? $post_arr['min'] : '';
 		$filter_param = ! empty( $post_arr['filter_param'] ) ? $post_arr['filter_param'] : array();
-		$template     = ! empty( $post_data['template'] ) ? $post_data['template'] : 1;
+		$template     = ! empty( $post_data['template'] ) ? absint( $post_data['template'] ) : 1;
+		if ( $template < 1 ) {
+			$template = 1;
+		}
 		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : 'yes';
 		$product_tags = ! empty( $post_data['product_tags'] ) ? $post_data['product_tags'] : 'yes';
 		$show_sale_badge = isset( $post_data['show_sale_badge'] ) && $post_data['show_sale_badge'] === 'no' ? 'no' : 'yes';
@@ -123,8 +126,11 @@ class Actions {
 	 */
     public function get_products( $param = array() ) {
 
+		$allowed_post_types = get_post_types();
+		$safe_post_type = isset( $allowed_post_types[ $param['filter_type'] ] ) ? $param['filter_type'] : 'post';
+
 		$args = array(
-			'post_type'             => $param['filter_type'],
+			'post_type'             => $safe_post_type,
 			'post_status'           => 'publish',
 			'paged'                 => $param['offset'],
 			'posts_per_page'        => $param['limit'],
