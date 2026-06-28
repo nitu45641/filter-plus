@@ -50,7 +50,7 @@ class Actions {
 		$min          = ! empty( $post_arr['min'] ) ? $post_arr['min'] : '';
 		$filter_param = ! empty( $post_arr['filter_param'] ) ? $post_arr['filter_param'] : array();
 		$template     = ! empty( $post_data['template'] ) ? absint( $post_data['template'] ) : 1;
-		if ( $template < 1 ) {
+		if ( ! in_array( $template, [ 1, 2, 3, 4, 5, 6, 7 ], true ) ) {
 			$template = 1;
 		}
 		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : 'yes';
@@ -126,7 +126,7 @@ class Actions {
 	 */
     public function get_products( $param = array() ) {
 
-		$allowed_post_types = get_post_types();
+		$allowed_post_types = get_post_types( [ 'public' => true ] );
 		$safe_post_type = isset( $allowed_post_types[ $param['filter_type'] ] ) ? $param['filter_type'] : 'post';
 
 		$args = array(
