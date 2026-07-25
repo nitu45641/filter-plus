@@ -3,7 +3,7 @@ Contributors: markutos987
 Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, wordpress filter plugin, ajax product filter, product filter, filter by price
 Tested up to: 7.0
-Stable tag: 1.1.26
+Stable tag: 1.1.27
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -144,6 +144,12 @@ Filter Plus has been tested with all major WordPress and WooCommerce themes. If 
 No. If you can install and activate a WordPress plugin, you can use Filter Plus. The Elementor widget and Gutenberg block provide a visual, no-code setup. The shortcode option requires only copy-paste.
 
 == Changelog ==
+
+= 1.1.27 (July 25, 2026) =
+Added  : "Show FilterPlus Layout on Product Archive Page" setting (Pro) — replaces the default WooCommerce shop/category/tag archive with the FilterPlus product filter layout
+Added  : Layout template picker for the product archive layout, shown once the setting above is enabled
+Fix    : Product archive layout was rendering products without title, description, price, or add-to-cart button
+Fix    : Categories filter block now hidden automatically on WooCommerce category/tag archive pages when the archive layout is active (still shown on the main shop page)
 
 = 1.1.26 (June 26, 2026) =
 Tweak  : Gutenberg block editor preview now shows products immediately for all templates
