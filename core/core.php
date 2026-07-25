@@ -34,6 +34,9 @@ class Core {
 
       \FilterPlus\Core\Frontend\Shortcodes::instance()->init();
 
+      // Product archive layout: replace the default WooCommerce shop/category/tag archive with the filter template (Pro only).
+      add_filter( 'template_include', array( $this, 'product_archive_template' ), 98 );
+
       // Category layout: replace WooCommerce category archive with the filter template (Pro only).
       add_filter( 'template_include', array( $this, 'category_page_template' ), 99 );
 
@@ -47,6 +50,24 @@ class Core {
       // load elementor
       add_action( 'elementor/frontend/before_enqueue_scripts', array( $this, 'element_js' ) );
       Elementor_Manifest::instance()->init();
+    }
+
+    /**
+     * Override the default WooCommerce product archive (shop, category, tag) with the filter template.
+     */
+    public function product_archive_template( $template ) {
+        if ( ! function_exists( 'is_shop' ) || ! ( is_shop() || is_product_category() || is_product_tag() ) ) {
+            return $template;
+        }
+        if ( ! class_exists( 'FilterPlusPro' ) ) {
+            return $template;
+        }
+        $settings = \FilterPlus\Utils\Helper::get_settings();
+        if ( empty( $settings['show_layout_on_product_archive'] ) || $settings['show_layout_on_product_archive'] !== 'yes' ) {
+            return $template;
+        }
+        $custom = \FilterPlus::plugin_dir() . 'templates/woo-filter/archive-layout.php';
+        return file_exists( $custom ) ? $custom : $template;
     }
 
     /**

@@ -1,5 +1,18 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
+<h1 class="font_bold font_18"><?php esc_html_e('Product Archive Layout','filter-plus'); ?></h1>
+<?php
+$filterplus_args = array('label'=>esc_html__("Show FilterPlus Layout on Product Archive Page:","filter-plus"),
+'id' => 'show_layout_on_product_archive' , 'data_label' => 'show-layout-on-product-archive' ,  'checked'=> $show_layout_on_product_archive ,
+'disable' => $filterplus_disable );
+filterplus_checkbox_field($filterplus_args);
+
+$filterplus_args = array('label'=>esc_html__("Select Layout:","filter-plus"),
+'id' => 'product_archive_layout' , 'data_label' => 'product_archive_layout' , 'options'=> \FilterPlus\Utils\Helper::product_archive_layout_options(),
+'type'=>'named_template' , 'selected'=> $product_archive_layout ,
+'condition_class' => 'show_layout_on_product_archive d-none', 'disable' => $filterplus_disable );
+filterplus_select_field($filterplus_args);
+?>
 <h1 class="font_bold font_18"><?php esc_html_e('Style','filter-plus'); ?></h1>
 
 <?php
@@ -32,5 +45,3 @@ $filterplus_args = array('label'=>esc_html__("Maximum Price Range:","filter-plus
 'id' => 'max_price_range' , 'field_type'=>'number', 'data_label' => 'max_price_range' ,  'value'=> $max_price_range ,
 'disable' => $filterplus_disable );
 filterplus_number_input_field($filterplus_args);
-
-

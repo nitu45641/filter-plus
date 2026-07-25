@@ -191,6 +191,7 @@
 			'show_price_range',
 			'show_size',
 			'show_colors',
+			'show_layout_on_product_archive',
 		];
 		$.each(ids, function (index, data) {
 			const value = $('#' + data);

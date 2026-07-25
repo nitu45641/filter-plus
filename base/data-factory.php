@@ -31,6 +31,7 @@ class DataFactory {
             'category_template' => '1',
             'color_template'    => '1',
             'review_template'   => '1',
+            'show_categories'   => 'yes',
             'category_label'    => esc_html__('Categories','filter-plus'),
             'categories'       	=> '',
             'exclude_categories'=> '',
@@ -134,6 +135,7 @@ class DataFactory {
         $default_data['review_template']    = ! empty( $settings['review_template'] ) ? $settings['review_template'] : '1';
         $default_data['color_template']     = ! empty( $settings['color_template'] ) ? $settings['color_template'] : '1';
         $default_data['category_template']  = ! empty( $settings['category_template'] ) ? $settings['category_template'] : '1';
+        $default_data['show_categories']    = ( isset( $settings['show_categories'] ) && ( $settings['show_categories'] === 'no' || $settings['show_categories'] === false ) ) ? 'no' : 'yes';
         $default_data['category_label']     = ! empty( $category_label ) ? $category_label : esc_html__( 'Categories', 'filter-plus' );
 		$default_data['categories']         = ( ! empty( $categories ) && is_array( $categories ) ) ? implode( ',', $categories ) : '';
 		$default_data['exclude_categories'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['exclude_categories'] ) )
@@ -198,6 +200,7 @@ class DataFactory {
         extract( $process_data );
 		// Build shortcode with escaped attributes so checkbox values are passed reliably
 		$attrs = array(
+			'show_categories' => $show_categories,
 			'category_label' => $category_label,
             'sub_categories' => $sub_categories,
 			'title' => $title,

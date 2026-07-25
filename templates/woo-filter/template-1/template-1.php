@@ -20,17 +20,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		}
 
 		// category template
-		DataFactory::category_template_url(array(
-			'template' => $template,
-			'category_template' => $category_template,
-			'category_label' => $category_label,
-			'categories' => $categories,
-			'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '',
-			'hide_empty_cat' => $hide_empty_cat,
-			'product_count' => $product_count,
-			'sub_categories' => $sub_categories,
-			'category_orderby' => isset($category_orderby) ? $category_orderby : '',
-		));
+		if ( ! isset( $show_categories ) || 'no' !== $show_categories ) {
+			DataFactory::category_template_url(array(
+				'template' => $template,
+				'category_template' => $category_template,
+				'category_label' => $category_label,
+				'categories' => $categories,
+				'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '',
+				'hide_empty_cat' => $hide_empty_cat,
+				'product_count' => $product_count,
+				'sub_categories' => $sub_categories,
+				'category_orderby' => isset($category_orderby) ? $category_orderby : '',
+			));
+		}
 
 		// reviews
 		if ( 'yes'== $show_reviews ) {

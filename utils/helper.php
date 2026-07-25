@@ -823,7 +823,8 @@ class Helper {
 		'seo_elements_format'=> '' , 'nice_url'=> '', 'seo_slug_url'=> '',
 		'min_price_range'=>'','max_price_range'=>'',
 
-		'refresh_url'=> '', 'primary_color'=> '#ffffff', 'secondary_color'=> '#ffffff' 
+		'refresh_url'=> '', 'primary_color'=> '#ffffff', 'secondary_color'=> '#ffffff',
+		'show_layout_on_product_archive'=> 'no', 'product_archive_layout'=> '1'
 		);
 
 		return $settings_key;
@@ -1039,5 +1040,20 @@ class Helper {
 		return array('left'=>esc_html__('Left','filter-plus'),
 			'right'=>esc_html__('Right','filter-plus'));
 	}
-	
+
+	/**
+	 * Product archive layout template options
+	 *
+	 * @return array
+	 */
+	public static function product_archive_layout_options()  {
+		$options = array();
+		for ( $i = 1; $i <= 7; $i++ ) {
+			/* translators: %d: template number */
+			$options[ $i ] = sprintf( esc_html__( 'Template %d', 'filter-plus' ), $i );
+		}
+
+		return $options;
+	}
+
 }
