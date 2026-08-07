@@ -605,6 +605,15 @@ class Helper {
 			$cat_id = !empty($param['filter_param']['product_cat']) ? $param['filter_param']['product_cat'] : [];
 		}
 
+		// Category archive layout: always lock the query to the current archived
+		// category server-side. Client-supplied cat_id (DOM pre-select) is not
+		// trusted alone, since it can fail to match (race conditions, nested
+		// sub-categories, stale cache) and would otherwise return products from
+		// every category. This override wins regardless of what the client sent.
+		if ( ! empty( $param['enable_category_layout'] ) && $param['enable_category_layout'] === 'yes' && ! empty( $param['current_cat_id'] ) ) {
+			$cat_id = array( (int) $param['current_cat_id'] );
+		}
+
 		if ( !empty( $param['taxonomy']) && !empty( $cat_id ) ) {
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for taxonomy filtering
 			$args['tax_query'] = array(

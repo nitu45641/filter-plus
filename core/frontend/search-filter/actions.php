@@ -67,6 +67,8 @@ class Actions {
 		$masonry_style  = ! empty( $post_data['masonry_style'] ) ? $post_data['masonry_style'] : 'no';
 		$exclude_cat_id = ! empty( $post_data['exclude_cat_id'] ) ? $post_data['exclude_cat_id'] : '';
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
+		$current_cat_id = ! empty( $post_data['current_cat_id'] ) ? absint( $post_data['current_cat_id'] ) : '';
+		$enable_category_layout = ! empty( $post_data['enable_category_layout'] ) && $post_data['enable_category_layout'] === 'yes' ? 'yes' : 'no';
 
 		$args = array(
 			'pagination_style' => $pagination_style,
@@ -92,7 +94,9 @@ class Actions {
 			'cf_list'		=> $cf_list,
 			'masonry_style' => $masonry_style,
 			'exclude_cat_id'=> $exclude_cat_id,
-			'taxonomy'  	=> $taxonomy
+			'taxonomy'  	=> $taxonomy,
+			'current_cat_id' => $current_cat_id,
+			'enable_category_layout' => $enable_category_layout,
 		);
 
 		$get_products   = $this->get_products( $args );
@@ -144,6 +148,15 @@ class Actions {
 		// by category
 		$args = \FilterPlus\Utils\Helper::product_filter( $param , $args );
 
+		// This plugin builds its own get_posts() query, bypassing the
+		// pre_get_posts filtering WooCommerce normally applies on shop/category
+		// archives. Without this, products hidden from the catalog (and,
+		// depending on store settings, out-of-stock products) leak into the
+		// results/count even though the native archive would exclude them.
+		if ( 'product' === $safe_post_type && function_exists( 'wc_get_product_visibility_term_ids' ) ) {
+			$args = $this->exclude_hidden_products( $args );
+		}
+
 		// search
 		$args = $this->add_search_value( $param , $args );
 
@@ -176,6 +189,49 @@ class Actions {
 		) );
 		return array( 'products' => $products , 'total' => $posts_count , 'pages' => ceil($posts_count / $param['limit'])
 		, 'pagination_markup' => $pagination_markup );
+	}
+
+	/**
+	 * Exclude products WooCommerce would normally hide from catalog/archive
+	 * views: catalog-visibility "exclude from catalog" (and, if the store
+	 * option is enabled, out-of-stock products too.
+	 *
+	 * @param array $args WP_Query args.
+	 * @return array
+	 */
+	public function exclude_hidden_products( $args ) {
+		$term_ids = wc_get_product_visibility_term_ids();
+
+		$excluded_ids = array();
+		if ( ! empty( $term_ids['exclude-from-catalog'] ) ) {
+			$excluded_ids[] = $term_ids['exclude-from-catalog'];
+		}
+		if ( ! empty( $term_ids['outofstock'] ) && 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+			$excluded_ids[] = $term_ids['outofstock'];
+		}
+
+		if ( empty( $excluded_ids ) ) {
+			return $args;
+		}
+
+		$visibility_clause = array(
+			'taxonomy' => 'product_visibility',
+			'field'    => 'term_taxonomy_id',
+			'terms'    => $excluded_ids,
+			'operator' => 'NOT IN',
+		);
+
+		if ( empty( $args['tax_query'] ) ) {
+			$args['tax_query'] = array( $visibility_clause );
+		} elseif ( isset( $args['tax_query']['relation'] ) ) {
+			$args['tax_query'][] = $visibility_clause;
+		} else {
+			// Existing tax_query has no relation key of its own — nest it as a
+			// sub-group so it is preserved intact alongside the new clause.
+			$args['tax_query'] = array( 'relation' => 'AND', $args['tax_query'], $visibility_clause );
+		}
+
+		return $args;
 	}
 
 	/**

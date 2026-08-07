@@ -21,9 +21,22 @@ if ( ! defined( 'FP_CATEGORY_LAYOUT_RENDERING' ) ) {
 }
 $filterplus_settings   = \FilterPlus\Utils\Helper::get_settings();
 $filterplus_is_archive = ! is_shop();
+
+// This template also renders on the actual WooCommerce category archive
+// (product_archive_template hook covers shop + category + tag). Lock the
+// query to the current category server-side, otherwise products from every
+// category get pulled in — see Helper::product_filter() / Actions::get_products().
+$filterplus_term_id = '';
+if ( is_product_category() ) {
+	$filterplus_term    = get_queried_object();
+	$filterplus_term_id = isset( $filterplus_term->term_id ) ? (int) $filterplus_term->term_id : '';
+}
+
 \FilterPlus\Base\DataFactory::instance()->woo_render_html( array(
 	'template'            => ! empty( $filterplus_settings['product_archive_layout'] ) ? $filterplus_settings['product_archive_layout'] : '1',
 	'show_categories'     => $filterplus_is_archive ? 'no' : 'yes',
+	'enable_category_layout' => $filterplus_term_id ? 'yes' : 'no',
+	'current_cat_id'      => $filterplus_term_id,
 	'colors'              => 'yes',
 	'size'                => 'yes',
 	'show_tags'           => 'yes',

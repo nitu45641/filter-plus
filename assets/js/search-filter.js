@@ -572,6 +572,8 @@
 			let product_tags = $('#shopContainer').data('product_tags');
 			let show_sale_badge = $('#shopContainer').data('show_sale_badge') || 'yes';
 			let post_author = $('#shopContainer').data('post_author');
+			let current_cat_id = $('#shopContainer').data('current_cat_id') || '';
+			let enable_category_layout = $('#shopContainer').data('enable_category_layout') || 'no';
 
 			const data = {
 				action: 'get_filtered_data',
@@ -582,6 +584,8 @@
 				product_tags,
 				show_sale_badge,
 				post_author,
+				current_cat_id,
+				enable_category_layout,
 				params: { default_call: true, count_only: true },
 			};
 
@@ -618,6 +622,8 @@
 			let show_sale_badge = $('#shopContainer').data('show_sale_badge') || 'yes';
 			let post_author 	= $('#shopContainer').data('post_author');
 			let exclude_cat_id  = $('#shopContainer').data('exclude_categories') || '';
+			let current_cat_id  = $('#shopContainer').data('current_cat_id') || '';
+			let enable_category_layout = $('#shopContainer').data('enable_category_layout') || 'no';
 			let hide_prod_add_cart = $('#shopContainer').data('hide_prod_add_cart') || 'yes';
 			let hide_prod_title    = $('#shopContainer').data('hide_prod_title') || 'yes';
 			let hide_prod_desc     = $('#shopContainer').data('hide_prod_desc') || 'yes';
@@ -638,6 +644,8 @@
 				show_sale_badge,
 				post_author,
 				exclude_cat_id,
+				current_cat_id,
+				enable_category_layout,
 				hide_prod_add_cart,
 				hide_prod_title,
 				hide_prod_desc,
