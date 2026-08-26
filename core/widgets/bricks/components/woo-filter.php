@@ -505,6 +505,14 @@ class Woo_Filter extends \Bricks\Element {
 			'small' => true,
 			'default' => true,
 		);
+		$this->controls['add_to_cart_text'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Add to Cart Text', 'filter-plus' ),
+			'type' => 'text',
+			'placeholder' => esc_html__( 'Add to cart', 'filter-plus' ),
+			'required' => array( 'hide_prod_add_cart', '=', true ),
+		);
 		$this->controls['hide_prod_rating'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',

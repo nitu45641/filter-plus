@@ -519,6 +519,14 @@ class Woo_Filter extends Widget_Base {
 				'default' => 'yes',
 			)
 		);
+		$this->add_control('add_to_cart_text',
+			array(
+				'label' => esc_html__( 'Add to Cart Text', 'filter-plus' ),
+				'type' => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Add to cart', 'filter-plus' ),
+				'condition' => array( 'hide_prod_add_cart' => 'yes' ),
+			)
+		);
 		$this->add_control('hide_prod_rating',
 			array(
 				'label' => esc_html__( 'Display Rating', 'filter-plus' ),
@@ -925,6 +933,7 @@ class Woo_Filter extends Widget_Base {
 		$hide_prod_desc   = ! empty( $data['hide_prod_desc'] )     ? $data['hide_prod_desc']      : 'yes';
 		$hide_prod_rating = ! empty( $data['hide_prod_rating'] )   ? $data['hide_prod_rating']    : 'yes';
 		$hide_prod_price  = ! empty( $data['hide_prod_price'] )    ? $data['hide_prod_price']     : 'yes';
+		$add_to_cart_text = ! empty( $data['add_to_cart_text'] )   ? $data['add_to_cart_text']    : '';
 
 		// Try free plugin template first, then fall back to pro plugin template directory.
 		$tpl_file = \FilterPlus::locate_template( "woo-filter/template-{$template}/right-side/product-template.php" );
@@ -963,6 +972,7 @@ class Woo_Filter extends Widget_Base {
 			'masonry_style'      => $masonry_style,
 			'product_categories' => $product_categories,
 			'product_tags'       => $product_tags,
+			'add_to_cart_text'   => $add_to_cart_text,
 		);
 		$products = \FilterPlus\Core\Frontend\SearchFilter\Actions::process_product_data( $posts, $param );
 

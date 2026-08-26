@@ -93,6 +93,7 @@ class Shortcodes {
 			data-show_sale_badge="<?php echo esc_attr($show_sale_badge)?>"
 			data-exclude_categories="<?php echo esc_attr($exclude_categories)?>"
 			data-hide_prod_add_cart="<?php echo esc_attr($hide_prod_add_cart)?>"
+			data-add_to_cart_text="<?php echo esc_attr($add_to_cart_text)?>"
 			data-hide_prod_title="<?php echo esc_attr($hide_prod_title)?>"
 			data-hide_prod_desc="<?php echo esc_attr($hide_prod_desc)?>"
 			data-hide_prod_price="<?php echo esc_attr($hide_prod_price)?>"

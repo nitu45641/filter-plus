@@ -153,6 +153,10 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'boolean',
             default: true
         },
+        add_to_cart_text: {
+            type: 'string',
+            default: ''
+        },
         hide_prod_rating: {
             type: 'boolean',
             default: true
@@ -644,6 +648,15 @@ registerBlockType('filter-plus/woo-filter', {
                             checked={attributes.hide_prod_add_cart}
                             onChange={(value) => setAttributes({ hide_prod_add_cart: value })}
                         />
+
+                        {attributes.hide_prod_add_cart && (
+                            <TextControl
+                                label={__('Add to Cart Text', 'filter-plus')}
+                                value={attributes.add_to_cart_text}
+                                onChange={(value) => setAttributes({ add_to_cart_text: value })}
+                                placeholder={__('Add to cart', 'filter-plus')}
+                            />
+                        )}
 
                         <ToggleControl
                             label={__('Display Rating', 'filter-plus')}

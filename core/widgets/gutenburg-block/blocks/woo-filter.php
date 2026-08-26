@@ -155,6 +155,10 @@ function product_filter_block() {
                     'type' => 'boolean',
                     'default' => true
                 ),
+                'add_to_cart_text' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
                 'hide_prod_rating' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -273,6 +277,7 @@ function product_filter_callback( $settings ) {
                 'pagination_style'   => 'numbers',
                 'taxonomy'           => 'product_cat',
                 'exclude_cat_id'     => '',
+                'add_to_cart_text'   => ! empty( $settings['add_to_cart_text'] ) ? $settings['add_to_cart_text'] : '',
             ] );
 
             // Try selected template first; fall back to template 1 if Pro template not renderable

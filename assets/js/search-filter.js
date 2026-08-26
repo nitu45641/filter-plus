@@ -625,6 +625,7 @@
 			let current_cat_id  = $('#shopContainer').data('current_cat_id') || '';
 			let enable_category_layout = $('#shopContainer').data('enable_category_layout') || 'no';
 			let hide_prod_add_cart = $('#shopContainer').data('hide_prod_add_cart') || 'yes';
+			let add_to_cart_text   = $('#shopContainer').data('add_to_cart_text') || '';
 			let hide_prod_title    = $('#shopContainer').data('hide_prod_title') || 'yes';
 			let hide_prod_desc     = $('#shopContainer').data('hide_prod_desc') || 'yes';
 			let hide_prod_price    = $('#shopContainer').data('hide_prod_price') || 'yes';
@@ -647,6 +648,7 @@
 				current_cat_id,
 				enable_category_layout,
 				hide_prod_add_cart,
+				add_to_cart_text,
 				hide_prod_title,
 				hide_prod_desc,
 				hide_prod_price,

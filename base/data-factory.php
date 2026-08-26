@@ -70,6 +70,7 @@ class DataFactory {
             'hide_prod_desc'         => 'yes',
             'hide_prod_price'        => 'yes',
             'hide_prod_add_cart'     => 'yes',
+            'add_to_cart_text'       => esc_html__('Add to cart','filter-plus'),
             'hide_prod_rating'       => 'yes',
             'enable_category_layout' => 'no',
             'current_cat_id'         => '',
@@ -168,6 +169,7 @@ class DataFactory {
 		$default_data['hide_prod_desc']     = ! empty( $hide_prod_desc ) && ( $hide_prod_desc == true ||  $hide_prod_desc == 'yes' )  ?  'yes' : 'no';
 		$default_data['hide_prod_price']    = ! empty( $hide_prod_price ) && ( $hide_prod_price == true || $hide_prod_price == 'yes' ) ?  'yes' : 'no';
 		$default_data['hide_prod_add_cart'] = ! empty( $hide_prod_add_cart ) && ( $hide_prod_add_cart == true || $hide_prod_add_cart == 'yes' ) ?  'yes' : 'no';
+		$default_data['add_to_cart_text']   = ! empty( $settings['add_to_cart_text'] ) ? sanitize_text_field( $settings['add_to_cart_text'] ) : esc_html__( 'Add to cart', 'filter-plus' );
 		$default_data['hide_prod_rating']   = ! empty( $hide_prod_rating ) && ( $hide_prod_rating == true || $hide_prod_rating == 'yes' ) ?  'yes' : 'no';
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
 		$default_data['enable_category_layout'] = ( isset( $settings['enable_category_layout'] ) && $settings['enable_category_layout'] === 'yes' ) ? 'yes' : 'no';
@@ -217,6 +219,7 @@ class DataFactory {
 			'hide_prod_desc' => $hide_prod_desc,
 			'hide_prod_price' => $hide_prod_price,
 			'hide_prod_add_cart' => $hide_prod_add_cart,
+			'add_to_cart_text' => $add_to_cart_text,
 			'hide_prod_rating' => $hide_prod_rating,
 			'size_label' => $size_label,
 			'attribute_label' => $attribute_label,

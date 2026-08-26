@@ -15,7 +15,8 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank">
 				<div class="vpcc-image">
 					<?php
-					$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), 'large', false, array('style' => 'width:100%;height:100%;object-fit:cover;display:block;'));
+					$grid_image_size = apply_filters( 'filterplus_product_thumbnail_size', 'woocommerce_thumbnail', 'product', $product['template'], 'grid' );
+					$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), $grid_image_size, false, array('style' => 'width:100%;height:100%;object-fit:cover;display:block;'));
 					if (empty($grid_image)) {
 						echo wp_kses_post( preg_replace('/<img/', '<img style="width:100%;height:100%;object-fit:cover;display:block;"', $product['post_image']) );
 					} else {
@@ -91,7 +92,8 @@ function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_pro
 			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" style="display: block; width: 100%; height: 100%;">
 				<?php
 				// Get product thumbnail with appropriate size for list view
-				$list_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), array(220, 220), false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
+				$list_image_size = apply_filters( 'filterplus_product_thumbnail_size', 'woocommerce_thumbnail', 'product', $product['template'], 'list' );
+				$list_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), $list_image_size, false, array('style' => 'width: 100%; height: 100%; object-fit: cover;'));
 				if (empty($list_image)) {
 					// Fallback: modify existing image to fit
 					echo wp_kses_post( preg_replace('/<img/', '<img style="width: 100%; height: 100%; object-fit: cover;"', $product['post_image']) );

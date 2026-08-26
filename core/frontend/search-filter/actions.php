@@ -69,6 +69,7 @@ class Actions {
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
 		$current_cat_id = ! empty( $post_data['current_cat_id'] ) ? absint( $post_data['current_cat_id'] ) : '';
 		$enable_category_layout = ! empty( $post_data['enable_category_layout'] ) && $post_data['enable_category_layout'] === 'yes' ? 'yes' : 'no';
+		$add_to_cart_text = ! empty( $post_data['add_to_cart_text'] ) ? sanitize_text_field( $post_data['add_to_cart_text'] ) : '';
 
 		$args = array(
 			'pagination_style' => $pagination_style,
@@ -97,6 +98,7 @@ class Actions {
 			'taxonomy'  	=> $taxonomy,
 			'current_cat_id' => $current_cat_id,
 			'enable_category_layout' => $enable_category_layout,
+			'add_to_cart_text' => $add_to_cart_text,
 		);
 
 		$get_products   = $this->get_products( $args );
@@ -435,7 +437,7 @@ class Actions {
 				$products[$key]['post_description'] = wp_trim_words($product_instance->get_short_description(), 80 , '...');
 				$products[$key]['post_image_alt']   = esc_html__('product image', 'filter-plus');
 				$products[$key]['post_price']       = $product_instance->get_price_html();
-				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] );
+				$products[$key]['cart_btn']         = self::cart_btn_html( $product_instance , $param['template'] , isset( $param['add_to_cart_text'] ) ? $param['add_to_cart_text'] : '' );
 				$products[$key]['type']    			= $product_instance->get_type();
 				$products[$key]['rating_status']    = $product_instance->get_average_rating() > 0 ? true: false;
 				$products[$key]['template']    		= $param['template'];
@@ -544,14 +546,15 @@ class Actions {
 	 * @param [type] $product_instance
 	 * @param [type] $template
 	 */
-	public static function cart_btn_html( $product_instance , $template ) {
+	public static function cart_btn_html( $product_instance , $template , $add_to_cart_text = '' ) {
 		$not_text = array('1','3','4','5','7');
+		$cart_text = ! empty( $add_to_cart_text ) ? $add_to_cart_text : esc_html__('Add to cart' , 'filter-plus');
 		// show cart button
 		$cart_args = array(
 			'template'      => $template,
 			'product'       => $product_instance,
 			'cart_button'   => 'yes',
-			'btn_text'      => in_array($template,$not_text) ? '': '<span>' .esc_html__('Add to cart' , 'filter-plus').'</span>',
+			'btn_text'      => in_array($template,$not_text) ? '': '<span>' .esc_html($cart_text).'</span>',
 			'customize_btn' => '',
 			'widget_id'     => '',
 			'icon'          => '
@@ -633,7 +636,7 @@ class Actions {
 	 */
 	public static function product_size( $filter_type , $template){
 
-		$size = array(300, 300);
+		$size = $filter_type == 'product' ? 'woocommerce_thumbnail' : array(300, 300);
 		if ( $filter_type == 'product' && $template == '7') {
 			$size = array(220, 220);
 		}
@@ -648,7 +651,16 @@ class Actions {
 		else if ( $filter_type == 'product' && $template == '3') {
 			$size = array(340, 210 );
 		}
-		return $size;
+
+		/**
+		 * Filter the image size used for Filter Plus results (grid query size).
+		 *
+		 * @param string|array $size        Registered image size name or array( width, height ).
+		 * @param string       $filter_type 'product' or the post/CPT filter type.
+		 * @param string       $template    Active template number.
+		 * @param string       $context     Where this size is used: 'query', 'grid', or 'list'.
+		 */
+		return apply_filters( 'filterplus_product_thumbnail_size', $size, $filter_type, $template, 'query' );
 	}
 
 	/**

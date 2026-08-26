@@ -110,14 +110,14 @@ use \FilterPlus\Utils\Helper as Helper;
 			$filterplus_args = array('label'=>esc_html__("Hide Empty Category:","filter-plus"),'id' => 'hide_empty_cat','data_label' => 'hide_empty_cat');
 			filterplus_checkbox_field($filterplus_args);
 			// sub categories
-			$filterplus_args = array('label'=>esc_html__("Display Sub Categories:","filter-plus"),'id' => 'woo_sub_categories','data_label' => 'sub_categories');
+			$filterplus_args = array('label'=>esc_html__("Show Sub Categories:","filter-plus"),'id' => 'woo_sub_categories','data_label' => 'sub_categories');
 			filterplus_checkbox_field($filterplus_args);
 
-			$filterplus_args = array('label'=>esc_html__("Display Product Count:","filter-plus"),'id' => 'woo_product_count','data_label' => 'product_count');
+			$filterplus_args = array('label'=>esc_html__("Show Product Count:","filter-plus"),'id' => 'woo_product_count','data_label' => 'product_count');
 			filterplus_checkbox_field($filterplus_args);
 
 			// colors
-			$filterplus_args = array('label'=>esc_html__("Display Color:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
+			$filterplus_args = array('label'=>esc_html__("Show Color:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
 			filterplus_checkbox_field($filterplus_args);
 
 			// color template
@@ -137,7 +137,7 @@ use \FilterPlus\Utils\Helper as Helper;
 
 
 			// sizes
-			$filterplus_args = array('label'=>esc_html__("Display Size:","filter-plus"),'id' => 'show_size','data_label' => 'size');
+			$filterplus_args = array('label'=>esc_html__("Show Size:","filter-plus"),'id' => 'show_size','data_label' => 'size');
 		 	filterplus_checkbox_field($filterplus_args);
 
 			$filterplus_args        = array('label'=>esc_html__("Size Label:","filter-plus"),
@@ -148,7 +148,7 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_number_input_field($filterplus_args);
 
 			// show tags
-			$filterplus_args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'show_tags','data_label' => 'show_tags');
+			$filterplus_args = array('label'=>esc_html__("Show Tags:","filter-plus"),'id' => 'show_tags','data_label' => 'show_tags');
 			filterplus_checkbox_field($filterplus_args);
 
 			$filterplus_args = array('label'=>esc_html__("Tag Label:","filter-plus"),'id' => 'tag_label',
@@ -166,7 +166,7 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_select_field($filterplus_args);
 
 			// show attributes
-			$filterplus_args = array('label'=>esc_html__("Display Attributes:","filter-plus"),'id' => 'show_attributes','data_label' => 'show_attributes');
+			$filterplus_args = array('label'=>esc_html__("Show Attributes:","filter-plus"),'id' => 'show_attributes','data_label' => 'show_attributes');
 			filterplus_checkbox_field($filterplus_args);
 			$filterplus_args = array('label'=>esc_html__("Attribute Label:","filter-plus"),'id' => 'attribute_label',
 			'placeholder'=>esc_html__("Place Attribute Label Here","filter-plus"),
@@ -182,7 +182,7 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_select_field($filterplus_args);
 
 			// show price range
-			$filterplus_args = array('label'=>esc_html__("Display Price Range:","filter-plus"),'id' => 'show_price_range','data_label' => 'show_price_range');
+			$filterplus_args = array('label'=>esc_html__("Show Price Range:","filter-plus"),'id' => 'show_price_range','data_label' => 'show_price_range');
 			filterplus_checkbox_field($filterplus_args);
 			$filterplus_args = array('label'=>esc_html__("Price Range Label:","filter-plus"),
 			'placeholder'=>esc_html__("Place Price Range Label Here","filter-plus"),
@@ -192,7 +192,7 @@ use \FilterPlus\Utils\Helper as Helper;
 
 
 			// show reviews
-			$filterplus_args = array('label'=>esc_html__("Display Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews');
+			$filterplus_args = array('label'=>esc_html__("Show Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews');
 			filterplus_checkbox_field($filterplus_args);
 
 			// review template
@@ -277,43 +277,48 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_number_input_field( $filterplus_args );
 
 			// show title
-			$filterplus_args = array('label'=>esc_html__("Display Title:","filter-plus"),'id' => 'hide_prod_title',
+			$filterplus_args = array('label'=>esc_html__("Show Title:","filter-plus"),'id' => 'hide_prod_title',
 			'data_label' => 'hide_prod_title','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
 			// show description
-			$filterplus_args = array('label'=>esc_html__("Display Description:","filter-plus"),'id' => 'hide_prod_desc',
+			$filterplus_args = array('label'=>esc_html__("Show Description:","filter-plus"),'id' => 'hide_prod_desc',
 			'data_label' => 'hide_prod_desc','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
 			// show price
-			$filterplus_args = array('label'=>esc_html__("Display Price:","filter-plus"),'id' => 'hide_prod_price',
+			$filterplus_args = array('label'=>esc_html__("Show Price:","filter-plus"),'id' => 'hide_prod_price',
 			'data_label' => 'hide_prod_price','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
 			// show Add to Cart
-			$filterplus_args = array('label'=>esc_html__("Display Add to Cart:","filter-plus"),'id' => 'hide_prod_add_cart',
+			$filterplus_args = array('label'=>esc_html__("Show Add to Cart:","filter-plus"),'id' => 'hide_prod_add_cart',
 			'data_label' => 'hide_prod_add_cart','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
+			// Add to Cart button text
+			$filterplus_args = array('label'=>esc_html__("Add to Cart Text:","filter-plus"),'id' => 'add_to_cart_text',
+			'placeholder'=>esc_html__("Add to cart","filter-plus"),'data_label' => 'add_to_cart_text');
+			filterplus_number_input_field($filterplus_args);
+
 			// show Rating
-			$filterplus_args = array('label'=>esc_html__("Display Rating:","filter-plus"),'id' => 'hide_prod_rating',
+			$filterplus_args = array('label'=>esc_html__("Show Rating:","filter-plus"),'id' => 'hide_prod_rating',
 			'data_label' => 'hide_prod_rating','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
 			// show sorting
-			$filterplus_args = array('label'=>esc_html__("Display Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting');
+			$filterplus_args = array('label'=>esc_html__("Show Sorting:","filter-plus"),'id' => 'sorting','data_label' => 'sorting');
 			filterplus_checkbox_field($filterplus_args);
 
 			// show tags
-			$filterplus_args = array('label'=>esc_html__("Display Tags:","filter-plus"),'id' => 'product_tags','data_label' => 'product_tags');
+			$filterplus_args = array('label'=>esc_html__("Show Tags:","filter-plus"),'id' => 'product_tags','data_label' => 'product_tags');
 			filterplus_checkbox_field($filterplus_args);
 			// show product categories
-			$filterplus_args = array('label'=>esc_html__("Display Categories:","filter-plus"),'id' => 'product_categories',
+			$filterplus_args = array('label'=>esc_html__("Show Categories:","filter-plus"),'id' => 'product_categories',
 			'data_label' => 'product_categories');
 			filterplus_checkbox_field($filterplus_args);
 			// show on sale badge
-			$filterplus_args = array('label'=>esc_html__("Display On Sale:","filter-plus"),'id' => 'show_sale_badge',
+			$filterplus_args = array('label'=>esc_html__("Show On Sale:","filter-plus"),'id' => 'show_sale_badge',
 			'data_label' => 'show_sale_badge','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
