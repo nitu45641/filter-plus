@@ -1822,6 +1822,8 @@ a.added_to_cart.wc-forward {
 	height: auto !important;
 	bottom: -40px;
 	opacity: 0;
+	flex-direction: column;
+	gap: 8px;
 	-webkit-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 }
@@ -1830,7 +1832,7 @@ a.added_to_cart.wc-forward {
 	.product-thumbnail
 	.card-action-btn-container
 	a.added_to_cart{
-    	padding: 8px 36px 10px;
+    	padding: 8px 26px 10px;
 	}
 .product-style-2
 	.vartical-prod-card-container
@@ -1838,6 +1840,10 @@ a.added_to_cart.wc-forward {
 	.card-action-btn-container
 	a {
 	display: flex;
+	width: 100%;
+	max-width: 160px;
+	box-sizing: border-box;
+	justify-content: center;
 	padding: 8px 26px 10px;
 	background-color: var(--filter-cart-content, #080808);
 	color: #fff;
@@ -1906,17 +1912,6 @@ a.added_to_cart.wc-forward {
 	font-weight: bold;
 	line-height: 1;
 }
-/* The generic "a { display:flex }" rule above also matches WooCommerce's own
-   "View cart" link, un-hiding it and stacking a second black pill under the
-   checkmark. Re-hide it — the checkmark already communicates success. */
-.product-style-2
-	.vartical-prod-card-container
-	.product-thumbnail
-	.card-action-btn-container
-	a.added_to_cart.wc-forward {
-	display: none;
-}
-
 .product-style-2
 	.vartical-prod-card-container
 	.product-thumbnail
