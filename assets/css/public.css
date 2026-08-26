@@ -1906,6 +1906,16 @@ a.added_to_cart.wc-forward {
 	font-weight: bold;
 	line-height: 1;
 }
+/* The generic "a { display:flex }" rule above also matches WooCommerce's own
+   "View cart" link, un-hiding it and stacking a second black pill under the
+   checkmark. Re-hide it — the checkmark already communicates success. */
+.product-style-2
+	.vartical-prod-card-container
+	.product-thumbnail
+	.card-action-btn-container
+	a.added_to_cart.wc-forward {
+	display: none;
+}
 
 .product-style-2
 	.vartical-prod-card-container
