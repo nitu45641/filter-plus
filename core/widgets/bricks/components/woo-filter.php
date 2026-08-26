@@ -516,7 +516,7 @@ class Woo_Filter extends \Bricks\Element {
 		$this->controls['product_image_size'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',
-			'label' => esc_html__( 'Image Size', 'filter-plus' ),
+			'label' => esc_html__( 'Image Size', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 			'type' => 'select',
 			'options' => \FilterPlus\Utils\Helper::product_image_sizes(),
 			'inline' => true,
@@ -529,7 +529,7 @@ class Woo_Filter extends \Bricks\Element {
 		$this->controls['image_width'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',
-			'label' => esc_html__( 'Image Width (px)', 'filter-plus' ),
+			'label' => esc_html__( 'Image Width (px)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 			'type' => 'number',
 			'min' => 1,
 			'placeholder' => 300,
@@ -538,7 +538,7 @@ class Woo_Filter extends \Bricks\Element {
 		$this->controls['image_height'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',
-			'label' => esc_html__( 'Image Height (px)', 'filter-plus' ),
+			'label' => esc_html__( 'Image Height (px)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 			'type' => 'number',
 			'min' => 1,
 			'placeholder' => 300,

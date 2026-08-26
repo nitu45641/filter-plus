@@ -301,20 +301,23 @@ use \FilterPlus\Utils\Helper as Helper;
 			'placeholder'=>esc_html__("Add to cart","filter-plus"),'data_label' => 'add_to_cart_text');
 			filterplus_number_input_field($filterplus_args);
 
-			// Product image size
+			// Product image size (Pro)
 			$filterplus_args = array('label'=>esc_html__("Image Size:","filter-plus"),'id' => 'product_image_size',
-			'data_label' => 'product_image_size','options'=> Helper::product_image_sizes(),'type'=>'random','selected' => 'woocommerce_thumbnail');
+			'data_label' => 'product_image_size','options'=> Helper::product_image_sizes(),'type'=>'random','selected' => 'woocommerce_thumbnail',
+			'disable' => class_exists('FilterPlusPro') ? false : true);
 			filterplus_select_field($filterplus_args);
 
 			// custom image width/height (shown only when Image Size = Custom Size)
 			$filterplus_args = array('label'=>esc_html__("Image Width (px):","filter-plus"),'id' => 'image_width',
 			'placeholder'=>esc_html__("300","filter-plus"),'field_type'=> 'number',
-			'condition_class' => 'product_image_size d-none','data_label' => 'image_width');
+			'condition_class' => 'product_image_size d-none','data_label' => 'image_width',
+			'disable' => class_exists('FilterPlusPro') ? false : true);
 			filterplus_number_input_field($filterplus_args);
 
 			$filterplus_args = array('label'=>esc_html__("Image Height (px):","filter-plus"),'id' => 'image_height',
 			'placeholder'=>esc_html__("300","filter-plus"),'field_type'=> 'number',
-			'condition_class' => 'product_image_size d-none','data_label' => 'image_height');
+			'condition_class' => 'product_image_size d-none','data_label' => 'image_height',
+			'disable' => class_exists('FilterPlusPro') ? false : true);
 			filterplus_number_input_field($filterplus_args);
 
 			// show Rating

@@ -173,9 +173,10 @@ class DataFactory {
 		$default_data['hide_prod_price']    = ! empty( $hide_prod_price ) && ( $hide_prod_price == true || $hide_prod_price == 'yes' ) ?  'yes' : 'no';
 		$default_data['hide_prod_add_cart'] = ! empty( $hide_prod_add_cart ) && ( $hide_prod_add_cart == true || $hide_prod_add_cart == 'yes' ) ?  'yes' : 'no';
 		$default_data['add_to_cart_text']   = ! empty( $settings['add_to_cart_text'] ) ? sanitize_text_field( $settings['add_to_cart_text'] ) : esc_html__( 'Add to cart', 'filter-plus' );
-		$default_data['product_image_size'] = ! empty( $settings['product_image_size'] ) ? sanitize_text_field( $settings['product_image_size'] ) : 'woocommerce_thumbnail';
-		$default_data['image_width']        = ! empty( $settings['image_width'] )  ? intval( $settings['image_width'] )  : '';
-		$default_data['image_height']       = ! empty( $settings['image_height'] ) ? intval( $settings['image_height'] ) : '';
+		// Image Size is a Pro feature — free users always get the WooCommerce thumbnail size.
+		$default_data['product_image_size'] = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['product_image_size'] ) ) ? sanitize_text_field( $settings['product_image_size'] ) : 'woocommerce_thumbnail';
+		$default_data['image_width']        = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['image_width'] ) )  ? intval( $settings['image_width'] )  : '';
+		$default_data['image_height']       = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['image_height'] ) ) ? intval( $settings['image_height'] ) : '';
 		$default_data['hide_prod_rating']   = ! empty( $hide_prod_rating ) && ( $hide_prod_rating == true || $hide_prod_rating == 'yes' ) ?  'yes' : 'no';
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
 		$default_data['enable_category_layout'] = ( isset( $settings['enable_category_layout'] ) && $settings['enable_category_layout'] === 'yes' ) ? 'yes' : 'no';

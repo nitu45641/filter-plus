@@ -529,26 +529,30 @@ class Woo_Filter extends Widget_Base {
 		);
 		$this->add_control('product_image_size',
 			array(
-				'label' => esc_html__( 'Image Size', 'filter-plus' ),
+				'label' => esc_html__( 'Image Size', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'woocommerce_thumbnail',
 				'options' => Helper::product_image_sizes(),
+				'disabled' => ! class_exists( 'FilterPlusPro' ),
+				'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
 			)
 		);
 		$this->add_control('image_width',
 			array(
-				'label' => esc_html__( 'Image Width (px)', 'filter-plus' ),
+				'label' => esc_html__( 'Image Width (px)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'type' => Controls_Manager::NUMBER,
 				'placeholder' => 300,
 				'min' => 1,
+				'disabled' => ! class_exists( 'FilterPlusPro' ),
 				'condition' => array( 'product_image_size' => 'custom' ),
 			)
 		);
 		$this->add_control('image_height',
 			array(
-				'label' => esc_html__( 'Image Height (px)', 'filter-plus' ),
+				'label' => esc_html__( 'Image Height (px)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'type' => Controls_Manager::NUMBER,
 				'placeholder' => 300,
+				'disabled' => ! class_exists( 'FilterPlusPro' ),
 				'min' => 1,
 				'condition' => array( 'product_image_size' => 'custom' ),
 			)

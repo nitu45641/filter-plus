@@ -70,9 +70,10 @@ class Actions {
 		$current_cat_id = ! empty( $post_data['current_cat_id'] ) ? absint( $post_data['current_cat_id'] ) : '';
 		$enable_category_layout = ! empty( $post_data['enable_category_layout'] ) && $post_data['enable_category_layout'] === 'yes' ? 'yes' : 'no';
 		$add_to_cart_text = ! empty( $post_data['add_to_cart_text'] ) ? sanitize_text_field( $post_data['add_to_cart_text'] ) : '';
-		$product_image_size = ! empty( $post_data['product_image_size'] ) ? sanitize_text_field( $post_data['product_image_size'] ) : '';
-		$image_width  = ! empty( $post_data['image_width'] )  ? absint( $post_data['image_width'] )  : '';
-		$image_height = ! empty( $post_data['image_height'] ) ? absint( $post_data['image_height'] ) : '';
+		// Image Size is a Pro feature — ignore it entirely on free installs.
+		$product_image_size = ( class_exists( 'FilterPlusPro' ) && ! empty( $post_data['product_image_size'] ) ) ? sanitize_text_field( $post_data['product_image_size'] ) : '';
+		$image_width  = ( class_exists( 'FilterPlusPro' ) && ! empty( $post_data['image_width'] ) )  ? absint( $post_data['image_width'] )  : '';
+		$image_height = ( class_exists( 'FilterPlusPro' ) && ! empty( $post_data['image_height'] ) ) ? absint( $post_data['image_height'] ) : '';
 
 		$args = array(
 			'pagination_style' => $pagination_style,
@@ -496,8 +497,9 @@ class Actions {
 		$products 	= array();
 
 		// Resolve the configured image size: 'custom' means a manual width/height pair.
+		// Image Size is a Pro feature — free installs ignore whatever was submitted.
 		$resolved_image_size = '';
-		if ( $param['filter_type'] == 'product' && ! empty( $param['product_image_size'] ) ) {
+		if ( class_exists( 'FilterPlusPro' ) && $param['filter_type'] == 'product' && ! empty( $param['product_image_size'] ) ) {
 			if ( $param['product_image_size'] === 'custom' ) {
 				$custom_w = ! empty( $param['image_width'] ) ? intval( $param['image_width'] ) : 300;
 				$custom_h = ! empty( $param['image_height'] ) ? intval( $param['image_height'] ) : 300;
@@ -513,7 +515,16 @@ class Actions {
 		if ( !empty($posts) ) {
 			foreach ( $posts as $key => $post ):
 				if(has_post_thumbnail($post->ID)){
-					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
+					if ( is_array( $size ) ) {
+						// Custom Image Size (Pro): wp_get_attachment_image() can't generate an
+						// arbitrary crop on its own, so build a real resized file on demand.
+						$image = \FilterPlus\Utils\Helper::custom_sized_attachment_image( get_post_thumbnail_id( $post->ID ), $size[0], $size[1] );
+						if ( empty( $image ) ) {
+							$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size, '', '' );
+						}
+					} else {
+						$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
+					}
 				} else {
 					$image_url  = ( class_exists('WooCommerce') && $param['filter_type'] == "product") ? wc_placeholder_img_src( 'woocommerce_single' ) : get_post_meta($post->ID, 'featured_image', true);
 					$size_slug  = is_array( $size ) ? implode( 'x', $size ) : $size;
@@ -658,7 +669,8 @@ class Actions {
 	 */
 	public static function product_size( $filter_type , $template , $override_size = ''){
 
-		if ( $filter_type == 'product' && ! empty( $override_size ) ) {
+		// Custom Image Size is a Pro feature — free installs always fall through to the default below.
+		if ( $filter_type == 'product' && ! empty( $override_size ) && class_exists( 'FilterPlusPro' ) ) {
 			return apply_filters( 'filterplus_product_thumbnail_size', $override_size, $filter_type, $template, 'query' );
 		}
 

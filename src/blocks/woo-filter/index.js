@@ -671,27 +671,31 @@ registerBlockType('filter-plus/woo-filter', {
                         )}
 
                         <SelectControl
-                            label={__('Image Size', 'filter-plus')}
+                            label={__('Image Size', 'filter-plus') + ' ' + isPro()}
                             value={attributes.product_image_size}
                             options={window.filterPlus?.image_sizes || [{ label: __('WooCommerce Thumbnail', 'filter-plus'), value: 'woocommerce_thumbnail' }]}
                             onChange={(value) => setAttributes({ product_image_size: value })}
+                            disabled={isDisabled()}
+                            help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : ''}
                         />
 
                         {attributes.product_image_size === 'custom' && (
                             <>
                                 <TextControl
-                                    label={__('Image Width (px)', 'filter-plus')}
+                                    label={__('Image Width (px)', 'filter-plus') + ' ' + isPro()}
                                     type="number"
                                     value={attributes.image_width}
                                     onChange={(value) => setAttributes({ image_width: parseInt(value) || 0 })}
                                     placeholder="300"
+                                    disabled={isDisabled()}
                                 />
                                 <TextControl
-                                    label={__('Image Height (px)', 'filter-plus')}
+                                    label={__('Image Height (px)', 'filter-plus') + ' ' + isPro()}
                                     type="number"
                                     value={attributes.image_height}
                                     onChange={(value) => setAttributes({ image_height: parseInt(value) || 0 })}
                                     placeholder="300"
+                                    disabled={isDisabled()}
                                 />
                             </>
                         )}

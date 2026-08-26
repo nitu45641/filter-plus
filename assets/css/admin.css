@@ -529,7 +529,7 @@ a.pr-tag{
 }
 .select-pro-fr{
 	position: relative !important;
-	left: 5px !important;
+	left: 8px !important;
 }
 
 /* Header menu start */
@@ -934,23 +934,26 @@ a.pr-tag{
 a.pro-link{
 	position: relative;
 	text-decoration: none;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }
 .pro-fr {
-	padding: 0 4px;
+	padding: 0px 5px;
 	border: 1px solid #FD933A;
 	font-size: 11px;
 	background: #FFEAD8;
 	color: #121212;
 	border-radius: 6px;
+	white-space: nowrap;
 }
 .pro-link .pro-fr{
 	justify-content: center;
 	align-items: center;
 	display: flex;
-	width: 98px;
-	position: absolute;
-	top: 5px;
-	right: 0;
+	width: auto;
+	position: static;
+	flex-shrink: 0;
 }
 .pro-link .pro-fr::after{
 	position: relative;

@@ -1101,6 +1101,104 @@ class Helper {
 	}
 
 	/**
+	 * Return a real, on-disk cropped/resized image for a custom width x height that
+	 * has no registered WordPress image size. wp_get_attachment_image() cannot do
+	 * this on its own — passed an arbitrary array( $w, $h ) it only matches an
+	 * already-generated subsize or falls back to serving the full-size file with
+	 * width/height HTML attributes (no real byte savings, wrong intrinsic size).
+	 *
+	 * The generated file is cached in the attachment's metadata (as a subsize named
+	 * fp-custom-{w}x{h}) so it's only generated once per attachment/dimension pair.
+	 *
+	 * @param int   $attachment_id
+	 * @param int   $width
+	 * @param int   $height
+	 * @param array $attr Extra HTML attributes (e.g. 'style', 'class' additions).
+	 * @return string Full <img> tag, or '' on failure.
+	 */
+	public static function custom_sized_attachment_image( $attachment_id, $width, $height, $attr = array() ) {
+		$attachment_id = intval( $attachment_id );
+		$width  = max( 1, intval( $width ) );
+		$height = max( 1, intval( $height ) );
+
+		if ( ! $attachment_id || ! wp_attachment_is_image( $attachment_id ) ) {
+			return '';
+		}
+
+		$size_name = 'fp-custom-' . $width . 'x' . $height;
+		$metadata  = wp_get_attachment_metadata( $attachment_id );
+		$file_url  = '';
+		$out_w     = $width;
+		$out_h     = $height;
+
+		// Already generated for this attachment? Reuse it.
+		if ( ! empty( $metadata['sizes'][ $size_name ]['file'] ) && ! empty( $metadata['file'] ) ) {
+			$upload_dir = wp_get_upload_dir();
+			$sub_dir    = trailingslashit( str_replace( wp_basename( $metadata['file'] ), '', $metadata['file'] ) );
+			$file_url   = trailingslashit( $upload_dir['baseurl'] ) . $sub_dir . $metadata['sizes'][ $size_name ]['file'];
+			$out_w      = $metadata['sizes'][ $size_name ]['width'];
+			$out_h      = $metadata['sizes'][ $size_name ]['height'];
+		}
+
+		// Not generated yet — crop/resize it now and cache the result.
+		if ( empty( $file_url ) ) {
+			$original_file = get_attached_file( $attachment_id );
+			if ( ! $original_file || ! file_exists( $original_file ) ) {
+				return '';
+			}
+
+			$editor = wp_get_image_editor( $original_file );
+			if ( is_wp_error( $editor ) ) {
+				return '';
+			}
+
+			$editor->resize( $width, $height, true ); // true = hard crop, matches WP's own size behavior.
+			$saved = $editor->save();
+			if ( is_wp_error( $saved ) || empty( $saved['path'] ) ) {
+				return '';
+			}
+
+			$upload_dir = wp_get_upload_dir();
+			$file_url   = str_replace( wp_normalize_path( $upload_dir['basedir'] ), $upload_dir['baseurl'], wp_normalize_path( $saved['path'] ) );
+			$out_w      = ! empty( $saved['width'] ) ? $saved['width'] : $width;
+			$out_h      = ! empty( $saved['height'] ) ? $saved['height'] : $height;
+
+			if ( ! empty( $metadata ) ) {
+				$metadata['sizes'][ $size_name ] = array(
+					'file'      => $saved['file'],
+					'width'     => $out_w,
+					'height'    => $out_h,
+					'mime-type' => $saved['mime-type'],
+				);
+				wp_update_attachment_metadata( $attachment_id, $metadata );
+			}
+		}
+
+		$alt = trim( wp_strip_all_tags( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) );
+
+		$default_attr = array(
+			'src'    => $file_url,
+			'class'  => "attachment-{$size_name} size-{$size_name} wp-post-image",
+			'alt'    => $alt,
+			'width'  => $out_w,
+			'height' => $out_h,
+			'loading'=> 'lazy',
+		);
+		$attr = wp_parse_args( $attr, $default_attr );
+
+		$html = '<img';
+		foreach ( $attr as $name => $value ) {
+			if ( $value === '' || $value === null ) {
+				continue;
+			}
+			$html .= ' ' . esc_attr( $name ) . '="' . esc_attr( $value ) . '"';
+		}
+		$html .= ' />';
+
+		return $html;
+	}
+
+	/**
 	 * Product archive layout template options
 	 *
 	 * @return array
