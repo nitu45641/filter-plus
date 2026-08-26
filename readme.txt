@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, wordpress filter plugin, ajax product filter, product filter, filter by price
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.28
+Stable tag: 1.1.29
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -145,6 +145,15 @@ Filter Plus has been tested with all major WordPress and WooCommerce themes. If 
 No. If you can install and activate a WordPress plugin, you can use Filter Plus. The Elementor widget and Gutenberg block provide a visual, no-code setup. The shortcode option requires only copy-paste.
 
 == Changelog ==
+
+= 1.1.29 (August 26, 2026) =
+Added  : "Add to Cart Text" option — customize the Add to Cart button label (shortcode, Elementor, Bricks, Gutenberg)
+Added  : "Image Size" option (Pro) — choose the product thumbnail size, including a Custom Size with manual width/height (shortcode, Elementor, Bricks, Gutenberg)
+Added  : `filterplus_product_thumbnail_size` filter hook to override the product image size from `functions.php`
+Fix    : Product thumbnails used the oversized `large` image size (or hardcoded pixel dimensions) instead of `woocommerce_thumbnail`, flagged as oversized images by PageSpeed Insights
+Fix    : Placeholder image (shown when a product has no featured image) was missing its `attachment-{size} size-{size}` CSS classes
+Fix    : Add to Cart loading spinner / success checkmark rendered off-position instead of inside the button (missing `position: relative` on `.add_to_cart_button`)
+Tweak  : Renamed "Display ..." labels to "Show ..." across the Filter Result Products settings
 
 = 1.1.28 (August 07, 2026) =
 Fix    : Category archive page showed products from every category instead of just the current one

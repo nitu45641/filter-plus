@@ -827,6 +827,9 @@ ul.pagination {
 .wheel{
 	fill: var(--filter-secondary-color,'#fff');
 }
+.add_to_cart_button{
+	position: relative;
+}
 .add_to_cart_button.loading svg,
 .add_to_cart_button.added svg{
 	display: none;
