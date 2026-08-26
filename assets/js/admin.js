@@ -192,12 +192,19 @@
 			'show_size',
 			'show_colors',
 			'show_layout_on_product_archive',
+			'product_image_size',
 		];
 		$.each(ids, function (index, data) {
 			const value = $('#' + data);
 			value.on('change', function () {
 				if (data == 'filter_type') {
 					if (value.val() == 'custom_post') {
+						$('.' + data).removeClass('d-none');
+					} else {
+						$('.' + data).addClass('d-none');
+					}
+				} else if (data == 'product_image_size') {
+					if (value.val() == 'custom') {
 						$('.' + data).removeClass('d-none');
 					} else {
 						$('.' + data).addClass('d-none');

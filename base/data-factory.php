@@ -71,6 +71,9 @@ class DataFactory {
             'hide_prod_price'        => 'yes',
             'hide_prod_add_cart'     => 'yes',
             'add_to_cart_text'       => esc_html__('Add to cart','filter-plus'),
+            'product_image_size'     => 'woocommerce_thumbnail',
+            'image_width'            => '',
+            'image_height'           => '',
             'hide_prod_rating'       => 'yes',
             'enable_category_layout' => 'no',
             'current_cat_id'         => '',
@@ -170,6 +173,9 @@ class DataFactory {
 		$default_data['hide_prod_price']    = ! empty( $hide_prod_price ) && ( $hide_prod_price == true || $hide_prod_price == 'yes' ) ?  'yes' : 'no';
 		$default_data['hide_prod_add_cart'] = ! empty( $hide_prod_add_cart ) && ( $hide_prod_add_cart == true || $hide_prod_add_cart == 'yes' ) ?  'yes' : 'no';
 		$default_data['add_to_cart_text']   = ! empty( $settings['add_to_cart_text'] ) ? sanitize_text_field( $settings['add_to_cart_text'] ) : esc_html__( 'Add to cart', 'filter-plus' );
+		$default_data['product_image_size'] = ! empty( $settings['product_image_size'] ) ? sanitize_text_field( $settings['product_image_size'] ) : 'woocommerce_thumbnail';
+		$default_data['image_width']        = ! empty( $settings['image_width'] )  ? intval( $settings['image_width'] )  : '';
+		$default_data['image_height']       = ! empty( $settings['image_height'] ) ? intval( $settings['image_height'] ) : '';
 		$default_data['hide_prod_rating']   = ! empty( $hide_prod_rating ) && ( $hide_prod_rating == true || $hide_prod_rating == 'yes' ) ?  'yes' : 'no';
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
 		$default_data['enable_category_layout'] = ( isset( $settings['enable_category_layout'] ) && $settings['enable_category_layout'] === 'yes' ) ? 'yes' : 'no';
@@ -220,6 +226,9 @@ class DataFactory {
 			'hide_prod_price' => $hide_prod_price,
 			'hide_prod_add_cart' => $hide_prod_add_cart,
 			'add_to_cart_text' => $add_to_cart_text,
+			'product_image_size' => $product_image_size,
+			'image_width' => $image_width,
+			'image_height' => $image_height,
 			'hide_prod_rating' => $hide_prod_rating,
 			'size_label' => $size_label,
 			'attribute_label' => $attribute_label,

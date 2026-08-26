@@ -1051,6 +1051,56 @@ class Helper {
 	}
 
 	/**
+	 * Registered WordPress/WooCommerce image sizes available for the product/post thumbnail.
+	 *
+	 * @param string $type 'label_value' returns [{label, value}, ...] for JS consumers; default returns value => label.
+	 * @return array
+	 */
+	public static function product_image_sizes( $type = '' ) {
+		$sizes      = array();
+		$registered = wp_get_registered_image_subsizes();
+		$preferred  = array( 'woocommerce_thumbnail', 'woocommerce_single', 'thumbnail', 'medium', 'medium_large', 'large' );
+
+		foreach ( $preferred as $slug ) {
+			if ( isset( $registered[ $slug ] ) ) {
+				$sizes[ $slug ] = self::image_size_label( $slug, $registered[ $slug ] );
+			}
+		}
+		foreach ( $registered as $slug => $data ) {
+			if ( ! isset( $sizes[ $slug ] ) ) {
+				$sizes[ $slug ] = self::image_size_label( $slug, $data );
+			}
+		}
+		$sizes['full']   = esc_html__( 'Full Size', 'filter-plus' );
+		$sizes['custom'] = esc_html__( 'Custom Size', 'filter-plus' );
+
+		if ( $type == 'label_value' ) {
+			$result = array();
+			foreach ( $sizes as $value => $label ) {
+				$result[] = array( 'label' => $label, 'value' => $value );
+			}
+			return $result;
+		}
+
+		return $sizes;
+	}
+
+	/**
+	 * Human readable label for a registered image size.
+	 *
+	 * @param string $slug
+	 * @param array  $data width/height
+	 * @return string
+	 */
+	private static function image_size_label( $slug, $data ) {
+		$name = ucwords( str_replace( array( '_', '-' ), ' ', $slug ) );
+		if ( ! empty( $data['width'] ) && ! empty( $data['height'] ) ) {
+			$name .= ' (' . intval( $data['width'] ) . 'x' . intval( $data['height'] ) . ')';
+		}
+		return $name;
+	}
+
+	/**
 	 * Product archive layout template options
 	 *
 	 * @return array

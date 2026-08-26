@@ -527,6 +527,32 @@ class Woo_Filter extends Widget_Base {
 				'condition' => array( 'hide_prod_add_cart' => 'yes' ),
 			)
 		);
+		$this->add_control('product_image_size',
+			array(
+				'label' => esc_html__( 'Image Size', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'woocommerce_thumbnail',
+				'options' => Helper::product_image_sizes(),
+			)
+		);
+		$this->add_control('image_width',
+			array(
+				'label' => esc_html__( 'Image Width (px)', 'filter-plus' ),
+				'type' => Controls_Manager::NUMBER,
+				'placeholder' => 300,
+				'min' => 1,
+				'condition' => array( 'product_image_size' => 'custom' ),
+			)
+		);
+		$this->add_control('image_height',
+			array(
+				'label' => esc_html__( 'Image Height (px)', 'filter-plus' ),
+				'type' => Controls_Manager::NUMBER,
+				'placeholder' => 300,
+				'min' => 1,
+				'condition' => array( 'product_image_size' => 'custom' ),
+			)
+		);
 		$this->add_control('hide_prod_rating',
 			array(
 				'label' => esc_html__( 'Display Rating', 'filter-plus' ),
@@ -934,6 +960,9 @@ class Woo_Filter extends Widget_Base {
 		$hide_prod_rating = ! empty( $data['hide_prod_rating'] )   ? $data['hide_prod_rating']    : 'yes';
 		$hide_prod_price  = ! empty( $data['hide_prod_price'] )    ? $data['hide_prod_price']     : 'yes';
 		$add_to_cart_text = ! empty( $data['add_to_cart_text'] )   ? $data['add_to_cart_text']    : '';
+		$product_image_size = ! empty( $data['product_image_size'] ) ? $data['product_image_size'] : 'woocommerce_thumbnail';
+		$image_width  = ! empty( $data['image_width'] )  ? $data['image_width']  : '';
+		$image_height = ! empty( $data['image_height'] ) ? $data['image_height'] : '';
 
 		// Try free plugin template first, then fall back to pro plugin template directory.
 		$tpl_file = \FilterPlus::locate_template( "woo-filter/template-{$template}/right-side/product-template.php" );
@@ -973,6 +1002,9 @@ class Woo_Filter extends Widget_Base {
 			'product_categories' => $product_categories,
 			'product_tags'       => $product_tags,
 			'add_to_cart_text'   => $add_to_cart_text,
+			'product_image_size' => $product_image_size,
+			'image_width'        => $image_width,
+			'image_height'       => $image_height,
 		);
 		$products = \FilterPlus\Core\Frontend\SearchFilter\Actions::process_product_data( $posts, $param );
 

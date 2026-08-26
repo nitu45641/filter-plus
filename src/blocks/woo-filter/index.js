@@ -157,6 +157,18 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'string',
             default: ''
         },
+        product_image_size: {
+            type: 'string',
+            default: 'woocommerce_thumbnail'
+        },
+        image_width: {
+            type: 'number',
+            default: 0
+        },
+        image_height: {
+            type: 'number',
+            default: 0
+        },
         hide_prod_rating: {
             type: 'boolean',
             default: true
@@ -656,6 +668,32 @@ registerBlockType('filter-plus/woo-filter', {
                                 onChange={(value) => setAttributes({ add_to_cart_text: value })}
                                 placeholder={__('Add to cart', 'filter-plus')}
                             />
+                        )}
+
+                        <SelectControl
+                            label={__('Image Size', 'filter-plus')}
+                            value={attributes.product_image_size}
+                            options={window.filterPlus?.image_sizes || [{ label: __('WooCommerce Thumbnail', 'filter-plus'), value: 'woocommerce_thumbnail' }]}
+                            onChange={(value) => setAttributes({ product_image_size: value })}
+                        />
+
+                        {attributes.product_image_size === 'custom' && (
+                            <>
+                                <TextControl
+                                    label={__('Image Width (px)', 'filter-plus')}
+                                    type="number"
+                                    value={attributes.image_width}
+                                    onChange={(value) => setAttributes({ image_width: parseInt(value) || 0 })}
+                                    placeholder="300"
+                                />
+                                <TextControl
+                                    label={__('Image Height (px)', 'filter-plus')}
+                                    type="number"
+                                    value={attributes.image_height}
+                                    onChange={(value) => setAttributes({ image_height: parseInt(value) || 0 })}
+                                    placeholder="300"
+                                />
+                            </>
                         )}
 
                         <ToggleControl

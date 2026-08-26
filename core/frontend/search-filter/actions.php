@@ -70,6 +70,9 @@ class Actions {
 		$current_cat_id = ! empty( $post_data['current_cat_id'] ) ? absint( $post_data['current_cat_id'] ) : '';
 		$enable_category_layout = ! empty( $post_data['enable_category_layout'] ) && $post_data['enable_category_layout'] === 'yes' ? 'yes' : 'no';
 		$add_to_cart_text = ! empty( $post_data['add_to_cart_text'] ) ? sanitize_text_field( $post_data['add_to_cart_text'] ) : '';
+		$product_image_size = ! empty( $post_data['product_image_size'] ) ? sanitize_text_field( $post_data['product_image_size'] ) : '';
+		$image_width  = ! empty( $post_data['image_width'] )  ? absint( $post_data['image_width'] )  : '';
+		$image_height = ! empty( $post_data['image_height'] ) ? absint( $post_data['image_height'] ) : '';
 
 		$args = array(
 			'pagination_style' => $pagination_style,
@@ -99,6 +102,9 @@ class Actions {
 			'current_cat_id' => $current_cat_id,
 			'enable_category_layout' => $enable_category_layout,
 			'add_to_cart_text' => $add_to_cart_text,
+			'product_image_size' => $product_image_size,
+			'image_width'   => $image_width,
+			'image_height'  => $image_height,
 		);
 
 		$get_products   = $this->get_products( $args );
@@ -488,7 +494,20 @@ class Actions {
 	 */
 	public static function process_wp_data( $posts , $param ) {
 		$products 	= array();
-		$size  		= $param['masonry_style'] !== "yes" ? self::product_size( $param['filter_type'] , $param['template'] ) : '';
+
+		// Resolve the configured image size: 'custom' means a manual width/height pair.
+		$resolved_image_size = '';
+		if ( $param['filter_type'] == 'product' && ! empty( $param['product_image_size'] ) ) {
+			if ( $param['product_image_size'] === 'custom' ) {
+				$custom_w = ! empty( $param['image_width'] ) ? intval( $param['image_width'] ) : 300;
+				$custom_h = ! empty( $param['image_height'] ) ? intval( $param['image_height'] ) : 300;
+				$resolved_image_size = array( $custom_w, $custom_h );
+			} else {
+				$resolved_image_size = $param['product_image_size'];
+			}
+		}
+
+		$size  		= $param['masonry_style'] !== "yes" ? self::product_size( $param['filter_type'] , $param['template'] , $resolved_image_size ) : '';
 		$cats  		= $param['filter_type'] == "product" ? 'product_cat' : 'category';
 		$tags 		= $param['filter_type'] == "product" ? 'product_tag' : 'post_tag';
 		if ( !empty($posts) ) {
@@ -496,8 +515,10 @@ class Actions {
 				if(has_post_thumbnail($post->ID)){
 					$image = wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), $size  , '', '' );
 				} else {
-					$image_url = ( class_exists('WooCommerce') && $param['filter_type'] == "product") ? wc_placeholder_img_src( 'woocommerce_single' ) : get_post_meta($post->ID, 'featured_image', true);
-					$image = '<img src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
+					$image_url  = ( class_exists('WooCommerce') && $param['filter_type'] == "product") ? wc_placeholder_img_src( 'woocommerce_single' ) : get_post_meta($post->ID, 'featured_image', true);
+					$size_slug  = is_array( $size ) ? implode( 'x', $size ) : $size;
+					$image_class = ! empty( $size_slug ) ? 'attachment-' . $size_slug . ' size-' . $size_slug . ' wp-post-image' : 'wp-post-image';
+					$image = '<img class="'.esc_attr($image_class).'" src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
 				}
 
 				$products[$key]['id'] 	= $post->ID;
@@ -505,6 +526,7 @@ class Actions {
 				$products[$key]['post_date']       	= $post_date->format( 'F j, Y' );
 				$products[$key]['post_title']       = get_the_title( $post->ID );
 				$products[$key]['post_image']       = $image;
+				$products[$key]['image_size']       = $resolved_image_size;
 				$products[$key]['post_description'] = self::filter_item_description($post->ID);
 				$products[$key]['post_permalink']   = get_permalink( $post->ID );
 				$products[$key]['template']    		= $param['template'];
@@ -634,7 +656,11 @@ class Actions {
 	 * @param [type] $template
 	 * @return array
 	 */
-	public static function product_size( $filter_type , $template){
+	public static function product_size( $filter_type , $template , $override_size = ''){
+
+		if ( $filter_type == 'product' && ! empty( $override_size ) ) {
+			return apply_filters( 'filterplus_product_thumbnail_size', $override_size, $filter_type, $template, 'query' );
+		}
 
 		$size = $filter_type == 'product' ? 'woocommerce_thumbnail' : array(300, 300);
 		if ( $filter_type == 'product' && $template == '7') {

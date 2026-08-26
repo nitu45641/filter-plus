@@ -301,6 +301,22 @@ use \FilterPlus\Utils\Helper as Helper;
 			'placeholder'=>esc_html__("Add to cart","filter-plus"),'data_label' => 'add_to_cart_text');
 			filterplus_number_input_field($filterplus_args);
 
+			// Product image size
+			$filterplus_args = array('label'=>esc_html__("Image Size:","filter-plus"),'id' => 'product_image_size',
+			'data_label' => 'product_image_size','options'=> Helper::product_image_sizes(),'type'=>'random','selected' => 'woocommerce_thumbnail');
+			filterplus_select_field($filterplus_args);
+
+			// custom image width/height (shown only when Image Size = Custom Size)
+			$filterplus_args = array('label'=>esc_html__("Image Width (px):","filter-plus"),'id' => 'image_width',
+			'placeholder'=>esc_html__("300","filter-plus"),'field_type'=> 'number',
+			'condition_class' => 'product_image_size d-none','data_label' => 'image_width');
+			filterplus_number_input_field($filterplus_args);
+
+			$filterplus_args = array('label'=>esc_html__("Image Height (px):","filter-plus"),'id' => 'image_height',
+			'placeholder'=>esc_html__("300","filter-plus"),'field_type'=> 'number',
+			'condition_class' => 'product_image_size d-none','data_label' => 'image_height');
+			filterplus_number_input_field($filterplus_args);
+
 			// show Rating
 			$filterplus_args = array('label'=>esc_html__("Show Rating:","filter-plus"),'id' => 'hide_prod_rating',
 			'data_label' => 'hide_prod_rating','checked' => 'yes');

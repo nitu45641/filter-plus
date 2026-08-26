@@ -58,6 +58,7 @@ function filterplus_block_assets() {
             'woo_categories'    => array_values( \FilterPlus\Utils\Helper::get_categories('','label_value') ),
             'tags'              => array_values( \FilterPlus\Utils\Helper::get_product_tags('product_tag','label_value') ),
             'attributes'        => array_values( \FilterPlus\Utils\Helper::woo_attribute_list('label_value') ),
+            'image_sizes'       => \FilterPlus\Utils\Helper::product_image_sizes('label_value'),
 			'is_pro_active'     => (( class_exists( 'FilterPlusPro' ) ) ? 0 : 1 ),
         ]
     );

@@ -513,6 +513,37 @@ class Woo_Filter extends \Bricks\Element {
 			'placeholder' => esc_html__( 'Add to cart', 'filter-plus' ),
 			'required' => array( 'hide_prod_add_cart', '=', true ),
 		);
+		$this->controls['product_image_size'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Image Size', 'filter-plus' ),
+			'type' => 'select',
+			'options' => \FilterPlus\Utils\Helper::product_image_sizes(),
+			'inline' => true,
+			'placeholder' => esc_html__( 'Select Image Size', 'filter-plus' ),
+			'single' => true,
+			'searchable' => true,
+			'clearable' => true,
+			'default' => 'woocommerce_thumbnail',
+		);
+		$this->controls['image_width'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Image Width (px)', 'filter-plus' ),
+			'type' => 'number',
+			'min' => 1,
+			'placeholder' => 300,
+			'required' => array( 'product_image_size', '=', 'custom' ),
+		);
+		$this->controls['image_height'] = array(
+			'tab' => 'content',
+			'group' => 'filter-result',
+			'label' => esc_html__( 'Image Height (px)', 'filter-plus' ),
+			'type' => 'number',
+			'min' => 1,
+			'placeholder' => 300,
+			'required' => array( 'product_image_size', '=', 'custom' ),
+		);
 		$this->controls['hide_prod_rating'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',

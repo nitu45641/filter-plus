@@ -626,6 +626,9 @@
 			let enable_category_layout = $('#shopContainer').data('enable_category_layout') || 'no';
 			let hide_prod_add_cart = $('#shopContainer').data('hide_prod_add_cart') || 'yes';
 			let add_to_cart_text   = $('#shopContainer').data('add_to_cart_text') || '';
+			let product_image_size = $('#shopContainer').data('product_image_size') || '';
+			let image_width  = $('#shopContainer').data('image_width') || '';
+			let image_height = $('#shopContainer').data('image_height') || '';
 			let hide_prod_title    = $('#shopContainer').data('hide_prod_title') || 'yes';
 			let hide_prod_desc     = $('#shopContainer').data('hide_prod_desc') || 'yes';
 			let hide_prod_price    = $('#shopContainer').data('hide_prod_price') || 'yes';
@@ -649,6 +652,9 @@
 				enable_category_layout,
 				hide_prod_add_cart,
 				add_to_cart_text,
+				product_image_size,
+				image_width,
+				image_height,
 				hide_prod_title,
 				hide_prod_desc,
 				hide_prod_price,

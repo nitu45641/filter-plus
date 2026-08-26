@@ -159,6 +159,18 @@ function product_filter_block() {
                     'type' => 'string',
                     'default' => ''
                 ),
+                'product_image_size' => array(
+                    'type' => 'string',
+                    'default' => 'woocommerce_thumbnail'
+                ),
+                'image_width' => array(
+                    'type' => 'number',
+                    'default' => 0
+                ),
+                'image_height' => array(
+                    'type' => 'number',
+                    'default' => 0
+                ),
                 'hide_prod_rating' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -278,6 +290,9 @@ function product_filter_callback( $settings ) {
                 'taxonomy'           => 'product_cat',
                 'exclude_cat_id'     => '',
                 'add_to_cart_text'   => ! empty( $settings['add_to_cart_text'] ) ? $settings['add_to_cart_text'] : '',
+                'product_image_size' => ! empty( $settings['product_image_size'] ) ? $settings['product_image_size'] : 'woocommerce_thumbnail',
+                'image_width'        => ! empty( $settings['image_width'] )  ? $settings['image_width']  : '',
+                'image_height'       => ! empty( $settings['image_height'] ) ? $settings['image_height'] : '',
             ] );
 
             // Try selected template first; fall back to template 1 if Pro template not renderable
