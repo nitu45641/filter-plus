@@ -153,6 +153,8 @@ Added  : `filterplus_product_thumbnail_size` filter hook to override the product
 Fix    : Product thumbnails used the oversized `large` image size (or hardcoded pixel dimensions) instead of `woocommerce_thumbnail`, flagged as oversized images by PageSpeed Insights
 Fix    : Placeholder image (shown when a product has no featured image) was missing its `attachment-{size} size-{size}` CSS classes
 Fix    : Add to Cart loading spinner / success checkmark rendered off-position instead of inside the button (missing `position: relative` on `.add_to_cart_button`)
+Fix    : Template 2 grid cards had uneven heights with masonry off — the product thumbnail had no fixed aspect ratio, so portrait/tall images (e.g. non-square Image Size selections) blew out their card while others stayed compact
+Tweak  : Removed a stale inline `.product-style-3` image rule that duplicated (and drifted from) Filter Plus Pro's own stylesheet
 Tweak  : Renamed "Display ..." labels to "Show ..." across the Filter Result Products settings
 
 = 1.1.28 (August 07, 2026) =

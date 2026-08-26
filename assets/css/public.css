@@ -1715,6 +1715,18 @@ a.added_to_cart.wc-forward {
 }
 .product-style-2 .vartical-prod-card-container .product-thumbnail {
 	position: relative;
+	aspect-ratio: 1 / 1;
+	width: 100%;
+	overflow: hidden;
+}
+.product-style-2 .vartical-prod-card-container .product-thumbnail .vpcc-image {
+	width: 100%;
+	height: 100%;
+}
+.product-style-2 .vartical-prod-card-container .product-thumbnail .vpcc-image img {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover;
 }
 
 .product-style-2

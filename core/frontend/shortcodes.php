@@ -361,12 +361,6 @@ class Shortcodes {
 				grid-template-columns: repeat(3, 1fr);
 				gap: 20px;
 			}
-			.product-style-3 .vpcc-image img {
-				width: 100%;
-				height: 100%;
-				object-fit: contain;
-				display: block;
-			}
 			.tab-item.product-style-5{
 				display: grid;
 				grid-template-columns: 200px 200px 200px 200px;
