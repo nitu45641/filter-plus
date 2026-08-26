@@ -1495,9 +1495,11 @@ a {
 	height: 16px;
 }
 
-/* Template 1 - Cart button in thumbnail */
+/* Template 1 & 2 - Cart button in thumbnail (both use .card-action-btn-container) */
 .product-style-1 .card-action-btn-container a,
-.product-style-1 .card-action-btn-container .button {
+.product-style-1 .card-action-btn-container .button,
+.product-style-2 .card-action-btn-container a,
+.product-style-2 .card-action-btn-container .button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -1518,7 +1520,9 @@ a {
 }
 
 .product-style-1 .card-action-btn-container a:hover,
-.product-style-1 .card-action-btn-container .button:hover {
+.product-style-1 .card-action-btn-container .button:hover,
+.product-style-2 .card-action-btn-container a:hover,
+.product-style-2 .card-action-btn-container .button:hover {
 	background-color: var(--filter-primary-color, #2d73e7);
 	transform: translateY(-2px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -1528,7 +1532,11 @@ a {
 .product-style-1 .card-action-btn-container a svg,
 .product-style-1 .card-action-btn-container .button svg,
 .product-style-1 .card-action-btn-container a i,
-.product-style-1 .card-action-btn-container .button i {
+.product-style-1 .card-action-btn-container .button i,
+.product-style-2 .card-action-btn-container a svg,
+.product-style-2 .card-action-btn-container .button svg,
+.product-style-2 .card-action-btn-container a i,
+.product-style-2 .card-action-btn-container .button i {
 	display: inline-block;
 	vertical-align: middle;
 	width: 16px;
@@ -1536,9 +1544,11 @@ a {
 	flex-shrink: 0;
 }
 
-/* Loading state for template 1 */
+/* Loading state for template 1 & 2 */
 .product-style-1 .card-action-btn-container a.loading::after,
-.product-style-1 .card-action-btn-container .button.loading::after {
+.product-style-1 .card-action-btn-container .button.loading::after,
+.product-style-2 .card-action-btn-container a.loading::after,
+.product-style-2 .card-action-btn-container .button.loading::after {
 	content: "";
 	position: absolute;
 	width: 16px;
@@ -1554,18 +1564,24 @@ a {
 }
 
 .product-style-1 .card-action-btn-container a.loading,
-.product-style-1 .card-action-btn-container .button.loading {
+.product-style-1 .card-action-btn-container .button.loading,
+.product-style-2 .card-action-btn-container a.loading,
+.product-style-2 .card-action-btn-container .button.loading {
 	color: transparent !important;
 }
 
 .product-style-1 .card-action-btn-container a.loading *,
-.product-style-1 .card-action-btn-container .button.loading * {
+.product-style-1 .card-action-btn-container .button.loading *,
+.product-style-2 .card-action-btn-container a.loading *,
+.product-style-2 .card-action-btn-container .button.loading * {
 	opacity: 0;
 }
 
-/* Added state for template 1 */
+/* Added state for template 1 & 2 */
 .product-style-1 .card-action-btn-container a.added::after,
-.product-style-1 .card-action-btn-container .button.added::after {
+.product-style-1 .card-action-btn-container .button.added::after,
+.product-style-2 .card-action-btn-container a.added::after,
+.product-style-2 .card-action-btn-container .button.added::after {
 	content: "✓";
 	position: absolute;
 	left: 50%;
@@ -1577,12 +1593,16 @@ a {
 }
 
 .product-style-1 .card-action-btn-container a.added,
-.product-style-1 .card-action-btn-container .button.added {
+.product-style-1 .card-action-btn-container .button.added,
+.product-style-2 .card-action-btn-container a.added,
+.product-style-2 .card-action-btn-container .button.added {
 	color: transparent !important;
 }
 
 .product-style-1 .card-action-btn-container a.added *,
-.product-style-1 .card-action-btn-container .button.added * {
+.product-style-1 .card-action-btn-container .button.added *,
+.product-style-2 .card-action-btn-container a.added *,
+.product-style-2 .card-action-btn-container .button.added * {
 	opacity: 0;
 }
 

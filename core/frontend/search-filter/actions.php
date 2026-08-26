@@ -652,7 +652,7 @@ class Actions {
 
 				break;
 			case ($product->get_type() !== 'simple' ) && ($cart_button == 'yes' ) && $product->is_in_stock() == true :
-				$cart_html .= '<a href="'.$product->get_permalink().'" class="">'.$icon . $btn_text .'</a>';
+				$cart_html .= '<a href="'.$product->get_permalink().'" class="add_to_cart_button cart_button-'.$template.'">'.$icon . $btn_text .'</a>';
 
 				break;
 
