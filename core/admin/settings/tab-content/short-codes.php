@@ -18,7 +18,8 @@ use \FilterPlus\Utils\Helper as Helper;
 			$filterplus_doc_url 	= '<a target="_blank" href="https://wpbens.com/docs/filter-plus/woocommerce/product-filter/"> [' . esc_html__( 'Documentation Link', 'filter-plus' ) . '] </a>';
 			$filterplus_docs 		= '<div class="documentation mb-1"><div class="doc">' . esc_html__( 'Gutenberg Block,Elementor widget is available for filter features.', 'filter-plus' ) . ' ' . $filterplus_doc_url . '</div></div>';
 			echo wp_kses_post( $filterplus_docs );
-
+		?>
+		<?php
 			// apply button mode
 			$filterplus_args = array('label'=>esc_html__("Apply Button Mode:","filter-plus"),'id' => 'apply_button_mode','data_label' => 'apply_button_mode');
 			filterplus_checkbox_field($filterplus_args);

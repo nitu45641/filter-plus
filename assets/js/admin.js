@@ -80,17 +80,28 @@
 					);
 					const shortcode = `[${shortcode_name} ${input_value}]`;
 					results.val('').val(shortcode);
-					copyTextData(results);
+					copyTextData(results, _this.find('button'));
 				});
 			});
 		}
 		// copy text
-		function copyTextData(fieldId) {
+		function copyTextData(fieldId, $trigger) {
 			if (fieldId.length > 0) {
 				fieldId.select();
 				document.execCommand('copy');
-				alert('Copied On clipboard');
+				showCopiedFeedback($trigger);
 			}
+		}
+		// brief "Copied!" swap on the trigger button instead of a blocking alert
+		function showCopiedFeedback($trigger) {
+			if (!$trigger || !$trigger.length || $trigger.data('copied')) {
+				return;
+			}
+			const original_text = $trigger.text();
+			$trigger.data('copied', true).addClass('copied').text('Copied!');
+			setTimeout(function () {
+				$trigger.data('copied', false).removeClass('copied').text(original_text);
+			}, 1200);
 		}
 		// find input value
 		function findInputValue(_this) {
@@ -169,6 +180,92 @@
 				return true;
 			}
 			return false;
+		}
+
+		/**
+		 * Filter Sets - save the currently configured shortcode as a named,
+		 * reusable custom-post-type record; edit/delete/copy saved sets.
+		 */
+		filterSetActions();
+		function filterSetActions() {
+			const $filter_set_form = $('#filter-set-form-wrap');
+			const $filter_set_list = $('#filter-set-list-wrap');
+
+			// reveal the "add new" form, hide the list - one clean swap,
+			// no extra scroll-to jump once the layout settles
+			$('.add-filter-set').on('click', function (e) {
+				e.preventDefault();
+				$(this).trigger('blur');
+				$filter_set_list.stop(true, true).slideUp(400, 'swing', function () {
+					$filter_set_form.removeClass('d-none').stop(true, true).slideDown(400, 'swing');
+				});
+			});
+
+			// hide it again without saving, bring the list back
+			$('.close-filter-set-form').on('click', function (e) {
+				e.preventDefault();
+				$(this).trigger('blur');
+				$filter_set_form.stop(true, true).slideUp(400, 'swing', function () {
+					$filter_set_list.stop(true, true).slideDown(400, 'swing');
+				});
+			});
+
+			// save (insert/update) a filter set
+			$('.save-filter-set').on('click', function (e) {
+				e.preventDefault();
+				const $this = $(this);
+				const name_field = $('.filter-set-name-input');
+				const name = $.trim(name_field.val());
+
+				if (!name) {
+					name_field.trigger('focus');
+					return;
+				}
+
+				// the currently open accordion tab decides which shortcode gets built
+				const parent_block = $('.filter-set-content.active .shortcode-block');
+				if (!parent_block.length) {
+					return;
+				}
+
+				const shortcode_name = parent_block.data('name');
+				const input_value = findInputValue(parent_block.find('.input-section'));
+				const shortcode = `[${shortcode_name} ${input_value}]`;
+				const params = getAllValues(parent_block.find(':input'));
+
+				const data = {
+					action: 'save_filter_set',
+					filter_plus_nonce: filter_admin.filter_plus_nonce,
+					name,
+					type: shortcode_name,
+					shortcode,
+					params,
+				};
+
+				$.ajax({
+					url: filter_admin.ajax_url,
+					method: 'POST',
+					data,
+					dataType: 'json',
+					beforeSend() {
+						$this.addClass('loading');
+					},
+					success(response) {
+						$this.removeClass('loading');
+						if (response && response.success) {
+							location.reload();
+						} else {
+							alert(response?.data?.message || 'Could not save the filter set.');
+						}
+					},
+				});
+			});
+
+			// copy a saved set's shortcode
+			$(document).on('click', '.copy-filter-set', function (e) {
+				e.preventDefault();
+				copyTextData($(this).siblings('.saved-shortcode'), $(this));
+			});
 		}
 
 		/**

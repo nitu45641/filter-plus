@@ -21,6 +21,9 @@ class Core {
      * @return void
      */
     public function init() {
+      // Filter Set CPT (saved shortcode presets) - needed on every request, not admin-only.
+      add_action( 'init', array( '\FilterPlus\Core\Admin\FilterSets\Helper', 'register_post_type' ) );
+
       if ( is_admin() ) {
 
         \FilterPlus\Core\Lib\Banner::instance()->init();
@@ -29,6 +32,7 @@ class Core {
         // Ajax submit
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
           \FilterPlus\Core\Admin\Settings\Action::instance()->init();
+          \FilterPlus\Core\Admin\FilterSets\Action::instance()->init();
         }
       }
 

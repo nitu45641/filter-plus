@@ -1090,6 +1090,7 @@ a.pro-link:focus{
 .modal-close {
 	font-size: 20px;
 	color: #121212;
+	cursor: pointer;
 }
 .modal-close:hover,
 .modal-close:focus {
@@ -1110,6 +1111,51 @@ a.pro-link:focus{
 }
 .content-header{
 	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.shortcode-cell{
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.shortcode-cell .saved-shortcode{
+	flex: 1;
+	width: auto;
+	min-width: 0;
+}
+.shortcode-cell .copy-filter-set{
+	flex-shrink: 0;
+}
+.button.copied{
+	background: #1a9c4b !important;
+	border-color: #1a9c4b !important;
+	color: #fff !important;
+}
+.save-filter-set-block{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	background: #fff;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 6px;
+	border: 1px solid #E6E6E6;
+}
+.save-filter-set-block .filter-set-name-input{
+	width: auto;
+	flex: 1;
+}
+.save-filter-set-block .save-filter-set{
+	flex-shrink: 0;
+}
+/* The form is much taller than the saved-sets list, so the browser's own
+   scroll-anchoring "corrects" the scroll position when one replaces the
+   other - this reads as a jump. Opt this swap out of that behaviour. */
+#filter-set-list-wrap,
+#filter-set-form-wrap{
+	overflow-anchor: none;
 }
 .title-wrap{
 	margin: 1% 0;
@@ -1118,7 +1164,7 @@ a.pro-link:focus{
 	line-height: 1.4;
 }
 .content-header .title{
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 700;
 	line-height: 1.4;
 }
