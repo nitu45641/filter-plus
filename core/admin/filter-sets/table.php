@@ -64,6 +64,33 @@ class Table extends \WP_List_Table {
 	}
 
 	/**
+	 * Render the name column with row actions.
+	 *
+	 * @param array $item
+	 *
+	 * @return string
+	 */
+	protected function column_name( $item ) {
+		$actions = array(
+			'edit'   => sprintf(
+				'<a href="javascript:void(0);" class="edit-filter-set" data-id="%1$d" data-name="%2$s" data-type="%3$s" data-params="%4$s">%5$s</a>',
+				absint( $item['ID'] ),
+				esc_attr( $item['name'] ),
+				esc_attr( $item['type'] ),
+				esc_attr( wp_json_encode( $item['params'] ) ),
+				esc_html__( 'Edit', 'filter-plus' )
+			),
+			'delete' => sprintf(
+				'<a href="javascript:void(0);" class="delete-filter-set" data-id="%1$d">%2$s</a>',
+				absint( $item['ID'] ),
+				esc_html__( 'Delete', 'filter-plus' )
+			),
+		);
+
+		return esc_html( $item['name'] ) . $this->row_actions( $actions );
+	}
+
+	/**
 	 * Shortcode column - a read-only, click-to-copy field.
 	 */
 	protected function column_shortcode( $item ) {

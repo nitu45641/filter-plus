@@ -34,7 +34,7 @@ class Woo_Filter extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-menu-card';
+		return 'eicon-taxonomy-filter';
 	}
 
 	/**
@@ -762,14 +762,439 @@ class Woo_Filter extends Widget_Base {
 		);
 		$this->end_controls_section();
 
+		// Left Side (Filter) Style
 		$this->start_controls_section(
-			'thumbnail_style',
+			'filter_left_style',
 			array(
-				'label' => esc_html__( 'Thumbnail Style', 'filter-plus' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'label' => esc_html__( 'Filter Style (Left Side)', 'filter-plus' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+		$this->add_control(
+			'filter_left_color',
+			array(
+				'label'     => esc_html__( 'Text Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .shop-sidebar' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'filter_left_typography',
+				'label'    => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .shop-sidebar',
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array(
+				'name'     => 'filter_left_border',
+				'label'    => esc_html__( 'Border', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .shop-sidebar',
+			)
+		);
+		$this->add_responsive_control(
+			'filter_left_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .shop-sidebar' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'filter_left_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .shop-sidebar' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->end_controls_section();
 
+		// Right Side (Result) Style — includes overall wrap style plus per-element styling
+		$this->start_controls_section(
+			'filter_right_style',
+			array(
+				'label' => esc_html__( 'Filter Result Style (Right Side)', 'filter-plus' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		// Per-element style tabs
+		$this->start_controls_tabs( 'right_side_elements_tabs' );
+
+		$this->start_controls_tab(
+			'tab_prod_design',
+			array( 'label' => esc_html__( 'Design', 'filter-plus' ) )
+		);
+		$this->add_control(
+			'filter_right_color',
+			array(
+				'label'     => esc_html__( 'Text Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .products-wrap' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'filter_right_typography',
+				'label'    => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .products-wrap',
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array(
+				'name'     => 'filter_right_border',
+				'label'    => esc_html__( 'Border', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .products-wrap',
+			)
+		);
+		$this->add_responsive_control(
+			'filter_right_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .products-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'filter_right_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .products-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_prod_image',
+			array( 'label' => esc_html__( 'Image', 'filter-plus' ) )
+		);
+		$this->add_responsive_control(
+			'prod_img_width',
+			array(
+				'label'      => esc_html__( 'Width', 'filter-plus' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%' ),
+				'range'      => array(
+					'px' => array( 'min' => 0, 'max' => 1000 ),
+					'%'  => array( 'min' => 0, 'max' => 100 ),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .product-thumbnail .vpcc-image' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'prod_img_height',
+			array(
+				'label'      => esc_html__( 'Height', 'filter-plus' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array( 'min' => 0, 'max' => 1000 ),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .product-thumbnail .vpcc-image' => 'height: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+		$this->add_control(
+			'prod_img_object_fit',
+			array(
+				'label'     => esc_html__( 'Object Fit', 'filter-plus' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'cover',
+				'options'   => array(
+					'cover'   => esc_html__( 'Cover', 'filter-plus' ),
+					'contain' => esc_html__( 'Contain', 'filter-plus' ),
+					'fill'    => esc_html__( 'Fill', 'filter-plus' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .product-thumbnail .vpcc-image img' => 'object-fit: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array(
+				'name'     => 'prod_img_border',
+				'label'    => esc_html__( 'Border', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .product-thumbnail .vpcc-image img',
+			)
+		);
+		$this->add_responsive_control(
+			'prod_img_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .product-thumbnail .vpcc-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'prod_img_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .product-thumbnail' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_prod_title',
+			array( 'label' => esc_html__( 'Title', 'filter-plus' ) )
+		);
+		$this->add_control(
+			'prod_title_color',
+			array(
+				'label'     => esc_html__( 'Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .product-name a' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_control(
+			'prod_title_hover_color',
+			array(
+				'label'     => esc_html__( 'Hover Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .product-name a:hover' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'prod_title_typography',
+				'label'    => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .product-name a',
+			)
+		);
+		$this->add_responsive_control(
+			'prod_title_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .product-name' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_prod_price',
+			array( 'label' => esc_html__( 'Price', 'filter-plus' ) )
+		);
+		$this->add_control(
+			'prod_price_color',
+			array(
+				'label'     => esc_html__( 'Regular Price Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .product-price' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .product-price del' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_control(
+			'prod_price_sale_color',
+			array(
+				'label'     => esc_html__( 'Sale Price Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .product-price ins' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'prod_price_typography',
+				'label'    => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .product-price',
+			)
+		);
+		$this->add_responsive_control(
+			'prod_price_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .product-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_prod_review',
+			array( 'label' => esc_html__( 'Review', 'filter-plus' ) )
+		);
+		$this->add_control(
+			'prod_star_color',
+			array(
+				'label'     => esc_html__( 'Star Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .rating .star-rating span:before' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_control(
+			'prod_star_bg_color',
+			array(
+				'label'     => esc_html__( 'Star Background Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .rating .star-rating:before' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_control(
+			'prod_review_count_color',
+			array(
+				'label'     => esc_html__( 'Review Count Text Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce-product-rating' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'prod_review_typography',
+				'label'    => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .woocommerce-product-rating',
+			)
+		);
+		$this->add_responsive_control(
+			'prod_review_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .rating' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_cart_icon',
+			array( 'label' => esc_html__( 'Cart Icon', 'filter-plus' ) )
+		);
+		$this->add_control(
+			'cart_icon_color',
+			array(
+				'label'     => esc_html__( 'Icon Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .fplus-cart-icon-path' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_control(
+			'cart_icon_hover_color',
+			array(
+				'label'     => esc_html__( 'Icon Hover Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .add_to_cart_button:hover .fplus-cart-icon-path' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'cart_icon_size',
+			array(
+				'label'      => esc_html__( 'Icon Size', 'filter-plus' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array( 'min' => 0, 'max' => 100 ),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .fplus-cart-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+		$this->add_control(
+			'cart_btn_bg_color',
+			array(
+				'label'     => esc_html__( 'Button Background Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .add_to_cart_button' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_control(
+			'cart_btn_bg_hover_color',
+			array(
+				'label'     => esc_html__( 'Button Hover Background Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .add_to_cart_button:hover' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array(
+				'name'     => 'cart_btn_border',
+				'label'    => esc_html__( 'Border', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .add_to_cart_button',
+			)
+		);
+		$this->add_responsive_control(
+			'cart_btn_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .add_to_cart_button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_prod_thumbnail',
+			array( 'label' => esc_html__( 'Thumbnail', 'filter-plus' ) )
+		);
 		$this->add_responsive_control(
 			'img_width',
 			array(
@@ -808,9 +1233,52 @@ class Woo_Filter extends Widget_Base {
 				),
 			)
 		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_prod_grid',
+			array( 'label' => esc_html__( 'Grid', 'filter-plus' ) )
+		);
+		$this->add_control(
+			'grid_columns_desktop',
+			array(
+				'label'       => esc_html__( 'Desktop Columns', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 6,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 3', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
+			'grid_columns_tablet',
+			array(
+				'label'       => esc_html__( 'Tablet Columns (≤1024px)', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 4,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 2', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
+			'grid_columns_mobile',
+			array(
+				'label'       => esc_html__( 'Mobile Columns (≤480px)', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 2,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 1', 'filter-plus' ),
+			)
+		);
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 
+		// Advance Style (bottom of Style tab)
 		$this->start_controls_section(
 			'advance_style',
 			array(
@@ -867,48 +1335,6 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'product_grid_section',
-			array(
-				'label' => esc_html__( 'Product Grid', 'filter-plus' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-		$this->add_control(
-			'grid_columns_desktop',
-			array(
-				'label'       => esc_html__( 'Desktop Columns', 'filter-plus' ),
-				'type'        => Controls_Manager::NUMBER,
-				'min'         => 1,
-				'max'         => 6,
-				'step'        => 1,
-				'placeholder' => esc_html__( 'e.g. 3', 'filter-plus' ),
-			)
-		);
-		$this->add_control(
-			'grid_columns_tablet',
-			array(
-				'label'       => esc_html__( 'Tablet Columns (≤1024px)', 'filter-plus' ),
-				'type'        => Controls_Manager::NUMBER,
-				'min'         => 1,
-				'max'         => 4,
-				'step'        => 1,
-				'placeholder' => esc_html__( 'e.g. 2', 'filter-plus' ),
-			)
-		);
-		$this->add_control(
-			'grid_columns_mobile',
-			array(
-				'label'       => esc_html__( 'Mobile Columns (≤480px)', 'filter-plus' ),
-				'type'        => Controls_Manager::NUMBER,
-				'min'         => 1,
-				'max'         => 2,
-				'step'        => 1,
-				'placeholder' => esc_html__( 'e.g. 1', 'filter-plus' ),
-			)
-		);
 		$this->end_controls_section();
 	}
 
@@ -1031,4 +1457,3 @@ class Woo_Filter extends Widget_Base {
 	}
 
 }
-

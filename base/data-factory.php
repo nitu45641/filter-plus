@@ -187,7 +187,7 @@ class DataFactory {
 		$default_data['grid_columns_tablet']   = ! empty( $grid_columns_tablet ) ? intval( $grid_columns_tablet ) : '';
 		$default_data['grid_columns_mobile']   = ! empty( $grid_columns_mobile ) ? intval( $grid_columns_mobile ) : '';
 		$default_data['category_orderby']      = ! empty( $category_orderby ) ? sanitize_text_field( $category_orderby ) : '';
-		$default_data['template'] 			   = ! empty( $template ) ? $template : '';
+		$default_data['template'] 			   = ! empty( $template ) ? $template : '1';
 		$default_data['title'] 				= ! empty( $title ) ? $title : esc_html__( 'Filters', 'filter-plus' );
 		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
 		$default_data['pagination_style'] 	= ! empty( $pagination_style ) ? $pagination_style : 'numbers';

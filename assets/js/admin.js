@@ -190,23 +190,86 @@
 		function filterSetActions() {
 			const $filter_set_form = $('#filter-set-form-wrap');
 			const $filter_set_list = $('#filter-set-list-wrap');
+			const $filter_set_id = $filter_set_form.find('.filter-set-id-input');
+			const $filter_set_name = $filter_set_form.find('.filter-set-name-input');
+			const $filter_set_button = $filter_set_form.find('.save-filter-set');
+			const $filter_set_title = $filter_set_form.find('.filter-set-form-title');
+			const save_button_text = $filter_set_button.text();
+			const save_title_text = $filter_set_title.text();
+			const edit_title_text = 'Edit Filter Set';
+			const edit_button_text = 'Update Filter Set';
 
 			// reveal the "add new" form, hide the list - one clean swap,
 			// no extra scroll-to jump once the layout settles
 			$('.add-filter-set').on('click', function (e) {
 				e.preventDefault();
 				$(this).trigger('blur');
-				$filter_set_list.stop(true, true).slideUp(400, 'swing', function () {
-					$filter_set_form.removeClass('d-none').stop(true, true).slideDown(400, 'swing');
-				});
+				resetFilterSetForm();
+				showFilterSetForm();
 			});
 
 			// hide it again without saving, bring the list back
 			$('.close-filter-set-form').on('click', function (e) {
 				e.preventDefault();
 				$(this).trigger('blur');
-				$filter_set_form.stop(true, true).slideUp(400, 'swing', function () {
-					$filter_set_list.stop(true, true).slideDown(400, 'swing');
+				hideFilterSetForm();
+			});
+
+			// open an existing filter set for editing
+			$(document).on('click', '.edit-filter-set', function (e) {
+				e.preventDefault();
+				const $this = $(this);
+				const id = $this.data('id');
+				const name = $this.data('name') || '';
+				const type = $this.data('type') || 'filter_products';
+				let params = $this.data('params') || {};
+
+				if (typeof params === 'string') {
+					try {
+						params = JSON.parse(params);
+					} catch (error) {
+						params = {};
+					}
+				}
+
+				resetFilterSetForm();
+				$filter_set_id.val(id);
+				$filter_set_name.val(name);
+				$filter_set_title.text(edit_title_text);
+				$filter_set_button.text(edit_button_text);
+
+				showFilterSetForm(function () {
+					activateFilterSetTab(type);
+					applyFilterSetParams(type, params);
+				});
+			});
+
+			// delete a saved filter set
+			$(document).on('click', '.delete-filter-set', function (e) {
+				e.preventDefault();
+				const $this = $(this);
+				const id = $this.data('id');
+
+				if (!id || !window.confirm('Delete this filter set?')) {
+					return;
+				}
+
+				$.ajax({
+					url: filter_admin.ajax_url,
+					method: 'POST',
+					dataType: 'json',
+					data: {
+						action: 'delete_filter_set',
+						filter_plus_nonce: filter_admin.filter_plus_nonce,
+						id,
+					},
+					success(response) {
+						if (response && response.success) {
+							location.reload();
+							return;
+						}
+						alert(response?.data?.message || 'Could not delete the filter set.');
+					},
 				});
 			});
 
@@ -214,11 +277,11 @@
 			$('.save-filter-set').on('click', function (e) {
 				e.preventDefault();
 				const $this = $(this);
-				const name_field = $('.filter-set-name-input');
-				const name = $.trim(name_field.val());
+				const id = $filter_set_id.val();
+				const name = $.trim($filter_set_name.val());
 
 				if (!name) {
-					name_field.trigger('focus');
+					$filter_set_name.trigger('focus');
 					return;
 				}
 
@@ -236,6 +299,7 @@
 				const data = {
 					action: 'save_filter_set',
 					filter_plus_nonce: filter_admin.filter_plus_nonce,
+					id,
 					name,
 					type: shortcode_name,
 					shortcode,
@@ -266,6 +330,93 @@
 				e.preventDefault();
 				copyTextData($(this).siblings('.saved-shortcode'), $(this));
 			});
+
+			function resetFilterSetForm() {
+				$filter_set_id.val('');
+				$filter_set_name.val('');
+				$filter_set_title.text(save_title_text);
+				$filter_set_button.text(save_button_text);
+			}
+
+			function showFilterSetForm(onComplete) {
+				$filter_set_form.removeClass('d-none').stop(true, true).hide();
+				$filter_set_list.stop(true, true).slideUp(250, 'swing');
+				$filter_set_form.stop(true, true).slideDown(250, 'swing', function () {
+					if (typeof onComplete === 'function') {
+						onComplete();
+					}
+				});
+			}
+
+			function hideFilterSetForm() {
+				$filter_set_form.stop(true, true).slideUp(250, 'swing', function () {
+					$filter_set_form.addClass('d-none');
+					resetFilterSetForm();
+				});
+				$filter_set_list.stop(true, true).slideDown(250, 'swing');
+			}
+
+			function activateFilterSetTab(type) {
+				const $target_content = $filter_set_form.find('.filter-set-content[data-name="' + type + '"]');
+				const $target_tab = $('.accordion-list .accordion-item[data-name="' + type + '"]');
+
+				if (!$target_content.length || !$target_tab.length) {
+					return;
+				}
+
+				const index = $filter_set_form.find('.filter-set-content').index($target_content);
+				if (index < 0) {
+					return;
+				}
+
+				tab_slide($target_tab, 'filter-set-content', index);
+				$('.closed').show();
+				$('.opened').hide();
+			}
+
+			function applyFilterSetParams(type, params) {
+				const $content = $filter_set_form.find('.filter-set-content[data-name="' + type + '"]');
+				if (!$content.length || !params || typeof params !== 'object') {
+					return;
+				}
+
+				$.each(params, function (key, value) {
+					const selector_key = $.escapeSelector ? $.escapeSelector(key) : key.replace(/([ #;?%&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
+					const $fields = $content.find('[name="' + selector_key + '"]');
+
+					if (!$fields.length) {
+						return;
+					}
+
+					const field_type = ($fields.first().attr('type') || '').toLowerCase();
+
+					if (field_type === 'checkbox') {
+						$fields.each(function () {
+							const $field = $(this);
+							const field_value = $field.val();
+
+							if ($.isArray(value)) {
+								$field.prop('checked', value.indexOf(field_value) !== -1);
+							} else {
+								$field.prop('checked', value === 'yes' || value === '1' || value === 1 || value === true || value === field_value);
+							}
+						});
+						return;
+					}
+
+					if (field_type === 'radio') {
+						$fields.filter('[value="' + value + '"]').prop('checked', true);
+						return;
+					}
+
+					if ($fields.first().is('select')) {
+						$fields.val(value).trigger('change');
+						return;
+					}
+
+					$fields.val(value).trigger('change');
+				});
+			}
 		}
 
 		/**

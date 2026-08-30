@@ -31,12 +31,13 @@
   </section>
 </div>
 
-<div id="filter-set-form-wrap" class="d-none mt-2">
+  <div id="filter-set-form-wrap" class="d-none mt-2">
   <div class="content-header mb-2">
-    <div class="title mr-1"><?php esc_html_e( 'Add New Filter Set', 'filter-plus' ); ?></div>
+    <div class="title mr-1 filter-set-form-title"><?php esc_html_e( 'Add New Filter Set', 'filter-plus' ); ?></div>
     <button type="button" class="button close-filter-set-form"><?php esc_html_e( '← Back', 'filter-plus' ); ?></button>
   </div>
   <div class="single-block save-filter-set-block">
+    <input type="hidden" class="filter-set-id-input" value="">
     <input type="text" class="full_input filter-set-name-input" placeholder="<?php esc_attr_e( 'Enter Filter Set Name', 'filter-plus' ); ?>">
     <button type="button" class="button save-filter-set"><?php esc_html_e( 'Save As Filter Set', 'filter-plus' ); ?></button>
   </div>

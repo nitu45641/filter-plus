@@ -636,6 +636,122 @@ class Wp_Filter extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+		// Left Side (Filter) Style
+		$this->start_controls_section(
+			'filter_left_style',
+			[
+				'label' => esc_html__('Filter Style (Left Side)', 'filter-plus'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'filter_left_color',
+			[
+				'label'     => esc_html__('Text Color', 'filter-plus'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .shop-sidebar' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'filter_left_typography',
+				'label'    => esc_html__('Typography', 'filter-plus'),
+				'selector' => '{{WRAPPER}} .shop-sidebar',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name'     => 'filter_left_border',
+				'label'    => esc_html__('Border', 'filter-plus'),
+				'selector' => '{{WRAPPER}} .shop-sidebar',
+			]
+		);
+		$this->add_responsive_control(
+			'filter_left_margin',
+			[
+				'label'      => esc_html__('Margin', 'filter-plus'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'selectors'  => [
+					'{{WRAPPER}} .shop-sidebar' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'filter_left_padding',
+			[
+				'label'      => esc_html__('Padding', 'filter-plus'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'selectors'  => [
+					'{{WRAPPER}} .shop-sidebar' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		// Right Side (Result) Style
+		$this->start_controls_section(
+			'filter_right_style',
+			[
+				'label' => esc_html__('Filter Result Style (Right Side)', 'filter-plus'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'filter_right_color',
+			[
+				'label'     => esc_html__('Text Color', 'filter-plus'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .products-wrap' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'filter_right_typography',
+				'label'    => esc_html__('Typography', 'filter-plus'),
+				'selector' => '{{WRAPPER}} .products-wrap',
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name'     => 'filter_right_border',
+				'label'    => esc_html__('Border', 'filter-plus'),
+				'selector' => '{{WRAPPER}} .products-wrap',
+			]
+		);
+		$this->add_responsive_control(
+			'filter_right_margin',
+			[
+				'label'      => esc_html__('Margin', 'filter-plus'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'selectors'  => [
+					'{{WRAPPER}} .products-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'filter_right_padding',
+			[
+				'label'      => esc_html__('Padding', 'filter-plus'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'selectors'  => [
+					'{{WRAPPER}} .products-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
 	}
 
     /**
