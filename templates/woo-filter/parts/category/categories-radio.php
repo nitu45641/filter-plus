@@ -8,8 +8,11 @@
 			array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => $taxonomy, 'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '', 'category_orderby' => isset($category_orderby) ? $category_orderby : '' ) );
 
 			if ( !empty( $filterplus_get_categories ) ) :
-				foreach($filterplus_get_categories as $filterplus_item): ?>
-					<li class="cat-group parent"
+				foreach($filterplus_get_categories as $filterplus_item):
+					$filterplus_has_sub = $sub_categories == 'yes' && !empty($filterplus_item['sub_categories']);
+					$filterplus_is_wrap = isset( $wrap_sub_categories ) && $wrap_sub_categories == 'yes';
+					?>
+					<li class="cat-group parent<?php echo ( $filterplus_has_sub && $filterplus_is_wrap ) ? ' has-sub-categories' : ''; ?>"
 						data-name="<?php echo esc_attr($filterplus_item['name'])?>"
 						data-cat_id="<?php echo esc_attr($filterplus_item['term_id'])?>"
 						data-slug="<?php echo esc_attr($filterplus_item['slug'])?>"
@@ -26,9 +29,14 @@
 							<?php echo esc_html($filterplus_item['name']);?>
 							<?php if ($product_count == 'yes') { echo ' (' . esc_html($filterplus_item['count']) . ')'; } ?>
 						</label>
+						<?php if ( $filterplus_has_sub && $filterplus_is_wrap ) : ?>
+							<span class="fp-cat-caret" aria-label="<?php esc_attr_e('Toggle sub categories','filter-plus');?>">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg>
+							</span>
+						<?php endif; ?>
 					</li>
-					<?php if( $sub_categories == 'yes' && !empty($filterplus_item['sub_categories'])): ?>
-						<ul class="sub_categories<?php echo ( isset( $wrap_sub_categories ) && $wrap_sub_categories == 'yes' ) ? ' wrap-sub-cats' : ''; ?>">
+					<?php if( $filterplus_has_sub ): ?>
+						<ul class="sub_categories<?php echo $filterplus_is_wrap ? ' wrap-sub-cats' : ''; ?>">
 							<?php foreach($filterplus_item['sub_categories'] as $filterplus_sub): ?>
 								<li
 									class="cat-group"

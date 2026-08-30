@@ -44,14 +44,21 @@
 
 		/*
 		 * Sub Categories caret toggle (Wrap Sub Categories)
+		 * Clicking anywhere on a parent row that has sub-categories toggles
+		 * the sub-category list open/closed instead of selecting the category.
+		 * (Checkbox/Radio templates select via their own input's change event,
+		 * so a caret click there never fires the row handler — no conflict.)
 		 */
+		function filterplus_toggle_sub_categories($row) {
+			const $subUl = $row.next('ul.sub_categories.wrap-sub-cats');
+			$row.toggleClass('fp-open');
+			$subUl.toggleClass('fp-open');
+		}
+
 		$(document).on('click', '.fp-cat-caret', function (e) {
 			e.preventDefault();
 			e.stopPropagation();
-			const $li    = $(this).closest('li.has-sub-categories');
-			const $subUl = $li.next('ul.sub_categories.wrap-sub-cats');
-			$li.toggleClass('fp-open');
-			$subUl.toggleClass('fp-open');
+			filterplus_toggle_sub_categories($(this).closest('li.has-sub-categories'));
 		});
 
 		/*
@@ -103,6 +110,17 @@
 			// Single-select behaviour — toggle active on clicked, clear others
 			// ---------------------------------------------------------------
 			if ($input.length === 0) {
+				// Row has wrapped sub-categories — clicking it (or its caret)
+				// only opens/closes the sub-list, never selects the category.
+				// stopPropagation so the delegated .fp-cat-caret handler below
+				// (needed for checkbox/radio templates) doesn't also fire and
+				// double-toggle it back closed.
+				if (_this.hasClass('has-sub-categories')) {
+					event.stopPropagation();
+					filterplus_toggle_sub_categories(_this);
+					return;
+				}
+
 				const isAlreadyActive = _this.hasClass('active');
 
 				// Deactivate every category li
