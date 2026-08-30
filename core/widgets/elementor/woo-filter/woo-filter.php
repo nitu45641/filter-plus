@@ -1151,6 +1151,7 @@ class Woo_Filter extends Widget_Base {
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
+		}
 
 		$this->end_controls_section();
 
