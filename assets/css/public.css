@@ -2214,14 +2214,39 @@ ul.sub_categories{
 }
 
 ul.sub_categories.wrap-sub-cats {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-	padding-left: 0;
+	display: none;
 }
 
-ul.sub_categories.wrap-sub-cats li {
-	margin-bottom: 0;
+ul.sub_categories.wrap-sub-cats.fp-open {
+	display: block;
+}
+
+.category-list li.has-sub-categories {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.category-list li.has-sub-categories .fp-cat-caret {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 10px;
+	height: 10px;
+	margin-left: 8px;
+	cursor: pointer;
+	transition: transform .2s ease;
+}
+
+.category-list li.has-sub-categories .fp-cat-caret svg {
+	width: 100%;
+	height: 100%;
+	fill: currentColor;
+}
+
+.category-list li.has-sub-categories.fp-open .fp-cat-caret {
+	transform: rotate(180deg);
 }
 
 .color-style-1 .color-item.tooltips {

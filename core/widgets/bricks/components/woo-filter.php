@@ -231,6 +231,18 @@ class Woo_Filter extends \Bricks\Element {
 			'default' => true,
 		);
 
+		// wrap sub categories
+		$this->controls['wrap_sub_categories'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Wrap Sub Categories', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+			'required' => array( 'sub_categories', '=', true ),
+		);
+
 		// product count
 		$this->controls['product_count'] = array(
 			'tab' => 'content',

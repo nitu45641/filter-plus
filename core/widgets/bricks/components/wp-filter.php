@@ -200,6 +200,18 @@ class Wp_Filter extends \Bricks\Element {
 			'default' => true,
 		);
 
+		// Wrap Sub Categories
+		$this->controls['wrap_sub_categories'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Wrap Sub Categories', 'filter-plus' ),
+			'type' => 'checkbox',
+			'inline' => true,
+			'small' => true,
+			'default' => true,
+			'required' => array( 'sub_categories', '=', true ),
+		);
+
 		// Tags
 		$this->controls['show_tags'] = array(
 			'tab' => 'content',
