@@ -7,6 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
 
+	<?php if ( ! empty( $title ) ) : ?>
+	<h3 class="shop-sidebar-title"><?php echo esc_html( $title ); ?></h3>
+	<?php endif; ?>
+
 	<?php
 		// apply/reset buttons at top
 		$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/filter-buttons.php" );

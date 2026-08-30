@@ -5,6 +5,9 @@ use FilterPlus\Base\DataFactory;
 
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
+	<?php if ( ! empty( $title ) ) : ?>
+	<h3 class="shop-sidebar-title"><?php echo esc_html( $title ); ?></h3>
+	<?php endif; ?>
 	<?php
 		// Add apply and reset buttons if apply button mode is enabled
 		if ($apply_button_mode == 'yes') {

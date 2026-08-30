@@ -381,56 +381,6 @@ class Wp_Filter extends Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'title_style',
-			[
-				'label' => esc_html__('Title Style', 'filter-plus'),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-		$this->add_control(
-			'title_color',
-			[
-				'label'         => esc_html__('Title Color', 'filter-plus'),
-				'type'         => Controls_Manager::COLOR,
-				'selectors'     => [
-					'{{WRAPPER}} .category-title a' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-	
-		$this->add_control(
-			'titlte_bg_color',
-			[
-				'label'         => esc_html__('Title BG Color', 'filter-plus'),
-				'type'         => Controls_Manager::COLOR,
-				'selectors'     => [
-					'{{WRAPPER}} .category-title a' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name'         => 'title_typo',
-				'label'         => esc_html__('Typography', 'filter-plus'),
-				'selector'     => '{{WRAPPER}} .category-title',
-			]
-		);
-		$this->add_responsive_control(
-			'title_padding',
-			[
-				'label' => esc_html__('Padding', 'filter-plus'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} .category-title a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->end_controls_section();
-
-		$this->start_controls_section(
 			'readmore_btn_style',
 			[
 				'label' => esc_html__('Button Style', 'filter-plus'),
