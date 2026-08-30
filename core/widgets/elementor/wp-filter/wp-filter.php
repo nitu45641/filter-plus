@@ -205,6 +205,18 @@ class Wp_Filter extends Widget_Base {
 				'condition' => ['show_categories' => 'yes'],
 			)
 		);
+		$this->add_control(
+			'wrap_sub_categories',
+			array(
+				'label' => esc_html__( 'Wrap Sub Categories', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'filter-plus' ),
+				'label_off' => esc_html__( 'No', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+				'condition' => array( 'show_categories' => 'yes', 'sub_categories' => 'yes' ),
+			)
+		);
 
 		$this->add_control(
 			'show_tags',

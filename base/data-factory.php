@@ -41,6 +41,7 @@ class DataFactory {
             'reset_button_label'=> esc_html__('Reset','filter-plus'),
             'masonry_style'	    => 'no',
             'sub_categories'	=> 'no',
+            'wrap_sub_categories' => 'yes',
             'colors'           	=> 'yes',
             'color_label'       => esc_html__('Colors','filter-plus'),
             'size'             	=> 'yes',
@@ -103,6 +104,7 @@ class DataFactory {
             'category_label'    => esc_html__('Categories','filter-plus'),
             'categories'       	=> '',
             'sub_categories'	=> 'yes',
+            'wrap_sub_categories' => 'yes',
             'apply_button_mode'	=> 'no',
             'apply_button_label'=> esc_html__('Apply','filter-plus'),
             'reset_button_label'=> esc_html__('Reset','filter-plus'),
@@ -152,6 +154,7 @@ class DataFactory {
 		$default_data['product_count'] = ( isset( $settings['product_count'] ) && ( $settings['product_count'] === true || $settings['product_count'] === 'yes' || $settings['product_count'] === '1' || $settings['product_count'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['hide_empty_cat'] = ( isset( $settings['hide_empty_cat'] ) && ( $settings['hide_empty_cat'] === true || $settings['hide_empty_cat'] === 'yes' || $settings['hide_empty_cat'] === '1' || $settings['hide_empty_cat'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['sub_categories'] = ( isset( $settings['sub_categories'] ) && ( $settings['sub_categories'] === true || $settings['sub_categories'] === 'yes' || $settings['sub_categories'] === '1' || $settings['sub_categories'] == 1 ) ) ? 'yes' : 'no';
+		$default_data['wrap_sub_categories'] = ( isset( $settings['wrap_sub_categories'] ) && ( $settings['wrap_sub_categories'] === true || $settings['wrap_sub_categories'] === 'yes' || $settings['wrap_sub_categories'] === '1' || $settings['wrap_sub_categories'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['masonry_style'] = ( isset( $settings['masonry_style'] ) && ( $settings['masonry_style'] === true || $settings['masonry_style'] === 'yes' || $settings['masonry_style'] === '1' || $settings['masonry_style'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['colors'] = ( isset( $settings['colors'] ) && ( $settings['colors'] === true || $settings['colors'] === 'yes' || $settings['colors'] === '1' || $settings['colors'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['size'] = ( isset( $settings['size'] ) && ( $settings['size'] === true || $settings['size'] === 'yes' || $settings['size'] === '1' || $settings['size'] == 1 ) ) ? 'yes' : 'no';
@@ -212,6 +215,7 @@ class DataFactory {
 			'show_categories' => $show_categories,
 			'category_label' => $category_label,
             'sub_categories' => $sub_categories,
+			'wrap_sub_categories' => $wrap_sub_categories,
 			'title' => $title,
 			'no_of_items' => $no_of_items,
 			'tag_label' => $tag_label,
@@ -301,7 +305,7 @@ class DataFactory {
 		$default_data['no_of_items'] 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
 		// Normalize boolean-like settings to 'yes' / 'no' when provided
 		$bool_keys = array(
-			'masonry_style','product_count','hide_empty_cat','show_categories','sub_categories','show_tags',
+			'masonry_style','product_count','hide_empty_cat','show_categories','sub_categories','wrap_sub_categories','show_tags',
 			'hide_wp_title','hide_wp_desc','post_categories','post_tags','post_author','on_sale','stock','author','show_reviews','show_price_range'
 		);
 		foreach ( $bool_keys as $k ) {
@@ -328,6 +332,7 @@ class DataFactory {
 		$default_data['category_label']     = !empty($settings['category_label']) ? $settings['category_label'] : esc_html__('Categories','filter-plus');
 		$default_data['categories']         = ( ! empty( $categories ) && is_array($categories) ) ? implode(',',$categories) : '';
 		$default_data['sub_categories']     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
+		$default_data['wrap_sub_categories'] = !empty($settings['wrap_sub_categories']) && $settings['wrap_sub_categories'] == true ? 'yes' : 'no';
 		$default_data['show_tags']          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
 		$default_data['tag_label'] 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
 		$default_data['tags']               = ( ! empty( $tags ) && is_array($tags) ) ? implode(',',$tags) : '';
@@ -361,6 +366,7 @@ class DataFactory {
         category_template='".$category_template."' 
         category_label='".$category_label."' 
 		sub_categories='{$sub_categories}'
+		wrap_sub_categories='{$wrap_sub_categories}'
 		hide_wp_desc='{$hide_wp_desc}'
 		hide_wp_title='{$hide_wp_title}'
         categories='{$categories}' show_tags='{$show_tags}' tags='{$tags}' tag_label='".$tag_label."'
@@ -411,6 +417,7 @@ class DataFactory {
         $categories         = ! empty( $args['categories'] ) ? $args['categories'] : '';
         $exclude_categories = ! empty( $args['exclude_categories'] ) ? $args['exclude_categories'] : '';
         $sub_categories     = ! empty( $args['sub_categories'] ) ? $args['sub_categories'] : 'yes';
+        $wrap_sub_categories = isset( $args['wrap_sub_categories'] ) && $args['wrap_sub_categories'] === 'no' ? 'no' : 'yes';
         $category_orderby   = ! empty( $args['category_orderby'] ) ? $args['category_orderby'] : '';
         $category_label = ! empty( $args['category_label'] ) ? $args['category_label'] : esc_html__('Categories','filter-plus');
         $category_template = ! empty( $args['category_template'] ) ? $args['category_template'] : '1';

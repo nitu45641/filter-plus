@@ -38,6 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					'hide_empty_cat' => $hide_empty_cat,
 					'product_count' => $product_count,
 					'sub_categories' => $sub_categories,
+					'wrap_sub_categories' => isset($wrap_sub_categories) ? $wrap_sub_categories : 'no',
 					'category_orderby' => isset($category_orderby) ? $category_orderby : '',
 				));
 			}

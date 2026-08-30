@@ -28,7 +28,7 @@
 						</label>
 					</li>
 					<?php if( $sub_categories == 'yes' && !empty($filterplus_item['sub_categories'])): ?>
-						<ul class="sub_categories">
+						<ul class="sub_categories<?php echo ( isset( $wrap_sub_categories ) && $wrap_sub_categories == 'yes' ) ? ' wrap-sub-cats' : ''; ?>">
 							<?php foreach($filterplus_item['sub_categories'] as $filterplus_sub): ?>
 								<li
 									class="cat-group"

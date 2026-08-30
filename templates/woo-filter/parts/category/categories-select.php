@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					<?php if ($product_count == 'yes') { echo ' (' . esc_html($filterplus_item['count']) . ')'; } ?>
 				</li>
 					<?php if( $sub_categories == 'yes' && !empty($filterplus_item['sub_categories'])): ?>
-						<ul class="sub_categories">
+						<ul class="sub_categories<?php echo ( isset( $wrap_sub_categories ) && $wrap_sub_categories == 'yes' ) ? ' wrap-sub-cats' : ''; ?>">
 							<?php foreach($filterplus_item['sub_categories'] as $filterplus_sub): ?>
 								<li
 									id="<?php  echo esc_attr("cat_li_child_".$filterplus_sub['term_id'])?>"

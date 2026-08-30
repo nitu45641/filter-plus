@@ -151,6 +151,14 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'category_settings_heading',
+			array(
+				'label' => esc_html__( 'Category Settings', 'filter-plus' ),
+				'type'  => Controls_Manager::HEADING,
+				'separator' => 'before',
+			)
+		);
+		$this->add_control(
 			'category_label',
 			array(
 				'label'     => esc_html__( 'Category Label', 'filter-plus' ),
@@ -227,7 +235,19 @@ class Woo_Filter extends Widget_Base {
 				'default' => 'yes',
 			)
 		);
-		
+		$this->add_control(
+			'wrap_sub_categories',
+			array(
+				'label' => esc_html__( 'Wrap Sub Categories', 'filter-plus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'filter-plus' ),
+				'label_off' => esc_html__( 'No', 'filter-plus' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+				'condition' => array( 'sub_categories' => 'yes' ),
+			)
+		);
+
 		$this->add_control(
 			'product_count',
 			array(

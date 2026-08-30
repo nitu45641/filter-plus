@@ -20,6 +20,7 @@ function content_filter_block() {
                 'category_label'     => array( 'type' => 'string',  'default' => '' ),
                 'categories'         => array( 'type' => 'array',   'default' => array(), 'items' => array( 'type' => 'string' ) ),
                 'sub_categories'     => array( 'type' => 'boolean', 'default' => true ),
+                'wrap_sub_categories'=> array( 'type' => 'boolean', 'default' => true ),
                 'show_tags'          => array( 'type' => 'boolean', 'default' => true ),
                 'tag_label'          => array( 'type' => 'string',  'default' => '' ),
                 'tags'               => array( 'type' => 'array',   'default' => array(), 'items' => array( 'type' => 'string' ) ),
@@ -54,6 +55,7 @@ function content_filter_callback( $settings ) {
     $category_label     = !empty($category_label) ? $category_label : esc_html__('Categories','filter-plus');
     $categories         = !empty($settings['categories']) ? $settings['categories'] : '';
     $sub_categories     = !empty($settings['sub_categories']) && $settings['sub_categories'] == true ? 'yes' : 'no';
+    $wrap_sub_categories = ( ! isset( $settings['wrap_sub_categories'] ) || $settings['wrap_sub_categories'] == true ) ? 'yes' : 'no';
     $show_tags          = !empty($settings['show_tags']) && $settings['show_tags'] == true ? 'yes' : 'no';
     $tag_label 	        = !empty($tag_label) ? $tag_label : esc_html__('Tags','filter-plus');
     $tags               = !empty($settings['tags']) ? $settings['tags'] : '';
@@ -96,6 +98,7 @@ function content_filter_callback( $settings ) {
             'title' => $title,
             'no_of_items' => $no_of_items,
             'sub_categories' => $sub_categories,
+            'wrap_sub_categories' => $wrap_sub_categories,
             'categories' => $categories,
             'show_tags' => $show_tags,
             'tags' => $tags,

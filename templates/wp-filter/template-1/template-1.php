@@ -27,6 +27,7 @@ use FilterPlus\Base\DataFactory;
 				'categories' => $categories,
 				'hide_empty_cat' => $hide_empty_cat,
 				'sub_categories' => $sub_categories,
+				'wrap_sub_categories' => isset($wrap_sub_categories) ? $wrap_sub_categories : 'no',
 				'category_label' => $category_label,
 			));
 		}

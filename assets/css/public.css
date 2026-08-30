@@ -2213,6 +2213,17 @@ ul.sub_categories{
 	padding-left: 10px;
 }
 
+ul.sub_categories.wrap-sub-cats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding-left: 0;
+}
+
+ul.sub_categories.wrap-sub-cats li {
+	margin-bottom: 0;
+}
+
 .color-style-1 .color-item.tooltips {
 	position: relative !important;
 }

@@ -55,6 +55,10 @@ function product_filter_block() {
                     'type' => 'boolean',
                     'default' => true
                 ),
+                'wrap_sub_categories' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
                 'product_count' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -240,7 +244,7 @@ function product_filter_callback( $settings ) {
 
     // Convert boolean values (1/0 or true/false) to 'yes'/'no' strings
     $boolean_fields = [
-        'masonry_style', 'hide_empty_cat', 'sub_categories', 'product_count',
+        'masonry_style', 'hide_empty_cat', 'sub_categories', 'wrap_sub_categories', 'product_count',
         'colors', 'size', 'show_tags', 'show_attributes', 'show_price_range',
         'show_reviews', 'stock', 'on_sale', 'hide_prod_title', 'hide_prod_desc',
         'hide_prod_price', 'hide_prod_add_cart', 'hide_prod_rating', 'sorting',

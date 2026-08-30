@@ -114,6 +114,10 @@ use \FilterPlus\Utils\Helper as Helper;
 			$filterplus_args = array('label'=>esc_html__("Show Sub Categories:","filter-plus"),'id' => 'woo_sub_categories','data_label' => 'sub_categories');
 			filterplus_checkbox_field($filterplus_args);
 
+			// wrap sub categories
+			$filterplus_args = array('label'=>esc_html__("Wrap Sub Categories:","filter-plus"),'id' => 'woo_wrap_sub_categories','data_label' => 'wrap_sub_categories','condition_class' => 'woo_sub_categories d-none','checked' => 'yes');
+			filterplus_checkbox_field($filterplus_args);
+
 			$filterplus_args = array('label'=>esc_html__("Show Product Count:","filter-plus"),'id' => 'woo_product_count','data_label' => 'product_count');
 			filterplus_checkbox_field($filterplus_args);
 

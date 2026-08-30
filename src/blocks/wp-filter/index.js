@@ -45,6 +45,10 @@ registerBlockType('filter-plus/wp-filter', {
             type: 'boolean',
             default: true
         },
+        wrap_sub_categories: {
+            type: 'boolean',
+            default: true
+        },
         show_tags: {
             type: 'boolean',
             default: true
@@ -232,6 +236,14 @@ registerBlockType('filter-plus/wp-filter', {
                                     checked={attributes.sub_categories}
                                     onChange={(value) => setAttributes({ sub_categories: value })}
                                 />
+
+                                {attributes.sub_categories && (
+                                    <ToggleControl
+                                        label={__('Wrap Sub Categories', 'filter-plus')}
+                                        checked={attributes.wrap_sub_categories}
+                                        onChange={(value) => setAttributes({ wrap_sub_categories: value })}
+                                    />
+                                )}
                             </>
                         )}
 

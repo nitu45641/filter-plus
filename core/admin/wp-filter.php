@@ -77,6 +77,10 @@
 			$filterplus_args = array('label'=>esc_html__("Display Sub Categories:","filter-plus"),'id' => 'wp_sub_categories','data_label' => 'sub_categories');
 			filterplus_checkbox_field($filterplus_args);
 
+			// wrap sub categories
+			$filterplus_args = array('label'=>esc_html__("Wrap Sub Categories:","filter-plus"),'id' => 'wp_wrap_sub_categories','data_label' => 'wrap_sub_categories','condition_class' => 'wp_sub_categories d-none','checked' => 'yes');
+			filterplus_checkbox_field($filterplus_args);
+
 			// post type
 			$filterplus_args = array('label'=>esc_html__("Select Type:","filter-plus"),'id' => 'filter_type',
 				'data_label' => 'filter_type','options'=>

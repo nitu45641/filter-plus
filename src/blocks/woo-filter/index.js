@@ -53,6 +53,10 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'boolean',
             default: true
         },
+        wrap_sub_categories: {
+            type: 'boolean',
+            default: true
+        },
         product_count: {
             type: 'boolean',
             default: true
@@ -462,6 +466,14 @@ registerBlockType('filter-plus/woo-filter', {
                             checked={attributes.sub_categories}
                             onChange={(value) => setAttributes({ sub_categories: value })}
                         />
+
+                        {attributes.sub_categories && (
+                            <ToggleControl
+                                label={__('Wrap Sub Categories', 'filter-plus')}
+                                checked={attributes.wrap_sub_categories}
+                                onChange={(value) => setAttributes({ wrap_sub_categories: value })}
+                            />
+                        )}
 
                         <ToggleControl
                             label={__('Show Product Count', 'filter-plus')}
