@@ -147,6 +147,14 @@ class Wp_Filter extends Widget_Base {
 			]
 		);
 		$this->add_control(
+			'category_settings_heading',
+			[
+				'label' => esc_html__( 'Category Settings', 'filter-plus' ),
+				'type'  => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_control(
 			'category_template',
 			array(
 				'label' => esc_html__( 'Select Category Filter Template', 'filter-plus' ),
@@ -194,6 +202,7 @@ class Wp_Filter extends Widget_Base {
 				'label_off' => esc_html__( 'Hide', 'filter-plus' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
+				'condition' => ['show_categories' => 'yes'],
 			)
 		);
 
@@ -505,7 +514,9 @@ class Wp_Filter extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .cat-thumb' => 'width: {{SIZE}}{{UNIT}};',
+					// .cat-thumb doesn't exist in the post thumbnail markup (it's .hpcc-image) —
+					// target the real wrapper, !important to beat the plugin's own chained selectors.
+					'{{WRAPPER}} .hpcc-image' => 'width: {{SIZE}}{{UNIT}} !important; min-width: {{SIZE}}{{UNIT}} !important;',
 				],
 			]
 		);
@@ -522,7 +533,7 @@ class Wp_Filter extends Widget_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .cat-thumb' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .hpcc-image' => 'height: {{SIZE}}{{UNIT}} !important; min-height: {{SIZE}}{{UNIT}} !important;',
 				],
 			]
 		);

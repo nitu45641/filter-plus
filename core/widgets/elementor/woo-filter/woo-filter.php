@@ -151,20 +151,20 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'category_label',
+			array(
+				'label'     => esc_html__( 'Category Label', 'filter-plus' ),
+				'type'      => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Place Category Label Here', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
 			'category_template',
 			array(
 				'label' => esc_html__( 'Select Category Filter Template', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
 				'options' => DataFactory::category_template('elementor')['template'],
-			)
-		);
-		$this->add_control(
-			'category_label',
-			array(
-				'label'     => esc_html__( 'Category Label', 'filter-plus' ),
-				'type'      => Controls_Manager::TEXT,
-				'placeholder' => esc_html__( 'Place Category Label Here', 'filter-plus' ),
 			)
 		);
 		$this->add_control(
@@ -479,6 +479,36 @@ class Woo_Filter extends Widget_Base {
 		);
 
 		// Right Side
+		$this->add_control('product_image_size',
+			array(
+				'label' => esc_html__( 'Image Size', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'woocommerce_thumbnail',
+				'options' => Helper::product_image_sizes(),
+				'disabled' => ! class_exists( 'FilterPlusPro' ),
+				'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
+			)
+		);
+		$this->add_control('image_width',
+			array(
+				'label' => esc_html__( 'Image Width (px)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
+				'type' => Controls_Manager::NUMBER,
+				'placeholder' => 300,
+				'min' => 1,
+				'disabled' => ! class_exists( 'FilterPlusPro' ),
+				'condition' => array( 'product_image_size' => 'custom' ),
+			)
+		);
+		$this->add_control('image_height',
+			array(
+				'label' => esc_html__( 'Image Height (px)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
+				'type' => Controls_Manager::NUMBER,
+				'placeholder' => 300,
+				'disabled' => ! class_exists( 'FilterPlusPro' ),
+				'min' => 1,
+				'condition' => array( 'product_image_size' => 'custom' ),
+			)
+		);
 		$this->add_control('hide_prod_title',
 			array(
 				'label' => esc_html__( 'Display Title', 'filter-plus' ),
@@ -525,36 +555,6 @@ class Woo_Filter extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'placeholder' => esc_html__( 'Add to cart', 'filter-plus' ),
 				'condition' => array( 'hide_prod_add_cart' => 'yes' ),
-			)
-		);
-		$this->add_control('product_image_size',
-			array(
-				'label' => esc_html__( 'Image Size', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'woocommerce_thumbnail',
-				'options' => Helper::product_image_sizes(),
-				'disabled' => ! class_exists( 'FilterPlusPro' ),
-				'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
-			)
-		);
-		$this->add_control('image_width',
-			array(
-				'label' => esc_html__( 'Image Width (px)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
-				'type' => Controls_Manager::NUMBER,
-				'placeholder' => 300,
-				'min' => 1,
-				'disabled' => ! class_exists( 'FilterPlusPro' ),
-				'condition' => array( 'product_image_size' => 'custom' ),
-			)
-		);
-		$this->add_control('image_height',
-			array(
-				'label' => esc_html__( 'Image Height (px)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
-				'type' => Controls_Manager::NUMBER,
-				'placeholder' => 300,
-				'disabled' => ! class_exists( 'FilterPlusPro' ),
-				'min' => 1,
-				'condition' => array( 'product_image_size' => 'custom' ),
 			)
 		);
 		$this->add_control('hide_prod_rating',
@@ -837,8 +837,13 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Regular Price Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .product-price' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .product-price del' => 'color: {{VALUE}};',
+					// .product-price is the grid markup only — list view uses .hpcc-price.
+					// !important beats the per-template hardcoded price colors
+					// (e.g. .product-style-1 .product-price{color:#000}) tied on specificity.
+					'{{WRAPPER}} .product-price' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .product-price del' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .hpcc-price' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .hpcc-price del' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -848,7 +853,8 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Sale Price Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .product-price ins' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .product-price ins' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .hpcc-price ins' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -857,7 +863,7 @@ class Woo_Filter extends Widget_Base {
 			array(
 				'name'     => 'prod_price_typography',
 				'label'    => esc_html__( 'Typography', 'filter-plus' ),
-				'selector' => '{{WRAPPER}} .product-price',
+				'selector' => '{{WRAPPER}} .product-price, {{WRAPPER}} .hpcc-price',
 			)
 		);
 		$this->add_responsive_control(
@@ -867,7 +873,8 @@ class Woo_Filter extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .product-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .product-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+					'{{WRAPPER}} .hpcc-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 				),
 			)
 		);
@@ -938,7 +945,10 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Icon Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .fplus-cart-icon-path' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+					// !important: template-3's own CSS sets fill:currentColor !important on this
+					// path, and several templates set a fixed button background/color combo that
+					// otherwise beats this generic selector on specificity.
+					'{{WRAPPER}} .fplus-cart-icon-path' => 'fill: {{VALUE}} !important; stroke: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -948,7 +958,7 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Icon Hover Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .add_to_cart_button:hover .fplus-cart-icon-path' => 'fill: {{VALUE}}; stroke: {{VALUE}};',
+					'{{WRAPPER}} .add_to_cart_button:hover .fplus-cart-icon-path' => 'fill: {{VALUE}} !important; stroke: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -972,7 +982,11 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Button Background Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .add_to_cart_button' => 'background-color: {{VALUE}};',
+					// !important: templates 3/4/5/7 hardcode a fixed button background
+					// (e.g. `.cart_button-4{background-color:var(--filter-cart-content,#080808)}`,
+					// `.product-style-3 .add-to-cart a.add_to_cart_button{background-color:#fff}`)
+					// at equal-or-higher specificity, so the plain selector loses/ties on load order.
+					'{{WRAPPER}} .add_to_cart_button' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -982,7 +996,7 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Button Hover Background Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .add_to_cart_button:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .add_to_cart_button:hover' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1001,7 +1015,7 @@ class Woo_Filter extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .add_to_cart_button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .add_to_cart_button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 				),
 			)
 		);
@@ -1028,7 +1042,11 @@ class Woo_Filter extends Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .cat-thumb' => 'width: {{SIZE}}{{UNIT}};',
+					// .cat-thumb doesn't exist on product markup — real wrappers are .product-thumbnail
+					// (grid) and .hpcc-image (list). !important needed to beat the plugin's own
+					// chained selectors (e.g. template-2's aspect-ratio square box).
+					'{{WRAPPER}} .product-thumbnail' => 'width: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .hpcc-image' => 'width: {{SIZE}}{{UNIT}} !important; min-width: {{SIZE}}{{UNIT}} !important;',
 				),
 			)
 		);
@@ -1045,7 +1063,8 @@ class Woo_Filter extends Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .cat-thumb' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .product-thumbnail' => 'height: {{SIZE}}{{UNIT}} !important; min-height: {{SIZE}}{{UNIT}} !important; aspect-ratio: auto !important;',
+					'{{WRAPPER}} .hpcc-image' => 'height: {{SIZE}}{{UNIT}} !important;',
 				),
 			)
 		);

@@ -102,7 +102,7 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
 	?>
 	<div class="horizontal-prod-card">
-		<div class="hpcc-image" style="width: 220px; min-width: 220px; height: 220px;">
+		<div class="hpcc-image">
 			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" style="display: block; width: 100%; height: 100%;">
 				<?php
 				$list_image_size = apply_filters( 'filterplus_product_thumbnail_size', ! empty( $product['image_size'] ) ? $product['image_size'] : 'woocommerce_thumbnail', 'product', $product['template'], 'list' );

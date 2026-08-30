@@ -627,6 +627,12 @@ ul.ratings,.dropdown-box {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	/* default box size — was hardcoded inline in the product-template.php list markup,
+	   moved here (non-!important) so Elementor's Thumbnail Style width/height controls
+	   can actually override it. */
+	width: 220px;
+	min-width: 220px;
+	height: 220px;
 }
 .post-grid-view-3 .hpcc-image img{
 	width: 100%;
