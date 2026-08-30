@@ -43,6 +43,18 @@
 		});
 
 		/*
+		 * Sub Categories caret toggle (Wrap Sub Categories)
+		 */
+		$(document).on('click', '.fp-cat-caret', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			const $li    = $(this).closest('li.has-sub-categories');
+			const $subUl = $li.next('ul.sub_categories.wrap-sub-cats');
+			$li.toggleClass('fp-open');
+			$subUl.toggleClass('fp-open');
+		});
+
+		/*
 		 * Get Product from filter
 		 */
 
