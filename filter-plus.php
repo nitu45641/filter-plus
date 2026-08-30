@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       Filter Plus – WooCommerce Product Filter & AJAX Filter Plugin
+ * Plugin Name:       Filter Plus – WordPress & WooCommerce AJAX Filter Plugin
  * Plugin URI:        https://wpbens.com/filter-plus/
  * Description:       Advanced Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website. It allows users to filter anything based on different taxonomies.
  * Version:           1.1.31
