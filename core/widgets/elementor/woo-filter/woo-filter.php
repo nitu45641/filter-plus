@@ -737,10 +737,20 @@ class Woo_Filter extends Widget_Base {
 		$this->start_controls_section(
 			'filter_left_style',
 			array(
-				'label' => esc_html__( 'Filter Style (Left Side)', 'filter-plus' ),
+				'label' => esc_html__( 'Filter Style (Left Side)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'filter_left_style_locked',
+				array(
+					'type' => Controls_Manager::RAW_HTML,
+					'raw'  => esc_html__( 'Left Side style controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 		$this->add_control(
 			'filter_left_color',
 			array(
@@ -789,16 +799,27 @@ class Woo_Filter extends Widget_Base {
 				),
 			)
 		);
+		}
 		$this->end_controls_section();
 
 		// Right Side (Result) Style — includes overall wrap style plus per-element styling
 		$this->start_controls_section(
 			'filter_right_style',
 			array(
-				'label' => esc_html__( 'Filter Result Style (Right Side)', 'filter-plus' ),
+				'label' => esc_html__( 'Filter Result Style (Right Side)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'filter_right_style_locked',
+				array(
+					'type' => Controls_Manager::RAW_HTML,
+					'raw'  => esc_html__( 'Right Side style controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 		// Per-element style tabs
 		$this->start_controls_tabs( 'right_side_elements_tabs' );
 
