@@ -1514,7 +1514,7 @@ a {
 	color: #fff !important;
 	text-decoration: none;
 	border-radius: 6px;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 500;
 	white-space: nowrap;
 	transition: all 0.3s ease;
@@ -1539,8 +1539,8 @@ a {
 .product-style-1 .card-action-btn-container .button i {
 	display: inline-block;
 	vertical-align: middle;
-	width: 13px;
-	height: 13px;
+	width: 16px;
+	height: 16px;
 	flex-shrink: 0;
 }
 
@@ -1848,11 +1848,13 @@ a.added_to_cart.wc-forward {
 	.card-action-btn-container
 	a {
 	display: flex;
-	width: 100%;
-	max-width: 160px;
+	align-items: center;
+	width: auto;
+	max-width: calc(100% - 20px);
 	box-sizing: border-box;
 	justify-content: center;
-	padding: 8px 26px 10px;
+	white-space: nowrap;
+	padding: 8px 16px 10px;
 	background-color: var(--filter-cart-content, #080808);
 	color: #fff;
 	text-decoration: none;
