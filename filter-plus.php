@@ -48,6 +48,22 @@ final class FilterPlus {
     }
 
 	/**
+     * Cache-busting version for an asset file.
+     *
+     * Uses the file's own last-modified time instead of the plugin
+     * version, so an updated JS/CSS file is picked up by the browser
+     * as soon as it's uploaded — no plugin version bump required.
+     *
+     * @param string $relative_path Path relative to the assets/ folder, e.g. 'js/search-filter.js'.
+     * @return string
+     */
+    public static function asset_version( $relative_path ) {
+    	$file = self::assets_dir() . ltrim( $relative_path, '/' );
+
+    	return file_exists( $file ) ? (string) filemtime( $file ) : self::get_version();
+    }
+
+	/**
      * Singleton Instance
      *
      * @return FilterPlus

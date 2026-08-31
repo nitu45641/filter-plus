@@ -108,12 +108,12 @@ class Enqueue {
         $script_arr = array(
 			'filter-js'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/search-filter.js',
-                'version'   => \FilterPlus::get_version(),
+                'version'   => \FilterPlus::asset_version( 'js/search-filter.js' ),
                 'deps'      => ['jquery', 'masonry', 'imagesloaded','filter-option','filter-swiper-bundle'],
             ),
             'filter-option'     => array(
                 'src'       => \FilterPlus::assets_url() . 'js/filter-option.js',
-                'version'   => \FilterPlus::get_version(),
+                'version'   => \FilterPlus::asset_version( 'js/filter-option.js' ),
                 'deps'      => ['jquery'],
             ),
             'filter-swiper-bundle'     => array(
@@ -133,7 +133,7 @@ class Enqueue {
         $enqueue =  array(
 			'filter-public-free' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/public.css',
-                'version' => \FilterPlus::get_version(),
+                'version' => \FilterPlus::asset_version( 'css/public.css' ),
             ),
             'filter-swiper-bundle' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/filter-swiper-bundle.min.css',
