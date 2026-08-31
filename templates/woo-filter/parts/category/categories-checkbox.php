@@ -1,8 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <div class="sidebar-row categories-wrap">
-<h4 class="sidebar-label"><?php echo !empty( $category_label ) ? esc_html( $category_label ) : esc_html__('Categories','filter-plus');?></h4>
-	<ul class="category-list categories-wrapper">
+	<?php
+		$_fp_tpl = \FilterPlus::locate_template( "parts/filter-param-header.php" );
+		if ( file_exists( $_fp_tpl ) ) {
+			$filterplus_label = !empty( $category_label ) ? esc_html( $category_label ) : esc_html__('Categories','filter-plus');
+			include $_fp_tpl;
+		}
+	?>
+	<ul class="category-list categories-wrapper panel">
 		<?php
 			$filterplus_get_categories = \FilterPlus\Utils\Helper::get_categories($categories,false,
 			array( 'hide_empty' => $hide_empty_cat , 'taxonomy' => $taxonomy, 'exclude_categories' => isset($exclude_categories) ? $exclude_categories : '', 'category_orderby' => isset($category_orderby) ? $category_orderby : '' ) );

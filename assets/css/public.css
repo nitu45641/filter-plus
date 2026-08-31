@@ -2172,6 +2172,13 @@ a.added_to_cart.wc-forward {
     align-items: center;
 }
 
+/* Panel starts open on load, so only the down-arrow (collapse hint) should
+   show by default. JS toggles this on click; setting it here too means the
+   correct single icon shows immediately, even before JS runs. */
+.up-arrow {
+    display: none;
+}
+
 .down-arrow svg,
 .up-arrow svg {
 	width: 13px;

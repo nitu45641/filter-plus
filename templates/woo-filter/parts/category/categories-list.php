@@ -3,7 +3,13 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="sidebar-row categories-wrap">
-	<h4 class="sidebar-label"><?php echo !empty( $category_label ) ? esc_html( $category_label ) : esc_html__('Categories','filter-plus');?></h4>
+	<?php
+		$_fp_tpl = \FilterPlus::locate_template( "parts/filter-param-header.php" );
+		if ( file_exists( $_fp_tpl ) ) {
+			$filterplus_label = !empty( $category_label ) ? esc_html( $category_label ) : esc_html__('Categories','filter-plus');
+			include $_fp_tpl;
+		}
+	?>
 	<ul class="category-list panel">
 		<?php
 			// Debug: Check what parameters are being passed
