@@ -475,19 +475,6 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'enable_category_layout',
-			array(
-				'label'        => esc_html__( 'Enable Category Layout', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'filter-plus' ),
-				'label_off'    => esc_html__( 'No', 'filter-plus' ),
-				'return_value' => 'yes',
-				'default'      => '',
-				'description'  => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
-			)
-		);
-
 		$this->end_controls_section();
 
 		$this->start_controls_section(

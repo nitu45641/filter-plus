@@ -262,9 +262,10 @@ input[type="checkbox"].regular-checkbox:checked::after {
     align-items: center;
 }
 ul.category-list{
-    padding: 30px 0 0 0;
+    padding: 0;
 	list-style-type: none;
-	margin-top: 30px !important;
+	margin: 0;
+	margin-left: 0;
 }
 ul.category-list li.active,
 ul.category-list li:hover,
@@ -2211,6 +2212,7 @@ a.added_to_cart.wc-forward {
 
 ul.sub_categories{
 	padding-left: 10px;
+	margin-left: 0;
 }
 
 ul.sub_categories.wrap-sub-cats {

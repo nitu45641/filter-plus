@@ -235,15 +235,6 @@ use \FilterPlus\Utils\Helper as Helper;
 
 			filterplus_number_input_field($filterplus_args);
 
-			// enable category layout (Pro)
-			$filterplus_args = array(
-				'label'      => esc_html__( 'Enable Category Layout:', 'filter-plus' ),
-				'id'         => 'enable_category_layout',
-				'data_label' => 'enable_category_layout',
-				'disable'    => class_exists( 'FilterPlusPro' ) ? false : true,
-			);
-			filterplus_checkbox_field( $filterplus_args );
-
 		?>
 
 		<h1 class="font_bold font_18 mb-1"><?php esc_html_e("Filter Result Products","filter-plus"); ?></h1>

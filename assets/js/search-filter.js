@@ -62,6 +62,16 @@
 		});
 
 		/*
+		 * Checkbox/Radio category templates: clicking anywhere on the row
+		 * (not just the .fp-cat-caret arrow) also opens/closes the sub-category
+		 * dropdown. The plain-<li> template (no input) already toggles itself
+		 * with stopPropagation, so this never double-fires for it.
+		 */
+		$(document).on('click', '.category-list li.has-sub-categories', function () {
+			filterplus_toggle_sub_categories($(this));
+		});
+
+		/*
 		 * Get Product from filter
 		 */
 
@@ -163,12 +173,6 @@
 				const selectedCatId   = _this.data('cat_id');
 				const selectedCatName = _this.data('name') || _this.find('label').text().trim() || _this.text().trim().replace(/\([^)]*\)/g, '').trim();
 
-				// Open the sub-category dropdown on the category click itself,
-				// not only via the .fp-cat-caret arrow.
-				if (_this.hasClass('has-sub-categories')) {
-					filterplus_toggle_sub_categories(_this);
-				}
-
 				if (!isApplyMode) {
 					get_products({ cat_id: [ selectedCatId ], product_cat: selectedCatName });
 				} else {
@@ -222,12 +226,6 @@
 				} else {
 					_this.removeClass('active');
 				}
-			}
-
-			// Open the sub-category dropdown on the category click itself,
-			// not only via the .fp-cat-caret arrow.
-			if (_this.hasClass('has-sub-categories')) {
-				filterplus_toggle_sub_categories(_this);
 			}
 
 			// Only auto-filter if apply button mode is disabled
