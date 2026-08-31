@@ -515,6 +515,9 @@ ul.ratings,.dropdown-box {
 	margin: 0 0 5px 0;
 	list-style: none;
 }
+.category-list.panel.dropdown-box {
+	padding-top: 20px;
+}
 .panel-7 ul.ratings{
 	margin-top: 0 !important;
 }
@@ -2227,6 +2230,9 @@ ul.sub_categories.wrap-sub-cats.fp-open {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: 8px;
+	padding-right: 10px;
+	box-sizing: border-box;
 	cursor: pointer;
 }
 
@@ -2236,6 +2242,7 @@ ul.sub_categories.wrap-sub-cats.fp-open {
 	justify-content: center;
 	width: 10px;
 	height: 10px;
+	flex-shrink: 0;
 	margin-left: 8px;
 	cursor: pointer;
 	transition: transform .2s ease;
