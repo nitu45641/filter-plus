@@ -1508,17 +1508,13 @@ a {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	flex-shrink: 0;
-	max-width: calc(100% - 20px);
-	overflow: hidden;
-	text-overflow: ellipsis;
 	gap: 6px;
 	padding: 11px 14px;
 	background-color: var(--filter-secondary-color, #1164cb);
 	color: #fff !important;
 	text-decoration: none;
 	border-radius: 6px;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 500;
 	white-space: nowrap;
 	transition: all 0.3s ease;
@@ -1543,8 +1539,8 @@ a {
 .product-style-1 .card-action-btn-container .button i {
 	display: inline-block;
 	vertical-align: middle;
-	width: 16px;
-	height: 16px;
+	width: 13px;
+	height: 13px;
 	flex-shrink: 0;
 }
 
