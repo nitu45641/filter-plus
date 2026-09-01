@@ -50,7 +50,7 @@ class Actions {
 		$min          = ! empty( $post_arr['min'] ) ? $post_arr['min'] : '';
 		$filter_param = ! empty( $post_arr['filter_param'] ) ? $post_arr['filter_param'] : array();
 		$template     = ! empty( $post_data['template'] ) ? absint( $post_data['template'] ) : 1;
-		if ( ! in_array( $template, [ 1, 2, 3, 4, 5, 6, 7 ], true ) ) {
+		if ( ! in_array( $template, [ 1, 2, 3, 4, 5, 6, 7, 8 ], true ) ) {
 			$template = 1;
 		}
 		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : 'yes';
@@ -675,7 +675,7 @@ class Actions {
 		}
 
 		$size = $filter_type == 'product' ? 'woocommerce_thumbnail' : array(300, 300);
-		if ( $filter_type == 'product' && $template == '7') {
+		if ( $filter_type == 'product' && ( $template == '7' || $template == '8' ) ) {
 			$size = array(220, 220);
 		}
 		// Fix: add template 2 and 3 for non-product types
@@ -721,9 +721,9 @@ class Actions {
 
 		if ($filter_type == 'product') {
 			$template_path = \FilterPlus::locate_template( "woo-filter/template-{$template}/right-side/product-template.php" );
-			if ( !file_exists($template_path) && in_array($template, [2, 3, 4, 5, 6, 7]) && class_exists('FilterPlusPro') ) {
-				// Templates 5 and 7 use bottom folder, others use right-side
-				$folder = in_array($template, [5, 7]) ? 'bottom' : 'right-side';
+			if ( !file_exists($template_path) && in_array($template, [2, 3, 4, 5, 6, 7, 8]) && class_exists('FilterPlusPro') ) {
+				// Templates 5, 7 and 8 use bottom folder, others use right-side
+				$folder = in_array($template, [5, 7, 8]) ? 'bottom' : 'right-side';
 				$template_path = \FilterPlusPro::locate_template( "woo-filter/template-{$template}/{$folder}/product-template.php" );
 			}
 		} else {

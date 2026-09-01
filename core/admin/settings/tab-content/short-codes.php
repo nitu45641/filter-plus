@@ -41,7 +41,7 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_checkbox_field($filterplus_args);
 
 			$filterplus_args 		= array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'template',
-			'data_label' => 'template','options'=>[1,2,3,4,5,6,7],'type'=>'template' );
+			'data_label' => 'template','options'=>[1,2,3,4,5,6,7,8],'type'=>'template' );
 
 			if ( $filterplus_disable ) {
 				$filterplus_args['template_disable'] = 1;

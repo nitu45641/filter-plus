@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, wordpress filter plugin, ajax product filter, product filter, filter by price
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.33
+Stable tag: 1.1.34
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -145,6 +145,9 @@ Filter Plus has been tested with all major WordPress and WooCommerce themes. If 
 No. If you can install and activate a WordPress plugin, you can use Filter Plus. The Elementor widget and Gutenberg block provide a visual, no-code setup. The shortcode option requires only copy-paste.
 
 == Changelog ==
+
+= 1.1.34 (September 1, 2026) =
+Fix    : AJAX re-filtering, product thumbnail size, and the pagination result-count summary now recognize Template 8 instead of silently falling back to Template 1 (Template 8's design ships in Filter Plus Pro 1.0.66+)
 
 = 1.1.33 (September 1, 2026) =
 Tweak  : Improved filter layout — attribute label falls back to attribute term name instead of the "Filter By " prefix when no custom label is set
