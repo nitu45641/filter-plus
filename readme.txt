@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, wordpress filter plugin, ajax product filter, product filter, filter by price
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.31
+Stable tag: 1.1.32
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -145,6 +145,9 @@ Filter Plus has been tested with all major WordPress and WooCommerce themes. If 
 No. If you can install and activate a WordPress plugin, you can use Filter Plus. The Elementor widget and Gutenberg block provide a visual, no-code setup. The shortcode option requires only copy-paste.
 
 == Changelog ==
+
+= 1.1.32 (September 1, 2026) =
+Added  : Template 8 (Pro) — new Woo Filter layout option added to the shortcode, Elementor widget, Bricks widget, and Gutenberg block template selectors; full template design ships in Filter Plus Pro
 
 = 1.1.31 (August 30, 2026) =
 Added  : Filter Layout style customization options for Woo Filter and Wp Filter widgets — separate "Filter Style (Left Side)" section (text color, typography, border, margin, padding) and "Filter Result Style (Right Side)" section with per-element style tabs (Title, Price, Review, Cart Icon)

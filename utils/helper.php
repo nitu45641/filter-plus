@@ -1205,7 +1205,7 @@ class Helper {
 	 */
 	public static function product_archive_layout_options()  {
 		$options = array();
-		for ( $i = 1; $i <= 7; $i++ ) {
+		for ( $i = 1; $i <= 8; $i++ ) {
 			/* translators: %d: template number */
 			$options[ $i ] = sprintf( esc_html__( 'Template %d', 'filter-plus' ), $i );
 		}

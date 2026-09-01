@@ -86,7 +86,7 @@ class Woo_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Style', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::widgets_templates(),
+			'options' => \FilterPlus\Utils\Helper::widgets_templates(8),
 			'inline' => true,
 			'placeholder' => esc_html__( 'Select Template', 'filter-plus' ),
 			'single' => true,

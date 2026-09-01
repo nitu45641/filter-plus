@@ -196,7 +196,7 @@ class Shortcodes {
 	 * @param [type] $template
 	 */
 	public function pro_template_check($template) {
-		$pro_template 	= [2,3];
+		$pro_template 	= [2,3,8];
 		$html 			= '';
 		if ( in_array((int)$template,$pro_template) && !class_exists('FilterPlusPro') ) {
 			$html = '<div class="row"><div class="woocommerce-error">'.esc_html__('Please Active FilterPlus Pro','filter-plus').'</div></div>';

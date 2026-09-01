@@ -49,7 +49,7 @@ class DataFactory {
             'tags'             	=> '',
             'tag_label'        	=> esc_html__('Tags','filter-plus'),
             'attributes'       	=> '',
-            'attribute_label'   => esc_html__('Attributes','filter-plus'),
+            'attribute_label'   => '',
             'show_tags'        	=> '',
             'show_attributes'  	=> '',
             'review_label'   	=> esc_html__('Review','filter-plus'),
@@ -162,7 +162,7 @@ class DataFactory {
 		$default_data['product_categories'] = ( isset( $settings['product_categories'] ) && ( $settings['product_categories'] === true || $settings['product_categories'] === 'yes' || $settings['product_categories'] === '1' || $settings['product_categories'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['attributes'] = ! empty( $attributes ) ? implode( ',', $attributes ) : '';
 		$default_data['show_attributes'] = ( isset( $settings['show_attributes'] ) && ( $settings['show_attributes'] === true || $settings['show_attributes'] === 'yes' || $settings['show_attributes'] === '1' || $settings['show_attributes'] == 1 ) ) ? 'yes' : 'no';
-		$default_data['attribute_label'] = ! empty( $attribute_label ) ? $attribute_label : esc_html__( 'Attributes', 'filter-plus' );
+		$default_data['attribute_label'] = ! empty( $attribute_label ) ? $attribute_label : '';
 		$default_data['show_reviews'] = ( isset( $settings['show_reviews'] ) && ( $settings['show_reviews'] === true || $settings['show_reviews'] === 'yes' || $settings['show_reviews'] === '1' || $settings['show_reviews'] == 1 ) ) ? 'yes' : 'no';
 		$default_data['review_label'] = ! empty( $review_label ) ? $review_label : esc_html__( 'Review', 'filter-plus' );
 		$default_data['show_price_range'] = ( isset( $settings['show_price_range'] ) && ( $settings['show_price_range'] === true || $settings['show_price_range'] === 'yes' || $settings['show_price_range'] === '1' || $settings['show_price_range'] == 1 ) ) ? 'yes' : 'no';
