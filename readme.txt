@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, wordpress filter plugin, ajax product filter, product filter, filter by price
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.34
+Stable tag: 1.1.35
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

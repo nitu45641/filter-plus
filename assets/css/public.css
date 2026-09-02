@@ -267,15 +267,28 @@ ul.category-list{
 	margin: 0;
 	margin-left: 0;
 }
+ul.category-list:not(.filter-tab-pane) li,
+.sub_categories li {
+	padding: 6px 8px;
+	margin-left: -8px;
+	margin-right: -8px;
+	border-radius: 6px;
+	transition: background-color 0.1s ease, color 0.1s ease, transform 0.1s ease;
+}
 ul.category-list li.active,
 ul.category-list li:hover,
 ul.category-list li.active label,
-ul.category-list li label:hover 
+ul.category-list li label:hover
 {
-	font-weight: bold;
 	color: var(--filter-secondary-color,#2d73e7) !important;
-	transition: all 0.10s ease-in-out;
 	cursor: pointer;
+}
+ul.category-list:not(.filter-tab-pane) li:hover,
+ul.category-list:not(.filter-tab-pane) li.active,
+.sub_categories li:hover {
+	background-color: rgba(45, 115, 231, 0.08);
+	background-color: color-mix(in srgb, var(--filter-secondary-color,#2d73e7) 10%, transparent);
+	transform: translateX(3px);
 }
 .radio-wrap .radio-item {
 	display: inline-flex;
@@ -779,8 +792,8 @@ ul.pagination {
 	cursor: pointer;
 	line-height: 18px;
 	font-size: 13px;
-	color: var(--filter-reset-color, rgb(158, 158, 158));
-	border-bottom: 1px solid var(--filter-reset-border-color, rgb(158, 158, 158));
+	color: var(--filter-secondary-color, #2d73e7);
+	border-bottom: 1px solid var(--filter-secondary-color, #2d73e7);
 }
 
 .selected-filter{
@@ -2198,6 +2211,16 @@ a.added_to_cart.wc-forward {
 .sub_categories li {
 	display: flex;
 	align-items: center;
+	border-radius: 6px;
+	transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.categories-wrapper .cat-group:hover,
+.categories-wrapper .cat-group.active,
+.sub_categories li:hover {
+	background-color: rgba(45, 115, 231, 0.08);
+	background-color: color-mix(in srgb, var(--filter-secondary-color,#2d73e7) 10%, transparent);
+	transform: translateX(3px);
 }
 
 .categories-wrapper .cat-group label,
@@ -2212,6 +2235,13 @@ a.added_to_cart.wc-forward {
 	display: inline-flex;
 	align-items: center;
 	gap: 5px;
+	transition: color 0.1s ease;
+}
+
+.categories-wrapper .cat-group:hover label,
+.categories-wrapper .cat-group.active label,
+.sub_categories li:hover label {
+	color: var(--filter-secondary-color,#2d73e7);
 }
 
 .categories-wrapper .cat-group input[type="checkbox"],
