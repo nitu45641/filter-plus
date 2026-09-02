@@ -1448,7 +1448,9 @@
 				}
 				const downArrow = headingWrap.find('.down-arrow');
 				const upArrow = headingWrap.find('.up-arrow');
-				const panel = headingWrap.parent().find('.panel').first();
+				// .dropdown-box too — Stock's box has no .panel class, so it
+				// was never found here and its trigger never opened it.
+				const panel = headingWrap.parent().find('.panel, .dropdown-box').first();
 
 				// Always hide both arrows initially
 				downArrow.hide();
