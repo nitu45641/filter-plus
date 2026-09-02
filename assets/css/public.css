@@ -115,13 +115,17 @@ input[type="checkbox"].regular-checkbox:checked {
 input[type="checkbox"].regular-checkbox:checked::after {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 6px;
+  top: 50%;
+  left: 50%;
   width: 4px;
-  height: 10px;
+  height: 9px;
   border: solid white;
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  /* translate(-50%,-50%) centers the tick's own box on the checkbox; the L
+     shape's visible strokes sit toward its bottom-left, so nudging up a bit
+     further (-60% instead of -50%) is what actually lands it visually
+     centered instead of low-and-right. */
+  transform: translate(-50%, -60%) rotate(45deg);
 }
 
 .font_14 {
