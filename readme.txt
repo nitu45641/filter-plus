@@ -97,6 +97,7 @@ If you like Filter Plus, check out these other plugins from the same team:
 🔔 **[Discountify](https://wordpress.org/plugins/discountify/)** – Discount Rules, Dynamic Pricing, and Coupon management for WooCommerce
 🔔 **[Quicker](https://wordpress.org/plugins/quicker/)** – Quick Buy and cart optimization to maximize WooCommerce conversions
 🔔 **[Bens Email Marketing & Automation](https://wordpress.org/plugins/bens-email-marketing-automation/)** – Email Marketing, Newsletters, Automation, and CRM for WordPress
+🔔 **[MenuBook](https://wpbens.com/plugins/menubook/)** – Restaurant Reservations & Set Menu Management for WordPress
 
 == Frequently Asked Questions ==
 

@@ -186,7 +186,6 @@ input[type="checkbox"].regular-checkbox:checked::after {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 4px;
-	z-index: 3;
 }
 .filter-cat-badge span,
 .filter-cat-badge .fp-sale-badge,
