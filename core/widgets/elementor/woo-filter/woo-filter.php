@@ -898,22 +898,6 @@ class Woo_Filter extends Widget_Base {
 				),
 			)
 		);
-		$this->add_responsive_control(
-			'prod_description_font_size',
-			array(
-				'label'      => esc_html__( 'Font Size', 'filter-plus' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', 'rem' ),
-				'range'      => array(
-					'px' => array( 'min' => 8, 'max' => 40 ),
-					'em' => array( 'min' => 0.5, 'max' => 3 ),
-					'rem' => array( 'min' => 0.5, 'max' => 3 ),
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .hpcc-description, {{WRAPPER}} .t3-desc, {{WRAPPER}} .description, {{WRAPPER}} .desc, {{WRAPPER}} .filter-wp-desc' => 'font-size: {{SIZE}}{{UNIT}} !important;',
-				),
-			)
-		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
@@ -935,9 +919,9 @@ class Woo_Filter extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					// Target nested WooCommerce amounts because template 2 assigns colors directly to .amount.
-					'{{WRAPPER}} .product-price' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} .product-price del, {{WRAPPER}} .product-price del *' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} .product-price > .amount, {{WRAPPER}} .product-price > .amount *' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .product-price, {{WRAPPER}} .price-block' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .product-price del, {{WRAPPER}} .product-price del *, {{WRAPPER}} .price-block del, {{WRAPPER}} .price-block del *' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .product-price > .amount, {{WRAPPER}} .product-price > .amount *, {{WRAPPER}} .price-block > .amount, {{WRAPPER}} .price-block > .amount *' => 'color: {{VALUE}} !important;',
 					'{{WRAPPER}} .hpcc-price' => 'color: {{VALUE}} !important;',
 					'{{WRAPPER}} .hpcc-price del, {{WRAPPER}} .hpcc-price del *' => 'color: {{VALUE}} !important;',
 					'{{WRAPPER}} .hpcc-price > .amount, {{WRAPPER}} .hpcc-price > .amount *' => 'color: {{VALUE}} !important;',
@@ -950,7 +934,7 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Sale Price Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .product-price ins, {{WRAPPER}} .product-price ins *' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .product-price ins, {{WRAPPER}} .product-price ins *, {{WRAPPER}} .price-block ins, {{WRAPPER}} .price-block ins *' => 'color: {{VALUE}} !important;',
 					'{{WRAPPER}} .hpcc-price ins, {{WRAPPER}} .hpcc-price ins *' => 'color: {{VALUE}} !important;',
 				),
 			)
@@ -1147,8 +1131,9 @@ class Woo_Filter extends Widget_Base {
 					// .cat-thumb doesn't exist on product markup — real wrappers are .product-thumbnail
 					// (grid) and .hpcc-image (list). !important needed to beat the plugin's own
 					// chained selectors (e.g. template-2's aspect-ratio square box).
-					'{{WRAPPER}} .product-thumbnail' => 'width: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .product-thumbnail, {{WRAPPER}} .image-contianer' => 'width: {{SIZE}}{{UNIT}} !important;',
 					'{{WRAPPER}} .hpcc-image' => 'width: {{SIZE}}{{UNIT}} !important; min-width: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .image-contianer img' => 'width: {{SIZE}}{{UNIT}} !important; max-width: 100% !important;',
 				),
 			)
 		);
@@ -1165,8 +1150,9 @@ class Woo_Filter extends Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .product-thumbnail' => 'height: {{SIZE}}{{UNIT}} !important; min-height: {{SIZE}}{{UNIT}} !important; aspect-ratio: auto !important;',
+					'{{WRAPPER}} .product-thumbnail, {{WRAPPER}} .image-contianer' => 'height: {{SIZE}}{{UNIT}} !important; min-height: {{SIZE}}{{UNIT}} !important; aspect-ratio: auto !important;',
 					'{{WRAPPER}} .hpcc-image' => 'height: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .image-contianer img' => 'height: {{SIZE}}{{UNIT}} !important; max-height: 100% !important; object-fit: cover;',
 				),
 			)
 		);
