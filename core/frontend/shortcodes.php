@@ -285,6 +285,7 @@ class Shortcodes {
 			$primary_color   = $settings['primary_color'];
 			if ( $settings['primary_color'] !== '#ffffff' ) {
 				$rating_color = $settings['primary_color'];
+				$price_color  = $settings['primary_color'];
 			}
 		}
 
