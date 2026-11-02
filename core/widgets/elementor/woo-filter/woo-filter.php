@@ -738,6 +738,49 @@ class Woo_Filter extends Widget_Base {
 				)
 			);
 		} else {
+		$filter_title_styles = array(
+			'search-wrap'     => esc_html__( 'Search', 'filter-plus' ),
+			'categories-wrap' => esc_html__( 'Category', 'filter-plus' ),
+			'.panel'          => esc_html__( 'Review', 'filter-plus' ),
+			'.radio-wrap'     => esc_html__( 'Custom Tags', 'filter-plus' ),
+		);
+		foreach ( $filter_title_styles as $filter_class => $filter_label ) {
+			$filter_selector = '{{WRAPPER}} .shop-sidebar ' . ( '.' === substr( $filter_class, 0, 1 ) ? $filter_class : '.' . $filter_class ) . ' .sidebar-label';
+			$this->add_control( 'filter_title_' . $filter_class . '_heading', array(
+				'label' => $filter_label . ' ' . esc_html__( 'Title', 'filter-plus' ),
+				'type'  => Controls_Manager::HEADING,
+				'separator' => 'before',
+				'classes' => 'filterplus-style-group-heading',
+			) );
+			$this->add_control( 'filter_title_' . $filter_class . '_color', array(
+				'label' => esc_html__( 'Text Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( $filter_selector => 'color: {{VALUE}};' ),
+			) );
+			$this->add_control( 'filter_title_' . $filter_class . '_hover_color', array(
+				'label' => esc_html__( 'Hover Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( $filter_selector . ':hover' => 'color: {{VALUE}};' ),
+			) );
+			$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), array(
+				'name' => 'filter_title_' . $filter_class . '_typography',
+				'label' => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => $filter_selector,
+			) );
+			$this->add_responsive_control( 'filter_title_' . $filter_class . '_font_size', array(
+				'label' => esc_html__( 'Font Size', 'filter-plus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', 'rem' ),
+				'range' => array( 'px' => array( 'min' => 8, 'max' => 60 ) ),
+				'selectors' => array( $filter_selector => 'font-size: {{SIZE}}{{UNIT}};' ),
+			) );
+		}
+		$this->add_control( 'filter_title_stock_heading', array( 'label' => esc_html__( 'Stock Title', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' ) );
+		foreach ( array( 'color' => esc_html__( 'Text Color', 'filter-plus' ), 'hover_color' => esc_html__( 'Hover Color', 'filter-plus' ) ) as $stock_style => $stock_label ) {
+			$this->add_control( 'filter_title_stock_' . $stock_style, array( 'label' => $stock_label, 'type' => Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .shop-sidebar .sidebar-row:has(> .sidebar-label)' . ( 'hover_color' === $stock_style ? ':hover' : '' ) => 'color: {{VALUE}};' ) ) );
+		}
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), array( 'name' => 'filter_title_stock_typography', 'label' => esc_html__( 'Typography', 'filter-plus' ), 'selector' => '{{WRAPPER}} .shop-sidebar .sidebar-row:has(> .sidebar-label) > .sidebar-label' ) );
+		$this->add_responsive_control( 'filter_title_stock_font_size', array( 'label' => esc_html__( 'Font Size', 'filter-plus' ), 'type' => Controls_Manager::SLIDER, 'size_units' => array( 'px', 'em', 'rem' ), 'range' => array( 'px' => array( 'min' => 8, 'max' => 60 ) ), 'selectors' => array( '{{WRAPPER}} .shop-sidebar .sidebar-row:has(> .sidebar-label) > .sidebar-label' => 'font-size: {{SIZE}}{{UNIT}};' ) ) );
 		$this->add_control(
 			'filter_left_background_color',
 			array(
