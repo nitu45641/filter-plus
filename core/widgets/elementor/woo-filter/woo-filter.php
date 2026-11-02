@@ -1205,6 +1205,17 @@ class Woo_Filter extends Widget_Base {
 				'selectors' => array( '{{WRAPPER}} .selected-filter .filter-tag' => 'border-color: {{VALUE}} !important;' ),
 			)
 		);
+		$this->add_responsive_control(
+			'selected_filter_border_width',
+			array(
+				'label'      => esc_html__( 'Filter Tag Border Width', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .selected-filter .filter-tag' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				),
+			)
+		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
@@ -1281,6 +1292,17 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 		$this->add_responsive_control(
+			'sortbar_border_width',
+			array(
+				'label'      => esc_html__( 'Bar Border Width', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .sort-bar' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				),
+			)
+		);
+		$this->add_responsive_control(
 			'sortbar_padding',
 			array(
 				'label'      => esc_html__( 'Bar Padding', 'filter-plus' ),
@@ -1309,6 +1331,17 @@ class Woo_Filter extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .sort-bar .sorting-bar' => 'background-color: {{VALUE}} !important;',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'sortbar_toggle_border_width',
+			array(
+				'label'      => esc_html__( 'View Button Border Width', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .sort-bar .sorting-bar' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 				),
 			)
 		);
