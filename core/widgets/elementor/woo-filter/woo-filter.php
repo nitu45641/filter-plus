@@ -739,29 +739,25 @@ class Woo_Filter extends Widget_Base {
 			);
 		} else {
 		$this->add_control(
-			'filter_left_color',
+			'filter_left_background_color',
 			array(
-				'label'     => esc_html__( 'Text Color', 'filter-plus' ),
+				'label'     => esc_html__( 'Wrapper Background Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .shop-sidebar' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .shop-sidebar' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
+		$this->add_responsive_control(
+			'filter_left_section_gap',
 			array(
-				'name'     => 'filter_left_typography',
-				'label'    => esc_html__( 'Typography', 'filter-plus' ),
-				'selector' => '{{WRAPPER}} .shop-sidebar',
-			)
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Border::get_type(),
-			array(
-				'name'     => 'filter_left_border',
-				'label'    => esc_html__( 'Border', 'filter-plus' ),
-				'selector' => '{{WRAPPER}} .shop-sidebar',
+				'label'      => esc_html__( 'Gap Between Filters', 'filter-plus' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em' ),
+				'range'      => array( 'px' => array( 'min' => 0, 'max' => 100 ) ),
+				'selectors'  => array(
+					'{{WRAPPER}} .shop-sidebar .sidebar-row' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				),
 			)
 		);
 		$this->add_responsive_control(
