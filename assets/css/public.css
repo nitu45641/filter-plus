@@ -146,6 +146,16 @@ input[type="checkbox"].regular-checkbox:checked::after {
 .image-contianer {
 	position: relative;
 }
+/* Elementor container fix: inside a column + wrap flex container (.e-con-inner), Chrome/Firefox
+   measure the widget's height at shrink-to-fit width. Grid cards scale with width (1fr columns,
+   fluid images), so the measured height is too short and the grid spills into the footer,
+   hiding pagination. A definite width makes the measured height match the rendered one.
+   Elementor applies the same fix to its own swiper/video widgets; --container-widget-width
+   keeps any custom width set in the widget's Layout settings. */
+.e-con .elementor-widget-filter-plus-woo,
+.e-con .elementor-widget-filter-plus-wp {
+	width: var(--container-widget-width, 100%);
+}
 /* Product Grid — responsive column overrides. Excluded from masonry (masonry uses float, not grid). */
 /* NOTE: no !important on display so jQuery fadeOut/fadeIn can hide/show the grid view normally. */
 .shopContainer.has-grid-cols:not([data-masonry_style="yes"]) .prods-grid-view {
@@ -714,6 +724,82 @@ ul.ratings,.dropdown-box {
 }
 .hpcc-btns:hover {
 	color: #2d73e7;
+}
+
+/* List view — responsive.
+   Tablet: smaller thumbnail. Phone: thumbnail left (spans two rows), title/price/description
+   right, cart button under the text. max-width caps the thumbnail even when Elementor's
+   Thumbnail Width control forces width/min-width with !important. */
+@media (max-width: 1024px) {
+	.prods-list-view .hpcc-image {
+		width: 160px;
+		min-width: 160px;
+		height: 160px;
+	}
+	.prods-list-view .hpcc-actions {
+		padding-left: 20px;
+	}
+}
+@media (max-width: 767px) {
+	.prods-list-view .horizontal-prod-card {
+		display: grid;
+		grid-template-columns: minmax(0, 110px) minmax(0, 1fr);
+		column-gap: 14px;
+		row-gap: 8px;
+		align-items: start;
+		width: 100%;
+		padding: 16px 0;
+		box-sizing: border-box;
+	}
+	.prods-list-view .hpcc-image {
+		grid-column: 1;
+		grid-row: 1 / span 2;
+		width: 110px;
+		height: 110px;
+		max-width: 100%;
+	}
+	.prods-list-view .horizontal-prod-card .hpcc-image {
+		min-width: 0 !important;
+	}
+	.prods-list-view .hpcc-image {
+		border-radius: 10px;
+		overflow: hidden;
+	}
+	.prods-list-view .hpcc-content {
+		grid-column: 2;
+		min-width: 0;
+		padding: 0;
+	}
+	.prods-list-view .hpcc-name a {
+		display: block;
+		padding: 0 0 4px;
+		font-size: 16px;
+		overflow-wrap: anywhere;
+	}
+	.prods-list-view .hpcc-rating {
+		margin-bottom: 4px;
+	}
+	.prods-list-view .hpcc-price {
+		padding: 2px 0;
+		font-size: 16px;
+	}
+	.prods-list-view .hpcc-description {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		margin-top: 6px;
+		padding: 6px 0 0;
+		font-size: 13px;
+	}
+	.prods-list-view .hpcc-actions {
+		grid-column: 2;
+		padding: 0;
+	}
+	.prods-list-view .hpcc-btns {
+		justify-content: flex-start;
+		padding: 0;
+	}
 }
 
 /* List view css end */
@@ -2704,6 +2790,36 @@ ul.sub_categories.wrap-sub-cats.fp-open {
 }
 .pagination-footer.one-section{
    justify-content: center;
+}
+/* Responsive pagination: wrap instead of overflowing the screen when there are many pages. */
+.pagination-footer {
+	flex-wrap: wrap;
+	gap: 12px;
+	max-width: 100%;
+}
+.pagination-footer ul.pagination {
+	flex-wrap: wrap;
+	row-gap: 10px;
+	max-width: 100%;
+}
+.pagination-1 li:not(.load-more) {
+	box-sizing: border-box;
+	padding: 0;
+	flex: 0 0 auto;
+}
+@media (max-width: 480px) {
+	.pagination-footer,
+	.pagination-footer ul.pagination {
+		margin: 24px 0;
+	}
+	.pagination li {
+		margin: 0 3px;
+	}
+	.pagination-1 li:not(.load-more) {
+		height: 36px;
+		width: 36px;
+		font-size: 13px;
+	}
 }
 .pagination-footer .load-more{
 	width: 100% !important;
