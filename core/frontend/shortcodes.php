@@ -367,15 +367,13 @@ class Shortcodes {
 			.shop-container-3 .prods-grid-view.grid-view-3 {
 				grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
 			}
-			.tab-item.product-style-5{
-				display: grid;
-				grid-template-columns: 200px 200px 200px 200px;
-				gap: 8px 20px;
-			}
 			.grid-view-4 {
 				display: grid;
-				grid-template-columns: 1fr 1fr;
+				grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
 				gap: 15px;
+			}
+			.shop-container-4 .prods-grid-view.grid-view-4 {
+				grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
 			}
 			.product-style-4 {
 				display: flex;
@@ -418,9 +416,6 @@ class Shortcodes {
 				}
 				.shop-container-3 .prods-grid-view.grid-view-3 {
 					grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-				}
-				.product-style-5{
-				    grid-template-columns: 220px 220px 220px !important;
 				}
 				.color-style-2{
 					gap: 8px !important;

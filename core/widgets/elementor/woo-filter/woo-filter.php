@@ -946,7 +946,7 @@ class Woo_Filter extends Widget_Base {
 				'label'    => esc_html__( 'Typography', 'filter-plus' ),
 				// Target WooCommerce's nested price markup too, whose theme styles can
 				// otherwise override inherited typography (notably del/ins amounts).
-				'selector' => '{{WRAPPER}} .product-price, {{WRAPPER}} .product-price *, {{WRAPPER}} .hpcc-price, {{WRAPPER}} .hpcc-price *, {{WRAPPER}} .product-style-1 .product-price del, {{WRAPPER}} .product-style-1 .product-price del *, {{WRAPPER}} .product-style-2 .vartical-prod-card-container .product-content .product-price .amount, {{WRAPPER}} .product-style-2 .vartical-prod-card-container .product-content .product-price ins, {{WRAPPER}} .product-style-2 .vartical-prod-card-container .product-content .product-price del, {{WRAPPER}} .product-style-2 .vartical-prod-card-container .product-content .product-price del *',
+				'selector' => '{{WRAPPER}} .product-price, {{WRAPPER}} .product-price *, {{WRAPPER}} .price-block, {{WRAPPER}} .price-block *, {{WRAPPER}} .hpcc-price, {{WRAPPER}} .hpcc-price *, {{WRAPPER}} .product-style-1 .product-price del, {{WRAPPER}} .product-style-1 .product-price del *, {{WRAPPER}} .product-style-2 .vartical-prod-card-container .product-content .product-price .amount, {{WRAPPER}} .product-style-2 .vartical-prod-card-container .product-content .product-price ins, {{WRAPPER}} .product-style-2 .vartical-prod-card-container .product-content .product-price del, {{WRAPPER}} .product-style-2 .vartical-prod-card-container .product-content .product-price del *',
 			)
 		);
 		$this->add_responsive_control(
