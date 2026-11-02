@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: product filter, woocommerce product filter, ajax product filter, ajax filter, filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.35
+Stable tag: 1.1.36
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -175,13 +175,17 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 
 == Changelog ==
 
-= 1.1.34 (September 1, 2026) =
+= 1.1.36 (November 02, 2026) =
+* Tweak: Improve dashboard overview 
+* Tweak: Improve responsive view of filter layout
+
+= 1.1.34 (September 01, 2026) =
 * Fix: AJAX re-filtering, product thumbnail size and the pagination result count now recognize Template 8 instead of falling back to Template 1 (Template 8 ships in Filter Plus Pro 1.0.66+).
 
-= 1.1.33 (September 1, 2026) =
+= 1.1.33 (September 01, 2026) =
 * Tweak: Attribute filter label falls back to the attribute name when no custom label is set.
 
-= 1.1.32 (September 1, 2026) =
+= 1.1.32 (September 01, 2026) =
 * New: Template 8 (Pro) option in the shortcode, Elementor, Bricks and Gutenberg template selectors.
 
 = 1.1.31 (August 30, 2026) =
