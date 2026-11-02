@@ -1158,53 +1158,104 @@ class Woo_Filter extends Widget_Base {
 
 
 		$this->add_control(
-			'tab_prod_grid_heading',
-			array( 'label' => esc_html__( 'Grid', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
+			'tab_selected_filters_heading',
+			array( 'label' => esc_html__( 'Selected Filters', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
 		);
 		$this->add_control(
-			'grid_columns_desktop',
+			'selected_filter_text_color',
 			array(
-				'label'       => esc_html__( 'Desktop Columns', 'filter-plus' ),
-				'type'        => Controls_Manager::NUMBER,
-				'min'         => 1,
-				'max'         => 6,
-				'step'        => 1,
-				'placeholder' => esc_html__( 'e.g. 3', 'filter-plus' ),
+				'label' => esc_html__( 'Text Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( '{{WRAPPER}} .selected-filter, {{WRAPPER}} .selected-filter .clear-filter, {{WRAPPER}} .selected-filter .filter-tag' => 'color: {{VALUE}} !important;' ),
 			)
 		);
 		$this->add_control(
-			'grid_columns_tablet',
+			'selected_filter_hover_text_color',
 			array(
-				'label'       => esc_html__( 'Tablet Columns (≤1024px)', 'filter-plus' ),
-				'type'        => Controls_Manager::NUMBER,
-				'min'         => 1,
-				'max'         => 4,
-				'step'        => 1,
-				'placeholder' => esc_html__( 'e.g. 2', 'filter-plus' ),
+				'label' => esc_html__( 'Hover Text Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .selected-filter .filter-tag:hover, {{WRAPPER}} .selected-filter .clear-filter:hover' => 'color: {{VALUE}} !important;',
+				),
 			)
 		);
 		$this->add_control(
-			'grid_columns_mobile',
+			'selected_filter_bg_color',
 			array(
-				'label'       => esc_html__( 'Mobile Columns (≤480px)', 'filter-plus' ),
-				'type'        => Controls_Manager::NUMBER,
-				'min'         => 1,
-				'max'         => 2,
-				'step'        => 1,
-				'placeholder' => esc_html__( 'e.g. 1', 'filter-plus' ),
+				'label' => esc_html__( 'Filter Tag Background Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( '{{WRAPPER}} .selected-filter .filter-tag' => 'background-color: {{VALUE}} !important;' ),
 			)
 		);
-		$this->end_controls_section();
-		}
+		$this->add_control(
+			'selected_filter_hover_bg_color',
+			array(
+				'label' => esc_html__( 'Filter Tag Hover Background Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .selected-filter .filter-tag:hover' => 'background-color: {{VALUE}} !important;',
+				),
+			)
+		);
+		$this->add_control(
+			'selected_filter_border_color',
+			array(
+				'label' => esc_html__( 'Filter Tag Border Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( '{{WRAPPER}} .selected-filter .filter-tag' => 'border-color: {{VALUE}} !important;' ),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name' => 'selected_filter_typography',
+				'label' => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .selected-filter, {{WRAPPER}} .selected-filter .filter-tag, {{WRAPPER}} .selected-filter .clear-filter',
+			)
+		);
+		$this->add_responsive_control(
+			'selected_filter_tag_padding',
+			array(
+				'label' => esc_html__( 'Filter Tag Padding', 'filter-plus' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors' => array( '{{WRAPPER}} .selected-filter .filter-tag' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ),
+			)
+		);
+		$this->add_control(
+			'tab_result_count_heading',
+			array( 'label' => esc_html__( 'Result Count', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
+		);
+		$this->add_control(
+			'result_count_color',
+			array(
+				'label'     => esc_html__( 'Text Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .showing, {{WRAPPER}} .showing p, {{WRAPPER}} .showing span' => 'color: {{VALUE}} !important;',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'result_count_typography',
+				'label'    => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .showing, {{WRAPPER}} .showing p, {{WRAPPER}} .showing span',
+			)
+		);
+		$this->add_responsive_control(
+			'result_count_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'filter-plus' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .showing' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				),
+			)
+		);
 
-		// Advance Style (bottom of Style tab)
-		$this->start_controls_section(
-			'advance_style',
-			array(
-				'label' => esc_html__( 'Advance Style', 'filter-plus' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			)
-		);
 		$this->add_control(
 			'tab_sortbar_heading',
 			array( 'label' => esc_html__( 'Sort Bar', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
@@ -1304,39 +1355,53 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 		$this->add_control(
-			'tab_result_count_heading',
-			array( 'label' => esc_html__( 'Result Count', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
+			'tab_prod_grid_heading',
+			array( 'label' => esc_html__( 'Grid', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
 		);
 		$this->add_control(
-			'result_count_color',
+			'grid_columns_desktop',
 			array(
-				'label'     => esc_html__( 'Text Color', 'filter-plus' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} .showing, {{WRAPPER}} .showing p, {{WRAPPER}} .showing span' => 'color: {{VALUE}} !important;',
-				),
+				'label'       => esc_html__( 'Desktop Columns', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 6,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 3', 'filter-plus' ),
 			)
 		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
+		$this->add_control(
+			'grid_columns_tablet',
 			array(
-				'name'     => 'result_count_typography',
-				'label'    => esc_html__( 'Typography', 'filter-plus' ),
-				'selector' => '{{WRAPPER}} .showing, {{WRAPPER}} .showing p, {{WRAPPER}} .showing span',
+				'label'       => esc_html__( 'Tablet Columns (≤1024px)', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 4,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 2', 'filter-plus' ),
 			)
 		);
-		$this->add_responsive_control(
-			'result_count_margin',
+		$this->add_control(
+			'grid_columns_mobile',
 			array(
-				'label'      => esc_html__( 'Margin', 'filter-plus' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em', '%' ),
-				'selectors'  => array(
-					'{{WRAPPER}} .showing' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-				),
+				'label'       => esc_html__( 'Mobile Columns (≤480px)', 'filter-plus' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 2,
+				'step'        => 1,
+				'placeholder' => esc_html__( 'e.g. 1', 'filter-plus' ),
 			)
 		);
+		$this->end_controls_section();
+		}
 
+		// Advance Style (bottom of Style tab)
+		$this->start_controls_section(
+			'advance_style',
+			array(
+				'label' => esc_html__( 'Advance Style', 'filter-plus' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
 		$this->add_control(
 			'box_bg_color',
 			array(
