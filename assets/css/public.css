@@ -3123,6 +3123,14 @@ ul.sub_categories.wrap-sub-cats.fp-open {
 		width: 100%;
 	}
 }
+/* Phone gutter: products sat ~10px from the screen edge — add breathing room (≈16px total). */
+@media (max-width: 767px) {
+	.products-wrap {
+		padding-left: 6px;
+		padding-right: 6px;
+		box-sizing: border-box;
+	}
+}
 @media (max-width: 768px) {
 	.shop-container-2 .filter-bar-mb-search {
 		display: block;
