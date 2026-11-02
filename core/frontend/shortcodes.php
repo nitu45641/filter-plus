@@ -283,6 +283,9 @@ class Shortcodes {
         if ( ($settings['secondary_color'] !== '#ffffff') || ($settings['primary_color'] !== '#ffffff')  ) {
 			$secondary_color = $settings['secondary_color'];
 			$primary_color   = $settings['primary_color'];
+			if ( $settings['primary_color'] !== '#ffffff' ) {
+				$rating_color = $settings['primary_color'];
+			}
 		}
 
 		$loader_color =  $secondary_color == "#fff" ? $primary_color : $secondary_color;
