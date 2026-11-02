@@ -2108,7 +2108,7 @@ a.added_to_cart.wc-forward {
 	.product-price
 	del {
 	color: #cccccc !important;
-	font-weight: 400 !important;
+	font-weight: 400;
 }
 
 .product-style-2
@@ -2118,7 +2118,7 @@ a.added_to_cart.wc-forward {
 	del
 	bdi {
 	color: #cccccc !important;
-	font-weight: 400 !important;
+	font-weight: 400;
 }
 .product-style-2
 	.vartical-prod-card-container

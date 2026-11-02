@@ -53,6 +53,7 @@ class Core {
 
       // load elementor
       add_action( 'elementor/frontend/before_enqueue_scripts', array( $this, 'element_js' ) );
+      add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'elementor_editor_styles' ) );
       Elementor_Manifest::instance()->init();
     }
 
@@ -104,6 +105,19 @@ class Core {
 
     public function element_js() {
 
+    }
+
+    /**
+     * Style the Woo filter subgroup labels in Elementor's editor panel.
+     */
+    public function elementor_editor_styles() {
+        wp_register_style( 'filter-plus-elementor-editor', false, array(), \FilterPlus::get_version() );
+        wp_enqueue_style( 'filter-plus-elementor-editor' );
+        wp_add_inline_style(
+            'filter-plus-elementor-editor',
+            '.elementor-control.filterplus-style-group-heading .elementor-control-title{' .
+            'font-size:15px;font-weight:700;color:#e3106e;}'
+        );
     }
 
     /**
