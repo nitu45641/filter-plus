@@ -1618,115 +1618,184 @@ tfoot > tr
 }
 .flp-plugin-cards {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 16px;
+	grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+	gap: 20px;
 }
 .flp-plugin-card {
-	background: #fff;
-	border: 1px solid #eef0f5;
-	border-radius: 14px;
-	overflow: hidden;
-	box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-	transition: all 0.2s ease;
+	--flp-accent: #3263f8;
+	--flp-accent-soft: color-mix(in srgb, var(--flp-accent) 10%, #fff);
+	position: relative;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 18px;
+	padding: 22px;
+	background: #fff;
+	border: 1px solid #e9ecf3;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 1px 2px rgba(16,24,40,0.04), 0 4px 14px rgba(16,24,40,0.04);
+	transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.flp-plugin-card::before {
+	content: "";
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: 120px;
+	background: linear-gradient(90deg, var(--flp-accent-soft) 0%, rgba(255,255,255,0) 100%);
+	pointer-events: none;
 }
 .flp-plugin-card:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 10px 28px rgba(50,99,248,0.12);
-	border-color: #c7d7fd;
+	transform: translateY(-5px);
+	border-color: color-mix(in srgb, var(--flp-accent) 35%, #fff);
+	box-shadow: 0 16px 36px -12px color-mix(in srgb, var(--flp-accent) 35%, transparent);
+}
+.flp-plugin-badge {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	z-index: 1;
+	background: var(--flp-accent);
+	color: #fff;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding: 3px 9px;
+	border-radius: 20px;
+	box-shadow: 0 2px 6px color-mix(in srgb, var(--flp-accent) 40%, transparent);
 }
 .flp-plugin-img {
-	background: #f7f9ff;
-	padding: 20px;
+	position: relative;
+	flex: 0 0 auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 110px;
-}
-.flp-plugin-img img {
 	width: 72px;
 	height: 72px;
+	background: #fff;
+	border-radius: 18px;
+	box-shadow: 0 0 0 1px rgba(16,24,40,0.06), 0 6px 16px -6px color-mix(in srgb, var(--flp-accent) 45%, transparent);
+	transition: transform 0.25s ease;
+}
+.flp-plugin-card:hover .flp-plugin-img {
+	transform: scale(1.06) rotate(-3deg);
+}
+.flp-plugin-img img {
+	width: 52px;
+	height: 52px;
 	object-fit: contain;
-	border-radius: 10px;
+	display: block;
 }
-.flp-plugin-info {
-	padding: 16px;
+.flp-plugin-title {
 	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	flex: 1;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 10px;
+	min-width: 0;
 }
-.flp-plugin-info h3 {
-	font-size: 14px;
+.flp-plugin-badge ~ .flp-plugin-info .flp-plugin-title {
+	padding-right: 44px;
+}
+.flp-plugin-title h3 {
+	font-size: 16px;
 	font-weight: 700;
 	margin: 0;
 	line-height: 1.3;
 }
-.flp-plugin-info h3 a {
-	color: #111 !important;
+.flp-plugin-title h3 a {
+	color: #101828 !important;
 	text-decoration: none !important;
 	transition: color 0.15s;
 }
-.flp-plugin-info h3 a:hover {
-	color: #3263f8 !important;
+.flp-plugin-title h3 a:hover {
+	color: var(--flp-accent) !important;
+}
+.flp-plugin-tag {
+	font-size: 11px;
+	font-weight: 600;
+	color: color-mix(in srgb, var(--flp-accent) 80%, #000);
+	background: var(--flp-accent-soft);
+	padding: 2px 9px;
+	border-radius: 20px;
+	line-height: 1.6;
+}
+.flp-plugin-info {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+	gap: 10px;
+	flex: 1;
+	min-width: 0;
 }
 .flp-plugin-info p {
-	font-size: 12px;
-	color: #6b7280;
-	margin: 0;
-	line-height: 1.5;
 	flex: 1;
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.6;
+	color: #667085;
 }
 .flp-plugin-btns {
 	display: flex;
 	gap: 8px;
-	margin-top: 6px;
+	margin-top: 4px;
+	padding-top: 14px;
+	border-top: 1px solid #f0f2f7;
 }
-.flp-btn-outline {
-	flex: 1;
-	text-align: center;
-	padding: 7px 8px;
-	border-radius: 7px;
-	font-size: 12px;
-	font-weight: 600;
-	text-decoration: none !important;
-	background: #f4f6fb;
-	color: #374151 !important;
-	border: 1.5px solid #e5e7eb;
-	transition: all 0.15s ease;
-}
-.flp-btn-outline:hover {
-	background: #eaecf5;
-	color: #111 !important;
-	border-color: #d1d5db;
-}
+.flp-btn-outline,
 .flp-btn-filled {
 	flex: 1;
-	text-align: center;
-	padding: 7px 8px;
-	border-radius: 7px;
-	font-size: 12px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 8px 10px;
+	border-radius: 9px;
+	font-size: 12.5px;
 	font-weight: 600;
+	line-height: 1.2;
 	text-decoration: none !important;
-	background: #3263f8;
+	transition: all 0.18s ease;
+}
+.flp-btn-outline {
+	background: #fff;
+	color: #344054 !important;
+	border: 1px solid #d0d5dd;
+}
+.flp-btn-outline:hover {
+	border-color: var(--flp-accent);
+	color: var(--flp-accent) !important;
+	background: var(--flp-accent-soft);
+}
+.flp-btn-filled {
+	background: #101828;
 	color: #fff !important;
-	border: 1.5px solid transparent;
-	transition: all 0.15s ease;
+	border: 1px solid #101828;
+}
+.flp-btn-filled .dashicons {
+	font-size: 14px;
+	width: 14px;
+	height: 14px;
+	transition: transform 0.18s ease;
 }
 .flp-btn-filled:hover {
-	background: #254ec8;
+	background: var(--flp-accent);
+	border-color: var(--flp-accent);
 	color: #fff !important;
-	transform: translateY(-1px);
-	box-shadow: 0 3px 8px rgba(50,99,248,0.3);
+	box-shadow: 0 4px 12px -2px color-mix(in srgb, var(--flp-accent) 50%, transparent);
+}
+.flp-btn-filled:hover .dashicons {
+	transform: translateX(2px);
+}
+.flp-btn-outline:focus-visible,
+.flp-btn-filled:focus-visible {
+	outline: 2px solid var(--flp-accent);
+	outline-offset: 2px;
+	box-shadow: none;
 }
 
 /* Overview responsive */
-@media (max-width: 1200px) {
-	.flp-plugin-cards {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
 @media (max-width: 1024px) {
 	.flp-hero {
 		flex-direction: column;
@@ -1746,9 +1815,6 @@ tfoot > tr
 	.flp-hero-title {
 		font-size: 1.9rem;
 	}
-	.flp-plugin-cards {
-		grid-template-columns: repeat(2, 1fr);
-	}
 }
 @media (max-width: 900px) {
 	.flp-features-grid {
@@ -1761,6 +1827,18 @@ tfoot > tr
 	}
 	.flp-plugin-cards {
 		grid-template-columns: 1fr;
+	}
+	.flp-plugin-card {
+		padding: 18px;
+		gap: 14px;
+	}
+	.flp-plugin-img {
+		width: 56px;
+		height: 56px;
+	}
+	.flp-plugin-img img {
+		width: 40px;
+		height: 40px;
 	}
 	.flp-cta-banner {
 		padding: 40px 24px;

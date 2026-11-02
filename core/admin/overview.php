@@ -388,73 +388,88 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 
 	<!-- More Plugins -->
+	<?php
+	$flp_more_plugins = array(
+		array(
+			'name'    => __( 'MemberHub', 'filter-plus' ),
+			'tag'     => __( 'Membership', 'filter-plus' ),
+			'logo'    => 'plugin-logo-memberhub.png',
+			'accent'  => '#3fa34d',
+			'desc'    => __( 'Turn your site into a membership platform — restrict content, manage subscriptions, and offer member-only pricing.', 'filter-plus' ),
+			'free'    => 'https://wordpress.org/plugins/memberhub/',
+			'premium' => 'https://wpbens.com/plugins/memberhub/',
+		),
+		array(
+			'name'    => __( 'MailerHub', 'filter-plus' ),
+			'tag'     => __( 'Email & CRM', 'filter-plus' ),
+			'logo'    => 'plugin-logo-mailerhub.png',
+			'accent'  => '#0a74f0',
+			'desc'    => __( 'All-in-one email marketing & CRM — send campaigns, automate sequences, manage contacts, and grow your list.', 'filter-plus' ),
+			'free'    => 'https://wordpress.org/plugins/bens-email-marketing-automation/',
+			'premium' => 'https://wpbens.com/plugins/mailerhub/',
+		),
+		array(
+			'name'    => __( 'Discountify', 'filter-plus' ),
+			'tag'     => __( 'Pricing', 'filter-plus' ),
+			'logo'    => 'plugin-logo-discountify.png',
+			'accent'  => '#f26a1f',
+			'desc'    => __( 'Dynamic pricing and discount rules for WooCommerce — percentage, fixed, BOGO, tiered, and conditional discounts.', 'filter-plus' ),
+			'free'    => 'https://wordpress.org/plugins/discountify/',
+			'premium' => 'https://wpbens.com/plugins/discountify/',
+		),
+		array(
+			'name'    => __( 'Quicker', 'filter-plus' ),
+			'tag'     => __( 'Checkout', 'filter-plus' ),
+			'logo'    => 'plugin-logo-quicker.png',
+			'accent'  => '#e89b00',
+			'desc'    => __( 'Boost conversions and cut cart abandonment with quick buy, order bumps, upsells, and custom fees.', 'filter-plus' ),
+			'free'    => 'https://wordpress.org/plugins/quicker/',
+			'premium' => 'https://wpbens.com/plugins/quicker/',
+		),
+		array(
+			'name'    => __( 'MenuBook', 'filter-plus' ),
+			'tag'     => __( 'Restaurant', 'filter-plus' ),
+			'logo'    => 'plugin-logo-menubook.png',
+			'accent'  => '#d4412a',
+			'desc'    => __( 'Restaurant reservations and set menu management — take bookings, manage guests, and sell set menus online.', 'filter-plus' ),
+			'free'    => '',
+			'premium' => 'https://wpbens.com/plugins/menubook/',
+			'badge'   => __( 'New', 'filter-plus' ),
+		),
+	);
+	?>
 	<div class="flp-more-plugins">
 		<div class="flp-section-label"><?php esc_html_e( 'BY THE SAME TEAM', 'filter-plus' ); ?></div>
 		<h2 class="flp-section-title"><?php esc_html_e( 'More Plugins to Grow Your Store', 'filter-plus' ); ?></h2>
 		<p class="flp-section-subtitle"><?php esc_html_e( 'Powerful WooCommerce and WordPress solutions built by the same team.', 'filter-plus' ); ?></p>
 
 		<div class="flp-plugin-cards">
-
-			<div class="flp-plugin-card">
-				<div class="flp-plugin-img">
-					<img src="<?php echo esc_url( FilterPlus::assets_url() . 'images/plugin-logo-memberhub.gif' ); ?>"
-						alt="<?php esc_attr_e( 'MemberHub', 'filter-plus' ); ?>"/>
-				</div>
-				<div class="flp-plugin-info">
-					<h3><a href="https://wpbens.com/plugins/memberhub/" target="_blank"><?php esc_html_e( 'MemberHub', 'filter-plus' ); ?></a></h3>
-					<p><?php esc_html_e( 'Transform your site into a membership platform — restrict content, manage subscriptions, and offer member-exclusive pricing.', 'filter-plus' ); ?></p>
-					<div class="flp-plugin-btns">
-						<a class="flp-btn-outline" href="https://wordpress.org/plugins/memberhub/" target="_blank"><?php esc_html_e( 'Free', 'filter-plus' ); ?></a>
-						<a class="flp-btn-filled" href="https://wpbens.com/plugins/memberhub/" target="_blank"><?php esc_html_e( 'Premium', 'filter-plus' ); ?></a>
+			<?php foreach ( $flp_more_plugins as $flp_plugin ) : ?>
+				<div class="flp-plugin-card" style="--flp-accent: <?php echo esc_attr( $flp_plugin['accent'] ); ?>;">
+					<?php if ( ! empty( $flp_plugin['badge'] ) ) : ?>
+						<span class="flp-plugin-badge"><?php echo esc_html( $flp_plugin['badge'] ); ?></span>
+					<?php endif; ?>
+					<div class="flp-plugin-img">
+						<img src="<?php echo esc_url( FilterPlus::assets_url() . 'images/' . $flp_plugin['logo'] ); ?>"
+							alt="<?php echo esc_attr( $flp_plugin['name'] ); ?>" loading="lazy"/>
+					</div>
+					<div class="flp-plugin-info">
+						<div class="flp-plugin-title">
+							<h3><a href="<?php echo esc_url( $flp_plugin['premium'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $flp_plugin['name'] ); ?></a></h3>
+							<span class="flp-plugin-tag"><?php echo esc_html( $flp_plugin['tag'] ); ?></span>
+						</div>
+						<p><?php echo esc_html( $flp_plugin['desc'] ); ?></p>
+						<div class="flp-plugin-btns">
+							<?php if ( ! empty( $flp_plugin['free'] ) ) : ?>
+								<a class="flp-btn-outline" href="<?php echo esc_url( $flp_plugin['free'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Free', 'filter-plus' ); ?></a>
+								<a class="flp-btn-filled" href="<?php echo esc_url( $flp_plugin['premium'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Premium', 'filter-plus' ); ?></a>
+							<?php else : ?>
+								<a class="flp-btn-filled" href="<?php echo esc_url( $flp_plugin['premium'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Premium', 'filter-plus' ); ?></a>
+							<?php endif; ?>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="flp-plugin-card">
-				<div class="flp-plugin-img">
-					<img src="<?php echo esc_url( FilterPlus::assets_url() . 'images/plugin-logo-mailerhub.png' ); ?>"
-						alt="<?php esc_attr_e( 'MailerHub', 'filter-plus' ); ?>"/>
-				</div>
-				<div class="flp-plugin-info">
-					<h3><a href="https://wpbens.com/plugins/mailerhub/" target="_blank"><?php esc_html_e( 'MailerHub', 'filter-plus' ); ?></a></h3>
-					<p><?php esc_html_e( 'All-in-one Email Marketing & CRM — send campaigns, automate sequences, manage contacts, and grow your list.', 'filter-plus' ); ?></p>
-					<div class="flp-plugin-btns">
-						<a class="flp-btn-outline" href="https://wordpress.org/plugins/bens-email-marketing-automation/" target="_blank"><?php esc_html_e( 'Free', 'filter-plus' ); ?></a>
-						<a class="flp-btn-filled" href="https://wpbens.com/plugins/mailerhub/" target="_blank"><?php esc_html_e( 'Premium', 'filter-plus' ); ?></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="flp-plugin-card">
-				<div class="flp-plugin-img">
-					<img src="<?php echo esc_url( FilterPlus::assets_url() . 'images/plugin-logo-discountify.gif' ); ?>"
-						alt="<?php esc_attr_e( 'Discountify', 'filter-plus' ); ?>"/>
-				</div>
-				<div class="flp-plugin-info">
-					<h3><a href="https://wpbens.com/plugins/discountify/" target="_blank"><?php esc_html_e( 'Discountify', 'filter-plus' ); ?></a></h3>
-					<p><?php esc_html_e( 'Dynamic pricing and discount rules for WooCommerce — percentage, fixed, BOGO, tiered, and conditional discounts.', 'filter-plus' ); ?></p>
-					<div class="flp-plugin-btns">
-						<a class="flp-btn-outline" href="https://wordpress.org/plugins/discountify/" target="_blank"><?php esc_html_e( 'Free', 'filter-plus' ); ?></a>
-						<a class="flp-btn-filled" href="https://wpbens.com/plugins/discountify/" target="_blank"><?php esc_html_e( 'Premium', 'filter-plus' ); ?></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="flp-plugin-card">
-				<div class="flp-plugin-img">
-					<img src="<?php echo esc_url( FilterPlus::assets_url() . 'images/plugin-logo-quicker.gif' ); ?>"
-						alt="<?php esc_attr_e( 'Quicker', 'filter-plus' ); ?>"/>
-				</div>
-				<div class="flp-plugin-info">
-					<h3><a href="https://wpbens.com/plugins/quicker/" target="_blank"><?php esc_html_e( 'Quicker', 'filter-plus' ); ?></a></h3>
-					<p><?php esc_html_e( 'Speed up conversions and reduce cart abandonment with fast checkout, order bumps, upsells, and custom fees.', 'filter-plus' ); ?></p>
-					<div class="flp-plugin-btns">
-						<a class="flp-btn-outline" href="https://wordpress.org/plugins/quicker/" target="_blank"><?php esc_html_e( 'Free', 'filter-plus' ); ?></a>
-						<a class="flp-btn-filled" href="https://wpbens.com/plugins/quicker/" target="_blank"><?php esc_html_e( 'Premium', 'filter-plus' ); ?></a>
-					</div>
-				</div>
-			</div>
-
+			<?php endforeach; ?>
 		</div>
 	</div>
 
