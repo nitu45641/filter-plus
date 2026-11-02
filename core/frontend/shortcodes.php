@@ -285,7 +285,6 @@ class Shortcodes {
 			$primary_color   = $settings['primary_color'];
 			if ( $settings['primary_color'] !== '#ffffff' ) {
 				$rating_color = $settings['primary_color'];
-				$price_color  = $settings['primary_color'];
 			}
 		}
 
@@ -362,8 +361,11 @@ class Shortcodes {
 			}
 			.grid-view-3{
 				display: grid;
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
 				gap: 20px;
+			}
+			.shop-container-3 .prods-grid-view.grid-view-3 {
+				grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
 			}
 			.tab-item.product-style-5{
 				display: grid;
@@ -413,6 +415,9 @@ class Shortcodes {
 				}
 				.grid-view-2,.grid-view-3,.grid-view-7 {
 					grid-template: auto / 220px 220px 220px;
+				}
+				.shop-container-3 .prods-grid-view.grid-view-3 {
+					grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
 				}
 				.product-style-5{
 				    grid-template-columns: 220px 220px 220px !important;

@@ -849,7 +849,7 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .product-name a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .product-name a, {{WRAPPER}} .product-style-3 .product-name a, {{WRAPPER}} .product-style-4 .product-name a, {{WRAPPER}} .filter-wp-title a, {{WRAPPER}} .filter-wp-title h2' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -859,7 +859,7 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Hover Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .product-name a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .product-name a:hover, {{WRAPPER}} .product-style-3 .product-name a:hover, {{WRAPPER}} .product-style-4 .product-name a:hover, {{WRAPPER}} .filter-wp-title a:hover' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -869,7 +869,7 @@ class Woo_Filter extends Widget_Base {
 				'name'     => 'prod_title_typography',
 				'label'    => esc_html__( 'Typography', 'filter-plus' ),
 				// Grid products use .product-name; list products use .hpcc-name.
-				'selector' => '{{WRAPPER}} .product-name a, {{WRAPPER}} .hpcc-name a',
+				'selector' => '{{WRAPPER}} .product-name a, {{WRAPPER}} .product-style-3 .product-name a, {{WRAPPER}} .product-style-4 .product-name a, {{WRAPPER}} .hpcc-name a, {{WRAPPER}} .filter-wp-title, {{WRAPPER}} .filter-wp-title a, {{WRAPPER}} .filter-wp-title h2',
 			)
 		);
 		$this->add_responsive_control(
@@ -879,8 +879,47 @@ class Woo_Filter extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .product-name' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .product-name, {{WRAPPER}} .filter-wp-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+			)
+		);
+
+		$this->add_control(
+			'tab_prod_description_heading',
+			array( 'label' => esc_html__( 'Description', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
+		);
+		$this->add_control(
+			'prod_description_color',
+			array(
+				'label'     => esc_html__( 'Text Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .hpcc-description, {{WRAPPER}} .t3-desc, {{WRAPPER}} .description, {{WRAPPER}} .desc, {{WRAPPER}} .filter-wp-desc' => 'color: {{VALUE}} !important;',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'prod_description_font_size',
+			array(
+				'label'      => esc_html__( 'Font Size', 'filter-plus' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', 'rem' ),
+				'range'      => array(
+					'px' => array( 'min' => 8, 'max' => 40 ),
+					'em' => array( 'min' => 0.5, 'max' => 3 ),
+					'rem' => array( 'min' => 0.5, 'max' => 3 ),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .hpcc-description, {{WRAPPER}} .t3-desc, {{WRAPPER}} .description, {{WRAPPER}} .desc, {{WRAPPER}} .filter-wp-desc' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'prod_description_typography',
+				'label'    => esc_html__( 'Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .hpcc-description, {{WRAPPER}} .t3-desc, {{WRAPPER}} .description, {{WRAPPER}} .desc, {{WRAPPER}} .filter-wp-desc',
 			)
 		);
 
@@ -895,13 +934,13 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Regular Price Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					// .product-price is the grid markup only — list view uses .hpcc-price.
-					// !important beats the per-template hardcoded price colors
-					// (e.g. .product-style-1 .product-price{color:#000}) tied on specificity.
+					// Target nested WooCommerce amounts because template 2 assigns colors directly to .amount.
 					'{{WRAPPER}} .product-price' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} .product-price del' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .product-price del, {{WRAPPER}} .product-price del *' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .product-price > .amount, {{WRAPPER}} .product-price > .amount *' => 'color: {{VALUE}} !important;',
 					'{{WRAPPER}} .hpcc-price' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} .hpcc-price del' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .hpcc-price del, {{WRAPPER}} .hpcc-price del *' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .hpcc-price > .amount, {{WRAPPER}} .hpcc-price > .amount *' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -911,8 +950,8 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Sale Price Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .product-price ins' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} .hpcc-price ins' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .product-price ins, {{WRAPPER}} .product-price ins *' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .hpcc-price ins, {{WRAPPER}} .hpcc-price ins *' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -950,7 +989,8 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Star Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .rating .star-rating span:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .rating .star-rating span:before' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .woocommerce-product-rating .star-rating span:before' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -960,7 +1000,8 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Star Background Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .rating .star-rating:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .rating .star-rating:before' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .woocommerce-product-rating .star-rating:before' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1140,7 +1181,7 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Badge Background Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .filter-cat-badge span, {{WRAPPER}} .filter-cat-badge .fp-tag-chip, {{WRAPPER}} .badge' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .filter-cat-badge span, {{WRAPPER}} .filter-cat-badge .fp-tag-chip, {{WRAPPER}} .t3-badges span, {{WRAPPER}} .t4-meta-badges span, {{WRAPPER}} .badge' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1150,7 +1191,7 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Badge Hover Background Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .filter-cat-badge span:hover, {{WRAPPER}} .filter-cat-badge a:hover span, {{WRAPPER}} .badge:hover' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .filter-cat-badge span:hover, {{WRAPPER}} .filter-cat-badge a:hover span, {{WRAPPER}} .t3-badges span:hover, {{WRAPPER}} .t3-badges a:hover span, {{WRAPPER}} .t4-meta-badges span:hover, {{WRAPPER}} .t4-meta-badges a:hover span, {{WRAPPER}} .badge:hover' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1160,7 +1201,7 @@ class Woo_Filter extends Widget_Base {
 				'label'     => esc_html__( 'Badge Text Color', 'filter-plus' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .filter-cat-badge span, {{WRAPPER}} .filter-cat-badge .fp-tag-chip, {{WRAPPER}} .badge' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .filter-cat-badge span, {{WRAPPER}} .filter-cat-badge .fp-tag-chip, {{WRAPPER}} .t3-badges span, {{WRAPPER}} .t4-meta-badges span, {{WRAPPER}} .badge' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1171,7 +1212,7 @@ class Woo_Filter extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .filter-cat-badge span, {{WRAPPER}} .filter-cat-badge .fp-tag-chip, {{WRAPPER}} .badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+					'{{WRAPPER}} .filter-cat-badge span, {{WRAPPER}} .filter-cat-badge .fp-tag-chip, {{WRAPPER}} .t3-badges span, {{WRAPPER}} .t4-meta-badges span, {{WRAPPER}} .badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 				),
 			)
 		);
@@ -1182,7 +1223,7 @@ class Woo_Filter extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .filter-cat-badge span, {{WRAPPER}} .filter-cat-badge .fp-tag-chip, {{WRAPPER}} .badge' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+					'{{WRAPPER}} .filter-cat-badge span, {{WRAPPER}} .filter-cat-badge .fp-tag-chip, {{WRAPPER}} .t3-badges span, {{WRAPPER}} .t4-meta-badges span, {{WRAPPER}} .badge' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 				),
 			)
 		);
