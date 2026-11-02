@@ -1063,6 +1063,24 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'cart_btn_text_color',
+			array(
+				'label'     => esc_html__( 'Button Text Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .add_to_cart_button > span' => 'color: {{VALUE}} !important;',
+				),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'cart_btn_text_typography',
+				'label'    => esc_html__( 'Button Text Typography', 'filter-plus' ),
+				'selector' => '{{WRAPPER}} .add_to_cart_button > span',
+			)
+		);
+		$this->add_control(
 			'cart_btn_bg_color',
 			array(
 				'label'     => esc_html__( 'Button Background Color', 'filter-plus' ),
