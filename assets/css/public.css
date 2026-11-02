@@ -1603,6 +1603,22 @@ a {
 	width: 16px;
 	height: 16px;
 }
+/* List view cart button — same round icon button as the grid card (icon is white, so it needs the bg). */
+.hpcc-btns .add_to_cart_button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background-color: var(--filter-secondary-color, #1164cb);
+	color: #fff;
+	flex-shrink: 0;
+}
+.hpcc-btns .add_to_cart_button .fplus-cart-icon {
+	width: 18px;
+	height: 18px;
+}
 
 /* Template 1 - Cart button in thumbnail */
 .product-style-1 .card-action-btn-container a,

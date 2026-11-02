@@ -168,7 +168,7 @@ function filterplus_render_list_product($product, $hide_prod_add_cart, $hide_pro
 		<?php if( $hide_prod_add_cart == 'yes' ): ?>
 		<div class="hpcc-actions">
 			<div class="hpcc-btns">
-				<?php echo wp_kses_post( $product['cart_btn'] ); ?>
+				<?php echo Helper::kses( $product['cart_btn'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
 		</div>
 		<?php endif; ?>

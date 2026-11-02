@@ -645,7 +645,7 @@ class Actions {
 				 data-product_id="'. $product->get_id().'"
 				 data-product_sku="'.esc_attr($product->get_sku()).'"
 				 data-quantity="1"
-				 aria-label="Add "'.the_title_attribute().'" to your cart">
+				 aria-label="'.esc_attr( sprintf( /* translators: %s: product name */ __( 'Add %s to your cart', 'filter-plus' ), $product->get_name() ) ).'">
 					'. $icon . $btn_text .'
 				</a>
 				';
