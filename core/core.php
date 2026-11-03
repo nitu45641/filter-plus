@@ -38,6 +38,9 @@ class Core {
 
       \FilterPlus\Core\Frontend\Shortcodes::instance()->init();
 
+      // Filter Set live preview: renders the real shortcode on a bare front-end page for the admin iframe.
+      \FilterPlus\Core\Admin\FilterSets\Preview::instance()->init();
+
       // Product archive layout: replace the default WooCommerce shop/category/tag archive with the filter template (Pro only).
       add_filter( 'template_include', array( $this, 'product_archive_template' ), 98 );
 

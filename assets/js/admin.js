@@ -61,6 +61,16 @@
 		}
 
 		/**
+		 * Collapsible field groups inside a filter tab
+		 */
+		$(document).on('click', '.flp-field-group-toggle', function (e) {
+			e.preventDefault();
+			const $group = $(this).closest('.flp-field-group');
+			const collapsed = $group.toggleClass('is-collapsed').hasClass('is-collapsed');
+			$(this).attr('aria-expanded', collapsed ? 'false' : 'true');
+		});
+
+		/**
 		 * ShortCode generator
 		 */
 		generateShortCode();
@@ -146,6 +156,13 @@
 
 			return result;
 		}
+
+		// shared with the Filter Set live preview so it renders exactly the
+		// shortcode the "Copy" / "Save" buttons would produce
+		window.filterPlusBuildShortcode = function ($block) {
+			const name = $block.data('name');
+			return name ? `[${name} ${findInputValue($block)}]` : '';
+		};
 
 		function shortcode_input_value(input_data,input_num, result) {
 			const merged = $.merge(input_data, input_num);

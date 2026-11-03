@@ -41,6 +41,21 @@
     <input type="text" class="full_input filter-set-name-input" placeholder="<?php esc_attr_e( 'Enter Filter Set Name', 'filter-plus' ); ?>">
     <button type="button" class="button save-filter-set"><?php esc_html_e( 'Save As Filter Set', 'filter-plus' ); ?></button>
   </div>
+  <div class="filter-set-layout">
+  <aside class="filter-set-preview">
+    <div class="flp-preview-head">
+      <span class="flp-preview-title"><?php esc_html_e( 'Live Preview', 'filter-plus' ); ?></span>
+      <span class="flp-preview-status" aria-live="polite"></span>
+    </div>
+    <div class="flp-preview-frame-wrap">
+      <iframe class="flp-preview-frame" name="filterplus_preview_frame" title="<?php esc_attr_e( 'Filter sidebar preview', 'filter-plus' ); ?>"></iframe>
+    </div>
+    <form class="flp-preview-form d-none" method="post" target="filterplus_preview_frame" action="<?php echo esc_url( \FilterPlus\Core\Admin\FilterSets\Preview::url() ); ?>">
+      <input type="hidden" name="_wpnonce" value="<?php echo esc_attr( wp_create_nonce( \FilterPlus\Core\Admin\FilterSets\Preview::NONCE ) ); ?>">
+      <input type="hidden" name="shortcode" value="">
+    </form>
+  </aside>
+  <div class="filter-set-settings">
   <section class="accordion">
     <div class="accordion-list">
       <?php
@@ -88,4 +103,6 @@
         </section>
     <?php } ?>
   </section>
+  </div>
+  </div>
 </div>

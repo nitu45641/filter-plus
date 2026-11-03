@@ -69,6 +69,8 @@ use \FilterPlus\Utils\Helper as Helper;
 			'data_label' => 'no_of_items');
 			filterplus_number_input_field($filterplus_args);
 
+			filterplus_field_group_start( 'woo_category', esc_html__( 'Category Filter', 'filter-plus' ) );
+
 			// categories template
 			$filterplus_args 		= array('label'=>esc_html__("Select Category Filter Template:","filter-plus"),'id' => 'category_template',
 			'data_label' => 'category_template','options'=> DataFactory::category_template()['template'],
@@ -120,7 +122,9 @@ use \FilterPlus\Utils\Helper as Helper;
 
 			$filterplus_args = array('label'=>esc_html__("Show Product Count:","filter-plus"),'id' => 'woo_product_count','data_label' => 'product_count');
 			filterplus_checkbox_field($filterplus_args);
+			filterplus_field_group_end();
 
+			filterplus_field_group_start( 'woo_color', esc_html__( 'Color Filter', 'filter-plus' ) );
 			// colors
 			$filterplus_args = array('label'=>esc_html__("Show Color:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');
 			filterplus_checkbox_field($filterplus_args);
@@ -141,6 +145,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_number_input_field($filterplus_args);
 
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'woo_size', esc_html__( 'Size Filter', 'filter-plus' ) );
 			// sizes
 			$filterplus_args = array('label'=>esc_html__("Show Size:","filter-plus"),'id' => 'show_size','data_label' => 'size');
 		 	filterplus_checkbox_field($filterplus_args);
@@ -152,6 +159,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			'data_label' => 'size_label');
 			filterplus_number_input_field($filterplus_args);
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'woo_tags', esc_html__( 'Tag Filter', 'filter-plus' ) );
 			// show tags
 			$filterplus_args = array('label'=>esc_html__("Show Tags:","filter-plus"),'id' => 'show_tags','data_label' => 'show_tags');
 			filterplus_checkbox_field($filterplus_args);
@@ -170,6 +180,9 @@ use \FilterPlus\Utils\Helper as Helper;
 
 			filterplus_select_field($filterplus_args);
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'woo_attributes', esc_html__( 'Attribute Filter', 'filter-plus' ) );
 			// show attributes
 			$filterplus_args = array('label'=>esc_html__("Show Attributes:","filter-plus"),'id' => 'show_attributes','data_label' => 'show_attributes');
 			filterplus_checkbox_field($filterplus_args);
@@ -186,6 +199,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			'data_label' => 'attributes', 'options'=>$filterplus_get_attributes , 'select_type' => 'multiple', 'condition_class' => "show_attributes d-none" , 'type'=>'attributes');
 			filterplus_select_field($filterplus_args);
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'woo_price', esc_html__( 'Price Range Filter', 'filter-plus' ) );
 			// show price range
 			$filterplus_args = array('label'=>esc_html__("Show Price Range:","filter-plus"),'id' => 'show_price_range','data_label' => 'show_price_range');
 			filterplus_checkbox_field($filterplus_args);
@@ -196,6 +212,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_number_input_field($filterplus_args);
 
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'woo_reviews', esc_html__( 'Review Filter', 'filter-plus' ) );
 			// show reviews
 			$filterplus_args = array('label'=>esc_html__("Show Reviews:","filter-plus"),'id' => 'show_reviews','data_label' => 'show_reviews');
 			filterplus_checkbox_field($filterplus_args);
@@ -215,6 +234,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_number_input_field($filterplus_args);
 
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'woo_stock', esc_html__( 'Stock Filter', 'filter-plus' ) );
 			// filter by stock
 			$filterplus_args = array('label'=>esc_html__("Filter By Stock:","filter-plus"),'id' => 'stock','data_label' => 'stock');
 			filterplus_checkbox_field($filterplus_args);
@@ -224,6 +246,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			'data_label' => 'stock_label','condition_class' => 'stock d-none' );
 			filterplus_number_input_field($filterplus_args);
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'woo_on_sale', esc_html__( 'On Sale Filter', 'filter-plus' ) );
 			// filter by on sale
 			$filterplus_args = array('label'=>esc_html__("Filter By On Sale:","filter-plus"),'id' =>'on_sale','data_label' => 'on_sale');
 			filterplus_checkbox_field($filterplus_args);
@@ -234,6 +259,8 @@ use \FilterPlus\Utils\Helper as Helper;
 			'condition_class' => "on_sale d-none");
 
 			filterplus_number_input_field($filterplus_args);
+
+			filterplus_field_group_end();
 
 		?>
 

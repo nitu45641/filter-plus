@@ -42,6 +42,11 @@ class Enqueue {
                 'src'     => \FilterPlus::assets_url() . 'js/admin.js',
                 'version' => \FilterPlus::get_version(),
                 'deps'    => ['jquery','filter-plus-select2'],
+            ),
+			'filter-plus-filter-set-preview' => array(
+                'src'     => \FilterPlus::assets_url() . 'js/filter-set-preview.js',
+                'version' => \FilterPlus::get_version(),
+                'deps'    => ['jquery','filter-plus-admin'],
             )
 		);
         

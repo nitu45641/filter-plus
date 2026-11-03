@@ -63,6 +63,7 @@
 			'data_label' => 'pagination_style','options'=> Helper::pagination_style(),'type'=>'random' );
 			filterplus_select_field($filterplus_args);
 
+			filterplus_field_group_start( 'wp_category', esc_html__( 'Category Filter', 'filter-plus' ) );
 			// categories
 			$filterplus_args = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
 			'wrapper_type'=>'fwp','placeholder'=>esc_html__("Place Category Label Here","filter-plus"),
@@ -81,6 +82,8 @@
 			$filterplus_args = array('label'=>esc_html__("Wrap Sub Categories:","filter-plus"),'id' => 'wp_wrap_sub_categories','data_label' => 'wrap_sub_categories','condition_class' => 'wp_sub_categories d-none','checked' => 'yes');
 			filterplus_checkbox_field($filterplus_args);
 
+			filterplus_field_group_end();
+
 			// post type
 			$filterplus_args = array('label'=>esc_html__("Select Type:","filter-plus"),'id' => 'filter_type',
 				'data_label' => 'filter_type','options'=>
@@ -97,6 +100,7 @@
 			'condition_class' => "filter_type d-none", );
 			filterplus_select_field($filterplus_args);
 
+			filterplus_field_group_start( 'wp_tags', esc_html__( 'Tag Filter', 'filter-plus' ) );
 			// show tags
 			$filterplus_args = array('label'=>esc_html__("Tags:","filter-plus"),'id' => 'show_wp_tags','data_label' => 'show_tags' );
 			filterplus_checkbox_field($filterplus_args) ;
@@ -115,6 +119,9 @@
 
 			filterplus_select_field($filterplus_args);
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'wp_author', esc_html__( 'Author Filter', 'filter-plus' ) );
 			// show author
 			$filterplus_args = array( 'label'=>esc_html__("Author:","filter-plus"),'id' => 'author',
 			'data_label' => 'author');
@@ -135,6 +142,9 @@
 			'select_type' => 'multiple',  'condition_class' => "author d-none" );
 			filterplus_select_field($filterplus_args);
 
+			filterplus_field_group_end();
+
+			filterplus_field_group_start( 'wp_custom_field', esc_html__( 'Custom Field Filter', 'filter-plus' ) );
 			// show custom field
 			$filterplus_args = array( 'label'=>esc_html__('Show Custom Field:','filter-plus'),'id' => 'custom_field','data_label' => 'custom_field');
 			filterplus_checkbox_field($filterplus_args);
@@ -161,6 +171,8 @@
 					echo esc_html__( 'Create New Custom Field', 'filter-plus' ) . ' ' . wp_kses_post( $filterplus_opt_link );
 				}
 			}
+
+			filterplus_field_group_end();
 
 		?>
 

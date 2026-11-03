@@ -207,3 +207,32 @@ if ( ! function_exists( 'filterplus_doc_html' ) ) {
 		return $html;
 	}
 }
+
+/**
+ * Collapsible field group wrapper (accordion) for a filter section.
+ *
+ * Collapsing uses .is-collapsed, never .d-none - the shortcode builder
+ * skips every field inside .d-none.
+ */
+if ( ! function_exists( 'filterplus_field_group_start' ) ) {
+	function filterplus_field_group_start( $key, $title, $collapsed = true ) {
+		$body_id = 'flp-group-' . sanitize_html_class( $key );
+		?>
+		<div class="flp-field-group<?php echo $collapsed ? ' is-collapsed' : ''; ?>" data-group="<?php echo esc_attr( $key ); ?>">
+			<button type="button" class="flp-field-group-toggle" aria-expanded="<?php echo $collapsed ? 'false' : 'true'; ?>" aria-controls="<?php echo esc_attr( $body_id ); ?>">
+				<span class="flp-field-group-title"><?php echo esc_html( $title ); ?></span>
+				<span class="flp-field-group-icon" aria-hidden="true"></span>
+			</button>
+			<div class="flp-field-group-body" id="<?php echo esc_attr( $body_id ); ?>">
+		<?php
+	}
+}
+
+if ( ! function_exists( 'filterplus_field_group_end' ) ) {
+	function filterplus_field_group_end() {
+		?>
+			</div>
+		</div>
+		<?php
+	}
+}
