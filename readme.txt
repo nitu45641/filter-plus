@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: product filter, woocommerce product filter, ajax product filter, ajax filter, filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.38
+Stable tag: 1.1.39
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,19 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.39 (November 03, 2026) =
+* New: Live preview of the filter sidebar on the Filter Sets page, rendered with the real front-end templates.
+* New: Filter settings grouped into collapsible sections (General Settings, Search, Category, Color, Size, Tag, Attribute, Price Range, Review, Stock, On Sale, Author, Custom Field).
+* New: Drag and drop to reorder filter sections; the front-end sidebar follows the same order (requires Filter Plus Pro). New `filter_order` shortcode attribute.
+* New: "Show Search" option to show or hide the search box (`show_search` shortcode attribute).
+* New: Title field defaults to "Filters"; leaving it empty removes the sidebar title.
+* Fix: Price range min/max inputs now filter products.
+* Fix: Saved filter set shortcodes now include the section order.
+* Fix: Filter Sets preview/shortcode no longer breaks when a Pro-only template is selected without Pro.
+* Tweak: Asset versions use file modification time for cache busting.
+* Tweak: Improved Filter Sets form header, buttons, selected tag chips, "Upgrade to Pro" badge and grid column inputs (one row).
+* Tweak: "WooCommerce Filter" tab renamed to "WooCommerce Product Filter"; "Select Type" moved before Category Filter in the WordPress filter.
 
 = 1.1.38 (November 03, 2026) =
 * Tweak: Improve Style 1 page title design.
