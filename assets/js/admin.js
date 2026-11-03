@@ -230,6 +230,10 @@
 					// input value — skip empty text/number fields so PHP defaults apply
 					const val = $this.val();
 					if (val === null || val === '') {
+						// fields marked data-send-empty (Title) still send attr="" - empty means "none"
+						if ($this.data('send-empty')) {
+							result += ` ${$this.data('option')}=""`;
+						}
 						return;
 					}
 					if ($.isArray(val)) {

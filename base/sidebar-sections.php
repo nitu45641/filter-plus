@@ -52,12 +52,14 @@ class SidebarSections {
 	public static function keys( $type = 'woo' ) {
 		$keys = 'wp' === $type
 			? array(
+				'search'       => esc_html__( 'Search Filter', 'filter-plus' ),
 				'category'     => esc_html__( 'Category Filter', 'filter-plus' ),
 				'tags'         => esc_html__( 'Tag Filter', 'filter-plus' ),
 				'author'       => esc_html__( 'Author Filter', 'filter-plus' ),
 				'custom_field' => esc_html__( 'Custom Field Filter', 'filter-plus' ),
 			)
 			: array(
+				'search'     => esc_html__( 'Search Filter', 'filter-plus' ),
 				'category'   => esc_html__( 'Category Filter', 'filter-plus' ),
 				'color'      => esc_html__( 'Color Filter', 'filter-plus' ),
 				'size'       => esc_html__( 'Size Filter', 'filter-plus' ),
@@ -179,12 +181,14 @@ class SidebarSections {
 		}
 		$frame['chunks'][] = array( 'type' => 'static', 'html' => ob_get_clean() );
 
-		$sections = array();
+		// Listed sections are re-dealt, in the requested order, into the slots
+		// the listed sections occupy; sections missing from the order (e.g. a
+		// section added after the set was saved) keep their own slot.
+		$listed = array();
 		foreach ( $frame['chunks'] as $position => $chunk ) {
-			if ( 'section' === $chunk['type'] ) {
-				$rank       = array_search( $chunk['key'], $frame['order'], true );
-				$sections[] = array(
-					'rank'     => false === $rank ? PHP_INT_MAX : $rank,
+			if ( 'section' === $chunk['type'] && false !== array_search( $chunk['key'], $frame['order'], true ) ) {
+				$listed[] = array(
+					'rank'     => array_search( $chunk['key'], $frame['order'], true ),
 					'position' => $position,
 					'html'     => $chunk['html'],
 				);
@@ -192,7 +196,7 @@ class SidebarSections {
 		}
 
 		usort(
-			$sections,
+			$listed,
 			function ( $a, $b ) {
 				return $a['rank'] === $b['rank'] ? $a['position'] - $b['position'] : ( $a['rank'] < $b['rank'] ? -1 : 1 );
 			}
@@ -200,11 +204,11 @@ class SidebarSections {
 
 		$html = '';
 		foreach ( $frame['chunks'] as $chunk ) {
-			if ( 'static' === $chunk['type'] ) {
-				$html .= $chunk['html'];
-			} else {
-				$next  = array_shift( $sections );
+			if ( 'section' === $chunk['type'] && false !== array_search( $chunk['key'], $frame['order'], true ) ) {
+				$next  = array_shift( $listed );
 				$html .= $next ? $next['html'] : '';
+			} else {
+				$html .= $chunk['html'];
 			}
 		}
 

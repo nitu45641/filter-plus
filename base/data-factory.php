@@ -84,6 +84,7 @@ class DataFactory {
             'category_orderby'       => '',
             // sidebar section order (Pro) - see \FilterPlus\Base\SidebarSections
             'filter_order'           => '',
+            'show_search'            => 'yes',
         );
     }
 
@@ -111,6 +112,7 @@ class DataFactory {
             'filter_type'       => 'post',
             'custom_post'       => '',
             'filter_order'      => '',
+            'show_search'       => 'yes',
             'template'         	=> '1',
             'hide_empty_cat'    => 'yes',
             'product_count'     => 'yes',
@@ -289,6 +291,7 @@ class DataFactory {
 			'grid_columns_mobile'    => $grid_columns_mobile,
 			'category_orderby'       => $category_orderby,
 			'filter_order'           => $filter_order,
+			'show_search'            => $show_search,
 		);
 
 		// Skip option update when rendering from inside category-layout.php to avoid circular saves.
@@ -318,6 +321,7 @@ class DataFactory {
 		}
 
         $default_data['filter_order']       = isset( $settings['filter_order'] ) ? implode( ',', SidebarSections::parse_order( $settings['filter_order'] ) ) : '';
+        $default_data['show_search']        = ( isset( $settings['show_search'] ) && ( 'no' === $settings['show_search'] || '' === $settings['show_search'] ) ) ? 'no' : 'yes';
         $default_data['category_template']  = ! empty( $settings['category_template'] ) ? $settings['category_template'] : '1';
 		$default_data['filter_type']        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
 		$default_data['custom_post']        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
@@ -399,7 +403,7 @@ class DataFactory {
         custom_field_list='{$custom_fields}' post_tags='{$post_tags}'
         filter_position='{$filter_position}' pagination_style='{$pagination_style}'
         post_categories='{$post_categories}' post_author='{$post_author}'
-        filter_order='{$filter_order}']"); 
+        filter_order='{$filter_order}' show_search='{$show_search}']"); 
     }
 
     /**

@@ -2,6 +2,12 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// "Show Search" setting (shortcode show_search="no" hides the search box)
+if ( isset( $show_search ) && 'no' === $show_search ) {
+	return;
+}
+\FilterPlus\Base\SidebarSections::start( 'search' );
+
 ?>
 <div class="sidebar-row search-wrap">
 	<!-- Product Search -->
@@ -18,3 +24,4 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	</div>
 	<span class="reset d-none reset-<?php echo esc_attr($template);?>"><?php esc_html_e('Reset','filter-plus');?></span>
 </div>
+<?php \FilterPlus\Base\SidebarSections::end(); ?>

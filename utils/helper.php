@@ -38,7 +38,8 @@ class Helper {
 				'id'          => [],
 				'class'       => [],
 				'data-label'  => [],
-				'data-option'  => []
+				'data-option'  => [],
+				'data-send-empty' => []
 			],
 
 			'select'                        => [

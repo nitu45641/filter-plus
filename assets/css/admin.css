@@ -448,28 +448,60 @@ button.button-primary:focus {
 .select2-container--default .select2-search--inline .select2-search__field{
 	width: 0 !important;
 }
-.select2-container--default .select2-selection--multiple .select2-selection__choice{
-	background-color: #EEF0F4 !important;
-	border: 1px solid transparent !important;
-	border-radius: 4px !important;
-	color: #0D165E !important;
-	padding: 3px 5px 3px 22px !important;
-	font-size: 13px;
-	font-weight: 500;
+.select2-container--default .select2-selection--multiple{
+	min-height: 40px;
+	padding: 4px 6px 6px !important;
+	border: 1px solid #dcdcde !important;
+	border-radius: 6px !important;
+	box-sizing: border-box;
 }
-
-.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-	background: linear-gradient(180deg, #254ec8 0%, #3263f8 100%) !important;
-	border-radius: 4px !important;
-	color: #fff !important;
-	font-size: 13px !important;
-	font-weight: 500 !important;
-	line-height: 13px !important;
-	position: absolute;
-	left: 5px !important;
-	top: 5px !important;
-	border: 1px solid transparent!important;
-	padding: 0 3px!important;
+.select2-container--default.select2-container--focus .select2-selection--multiple{
+	border-color: var(--filter-primary-bg,#0D6EFD) !important;
+	box-shadow: 0 0 0 1px var(--filter-primary-bg,#0D6EFD);
+}
+/* selected tag chips: soft pill, remove (x) on the right */
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+	display: inline-flex !important;
+	align-items: center;
+	gap: 4px;
+	margin: 4px 4px 0 0 !important;
+	padding: 3px 4px 3px 10px !important;
+	background-color: color-mix(in srgb, var(--filter-primary-bg,#0D6EFD) 9%, #fff) !important;
+	border: 1px solid color-mix(in srgb, var(--filter-primary-bg,#0D6EFD) 22%, #fff) !important;
+	border-radius: 999px !important;
+	color: #1d2327 !important;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display{
+	order: 1;
+	padding: 0 !important;
+	cursor: default;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
+	order: 2;
+	position: static !important;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	padding: 0 !important;
+	border: 0 !important;
+	border-radius: 50% !important;
+	background: transparent !important;
+	color: #646970 !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	line-height: 1 !important;
+	transition: background-color .12s ease, color .12s ease;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover,
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:focus{
+	background: #fce8e8 !important;
+	color: #d63638 !important;
+	outline: none;
 }
 /* Settings page end */
 

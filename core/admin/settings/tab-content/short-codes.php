@@ -54,9 +54,11 @@ use \FilterPlus\Utils\Helper as Helper;
 			// Title
 			$filterplus_args        = array('label'=>esc_html__("Title:","filter-plus"),'id' => 'title',
 			'placeholder'=>esc_html__("Place Title","filter-plus"),
+			'value' => esc_html__("Filters","filter-plus"), 'send_empty' => true,
 			'data_label' => 'title');
 
 			filterplus_number_input_field($filterplus_args);
+
 
 			$filterplus_args 		= array('label'=>esc_html__("Filter Position:","filter-plus"),'id' => 'filter_position',
 			'data_label' => 'filter_position','options'=> Helper::filter_position(),'type'=>'random' );
@@ -75,6 +77,12 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_field_group_end();
 
 			filterplus_field_groups_start();
+			filterplus_field_group_start( 'woo_search', esc_html__( 'Search Filter', 'filter-plus' ) );
+			// show / hide the search box in the filter sidebar
+			$filterplus_args = array('label'=>esc_html__("Show Search:","filter-plus"),'id' => 'show_search','data_label' => 'show_search','checked' => 'yes');
+			filterplus_checkbox_field($filterplus_args);
+			filterplus_field_group_end();
+
 			filterplus_field_group_start( 'woo_category', esc_html__( 'Category Filter', 'filter-plus' ) );
 
 			// categories template
