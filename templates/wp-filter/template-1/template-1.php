@@ -5,6 +5,7 @@ use FilterPlus\Base\DataFactory;
 
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
+<?php \FilterPlus\Base\SidebarSections::begin( isset( $filter_order ) ? $filter_order : '' ); ?>
 	<?php if ( ! empty( $title ) ) : ?>
 	<h3 class="shop-sidebar-title"><?php echo esc_html( $title ); ?></h3>
 	<?php endif; ?>
@@ -33,6 +34,7 @@ use FilterPlus\Base\DataFactory;
 		}
 
 		// custom tags
+		\FilterPlus\Base\SidebarSections::start( 'tags' );
 		if ( 'yes'== $show_tags ) {
 			$filterplus_get_attr = \FilterPlus\Utils\Helper::array_data($tags);
 			// If no specific tags provided, get all post tags
@@ -50,11 +52,15 @@ use FilterPlus\Base\DataFactory;
 				include \FilterPlus::locate_template( "wp-filter/template-".$template."/left-side/filter-layout-grid.php" );
 			}
 		}
+		\FilterPlus\Base\SidebarSections::end();
 		// custom fields
+		\FilterPlus\Base\SidebarSections::start( 'custom_field' );
 		if ( 'yes'== $custom_field ) {
 			include \FilterPlus::locate_template( "wp-filter/parts/custom-fields.php" );
 		}
+		\FilterPlus\Base\SidebarSections::end();
 		// author
+		\FilterPlus\Base\SidebarSections::start( 'author' );
 		if ( 'yes'== $author ) {
 			$filterplus_authors = \FilterPlus\Utils\Helper::instance()->author_list($author_list);
 			if (count($filterplus_authors)>0) {
@@ -62,8 +68,10 @@ use FilterPlus\Base\DataFactory;
 				include \FilterPlus::locate_template( "wp-filter/template-".$template."/left-side/authors.php" );
 			}
 		}
+		\FilterPlus\Base\SidebarSections::end();
 	?>
 </div>
+<?php \FilterPlus\Base\SidebarSections::render(); ?>
 <div class="row products-wrap">
 	<div class="filter-mb-search"></div>
 	<?php

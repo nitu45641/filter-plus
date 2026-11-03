@@ -82,6 +82,8 @@ class DataFactory {
             'grid_columns_tablet'    => '',
             'grid_columns_mobile'    => '',
             'category_orderby'       => '',
+            // sidebar section order (Pro) - see \FilterPlus\Base\SidebarSections
+            'filter_order'           => '',
         );
     }
 
@@ -108,6 +110,7 @@ class DataFactory {
         return array(
             'filter_type'       => 'post',
             'custom_post'       => '',
+            'filter_order'      => '',
             'template'         	=> '1',
             'hide_empty_cat'    => 'yes',
             'product_count'     => 'yes',
@@ -158,6 +161,8 @@ class DataFactory {
         $default_data['show_categories']    = ( isset( $settings['show_categories'] ) && ( $settings['show_categories'] === 'no' || $settings['show_categories'] === false ) ) ? 'no' : 'yes';
         $default_data['category_label']     = ! empty( $category_label ) ? $category_label : esc_html__( 'Categories', 'filter-plus' );
 		$default_data['categories']         = ( ! empty( $categories ) && is_array( $categories ) ) ? implode( ',', $categories ) : '';
+		// section order: plain "a,b" string or an Elementor repeater ( [ ['section' => 'a'], ... ] )
+		$default_data['filter_order']       = isset( $settings['filter_order'] ) ? implode( ',', \FilterPlus\Base\SidebarSections::parse_order( $settings['filter_order'] ) ) : '';
 		$default_data['exclude_categories'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['exclude_categories'] ) )
 			? ( is_array( $settings['exclude_categories'] ) ? implode( ',', $settings['exclude_categories'] ) : $settings['exclude_categories'] )
 			: '';
@@ -283,6 +288,7 @@ class DataFactory {
 			'grid_columns_tablet'    => $grid_columns_tablet,
 			'grid_columns_mobile'    => $grid_columns_mobile,
 			'category_orderby'       => $category_orderby,
+			'filter_order'           => $filter_order,
 		);
 
 		// Skip option update when rendering from inside category-layout.php to avoid circular saves.
@@ -311,6 +317,7 @@ class DataFactory {
 			$default_data['custom_fields']  = is_array($custom_field_list) ? implode(',',$custom_field_list) : $custom_field_list;
 		}
 
+        $default_data['filter_order']       = isset( $settings['filter_order'] ) ? implode( ',', SidebarSections::parse_order( $settings['filter_order'] ) ) : '';
         $default_data['category_template']  = ! empty( $settings['category_template'] ) ? $settings['category_template'] : '1';
 		$default_data['filter_type']        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
 		$default_data['custom_post']        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
@@ -391,7 +398,8 @@ class DataFactory {
         meta_condition='{$meta_condition}'
         custom_field_list='{$custom_fields}' post_tags='{$post_tags}'
         filter_position='{$filter_position}' pagination_style='{$pagination_style}'
-        post_categories='{$post_categories}' post_author='{$post_author}']"); 
+        post_categories='{$post_categories}' post_author='{$post_author}'
+        filter_order='{$filter_order}']"); 
     }
 
     /**
@@ -465,7 +473,9 @@ class DataFactory {
         }
         
 		if (file_exists( $url )) {
+			SidebarSections::start( 'category' );
 			include $url ;
+			SidebarSections::end();
 		}
     }
 

@@ -6,6 +6,7 @@ use FilterPlus\Base\DataFactory;
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="shop-sidebar checkbox-style sidebar-style-<?php echo esc_attr($template);?>">
+<?php \FilterPlus\Base\SidebarSections::begin( isset( $filter_order ) ? $filter_order : '' ); ?>
 	<div class="side-cart-close">
 	<svg width="30px" height="30px" viewBox="0 0 24 24">
 		<g id="grid_system"/>
@@ -49,28 +50,36 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			if (class_exists('FilterPlusPro')) {
 				// reviews
 				$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/rating.php" );
+				\FilterPlus\Base\SidebarSections::start( 'reviews' );
 				if ( 'yes'== $show_reviews && file_exists( $_fp_tpl ) ) {
 					include_once $_fp_tpl;
 				}
+				\FilterPlus\Base\SidebarSections::end();
 				// price range
 				$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/price-range.php" );
+				\FilterPlus\Base\SidebarSections::start( 'price' );
 				if ( 'yes'== $show_price_range && file_exists( $_fp_tpl ) ) {
 					include_once $_fp_tpl;
 				}
+				\FilterPlus\Base\SidebarSections::end();
 				$filterplus_get_attr = \FilterPlus\Utils\Helper::array_data($tags);
 
 				// custom tags
 				$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/filter-layout-grid.php" );
+				\FilterPlus\Base\SidebarSections::start( 'tags' );
 				if ( 'yes'== $show_tags && count($filterplus_get_attr)> 0 && file_exists( $_fp_tpl ) ) {
 					$title =  !empty( $tag_label ) ? $tag_label : esc_html__("Find Favorite Item","filter-plus");
 					include $_fp_tpl;
 				}
+				\FilterPlus\Base\SidebarSections::end();
 				// custom attributes
 				$_fp_tpl = \FilterPlus::locate_template( "woo-filter/parts/filter-layout-attr-grid.php" );
+				\FilterPlus\Base\SidebarSections::start( 'attributes' );
 				if ( 'yes'== $show_attributes && file_exists( $_fp_tpl ) ) {
 					$filterplus_attributes = \FilterPlus\Utils\Helper::array_data($attributes);
 					include $_fp_tpl;
 				}
+				\FilterPlus\Base\SidebarSections::end();
 			}
 		?>
 		<?php
@@ -78,21 +87,28 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		if ( file_exists( $_fp_tpl ) ) {
 			include_once $_fp_tpl;
 		}
-		if (!class_exists('FilterPlusPro')) { return; }
-		// on sale
-		$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/on-sale.php" );
-		if ( 'yes'== $on_sale && file_exists( $_fp_tpl ) ) {
-			include_once $_fp_tpl;
-		}
-		// stock
-		$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/stock.php" );
-		if ( 'yes'== $stock && file_exists( $_fp_tpl ) ) {
-			include_once $_fp_tpl;
+		// on sale / stock need Pro (template 2 is Pro-only; no early return - it would break SidebarSections buffering)
+		if ( class_exists( 'FilterPlusPro' ) ) {
+			// on sale
+			$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/on-sale.php" );
+			\FilterPlus\Base\SidebarSections::start( 'on_sale' );
+			if ( 'yes'== $on_sale && file_exists( $_fp_tpl ) ) {
+				include_once $_fp_tpl;
+			}
+			\FilterPlus\Base\SidebarSections::end();
+			// stock
+			$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/stock.php" );
+			\FilterPlus\Base\SidebarSections::start( 'stock' );
+			if ( 'yes'== $stock && file_exists( $_fp_tpl ) ) {
+				include_once $_fp_tpl;
+			}
+			\FilterPlus\Base\SidebarSections::end();
 		}
 	?>
 	</div>
 </div>
 
+<?php \FilterPlus\Base\SidebarSections::render(); ?>
 <div class="products-wrap">
 	<?php include_once \FilterPlus::locate_template( "woo-filter/parts/filter-top.php" ); ?>
 	<?php include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/right-side/sort-bar.php" ); ?>

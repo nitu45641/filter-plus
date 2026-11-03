@@ -70,7 +70,7 @@
       $filterplus_tabs = array(
           array(
             'name'  => 'filter_products',
-            'label' => esc_html__("WooCommerce Filter","filter-plus"),
+            'label' => esc_html__("WooCommerce Product Filter","filter-plus"),
             'path' => \FilterPlus::core_dir()."admin/settings/tab-content/short-codes.php"
           ),
           array(

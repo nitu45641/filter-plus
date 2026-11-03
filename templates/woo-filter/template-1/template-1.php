@@ -6,6 +6,7 @@ use FilterPlus\Base\DataFactory;
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
+<?php \FilterPlus\Base\SidebarSections::begin( isset( $filter_order ) ? $filter_order : '' ); ?>
 
 	<?php if ( ! empty( $title ) ) : ?>
 	<h3 class="shop-sidebar-title"><?php echo esc_html( $title ); ?></h3>
@@ -40,14 +41,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		}
 
 		// reviews
+		\FilterPlus\Base\SidebarSections::start( 'reviews' );
 		if ( 'yes'== $show_reviews ) {
 			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/rating.php" );
 		}
+		\FilterPlus\Base\SidebarSections::end();
 		// price range
+		\FilterPlus\Base\SidebarSections::start( 'price' );
 		if ( 'yes'== $show_price_range ) {
 			include_once \FilterPlus::locate_template( "woo-filter/parts/price-range.php" );
 		}
+		\FilterPlus\Base\SidebarSections::end();
 		// custom tags
+		\FilterPlus\Base\SidebarSections::start( 'tags' );
 		if ( 'yes' == $show_tags ) {
 			$filterplus_get_attr = \FilterPlus\Utils\Helper::array_data( $tags );
 			if ( count( $filterplus_get_attr ) > 0 ) {
@@ -55,23 +61,31 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				include \FilterPlus::locate_template( "woo-filter/template-" . $template . "/left-side/filter-layout-grid.php" );
 			}
 		}
+		\FilterPlus\Base\SidebarSections::end();
 		// custom attributes
+		\FilterPlus\Base\SidebarSections::start( 'attributes' );
 		if ( 'yes' == $show_attributes ) {
 			$filterplus_attributes = \FilterPlus\Utils\Helper::array_data( $attributes );
 			include \FilterPlus::locate_template( "woo-filter/template-" . $template . "/left-side/filter-layout-attr-grid.php" );
 		}
+		\FilterPlus\Base\SidebarSections::end();
 		include_once \FilterPlus::locate_template( "woo-filter/parts/filter-param.php" );
 
 		// on sale
+		\FilterPlus\Base\SidebarSections::start( 'on_sale' );
 		if ( 'yes'== $on_sale ) {
 			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/on-sale.php" );
 		}
+		\FilterPlus\Base\SidebarSections::end();
 		// stock
+		\FilterPlus\Base\SidebarSections::start( 'stock' );
 		if ( 'yes'== $stock ) {
 			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/stock.php" );
 		}
+		\FilterPlus\Base\SidebarSections::end();
 	?>
 </div>
+<?php \FilterPlus\Base\SidebarSections::render(); ?>
 <div class="products-wrap">
 	<?php include_once \FilterPlus::locate_template( "woo-filter/parts/filter-top.php" ); ?>
 	<?php include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/right-side/sort-bar.php" ); ?>
