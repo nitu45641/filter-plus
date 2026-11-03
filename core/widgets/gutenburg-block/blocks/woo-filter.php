@@ -17,7 +17,7 @@ function product_filter_block() {
                 ),
                 'title' => array(
                     'type' => 'string',
-                    'default' => ''
+                    'default' => __( 'Filters', 'filter-plus' )
                 ),
                 'no_of_items' => array(
                     'type' => 'number',

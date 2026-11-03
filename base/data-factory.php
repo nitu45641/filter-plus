@@ -86,6 +86,20 @@ class DataFactory {
     }
 
     /**
+     * Normalize the legacy singular default while preserving a deliberately blank title.
+     *
+     * @param string $title Filter heading.
+     * @return string
+     */
+    public static function normalize_filter_title( $title ) {
+        $title = sanitize_text_field( (string) $title );
+
+        return 0 === strcasecmp( trim( $title ), 'Filter' )
+            ? esc_html__( 'Filters', 'filter-plus' )
+            : $title;
+    }
+
+    /**
      * Wp filter default data
      * 
      * @return array
@@ -191,7 +205,7 @@ class DataFactory {
 		$default_data['grid_columns_mobile']   = ! empty( $grid_columns_mobile ) ? intval( $grid_columns_mobile ) : '';
 		$default_data['category_orderby']      = ! empty( $category_orderby ) ? sanitize_text_field( $category_orderby ) : '';
 		$default_data['template'] 			   = ! empty( $template ) ? $template : '1';
-		$default_data['title'] 				= ! empty( $title ) ? $title : esc_html__( 'Filters', 'filter-plus' );
+		$default_data['title'] 				= array_key_exists( 'title', $settings ) ? self::normalize_filter_title( $settings['title'] ) : $default_data['title'];
 		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
 		$default_data['pagination_style'] 	= ! empty( $pagination_style ) ? $pagination_style : 'numbers';
 		$default_data['no_of_items']        = ! empty( $settings['no_of_items'] ) ? intval( $settings['no_of_items'] ) : 9;

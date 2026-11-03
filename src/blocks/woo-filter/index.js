@@ -15,7 +15,7 @@ registerBlockType('filter-plus/woo-filter', {
         },
         title: {
             type: 'string',
-            default: ''
+            default: __('Filters', 'filter-plus')
         },
         no_of_items: {
             type: 'number',

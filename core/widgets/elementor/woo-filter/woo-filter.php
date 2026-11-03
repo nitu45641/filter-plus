@@ -116,7 +116,8 @@ class Woo_Filter extends Widget_Base {
 			array(
 				'label'     => esc_html__( 'Title', 'filter-plus' ),
 				'type'      => Controls_Manager::TEXT,
-				'placeholder' => esc_html__( 'Place Title', 'filter-plus' ),
+				'default'   => esc_html__( 'Filters', 'filter-plus' ),
+				'placeholder' => esc_html__( 'Filters', 'filter-plus' ),
 			)
 		);
 
@@ -744,7 +745,7 @@ class Woo_Filter extends Widget_Base {
 			'separator' => 'before',
 			'classes' => 'filterplus-style-group-heading',
 		) );
-		$filter_title_selector = '{{WRAPPER}} .shop-sidebar-title, {{WRAPPER}} .shop-sidebar .title-and-clean-area h2, {{WRAPPER}} .shop-sidebar .sidebar-heading, {{WRAPPER}} .shop-sidebar .sidebar-row .sidebar-label, {{WRAPPER}} .shop-sidebar .filter-param-header, {{WRAPPER}} .main-wrapper-8 .fp8-filter-label, {{WRAPPER}} .main-wrapper-8 .fp8-pill .heading-wrap h4, {{WRAPPER}} .main-wrapper-8 .fp8-pill .rating-label, {{WRAPPER}} .main-wrapper-8 .fp8-pill .dropdown-label';
+		$filter_title_selector = '{{WRAPPER}} .shop-sidebar-title, {{WRAPPER}} .shop-sidebar .title-and-clean-area h2, {{WRAPPER}} .shop-sidebar .sidebar-heading, {{WRAPPER}} .main-wrapper-8 .fp8-filter-label';
 		$this->add_control( 'filter_title_color', array(
 			'label' => esc_html__( 'Text Color', 'filter-plus' ),
 			'type' => Controls_Manager::COLOR,
@@ -766,6 +767,35 @@ class Woo_Filter extends Widget_Base {
 			'size_units' => array( 'px', 'em', 'rem' ),
 			'range' => array( 'px' => array( 'min' => 8, 'max' => 60 ) ),
 			'selectors' => array( $filter_title_selector => 'font-size: {{SIZE}}{{UNIT}};' ),
+		) );
+		$this->add_control( 'filter_options_title_style_heading', array(
+			'label' => esc_html__( 'Filter Options Title', 'filter-plus' ),
+			'type' => Controls_Manager::HEADING,
+			'separator' => 'before',
+			'classes' => 'filterplus-style-group-heading',
+		) );
+		$filter_options_title_selector = '{{WRAPPER}} .shop-sidebar .sidebar-label, {{WRAPPER}} .shop-sidebar .filter-param-header, {{WRAPPER}} .main-wrapper-8 .fp8-pill .heading-wrap h4, {{WRAPPER}} .main-wrapper-8 .fp8-pill .rating-label, {{WRAPPER}} .main-wrapper-8 .fp8-pill .dropdown-label';
+		$this->add_control( 'filter_options_title_color', array(
+			'label' => esc_html__( 'Text Color', 'filter-plus' ),
+			'type' => Controls_Manager::COLOR,
+			'selectors' => array( $filter_options_title_selector => 'color: {{VALUE}};' ),
+		) );
+		$this->add_control( 'filter_options_title_hover_color', array(
+			'label' => esc_html__( 'Hover Color', 'filter-plus' ),
+			'type' => Controls_Manager::COLOR,
+			'selectors' => array( $filter_options_title_selector . ':hover' => 'color: {{VALUE}};' ),
+		) );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), array(
+			'name' => 'filter_options_title_typography',
+			'label' => esc_html__( 'Typography', 'filter-plus' ),
+			'selector' => $filter_options_title_selector,
+		) );
+		$this->add_responsive_control( 'filter_options_title_font_size', array(
+			'label' => esc_html__( 'Font Size', 'filter-plus' ),
+			'type' => Controls_Manager::SLIDER,
+			'size_units' => array( 'px', 'em', 'rem' ),
+			'range' => array( 'px' => array( 'min' => 8, 'max' => 60 ) ),
+			'selectors' => array( $filter_options_title_selector => 'font-size: {{SIZE}}{{UNIT}};' ),
 		) );
 		$this->add_control( 'filter_left_wrapper_style_heading', array(
 			'label' => esc_html__( 'Filter Wrapper', 'filter-plus' ),

@@ -601,7 +601,9 @@ class Actions {
 			</svg>',
 		);
 
-		return self::cart_btn( $cart_args );
+		$cart_html = self::cart_btn( $cart_args );
+
+		return apply_filters( 'filterplus_product_cart_button_html', $cart_html, $product_instance, $template, $add_to_cart_text );
 	}
 
 	/**

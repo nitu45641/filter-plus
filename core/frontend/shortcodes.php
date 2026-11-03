@@ -45,6 +45,7 @@ class Shortcodes {
 
 		// shortcode option
 		$merged_atts = shortcode_atts( $data_factory , $atts );
+		$merged_atts['title'] = \FilterPlus\Base\DataFactory::normalize_filter_title( $merged_atts['title'] );
 
 		extract( $merged_atts );
 
