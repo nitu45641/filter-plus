@@ -1494,6 +1494,171 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'tab_quick_view_heading',
+			array( 'label' => esc_html__( 'Quick View', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
+		);
+		$this->add_control(
+			'quick_view_overlay_color',
+			array(
+				'label' => esc_html__( 'Overlay Background', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( 'body .fp-qv-overlay' => 'background-color: {{VALUE}} !important;' ),
+			)
+		);
+		$this->add_control(
+			'quick_view_modal_background',
+			array(
+				'label' => esc_html__( 'Modal Background', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( 'body .fp-qv-modal' => 'background-color: {{VALUE}} !important;' ),
+			)
+		);
+		$this->add_control(
+			'quick_view_gallery_background',
+			array(
+				'label' => esc_html__( 'Gallery Background', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( 'body .fp-qv-gallery, body .fp-qv-main-image' => 'background-color: {{VALUE}} !important;' ),
+			)
+		);
+		$this->add_control(
+			'quick_view_close_background',
+			array(
+				'label' => esc_html__( 'Close Button Background', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( 'body .fp-qv-close' => 'background-color: {{VALUE}} !important;' ),
+			)
+		);
+		$this->add_control(
+			'quick_view_close_icon_color',
+			array(
+				'label' => esc_html__( 'Close Icon Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( 'body .fp-qv-close, body .fp-qv-close svg' => 'color: {{VALUE}} !important; stroke: {{VALUE}} !important;' ),
+			)
+		);
+		$this->add_control(
+			'quick_view_close_hover_background',
+			array(
+				'label' => esc_html__( 'Close Button Hover Background', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( 'body .fp-qv-close:hover' => 'background-color: {{VALUE}} !important;' ),
+			)
+		);
+		$this->add_control(
+			'quick_view_close_hover_icon_color',
+			array(
+				'label' => esc_html__( 'Close Icon Hover Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array( 'body .fp-qv-close:hover, body .fp-qv-close:hover svg' => 'color: {{VALUE}} !important; stroke: {{VALUE}} !important;' ),
+			)
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array( 'name' => 'quick_view_close_border', 'label' => esc_html__( 'Close Button Border', 'filter-plus' ), 'selector' => 'body .fp-qv-close' )
+		);
+		$this->add_responsive_control(
+			'quick_view_close_radius',
+			array(
+				'label' => esc_html__( 'Close Button Radius', 'filter-plus' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors' => array( 'body .fp-qv-close' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ),
+			)
+		);
+		$this->add_control(
+			'quick_view_title_color',
+			array( 'label' => esc_html__( 'Product Title Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-summary h2' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array( 'name' => 'quick_view_title_typography', 'label' => esc_html__( 'Product Title Typography', 'filter-plus' ), 'selector' => 'body .fp-qv-summary h2' )
+		);
+		$this->add_control(
+			'quick_view_category_color',
+			array( 'label' => esc_html__( 'Category Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-categories, body .fp-qv-categories a' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array( 'name' => 'quick_view_category_typography', 'label' => esc_html__( 'Category Typography', 'filter-plus' ), 'selector' => 'body .fp-qv-categories' )
+		);
+		$this->add_control(
+			'quick_view_rating_color',
+			array( 'label' => esc_html__( 'Review Text Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-rating, body .fp-qv-rating span' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_star_color',
+			array( 'label' => esc_html__( 'Star Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-rating .star-rating span:before' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_price_color',
+			array( 'label' => esc_html__( 'Price Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-price, body .fp-qv-price *' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array( 'name' => 'quick_view_price_typography', 'label' => esc_html__( 'Price Typography', 'filter-plus' ), 'selector' => 'body .fp-qv-price, body .fp-qv-price *' )
+		);
+		$this->add_control(
+			'quick_view_description_color',
+			array( 'label' => esc_html__( 'Description Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-description, body .fp-qv-description *' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array( 'name' => 'quick_view_description_typography', 'label' => esc_html__( 'Description Typography', 'filter-plus' ), 'selector' => 'body .fp-qv-description, body .fp-qv-description *' )
+		);
+		$this->add_control(
+			'quick_view_form_label_color',
+			array( 'label' => esc_html__( 'Option Label Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-cart .variations th.label, body .fp-qv-cart .quantity:before' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_input_text_color',
+			array( 'label' => esc_html__( 'Option and Quantity Text Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-cart select, body .fp-qv-cart input.qty' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_input_background',
+			array( 'label' => esc_html__( 'Option and Quantity Background', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-cart select, body .fp-qv-cart input.qty' => 'background-color: {{VALUE}} !important;' ) )
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array( 'name' => 'quick_view_input_border', 'label' => esc_html__( 'Option and Quantity Border', 'filter-plus' ), 'selector' => 'body .fp-qv-cart select, body .fp-qv-cart input.qty' )
+		);
+		$this->add_responsive_control(
+			'quick_view_input_radius',
+			array( 'label' => esc_html__( 'Option and Quantity Radius', 'filter-plus' ), 'type' => Controls_Manager::DIMENSIONS, 'size_units' => array( 'px', '%' ), 'selectors' => array( 'body .fp-qv-cart select, body .fp-qv-cart input.qty' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_button_text_color',
+			array( 'label' => esc_html__( 'Add to Cart Text Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-cart .single_add_to_cart_button' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_button_background',
+			array( 'label' => esc_html__( 'Add to Cart Background', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-cart .single_add_to_cart_button' => 'background-color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_button_hover_text_color',
+			array( 'label' => esc_html__( 'Add to Cart Hover Text Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-cart .single_add_to_cart_button:hover' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_button_hover_background',
+			array( 'label' => esc_html__( 'Add to Cart Hover Background', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-cart .single_add_to_cart_button:hover' => 'background-color: {{VALUE}} !important;' ) )
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			array( 'name' => 'quick_view_button_typography', 'label' => esc_html__( 'Add to Cart Typography', 'filter-plus' ), 'selector' => 'body .fp-qv-cart .single_add_to_cart_button' )
+		);
+		$this->add_responsive_control(
+			'quick_view_button_radius',
+			array( 'label' => esc_html__( 'Add to Cart Radius', 'filter-plus' ), 'type' => Controls_Manager::DIMENSIONS, 'size_units' => array( 'px', '%' ), 'selectors' => array( 'body .fp-qv-cart .single_add_to_cart_button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_details_link_color',
+			array( 'label' => esc_html__( 'Details Link Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-details-link' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'quick_view_details_link_hover_color',
+			array( 'label' => esc_html__( 'Details Link Hover Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( 'body .fp-qv-details-link:hover' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
 			'tab_prod_grid_heading',
 			array( 'label' => esc_html__( 'Grid', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
 		);
@@ -1532,6 +1697,59 @@ class Woo_Filter extends Widget_Base {
 		);
 		$this->end_controls_section();
 		}
+
+		// Pagination styling is available in Free and Pro so it remains visible in the editor.
+		$this->start_controls_section(
+			'pagination_style_section',
+			array(
+				'label' => esc_html__( 'Pagination Style', 'filter-plus' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'pagination_style_heading',
+			array( 'label' => esc_html__( 'Pagination', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
+		);
+		$this->add_control(
+			'pagination_text_color',
+			array( 'label' => esc_html__( 'Text Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .pagination li, {{WRAPPER}} .pagination li a' => 'color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'pagination_background_color',
+			array( 'label' => esc_html__( 'Background Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .pagination li' => 'background-color: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'pagination_hover_text_color',
+			array(
+				'label' => esc_html__( 'Hover Text Color', 'filter-plus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .pagination li:hover, {{WRAPPER}} .pagination li:hover *' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .pagination li:hover svg, {{WRAPPER}} .pagination li:hover svg path' => 'fill: {{VALUE}} !important;',
+				),
+			)
+		);
+		$this->add_control(
+			'pagination_hover_background_color',
+			array( 'label' => esc_html__( 'Hover Background Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .pagination li:hover' => 'background-color: {{VALUE}} !important;' ) )
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array( 'name' => 'pagination_border', 'label' => esc_html__( 'Border', 'filter-plus' ), 'selector' => '{{WRAPPER}} .pagination li' )
+		);
+		$this->add_responsive_control(
+			'pagination_border_radius',
+			array( 'label' => esc_html__( 'Border Radius', 'filter-plus' ), 'type' => Controls_Manager::DIMENSIONS, 'size_units' => array( 'px', '%', 'em' ), 'selectors' => array( '{{WRAPPER}} .pagination li' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ) )
+		);
+		$this->add_control(
+			'pagination_active_text_color',
+			array( 'label' => esc_html__( 'Active Text Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .pagination li.active, {{WRAPPER}} .pagination li.active a' => 'color: {{VALUE}} !important;', '{{WRAPPER}} .pagination li.active svg' => 'fill: {{VALUE}} !important;' ) )
+		);
+		$this->add_control(
+			'pagination_active_background_color',
+			array( 'label' => esc_html__( 'Active Background Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .pagination li.active' => 'background-color: {{VALUE}} !important;' ) )
+		);
+		$this->end_controls_section();
 
 		// Advance Style (bottom of Style tab)
 		$this->start_controls_section(
@@ -1614,6 +1832,18 @@ class Woo_Filter extends Widget_Base {
 				'/<div(\b[^>]*class="[^"]*prods-grid-view[^"]*"[^>]*)>/s',
 				function ( $matches ) use ( $products_html ) {
 					return '<div' . $matches[1] . ' data-editor-products="1">' . $products_html;
+				},
+				$widget_html,
+				1
+			);
+		}
+
+		$pagination_html = $this->get_editor_pagination_html( $settings );
+		if ( ! empty( $pagination_html ) ) {
+			$widget_html = preg_replace_callback(
+				'/<div(\b[^>]*class="[^"]*\bnaviation\b[^"]*"[^>]*)>\s*<\/div>/s',
+				function ( $matches ) use ( $pagination_html ) {
+					return '<div' . $matches[1] . '>' . $pagination_html . '</div>';
 				},
 				$widget_html,
 				1
@@ -1708,6 +1938,36 @@ class Woo_Filter extends Widget_Base {
 			);
 		}
 		return ob_get_clean();
+	}
+
+	/**
+	 * Render sample pagination in Elementor's editor preview.
+	 *
+	 * The editor product cards are rendered server-side, while the frontend
+	 * AJAX request that normally fills the pagination container is not run in
+	 * the editor preview.
+	 *
+	 * @param array $settings Widget settings.
+	 * @return string
+	 */
+	private function get_editor_pagination_html( $settings ) {
+		$data = \FilterPlus\Base\DataFactory::instance()->woo_process_data( $settings );
+		$per_page = ! empty( $data['no_of_items'] ) ? absint( $data['no_of_items'] ) : 9;
+		$style    = ! empty( $data['pagination_style'] ) ? sanitize_key( $data['pagination_style'] ) : 'numbers';
+
+		if ( $per_page < 1 ) {
+			return '';
+		}
+
+		$product_counts = wp_count_posts( 'product' );
+		$total_products = isset( $product_counts->publish ) ? absint( $product_counts->publish ) : 0;
+		$total_pages    = (int) ceil( $total_products / $per_page );
+
+		return \FilterPlus\Core\Frontend\SearchFilter\Templates\Templates::instance()->pagination( array(
+			'totalPages' => $total_pages,
+			'page'       => 1,
+			'template'   => $style,
+		) );
 	}
 
 }

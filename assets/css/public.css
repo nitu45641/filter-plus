@@ -963,14 +963,23 @@ ul.pagination {
 }
 
 .add_to_cart_button.loading::after {
-    content: url(../../assets/images/wheel.svg);
-    position: absolute;
-    -webkit-animation: spin 2s linear infinite; 
-    animation: spin 2s linear infinite;
-    border-radius: 290486px;
-    left: 10px;
-    top: 5px;
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 18px;
+	height: 18px;
+	box-sizing: border-box;
+	margin: 0;
+	transform: translate(-50%, -50%);
+	border: 2px solid #bfdbfe;
+	border-top-color: #075fc5;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 0 0 1px rgba(15, 23, 42, .15);
+	animation: fp-add-to-cart-spin .7s linear infinite;
 }
+@keyframes fp-add-to-cart-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 .add_to_cart_button.added::after{
     content: url(../../assets/images/check-mark.svg);
 	position: relative;
@@ -1149,6 +1158,10 @@ ul.pagination {
 	display: flex;
 	column-gap: 15px;
 	margin-top: 20px;
+}
+.shop-sidebar > .shop-sidebar-title {
+	margin: 0 0 16px;
+	line-height: 1.25;
 }
 .mainWrapper{
 	display: flex;
@@ -1550,6 +1563,9 @@ a {
 
 /* Template 1 - Overall product card */
 .product-style-1 {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 	border-radius: 10px;
 	overflow: hidden;
 }
@@ -1583,6 +1599,9 @@ a {
 }
 
 .product-style-1 .product-content {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
 	padding: 14px 16px 16px;
 }
 
@@ -1688,16 +1707,19 @@ a {
 .product-style-1 .card-action-btn-container .button.loading::after {
 	content: "";
 	position: absolute;
-	width: 16px;
-	height: 16px;
+	width: 18px;
+	height: 18px;
+	box-sizing: border-box;
 	top: 50%;
 	left: 50%;
-	margin-top: -8px;
-	margin-left: -8px;
-	border: 2px solid rgba(255, 255, 255, 0.3);
+	margin: 0;
+	transform: translate(-50%, -50%);
+	border: 2px solid #bfdbfe;
 	border-radius: 50%;
-	border-top-color: #fff;
-	animation: spinner 0.6s linear infinite;
+	border-top-color: #075fc5;
+	background: #fff;
+	box-shadow: 0 0 0 1px rgba(15, 23, 42, .15);
+	animation: fp-add-to-cart-spin .7s linear infinite;
 }
 
 .product-style-1 .card-action-btn-container a.loading,
@@ -1741,6 +1763,19 @@ a {
 /* Template 1 - Product content area */
 .product-style-1 .product-content {
 	padding: 16px;
+}
+
+.shopContainer.shop-container-1 .prods-grid-view:not(.masonry) {
+	align-items: stretch;
+}
+
+.shopContainer.shop-container-1 .product-style-1 .product-price-row {
+	margin-top: auto;
+}
+
+/* Template 4 keeps the price fields and labels while hiding its range track. */
+.shop-container-4 .price-range-area-4 .custom-range-slider {
+	display: none !important;
 }
 
 /* Template 1 - Product name styling */
@@ -3154,6 +3189,23 @@ ul.sub_categories.wrap-sub-cats.fp-open {
 	}
 	.products-wrap {
 		width: 100%;
+	}
+}
+/* Keep Template 1 filters beside the product results at tablet and small desktop widths. */
+@media (min-width: 769px) and (max-width: 1024px) {
+	.shopContainer.shop-container-1 {
+		display: flex;
+		align-items: flex-start;
+	}
+	.shopContainer.shop-container-1 > .shop-sidebar {
+		flex: 0 0 30%;
+		width: 30%;
+		box-sizing: border-box;
+	}
+	.shopContainer.shop-container-1 > .products-wrap {
+		flex: 1 1 0;
+		width: 0;
+		min-width: 0;
 	}
 }
 /* Phone gutter: products sat ~10px from the screen edge — add breathing room (≈16px total). */
