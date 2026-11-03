@@ -137,9 +137,34 @@ class Helper {
 			'ID'        => $post->ID,
 			'name'      => $post->post_title,
 			'type'      => get_post_meta( $post->ID, 'filter_type', true ),
-			'shortcode' => get_post_meta( $post->ID, 'shortcode', true ),
+			// sets saved before filter_order reached the shortcode builder only kept it in params
+			'shortcode' => self::sync_filter_order( get_post_meta( $post->ID, 'shortcode', true ), $params ),
 			'params'    => is_array( $params ) ? $params : array(),
 		);
+	}
+
+	/**
+	 * Make the shortcode's filter_order match the saved section order (params).
+	 *
+	 * @param string $shortcode Saved shortcode.
+	 * @param array  $params    Saved form values.
+	 *
+	 * @return string
+	 */
+	public static function sync_filter_order( $shortcode, $params ) {
+		$shortcode = (string) $shortcode;
+		if ( ! is_array( $params ) || empty( $params['filter_order'] ) || '' === $shortcode ) {
+			return $shortcode;
+		}
+
+		$order = implode( ',', \FilterPlus\Base\SidebarSections::parse_order( $params['filter_order'] ) );
+		if ( '' === $order ) {
+			return $shortcode;
+		}
+
+		$shortcode = preg_replace( '/\s+filter_order=("|\')[^"\']*\1/', '', $shortcode );
+
+		return preg_replace( '/\]\s*$/', ' filter_order="' . $order . '"]', $shortcode, 1 );
 	}
 
 	/**

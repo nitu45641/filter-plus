@@ -76,6 +76,8 @@ class Action {
 		$shortcode = ! empty( $raw_post['shortcode'] ) ? sanitize_text_field( $raw_post['shortcode'] ) : '';
 		$params    = ( ! empty( $raw_post['params'] ) && is_array( $raw_post['params'] ) ) ? $this->sanitize_params( $raw_post['params'] ) : array();
 
+		$shortcode = Helper::sync_filter_order( $shortcode, $params );
+
 		$post_id = Helper::save_filter_set( $id, $name, $type, $shortcode, $params );
 
 		if ( empty( $post_id ) ) {

@@ -540,6 +540,9 @@
 					const maxValid = validatePriceInput($('.input-max'), maxVal, false);
 
 					if (minValid && maxValid) {
+						// the request reads the price from .range-slider's value - typed
+						// values only moved the thumbs, so the filter kept the full range
+						price_range.val(minVal + ',' + maxVal);
 						price_range.attr('data-action', true);
 						// Only auto-filter if apply button mode is disabled
 						if (!isApplyMode) {
