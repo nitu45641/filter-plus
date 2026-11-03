@@ -744,7 +744,7 @@ class Woo_Filter extends Widget_Base {
 			'separator' => 'before',
 			'classes' => 'filterplus-style-group-heading',
 		) );
-		$filter_title_selector = '{{WRAPPER}} .shop-sidebar .sidebar-row .sidebar-label, {{WRAPPER}} .shop-sidebar .filter-param-header';
+		$filter_title_selector = '{{WRAPPER}} .shop-sidebar-title, {{WRAPPER}} .shop-sidebar .title-and-clean-area h2, {{WRAPPER}} .shop-sidebar .sidebar-heading, {{WRAPPER}} .shop-sidebar .sidebar-row .sidebar-label, {{WRAPPER}} .shop-sidebar .filter-param-header, {{WRAPPER}} .main-wrapper-8 .fp8-filter-label, {{WRAPPER}} .main-wrapper-8 .fp8-pill .heading-wrap h4, {{WRAPPER}} .main-wrapper-8 .fp8-pill .rating-label, {{WRAPPER}} .main-wrapper-8 .fp8-pill .dropdown-label';
 		$this->add_control( 'filter_title_color', array(
 			'label' => esc_html__( 'Text Color', 'filter-plus' ),
 			'type' => Controls_Manager::COLOR,
@@ -1621,7 +1621,7 @@ class Woo_Filter extends Widget_Base {
 		// Try free plugin template first, then fall back to pro plugin template directory.
 		$tpl_file = \FilterPlus::locate_template( "woo-filter/template-{$template}/right-side/product-template.php" );
 		if ( ! file_exists( $tpl_file ) && class_exists( 'FilterPlusPro' ) ) {
-			$folder   = in_array( (int) $template, [ 5, 7 ] ) ? 'bottom' : 'right-side';
+			$folder   = in_array( (int) $template, [ 5, 7, 8 ], true ) ? 'bottom' : 'right-side';
 			$tpl_file = \FilterPlusPro::locate_template( "woo-filter/template-{$template}/{$folder}/product-template.php" );
 		}
 		if ( file_exists( $tpl_file ) ) {

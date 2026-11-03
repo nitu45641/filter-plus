@@ -22,6 +22,9 @@ class Enqueue {
         add_action( 'admin_enqueue_scripts', array($this, 'admin_enqueue_assets') );
         // frontend asset
         add_action( 'wp_enqueue_scripts', array($this, 'frontend_enqueue_assets') );
+        // Elementor renders widgets in its own frontend preview document. Ensure
+        // the shared widget layout stylesheet is present in that document too.
+        add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'elementor_frontend_styles' ) );
     }
   
 
@@ -187,6 +190,19 @@ class Enqueue {
         $form_data['home_url']              = home_url( '/' );
 
         wp_localize_script( 'filter-js', 'filter_client', $form_data  ); 
+    }
+
+    /**
+     * Enqueue the shared frontend layout rules in Elementor's preview document.
+     */
+    public function elementor_frontend_styles() {
+        wp_enqueue_style(
+            'filter-public-free',
+            \FilterPlus::assets_url() . 'css/public.css',
+            array(),
+            \FilterPlus::asset_version( 'css/public.css' ),
+            'all'
+        );
     }
 
     /**

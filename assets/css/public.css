@@ -162,6 +162,27 @@ input[type="checkbox"].regular-checkbox:checked::after {
 	display: grid;
 	grid-template-columns: repeat(var(--fp-cols-desktop), 1fr) !important;
 }
+/* Stable template 1 defaults when Elementor's live preview omits per-widget CSS. */
+.shopContainer.shop-container-1:not(.has-grid-cols):not([data-masonry_style="yes"]) .prods-grid-view.grid-view-1 {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 15px 11px;
+}
+@media (max-width: 1024px) {
+	.shopContainer.shop-container-1:not(.has-grid-cols):not([data-masonry_style="yes"]) .prods-grid-view.grid-view-1 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+@media (max-width: 768px) {
+	.shopContainer.shop-container-1:not(.has-grid-cols):not([data-masonry_style="yes"]) .prods-grid-view.grid-view-1 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+@media (max-width: 480px) {
+	.shopContainer.shop-container-1:not(.has-grid-cols):not([data-masonry_style="yes"]) .prods-grid-view.grid-view-1 {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
 @media (max-width: 1024px) {
 	.shopContainer.has-grid-cols:not([data-masonry_style="yes"]) .prods-grid-view {
 		grid-template-columns: repeat(var(--fp-cols-tablet, var(--fp-cols-desktop)), 1fr) !important;
