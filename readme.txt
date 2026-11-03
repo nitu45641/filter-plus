@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: product filter, woocommerce product filter, ajax product filter, ajax filter, filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.37
+Stable tag: 1.1.38
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,10 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.38 (November 03, 2026) =
+* Tweak: Improve Style 1 page title design.
+* Tweak: Improve responsive layout.
 
 = 1.1.37 (November 02, 2026) =
 * New: Elementor widget style controls for add-to-cart button text color and typography.
