@@ -1840,6 +1840,15 @@ class Woo_Filter extends Widget_Base {
 
 		$pagination_html = $this->get_editor_pagination_html( $settings );
 		if ( ! empty( $pagination_html ) ) {
+			$footer_layout = preg_match( '/<div\b[^>]*class="[^"]*pagination-footer[^"]*"[^>]*>.*?<div\b[^>]*class="[^"]*showing[^"]*"/s', $widget_html )
+				? 'two-section'
+				: 'one-section';
+			$widget_html = preg_replace(
+				'/(<div\b[^>]*class="[^"]*pagination-footer)([^"]*")/',
+				'$1 ' . $footer_layout . '$2',
+				$widget_html,
+				1
+			);
 			$widget_html = preg_replace_callback(
 				'/<div(\b[^>]*class="[^"]*\bnaviation\b[^"]*"[^>]*)>\s*<\/div>/s',
 				function ( $matches ) use ( $pagination_html ) {
