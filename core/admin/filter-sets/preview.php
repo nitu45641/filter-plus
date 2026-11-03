@@ -97,6 +97,8 @@ class Preview {
 	<style id="filterplus-preview-css">
 		html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; min-height: 0 !important; height: auto !important; }
 		body.filterplus-preview { padding: 12px !important; overflow: hidden; }
+		/* only the filter: drop footer widgets other plugins inject (floating side-cart bubble, chat, cookie bars...) */
+		body.filterplus-preview > :not(.shopContainer):not(script):not(style):not(link) { display: none !important; }
 		.filterplus-preview .shopContainer { display: block !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
 		.filterplus-preview .shopContainer > :not(.shop-sidebar) { display: none !important; }
 		/* the preview frame is phone-width, where the sidebar turns into a hidden off-canvas drawer - undo that */
