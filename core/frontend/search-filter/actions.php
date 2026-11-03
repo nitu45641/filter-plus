@@ -88,6 +88,8 @@ class Actions {
 			'search_value'  => $search_value,
 			'min'           => $min,
 			'max'           => $max,
+			// product_min_max_price() only filters when the client marked the range as touched
+			'price_range'   => ! empty( $post_arr['price_range'] ) ? $post_arr['price_range'] : '',
 			'rating'        => $rating,
 			'product_tags'  => $product_tags,
 			'show_sale_badge' => $show_sale_badge,
