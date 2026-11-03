@@ -283,36 +283,27 @@ use \FilterPlus\Utils\Helper as Helper;
 
 		<?php
 
-			// Product Grid Columns
-			$filterplus_args = array(
-				'label'       => esc_html__( 'Desktop Columns:', 'filter-plus' ),
-				'id'          => 'grid_columns_desktop',
-				'placeholder' => esc_html__( 'e.g. 3', 'filter-plus' ),
-				'field_type'  => 'number',
-				'data_label'  => 'grid_columns_desktop',
-				'min'         => 1,
+			// Product Grid Columns - one row, three device inputs (same names/ids as before)
+			$filterplus_grid_cols = array(
+				'grid_columns_desktop' => array( esc_html__( 'Desktop', 'filter-plus' ), '3' ),
+				'grid_columns_tablet'  => array( esc_html__( 'Tablet', 'filter-plus' ), '2' ),
+				'grid_columns_mobile'  => array( esc_html__( 'Mobile', 'filter-plus' ), '1' ),
 			);
-			filterplus_number_input_field( $filterplus_args );
-
-			$filterplus_args = array(
-				'label'       => esc_html__( 'Tablet Columns:', 'filter-plus' ),
-				'id'          => 'grid_columns_tablet',
-				'placeholder' => esc_html__( 'e.g. 2', 'filter-plus' ),
-				'field_type'  => 'number',
-				'data_label'  => 'grid_columns_tablet',
-				'min'         => 1,
-			);
-			filterplus_number_input_field( $filterplus_args );
-
-			$filterplus_args = array(
-				'label'       => esc_html__( 'Mobile Columns:', 'filter-plus' ),
-				'id'          => 'grid_columns_mobile',
-				'placeholder' => esc_html__( 'e.g. 1', 'filter-plus' ),
-				'field_type'  => 'number',
-				'data_label'  => 'grid_columns_mobile',
-				'min'         => 1,
-			);
-			filterplus_number_input_field( $filterplus_args );
+			?>
+			<div class="single-block flp-columns-row">
+				<div class="form-label"><?php esc_html_e( 'Grid Columns:', 'filter-plus' ); ?></div>
+				<div class="flp-columns-inputs">
+					<?php foreach ( $filterplus_grid_cols as $filterplus_col_key => $filterplus_col ) : ?>
+					<label class="input-section flp-col-field" for="<?php echo esc_attr( $filterplus_col_key ); ?>">
+						<span class="flp-col-label"><?php echo esc_html( $filterplus_col[0] ); ?></span>
+						<input type="number" min="1" name="<?php echo esc_attr( $filterplus_col_key ); ?>" id="<?php echo esc_attr( $filterplus_col_key ); ?>"
+							data-option="<?php echo esc_attr( $filterplus_col_key ); ?>" value=""
+							placeholder="<?php echo esc_attr( $filterplus_col[1] ); ?>" />
+					</label>
+					<?php endforeach; ?>
+				</div>
+			</div>
+			<?php
 
 			// show title
 			$filterplus_args = array('label'=>esc_html__("Show Title:","filter-plus"),'id' => 'hide_prod_title',

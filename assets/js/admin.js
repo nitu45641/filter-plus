@@ -170,6 +170,11 @@
 					if (is_true) {
 						return;
 					}
+					// a disabled option can't be the value (e.g. a Pro template restored by
+					// the browser after Pro was deactivated) - fall back to the first allowed one
+					if ($this.val() === null && !$this.prop('multiple')) {
+						$this.val($this.find('option:not(:disabled)').first().val());
+					}
 					// select option
 					if ($.isArray($this.val())) {
 						result += ` ${$this.data('option')}="${$this.val().toString()}"`;
