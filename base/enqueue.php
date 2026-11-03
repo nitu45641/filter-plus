@@ -35,17 +35,17 @@ class Enqueue {
         $script_arr =  array(
             'filter-plus-select2'  => array(
                 'src'     => \FilterPlus::assets_url() . 'js/filter-plus-select2.js',
-                'version' => \FilterPlus::get_version(),
+                'version' => \FilterPlus::asset_version( 'js/filter-plus-select2.js' ),
                 'deps'    => ['jquery'],
             ),
 			'filter-plus-admin'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/admin.js',
-                'version' => \FilterPlus::get_version(),
+                'version' => \FilterPlus::asset_version( 'js/admin.js' ),
                 'deps'    => ['jquery','filter-plus-select2'],
             ),
 			'filter-plus-filter-set-preview' => array(
                 'src'     => \FilterPlus::assets_url() . 'js/filter-set-preview.js',
-                'version' => \FilterPlus::get_version(),
+                'version' => \FilterPlus::asset_version( 'js/filter-set-preview.js' ),
                 'deps'    => ['jquery','filter-plus-admin'],
             )
 		);
@@ -62,11 +62,11 @@ class Enqueue {
         return array(
             'filter-plus-admin-css' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/admin.css',
-                'version' => \FilterPlus::get_version(),
+                'version' => \FilterPlus::asset_version( 'css/admin.css' ),
             ),
 			'select2' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/select2.css',
-                'version' => \FilterPlus::get_version(),
+                'version' => \FilterPlus::asset_version( 'css/select2.css' ),
             )
         );
     }
@@ -126,7 +126,7 @@ class Enqueue {
             ),
             'filter-swiper-bundle'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/filter-swiper-bundle.min.js',
-                'version' => \FilterPlus::get_version(),
+                'version' => \FilterPlus::asset_version( 'js/filter-swiper-bundle.min.js' ),
                 'deps'    => ['jquery'],
             )
         );
@@ -145,7 +145,7 @@ class Enqueue {
             ),
             'filter-swiper-bundle' => array(
                 'src'     => \FilterPlus::assets_url() . 'css/filter-swiper-bundle.min.css',
-                'version' => \FilterPlus::get_version(),
+                'version' => \FilterPlus::asset_version( 'css/filter-swiper-bundle.min.css' ),
             )
         );
 

@@ -80,6 +80,19 @@ class Preview {
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noindex, nofollow">
+	<script>
+		// Front-end scripts scroll to the results on load; inside the admin iframe
+		// that would scroll the preview panel itself, so make scrolling a no-op.
+		( function () {
+			var noop = function () {};
+			window.scrollTo = window.scroll = window.scrollBy = noop;
+			Element.prototype.scrollIntoView = noop;
+			var focus = HTMLElement.prototype.focus;
+			HTMLElement.prototype.focus = function () {
+				return focus.call( this, { preventScroll: true } );
+			};
+		} )();
+	</script>
 	<?php wp_head(); ?>
 	<style id="filterplus-preview-css">
 		html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; min-height: 0 !important; height: auto !important; }

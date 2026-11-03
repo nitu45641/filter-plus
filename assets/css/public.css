@@ -3464,3 +3464,14 @@ ul.categories-image-grid .fp-img-card-count {
 .shop-container-4 .product-style-4 .t4-action.add-to-cart{
 	width: auto !important;
 }
+/* Pro template 5: cart wrapper + link were pinned to a 40px icon square */
+.tab-item.product-style-5 .post-block-5 div.cart_button-5{
+	flex: 0 0 auto !important;
+	width: auto !important;
+}
+.tab-item.product-style-5 .post-block-5 .cart_button-5 > a.add_to_cart_button.cart_button-5{
+	flex: 0 0 auto !important;
+	width: auto !important;
+	min-width: 0 !important;
+	padding: 6px 14px !important;
+}

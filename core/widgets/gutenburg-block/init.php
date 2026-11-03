@@ -38,13 +38,13 @@ function filterplus_block_assets() {
         'filter-plus-public-css',
         \FilterPlus::assets_url() . 'css/public.css',
         [],
-        \FilterPlus::get_version()
+        \FilterPlus::asset_version( 'css/public.css' )
     );
     wp_register_style(
         'filter-plus-swiper-css',
         \FilterPlus::assets_url() . 'css/filter-swiper-bundle.min.css',
         [],
-        \FilterPlus::get_version()
+        \FilterPlus::asset_version( 'css/filter-swiper-bundle.min.css' )
     );
 
     wp_localize_script(

@@ -68,14 +68,14 @@ class DeactivationFeedback {
 			'filter-plus-deactivation-feedback',
 			\FilterPlus::assets_url() . 'css/deactivation-feedback.css',
 			array(),
-			\FilterPlus::get_version()
+			\FilterPlus::asset_version( 'css/deactivation-feedback.css' )
 		);
 
 		wp_enqueue_script(
 			'filter-plus-deactivation-feedback',
 			\FilterPlus::assets_url() . 'js/deactivation-feedback.js',
 			array( 'jquery' ),
-			\FilterPlus::get_version(),
+			\FilterPlus::asset_version( 'js/deactivation-feedback.js' ),
 			true
 		);
 
