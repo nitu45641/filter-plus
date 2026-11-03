@@ -15,6 +15,9 @@
 			echo wp_kses_post( $filterplus_docs );
 		?>
 		<?php
+			// general settings (not a sidebar section, so never draggable)
+			filterplus_field_group_start( 'wp_general', esc_html__( 'General Settings', 'filter-plus' ), true, false );
+
 			// apply button mode
 			$filterplus_args = array('label'=>esc_html__("Apply Button Mode:","filter-plus"),'id' => 'wp_apply_button_mode','data_label' => 'apply_button_mode');
 			filterplus_checkbox_field($filterplus_args);
@@ -78,6 +81,8 @@
 			'data_label' => 'custom_post','options'=>$filterplus_custom_post,'type'=>'random',
 			'condition_class' => "filter_type d-none", );
 			filterplus_select_field($filterplus_args);
+
+			filterplus_field_group_end();
 
 			filterplus_field_groups_start();
 			filterplus_field_group_start( 'wp_category', esc_html__( 'Category Filter', 'filter-plus' ) );

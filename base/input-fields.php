@@ -215,11 +215,12 @@ if ( ! function_exists( 'filterplus_doc_html' ) ) {
  * skips every field inside .d-none.
  */
 if ( ! function_exists( 'filterplus_field_group_start' ) ) {
-	function filterplus_field_group_start( $key, $title, $collapsed = true ) {
+	function filterplus_field_group_start( $key, $title, $collapsed = true, $sortable = true ) {
 		$body_id  = 'flp-group-' . sanitize_html_class( $key );
 		// "woo_price" -> "price": the key used by \FilterPlus\Base\SidebarSections / filter_order
 		$section  = preg_replace( '/^(woo|wp)_/', '', $key );
-		$sortable = \FilterPlus\Base\SidebarSections::is_sortable();
+		// $sortable = false for settings groups that are not sidebar sections (e.g. General Settings)
+		$sortable = $sortable && \FilterPlus\Base\SidebarSections::is_sortable();
 		?>
 		<div class="flp-field-group<?php echo $collapsed ? ' is-collapsed' : ''; ?>" data-group="<?php echo esc_attr( $key ); ?>" data-section="<?php echo esc_attr( $section ); ?>">
 			<div class="flp-field-group-head">

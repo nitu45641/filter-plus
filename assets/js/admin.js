@@ -128,9 +128,7 @@
 					const results = _this.siblings('.full_input');
 					const parent_block = _this.parents('.shortcode-block');
 					const shortcode_name = parent_block.data('name');
-					const input_value = findInputValue(
-						parent_block.find('.input-section')
-					);
+					const input_value = buildShortcodeAttrs(parent_block);
 					const shortcode = `[${shortcode_name} ${input_value}]`;
 					results.val('').val(shortcode);
 					copyTextData(results, _this.find('button'));
@@ -197,22 +195,27 @@
 			// input text
 			result = shortcode_input_value(input_text,input_num, result);
 
-			// hidden options (e.g. filter_order from the sortable filter sections)
-			_this.find('input[type="hidden"][data-option]').each(function () {
-				const val = $(this).val();
-				if (val) {
-					result += ` ${$(this).data('option')}="${val}"`;
-				}
-			});
-
 			return result;
 		}
 
 		// shared with the Filter Set live preview so it renders exactly the
 		// shortcode the "Copy" / "Save" buttons would produce
+		// one builder for Copy, Save and the live preview
+		function buildShortcodeAttrs($block) {
+			let result = findInputValue($block.find('.input-section'));
+			// hidden options outside .input-section (e.g. filter_order from the sortable filter sections)
+			$block.find('input[type="hidden"][data-option]').each(function () {
+				const val = $(this).val();
+				if (val) {
+					result += ` ${$(this).data('option')}="${val}"`;
+				}
+			});
+			return result;
+		}
+
 		window.filterPlusBuildShortcode = function ($block) {
 			const name = $block.data('name');
-			return name ? `[${name} ${findInputValue($block)}]` : '';
+			return name ? `[${name} ${buildShortcodeAttrs($block)}]` : '';
 		};
 
 		function shortcode_input_value(input_data,input_num, result) {
@@ -360,7 +363,7 @@
 				}
 
 				const shortcode_name = parent_block.data('name');
-				const input_value = findInputValue(parent_block.find('.input-section'));
+				const input_value = buildShortcodeAttrs(parent_block);
 				const shortcode = `[${shortcode_name} ${input_value}]`;
 				const params = getAllValues(parent_block.find(':input'));
 

@@ -1052,7 +1052,45 @@ class Woo_Filter extends Widget_Base {
 
 		$this->add_control(
 			'tab_cart_icon_heading',
-			array( 'label' => esc_html__( 'Add to Cart Button', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
+			array( 'label' => esc_html__( 'Cart Icon', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
+		);
+		$this->add_control(
+			'cart_icon_color',
+			array(
+				'label'     => esc_html__( 'Icon Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					// Let the SVG inherit the selected color through the public CSS variable,
+					// while explicitly setting paths for theme overrides.
+					'{{WRAPPER}} .fplus-cart-icon' => '--filter-fplus-cart-icon-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .fplus-cart-icon-path' => 'fill: {{VALUE}} !important; stroke: {{VALUE}} !important;',
+				),
+			)
+		);
+		$this->add_control(
+			'cart_icon_hover_color',
+			array(
+				'label'     => esc_html__( 'Icon Hover Color', 'filter-plus' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .add_to_cart_button:hover .fplus-cart-icon' => '--filter-fplus-cart-icon-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .add_to_cart_button:hover .fplus-cart-icon-path' => 'fill: {{VALUE}} !important; stroke: {{VALUE}} !important;',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'cart_icon_size',
+			array(
+				'label'      => esc_html__( 'Icon Size', 'filter-plus' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array( 'min' => 0, 'max' => 100 ),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .fplus-cart-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				),
+			)
 		);
 		$this->add_control(
 			'cart_btn_text_color',

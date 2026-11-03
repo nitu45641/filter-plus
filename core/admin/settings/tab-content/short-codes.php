@@ -20,6 +20,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			echo wp_kses_post( $filterplus_docs );
 		?>
 		<?php
+			// general settings (not a sidebar section, so never draggable)
+			filterplus_field_group_start( 'woo_general', esc_html__( 'General Settings', 'filter-plus' ), true, false );
+
 			// apply button mode
 			$filterplus_args = array('label'=>esc_html__("Apply Button Mode:","filter-plus"),'id' => 'apply_button_mode','data_label' => 'apply_button_mode');
 			filterplus_checkbox_field($filterplus_args);
@@ -68,6 +71,8 @@ use \FilterPlus\Utils\Helper as Helper;
 			'placeholder'=>esc_html__("Place No of Items Per Page","filter-plus"), 'field_type'=> 'number',
 			'data_label' => 'no_of_items');
 			filterplus_number_input_field($filterplus_args);
+
+			filterplus_field_group_end();
 
 			filterplus_field_groups_start();
 			filterplus_field_group_start( 'woo_category', esc_html__( 'Category Filter', 'filter-plus' ) );
