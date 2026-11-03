@@ -99,7 +99,8 @@ class Preview {
 		body.filterplus-preview { padding: 12px !important; overflow: hidden; }
 		.filterplus-preview .shopContainer { display: block !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
 		.filterplus-preview .shopContainer > :not(.shop-sidebar) { display: none !important; }
-		.filterplus-preview .shop-sidebar { display: block !important; position: static !important; width: 100% !important; max-width: none !important; flex: none !important; transform: none !important; margin: 0 !important; }
+		/* the preview frame is phone-width, where the sidebar turns into a hidden off-canvas drawer - undo that */
+		.filterplus-preview .shop-sidebar { display: block !important; position: static !important; inset: auto !important; left: auto !important; width: 100% !important; max-width: none !important; height: auto !important; max-height: none !important; overflow: visible !important; flex: none !important; transform: none !important; opacity: 1 !important; visibility: visible !important; box-shadow: none !important; margin: 0 !important; z-index: auto !important; }
 		.filterplus-preview a { pointer-events: none; }
 	</style>
 </head>
