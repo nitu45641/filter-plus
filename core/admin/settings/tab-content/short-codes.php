@@ -69,6 +69,7 @@ use \FilterPlus\Utils\Helper as Helper;
 			'data_label' => 'no_of_items');
 			filterplus_number_input_field($filterplus_args);
 
+			filterplus_field_groups_start();
 			filterplus_field_group_start( 'woo_category', esc_html__( 'Category Filter', 'filter-plus' ) );
 
 			// categories template
@@ -261,6 +262,7 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_number_input_field($filterplus_args);
 
 			filterplus_field_group_end();
+			filterplus_field_groups_end();
 
 		?>
 

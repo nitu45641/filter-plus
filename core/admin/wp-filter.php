@@ -63,6 +63,23 @@
 			'data_label' => 'pagination_style','options'=> Helper::pagination_style(),'type'=>'random' );
 			filterplus_select_field($filterplus_args);
 
+			// post type
+			$filterplus_args = array('label'=>esc_html__("Select Type:","filter-plus"),'id' => 'filter_type',
+				'data_label' => 'filter_type','options'=>
+				array('post'=>esc_html__("Post","filter-plus"),'custom_post'=>esc_html__("Custom Post","filter-plus")),'type'=>'random',
+				'select_type' => 'single');
+
+			filterplus_select_field($filterplus_args);
+
+			// custom post type
+			$filterplus_custom_post = Helper::custom_post_type();
+
+			$filterplus_args = array('label'=>esc_html__("Custom Post:","filter-plus"),'id' => 'custom_post',
+			'data_label' => 'custom_post','options'=>$filterplus_custom_post,'type'=>'random',
+			'condition_class' => "filter_type d-none", );
+			filterplus_select_field($filterplus_args);
+
+			filterplus_field_groups_start();
 			filterplus_field_group_start( 'wp_category', esc_html__( 'Category Filter', 'filter-plus' ) );
 			// categories
 			$filterplus_args = array('label'=>esc_html__("Category Label:","filter-plus"),'id' => 'category_label',
@@ -83,22 +100,6 @@
 			filterplus_checkbox_field($filterplus_args);
 
 			filterplus_field_group_end();
-
-			// post type
-			$filterplus_args = array('label'=>esc_html__("Select Type:","filter-plus"),'id' => 'filter_type',
-				'data_label' => 'filter_type','options'=>
-				array('post'=>esc_html__("Post","filter-plus"),'custom_post'=>esc_html__("Custom Post","filter-plus")),'type'=>'random',
-				'select_type' => 'single');
-
-			filterplus_select_field($filterplus_args);
-
-			// custom post type
-			$filterplus_custom_post = Helper::custom_post_type();
-
-			$filterplus_args = array('label'=>esc_html__("Custom Post:","filter-plus"),'id' => 'custom_post',
-			'data_label' => 'custom_post','options'=>$filterplus_custom_post,'type'=>'random',
-			'condition_class' => "filter_type d-none", );
-			filterplus_select_field($filterplus_args);
 
 			filterplus_field_group_start( 'wp_tags', esc_html__( 'Tag Filter', 'filter-plus' ) );
 			// show tags
@@ -173,6 +174,7 @@
 			}
 
 			filterplus_field_group_end();
+			filterplus_field_groups_end();
 
 		?>
 

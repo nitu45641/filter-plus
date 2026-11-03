@@ -216,15 +216,49 @@ if ( ! function_exists( 'filterplus_doc_html' ) ) {
  */
 if ( ! function_exists( 'filterplus_field_group_start' ) ) {
 	function filterplus_field_group_start( $key, $title, $collapsed = true ) {
-		$body_id = 'flp-group-' . sanitize_html_class( $key );
+		$body_id  = 'flp-group-' . sanitize_html_class( $key );
+		// "woo_price" -> "price": the key used by \FilterPlus\Base\SidebarSections / filter_order
+		$section  = preg_replace( '/^(woo|wp)_/', '', $key );
+		$sortable = \FilterPlus\Base\SidebarSections::is_sortable();
 		?>
-		<div class="flp-field-group<?php echo $collapsed ? ' is-collapsed' : ''; ?>" data-group="<?php echo esc_attr( $key ); ?>">
-			<button type="button" class="flp-field-group-toggle" aria-expanded="<?php echo $collapsed ? 'false' : 'true'; ?>" aria-controls="<?php echo esc_attr( $body_id ); ?>">
-				<span class="flp-field-group-title"><?php echo esc_html( $title ); ?></span>
-				<span class="flp-field-group-icon" aria-hidden="true"></span>
-			</button>
+		<div class="flp-field-group<?php echo $collapsed ? ' is-collapsed' : ''; ?>" data-group="<?php echo esc_attr( $key ); ?>" data-section="<?php echo esc_attr( $section ); ?>">
+			<div class="flp-field-group-head">
+				<?php if ( $sortable ) : ?>
+				<span class="flp-field-group-handle" title="<?php esc_attr_e( 'Drag to reorder', 'filter-plus' ); ?>" aria-hidden="true"></span>
+				<?php endif; ?>
+				<button type="button" class="flp-field-group-toggle" aria-expanded="<?php echo $collapsed ? 'false' : 'true'; ?>" aria-controls="<?php echo esc_attr( $body_id ); ?>">
+					<span class="flp-field-group-title"><?php echo esc_html( $title ); ?></span>
+					<span class="flp-field-group-icon" aria-hidden="true"></span>
+				</button>
+			</div>
 			<div class="flp-field-group-body" id="<?php echo esc_attr( $body_id ); ?>">
 		<?php
+	}
+}
+
+/**
+ * Container around the sortable filter sections of one tab.
+ *
+ * With Filter Plus Pro the sections can be dragged; the order is kept in a
+ * hidden `filter_order` field that the shortcode builder picks up, so the
+ * front end renders the sidebar in the same order (see SidebarSections).
+ */
+if ( ! function_exists( 'filterplus_field_groups_start' ) ) {
+	function filterplus_field_groups_start() {
+		$sortable = \FilterPlus\Base\SidebarSections::is_sortable();
+		?>
+		<div class="flp-field-groups<?php echo $sortable ? ' is-sortable' : ''; ?>">
+			<?php if ( $sortable ) : ?>
+			<input type="hidden" name="filter_order" data-option="filter_order" value="">
+			<p class="flp-field-groups-hint"><?php esc_html_e( 'Drag sections to change their order in the filter sidebar.', 'filter-plus' ); ?></p>
+			<?php endif; ?>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'filterplus_field_groups_end' ) ) {
+	function filterplus_field_groups_end() {
+		echo '</div>';
 	}
 }
 

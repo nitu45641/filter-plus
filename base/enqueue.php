@@ -41,7 +41,8 @@ class Enqueue {
 			'filter-plus-admin'     => array(
                 'src'     => \FilterPlus::assets_url() . 'js/admin.js',
                 'version' => \FilterPlus::asset_version( 'js/admin.js' ),
-                'deps'    => ['jquery','filter-plus-select2'],
+                // jquery-ui-sortable (bundled with WP) powers the Pro drag & drop of filter sections
+                'deps'    => ['jquery','filter-plus-select2','jquery-ui-sortable'],
             ),
 			'filter-plus-filter-set-preview' => array(
                 'src'     => \FilterPlus::assets_url() . 'js/filter-set-preview.js',

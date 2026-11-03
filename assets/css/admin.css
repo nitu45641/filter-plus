@@ -1967,3 +1967,43 @@ tfoot > tr
 .shortcode-block .flp-field-group .single-block{
 	border-color: #EEF0F3;
 }
+
+/* Sortable filter sections (Pro) */
+.flp-field-group-head{
+	display: flex;
+	align-items: stretch;
+}
+.flp-field-group-head .flp-field-group-toggle{
+	flex: 1;
+	min-width: 0;
+}
+.flp-field-group-handle{
+	flex: 0 0 28px;
+	cursor: grab;
+	border-radius: 6px 0 0 6px;
+	background:
+		radial-gradient(circle, #8c8f94 1.3px, transparent 1.6px) 9px 50% / 6px 6px repeat-y,
+		radial-gradient(circle, #8c8f94 1.3px, transparent 1.6px) 15px 50% / 6px 6px repeat-y;
+	background-size: 6px 6px;
+	background-clip: content-box;
+	padding: 14px 0;
+	box-sizing: border-box;
+}
+.flp-field-group-handle:hover{ background-color: #f6f7f7; }
+.flp-field-group-handle:active{ cursor: grabbing; }
+.flp-field-groups.is-sortable .flp-field-group-toggle{ padding-left: 4px; }
+.flp-field-group.ui-sortable-helper{
+	box-shadow: 0 10px 24px -8px rgba(16,24,40,.25);
+}
+.flp-field-group-placeholder{
+	margin-bottom: 10px;
+	border: 2px dashed var(--filter-primary-bg,#0D6EFD);
+	border-radius: 6px;
+	background: color-mix(in srgb, var(--filter-primary-bg,#0D6EFD) 6%, #fff);
+	visibility: visible !important;
+}
+.flp-field-groups-hint{
+	margin: 4px 0 8px;
+	font-size: 12px;
+	color: #646970;
+}

@@ -71,6 +71,49 @@
 		});
 
 		/**
+		 * Sortable filter sections (Filter Plus Pro).
+		 * The order lives in the hidden filter_order field -> shortcode attribute
+		 * -> \FilterPlus\Base\SidebarSections on the front end.
+		 */
+		$('.flp-field-groups.is-sortable').each(function () {
+			const $groups = $(this);
+			const $order = $groups.find('> input[name="filter_order"]');
+
+			const writeOrder = function () {
+				const keys = $groups.find('> .flp-field-group').map(function () {
+					return $(this).data('section');
+				}).get();
+				$order.val(keys.join(',')).trigger('change', [true]);
+			};
+
+			// saved set loaded into the form: put the sections back in that order
+			$order.on('change', function (e, fromSort) {
+				if (fromSort) {
+					return;
+				}
+				const keys = String($order.val() || '').split(',').filter(Boolean);
+				for (let i = keys.length - 1; i >= 0; i--) {
+					const $group = $groups.find('> .flp-field-group[data-section="' + keys[i] + '"]');
+					if ($group.length) {
+						$group.insertAfter($order.siblings('.flp-field-groups-hint').length ? $groups.find('> .flp-field-groups-hint') : $order);
+					}
+				}
+			});
+
+			if ($.fn.sortable) {
+				$groups.sortable({
+					items: '> .flp-field-group',
+					handle: '.flp-field-group-handle',
+					axis: 'y',
+					tolerance: 'pointer',
+					placeholder: 'flp-field-group-placeholder',
+					forcePlaceholderSize: true,
+					update: writeOrder,
+				});
+			}
+		});
+
+		/**
 		 * ShortCode generator
 		 */
 		generateShortCode();
@@ -153,6 +196,14 @@
 			}
 			// input text
 			result = shortcode_input_value(input_text,input_num, result);
+
+			// hidden options (e.g. filter_order from the sortable filter sections)
+			_this.find('input[type="hidden"][data-option]').each(function () {
+				const val = $(this).val();
+				if (val) {
+					result += ` ${$(this).data('option')}="${val}"`;
+				}
+			});
 
 			return result;
 		}
