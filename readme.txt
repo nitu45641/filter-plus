@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.39
+Stable tag: 1.1.40
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -204,6 +204,17 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 
 == Changelog ==
 
+= 1.1.40 (November 4, 2026) =
+* New: Brand Filter for WooCommerce products with Checkbox, Radio and Image (logo) templates (Pro). Works with WooCommerce Brands, Perfect Brands for WooCommerce and YITH WooCommerce Brands.
+* New: Brand Filter options in the shortcode generator, Elementor, Gutenberg and Bricks widgets. New shortcode attributes `show_brands`, `brand_template`, `brand_label`, `brands`, `brand_orderby`, `hide_empty_brand` and `brand_count`.
+* New: Brand Filter can be reordered with the other filter sections (`filter_order` key `brand`).
+* New: "Filter Order" drag and drop section in the Elementor WooCommerce and WordPress filter widgets (Pro).
+* New: Builder notice when the brand section is hidden because no brands (or no visible products) are found.
+* Fix: Show/hide options (Show Brands, Show Tags, Stock, On Sale, etc.) now open correctly when editing a saved filter set.
+* Fix: Loading spinner on Save / Update Filter Set now stays inside the button; a failed save no longer leaves it spinning.
+* Fix: "Hide Empty Brands" also hides brands whose products are all hidden from the catalog.
+* Tweak: All Elementor widget Style sections are Pro, with an upgrade notice like the other Pro controls.
+
 = 1.1.39 (November 3, 2026) =
 * New: Live preview of the filter sidebar on the Filter Sets page, rendered with the real front-end templates.
 * New: Filter settings grouped into collapsible sections (General Settings, Search, Category, Color, Size, Tag, Attribute, Price Range, Review, Stock, On Sale, Author, Custom Field).
@@ -274,6 +285,9 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 [See the full changelog](https://plugins.trac.wordpress.org/browser/filter-plus/trunk/changelog.txt)
 
 == Upgrade Notice ==
+
+= 1.1.40 =
+New Brand Filter (Checkbox, Radio, Image) for shortcode, Elementor, Gutenberg and Bricks, Elementor filter order, and fixes for editing saved filter sets. Recommended update.
 
 = 1.1.39 =
 Live filter preview, collapsible filter settings, a Show Search option and a fix for the price range min/max inputs. Recommended update.
