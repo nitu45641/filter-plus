@@ -223,7 +223,7 @@ registerBlockType('filter-plus/woo-filter', {
         },
         masonry_style: {
             type: 'boolean',
-            default: true
+            default: false
         },
         apply_button_mode: {
             type: 'boolean',

@@ -225,7 +225,7 @@ function product_filter_block() {
                 ),
                 'masonry_style' => array(
                     'type' => 'boolean',
-                    'default' => true
+                    'default' => false
                 ),
                 'apply_button_mode' => array(
                     'type' => 'boolean',
