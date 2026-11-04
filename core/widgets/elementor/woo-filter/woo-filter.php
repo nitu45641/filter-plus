@@ -724,11 +724,21 @@ class Woo_Filter extends Widget_Base {
 		$this->start_controls_section(
 			'readmore_btn_style',
 			array(
-				'label' => esc_html__( 'Button Style', 'filter-plus' ),
+				'label' => esc_html__( 'Button Style', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'food_cat_style' => 'style-4' ),
 			)
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'readmore_btn_style_locked',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => esc_html__( 'Button Style controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 		$this->add_control(
 			'btn_color',
 			array(
@@ -818,6 +828,7 @@ class Woo_Filter extends Widget_Base {
 				),
 			)
 		);
+		}
 		$this->end_controls_section();
 
 		// Left Side (Filter) Style
@@ -1797,14 +1808,24 @@ class Woo_Filter extends Widget_Base {
 		$this->end_controls_section();
 		}
 
-		// Pagination styling is available in Free and Pro so it remains visible in the editor.
+		// Pagination styling (Pro).
 		$this->start_controls_section(
 			'pagination_style_section',
 			array(
-				'label' => esc_html__( 'Pagination Style', 'filter-plus' ),
+				'label' => esc_html__( 'Pagination Style', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'pagination_style_section_locked',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => esc_html__( 'Pagination Style controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 		$this->add_control(
 			'pagination_style_heading',
 			array( 'label' => esc_html__( 'Pagination', 'filter-plus' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before', 'classes' => 'filterplus-style-group-heading' )
@@ -1848,16 +1869,27 @@ class Woo_Filter extends Widget_Base {
 			'pagination_active_background_color',
 			array( 'label' => esc_html__( 'Active Background Color', 'filter-plus' ), 'type' => Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .pagination li.active' => 'background-color: {{VALUE}} !important;' ) )
 		);
+		}
 		$this->end_controls_section();
 
 		// Advance Style (bottom of Style tab)
 		$this->start_controls_section(
 			'advance_style',
 			array(
-				'label' => esc_html__( 'Advance Style', 'filter-plus' ),
+				'label' => esc_html__( 'Advance Style', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			)
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'advance_style_locked',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => esc_html__( 'Advance Style controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 		$this->add_control(
 			'box_bg_color',
 			array(
@@ -1905,7 +1937,7 @@ class Woo_Filter extends Widget_Base {
 				),
 			)
 		);
-
+		}
 		$this->end_controls_section();
 	}
 

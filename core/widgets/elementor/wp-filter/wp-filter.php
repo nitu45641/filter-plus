@@ -407,11 +407,21 @@ class Wp_Filter extends Widget_Base {
 		$this->start_controls_section(
 			'readmore_btn_style',
 			[
-				'label' => esc_html__('Button Style', 'filter-plus'),
+				'label' => esc_html__('Button Style', 'filter-plus') . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => ['food_cat_style' => 'style-4']
 			]
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'readmore_btn_style_locked',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => esc_html__( 'Button Style controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 		$this->add_control(
 			'btn_color',
 			[
@@ -502,15 +512,26 @@ class Wp_Filter extends Widget_Base {
 				],
 			]
 		);
+		}
 		$this->end_controls_section();
 
 		$this->start_controls_section(
 			'thumbnail_style',
 			[
-				'label' => esc_html__('Thumbnail Style', 'filter-plus'),
+				'label' => esc_html__('Thumbnail Style', 'filter-plus') . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'thumbnail_style_locked',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => esc_html__( 'Thumbnail Style controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 
 		$this->add_responsive_control(
 			'img_width',
@@ -552,16 +573,26 @@ class Wp_Filter extends Widget_Base {
 				],
 			]
 		);
-
+		}
 		$this->end_controls_section();
 
 		$this->start_controls_section(
 			'advance_style',
 			[
-				'label' => esc_html__('Advance Style', 'filter-plus'),
+				'label' => esc_html__('Advance Style', 'filter-plus') . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'advance_style_locked',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => esc_html__( 'Advance Style controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 
 		$this->add_control(
 			'box_bg_color',
@@ -610,17 +641,27 @@ class Wp_Filter extends Widget_Base {
 				],
 			]
 		);
-
+		}
 		$this->end_controls_section();
 
 		// Left Side (Filter) Style
 		$this->start_controls_section(
 			'filter_left_style',
 			[
-				'label' => esc_html__('Filter Style (Left Side)', 'filter-plus'),
+				'label' => esc_html__('Filter Style (Left Side)', 'filter-plus') . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'filter_left_style_locked',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => esc_html__( 'Filter Style (Left Side) controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 		$this->add_control(
 			'filter_left_color',
 			[
@@ -669,16 +710,27 @@ class Wp_Filter extends Widget_Base {
 				],
 			]
 		);
+		}
 		$this->end_controls_section();
 
 		// Right Side (Result) Style
 		$this->start_controls_section(
 			'filter_right_style',
 			[
-				'label' => esc_html__('Filter Result Style (Right Side)', 'filter-plus'),
+				'label' => esc_html__('Filter Result Style (Right Side)', 'filter-plus') . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
+		if ( ! class_exists( 'FilterPlusPro' ) ) {
+			$this->add_control(
+				'filter_right_style_locked',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => esc_html__( 'Filter Result Style (Right Side) controls are a Pro feature.', 'filter-plus' ) . ' <a href="https://wpbens.com/plugins/filter-plus/" target="_blank" rel="noopener">' . esc_html__( 'Upgrade to Pro', 'filter-plus' ) . '</a>',
+					'content_classes' => 'filterplus-pro-lock-notice',
+				)
+			);
+		} else {
 		$this->add_control(
 			'filter_right_color',
 			[
@@ -727,6 +779,7 @@ class Wp_Filter extends Widget_Base {
 				],
 			]
 		);
+		}
 		$this->end_controls_section();
 	}
 
