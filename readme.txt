@@ -1,7 +1,7 @@
-=== Filter Plus – WordPress & WooCommerce AJAX Filter Plugin ===
+=== Filter Plus – WooCommerce Product Filter & AJAX Post Filter ===
 Contributors: markutos987
 Donate link: https://wpbens.com/plugins/filter-plus/
-Tags: product filter, woocommerce product filter, ajax product filter, ajax filter, filter
+Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
 Stable tag: 1.1.39
@@ -13,74 +13,96 @@ AJAX WooCommerce product filter and WordPress post filter. Shoppers filter by pr
 
 == Description ==
 
-**Help shoppers find the right product in a few clicks.** [Filter Plus](https://wpbens.com/plugins/filter-plus/) adds a fast AJAX filter to your WooCommerce store. Visitors narrow products by price, rating, category, attribute, color, size, tag and stock status. Results update instantly, with no page reload.
+**Help shoppers find the right product in a few clicks.** [Filter Plus](https://wpbens.com/plugins/filter-plus/) adds a fast AJAX filter to your WooCommerce store. Visitors narrow products by price, rating, category, tag, attribute, color, size and stock status, and the results update instantly with no page reload.
 
-Filter Plus also filters regular WordPress content. Use it on blogs, news sites, directories and custom post types to filter by category, tag, author, date and custom fields.
-
-Set it up in about five minutes with a shortcode, an Elementor widget, a Gutenberg block or a Bricks Builder element. No code required.
+Filter Plus also filters regular WordPress content, so one plugin covers your shop and your blog. Add a filter with a shortcode, an Elementor widget or a Gutenberg block. It works with your existing theme and products, so there is no need to rebuild your site.
 
 👉 [Live demo](https://product.wpbens.com/filter-plus/) · [Documentation](https://wpbens.com/docs/filter-plus/) · [Support](https://wpbens.com/support/) · [Filter Plus Pro](https://wpbens.com/plugins/filter-plus/)
 
 https://www.youtube.com/watch?v=MkbFDvwuG08
 
+= Core features at a glance =
+
+* **WooCommerce product filter** – price, rating, category, tag, attribute, color, size, on sale and stock status
+* **WordPress post filter** – filter blog posts by category, tag and author
+* **AJAX filtering** – results update in place, with no page reload
+* **Combine filters** – price AND category AND in stock, applied in one request
+* **Every control type** – checkboxes, radio buttons, dropdowns, color swatches and price range sliders
+* **Two filtering modes** – instant (auto-submit) or select several filters, then click Apply
+* **Active filter tags** – shoppers see what is applied and remove any filter with one click
+* **Sorting and keyword search** – sort by popularity, price, rating or newest, and search within the filtered results
+* **Place it anywhere** – shortcode, Elementor widget or Gutenberg block
+* **Mobile friendly** – responsive filter panel and product grid
+* **Developer friendly** – theme template overrides and filter hooks
+
+= Why add filters to your store? =
+
+Shoppers who cannot narrow a long product list quickly tend to leave. A filter panel lets them jump straight to the size, color and price they want. That means fewer dead-end category pages, more time on site and an easier path to checkout. Filter Plus gives you that panel in a few minutes, without code.
+
+= WooCommerce product filter (free) =
+
+* **Filter by price range** – drag the slider or type a minimum and maximum. Works with variable products and sale prices.
+* **Filter by rating** – show only 4-star or 5-star products, using native WooCommerce review data.
+* **Filter by category and tag** – including sub-categories, with product counts and an option to hide empty categories.
+* **Filter by attribute** – color, size, material, fit or any WooCommerce attribute, with color and size swatches.
+* **Filter by stock and sale status** – in stock, backorder, out of stock, on sale or regular price.
+* **Reset button** – clear every filter in one click.
+* **Product grid options** – grid, list or masonry layout, columns, items per page, numbered pagination or load more, and a left or right filter bar.
+* **AJAX add to cart** – with custom Add to Cart button text.
+* **Lightweight images** – product thumbnails use the `woocommerce_thumbnail` size, so filtered grids stay fast.
+* **WPML and RTL ready.**
+
+= WordPress post filter (free) =
+
+* Filter **blog posts** by category, tag and author.
+* Combine several filters in one AJAX request.
+* Grid layout with pagination or load more.
+* Add it with the **Wp Filter** shortcode, Elementor widget or Gutenberg block.
+
 = How Filter Plus works =
 
-Filter Plus renders a complete **filter + results layout**: the filter panel on one side and a matching product (or post) grid on the other. You place this layout anywhere you like, such as your shop page, a landing page or a category page, using the shortcode, widget or block.
+Filter Plus shows a complete **filter + results layout**: the filter panel on one side and a matching product (or post) grid on the other. You place this layout on any page you like, such as your shop page, a landing page or a category page.
 
-* The filter controls and the results grid always work together, so filtering is fast and consistent across themes.
-* Choose the grid style, columns, items per page, pagination or load more, and which product details to show.
-* Filter Plus Pro can also replace the default WooCommerce shop, category and tag archives with the Filter Plus layout automatically.
-
-= Why store owners choose Filter Plus =
-
-* **Faster product discovery.** Shoppers who can filter find products sooner and bounce less.
-* **No page reloads.** AJAX filtering keeps visitors on the page while results update.
-* **Works with your builder.** Native Elementor widget, Gutenberg block, Bricks Builder element and shortcode.
-* **One plugin, two jobs.** Filter WooCommerce products and WordPress posts with the same tool.
-* **Lightweight output.** Product images use the `woocommerce_thumbnail` size, so filtered grids stay quick on PageSpeed.
-* **Active development.** Regular releases and a responsive support team.
-
-= WooCommerce product filter features (free) =
-
-* **AJAX filtering** – results update instantly without a page reload
-* **Price range filter** – minimum and maximum price slider
-* **Rating filter** – show products above a chosen star rating
-* **Category filter** – categories and sub-categories, with product counts and an option to hide empty categories
-* **Attribute filter** – size, color, material or any WooCommerce attribute
-* **Color and size swatches** – visual selectors for apparel and accessories
-* **Tag filter** – filter by WooCommerce product tags
-* **Stock status filter** – in stock, out of stock or on sale
-* **Reset button and apply-button mode** – instant filtering or filter on click
-* **Filter bar position** – filter panel on the left or right
-* **Grid, list and masonry layouts** – with numbered pagination or load more
-* **AJAX add to cart** – with custom Add to Cart button text
-* **SEO-friendly filter URLs** – every filter state has its own shareable URL
-* **Theme template overrides** – copy templates to your theme under `filter-plus/templates/`
-* **WPML and RTL ready**
-
-= WordPress post filter features (free) =
-
-* Filter **blog posts, pages and custom post types**
-* Filter by **category, tag, author and date**
-* Filter by **custom fields and post meta**, including multiple custom fields
-* Grid layouts with pagination and load more
-* Shortcode, Elementor widget, Gutenberg block and Bricks Builder support
+* The filter controls and the results grid are built to work together, so filtering looks and behaves the same across themes.
+* You choose the grid style, columns, items per page and which product details to show.
+* With Filter Plus Pro, the layout can also replace the default WooCommerce shop, category and tag pages automatically.
 
 = Filter Plus Pro =
 
-[Filter Plus Pro](https://wpbens.com/plugins/filter-plus/) adds tools for larger stores:
+[Filter Plus Pro](https://wpbens.com/plugins/filter-plus/) unlocks everything in the free version, plus:
+
+**More content to filter**
+
+* **Custom post type filter** – filter portfolios, events, listings, properties or any registered post type
+* **Custom field filter** – filter by ACF, Meta Box or any post meta, plus authors, dates and custom taxonomies
+* **Multiple custom fields** – combine several fields in one filter widget
+* **WooCommerce admin order filter** – filter orders by product, status, date and customer, to spot best sellers and track fulfillment
+
+**Store-wide layouts**
 
 * **Shop archive replacement** – show the Filter Plus layout on the WooCommerce shop, category and tag pages automatically
 * **Category layout navigation** – clicking a category opens its category page with the same filter template
-* **Premium filter templates** – extra styled layouts for products and posts
-* **Image size control** – pick any thumbnail size or set a custom width and height
-* **Admin order filter** – filter WooCommerce orders by product and status to spot best sellers and track fulfillment
-* **Extended custom post type filtering** – advanced meta and taxonomy queries
-* **SEO module** – submit crawlable filter URLs to search engines
+* **More pre-built templates** – ready-made product and post filter designs, including horizontal, sidebar and floating layouts. Pick one and go live without designing from scratch.
+* **6 category filter templates** – show categories as a list, checkboxes, dropdown, radio buttons, images or text links
+* **Style customization** – match your brand with full control over colors, typography, borders, spacing and padding for the filter panel, plus separate styling for product titles, prices, ratings and cart buttons
+* **Drag and drop filter order** – reorder filter sections and the front-end sidebar follows the same order
+* **Image size control** – choose any thumbnail size or set a custom width and height
 
-= Works with =
+**SEO and builders**
 
-WooCommerce · Elementor · Gutenberg (block editor) · Bricks Builder · WPML · [Discountify](https://wordpress.org/plugins/discountify/)
+* **SEO-friendly filter URLs** – clean, indexable URLs such as `/color-blue/brand-acer/` that Google can crawl and GA4 can report on
+* **Bricks Builder and Oxygen Builder** support
+* **Priority support** and all upcoming Pro features
+
+= Compatible with =
+
+* **WooCommerce** and WordPress posts
+* **Page builders:** Elementor, Gutenberg (block editor), Bricks Builder (Pro), Oxygen Builder (Pro)
+* **Custom fields:** Advanced Custom Fields (ACF) and Meta Box (Pro)
+* **Multilingual:** WPML, plus full RTL support
+* **Caching:** WP Rocket, LiteSpeed Cache and WP Super Cache
+* **Themes:** Astra, Storefront, Flatsome, Divi, OceanWP and most WooCommerce themes
+* **WPBens plugins:** [Discountify](https://wordpress.org/plugins/discountify/) discount prices show correctly in filtered results
 
 = More plugins from WPBens =
 
@@ -88,7 +110,7 @@ WooCommerce · Elementor · Gutenberg (block editor) · Bricks Builder · WPML �
 * [MemberHub](https://wordpress.org/plugins/memberhub/) – memberships and content restriction
 * [Quicker](https://wordpress.org/plugins/quicker/) – quick buy and checkout optimization for WooCommerce
 * [Bens Email Marketing & Automation](https://wordpress.org/plugins/bens-email-marketing-automation/) – newsletters, automation and CRM
-* [MenuBook](https://wpbens.com/plugins/menubook/) – restaurant reservations and set menu management
+* [MenuBook](https://wpbens.com/plugins/menubook/) – restaurant set menus and table reservations for WordPress
 
 == Installation ==
 
@@ -106,10 +128,9 @@ WooCommerce · Elementor · Gutenberg (block editor) · Bricks Builder · WPML �
    * **Shortcode:** paste `[filterplus]` into any page.
    * **Elementor:** drag the **Woo Filter** widget onto the page.
    * **Gutenberg:** add the **Woo Filter** block.
-   * **Bricks Builder:** add the Filter Plus element.
 4. Publish the page and test the filters on the front end.
 
-For a blog or custom post type filter, use the **Wp Filter** widget or block instead.
+For a blog post filter, use the **Wp Filter** widget or block instead.
 
 = Manual installation =
 
@@ -123,89 +144,97 @@ Need help? Read the [setup guide](https://wpbens.com/docs/filter-plus/) or [cont
 
 = What is Filter Plus? =
 
-Filter Plus is a WooCommerce product filter and WordPress post filter plugin. It adds AJAX filtering by price, rating, category, attribute, color, size, tag and stock status to your store. It also filters blog posts and custom post types by category, tag, author, date and custom fields.
+Filter Plus is a WooCommerce product filter and WordPress post filter plugin. It adds AJAX filtering by price, rating, category, tag, attribute, color, size and stock status to your store, and filters blog posts by category, tag and author. Filter Plus Pro adds custom post types, custom fields, SEO URLs and the admin order filter.
 
 = Is Filter Plus free? =
 
-Yes. The WooCommerce product filter and the WordPress post filter are free, including AJAX filtering, the Elementor widget, the Gutenberg block, the shortcode, WPML and RTL support. Filter Plus Pro adds shop archive replacement, premium templates, the admin order filter and the SEO module.
+Yes. The free version has no time limit and includes the WooCommerce product filter, the blog post filter, AJAX filtering, the Elementor widget, the Gutenberg block and the shortcode. Filter Plus Pro, from $29 per year, adds custom post type and custom field filters, more pre-built templates, style customization, SEO-friendly filter URLs, Bricks and Oxygen support and the admin order filter.
+
+= What is the difference between Filter Plus Free and Pro? =
+
+The free version filters WooCommerce products and blog posts. Pro filters any custom post type and custom field (ACF, Meta Box), replaces your shop and category pages with the Filter Plus layout, adds more pre-built templates and full style customization, creates indexable SEO filter URLs, supports Bricks and Oxygen, and adds a WooCommerce admin order filter.
 
 = Where are the filtered results displayed? =
 
-Filter Plus shows results in its own product or post grid, placed next to the filter panel wherever you add the shortcode, widget or block. This keeps filtering fast and consistent across themes. To use the Filter Plus layout on the default WooCommerce shop and category pages automatically, enable the archive layout option in Filter Plus Pro.
+Filter Plus shows results in its own product or post grid, next to the filter panel, wherever you add the shortcode, widget or block. This keeps filtering fast and consistent across themes. To use the layout on the default WooCommerce shop and category pages automatically, enable the archive layout option in Filter Plus Pro.
 
 = How do I add a product filter to my WooCommerce shop page? =
 
 Create a filter set under Filter Plus in your admin sidebar. Then edit your shop page and add the `[filterplus]` shortcode, the Elementor Woo Filter widget or the Gutenberg Woo Filter block. Publish the page and your shoppers can filter products instantly.
 
-= Does Filter Plus work with Elementor? =
+= Does Filter Plus work with Elementor and Gutenberg? =
 
-Yes. After activation, the Woo Filter and Wp Filter widgets appear in the Elementor panel. Drag one onto any page, configure filters, layout and styling in the widget settings, and publish. AJAX filtering, pagination and load more all work inside Elementor.
+Yes. After activation, the Woo Filter and Wp Filter widgets appear in the Elementor panel, and the Woo Filter and Wp Filter blocks appear in the block inserter. Configure filters, layout and styling in the widget or block settings, then publish.
 
-= Does Filter Plus work with Gutenberg and Bricks Builder? =
+= Does Filter Plus work with Bricks Builder or Oxygen? =
 
-Yes. Search for "Woo Filter" or "Wp Filter" in the block inserter to add a filter in the block editor. Bricks Builder users can add the Filter Plus element or the shortcode to any Bricks layout.
+Yes, with Filter Plus Pro. Pro adds Bricks Builder and Oxygen Builder support so you can place the filter inside those layouts.
 
-= Can I filter blog posts and custom post types? =
+= Can I filter custom post types or ACF fields? =
 
-Yes. The free WordPress post filter works with posts, pages and any registered custom post type. Visitors can filter by category, tag, author, date and custom field values. Add it with the Wp Filter widget, block or shortcode.
+Yes, with Filter Plus Pro. Pro filters any registered custom post type, such as portfolios, events or property listings, by custom fields from ACF, Meta Box or post meta, as well as authors, dates and custom taxonomies. The free version filters regular blog posts by category, tag and author.
+
+= Does Filter Plus work without WooCommerce? =
+
+Yes. The blog post filter works on any WordPress site, with or without WooCommerce.
 
 = Will Filter Plus slow down my site? =
 
-Filter Plus loads results with AJAX instead of reloading the page, and product images use the standard WooCommerce thumbnail size. As with any plugin, test your own pages with PageSpeed Insights after setup.
+Filter Plus loads results with AJAX instead of reloading the page, and product images use the standard WooCommerce thumbnail size. It is tested with WP Rocket, LiteSpeed Cache and WP Super Cache. As with any plugin, check your own pages with PageSpeed Insights after setup.
 
 = Does Filter Plus work with my theme? =
 
-Filter Plus works with most WordPress and WooCommerce themes because it renders its own filter and results layout. You can also override any template from your child theme. If something looks wrong with your theme, open a support request and we will help.
+Filter Plus works with most WooCommerce themes, including Astra, Storefront, Flatsome, Divi and OceanWP, because it renders its own filter and results layout. You can also override any template from your child theme. If something looks wrong with your theme, open a support request and we will help.
 
 = Can I customize the filter design? =
 
-Yes. You can set colors, typography, borders, spacing, grid columns, layout style and which product details appear. Developers can copy templates into `your-theme/filter-plus/templates/` and use the `filterplus_product_thumbnail_size` hook.
+Yes. The free version lets you choose the layout, grid columns and which product details appear. Filter Plus Pro adds more pre-built templates and full style customization: colors, typography, borders, spacing and per-element styling for titles, prices, ratings and cart buttons. Developers can also copy templates into `your-theme/filter-plus/templates/` and use the `filterplus_product_thumbnail_size` hook.
 
 = Where can I get support? =
 
-Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/filter-plus/) or contact us through [wpbens.com/support](https://wpbens.com/support/). We usually reply within one business day.
+Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/filter-plus/) or contact us through [wpbens.com/support](https://wpbens.com/support/). Pro customers get priority support.
 
 == Screenshots ==
 
 1. WooCommerce product filter on the front end with price, category, rating and attribute filters.
 2. Filter panel with color and size swatches and instant AJAX results.
-3. WordPress post filter for blog posts and custom post types.
+3. WordPress post filter for blog posts.
 4. Filter set settings in the WordPress admin.
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
 
-= 1.1.39 (November 03, 2026) =
+= 1.1.39 (November 3, 2026) =
 * New: Live preview of the filter sidebar on the Filter Sets page, rendered with the real front-end templates.
 * New: Filter settings grouped into collapsible sections (General Settings, Search, Category, Color, Size, Tag, Attribute, Price Range, Review, Stock, On Sale, Author, Custom Field).
-* New: Drag and drop to reorder filter sections; the front-end sidebar follows the same order (requires Filter Plus Pro). New `filter_order` shortcode attribute.
+* New: Drag and drop to reorder filter sections; the front-end sidebar follows the same order (Pro). New `filter_order` shortcode attribute.
 * New: "Show Search" option to show or hide the search box (`show_search` shortcode attribute).
 * New: Title field defaults to "Filters"; leaving it empty removes the sidebar title.
 * Fix: Price range min/max inputs now filter products.
 * Fix: Saved filter set shortcodes now include the section order.
-* Fix: Filter Sets preview/shortcode no longer breaks when a Pro-only template is selected without Pro.
+* Fix: Filter Sets preview and shortcode no longer break when a Pro-only template is selected without Pro.
 * Tweak: Asset versions use file modification time for cache busting.
-* Tweak: Improved Filter Sets form header, buttons, selected tag chips, "Upgrade to Pro" badge and grid column inputs (one row).
+* Tweak: Improved the Filter Sets form header, buttons, selected tag chips, "Upgrade to Pro" badge and grid column inputs (one row).
 * Tweak: "WooCommerce Filter" tab renamed to "WooCommerce Product Filter"; "Select Type" moved before Category Filter in the WordPress filter.
 
-= 1.1.38 (November 03, 2026) =
-* Tweak: Improve Style 1 page title design.
-* Tweak: Improve responsive layout.
+= 1.1.38 (November 3, 2026) =
+* Tweak: Improved the Style 1 page title design.
+* Tweak: Improved the responsive layout.
 
-= 1.1.37 (November 02, 2026) =
-* New: Elementor widget style controls for add-to-cart button text color and typography.
+= 1.1.37 (November 2, 2026) =
+* New: Elementor widget style controls for Add to Cart button text color and typography.
 
-= 1.1.36 (November 02, 2026) =
-* Tweak: Improve dashboard overview 
-* Tweak: Improve responsive view of filter layout
+= 1.1.36 (November 2, 2026) =
+* Tweak: Improved the dashboard overview.
+* Tweak: Improved the responsive view of the filter layout.
 
-= 1.1.34 (September 01, 2026) =
+= 1.1.34 (September 1, 2026) =
 * Fix: AJAX re-filtering, product thumbnail size and the pagination result count now recognize Template 8 instead of falling back to Template 1 (Template 8 ships in Filter Plus Pro 1.0.66+).
 
-= 1.1.33 (September 01, 2026) =
+= 1.1.33 (September 1, 2026) =
 * Tweak: Attribute filter label falls back to the attribute name when no custom label is set.
 
-= 1.1.32 (September 01, 2026) =
+= 1.1.32 (September 1, 2026) =
 * New: Template 8 (Pro) option in the shortcode, Elementor, Bricks and Gutenberg template selectors.
 
 = 1.1.31 (August 30, 2026) =
@@ -246,5 +275,5 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 
 == Upgrade Notice ==
 
-= 1.1.29 =
-Product images now use the WooCommerce thumbnail size for faster pages, and you can customize the Add to Cart button text.
+= 1.1.39 =
+Live filter preview, collapsible filter settings, a Show Search option and a fix for the price range min/max inputs. Recommended update.

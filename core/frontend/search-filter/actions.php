@@ -44,6 +44,7 @@ class Actions {
 		$order_by     = ! empty( $post_arr['order_by'] ) ? $post_arr['order_by'] : '';
 		$cat_id       = ! empty( $post_arr['cat_id'] ) ? $post_arr['cat_id'] : '';
 		$taxonomies   = ! empty( $post_arr['taxonomies'] ) ? $post_arr['taxonomies'] : [];
+		$brand_id     = ! empty( $post_arr['brand_id'] ) ? array_filter( array_map( 'absint', (array) $post_arr['brand_id'] ) ) : [];
 		$rating       = ! empty( $post_arr['rating'] ) ? $post_arr['rating'] : '';
 		$pagination_style  = ! empty( $post_data['pagination_style'] ) ? $post_data['pagination_style'] : 'numbers';
 		$max          = ! empty( $post_arr['max'] ) ? $post_arr['max'] : '';
@@ -85,6 +86,7 @@ class Actions {
 			'filter_param'  => $filter_param,
 			'cat_id'        => $cat_id,
 			'taxonomies'    => $taxonomies,
+			'brand_id'      => $brand_id,
 			'search_value'  => $search_value,
 			'min'           => $min,
 			'max'           => $max,
@@ -511,7 +513,10 @@ class Actions {
 			}
 		}
 
-		$size  		= $param['masonry_style'] !== "yes" ? self::product_size( $param['filter_type'] , $param['template'] , $resolved_image_size ) : '';
+		// Masonry controls card positioning, not image generation. Always request
+		// the configured product thumbnail size; an empty size can produce image
+		// markup without a usable source on the live AJAX results.
+		$size  		= self::product_size( $param['filter_type'] , $param['template'] , $resolved_image_size );
 		$cats  		= $param['filter_type'] == "product" ? 'product_cat' : 'category';
 		$tags 		= $param['filter_type'] == "product" ? 'product_tag' : 'post_tag';
 		if ( !empty($posts) ) {

@@ -40,6 +40,20 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			));
 		}
 
+		// brand filter
+		\FilterPlus\Base\SidebarSections::start( 'brand' );
+		DataFactory::brand_template_url( array(
+			'template'         => $template,
+			'show_brands'      => isset( $show_brands ) ? $show_brands : '',
+			'brand_label'      => isset( $brand_label ) ? $brand_label : '',
+			'brands'           => isset( $brands ) ? $brands : '',
+			'brand_template'   => isset( $brand_template ) ? $brand_template : '1',
+			'brand_orderby'    => isset( $brand_orderby ) ? $brand_orderby : '',
+			'hide_empty_brand' => isset( $hide_empty_brand ) ? $hide_empty_brand : 'yes',
+			'brand_count'      => isset( $brand_count ) ? $brand_count : 'yes',
+		) );
+		\FilterPlus\Base\SidebarSections::end();
+
 		// reviews
 		\FilterPlus\Base\SidebarSections::start( 'reviews' );
 		if ( 'yes'== $show_reviews ) {

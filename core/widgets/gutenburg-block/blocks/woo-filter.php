@@ -95,6 +95,34 @@ function product_filter_block() {
                     'type' => 'array',
                     'default' => array()
                 ),
+                'show_brands' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'brand_template' => array(
+                    'type' => 'string',
+                    'default' => '1'
+                ),
+                'brand_label' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'brands' => array(
+                    'type' => 'array',
+                    'default' => array()
+                ),
+                'brand_orderby' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'hide_empty_brand' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'brand_count' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
                 'show_attributes' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -236,7 +264,7 @@ add_action( 'init', 'product_filter_block' );
 
 function product_filter_callback( $settings ) {
     // Convert arrays to comma-separated strings (use is_array only — !empty([]) is false for empty arrays)
-    foreach ( ['categories', 'exclude_categories', 'tags', 'attributes'] as $field ) {
+    foreach ( ['categories', 'exclude_categories', 'tags', 'attributes', 'brands'] as $field ) {
         if ( isset( $settings[$field] ) && is_array( $settings[$field] ) ) {
             $settings[$field] = implode( ',', $settings[$field] );
         }
@@ -248,7 +276,8 @@ function product_filter_callback( $settings ) {
         'colors', 'size', 'show_tags', 'show_attributes', 'show_price_range',
         'show_reviews', 'stock', 'on_sale', 'hide_prod_title', 'hide_prod_desc',
         'hide_prod_price', 'hide_prod_add_cart', 'hide_prod_rating', 'sorting',
-        'product_categories', 'show_sale_badge', 'product_tags', 'apply_button_mode'
+        'product_categories', 'show_sale_badge', 'product_tags', 'apply_button_mode',
+        'show_brands', 'hide_empty_brand', 'brand_count'
     ];
 
     foreach ($boolean_fields as $field) {
@@ -257,7 +286,15 @@ function product_filter_callback( $settings ) {
         }
     }
 
-    $html = \FilterPlus\Core\Frontend\Shortcodes::instance()->filter_plus( $settings );
+    // Masonry is initialized by search-filter.js, which does not run inside the
+    // server-rendered block preview. Render that preview as a regular grid so
+    // every product template keeps its full column width in Gutenberg.
+    $render_settings = $settings;
+    if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+        $render_settings['masonry_style'] = 'no';
+    }
+
+    $html = \FilterPlus\Core\Frontend\Shortcodes::instance()->filter_plus( $render_settings );
 
     // In the block editor (REST preview), search-filter.js is not loaded.
     // Pre-render products into the grid/list divs so they show immediately.
@@ -273,7 +310,7 @@ function product_filter_callback( $settings ) {
                 'limit'              => 6,
                 'offset'             => 1,
                 'template'           => $template,
-                'masonry_style'      => isset( $settings['masonry_style'] ) ? $settings['masonry_style'] : 'no',
+                'masonry_style'      => 'no',
                 'product_categories' => 'yes',
                 'product_tags'       => 'yes',
                 'show_sale_badge'    => 'yes',
@@ -309,7 +346,8 @@ function product_filter_callback( $settings ) {
         ob_end_clean(); // discard any PHP warnings / notices
 
         if ( ! empty( $rendered['grid'] ) ) {
-            $grid_style = ' style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;"';
+            $columns = ! empty( $settings['grid_columns_desktop'] ) ? max( 1, absint( $settings['grid_columns_desktop'] ) ) : 3;
+            $grid_style = ' style="display:grid;grid-template-columns:repeat(' . $columns . ',minmax(0,1fr));gap:16px;"';
             $html = preg_replace(
                 '/(<div[^>]*class="prods-grid-view[^"]*")([^>]*>)/',
                 '$1 data-editor-products="1"' . $grid_style . '$2' . $rendered['grid'],

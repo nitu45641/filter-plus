@@ -344,6 +344,100 @@ class Woo_Filter extends \Bricks\Element {
 			'required' => array( 'show_tags', '=', true ),
 		);
 
+		if ( \FilterPlus\Utils\Helper::is_brand_filter_available() ) {
+			// Brands
+			$this->controls['show_brands'] = array(
+				'tab'         => 'content',
+				'group'       => 'filter_options',
+				'label'       => esc_html__( 'Show Brands', 'filter-plus' ),
+				'type'        => 'checkbox',
+				'inline'      => true,
+				'small'       => true,
+				'default'     => false,
+				'description' => '' === \FilterPlus\Utils\Helper::brand_taxonomy() ? esc_html__( 'No brand taxonomy found. Enable WooCommerce Brands or a brand plugin.', 'filter-plus' ) : '',
+			);
+
+			$this->controls['brand_template'] = array(
+				'tab'      => 'content',
+				'group'    => 'filter_options',
+				'label'    => esc_html__( 'Brand Filter Template', 'filter-plus' ),
+				'type'     => 'select',
+				'options'  => \FilterPlus\Base\DataFactory::brand_template()['template'],
+				'inline'   => true,
+				'default'  => '1',
+				'required' => array( 'show_brands', '=', true ),
+			);
+
+			$this->controls['brand_label'] = array(
+				'tab'         => 'content',
+				'group'       => 'filter_options',
+				'label'       => esc_html__( 'Brand Label', 'filter-plus' ),
+				'type'        => 'text',
+				'placeholder' => esc_html__( 'Brands', 'filter-plus' ),
+				'required'    => array( 'show_brands', '=', true ),
+			);
+
+			$this->controls['brands'] = array(
+				'tab'         => 'content',
+				'group'       => 'filter_options',
+				'label'       => esc_html__( 'Include Brands', 'filter-plus' ),
+				'type'        => 'select',
+				'options'     => \FilterPlus\Utils\Helper::get_brands( 'assoc', array( 'hide_empty' => 'no' ) ),
+				'inline'      => true,
+				'placeholder' => empty( \FilterPlus\Utils\Helper::get_brands( 'assoc', array( 'hide_empty' => 'no' ) ) ) ? esc_html__( 'No brands found - add under Products > Brands', 'filter-plus' ) : esc_html__( 'All brands', 'filter-plus' ),
+				'multiple'    => true,
+				'searchable'  => true,
+				'clearable'   => true,
+				'default'     => '',
+				'required'    => array( 'show_brands', '=', true ),
+			);
+
+			$this->controls['brand_orderby'] = array(
+				'tab'      => 'content',
+				'group'    => 'filter_options',
+				'label'    => esc_html__( 'Brand Sort By', 'filter-plus' ),
+				'type'     => 'select',
+				'options'  => array(
+					'name'      => esc_html__( 'A-Z (Name)', 'filter-plus' ),
+					'name-desc' => esc_html__( 'Z-A (Name)', 'filter-plus' ),
+					'count'     => esc_html__( 'Product Count', 'filter-plus' ),
+				),
+				'inline'   => true,
+				'default'  => 'name',
+				'required' => array( 'show_brands', '=', true ),
+			);
+
+			$this->controls['hide_empty_brand'] = array(
+				'tab'      => 'content',
+				'group'    => 'filter_options',
+				'label'    => esc_html__( 'Hide Empty Brands', 'filter-plus' ),
+				'type'     => 'checkbox',
+				'inline'   => true,
+				'small'    => true,
+				'default'  => true,
+				'required' => array( 'show_brands', '=', true ),
+			);
+
+			$this->controls['brand_count'] = array(
+				'tab'      => 'content',
+				'group'    => 'filter_options',
+				'label'    => esc_html__( 'Show Brand Product Count', 'filter-plus' ),
+				'type'     => 'checkbox',
+				'inline'   => true,
+				'small'    => true,
+				'default'  => true,
+				'required' => array( 'show_brands', '=', true ),
+			);
+		} else {
+			$this->controls['brand_pro_notice'] = array(
+				'tab'     => 'content',
+				'group'   => 'filter_options',
+				'label'   => esc_html__( 'Brand Filter (Pro)', 'filter-plus' ),
+				'type'    => 'info',
+				'content' => esc_html__( 'Brand filter with Checkbox, Radio and Image templates is a Pro feature. Upgrade to Filter Plus Pro to use it.', 'filter-plus' ),
+			);
+		}
+
 		// Attributes
 		$this->controls['show_attributes'] = array(
 			'tab' => 'content',

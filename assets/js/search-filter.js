@@ -296,6 +296,52 @@
 			});
 		}
 
+		// brand filter (checkbox / radio / image)
+		function filterplus_brand_reset_toggle() {
+			$('.fp-brands-wrap').each(function () {
+				const $wrap = $(this);
+				const $reset = $wrap.find('.fp-brand-reset');
+				if ($wrap.find('.fp-brand-item.active').length > 0) {
+					$reset.removeClass('d-none').fadeIn();
+				} else {
+					$reset.fadeOut();
+				}
+			});
+		}
+		function filterplus_brand_refresh() {
+			if (!isApplyMode) {
+				get_products();
+			} else {
+				show_selected_data(selected_param({}));
+			}
+			filterplus_brand_reset_toggle();
+		}
+		$(document).on('change', '.fp-brand-list .fp-brand-input', function () {
+			const $input = $(this);
+			const $list = $input.closest('.fp-brand-list');
+			if ($input.attr('type') === 'radio') {
+				$list.find('.fp-brand-item').removeClass('active');
+			}
+			$input.closest('.fp-brand-item').toggleClass('active', $input.is(':checked'));
+			filterplus_brand_refresh();
+		});
+		$(document).on('click', '.fp-brands-wrap .fp-brand-reset', function (e) {
+			e.preventDefault();
+			const $wrap = $(this).closest('.fp-brands-wrap');
+			$wrap.find('.fp-brand-item').removeClass('active');
+			$wrap.find('.fp-brand-input').prop('checked', false);
+			filterplus_brand_refresh();
+		});
+		$(document).on('click', '.selected-filter .fp-brand-tag', function (e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			const brand_id = $(this).data('brand_id');
+			const $item = $(`.fp-brand-list .fp-brand-item[data-brand_id='${brand_id}']`);
+			$item.removeClass('active').find('.fp-brand-input').prop('checked', false);
+			$(this).remove();
+			filterplus_brand_refresh();
+		});
+
 		// price range
 		const price_range = $('.range-slider');
 		const min = Math.max(1, price_range.data('min') || 1);
@@ -895,6 +941,12 @@
 							});
 						}, 0);
 					}
+					if (key == 'brand_id' && Array.isArray(value) && value.length > 0) {
+						value.forEach((brand_id, index) => {
+							const brand_name = $('<div>').text((selected_data.brand_name || [])[index] || '').html();
+							selected_html += `<div class='filter-tag fp-brand-tag' data-node='.fp-brand-list' data-brand_id='${parseInt(brand_id, 10)}'>${brand_name}${cross}</div>`;
+						});
+					}
 					if (key == 'search_value' && value !== '') {
 						selected_html += `<div class='filter-tag' data-node='.search-form'>${filter_client.localize.search}${cross}</div>`;
 					}
@@ -1019,6 +1071,12 @@
 			if ( typeof params.product_cat === 'undefined' ) {
 				params.product_cat = filterOption.category_formatted_text($);
 			}
+			params.brand_id = $('.fp-brand-list .fp-brand-item.active')
+				.map(function () { return $(this).data('brand_id'); })
+				.get();
+			params.brand_name = $('.fp-brand-list .fp-brand-item.active')
+				.map(function () { return $(this).data('name'); })
+				.get();
 			params.rating = $('ul.ratings').attr('id');
 			params.taxonomies = get_tags(true);
 			params.taxonomies_name = get_tags('name');
@@ -1348,6 +1406,9 @@
 				e.preventDefault();
 				const $this = $(this);
 				const parent = '';
+				if ($this.hasClass('fp-brand-tag')) {
+					return; // handled by the brand tag handler
+				}
 				if (element == filter_tag) {
 					const node = $this.data('node');
 					let cursor = $(node);
@@ -1405,6 +1466,8 @@
 				const price_range = $('.range-slider');
 
 				category.removeClass('active');
+				$('.fp-brand-list .fp-brand-item').removeClass('active');
+				$('.fp-brand-list .fp-brand-input').prop('checked', false);
 				search.val('');
 				param_box.find('.radio-item').removeClass('active');
 				param_box.find('.color-item').removeClass('active');
@@ -1597,6 +1660,9 @@
 					$('.input-max').val(maxPrice);
 				}
 			}
+
+			// Reset brand filter
+			$('.fp-brand-list .fp-brand-item').removeClass('active');
 
 			// Uncheck all checkboxes and radio buttons
 			$('input[type=checkbox]').prop('checked', false);

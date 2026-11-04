@@ -459,6 +459,133 @@ class Helper {
 	}
 
 	/**
+	 * Brand filter is a Pro feature.
+	 *
+	 * @return bool
+	 */
+	public static function is_brand_filter_available() {
+		return (bool) apply_filters( 'filterplus_brand_filter_available', class_exists( 'FilterPlusPro' ) );
+	}
+
+	/**
+	 * Detect the product brand taxonomy.
+	 *
+	 * WooCommerce core (9.6+) registers `product_brand`; popular brand plugins
+	 * use their own slugs. First registered one wins. Filterable via
+	 * `filterplus_brand_taxonomies` (candidate list) / `filterplus_brand_taxonomy`.
+	 *
+	 * @return string Taxonomy slug or '' when no brand taxonomy exists.
+	 */
+	public static function brand_taxonomy() {
+		$candidates = apply_filters(
+			'filterplus_brand_taxonomies',
+			array( 'product_brand', 'pwb-brand', 'yith_product_brand', 'berocket_brand' )
+		);
+
+		$found = '';
+		foreach ( (array) $candidates as $candidate ) {
+			if ( taxonomy_exists( $candidate ) ) {
+				$found = $candidate;
+				break;
+			}
+		}
+
+		return (string) apply_filters( 'filterplus_brand_taxonomy', $found );
+	}
+
+	/**
+	 * Brand image url (supports WooCommerce, Perfect Brands and YITH meta keys).
+	 *
+	 * @param int    $term_id Term id.
+	 * @param string $size    Image size.
+	 *
+	 * @return string
+	 */
+	public static function brand_image_url( $term_id, $size = 'medium' ) {
+		$thumb_id = 0;
+		foreach ( array( 'thumbnail_id', 'pwb_brand_image', 'thumbnail', 'brand_image_id' ) as $meta_key ) {
+			$value = get_term_meta( $term_id, $meta_key, true );
+			if ( ! empty( $value ) && is_numeric( $value ) ) {
+				$thumb_id = (int) $value;
+				break;
+			}
+		}
+
+		$url = $thumb_id ? wp_get_attachment_image_url( $thumb_id, $size ) : '';
+		if ( empty( $url ) && function_exists( 'wc_placeholder_img_src' ) ) {
+			$url = wc_placeholder_img_src( $size );
+		}
+
+		return (string) $url;
+	}
+
+	/**
+	 * Get brands.
+	 *
+	 * @param string $type    '' (term rows), 'assoc' (id => name) or 'label_value'.
+	 * @param array  $args    include (csv ids), hide_empty (yes/no), orderby.
+	 *
+	 * @return array
+	 */
+	public static function get_brands( $type = '', $args = array() ) {
+		$taxonomy = self::brand_taxonomy();
+		if ( '' === $taxonomy ) {
+			return array();
+		}
+
+		$query = array(
+			'taxonomy'   => $taxonomy,
+			'number'     => 200,
+			'hide_empty' => ! ( isset( $args['hide_empty'] ) && 'no' === $args['hide_empty'] ),
+			'orderby'    => 'name',
+			'order'      => 'ASC',
+		);
+		if ( ! empty( $args['orderby'] ) ) {
+			switch ( $args['orderby'] ) {
+				case 'name-desc':
+					$query['order'] = 'DESC';
+					break;
+				case 'count':
+					$query['orderby'] = 'count';
+					$query['order']   = 'DESC';
+					break;
+			}
+		}
+		if ( ! empty( $args['include'] ) ) {
+			$include = is_array( $args['include'] ) ? $args['include'] : explode( ',', $args['include'] );
+			$include = array_filter( array_map( 'absint', $include ) );
+			if ( ! empty( $include ) ) {
+				$query['include'] = $include;
+				$query['orderby'] = empty( $args['orderby'] ) ? 'include' : $query['orderby'];
+			}
+		}
+
+		$terms = get_terms( $query );
+		if ( is_wp_error( $terms ) || empty( $terms ) ) {
+			return array();
+		}
+
+		$result = array();
+		foreach ( $terms as $term ) {
+			if ( 'assoc' === $type ) {
+				$result[ $term->term_id ] = $term->name;
+			} elseif ( 'label_value' === $type ) {
+				$result[] = array( 'value' => $term->term_id, 'label' => $term->name );
+			} else {
+				$result[] = array(
+					'term_id'  => $term->term_id,
+					'name'     => $term->name,
+					'slug'     => $term->slug,
+					'count'    => $term->count,
+					'taxonomy' => $taxonomy,
+				);
+			}
+		}
+
+		return $result;
+	}
+
+	/**
 	 * Get categories
 	 *
 	 */
@@ -679,6 +806,26 @@ class Helper {
 			} else {
 				// No meaningful existing clause (empty or missing terms) — NOT IN alone
 				$args['tax_query'] = array( $not_in_clause );
+			}
+		}
+
+		// filter by brand (multi select: product matches ANY selected brand)
+		$brand_ids      = ! empty( $param['brand_id'] ) ? array_filter( array_map( 'absint', (array) $param['brand_id'] ) ) : array();
+		$brand_taxonomy = self::brand_taxonomy();
+		if ( ! empty( $brand_ids ) && '' !== $brand_taxonomy && self::is_brand_filter_available() ) {
+			$brand_clause = array(
+				'taxonomy' => $brand_taxonomy,
+				'field'    => 'term_id',
+				'terms'    => array_values( $brand_ids ),
+				'operator' => 'IN',
+			);
+			if ( empty( $args['tax_query'] ) ) {
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for brand filtering
+				$args['tax_query'] = array( $brand_clause );
+			} elseif ( isset( $args['tax_query']['relation'] ) ) {
+				$args['tax_query'][] = $brand_clause;
+			} else {
+				$args['tax_query'] = array( 'relation' => 'AND', $args['tax_query'], $brand_clause );
 			}
 		}
 

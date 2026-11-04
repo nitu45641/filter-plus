@@ -138,6 +138,77 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_checkbox_field($filterplus_args);
 			filterplus_field_group_end();
 
+			filterplus_field_group_start( 'woo_brand', esc_html__( 'Brand Filter', 'filter-plus' ) );
+			// show brands
+			$filterplus_brand_pro = \FilterPlus\Utils\Helper::is_brand_filter_available();
+			$filterplus_args = array('label'=>esc_html__("Show Brands:","filter-plus"),'id' => 'show_brands','data_label' => 'show_brands',
+			'disable' => ! $filterplus_brand_pro);
+			filterplus_checkbox_field($filterplus_args);
+
+			if ( $filterplus_brand_pro ) :
+
+			// brand template
+			$filterplus_args = array(
+				'label'           => esc_html__( 'Brand Filter Template:', 'filter-plus' ),
+				'id'              => 'brand_template',
+				'data_label'      => 'brand_template',
+				'options'         => DataFactory::brand_template()['template'],
+				'type'            => 'named_template',
+				'selected'        => '1',
+				'condition_class' => 'show_brands d-none',
+			);
+			filterplus_select_field( $filterplus_args );
+
+			$filterplus_args = array('label'=>esc_html__("Brand Label:","filter-plus"),'id' => 'brand_label',
+			'placeholder'=>esc_html__("Brands","filter-plus"),
+			'data_label' => 'brand_label','condition_class' => "show_brands d-none",
+			'value' => '');
+			filterplus_number_input_field($filterplus_args);
+
+			$filterplus_brand_list = Helper::get_brands( '', array( 'hide_empty' => 'no' ) );
+			if ( ! empty( $filterplus_brand_list ) ) {
+				$filterplus_args = array('label'=>esc_html__("Brand List:","filter-plus"),'id' => 'woo_brands',
+				'data_label' => 'brands','options'=> $filterplus_brand_list, 'select_type' => 'multiple', 'condition_class' => "show_brands d-none");
+				filterplus_select_field($filterplus_args);
+			} else {
+				$filterplus_brand_tax = Helper::brand_taxonomy();
+				?>
+				<div class="single-block show_brands d-none">
+					<div class="form-label"><?php esc_html_e( 'Brand List:', 'filter-plus' ); ?></div>
+					<div class="input-section">
+						<?php if ( '' === $filterplus_brand_tax ) : ?>
+							<?php esc_html_e( 'No brand taxonomy found. Enable WooCommerce Brands or a brand plugin.', 'filter-plus' ); ?>
+						<?php else : ?>
+							<?php esc_html_e( 'No brands found.', 'filter-plus' ); ?>
+							<a href="<?php echo esc_url( admin_url( 'edit-tags.php?taxonomy=' . $filterplus_brand_tax . '&post_type=product' ) ); ?>" target="_blank"><?php esc_html_e( 'Add brands', 'filter-plus' ); ?></a>
+						<?php endif; ?>
+					</div>
+				</div>
+				<?php
+			}
+
+			$filterplus_args = array(
+				'label'           => esc_html__( 'Brand Sort By:', 'filter-plus' ),
+				'id'              => 'brand_orderby',
+				'data_label'      => 'brand_orderby',
+				'options'         => array(
+					''          => esc_html__( 'A-Z (Name)', 'filter-plus' ),
+					'name-desc' => esc_html__( 'Z-A (Name)', 'filter-plus' ),
+					'count'     => esc_html__( 'Product Count', 'filter-plus' ),
+				),
+				'type'            => 'random',
+				'condition_class' => 'show_brands d-none',
+			);
+			filterplus_select_field( $filterplus_args );
+
+			$filterplus_args = array('label'=>esc_html__("Hide Empty Brands:","filter-plus"),'id' => 'hide_empty_brand','data_label' => 'hide_empty_brand','condition_class' => "show_brands d-none",'checked' => 'yes');
+			filterplus_checkbox_field($filterplus_args);
+
+			$filterplus_args = array('label'=>esc_html__("Show Brand Product Count:","filter-plus"),'id' => 'brand_count','data_label' => 'brand_count','condition_class' => "show_brands d-none",'checked' => 'yes');
+			filterplus_checkbox_field($filterplus_args);
+			endif;
+			filterplus_field_group_end();
+
 			filterplus_field_group_start( 'woo_color', esc_html__( 'Color Filter', 'filter-plus' ) );
 			// colors
 			$filterplus_args = array('label'=>esc_html__("Show Color:","filter-plus"),'id' => 'show_colors','data_label' => 'colors');

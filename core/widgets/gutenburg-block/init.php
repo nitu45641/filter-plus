@@ -58,6 +58,9 @@ function filterplus_block_assets() {
             'woo_categories'    => array_values( \FilterPlus\Utils\Helper::get_categories('','label_value') ),
             'tags'              => array_values( \FilterPlus\Utils\Helper::get_product_tags('product_tag','label_value') ),
             'attributes'        => array_values( \FilterPlus\Utils\Helper::woo_attribute_list('label_value') ),
+            'brands'            => array_values( \FilterPlus\Utils\Helper::get_brands( 'label_value', array( 'hide_empty' => 'no' ) ) ),
+            'brand_templates'   => array_map( function( $value, $label ) { return array( 'value' => (string) $value, 'label' => $label ); }, array_keys( \FilterPlus\Base\DataFactory::brand_template()['template'] ), \FilterPlus\Base\DataFactory::brand_template()['template'] ),
+            'has_brand_taxonomy' => '' !== \FilterPlus\Utils\Helper::brand_taxonomy(),
             'image_sizes'       => \FilterPlus\Utils\Helper::product_image_sizes('label_value'),
 			'is_pro_active'     => (( class_exists( 'FilterPlusPro' ) ) ? 0 : 1 ),
         ]

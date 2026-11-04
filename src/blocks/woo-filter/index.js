@@ -93,6 +93,34 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'array',
             default: []
         },
+        show_brands: {
+            type: 'boolean',
+            default: false
+        },
+        brand_template: {
+            type: 'string',
+            default: '1'
+        },
+        brand_label: {
+            type: 'string',
+            default: ''
+        },
+        brands: {
+            type: 'array',
+            default: []
+        },
+        brand_orderby: {
+            type: 'string',
+            default: ''
+        },
+        hide_empty_brand: {
+            type: 'boolean',
+            default: true
+        },
+        brand_count: {
+            type: 'boolean',
+            default: true
+        },
         show_attributes: {
             type: 'boolean',
             default: true
@@ -546,6 +574,77 @@ registerBlockType('filter-plus/woo-filter', {
                                     options={window.filterPlus?.tags || []}
                                     onChange={(value) => setAttributes({ tags: value })}
                                 />
+                            </>
+                        )}
+
+                        { window.filterPlus?.is_pro_active === 1 ? (
+                            <div style={{ marginBottom: '16px', padding: '8px', background: '#f0f0f1', borderRadius: '4px' }}>
+                                <label style={{ fontWeight: '500', margin: 0, display: 'block', marginBottom: '4px' }}>
+                                    {__('Brand Filter', 'filter-plus')}
+                                    <span style={{ marginLeft: '6px', fontSize: '11px', color: '#fff', background: '#8c7ae6', borderRadius: '3px', padding: '1px 5px' }}>Pro</span>
+                                </label>
+                                <a href="https://wpbens.com/filter-plus/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px' }}>
+                                    {__('Upgrade to Pro to use this feature.', 'filter-plus')}
+                                </a>
+                            </div>
+                        ) : (
+                            <>
+                                <ToggleControl
+                                    label={__('Show Brands', 'filter-plus')}
+                                    checked={attributes.show_brands}
+                                    onChange={(value) => setAttributes({ show_brands: value })}
+                                    help={window.filterPlus?.has_brand_taxonomy ? '' : __('No brand taxonomy found. Enable WooCommerce Brands or a brand plugin.', 'filter-plus')}
+                                />
+
+                                {attributes.show_brands && (
+                                    <>
+                                        <SelectControl
+                                            label={__('Brand Filter Template', 'filter-plus')}
+                                            value={attributes.brand_template}
+                                            options={window.filterPlus?.brand_templates || []}
+                                            onChange={(value) => setAttributes({ brand_template: value })}
+                                        />
+
+                                        <TextControl
+                                            label={__('Brand Label', 'filter-plus')}
+                                            value={attributes.brand_label}
+                                            onChange={(value) => setAttributes({ brand_label: value })}
+                                            placeholder={__('Brands', 'filter-plus')}
+                                        />
+
+                                        <SelectControl
+                                            multiple
+                                            label={__('Include Brands', 'filter-plus')}
+                                            help={(window.filterPlus?.brands || []).length ? __('Leave empty to show all brands.', 'filter-plus') : __('No brands found. Add brands under Products > Brands.', 'filter-plus')}
+                                            value={attributes.brands}
+                                            options={window.filterPlus?.brands || []}
+                                            onChange={(value) => setAttributes({ brands: value })}
+                                        />
+
+                                        <SelectControl
+                                            label={__('Brand Sort By', 'filter-plus')}
+                                            value={attributes.brand_orderby}
+                                            options={[
+                                                { value: '', label: __('A-Z (Name)', 'filter-plus') },
+                                                { value: 'name-desc', label: __('Z-A (Name)', 'filter-plus') },
+                                                { value: 'count', label: __('Product Count', 'filter-plus') },
+                                            ]}
+                                            onChange={(value) => setAttributes({ brand_orderby: value })}
+                                        />
+
+                                        <ToggleControl
+                                            label={__('Hide Empty Brands', 'filter-plus')}
+                                            checked={attributes.hide_empty_brand}
+                                            onChange={(value) => setAttributes({ hide_empty_brand: value })}
+                                        />
+
+                                        <ToggleControl
+                                            label={__('Show Brand Product Count', 'filter-plus')}
+                                            checked={attributes.brand_count}
+                                            onChange={(value) => setAttributes({ brand_count: value })}
+                                        />
+                                    </>
+                                )}
                             </>
                         )}
 

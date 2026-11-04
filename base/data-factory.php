@@ -85,6 +85,14 @@ class DataFactory {
             // sidebar section order (Pro) - see \FilterPlus\Base\SidebarSections
             'filter_order'           => '',
             'show_search'            => 'yes',
+            // brand filter
+            'show_brands'            => '',
+            'brand_label'            => esc_html__('Brands','filter-plus'),
+            'brands'                 => '',
+            'brand_template'         => '1',
+            'brand_orderby'          => '',
+            'hide_empty_brand'       => 'yes',
+            'brand_count'            => 'yes',
         );
     }
 
@@ -220,7 +228,34 @@ class DataFactory {
 		$default_data['apply_button_label'] = ! empty( $settings['apply_button_label'] ) ? $settings['apply_button_label'] : esc_html__( 'Apply', 'filter-plus' );
 		$default_data['reset_button_label'] = ! empty( $settings['reset_button_label'] ) ? $settings['reset_button_label'] : esc_html__( 'Reset', 'filter-plus' );
 
+		// brand filter
+		$default_data['show_brands']      = \FilterPlus\Utils\Helper::is_brand_filter_available() ? self::to_yes_no( $settings, 'show_brands', 'no' ) : 'no';
+		$default_data['brand_label']      = ! empty( $settings['brand_label'] ) ? sanitize_text_field( $settings['brand_label'] ) : esc_html__( 'Brands', 'filter-plus' );
+		$default_data['brands']           = ! empty( $settings['brands'] ) ? implode( ',', array_filter( array_map( 'absint', is_array( $settings['brands'] ) ? $settings['brands'] : explode( ',', $settings['brands'] ) ) ) ) : '';
+		$default_data['brand_template']   = ! empty( $settings['brand_template'] ) && array_key_exists( (string) $settings['brand_template'], self::brand_template()['template'] ) ? (string) $settings['brand_template'] : '1';
+		$default_data['brand_orderby']    = ! empty( $settings['brand_orderby'] ) ? sanitize_key( $settings['brand_orderby'] ) : '';
+		$default_data['hide_empty_brand'] = self::to_yes_no( $settings, 'hide_empty_brand', 'no' );
+		$default_data['brand_count']      = self::to_yes_no( $settings, 'brand_count', 'no' );
+
         return $default_data;
+    }
+
+    /**
+     * Normalize a switcher/checkbox/toggle value to 'yes' / 'no'.
+     *
+     * @param array  $settings Raw settings.
+     * @param string $key      Setting key.
+     * @param string $default  Value when the key is missing.
+     *
+     * @return string
+     */
+    public static function to_yes_no( $settings, $key, $default = 'no' ) {
+        if ( ! isset( $settings[ $key ] ) ) {
+            return $default;
+        }
+        $v = $settings[ $key ];
+
+        return ( true === $v || 1 === $v || in_array( $v, array( 'yes', '1', 'true', 'on' ), true ) ) ? 'yes' : 'no';
     }
 
     /**
@@ -292,6 +327,13 @@ class DataFactory {
 			'category_orderby'       => $category_orderby,
 			'filter_order'           => $filter_order,
 			'show_search'            => $show_search,
+			'show_brands'            => $show_brands,
+			'brand_label'            => $brand_label,
+			'brands'                 => $brands,
+			'brand_template'         => $brand_template,
+			'brand_orderby'          => $brand_orderby,
+			'hide_empty_brand'       => $hide_empty_brand,
+			'brand_count'            => $brand_count,
 		);
 
 		// Skip option update when rendering from inside category-layout.php to avoid circular saves.
@@ -481,6 +523,64 @@ class DataFactory {
 			include $url ;
 			SidebarSections::end();
 		}
+    }
+
+    /**
+     * Brand filter template list.
+     *
+     * @return array
+     */
+    public static function brand_template() {
+        return array(
+            'template' => array(
+                '1' => esc_html__( 'Checkbox', 'filter-plus' ),
+                '2' => esc_html__( 'Radio', 'filter-plus' ),
+                '3' => esc_html__( 'Image', 'filter-plus' ),
+            ),
+            'template_disable' => '',
+        );
+    }
+
+    /**
+     * Render the brand filter section.
+     *
+     * Template overridable from the theme: filter-plus/templates/woo-filter/parts/brand/brands-{checkbox|radio|image}.php
+     *
+     * @param array $args Shortcode values (show_brands, brand_label, brands, brand_template, ...).
+     *
+     * @return void
+     */
+    public static function brand_template_url( $args ) {
+        $brand_taxonomy = \FilterPlus\Utils\Helper::brand_taxonomy();
+        if ( ! \FilterPlus\Utils\Helper::is_brand_filter_available() || empty( $args['show_brands'] ) || 'yes' !== $args['show_brands'] || '' === $brand_taxonomy ) {
+            return;
+        }
+
+        $template         = ! empty( $args['template'] ) ? $args['template'] : '1';
+        $brand_label      = ! empty( $args['brand_label'] ) ? $args['brand_label'] : esc_html__( 'Brands', 'filter-plus' );
+        $brand_template   = ! empty( $args['brand_template'] ) ? (string) $args['brand_template'] : '1';
+        $brand_count      = isset( $args['brand_count'] ) && 'no' === $args['brand_count'] ? 'no' : 'yes';
+        $filterplus_brands = \FilterPlus\Utils\Helper::get_brands( '', array(
+            'include'    => ! empty( $args['brands'] ) ? $args['brands'] : '',
+            'hide_empty' => isset( $args['hide_empty_brand'] ) ? $args['hide_empty_brand'] : 'yes',
+            'orderby'    => ! empty( $args['brand_orderby'] ) ? $args['brand_orderby'] : '',
+        ) );
+
+        if ( empty( $filterplus_brands ) ) {
+            return;
+        }
+
+        $files = array(
+            '1' => 'brands-checkbox.php',
+            '2' => 'brands-radio.php',
+            '3' => 'brands-image.php',
+        );
+        $file = isset( $files[ $brand_template ] ) ? $files[ $brand_template ] : $files['1'];
+        $url  = \FilterPlus::locate_template( 'woo-filter/parts/brand/' . $file );
+
+        if ( file_exists( $url ) ) {
+            include $url;
+        }
     }
 
     public static function tempalte_arr( $args , $type = 'shortcode' , $count = 3 ) {

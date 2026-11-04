@@ -346,6 +346,102 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 
+		if ( Helper::is_brand_filter_available() ) {
+			$this->add_control(
+				'show_brands',
+				array(
+					'label'        => esc_html__( 'Show Brands', 'filter-plus' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'label_on'     => esc_html__( 'Show', 'filter-plus' ),
+					'label_off'    => esc_html__( 'Hide', 'filter-plus' ),
+					'return_value' => 'yes',
+					'default'      => '',
+					'separator'    => 'before',
+					'description'  => '' === Helper::brand_taxonomy() ? esc_html__( 'No brand taxonomy found. Enable WooCommerce Brands or a brand plugin.', 'filter-plus' ) : '',
+				)
+			);
+			$this->add_control(
+				'brand_template',
+				array(
+					'label'     => esc_html__( 'Brand Filter Template', 'filter-plus' ),
+					'type'      => Controls_Manager::SELECT,
+					'default'   => '1',
+					'options'   => DataFactory::brand_template()['template'],
+					'condition' => array( 'show_brands' => 'yes' ),
+				)
+			);
+			$this->add_control(
+				'brand_label',
+				array(
+					'label'       => esc_html__( 'Brand Label', 'filter-plus' ),
+					'type'        => Controls_Manager::TEXT,
+					'placeholder' => esc_html__( 'Brands', 'filter-plus' ),
+					'condition'   => array( 'show_brands' => 'yes' ),
+				)
+			);
+			$this->add_control(
+				'brands',
+				array(
+					'label'       => esc_html__( 'Include Brands', 'filter-plus' ),
+					'type'        => Controls_Manager::SELECT2,
+					'options'     => Helper::get_brands( 'assoc', array( 'hide_empty' => 'no' ) ),
+					'multiple'    => true,
+					'description' => empty( Helper::get_brands( 'assoc', array( 'hide_empty' => 'no' ) ) ) ? esc_html__( 'No brands found. Add brands under Products > Brands.', 'filter-plus' ) : esc_html__( 'Leave empty to show all brands.', 'filter-plus' ),
+					'condition'   => array( 'show_brands' => 'yes' ),
+				)
+			);
+			$this->add_control(
+				'brand_orderby',
+				array(
+					'label'     => esc_html__( 'Brand Sort By', 'filter-plus' ),
+					'type'      => Controls_Manager::SELECT,
+					'default'   => '',
+					'options'   => array(
+						''          => esc_html__( 'A-Z (Name)', 'filter-plus' ),
+						'name-desc' => esc_html__( 'Z-A (Name)', 'filter-plus' ),
+						'count'     => esc_html__( 'Product Count', 'filter-plus' ),
+					),
+					'condition' => array( 'show_brands' => 'yes' ),
+				)
+			);
+			$this->add_control(
+				'hide_empty_brand',
+				array(
+					'label'        => esc_html__( 'Hide Empty Brands', 'filter-plus' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'return_value' => 'yes',
+					'default'      => 'yes',
+					'condition'    => array( 'show_brands' => 'yes' ),
+				)
+			);
+			$this->add_control(
+				'brand_count',
+				array(
+					'label'        => esc_html__( 'Show Brand Product Count', 'filter-plus' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'return_value' => 'yes',
+					'default'      => 'yes',
+					'condition'    => array( 'show_brands' => 'yes' ),
+					'separator'    => 'after',
+				)
+			);
+		} else {
+			$this->add_control(
+				'brand_pro_notice',
+				array(
+					'label'           => esc_html__( 'Brand Filter (Pro)', 'filter-plus' ),
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => sprintf(
+						'<div class="elementor-control-field-description">%1$s <a href="%2$s" target="_blank">%3$s</a></div>',
+						esc_html__( 'Brand filter with Checkbox, Radio and Image templates is a Pro feature.', 'filter-plus' ),
+						esc_url( 'https://wpbens.com/filter-plus/' ),
+						esc_html__( 'Upgrade to Pro', 'filter-plus' )
+					),
+					'separator'       => 'before',
+				)
+			);
+		}
+
 		$this->add_control(
 			'show_attributes',
 			array(

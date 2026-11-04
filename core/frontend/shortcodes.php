@@ -334,28 +334,28 @@ class Shortcodes {
 			}
 			.grid-view-1 {
 				display: grid;
-				grid-template: auto / 24% 24% 24% 24%;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
 				gap: 15px 11px;
 			}
 			.grid-view-2 {
 				display: grid;
-				grid-template: auto / 255px 255px 255px;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
 				gap: 15px;
 				position: relative;
 			}
 			.post-grid-view-1{
 				display: grid;
-				grid-template: auto / 32.5% 32.5% 32%;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
 				gap: 15px 11px;
 			}
 			.grid-view-6{
 				display: grid;
-				grid-template: auto / 33% 33% 33%;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
 				gap: 15px 22px;
 			}
 			.grid-view-7{
 				display: grid;
-				grid-template-columns: 210px 210px 210px 210px;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
 				position: relative;
 				column-gap: 15px;
 				row-gap: 15px;
@@ -413,7 +413,7 @@ class Shortcodes {
 					gap: 15px 11px;
 				}
 				.grid-view-2,.grid-view-3,.grid-view-7 {
-					grid-template: auto / 220px 220px 220px;
+					grid-template-columns: repeat(3, minmax(0, 1fr));
 				}
 				.shop-container-3 .prods-grid-view.grid-view-3 {
 					grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));

@@ -61,6 +61,7 @@ class SidebarSections {
 			: array(
 				'search'     => esc_html__( 'Search Filter', 'filter-plus' ),
 				'category'   => esc_html__( 'Category Filter', 'filter-plus' ),
+				'brand'      => esc_html__( 'Brand Filter', 'filter-plus' ),
 				'color'      => esc_html__( 'Color Filter', 'filter-plus' ),
 				'size'       => esc_html__( 'Size Filter', 'filter-plus' ),
 				'tags'       => esc_html__( 'Tag Filter', 'filter-plus' ),

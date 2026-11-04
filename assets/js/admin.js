@@ -507,6 +507,7 @@
 			'apply_button_mode',
 			'wp_apply_button_mode',
 			'show_tags',
+			'show_brands',
 			'show_attributes',
 			'show_wp_tags',
 			'filter_type',
