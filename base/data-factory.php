@@ -567,6 +567,14 @@ class DataFactory {
         ) );
 
         if ( empty( $filterplus_brands ) ) {
+            // Shoppers see nothing; builders/previews explain why the section is missing.
+            if ( self::is_builder_preview() && current_user_can( 'edit_posts' ) ) {
+                $all = \FilterPlus\Utils\Helper::get_brands( 'assoc', array( 'hide_empty' => 'no' ) );
+                $msg = empty( $all )
+                    ? esc_html__( 'Brand filter: no brands found. Add brands under Products > Brands.', 'filter-plus' )
+                    : esc_html__( 'Brand filter: the selected brands have no products, so the section is hidden. Assign brands to products or turn off "Hide Empty Brands".', 'filter-plus' );
+                echo '<div class="sidebar-row fp-brands-wrap fp-brand-notice">' . $msg . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above
+            }
             return;
         }
 
@@ -581,6 +589,32 @@ class DataFactory {
         if ( file_exists( $url ) ) {
             include $url;
         }
+    }
+
+    /**
+     * Are we rendering inside a page builder / editor preview?
+     *
+     * @return bool
+     */
+    public static function is_builder_preview() {
+        if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+            return true; // Gutenberg ServerSideRender
+        }
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only flag check
+        if ( isset( $_GET['filterplus_preview'] ) || isset( $_GET['elementor-preview'] ) ) {
+            return true;
+        }
+        if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'elementor_ajax' === $_REQUEST['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            return true;
+        }
+        if ( class_exists( '\Elementor\Plugin' ) && isset( \Elementor\Plugin::$instance->editor ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+            return true;
+        }
+        if ( function_exists( 'bricks_is_builder' ) && ( bricks_is_builder() || ( function_exists( 'bricks_is_builder_call' ) && bricks_is_builder_call() ) ) ) {
+            return true;
+        }
+
+        return false;
     }
 
     public static function tempalte_arr( $args , $type = 'shortcode' , $count = 3 ) {

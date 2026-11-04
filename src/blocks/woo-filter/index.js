@@ -37,6 +37,26 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'string',
             default: ''
         },
+        category_orderby: {
+            type: 'string',
+            default: ''
+        },
+        filter_order: {
+            type: 'array',
+            default: []
+        },
+        grid_columns_desktop: {
+            type: 'string',
+            default: ''
+        },
+        grid_columns_tablet: {
+            type: 'string',
+            default: ''
+        },
+        grid_columns_mobile: {
+            type: 'string',
+            default: ''
+        },
         categories: {
             type: 'array',
             default: []
@@ -357,6 +377,28 @@ registerBlockType('filter-plus/woo-filter', {
                         />
 
                         <SelectControl
+                            multiple
+                            label={__('Filter Order', 'filter-plus') + (isDisabled() ? ' (Pro)' : '')}
+                            value={attributes.filter_order}
+                            options={[
+                                { value: 'search', label: __('Search', 'filter-plus') },
+                                { value: 'category', label: __('Categories', 'filter-plus') },
+                                { value: 'brand', label: __('Brands', 'filter-plus') },
+                                { value: 'color', label: __('Colors', 'filter-plus') },
+                                { value: 'size', label: __('Size', 'filter-plus') },
+                                { value: 'tags', label: __('Tags', 'filter-plus') },
+                                { value: 'attributes', label: __('Attributes', 'filter-plus') },
+                                { value: 'price', label: __('Price', 'filter-plus') },
+                                { value: 'reviews', label: __('Reviews', 'filter-plus') },
+                                { value: 'stock', label: __('Stock', 'filter-plus') },
+                                { value: 'on_sale', label: __('On Sale', 'filter-plus') }
+                            ]}
+                            onChange={(value) => setAttributes({ filter_order: value })}
+                            disabled={isDisabled()}
+                            help={isDisabled() ? __('Upgrade to Pro to reorder filter sections.', 'filter-plus') : __('Choose sections to reorder; unselected sections keep their default positions.', 'filter-plus')}
+                        />
+
+                        <SelectControl
                             label={__('Select Category Filter Template', 'filter-plus')}
                             value={attributes.category_template}
                             options={getCategoryTemplateOptions()}
@@ -422,6 +464,19 @@ registerBlockType('filter-plus/woo-filter', {
                                 </div>
                             )}
                         </div>
+
+                        <SelectControl
+                            label={__('Category Sort By', 'filter-plus') + (isDisabled() ? ' (Pro)' : '')}
+                            value={attributes.category_orderby}
+                            options={[
+                                { value: '', label: __('Default', 'filter-plus') },
+                                { value: 'name', label: __('A-Z (Name)', 'filter-plus') },
+                                { value: 'name-desc', label: __('Z-A (Name)', 'filter-plus') },
+                                { value: 'count', label: __('Product Count', 'filter-plus') }
+                            ]}
+                            onChange={(value) => setAttributes({ category_orderby: value })}
+                            disabled={isDisabled()}
+                        />
 
                         { window.filterPlus?.is_pro_active === 1 ? (
                             <div style={{ marginBottom: '16px', padding: '8px', background: '#f0f0f1', borderRadius: '4px' }}>
@@ -745,6 +800,36 @@ registerBlockType('filter-plus/woo-filter', {
                                 placeholder={__('Place On Sale Label Here', 'filter-plus')}
                             />
                         )}
+                    </PanelBody>
+
+                    <PanelBody title={__('Product Grid', 'filter-plus')} initialOpen={false}>
+                        <TextControl
+                            label={__('Desktop Columns', 'filter-plus')}
+                            type="number"
+                            min={1}
+                            max={6}
+                            value={attributes.grid_columns_desktop}
+                            onChange={(value) => setAttributes({ grid_columns_desktop: value })}
+                            placeholder={__('Default', 'filter-plus')}
+                        />
+                        <TextControl
+                            label={__('Tablet Columns (≤1024px)', 'filter-plus')}
+                            type="number"
+                            min={1}
+                            max={4}
+                            value={attributes.grid_columns_tablet}
+                            onChange={(value) => setAttributes({ grid_columns_tablet: value })}
+                            placeholder={__('Default', 'filter-plus')}
+                        />
+                        <TextControl
+                            label={__('Mobile Columns (≤480px)', 'filter-plus')}
+                            type="number"
+                            min={1}
+                            max={2}
+                            value={attributes.grid_columns_mobile}
+                            onChange={(value) => setAttributes({ grid_columns_mobile: value })}
+                            placeholder={__('Default', 'filter-plus')}
+                        />
                     </PanelBody>
 
                     <PanelBody title={__('Filter Result Options', 'filter-plus')}>

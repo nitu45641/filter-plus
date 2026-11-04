@@ -486,6 +486,8 @@
 								$field.prop('checked', value === 'yes' || value === '1' || value === 1 || value === true || value === field_value);
 							}
 						});
+						// run the show/hide toggles bound to this switch (e.g. Show Brands -> brand options)
+						$fields.trigger('change');
 						return;
 					}
 

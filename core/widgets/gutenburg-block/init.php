@@ -82,6 +82,14 @@ add_action( 'init', 'filterplus_block_assets', 99 );
 add_action( 'enqueue_block_editor_assets', function() {
     wp_enqueue_style( 'filter-plus-public-css' );
     wp_enqueue_style( 'filter-plus-swiper-css' );
+    if ( class_exists( 'FilterPlusPro' ) ) {
+        wp_enqueue_style(
+            'filter-plus-pro-public-css',
+            \FilterPlusPro::assets_url() . 'css/public.css',
+            array( 'filter-plus-public-css' ),
+            \FilterPlusPro::asset_version( 'css/public.css' )
+        );
+    }
 
     $default_css = \FilterPlus\Core\Frontend\Shortcodes::instance()->custom_css( '1', 'content-filter', array( 'masonry_style' => 'no' ) );
     if ( ! empty( $default_css ) ) {

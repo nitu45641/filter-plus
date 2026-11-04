@@ -491,8 +491,9 @@ ul.ratings.rating-wrapper{
 	background-color: #1164cb;
 }
 .shop-sidebar .search-wrap .search-form .sidebar-input {
-	padding-right: 25%;
-	line-height: 0;
+	box-sizing: border-box;
+	padding-right: 48px;
+	line-height: normal;
 }
 .shop-sidebar .radio-wrap .radio-item:hover,
 .shop-sidebar .radio-wrap .radio-item:hover
@@ -1321,6 +1322,7 @@ a {
 	background-color: #fff !important;
 	outline: none;
 	width: 100%;
+	box-sizing: border-box;
 	font-size: 14px;
 	padding: 10px 20px 10px 15px;
 	border-radius: 4px;
@@ -1356,8 +1358,11 @@ a {
 .shop-sidebar .search-form button {
 	position: absolute !important;
 	right: 7px;
-	top: 5px;
-	bottom: 4px;
+	top: 50%;
+	bottom: auto;
+	transform: translateY(-50%);
+	width: 32px;
+	height: 32px;
 	padding: 6px !important;
 	font-size: 18px;
 	border-radius: 4px;
@@ -1365,6 +1370,15 @@ a {
 	transition: all 0.2s linear;
 	background: var( --filter-secondary-color);
 	border-color: var( --filter-border-color);
+}
+.shopContainer .shop-sidebar .search-form {
+	position: relative;
+	display: block;
+	width: 100%;
+	min-width: 0;
+}
+.shopContainer.shop-container-4 .sidebar-style-4 .search-form button {
+	transform: none !important;
 }
 .search-form-3 button{
 	background: transparent !important;
@@ -1506,7 +1520,8 @@ a {
 }
 
 .shop-sidebar .search-wrap .search-form .sidebar-input {
-	padding-right: 25%;
+	box-sizing: border-box;
+	padding-right: 48px;
 }
 
 .shop-sidebar .color-wrap .radio-item {
@@ -3464,7 +3479,7 @@ ul.categories-image-grid .fp-img-card-count {
 ul.fp-brand-list {
 	list-style: none;
 	padding: 0;
-	margin: 0;
+	margin: 15px 0 10px;
 }
 ul.fp-brand-list li.fp-brand-item {
 	margin: 0 -8px 6px;
@@ -3499,7 +3514,8 @@ ul.fp-brand-list input.fp-brand-input {
 ul.fp-brand-list.fp-brand-list-image {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 8px;
+	gap: 10px;
+	margin: 18px 0 12px;
 }
 ul.fp-brand-list-image li.fp-brand-card {
 	margin: 0;
@@ -3548,4 +3564,13 @@ ul.fp-brand-list-image .fp-brand-name {
 }
 ul.fp-brand-list-image .fp-brand-count {
 	margin-left: 0;
+}
+.fp-brands-wrap.fp-brand-notice {
+	padding: 10px 12px;
+	border: 1px dashed #d6a400;
+	border-radius: 6px;
+	background: #fff8e1;
+	color: #6b5200;
+	font-size: 13px;
+	line-height: 1.5;
 }

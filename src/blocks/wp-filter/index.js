@@ -29,6 +29,22 @@ registerBlockType('filter-plus/wp-filter', {
             type: 'number',
             default: 9
         },
+        masonry_style: {
+            type: 'boolean',
+            default: false
+        },
+        pagination_style: {
+            type: 'string',
+            default: 'numbers'
+        },
+        category_template: {
+            type: 'string',
+            default: '1'
+        },
+        filter_order: {
+            type: 'array',
+            default: []
+        },
         show_categories: {
             type: 'boolean',
             default: true
@@ -186,6 +202,12 @@ registerBlockType('filter-plus/wp-filter', {
                             placeholder={__('Place No of Items Per Page', 'filter-plus')}
                         />
 
+                        <ToggleControl
+                            label={__('Masonry Style', 'filter-plus')}
+                            checked={attributes.masonry_style}
+                            onChange={(value) => setAttributes({ masonry_style: value })}
+                        />
+
                         <SelectControl
                             label={__('Filter Position', 'filter-plus')}
                             value={attributes.filter_position}
@@ -195,6 +217,47 @@ registerBlockType('filter-plus/wp-filter', {
                                 { value: 'top', label: __('Top', 'filter-plus') }
                             ]}
                             onChange={(value) => setAttributes({ filter_position: value })}
+                        />
+
+                        <SelectControl
+                            label={__('Pagination Style', 'filter-plus')}
+                            value={attributes.pagination_style}
+                            options={[
+                                { value: 'numbers', label: __('Numbers', 'filter-plus') },
+                                { value: 'load_more', label: __('Load More', 'filter-plus') },
+                                { value: 'infinite', label: __('Infinite Scroll', 'filter-plus') }
+                            ]}
+                            onChange={(value) => setAttributes({ pagination_style: value })}
+                        />
+
+                        <SelectControl
+                            label={__('Select Category Filter Template', 'filter-plus')}
+                            value={attributes.category_template}
+                            options={[
+                                { value: '1', label: __('List', 'filter-plus') },
+                                { value: '2', label: __('Checkbox', 'filter-plus') + (isPro() ? ' ' + isPro() : ''), disabled: isDisabled() },
+                                { value: '3', label: __('Dropdown', 'filter-plus') + (isPro() ? ' ' + isPro() : ''), disabled: isDisabled() },
+                                { value: '4', label: __('Radio', 'filter-plus') + (isPro() ? ' ' + isPro() : ''), disabled: isDisabled() },
+                                { value: '5', label: __('Image', 'filter-plus') + (isPro() ? ' ' + isPro() : ''), disabled: isDisabled() },
+                                { value: '6', label: __('Text', 'filter-plus') + (isPro() ? ' ' + isPro() : ''), disabled: isDisabled() }
+                            ]}
+                            onChange={(value) => setAttributes({ category_template: value })}
+                        />
+
+                        <SelectControl
+                            multiple
+                            label={__('Filter Order', 'filter-plus') + (isDisabled() ? ' (Pro)' : '')}
+                            value={attributes.filter_order}
+                            options={[
+                                { value: 'search', label: __('Search', 'filter-plus') },
+                                { value: 'category', label: __('Categories', 'filter-plus') },
+                                { value: 'tags', label: __('Tags', 'filter-plus') },
+                                { value: 'author', label: __('Authors', 'filter-plus') },
+                                { value: 'custom_field', label: __('Custom Field', 'filter-plus') }
+                            ]}
+                            onChange={(value) => setAttributes({ filter_order: value })}
+                            disabled={isDisabled()}
+                            help={isDisabled() ? __('Upgrade to Pro to reorder filter sections.', 'filter-plus') : __('Choose sections to reorder; unselected sections keep their default positions.', 'filter-plus')}
                         />
 
                         <ToggleControl

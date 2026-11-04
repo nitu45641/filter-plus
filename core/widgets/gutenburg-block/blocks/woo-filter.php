@@ -255,6 +255,11 @@ function product_filter_block() {
                     'type'    => 'string',
                     'default' => ''
                 ),
+                'filter_order' => array(
+                    'type'    => 'array',
+                    'default' => array(),
+                    'items'   => array( 'type' => 'string' ),
+                ),
             ),
         ]
     );
@@ -264,7 +269,7 @@ add_action( 'init', 'product_filter_block' );
 
 function product_filter_callback( $settings ) {
     // Convert arrays to comma-separated strings (use is_array only — !empty([]) is false for empty arrays)
-    foreach ( ['categories', 'exclude_categories', 'tags', 'attributes', 'brands'] as $field ) {
+    foreach ( ['categories', 'exclude_categories', 'tags', 'attributes', 'brands', 'filter_order'] as $field ) {
         if ( isset( $settings[$field] ) && is_array( $settings[$field] ) ) {
             $settings[$field] = implode( ',', $settings[$field] );
         }

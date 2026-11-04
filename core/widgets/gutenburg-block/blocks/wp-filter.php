@@ -16,6 +16,10 @@ function content_filter_block() {
                 'template'           => array( 'type' => 'string',  'default' => '1' ),
                 'title'              => array( 'type' => 'string',  'default' => '' ),
                 'no_of_items'        => array( 'type' => 'number',  'default' => 9 ),
+                'masonry_style'      => array( 'type' => 'boolean', 'default' => false ),
+                'pagination_style'   => array( 'type' => 'string',  'default' => 'numbers' ),
+                'category_template'  => array( 'type' => 'string',  'default' => '1' ),
+                'filter_order'      => array( 'type' => 'array',   'default' => array(), 'items' => array( 'type' => 'string' ) ),
                 'show_categories'    => array( 'type' => 'boolean', 'default' => true ),
                 'category_label'     => array( 'type' => 'string',  'default' => '' ),
                 'categories'         => array( 'type' => 'array',   'default' => array(), 'items' => array( 'type' => 'string' ) ),
@@ -86,6 +90,9 @@ function content_filter_callback( $settings ) {
     if ( is_array($tags) ) {
         $tags     =  join(", ",$tags);
     }
+    $filter_order = ! empty( $settings['filter_order'] ) && is_array( $settings['filter_order'] )
+        ? implode( ',', array_map( 'sanitize_key', $settings['filter_order'] ) )
+        : '';
 
     $is_rest = defined( 'REST_REQUEST' ) && REST_REQUEST;
     if ( ( did_action( 'get_header' ) || did_action( 'get_footer' ) ) == 1 || $is_rest ) {
@@ -97,6 +104,11 @@ function content_filter_callback( $settings ) {
             'category_label' => $category_label,
             'title' => $title,
             'no_of_items' => $no_of_items,
+            'masonry_style' => ! empty( $settings['masonry_style'] ) ? 'yes' : 'no',
+            'pagination_style' => ! empty( $settings['pagination_style'] ) ? sanitize_key( $settings['pagination_style'] ) : 'numbers',
+            'category_template' => ! empty( $settings['category_template'] ) ? sanitize_key( $settings['category_template'] ) : '1',
+            'filter_position' => ! empty( $settings['filter_position'] ) ? sanitize_key( $settings['filter_position'] ) : 'left',
+            'filter_order' => $filter_order,
             'sub_categories' => $sub_categories,
             'wrap_sub_categories' => $wrap_sub_categories,
             'categories' => $categories,

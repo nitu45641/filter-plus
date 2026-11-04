@@ -560,7 +560,18 @@ class Helper {
 			}
 		}
 
+		// WooCommerce swaps term counts for its cached `product_count_{taxonomy}`
+		// meta on the front end (wc_change_term_counts). For brands that cache is
+		// often stale (shows 0 although products are assigned), so read the real
+		// published-product count stored on the term instead.
+		$wc_counts = has_filter( 'get_terms', 'wc_change_term_counts' );
+		if ( false !== $wc_counts ) {
+			remove_filter( 'get_terms', 'wc_change_term_counts', $wc_counts );
+		}
 		$terms = get_terms( $query );
+		if ( false !== $wc_counts ) {
+			add_filter( 'get_terms', 'wc_change_term_counts', $wc_counts, 2 );
+		}
 		if ( is_wp_error( $terms ) || empty( $terms ) ) {
 			return array();
 		}
