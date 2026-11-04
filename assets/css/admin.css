@@ -2217,3 +2217,32 @@ a.pro-link:hover .pro-fr{
 	left: auto !important;
 	flex-shrink: 0;
 }
+
+/* Loading spinner inside buttons (e.g. Save / Update Filter Set):
+   the generic .loading::after is absolutely positioned and escaped the button. */
+.button.loading,
+button.loading{
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	position: relative;
+	pointer-events: none;
+	opacity: .85;
+}
+.button.loading::after,
+button.loading::after{
+	content: "";
+	position: static;
+	display: inline-block;
+	flex-shrink: 0;
+	width: 14px;
+	height: 14px;
+	margin: 0;
+	box-sizing: border-box;
+	border: 2px solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	-webkit-animation: spin .75s linear infinite;
+	animation: spin .75s linear infinite;
+}

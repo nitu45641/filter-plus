@@ -76,6 +76,85 @@ class SidebarSections {
 	}
 
 	/**
+	 * Register a "Filter Order" section on an Elementor widget.
+	 *
+	 * Uses a Repeater (drag & drop rows); saved value is a list of
+	 * [ 'section' => key ] rows, which parse_order() already understands,
+	 * so it flows through `filter_order` like the admin drag & drop.
+	 *
+	 * @param \Elementor\Widget_Base $widget Widget instance.
+	 * @param string                 $type   'woo' or 'wp'.
+	 *
+	 * @return void
+	 */
+	public static function register_elementor_controls( $widget, $type = 'woo' ) {
+		if ( ! class_exists( '\Elementor\Repeater' ) ) {
+			return;
+		}
+
+		$keys = self::keys( $type );
+
+		$widget->start_controls_section(
+			'filter_order_section',
+			array(
+				'label' => esc_html__( 'Filter Order', 'filter-plus' ) . ( self::is_sortable() ? '' : ' (Pro)' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			)
+		);
+
+		if ( ! self::is_sortable() ) {
+			$widget->add_control(
+				'filter_order_pro_notice',
+				array(
+					'type' => \Elementor\Controls_Manager::RAW_HTML,
+					'raw'  => sprintf(
+						'<div class="elementor-control-field-description">%1$s <a href="%2$s" target="_blank">%3$s</a></div>',
+						esc_html__( 'Drag & drop to reorder the sidebar filters is a Pro feature.', 'filter-plus' ),
+						esc_url( 'https://wpbens.com/filter-plus/' ),
+						esc_html__( 'Upgrade to Pro', 'filter-plus' )
+					),
+				)
+			);
+			$widget->end_controls_section();
+			return;
+		}
+
+		$repeater = new \Elementor\Repeater();
+		$repeater->add_control(
+			'section',
+			array(
+				'label'   => esc_html__( 'Filter', 'filter-plus' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'options' => $keys,
+				'default' => key( $keys ),
+			)
+		);
+
+		$default = array();
+		foreach ( array_keys( $keys ) as $key ) {
+			$default[] = array( 'section' => $key );
+		}
+
+		$title_map = wp_json_encode( $keys );
+
+		$widget->add_control(
+			'filter_order',
+			array(
+				'label'         => esc_html__( 'Drag & drop to reorder sidebar filters', 'filter-plus' ),
+				'type'          => \Elementor\Controls_Manager::REPEATER,
+				'fields'        => $repeater->get_controls(),
+				'default'       => $default,
+				// show the readable label, fall back to the key
+				'title_field'   => '<# var fpMap = ' . $title_map . '; #>{{{ fpMap[ section ] || section }}}',
+				'prevent_empty' => false,
+				'description'   => esc_html__( 'Filters are shown only when enabled above. Sections missing from this list keep their default position.', 'filter-plus' ),
+			)
+		);
+
+		$widget->end_controls_section();
+	}
+
+	/**
 	 * Is reordering available?
 	 *
 	 * @return bool

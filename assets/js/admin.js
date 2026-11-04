@@ -7,6 +7,7 @@
 			'#woo_pro_categories',
 			'#wp_categories',
 			'#woo_pro_tags',
+			'#woo_brands',
 			'#woo_pro_attributes',
 			'#woo_exclude_categories',
 			'#seo_elements',
@@ -401,6 +402,10 @@
 						} else {
 							alert(response?.data?.message || 'Could not save the filter set.');
 						}
+					},
+					error() {
+						$this.removeClass('loading');
+						alert('Could not save the filter set.');
 					},
 				});
 			});

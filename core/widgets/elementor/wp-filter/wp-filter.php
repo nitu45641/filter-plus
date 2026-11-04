@@ -336,6 +336,9 @@ class Wp_Filter extends Widget_Base {
 
 		$this->end_controls_section();
 
+
+		\FilterPlus\Base\SidebarSections::register_elementor_controls( $this, 'wp' );
+
 		$this->start_controls_section(
 			'filter-result',
 			[

@@ -160,12 +160,12 @@ input[type="checkbox"].regular-checkbox:checked::after {
 /* NOTE: no !important on display so jQuery fadeOut/fadeIn can hide/show the grid view normally. */
 .shopContainer.has-grid-cols:not([data-masonry_style="yes"]) .prods-grid-view {
 	display: grid;
-	grid-template-columns: repeat(var(--fp-cols-desktop), 1fr) !important;
+	grid-template-columns: repeat(var(--fp-cols-desktop), minmax(0, 1fr)) !important;
 }
 /* Stable template 1 defaults when Elementor's live preview omits per-widget CSS. */
 .shopContainer.shop-container-1:not(.has-grid-cols):not([data-masonry_style="yes"]) .prods-grid-view.grid-view-1 {
 	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 15px 11px;
 }
 @media (max-width: 1024px) {
@@ -185,12 +185,12 @@ input[type="checkbox"].regular-checkbox:checked::after {
 }
 @media (max-width: 1024px) {
 	.shopContainer.has-grid-cols:not([data-masonry_style="yes"]) .prods-grid-view {
-		grid-template-columns: repeat(var(--fp-cols-tablet, var(--fp-cols-desktop)), 1fr) !important;
+		grid-template-columns: repeat(var(--fp-cols-tablet, var(--fp-cols-desktop)), minmax(0, 1fr)) !important;
 	}
 }
 @media (max-width: 480px) {
 	.shopContainer.has-grid-cols:not([data-masonry_style="yes"]) .prods-grid-view {
-		grid-template-columns: repeat(var(--fp-cols-mobile, 1), 1fr) !important;
+		grid-template-columns: repeat(var(--fp-cols-mobile, 1), minmax(0, 1fr)) !important;
 	}
 }
 /* Masonry column widths — CSS-variable driven, only when masonry is on and columns are set */
@@ -1156,6 +1156,10 @@ ul.pagination {
 }
 .shopContainer {
 	display: flex;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	box-sizing: border-box;
 	column-gap: 15px;
 	margin-top: 20px;
 }
@@ -1167,6 +1171,13 @@ ul.pagination {
 .shopContainer:not(.top) > .products-wrap {
 	flex: 1 1 0;
 	width: 0;
+	max-width: 100%;
+	min-width: 0;
+	box-sizing: border-box;
+}
+.shopContainer .prods-grid-view {
+	width: 100%;
+	max-width: 100%;
 	min-width: 0;
 	box-sizing: border-box;
 }
