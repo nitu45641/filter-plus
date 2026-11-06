@@ -27,6 +27,10 @@ Class Wrapper {
 		\FilterPlus\Base\Enqueue::instance()->init();
 		// Deactivation Feedback
 		\FilterPlus\Core\Admin\DeactivationFeedback::instance()->init();
+		// Pro discount banner (admin, only while Pro is inactive)
+		if ( is_admin() ) {
+			\FilterPlus\Base\PromoBanner::instance()->init();
+		}
 
 		// Ajax submit
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {

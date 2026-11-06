@@ -59,7 +59,12 @@ class Preview {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_options' )
+		// Same capability that opens the Filter Sets screen (Menus::$capability),
+		// so anyone who can see the form also gets its preview. The output is the
+		// public shortcode render only; saving a set still requires manage_options.
+		$capability = (string) apply_filters( 'filterplus_filter_set_preview_capability', \FilterPlus\Core\Admin\Menus::instance()->capability );
+
+		if ( ! current_user_can( $capability )
 			|| empty( $_POST['_wpnonce'] )
 			|| ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), self::NONCE ) ) {
 			status_header( 403 );

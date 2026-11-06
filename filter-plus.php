@@ -4,7 +4,7 @@
  * Plugin Name:       Filter Plus – WordPress & WooCommerce AJAX Filter Plugin
  * Plugin URI:        https://wpbens.com/filter-plus/
  * Description:       Advanced Product Filter plugin that enable filter anything features like filter by by Ratings, Tags, Price Range on website. It allows users to filter anything based on different taxonomies.
- * Version:           1.1.40
+ * Version:           1.1.41
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Wpbens
@@ -23,6 +23,14 @@ use FilterPlus\Utils\Helper;
 
  // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
+
+// Another copy of Filter Plus is already loaded (e.g. duplicate plugin folder). Bail to avoid a fatal redeclare.
+// Uses a constant, not class_exists(): the top-level class below is declared at compile time,
+// so class_exists( 'FilterPlus' ) is already true on the first (only) load and would skip booting.
+if ( defined( 'FILTERPLUS_BOOTSTRAP_FILE' ) ) {
+	return;
+}
+define( 'FILTERPLUS_BOOTSTRAP_FILE', __FILE__ );
 
 /**
  * The Main Plugin Requirements Checker

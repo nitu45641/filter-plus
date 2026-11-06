@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.40
+Stable tag: 1.1.41
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -204,6 +204,11 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 
 == Changelog ==
 
+= 1.1.41 (November 6, 2026) =
+* New: "Filter Plus Pro — 50% Off" banner on Filter Plus admin pages while Pro is not active (dismissible for 7 days).
+* Fix: Filter Sets live preview stayed blank ("Preview not allowed") for users who can open Filter Sets but are not administrators. New filter `filterplus_filter_set_preview_capability`.
+* Fix: Duplicate-copy guard in the main plugin file stopped Filter Plus from loading at all, which caused a critical error with Filter Plus Pro.
+
 = 1.1.40 (November 4, 2026) =
 * New: Brand Filter for WooCommerce products with Checkbox, Radio and Image (logo) templates (Pro). Works with WooCommerce Brands, Perfect Brands for WooCommerce and YITH WooCommerce Brands.
 * New: Brand Filter options in the shortcode generator, Elementor, Gutenberg and Bricks widgets. New shortcode attributes `show_brands`, `brand_template`, `brand_label`, `brands`, `brand_orderby`, `hide_empty_brand` and `brand_count`.
@@ -285,6 +290,9 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 [See the full changelog](https://plugins.trac.wordpress.org/browser/filter-plus/trunk/changelog.txt)
 
 == Upgrade Notice ==
+
+= 1.1.41 =
+Fixes a critical error on load, a blank Filter Sets preview for non-admin users, and adds a Pro discount banner. Recommended update.
 
 = 1.1.40 =
 New Brand Filter (Checkbox, Radio, Image) for shortcode, Elementor, Gutenberg and Bricks, Elementor filter order, and fixes for editing saved filter sets. Recommended update.

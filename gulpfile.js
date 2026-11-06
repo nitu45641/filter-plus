@@ -59,7 +59,7 @@ const purgeLicenseArtifacts = async () => {
 
 const createZip = async () => {
   const zip = (await import('gulp-zip')).default;
-  return gulp.src(`${paths.build}/**`)
+  return gulp.src(`${paths.build}/**`, { base: 'dist' }) // keep top-level filter-plus/ folder in zip
     .pipe(zip('filter-plus.zip'))
     .pipe(gulp.dest(paths.zip_dest));
 };
