@@ -398,6 +398,17 @@
 					success(response) {
 						$this.removeClass('loading');
 						if (response && response.success) {
+							if (id) {
+								const saved_set = response.data?.data;
+								if (saved_set?.ID) {
+									$filter_set_id.val(saved_set.ID);
+								}
+								$this.text('Updated');
+								setTimeout(function () {
+									$this.text(edit_button_text);
+								}, 1400);
+								return;
+							}
 							location.reload();
 						} else {
 							alert(response?.data?.message || 'Could not save the filter set.');

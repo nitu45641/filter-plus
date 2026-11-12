@@ -3388,6 +3388,22 @@ ul.sub_categories.wrap-sub-cats.fp-open {
 		gap: 8px;
 	}
 
+	.price-input-2 .price-input-wrapper {
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.price-input-2 .field {
+		flex: 1 1 85px;
+		width: 85px;
+	}
+
+	.price-input-2 .separator-wrapper {
+		display: flex;
+		padding-top: 25px;
+	}
+
 	.separator-wrapper {
 		display: none;
 	}
@@ -3418,6 +3434,8 @@ ul.sub_categories.wrap-sub-cats.fp-open {
 
 .price-input-2 .field {
 	flex: 1 1 85px;
+	width: 85px;
+	max-width: 100%;
 	min-width: 0;
 }
 
