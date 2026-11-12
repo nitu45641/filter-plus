@@ -286,8 +286,8 @@ class Shortcodes {
 		}
 		else if( $filter_type == "product" && $template == "5" ){
 			$hover_color = $secondary_color = '#EB662B';
-			$loadmore_bg = '#fff';
-			$price_range = $loadmore_bg_hover = '#000';
+			$loadmore_bg = '#EB662B';
+			$price_range = $loadmore_bg_hover = '#d94d17';
 		}
 		else if ( $template == "6" ) {
 			$price_range = '#333'; 

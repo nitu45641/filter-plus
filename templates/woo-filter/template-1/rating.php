@@ -13,7 +13,7 @@ if ( $review_template !== '1' ) {
 	return;
 }
 ?>
-<div class="panel sidebar-row">
+<div class="panel sidebar-row rating-filter-row">
 	<h4 class="sidebar-label"><?php echo !empty( $review_label ) ? esc_html( $review_label ) : esc_html__('Rating','filter-plus');?></h4>
 	<ul class=" ratings rating-wrap" id="">
 		<?php

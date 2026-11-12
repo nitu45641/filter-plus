@@ -39,8 +39,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					data-slug="<?php echo esc_attr($filterplus_item['slug'])?>"
 					data-url="<?php $filterplus_term_link = get_term_link( (int) $filterplus_item['term_id'], isset( $taxonomy ) ? $taxonomy : 'product_cat' ); echo is_wp_error( $filterplus_term_link ) ? '' : esc_url( $filterplus_term_link ); ?>"
 				>
-					<?php echo esc_html($filterplus_item['name']);?>
-					<?php if ($product_count == 'yes') { echo ' (' . esc_html($filterplus_item['count']) . ')'; } ?>
+					<span class="fp-category-name"><?php echo esc_html($filterplus_item['name']);?></span>
+					<?php if ($product_count == 'yes') : ?>
+						<span class="fp-category-count"><?php echo esc_html($filterplus_item['count']); ?></span>
+					<?php endif; ?>
 					<?php if ( $filterplus_has_sub && $filterplus_is_wrap ) : ?>
 						<span class="fp-cat-caret" aria-label="<?php esc_attr_e('Toggle sub categories','filter-plus');?>">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg>
@@ -57,8 +59,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 									data-slug="<?php echo esc_attr($filterplus_sub['slug'])?>"
 									data-url="<?php echo esc_url( get_term_link( (int) $filterplus_sub['term_id'], 'product_cat' ) ); ?>"
 								>
-									<?php echo esc_html($filterplus_sub['name']);?>
-									<?php if ($product_count == 'yes') { echo ' (' . esc_html($filterplus_sub['count']) . ')'; } ?>
+									<span class="fp-category-name"><?php echo esc_html($filterplus_sub['name']);?></span>
+									<?php if ($product_count == 'yes') : ?>
+										<span class="fp-category-count"><?php echo esc_html($filterplus_sub['count']); ?></span>
+									<?php endif; ?>
 								</li>
 							<?php endforeach; ?>
 						</ul>

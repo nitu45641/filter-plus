@@ -1073,7 +1073,11 @@ class Helper {
 		</svg>
 		';
 
-		$html = "<li data-star=".$star."><span class='rating_block rate_".$template."'>";
+		// Text stars remain visible even when a theme hides or resets inline SVGs.
+		$rating       = '<span class="fp-rating-star" aria-hidden="true">★</span>';
+		$rating_light = '<span class="fp-rating-star fp-rating-star-muted" aria-hidden="true">☆</span>';
+
+		$html = "<li data-star=".$star."><span class='rating_block rate_".$template."' aria-label='" . esc_attr( $star . ' out of 5 stars' ) . "'>";
 		for($i=0; $i < 5; $i++) { 
 			if ( $star == 5 ) {
 				$html .= $rating;

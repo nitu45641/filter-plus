@@ -66,6 +66,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/rating.php" );
 				\FilterPlus\Base\SidebarSections::start( 'reviews' );
 				if ( 'yes'== $show_reviews && file_exists( $_fp_tpl ) ) {
+					// The Pro rating template's review template 2 uses the shared header.
+					$filterplus_label = ! empty( $review_label ) ? $review_label : esc_html__( 'Rating', 'filter-plus' );
 					include_once $_fp_tpl;
 				}
 				\FilterPlus\Base\SidebarSections::end();

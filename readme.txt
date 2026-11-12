@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.41
+Stable tag: 1.1.42
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -204,6 +204,12 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 
 == Changelog ==
 
+= 1.1.42 (November 11, 2026) =
+* New: Category checkbox layout is available in the free version.
+* Tweak: Improved category, rating, reset and price range layout across desktop and mobile sidebars.
+* Fix: Reset links now follow checkbox selection state and align below their options.
+* Fix: Load More button styling and tablet/mobile results layout.
+
 = 1.1.41 (November 6, 2026) =
 * New: "Filter Plus Pro — 50% Off" banner on Filter Plus admin pages while Pro is not active (dismissible for 7 days).
 * Fix: Filter Sets live preview stayed blank ("Preview not allowed") for users who can open Filter Sets but are not administrators. New filter `filterplus_filter_set_preview_capability`.
@@ -290,6 +296,9 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 [See the full changelog](https://plugins.trac.wordpress.org/browser/filter-plus/trunk/changelog.txt)
 
 == Upgrade Notice ==
+
+= 1.1.42 =
+Adds category checkboxes to the free version and improves storefront filter layout and controls. Recommended update.
 
 = 1.1.41 =
 Fixes a critical error on load, a blank Filter Sets preview for non-admin users, and adds a Pro discount banner. Recommended update.

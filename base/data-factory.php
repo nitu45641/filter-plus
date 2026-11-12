@@ -460,7 +460,7 @@ class DataFactory {
         $args = array(
             "template" => array(
                 1 => esc_html__( 'List', 'filter-plus' ),
-                2 => esc_html__( 'Checkbox', 'filter-plus' ) . $pro,
+                2 => esc_html__( 'Checkbox', 'filter-plus' ),
                 3 => esc_html__( 'Dropdown', 'filter-plus' ) . $pro,
                 4 => esc_html__( 'Radio', 'filter-plus' ) . $pro,
                 5 => esc_html__( 'Image', 'filter-plus' ) . $pro,
@@ -469,7 +469,7 @@ class DataFactory {
         );
 
         if ( ! class_exists( 'FilterPlusPro' ) ) {
-            $args['template_disable'] = 1;
+            $args['template_disable'] = 2;
         }else{
             $args['template_disable'] = '';
         }

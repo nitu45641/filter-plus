@@ -23,6 +23,7 @@ if ( 'yes' == $colors ) {
 					if ( ! empty( $filterplus_value->name ) ) {
 						$filterplus_style = ( $color_template !== '3' ) ? 'style="background-color: ' . esc_attr( $filterplus_value->name ) . ';"' : '';
 						?>
+							<div class="color-option">
 							<div class="checkbox-item color-item <?php echo esc_attr( $filterplus_tooltip ); ?>" title="<?php echo esc_attr( $filterplus_value->name ); ?>"
 								data-term_id="<?php echo esc_attr( $filterplus_value->term_id ); ?>"
 								data-taxonomy="<?php echo esc_attr( $filterplus_value->taxonomy ); ?>"
@@ -47,6 +48,7 @@ if ( 'yes' == $colors ) {
 							<?php if (  $color_template == "2" ) { ?>
 								<div class="meta-count"><?php echo '(' . intval( $filterplus_value->count ) . ')'; ?></div>
 							<?php } ?>
+							</div>
 						<?php
 					}
 				}

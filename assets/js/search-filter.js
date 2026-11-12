@@ -292,6 +292,15 @@
 					}
 					//reset block
 					reset_block(_this, _this.parents('.sidebar-row'));
+					if ( _this.is(':checkbox') && _this.closest('.param-box').length ) {
+						const $row = _this.closest('.sidebar-row');
+						const $reset = $row.find('.param-box > .reset');
+						if ( $row.find('.param-box input[type="checkbox"]:checked').length ) {
+							$reset.removeClass('d-none').show();
+						} else {
+							$reset.addClass('d-none').hide();
+						}
+					}
 				});
 			});
 		}
@@ -1700,6 +1709,18 @@
 
 			// Trigger product filtering with current selections
 			get_products();
+		});
+
+		// Sales and stock reset links are visible only when a checkbox is selected.
+		$('.sidebar-row .param-box').each(function () {
+			const $paramBox = $(this);
+			const $reset = $paramBox.children('.reset');
+			if ( !$reset.length || !$paramBox.find('input[type="checkbox"]').length ) {
+				return;
+			}
+
+			const hasChecked = $paramBox.find('input[type="checkbox"]:checked').length > 0;
+			$reset.toggleClass('d-none', !hasChecked).toggle(hasChecked);
 		});
 
 	});
