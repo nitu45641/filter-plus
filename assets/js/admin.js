@@ -545,6 +545,7 @@
 			'show_tags',
 			'show_brands',
 			'show_attributes',
+			'show_product_attributes',
 			'show_wp_tags',
 			'filter_type',
 			'author',

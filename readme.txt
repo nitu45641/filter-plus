@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.42
+Stable tag: 1.1.43
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -203,6 +203,11 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.43 (November 12, 2026) =
+* Tweak: Filter Sets list now uses a compact shortcode field with a full-value Copy action and a simpler page header.
+* Tweak: Clarified the exclusive rollover and gallery slider image modes, and keep both switches enabled while turning the other mode off.
+
 
 = 1.1.42 (November 11, 2026) =
 * New: Category checkbox layout is available in the free version.

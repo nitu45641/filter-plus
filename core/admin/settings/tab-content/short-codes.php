@@ -410,7 +410,6 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_number_input_field($filterplus_args);
 
 			filterplus_field_group_start( "woo_product_images", esc_html__( "Product Image Settings", "filter-plus" ), true, false );
-
 			// Product image size (Pro)
 			$filterplus_args = array('label'=>esc_html__("Image Size:","filter-plus"),'id' => 'product_image_size',
 			'data_label' => 'product_image_size','options'=> Helper::product_image_sizes(),'type'=>'random','selected' => 'woocommerce_thumbnail',
@@ -444,6 +443,13 @@ use \FilterPlus\Utils\Helper as Helper;
 			$filterplus_args = array('label'=>esc_html__("Gallery Slider:","filter-plus"),'id' => 'gallery_slider',
 			'data_label' => 'gallery_slider','disable' => ! class_exists('FilterPlusPro'));
 			filterplus_checkbox_field($filterplus_args);
+			filterplus_field_group_end();
+			filterplus_field_group_start( 'woo_product_attributes', esc_html__( 'Product Attributes', 'filter-plus' ), true, false );
+			$filterplus_args = array('label'=>esc_html__("Show Attributes:","filter-plus"),'id' => 'show_product_attributes','data_label' => 'show_product_attributes','disable' => ! class_exists('FilterPlusPro'));
+			filterplus_checkbox_field($filterplus_args);
+			$filterplus_product_attribute_options = class_exists('WooCommerce') ? wc_get_attribute_taxonomies() : array();
+			$filterplus_args = array('label'=>esc_html__("Attribute List:","filter-plus"),'id' => 'woo_pro_product_attributes','data_label' => 'product_attributes','options' => $filterplus_product_attribute_options,'select_type' => 'multiple','condition_class' => 'show_product_attributes d-none','type' => 'attributes','disable' => ! class_exists('FilterPlusPro'));
+			filterplus_select_field($filterplus_args);
 			filterplus_field_group_end();
 
 			// show Rating

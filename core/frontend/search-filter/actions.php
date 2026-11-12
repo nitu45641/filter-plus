@@ -719,6 +719,41 @@ class Actions {
 	 * @return array
 	 */
 	public function render_products_html($products, $filter_type, $template) {
+		$render_selected_attributes = static function ( $card_html, $product_data, $post_data ) {
+			if ( ! class_exists( 'FilterPlusPro' ) || 'yes' !== ( $post_data['show_product_attributes'] ?? 'no' ) || empty( $post_data['product_attributes'] ) || empty( $product_data['id'] ) || ! function_exists( 'wc_get_product' ) ) {
+				return $card_html;
+			}
+			$selected = is_array( $post_data['product_attributes'] ) ? $post_data['product_attributes'] : explode( ',', (string) $post_data['product_attributes'] );
+			$selected_keys = array();
+			foreach ( $selected as $selected_attribute ) {
+				$selected_attribute = trim( (string) $selected_attribute );
+				if ( is_numeric( $selected_attribute ) && function_exists( 'wc_attribute_taxonomy_name_by_id' ) ) {
+					$selected_attribute = wc_attribute_taxonomy_name_by_id( absint( $selected_attribute ) );
+				}
+				$selected_keys[] = sanitize_title( preg_replace( '/^pa_/', '', (string) $selected_attribute ) );
+			}
+			$selected = array_filter( $selected_keys );
+			if ( empty( $selected ) ) { return $card_html; }
+			$wc_product = wc_get_product( absint( $product_data['id'] ) );
+			if ( ! $wc_product ) { return $card_html; }
+			$items = '';
+			foreach ( $wc_product->get_attributes() as $attribute ) {
+				if ( ! $attribute->is_taxonomy() ) { continue; }
+				$taxonomy = $attribute->get_name();
+				$attribute_key = 0 === strpos( $taxonomy, 'pa_' ) ? substr( $taxonomy, 3 ) : $taxonomy;
+				if ( ! in_array( sanitize_title( $attribute_key ), $selected, true ) ) { continue; }
+				$value = $wc_product->get_attribute( $taxonomy );
+				if ( '' === trim( $value ) ) { continue; }
+				$items .= '<li><span class="fp-product-attribute-label">' . esc_html( wc_attribute_label( $taxonomy, $wc_product ) ) . ':</span> <span class="fp-product-attribute-value">' . esc_html( $value ) . '</span></li>';
+			}
+			if ( '' === $items ) { return $card_html; }
+			$markup = '<details class="fp-product-attributes-accordion" open><summary>' . esc_html__( 'Attributes', 'filter-plus' ) . '</summary><ul class="fp-product-attributes">' . $items . '</ul></details>';
+			if ( preg_match( '/<a\b[^>]*class=["\'][^"\']*(?:add_to_cart_button|product_type_)[^"\']*["\'][^>]*>/i', $card_html, $match, PREG_OFFSET_CAPTURE ) ) {
+				$offset = $match[0][1];
+				return substr( $card_html, 0, $offset ) . $markup . substr( $card_html, $offset );
+			}
+			return $card_html;
+		};
 		$html = array(
 			'grid' => '',
 			'list' => ''
@@ -776,7 +811,8 @@ class Actions {
 							isset($post_data['hide_wp_desc']) ? $post_data['hide_wp_desc'] : 'yes'
 						);
 					}
-					$html['grid'] .= ob_get_clean();
+					$rendered_card = ob_get_clean();
+					$html['grid'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
 				} elseif (function_exists('filterplus_render_grid_product')) {
 					ob_start();
 					if ($filter_type == 'product') {
@@ -798,7 +834,8 @@ class Actions {
 							isset($post_data['hide_wp_desc']) ? $post_data['hide_wp_desc'] : 'yes'
 						);
 					}
-					$html['grid'] .= ob_get_clean();
+					$rendered_card = ob_get_clean();
+					$html['grid'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
 				}
 
 				// List template
@@ -820,7 +857,8 @@ class Actions {
 							isset($post_data['hide_wp_desc']) ? $post_data['hide_wp_desc'] : 'yes'
 						);
 					}
-					$html['list'] .= ob_get_clean();
+					$rendered_card = ob_get_clean();
+					$html['list'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
 				} elseif (function_exists('filterplus_render_list_product')) {
 					ob_start();
 					if ($filter_type == 'product') {
@@ -839,7 +877,8 @@ class Actions {
 							isset($post_data['hide_wp_desc']) ? $post_data['hide_wp_desc'] : 'yes'
 						);
 					}
-					$html['list'] .= ob_get_clean();
+					$rendered_card = ob_get_clean();
+					$html['list'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
 				}
 			}
 		}

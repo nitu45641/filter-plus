@@ -731,6 +731,9 @@
 			let hide_prod_desc     = $('#shopContainer').data('hide_prod_desc') || 'yes';
 			let hide_prod_price    = $('#shopContainer').data('hide_prod_price') || 'yes';
 			let hide_prod_rating   = $('#shopContainer').data('hide_prod_rating') || 'yes';
+			let show_product_attributes = $('#shopContainer').data('show_product_attributes') || 'no';
+			let attributes = $('#shopContainer').data('attributes') || '';
+			let product_attributes = $('#shopContainer').data('product_attributes') || '';
 			let selected_data 	= selected_param(params);
 			show_selected_data(selected_data);
 
@@ -761,6 +764,9 @@
 				hide_prod_desc,
 				hide_prod_price,
 				hide_prod_rating,
+				show_product_attributes,
+				attributes,
+				product_attributes,
 				params: selected_data,
 			};
 

@@ -106,6 +106,9 @@ class Shortcodes {
 			data-hide_prod_desc="<?php echo esc_attr($hide_prod_desc)?>"
 			data-hide_prod_price="<?php echo esc_attr($hide_prod_price)?>"
 			data-hide_prod_rating="<?php echo esc_attr($hide_prod_rating)?>"
+			data-show_product_attributes="<?php echo esc_attr($show_product_attributes)?>"
+			data-product_attributes="<?php echo esc_attr($product_attributes)?>"
+			data-attributes="<?php echo esc_attr($attributes)?>"
 			data-enable_category_layout="<?php echo esc_attr($enable_category_layout)?>"
 			data-current_cat_id="<?php echo esc_attr($current_cat_id)?>"
 			>

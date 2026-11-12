@@ -81,6 +81,8 @@ class DataFactory {
             'rollover_image_number'  => '1',
             'rollover_effect'        => 'fade',
             'gallery_slider'         => 'no',
+            'show_product_attributes' => 'no',
+            'product_attributes' => '',
             'hide_prod_rating'       => 'yes',
             'enable_category_layout' => 'no',
             'current_cat_id'         => '',
@@ -221,6 +223,10 @@ class DataFactory {
 		$default_data['rollover_image_number'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['rollover_image_number'] ) ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1;
 		$default_data['rollover_effect'] = ( class_exists( 'FilterPlusPro' ) && in_array( $settings['rollover_effect'] ?? 'fade', array( 'fade', 'zoom', 'none' ), true ) ) ? $settings['rollover_effect'] : 'fade';
 		$default_data['gallery_slider']      = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['gallery_slider'] ) ) ? 'yes' : 'no';
+		$default_data['show_product_attributes'] = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['show_product_attributes'] ) && 'yes' === $settings['show_product_attributes'] ) ? 'yes' : 'no';
+		$product_attribute_ids = $settings['product_attributes'] ?? array();
+		$product_attribute_ids = is_array( $product_attribute_ids ) ? $product_attribute_ids : explode( ',', (string) $product_attribute_ids );
+		$default_data['product_attributes'] = class_exists( 'FilterPlusPro' ) ? implode( ',', array_filter( array_map( 'absint', $product_attribute_ids ) ) ) : '';
 		// Gallery Slider and Rollover Image are exclusive modes; prefer the slider if legacy settings enable both.
 		if ( 'yes' === $default_data['gallery_slider'] ) {
 			$default_data['rollover_image'] = 'no';
