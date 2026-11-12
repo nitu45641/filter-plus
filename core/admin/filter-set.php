@@ -1,12 +1,23 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
 
 <div id="filter-set-list-wrap">
-  <div class="mt-2 content-header">
-    <div class="title mr-1"><?php esc_html_e( 'Filter Sets', 'filter-plus' ); ?></div>
-    <button type="button" class="button add-filter-set"><?php esc_html_e( 'Add New Filter Set', 'filter-plus' ); ?></button>
+  <div class="filter-set-page-head">
+    <div class="filter-set-page-copy">
+      <h1><?php esc_html_e( 'Filter Sets', 'filter-plus' ); ?></h1>
+      <p><?php esc_html_e( 'Save and reuse product filter configurations with a shortcode.', 'filter-plus' ); ?></p>
+    </div>
+    <button type="button" class="button button-primary add-filter-set">
+      <span class="filter-set-add-icon" aria-hidden="true">+</span>
+      <?php esc_html_e( 'Add New Filter Set', 'filter-plus' ); ?>
+    </button>
   </div>
 
-  <section class="filter-sets-saved mt-2">
+  <section class="filter-sets-saved">
+    <div class="filter-set-list-heading">
+      <div>
+        <h2><?php esc_html_e( 'Saved Filter Sets', 'filter-plus' ); ?></h2>
+      </div>
+    </div>
     <div class="filter-options-list">
       <form method="POST">
         <?php

@@ -431,6 +431,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			filterplus_number_input_field($filterplus_args);
 
 			// Pro gallery image display options
+			?>
+			<div class="single-block flp-image-mode-notice"><span class="dashicons dashicons-info-outline" aria-hidden="true"></span><p><?php esc_html_e("Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time.", "filter-plus"); ?></p></div>
+			<?php
 			$filterplus_args = array('label'=>esc_html__("Rollover Image:","filter-plus"),'id' => 'rollover_image',
 			'data_label' => 'rollover_image','disable' => ! class_exists('FilterPlusPro'));
 			filterplus_checkbox_field($filterplus_args);

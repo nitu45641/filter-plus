@@ -230,6 +230,8 @@ option.disable,.disable {
 	display: flex;
 }
 
+.custom-switcher.is-mode-disabled { opacity: .5; pointer-events: none; cursor: not-allowed; }
+
 /* Setting Tab Style */
 .tab-content {
 	border-radius: 5px;
@@ -2245,4 +2247,187 @@ button.loading::after{
 	border-radius: 50%;
 	-webkit-animation: spin .75s linear infinite;
 	animation: spin .75s linear infinite;
+}
+
+
+/* Filter Sets list page */
+#filter-set-list-wrap {
+	max-width: 1440px;
+	margin: 24px 20px 40px 0;
+}
+.filter-set-page-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	margin: 0 0 22px;
+}
+.filter-set-page-copy h1 {
+	margin: 0 0 6px;
+	color: #1d2327;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+.filter-set-page-copy p,
+.filter-set-list-heading p {
+	margin: 0;
+	color: #646970;
+	font-size: 13px;
+}
+.filter-set-page-head .add-filter-set {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 40px;
+	padding: 0 14px;
+	white-space: nowrap;
+	font-weight: 600;
+}
+.filter-set-add-icon {
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 1;
+}
+#filter-set-list-wrap .filter-sets-saved {
+	margin: 0;
+	padding: 20px 22px 10px;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+}
+.filter-set-list-heading {
+	margin: 0 0 16px;
+}
+.filter-set-list-heading h2 {
+	margin: 0 0 5px;
+	color: #1d2327;
+	font-size: 16px;
+	font-weight: 600;
+}
+#filter-set-list-wrap .filter-options-list,
+#filter-set-list-wrap form {
+	margin: 0;
+}
+#filter-set-list-wrap .tablenav {
+	min-height: 40px;
+	margin: 8px 0 12px;
+}
+#filter-set-list-wrap .tablenav.top {
+	margin-top: 0;
+}
+#filter-set-list-wrap .wp-list-table {
+	border: 1px solid #e2e4e7;
+	border-radius: 6px;
+	border-spacing: 0;
+	box-shadow: none;
+	overflow: hidden;
+}
+#filter-set-list-wrap .wp-list-table thead tr,
+#filter-set-list-wrap .wp-list-table tfoot tr {
+	height: 48px;
+	background: #f6f7f7;
+}
+#filter-set-list-wrap .wp-list-table tfoot {
+	display: none;
+}
+#filter-set-list-wrap .wp-list-table th,
+#filter-set-list-wrap .wp-list-table td {
+	padding: 12px 14px;
+	vertical-align: middle;
+}
+#filter-set-list-wrap .wp-list-table .check-column {
+	width: 42px;
+	padding-right: 0;
+	padding-left: 12px;
+}
+#filter-set-list-wrap .wp-list-table th.column-name,
+#filter-set-list-wrap .wp-list-table td.column-name {
+	width: 24%;
+}
+#filter-set-list-wrap .wp-list-table tbody tr {
+	background: #fff;
+}
+#filter-set-list-wrap .wp-list-table tbody tr:hover {
+	background: #fbfcfd;
+}
+#filter-set-list-wrap .wp-list-table td.column-name {
+	color: #1d2327;
+	font-weight: 500;
+}
+#filter-set-list-wrap .row-actions {
+	padding-top: 5px;
+}
+#filter-set-list-wrap .shortcode-cell {
+	align-items: stretch;
+	gap: 10px;
+}
+#filter-set-list-wrap .shortcode-cell .saved-shortcode {
+	box-sizing: border-box;
+	min-height: 66px;
+	max-height: 120px;
+	padding: 9px 11px;
+	border: 1px solid #dcdcde;
+	border-radius: 5px;
+	background: #f6f7f7;
+	color: #3c434a;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 12px;
+	line-height: 1.5;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+	resize: vertical;
+}
+#filter-set-list-wrap .shortcode-cell .copy-filter-set {
+	align-self: center;
+	min-height: 36px;
+	padding: 0 14px;
+	font-weight: 600;
+}
+@media (max-width: 782px) {
+	#filter-set-list-wrap {
+		margin: 18px 10px 30px 0;
+	}
+	.filter-set-page-head {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 14px;
+	}
+	#filter-set-list-wrap .filter-sets-saved {
+		padding: 16px 12px 8px;
+	}
+	#filter-set-list-wrap .wp-list-table th,
+	#filter-set-list-wrap .wp-list-table td {
+		padding: 10px 8px;
+	}
+	#filter-set-list-wrap .shortcode-cell {
+		align-items: stretch;
+		flex-direction: column;
+	}
+	#filter-set-list-wrap .shortcode-cell .copy-filter-set {
+		align-self: flex-start;
+	}
+}
+
+.flp-image-mode-notice {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	margin: 4px 0 12px !important;
+	padding: 10px 12px;
+	border: 1px solid #c8d7e8;
+	border-left: 3px solid #2271b1;
+	border-radius: 4px;
+	background: #f6f9fc;
+	color: #3c434a;
+}
+.flp-image-mode-notice .dashicons {
+	flex: 0 0 auto;
+	color: #2271b1;
+}
+.flp-image-mode-notice p {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
 }

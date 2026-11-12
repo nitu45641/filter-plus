@@ -764,7 +764,7 @@ class Actions {
 							isset($post_data['hide_prod_desc']) ? $post_data['hide_prod_desc'] : 'yes',
 							isset($post_data['hide_prod_rating']) ? $post_data['hide_prod_rating'] : 'yes',
 							isset($post_data['hide_prod_price']) ? $post_data['hide_prod_price'] : 'yes',
-							isset($post_data['rollover_image']) && 'yes' === $post_data['rollover_image'] ? 'yes' : 'no',
+							isset($post_data['rollover_image']) && 'yes' === $post_data['rollover_image'] && ( ! isset($post_data['gallery_slider']) || 'yes' !== $post_data['gallery_slider'] ) ? 'yes' : 'no',
 							isset($post_data['rollover_image_number']) ? max(1, min(5, absint($post_data['rollover_image_number']))) : 1,
 							isset($post_data['rollover_effect']) ? sanitize_key($post_data['rollover_effect']) : 'fade',
 							isset($post_data['gallery_slider']) && 'yes' === $post_data['gallery_slider'] ? 'yes' : 'no'
@@ -787,7 +787,7 @@ class Actions {
 							isset($post_data['hide_prod_desc']) ? $post_data['hide_prod_desc'] : 'yes',
 							isset($post_data['hide_prod_rating']) ? $post_data['hide_prod_rating'] : 'yes',
 							isset($post_data['hide_prod_price']) ? $post_data['hide_prod_price'] : 'yes',
-							isset($post_data['rollover_image']) && 'yes' === $post_data['rollover_image'] ? 'yes' : 'no',
+							isset($post_data['rollover_image']) && 'yes' === $post_data['rollover_image'] && ( ! isset($post_data['gallery_slider']) || 'yes' !== $post_data['gallery_slider'] ) ? 'yes' : 'no',
 							isset($post_data['rollover_image_number']) ? max(1, min(5, absint($post_data['rollover_image_number']))) : 1,
 							isset($post_data['rollover_effect']) ? sanitize_key($post_data['rollover_effect']) : 'fade'
 						);

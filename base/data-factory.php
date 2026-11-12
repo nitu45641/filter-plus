@@ -221,6 +221,10 @@ class DataFactory {
 		$default_data['rollover_image_number'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['rollover_image_number'] ) ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1;
 		$default_data['rollover_effect'] = ( class_exists( 'FilterPlusPro' ) && in_array( $settings['rollover_effect'] ?? 'fade', array( 'fade', 'zoom', 'none' ), true ) ) ? $settings['rollover_effect'] : 'fade';
 		$default_data['gallery_slider']      = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['gallery_slider'] ) ) ? 'yes' : 'no';
+		// Gallery Slider and Rollover Image are exclusive modes; prefer the slider if legacy settings enable both.
+		if ( 'yes' === $default_data['gallery_slider'] ) {
+			$default_data['rollover_image'] = 'no';
+		}
 		$default_data['hide_prod_rating']   = ! empty( $hide_prod_rating ) && ( $hide_prod_rating == true || $hide_prod_rating == 'yes' ) ?  'yes' : 'no';
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
 		$default_data['enable_category_layout'] = ( isset( $settings['enable_category_layout'] ) && $settings['enable_category_layout'] === 'yes' ) ? 'yes' : 'no';

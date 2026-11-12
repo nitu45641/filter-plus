@@ -254,7 +254,7 @@
 		}
 
 		function shortcode_input_disable($this) {
-			const disable = $this.parent().hasClass('disable');
+			const disable = $this.parent().hasClass('disable') || $this.parent().hasClass('is-mode-disabled');
 			const disable_pro = $this.parent().hasClass('pro-disable');
 			const d_none = $this.parents('.d-none');
 			if (disable_pro || disable || d_none.length > 0) {
@@ -262,6 +262,26 @@
 			}
 			return false;
 		}
+
+		function syncProductImageModes($block, changed) {
+			const $rollover = $block.find('#rollover_image').first();
+			const $slider = $block.find('#gallery_slider').first();
+			if (!$rollover.length || !$slider.length) return;
+			if (changed === 'rollover_image' && $rollover.is(':checked')) $slider.prop('checked', false);
+			if (changed === 'gallery_slider' && $slider.is(':checked')) $rollover.prop('checked', false);
+			if (!changed && $rollover.is(':checked') && $slider.is(':checked')) $rollover.prop('checked', false);
+			const rolloverOn = $rollover.is(':checked');
+			const sliderOn = $slider.is(':checked');
+			$rollover.prop('disabled', sliderOn).parent().toggleClass('is-mode-disabled', sliderOn);
+			$slider.prop('disabled', rolloverOn).parent().toggleClass('is-mode-disabled', rolloverOn);
+			$block.find('#rollover_image_number, #rollover_effect').closest('.single-block').toggleClass('d-none', !rolloverOn);
+		}
+		$(document).on('change', '.shortcode-block #rollover_image, .shortcode-block #gallery_slider', function () {
+			syncProductImageModes($(this).closest('.shortcode-block'), this.id);
+		});
+		$('.shortcode-block').each(function () {
+			syncProductImageModes($(this), null);
+		});
 
 		/**
 		 * Filter Sets - save the currently configured shortcode as a named,
