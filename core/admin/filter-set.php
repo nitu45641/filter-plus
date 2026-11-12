@@ -3,21 +3,18 @@
 <div id="filter-set-list-wrap">
   <div class="filter-set-page-head">
     <div class="filter-set-page-copy">
-      <h1><?php esc_html_e( 'Filter Sets', 'filter-plus' ); ?></h1>
+      <div class="filter-set-title-row">
+        <h1><?php esc_html_e( 'Filter Sets', 'filter-plus' ); ?></h1>
+        <button type="button" class="button button-primary add-filter-set">
+          <span class="filter-set-add-icon" aria-hidden="true">+</span>
+          <?php esc_html_e( 'Add New Filter Set', 'filter-plus' ); ?>
+        </button>
+      </div>
       <p><?php esc_html_e( 'Save and reuse product filter configurations with a shortcode.', 'filter-plus' ); ?></p>
     </div>
-    <button type="button" class="button button-primary add-filter-set">
-      <span class="filter-set-add-icon" aria-hidden="true">+</span>
-      <?php esc_html_e( 'Add New Filter Set', 'filter-plus' ); ?>
-    </button>
   </div>
 
   <section class="filter-sets-saved">
-    <div class="filter-set-list-heading">
-      <div>
-        <h2><?php esc_html_e( 'Saved Filter Sets', 'filter-plus' ); ?></h2>
-      </div>
-    </div>
     <div class="filter-options-list">
       <form method="POST">
         <?php

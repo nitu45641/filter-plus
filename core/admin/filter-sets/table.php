@@ -95,7 +95,7 @@ class Table extends \WP_List_Table {
 	 */
 	protected function column_shortcode( $item ) {
 		return '<div class="shortcode-cell">'
-			. '<textarea readonly rows="3" class="saved-shortcode" aria-label="' . esc_attr( sprintf( __( 'Shortcode for %s', 'filter-plus' ), $item['name'] ) ) . '">' . esc_textarea( $item['shortcode'] ) . '</textarea>'
+			. '<input type="text" readonly class="saved-shortcode" aria-label="' . esc_attr( sprintf( __( 'Shortcode for %s', 'filter-plus' ), $item['name'] ) ) . '" value="' . esc_attr( $item['shortcode'] ) . '">'
 			. '<button type="button" class="button copy-filter-set" title="' . esc_attr__( 'Copy shortcode', 'filter-plus' ) . '">' . esc_html__( 'Copy', 'filter-plus' ) . '</button>'
 			. '</div>';
 	}
