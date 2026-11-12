@@ -753,6 +753,8 @@
 				product_image_size,
 				image_width,
 				image_height,
+				rollover_image: $('#shopContainer').data('rollover_image') || 'no',
+				gallery_slider: $('#shopContainer').data('gallery_slider') || 'no',
 				hide_prod_title,
 				hide_prod_desc,
 				hide_prod_price,

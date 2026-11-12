@@ -98,6 +98,8 @@ class Shortcodes {
 			data-product_image_size="<?php echo esc_attr($product_image_size)?>"
 			data-image_width="<?php echo esc_attr($image_width)?>"
 			data-image_height="<?php echo esc_attr($image_height)?>"
+			data-rollover_image="<?php echo esc_attr($rollover_image)?>"
+			data-gallery_slider="<?php echo esc_attr($gallery_slider)?>"
 			data-hide_prod_title="<?php echo esc_attr($hide_prod_title)?>"
 			data-hide_prod_desc="<?php echo esc_attr($hide_prod_desc)?>"
 			data-hide_prod_price="<?php echo esc_attr($hide_prod_price)?>"

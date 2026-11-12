@@ -428,6 +428,14 @@ use \FilterPlus\Utils\Helper as Helper;
 			'disable' => class_exists('FilterPlusPro') ? false : true);
 			filterplus_number_input_field($filterplus_args);
 
+			// Pro gallery image display options
+			$filterplus_args = array('label'=>esc_html__("Rollover Image:","filter-plus"),'id' => 'rollover_image',
+			'data_label' => 'rollover_image','disable' => ! class_exists('FilterPlusPro'));
+			filterplus_checkbox_field($filterplus_args);
+			$filterplus_args = array('label'=>esc_html__("Gallery Slider:","filter-plus"),'id' => 'gallery_slider',
+			'data_label' => 'gallery_slider','disable' => ! class_exists('FilterPlusPro'));
+			filterplus_checkbox_field($filterplus_args);
+
 			// show Rating
 			$filterplus_args = array('label'=>esc_html__("Show Rating:","filter-plus"),'id' => 'hide_prod_rating',
 			'data_label' => 'hide_prod_rating','checked' => 'yes');

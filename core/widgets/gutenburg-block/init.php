@@ -78,6 +78,17 @@ if( version_compare( get_bloginfo('version'), '5.8') >= 0){
 // Hook: Block assets — late priority so all CPTs from other plugins are registered first.
 add_action( 'init', 'filterplus_block_assets', 99 );
 
+// Add image display controls to the existing Woo filter block.
+add_action( 'enqueue_block_editor_assets', function() {
+    wp_enqueue_script(
+        'filter-plus-gallery-image-controls',
+        \FilterPlus::assets_url() . 'js/gallery-image-controls.js',
+        array( 'wp-element', 'wp-components', 'wp-compose', 'wp-hooks', 'wp-block-editor' ),
+        \FilterPlus::asset_version( 'js/gallery-image-controls.js' ),
+        true
+    );
+} );
+
 // Enqueue frontend styles in the block editor so previews match the frontend.
 add_action( 'enqueue_block_editor_assets', function() {
     wp_enqueue_style( 'filter-plus-public-css' );

@@ -77,6 +77,8 @@ class DataFactory {
             'product_image_size'     => 'woocommerce_thumbnail',
             'image_width'            => '',
             'image_height'           => '',
+            'rollover_image'         => 'no',
+            'gallery_slider'         => 'no',
             'hide_prod_rating'       => 'yes',
             'enable_category_layout' => 'no',
             'current_cat_id'         => '',
@@ -213,6 +215,8 @@ class DataFactory {
 		$default_data['product_image_size'] = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['product_image_size'] ) ) ? sanitize_text_field( $settings['product_image_size'] ) : 'woocommerce_thumbnail';
 		$default_data['image_width']        = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['image_width'] ) )  ? intval( $settings['image_width'] )  : '';
 		$default_data['image_height']       = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['image_height'] ) ) ? intval( $settings['image_height'] ) : '';
+		$default_data['rollover_image']      = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['rollover_image'] ) ) ? 'yes' : 'no';
+		$default_data['gallery_slider']      = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['gallery_slider'] ) ) ? 'yes' : 'no';
 		$default_data['hide_prod_rating']   = ! empty( $hide_prod_rating ) && ( $hide_prod_rating == true || $hide_prod_rating == 'yes' ) ?  'yes' : 'no';
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
 		$default_data['enable_category_layout'] = ( isset( $settings['enable_category_layout'] ) && $settings['enable_category_layout'] === 'yes' ) ? 'yes' : 'no';
@@ -294,6 +298,8 @@ class DataFactory {
 			'product_image_size' => $product_image_size,
 			'image_width' => $image_width,
 			'image_height' => $image_height,
+			'rollover_image' => $rollover_image,
+			'gallery_slider' => $gallery_slider,
 			'hide_prod_rating' => $hide_prod_rating,
 			'size_label' => $size_label,
 			'attribute_label' => $attribute_label,

@@ -670,6 +670,8 @@ class Woo_Filter extends \Bricks\Element {
 			'placeholder' => 300,
 			'required' => array( 'product_image_size', '=', 'custom' ),
 		);
+        $this->controls['rollover_image'] = array( 'tab' => 'content', 'group' => 'filter-result', 'label' => esc_html__( 'Rollover Image', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => 'checkbox', 'default' => false, 'disabled' => ! class_exists( 'FilterPlusPro' ), 'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) );
+        $this->controls['gallery_slider'] = array( 'tab' => 'content', 'group' => 'filter-result', 'label' => esc_html__( 'Gallery Slider', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => 'checkbox', 'default' => false, 'disabled' => ! class_exists( 'FilterPlusPro' ), 'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) );
 		$this->controls['hide_prod_rating'] = array(
 			'tab' => 'content',
 			'group' => 'filter-result',

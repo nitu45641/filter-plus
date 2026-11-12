@@ -636,6 +636,8 @@ class Woo_Filter extends Widget_Base {
 				'condition' => array( 'product_image_size' => 'custom' ),
 			)
 		);
+        $this->add_control( 'rollover_image', array( 'label' => esc_html__( 'Rollover Image', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '', 'disabled' => ! class_exists( 'FilterPlusPro' ), 'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) ) );
+        $this->add_control( 'gallery_slider', array( 'label' => esc_html__( 'Gallery Slider', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '', 'disabled' => ! class_exists( 'FilterPlusPro' ), 'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) ) );
 		$this->add_control('hide_prod_title',
 			array(
 				'label' => esc_html__( 'Display Title', 'filter-plus' ),

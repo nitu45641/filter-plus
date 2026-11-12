@@ -211,6 +211,8 @@ function product_filter_block() {
                     'type' => 'number',
                     'default' => 0
                 ),
+                'rollover_image' => array( 'type' => 'boolean', 'default' => false ),
+                'gallery_slider' => array( 'type' => 'boolean', 'default' => false ),
                 'hide_prod_rating' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -289,6 +291,7 @@ function product_filter_callback( $settings ) {
         'colors', 'size', 'show_tags', 'show_attributes', 'show_price_range',
         'show_reviews', 'stock', 'on_sale', 'hide_prod_title', 'hide_prod_desc',
         'hide_prod_price', 'hide_prod_add_cart', 'hide_prod_rating', 'sorting',
+        'rollover_image', 'gallery_slider',
         'product_categories', 'show_sale_badge', 'product_tags', 'apply_button_mode',
         'show_brands', 'hide_empty_brand', 'brand_count'
     ];
