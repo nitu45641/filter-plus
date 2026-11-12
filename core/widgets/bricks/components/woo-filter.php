@@ -550,6 +550,16 @@ class Woo_Filter extends \Bricks\Element {
 			'required' => array( 'stock', '=', true ),
 		);
 
+		$this->controls['stock_template'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'Stock Filter Layout', 'filter-plus' ),
+			'type' => 'select',
+			'options' => DataFactory::sale_stock_template( 'elementor' )['template'],
+			'default' => '1',
+			'required' => array( 'stock', '=', true ),
+		);
+
 		// on sale
 
 		$this->controls['on_sale'] = array(
@@ -568,6 +578,16 @@ class Woo_Filter extends \Bricks\Element {
 			'label' => esc_html__( 'On Sale Label', 'filter-plus' ),
 			'type' => 'text',
 			'default' => esc_html__( 'Place On Sale Label Here', 'filter-plus' ),
+			'required' => array( 'on_sale', '=', true ),
+		);
+
+		$this->controls['on_sale_template'] = array(
+			'tab' => 'content',
+			'group' => 'filter_options',
+			'label' => esc_html__( 'On Sale Filter Layout', 'filter-plus' ),
+			'type' => 'select',
+			'options' => DataFactory::sale_stock_template( 'elementor' )['template'],
+			'default' => '1',
 			'required' => array( 'on_sale', '=', true ),
 		);
 

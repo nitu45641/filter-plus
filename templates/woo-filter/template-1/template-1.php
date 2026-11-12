@@ -88,13 +88,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		// on sale
 		\FilterPlus\Base\SidebarSections::start( 'on_sale' );
 		if ( 'yes'== $on_sale ) {
-			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/on-sale.php" );
+			$_fp_sale_layout = \FilterPlus\Base\DataFactory::sale_stock_layout_url( 'on-sale', $on_sale_template ?? '1' );
+			if ( file_exists( $_fp_sale_layout ) ) {
+				include_once $_fp_sale_layout;
+			}
 		}
 		\FilterPlus\Base\SidebarSections::end();
 		// stock
 		\FilterPlus\Base\SidebarSections::start( 'stock' );
 		if ( 'yes'== $stock ) {
-			include_once \FilterPlus::locate_template( "woo-filter/template-".$template."/stock.php" );
+			$_fp_stock_layout = \FilterPlus\Base\DataFactory::sale_stock_layout_url( 'stock', $stock_template ?? '1' );
+			if ( file_exists( $_fp_stock_layout ) ) {
+				include_once $_fp_stock_layout;
+			}
 		}
 		\FilterPlus\Base\SidebarSections::end();
 	?>

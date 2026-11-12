@@ -330,6 +330,10 @@ use \FilterPlus\Utils\Helper as Helper;
 			'placeholder'=>esc_html__("Place Stock Label Here","filter-plus"),
 			'data_label' => 'stock_label','condition_class' => 'stock d-none' );
 			filterplus_number_input_field($filterplus_args);
+			$filterplus_args = array('label'=>esc_html__("Stock Filter Layout:","filter-plus"),'id' => 'stock_template',
+			'data_label' => 'stock_template','options'=> DataFactory::sale_stock_template()['template'],'type'=>'named_template',
+			'condition_class' => 'stock d-none','template_disable' => DataFactory::sale_stock_template()['template_disable'] );
+			filterplus_select_field($filterplus_args);
 
 			filterplus_field_group_end();
 
@@ -344,6 +348,10 @@ use \FilterPlus\Utils\Helper as Helper;
 			'condition_class' => "on_sale d-none");
 
 			filterplus_number_input_field($filterplus_args);
+			$filterplus_args = array('label'=>esc_html__("On Sale Filter Layout:","filter-plus"),'id' => 'on_sale_template',
+			'data_label' => 'on_sale_template','options'=> DataFactory::sale_stock_template()['template'],'type'=>'named_template',
+			'condition_class' => 'on_sale d-none','template_disable' => DataFactory::sale_stock_template()['template_disable'] );
+			filterplus_select_field($filterplus_args);
 
 			filterplus_field_group_end();
 			filterplus_field_groups_end();

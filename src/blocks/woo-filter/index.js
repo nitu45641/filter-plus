@@ -181,6 +181,10 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'string',
             default: ''
         },
+        stock_template: {
+            type: 'string',
+            default: '1'
+        },
         on_sale: {
             type: 'boolean',
             default: true
@@ -188,6 +192,10 @@ registerBlockType('filter-plus/woo-filter', {
         on_sale_label: {
             type: 'string',
             default: ''
+        },
+        on_sale_template: {
+            type: 'string',
+            default: '1'
         },
         hide_prod_title: {
             type: 'boolean',
@@ -778,12 +786,20 @@ registerBlockType('filter-plus/woo-filter', {
                         />
 
                         {attributes.stock && (
-                            <TextControl
-                                label={__('Stock Label', 'filter-plus')}
-                                value={attributes.stock_label}
-                                onChange={(value) => setAttributes({ stock_label: value })}
-                                placeholder={__('Place Stock Label Here', 'filter-plus')}
-                            />
+                            <>
+                                <SelectControl
+                                    label={__('Stock Filter Layout', 'filter-plus')}
+                                    value={attributes.stock_template}
+                                    options={[1, ...(window.filterPlus?.is_pro_active === 0 ? [2, 3] : [])].map((n) => ({ value: String(n), label: `${__('Layout', 'filter-plus')} ${n}${n > 1 ? ` (${__('Pro', 'filter-plus')})` : ''}` }))}
+                                    onChange={(value) => setAttributes({ stock_template: value })}
+                                />
+                                <TextControl
+                                    label={__('Stock Label', 'filter-plus')}
+                                    value={attributes.stock_label}
+                                    onChange={(value) => setAttributes({ stock_label: value })}
+                                    placeholder={__('Place Stock Label Here', 'filter-plus')}
+                                />
+                            </>
                         )}
 
                         <ToggleControl
@@ -793,12 +809,20 @@ registerBlockType('filter-plus/woo-filter', {
                         />
 
                         {attributes.on_sale && (
-                            <TextControl
-                                label={__('On Sale Label', 'filter-plus')}
-                                value={attributes.on_sale_label}
-                                onChange={(value) => setAttributes({ on_sale_label: value })}
-                                placeholder={__('Place On Sale Label Here', 'filter-plus')}
-                            />
+                            <>
+                                <SelectControl
+                                    label={__('On Sale Filter Layout', 'filter-plus')}
+                                    value={attributes.on_sale_template}
+                                    options={[1, ...(window.filterPlus?.is_pro_active === 0 ? [2, 3] : [])].map((n) => ({ value: String(n), label: `${__('Layout', 'filter-plus')} ${n}${n > 1 ? ` (${__('Pro', 'filter-plus')})` : ''}` }))}
+                                    onChange={(value) => setAttributes({ on_sale_template: value })}
+                                />
+                                <TextControl
+                                    label={__('On Sale Label', 'filter-plus')}
+                                    value={attributes.on_sale_label}
+                                    onChange={(value) => setAttributes({ on_sale_label: value })}
+                                    placeholder={__('Place On Sale Label Here', 'filter-plus')}
+                                />
+                            </>
                         )}
                     </PanelBody>
 

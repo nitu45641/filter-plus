@@ -106,14 +106,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		// on sale / stock need Pro (template 2 is Pro-only; no early return - it would break SidebarSections buffering)
 		if ( class_exists( 'FilterPlusPro' ) ) {
 			// on sale
-			$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/on-sale.php" );
+			$_fp_tpl = \FilterPlus\Base\DataFactory::sale_stock_layout_url( 'on-sale', $on_sale_template ?? '1' );
 			\FilterPlus\Base\SidebarSections::start( 'on_sale' );
 			if ( 'yes'== $on_sale && file_exists( $_fp_tpl ) ) {
 				include_once $_fp_tpl;
 			}
 			\FilterPlus\Base\SidebarSections::end();
 			// stock
-			$_fp_tpl = \FilterPlusPro::locate_template( "woo-filter/parts/stock.php" );
+			$_fp_tpl = \FilterPlus\Base\DataFactory::sale_stock_layout_url( 'stock', $stock_template ?? '1' );
 			\FilterPlus\Base\SidebarSections::start( 'stock' );
 			if ( 'yes'== $stock && file_exists( $_fp_tpl ) ) {
 				include_once $_fp_tpl;

@@ -541,6 +541,16 @@ class Woo_Filter extends Widget_Base {
 		);
 
 		$this->add_control(
+			'stock_template',
+			array(
+				'label' => esc_html__( 'Stock Filter Layout', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => DataFactory::sale_stock_template( 'elementor' )['template'],
+				'condition' => array( 'stock' => 'yes' ),
+			)
+		);
+		$this->add_control(
 			'stock_label',
 			array(
 				'label'     => esc_html__( 'Stock Label', 'filter-plus' ),
@@ -562,6 +572,16 @@ class Woo_Filter extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'on_sale_template',
+			array(
+				'label' => esc_html__( 'On Sale Filter Layout', 'filter-plus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '1',
+				'options' => DataFactory::sale_stock_template( 'elementor' )['template'],
+				'condition' => array( 'on_sale' => 'yes' ),
+			)
+		);
 		$this->add_control(
 			'on_sale_label',
 			array(

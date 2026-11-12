@@ -163,6 +163,10 @@ function product_filter_block() {
                     'type' => 'string',
                     'default' => ''
                 ),
+                'stock_template' => array(
+                    'type' => 'string',
+                    'default' => '1'
+                ),
                 'on_sale' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -170,6 +174,10 @@ function product_filter_block() {
                 'on_sale_label' => array(
                     'type' => 'string',
                     'default' => ''
+                ),
+                'on_sale_template' => array(
+                    'type' => 'string',
+                    'default' => '1'
                 ),
                 'hide_prod_title' => array(
                     'type' => 'boolean',
