@@ -78,6 +78,8 @@ class DataFactory {
             'image_width'            => '',
             'image_height'           => '',
             'rollover_image'         => 'no',
+            'rollover_image_number'  => '1',
+            'rollover_effect'        => 'fade',
             'gallery_slider'         => 'no',
             'hide_prod_rating'       => 'yes',
             'enable_category_layout' => 'no',
@@ -216,6 +218,8 @@ class DataFactory {
 		$default_data['image_width']        = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['image_width'] ) )  ? intval( $settings['image_width'] )  : '';
 		$default_data['image_height']       = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['image_height'] ) ) ? intval( $settings['image_height'] ) : '';
 		$default_data['rollover_image']      = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['rollover_image'] ) ) ? 'yes' : 'no';
+		$default_data['rollover_image_number'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['rollover_image_number'] ) ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1;
+		$default_data['rollover_effect'] = ( class_exists( 'FilterPlusPro' ) && in_array( $settings['rollover_effect'] ?? 'fade', array( 'fade', 'zoom', 'none' ), true ) ) ? $settings['rollover_effect'] : 'fade';
 		$default_data['gallery_slider']      = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['gallery_slider'] ) ) ? 'yes' : 'no';
 		$default_data['hide_prod_rating']   = ! empty( $hide_prod_rating ) && ( $hide_prod_rating == true || $hide_prod_rating == 'yes' ) ?  'yes' : 'no';
 		$default_data['sorting']            = ! empty( $sorting ) && ( $sorting == true || $sorting == 'yes') ?  'yes' : 'no';
@@ -299,6 +303,8 @@ class DataFactory {
 			'image_width' => $image_width,
 			'image_height' => $image_height,
 			'rollover_image' => $rollover_image,
+			'rollover_image_number' => $rollover_image_number,
+			'rollover_effect' => $rollover_effect,
 			'gallery_slider' => $gallery_slider,
 			'hide_prod_rating' => $hide_prod_rating,
 			'size_label' => $size_label,

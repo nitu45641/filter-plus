@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Grid template for products
  */
 if (!function_exists('filterplus_render_grid_product')) {
-function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price) {
+function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price, $rollover_image = 'no', $rollover_image_number = 1, $rollover_effect = 'fade') {
 	?>
 	<div class="product-style product-style-<?php echo esc_attr($product['template']); ?>">
 		<div class="product-thumbnail">
@@ -21,11 +21,24 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 					} else {
 						$grid_image = wp_get_attachment_image(get_post_thumbnail_id($product['id']), $grid_image_size, false, array('style' => 'width:100%;height:100%;object-fit:cover;display:block;'));
 					}
-					if (empty($grid_image)) {
-						echo wp_kses_post( preg_replace('/<img/', '<img style="width:100%;height:100%;object-fit:cover;display:block;"', $product['post_image']) );
-					} else {
-						echo wp_kses_post( $grid_image );
-					}
+                    $fp_primary_markup = empty($grid_image)
+                        ? wp_kses_post( preg_replace('/<img/', '<img style="width:100%;height:100%;object-fit:cover;display:block;"', $product['post_image']) )
+                        : wp_kses_post( $grid_image );
+                    $fp_gallery_product = class_exists('FilterPlusPro') && function_exists('wc_get_product') ? wc_get_product(absint($product['id'])) : false;
+                    $fp_gallery_ids = $fp_gallery_product instanceof WC_Product ? $fp_gallery_product->get_gallery_image_ids() : array();
+                    $fp_rollover_effect = in_array($rollover_effect, array('fade', 'zoom', 'none'), true) ? $rollover_effect : 'fade';
+                    $fp_rollover_enabled = class_exists('FilterPlusPro') && 'yes' === $rollover_image && !empty($fp_gallery_ids);
+                    if ($fp_rollover_enabled) {
+                        $fp_gallery_index = min(max(1, absint($rollover_image_number)), count($fp_gallery_ids)) - 1;
+                        $fp_hover_id = absint($fp_gallery_ids[$fp_gallery_index]);
+                        $fp_image_attrs = array('class' => 'fp-rollover-secondary-image', 'style' => 'width:100%;height:100%;object-fit:cover;display:block;');
+                        $fp_hover_markup = is_array($grid_image_size)
+                            ? Helper::custom_sized_attachment_image($fp_hover_id, $grid_image_size[0], $grid_image_size[1], $fp_image_attrs)
+                            : wp_get_attachment_image($fp_hover_id, $grid_image_size, false, $fp_image_attrs);
+                        echo '<span class="fp-rollover-wrap fp-rollover-effect-' . esc_attr($fp_rollover_effect) . '"><span class="fp-rollover-primary">' . $fp_primary_markup . '</span><span class="fp-rollover-secondary">' . wp_kses_post($fp_hover_markup) . '</span></span>';
+                    } else {
+                        echo $fp_primary_markup;
+                    }
 					?>
 					<?php
 					$fp_cats = (array) $product['categories'];

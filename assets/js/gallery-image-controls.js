@@ -6,7 +6,9 @@
     const InspectorControls = wp.blockEditor ? wp.blockEditor.InspectorControls : wp.editor.InspectorControls;
     const PanelBody = wp.components.PanelBody;
     const ToggleControl = wp.components.ToggleControl;
-    if (!InspectorControls || !PanelBody || !ToggleControl) return;
+    const SelectControl = wp.components.SelectControl;
+    const NumberControl = wp.components.__experimentalNumberControl || wp.components.TextControl;
+    if (!InspectorControls || !PanelBody || !ToggleControl || !SelectControl || !NumberControl) return;
     const withGalleryOptions = wp.compose.createHigherOrderComponent(function (BlockEdit) {
         return function (props) {
             if (props.name !== 'filter-plus/woo-filter' || String((props.attributes || {}).template || '1') !== '3') {
@@ -21,6 +23,8 @@
                 createElement(InspectorControls, null,
                     createElement(PanelBody, { title: 'Gallery Image Options' + (pro ? '' : ' (Pro)'), initialOpen: false },
                         createElement(ToggleControl, { label: label('Rollover Image'), help: help, checked: !!attrs.rollover_image, disabled: !pro, onChange: function (v) { props.setAttributes({ rollover_image: v }); } }),
+                        createElement(NumberControl, { label: label('Hover Gallery Image (1-5)'), help: pro ? 'Choose the gallery image shown on hover; the last available image is used when needed.' : help, min: 1, max: 5, value: attrs.rollover_image_number || 1, disabled: !pro, onChange: function (v) { props.setAttributes({ rollover_image_number: Math.max(1, Math.min(5, parseInt(v, 10) || 1)) }); } }),
+                        createElement(SelectControl, { label: label('Rollover Transition'), help: help, value: attrs.rollover_effect || 'fade', disabled: !pro, options: [{ label: 'Fade', value: 'fade' }, { label: 'Fade + Zoom', value: 'zoom' }, { label: 'None', value: 'none' }], onChange: function (v) { props.setAttributes({ rollover_effect: v }); } }),
                         createElement(ToggleControl, { label: label('Gallery Slider'), help: help, checked: !!attrs.gallery_slider, disabled: !pro, onChange: function (v) { props.setAttributes({ gallery_slider: v }); } })
                     )
                 )

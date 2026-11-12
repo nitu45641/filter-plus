@@ -754,6 +754,8 @@
 				image_width,
 				image_height,
 				rollover_image: $('#shopContainer').data('rollover_image') || 'no',
+				rollover_image_number: $('#shopContainer').data('rollover_image_number') || 1,
+				rollover_effect: $('#shopContainer').data('rollover_effect') || 'fade',
 				gallery_slider: $('#shopContainer').data('gallery_slider') || 'no',
 				hide_prod_title,
 				hide_prod_desc,

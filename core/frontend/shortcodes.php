@@ -99,6 +99,8 @@ class Shortcodes {
 			data-image_width="<?php echo esc_attr($image_width)?>"
 			data-image_height="<?php echo esc_attr($image_height)?>"
 			data-rollover_image="<?php echo esc_attr($rollover_image)?>"
+			data-rollover_image_number="<?php echo esc_attr($rollover_image_number)?>"
+			data-rollover_effect="<?php echo esc_attr($rollover_effect)?>"
 			data-gallery_slider="<?php echo esc_attr($gallery_slider)?>"
 			data-hide_prod_title="<?php echo esc_attr($hide_prod_title)?>"
 			data-hide_prod_desc="<?php echo esc_attr($hide_prod_desc)?>"

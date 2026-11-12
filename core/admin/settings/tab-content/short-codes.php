@@ -409,6 +409,8 @@ use \FilterPlus\Utils\Helper as Helper;
 			'placeholder'=>esc_html__("Add to cart","filter-plus"),'data_label' => 'add_to_cart_text');
 			filterplus_number_input_field($filterplus_args);
 
+			filterplus_field_group_start( "woo_product_images", esc_html__( "Product Image Settings", "filter-plus" ), true, false );
+
 			// Product image size (Pro)
 			$filterplus_args = array('label'=>esc_html__("Image Size:","filter-plus"),'id' => 'product_image_size',
 			'data_label' => 'product_image_size','options'=> Helper::product_image_sizes(),'type'=>'random','selected' => 'woocommerce_thumbnail',
@@ -432,9 +434,14 @@ use \FilterPlus\Utils\Helper as Helper;
 			$filterplus_args = array('label'=>esc_html__("Rollover Image:","filter-plus"),'id' => 'rollover_image',
 			'data_label' => 'rollover_image','disable' => ! class_exists('FilterPlusPro'));
 			filterplus_checkbox_field($filterplus_args);
+			$filterplus_args = array('label'=>esc_html__("Hover Gallery Image (1-5):","filter-plus"),'id' => 'rollover_image_number','data_label' => 'rollover_image_number','field_type' => 'number','placeholder' => '1','min' => 1,'max' => 5,'disable' => ! class_exists('FilterPlusPro'));
+			filterplus_number_input_field($filterplus_args);
+			$filterplus_args = array('label'=>esc_html__("Rollover Transition:","filter-plus"),'id' => 'rollover_effect','data_label' => 'rollover_effect','options' => array('fade' => 'Fade','zoom' => 'Fade + Zoom','none' => 'None'),'type' => 'random','selected' => 'fade','disable' => ! class_exists('FilterPlusPro'));
+			filterplus_select_field($filterplus_args);
 			$filterplus_args = array('label'=>esc_html__("Gallery Slider:","filter-plus"),'id' => 'gallery_slider',
 			'data_label' => 'gallery_slider','disable' => ! class_exists('FilterPlusPro'));
 			filterplus_checkbox_field($filterplus_args);
+			filterplus_field_group_end();
 
 			// show Rating
 			$filterplus_args = array('label'=>esc_html__("Show Rating:","filter-plus"),'id' => 'hide_prod_rating',

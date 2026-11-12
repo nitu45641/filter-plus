@@ -212,6 +212,8 @@ function product_filter_block() {
                     'default' => 0
                 ),
                 'rollover_image' => array( 'type' => 'boolean', 'default' => false ),
+                'rollover_image_number' => array( 'type' => 'number', 'default' => 1 ),
+                'rollover_effect' => array( 'type' => 'string', 'default' => 'fade' ),
                 'gallery_slider' => array( 'type' => 'boolean', 'default' => false ),
                 'hide_prod_rating' => array(
                     'type' => 'boolean',

@@ -83,7 +83,7 @@ add_action( 'enqueue_block_editor_assets', function() {
     wp_enqueue_script(
         'filter-plus-gallery-image-controls',
         \FilterPlus::assets_url() . 'js/gallery-image-controls.js',
-        array( 'wp-element', 'wp-components', 'wp-compose', 'wp-hooks', 'wp-block-editor' ),
+        array( 'wp-element', 'wp-components', 'wp-compose', 'wp-hooks', 'wp-block-editor', 'filter-plus-block-js' ),
         \FilterPlus::asset_version( 'js/gallery-image-controls.js' ),
         true
     );
