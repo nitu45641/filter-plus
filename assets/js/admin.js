@@ -272,8 +272,6 @@
 			if (!changed && $rollover.is(':checked') && $slider.is(':checked')) $rollover.prop('checked', false);
 			const rolloverOn = $rollover.is(':checked');
 			const sliderOn = $slider.is(':checked');
-			$rollover.prop('disabled', sliderOn).parent().toggleClass('is-mode-disabled', sliderOn);
-			$slider.prop('disabled', rolloverOn).parent().toggleClass('is-mode-disabled', rolloverOn);
 			$block.find('#rollover_image_number, #rollover_effect').closest('.single-block').toggleClass('d-none', !rolloverOn);
 		}
 		$(document).on('change', '.shortcode-block #rollover_image, .shortcode-block #gallery_slider', function () {
