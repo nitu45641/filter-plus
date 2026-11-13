@@ -749,10 +749,16 @@ class Actions {
 				// Colour attributes: term names are CSS colours in Filter Plus, so show dots.
 				$is_color = (bool) preg_match( '/colou?r/i', $attribute_key );
 				$chips    = '';
-				foreach ( array_values( $values ) as $index => $value ) {
-					if ( $is_color ) {
-						$chips .= '<span class="fp-attr-swatch' . ( 0 === $index ? ' is-active' : '' ) . '" title="' . esc_attr( $value ) . '"><span style="background-color: ' . esc_attr( $value ) . ';"></span></span>';
-					} else {
+				if ( $is_color ) {
+					// Show every colour in the store; ring the ones this product comes in.
+					$all_colors = get_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => false, 'fields' => 'names', 'orderby' => 'menu_order' ) );
+					$all_colors = ( is_wp_error( $all_colors ) || empty( $all_colors ) ) ? $values : $all_colors;
+					foreach ( $all_colors as $value ) {
+						$chips .= '<span class="fp-attr-swatch' . ( in_array( $value, $values, true ) ? ' is-active' : '' ) . '" title="' . esc_attr( $value ) . '"><span style="background-color: ' . esc_attr( $value ) . ';"></span></span>';
+					}
+				}
+				if ( ! $is_color ) {
+					foreach ( $values as $value ) {
 						$chips .= '<span class="fp-attr-chip">' . esc_html( $value ) . '</span>';
 					}
 				}
