@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.43
+Stable tag: 1.1.44
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -203,6 +203,12 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.44 (November 13, 2026) =
+* Fix: Product attributes now appear under the price in every template instead of inside image/hover overlays.
+* Tweak: Card attributes show as colour dots (all store colours, product colours ringed) and value chips.
+* Tweak: Gallery Slider now works in templates 1 and 2 when Pro is active.
+* Tweak: Moved Template 7 sidebar and grid styles to Filter Plus Pro.
 
 = 1.1.43 (November 12, 2026) =
 * Tweak: Filter Sets list now uses a compact shortcode field with a full-value Copy action and a simpler page header.
