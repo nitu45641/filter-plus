@@ -28,7 +28,17 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
                     $fp_gallery_ids = $fp_gallery_product instanceof WC_Product ? $fp_gallery_product->get_gallery_image_ids() : array();
                     $fp_rollover_effect = in_array($rollover_effect, array('fade', 'zoom', 'none'), true) ? $rollover_effect : 'fade';
                     $fp_rollover_enabled = class_exists('FilterPlusPro') && 'yes' === $rollover_image && !empty($fp_gallery_ids);
-                    if ($fp_rollover_enabled) {
+                    // Gallery Slider (Pro) replaces the image with a slider of the product gallery.
+                    $fp_slider_markup = '';
+                    if ( class_exists('FilterPlusPro') ) {
+                        include_once \FilterPlusPro::locate_template( 'woo-filter/parts/rollover-image.php' );
+                        if ( function_exists('filterplus_pro_gallery_slider_enabled') && filterplus_pro_gallery_slider_enabled() ) {
+                            $fp_slider_markup = filterplus_pro_gallery_slider_markup( $product );
+                        }
+                    }
+                    if ( '' !== $fp_slider_markup ) {
+                        echo $fp_slider_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside
+                    } elseif ($fp_rollover_enabled) {
                         $fp_gallery_index = min(max(1, absint($rollover_image_number)), count($fp_gallery_ids)) - 1;
                         $fp_hover_id = absint($fp_gallery_ids[$fp_gallery_index]);
                         $fp_image_attrs = array('class' => 'fp-rollover-secondary-image', 'style' => 'width:100%;height:100%;object-fit:cover;display:block;');
@@ -80,6 +90,7 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
 			<?php if( $hide_prod_rating == 'yes' ): ?>
 				<?php echo wp_kses_post( $product['rating'] ); ?>
 			<?php endif; ?>
+			<?php echo '<!--fp-product-attributes-->'; // Product attributes (filled by the filter response). ?>
 			<div class="product-price-row">
 				<?php if( $hide_prod_price == 'yes' ): ?>
 				<div class="product-price">

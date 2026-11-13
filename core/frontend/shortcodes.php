@@ -384,13 +384,6 @@ class Shortcodes {
 				grid-template-columns: repeat(3, minmax(0, 1fr));
 				gap: 15px 22px;
 			}
-			.grid-view-7{
-				display: grid;
-				grid-template-columns: repeat(4, minmax(0, 1fr));
-				position: relative;
-				column-gap: 15px;
-				row-gap: 15px;
-			}
 			.grid-view-3{
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
@@ -443,7 +436,7 @@ class Shortcodes {
 					grid-template-columns: 32% 32% 32%;
 					gap: 15px 11px;
 				}
-				.grid-view-2,.grid-view-3,.grid-view-7 {
+				.grid-view-2,.grid-view-3 {
 					grid-template-columns: repeat(3, minmax(0, 1fr));
 				}
 				.shop-container-3 .prods-grid-view.grid-view-3 {

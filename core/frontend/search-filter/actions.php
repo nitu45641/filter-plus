@@ -720,6 +720,7 @@ class Actions {
 	 */
 	public function render_products_html($products, $filter_type, $template) {
 		$render_selected_attributes = static function ( $card_html, $product_data, $post_data ) {
+			// Only the attributes selected in "Attribute List" are shown.
 			if ( ! class_exists( 'FilterPlusPro' ) || 'yes' !== ( $post_data['show_product_attributes'] ?? 'no' ) || empty( $post_data['product_attributes'] ) || empty( $product_data['id'] ) || ! function_exists( 'wc_get_product' ) ) {
 				return $card_html;
 			}
@@ -742,12 +743,27 @@ class Actions {
 				$taxonomy = $attribute->get_name();
 				$attribute_key = 0 === strpos( $taxonomy, 'pa_' ) ? substr( $taxonomy, 3 ) : $taxonomy;
 				if ( ! in_array( sanitize_title( $attribute_key ), $selected, true ) ) { continue; }
-				$value = $wc_product->get_attribute( $taxonomy );
-				if ( '' === trim( $value ) ) { continue; }
-				$items .= '<li><span class="fp-product-attribute-label">' . esc_html( wc_attribute_label( $taxonomy, $wc_product ) ) . ':</span> <span class="fp-product-attribute-value">' . esc_html( $value ) . '</span></li>';
+				$values = wc_get_product_terms( $wc_product->get_id(), $taxonomy, array( 'fields' => 'names' ) );
+				if ( empty( $values ) || is_wp_error( $values ) ) { continue; }
+				$label    = wc_attribute_label( $taxonomy, $wc_product );
+				// Colour attributes: term names are CSS colours in Filter Plus, so show dots.
+				$is_color = (bool) preg_match( '/colou?r/i', $attribute_key );
+				$chips    = '';
+				foreach ( array_values( $values ) as $index => $value ) {
+					if ( $is_color ) {
+						$chips .= '<span class="fp-attr-swatch' . ( 0 === $index ? ' is-active' : '' ) . '" title="' . esc_attr( $value ) . '"><span style="background-color: ' . esc_attr( $value ) . ';"></span></span>';
+					} else {
+						$chips .= '<span class="fp-attr-chip">' . esc_html( $value ) . '</span>';
+					}
+				}
+				$items .= '<div class="fp-attr' . ( $is_color ? ' fp-attr--color' : '' ) . '" aria-label="' . esc_attr( $label ) . '" title="' . esc_attr( $label ) . '">' . $chips . '</div>';
 			}
 			if ( '' === $items ) { return $card_html; }
-			$markup = '<details class="fp-product-attributes-accordion" open><summary>' . esc_html__( 'Attributes', 'filter-plus' ) . '</summary><ul class="fp-product-attributes">' . $items . '</ul></details>';
+			$markup = '<div class="fp-product-attrs">' . $items . '</div>';
+			// Templates mark where attributes belong (under the price, outside image overlays).
+			if ( false !== strpos( $card_html, '<!--fp-product-attributes-->' ) ) {
+				return str_replace( '<!--fp-product-attributes-->', $markup, $card_html );
+			}
 			if ( preg_match( '/<a\b[^>]*class=["\'][^"\']*(?:add_to_cart_button|product_type_)[^"\']*["\'][^>]*>/i', $card_html, $match, PREG_OFFSET_CAPTURE ) ) {
 				$offset = $match[0][1];
 				return substr( $card_html, 0, $offset ) . $markup . substr( $card_html, $offset );

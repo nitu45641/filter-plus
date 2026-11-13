@@ -9,6 +9,7 @@
 			'#woo_pro_tags',
 			'#woo_brands',
 			'#woo_pro_attributes',
+			'#woo_pro_product_attributes',
 			'#woo_exclude_categories',
 			'#seo_elements',
 			'#post_tags',
