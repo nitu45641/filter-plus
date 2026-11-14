@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.45
+Stable tag: 1.1.46
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -203,6 +203,11 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.46 (November 14, 2026) =
+* New: "List" layout option for the Stock and On Sale filters (Pro).
+* Fix: Filter sections open and close smoothly, and the arrow now matches the open/closed state on load and after every click.
+* Tweak: Stock and On Sale filters get a collapsible heading with an arrow, like the other filters.
 
 = 1.1.45 (November 14, 2026) =
 * Fix: Gutenberg editor preview now loads the Pro stylesheet inside the editor canvas, so templates 3-8 look the same in the editor and on the frontend.
