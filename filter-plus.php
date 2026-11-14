@@ -68,7 +68,16 @@ final class FilterPlus {
     public static function asset_version( $relative_path ) {
     	$file = self::assets_dir() . ltrim( $relative_path, '/' );
 
-    	return file_exists( $file ) ? (string) filemtime( $file ) : self::get_version();
+    	if ( ! file_exists( $file ) ) {
+    		return self::get_version();
+    	}
+    	// Timestamp + content hash: the URL changes whenever the file content changes,
+    	// even if a zip upload keeps old file timestamps (busts browser/CDN caches).
+    	static $versions = array();
+    	if ( ! isset( $versions[ $file ] ) ) {
+    		$versions[ $file ] = filemtime( $file ) . '-' . substr( md5_file( $file ), 0, 8 );
+    	}
+    	return $versions[ $file ];
     }
 
 	/**
