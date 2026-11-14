@@ -7,6 +7,8 @@
     const PanelBody = wp.components.PanelBody;
     const ToggleControl = wp.components.ToggleControl;
     const SelectControl = wp.components.SelectControl;
+    const FormTokenField = wp.components.FormTokenField;
+    const BaseControl = wp.components.BaseControl || wp.element.Fragment;
     const NumberControl = wp.components.__experimentalNumberControl || wp.components.TextControl;
     if (!InspectorControls || !PanelBody || !ToggleControl || !SelectControl || !NumberControl) return;
     const withGalleryOptions = wp.compose.createHigherOrderComponent(function (BlockEdit) {
@@ -40,17 +42,39 @@
                             disabled: !pro,
                             onChange: function (v) { props.setAttributes({ show_product_attributes: v }); }
                         }),
-                        attrs.show_product_attributes ? createElement(SelectControl, {
-                            multiple: true,
-                            label: label('Attribute List'),
-                            help: help,
-                            value: Array.isArray(attrs.product_attributes) ? attrs.product_attributes.map(String) : [],
-                            options: (window.filterPlus && Array.isArray(window.filterPlus.attributes) ? window.filterPlus.attributes : []).map(function (item) {
-                                return { label: item.label, value: String(item.value) };
-                            }),
-                            disabled: !pro,
-                            onChange: function (v) { props.setAttributes({ product_attributes: v || [] }); }
-                        }) : null
+                        attrs.show_product_attributes ? (function () {
+                            const opts = (window.filterPlus && Array.isArray(window.filterPlus.attributes) ? window.filterPlus.attributes : []).map(function (item) {
+                                return { label: String(item.label), value: String(item.value) };
+                            });
+                            const selected = Array.isArray(attrs.product_attributes) ? attrs.product_attributes.map(String) : [];
+                            const byValue = function (v) { const f = opts.find(function (o) { return o.value === String(v); }); return f ? f.label : String(v); };
+                            const byLabel = function (l) { const f = opts.find(function (o) { return o.label === String(l); }); return f ? f.value : null; };
+                            // Select2-style searchable multi select (chips + dropdown).
+                            if (!FormTokenField) {
+                                return createElement(SelectControl, { multiple: true, label: label('Attribute List'), help: help, value: selected, options: opts, disabled: !pro, onChange: function (v) { props.setAttributes({ product_attributes: v || [] }); } });
+                            }
+                            return createElement(BaseControl, { help: help, __nextHasNoMarginBottom: true },
+                                createElement(FormTokenField, {
+                                    label: label('Attribute List'),
+                                    value: selected.map(byValue),
+                                    suggestions: opts.map(function (o) { return o.label; }),
+                                    disabled: !pro,
+                                    __experimentalExpandOnFocus: true,
+                                    __experimentalShowHowTo: false,
+                                    __experimentalValidateInput: function (t) { return null !== byLabel(t); },
+                                    __next40pxDefaultSize: true,
+                                    __nextHasNoMarginBottom: true,
+                                    onChange: function (tokens) {
+                                        const values = [];
+                                        tokens.forEach(function (t) {
+                                            const v = byLabel(t && 'object' === typeof t ? t.value : t);
+                                            if (null !== v && values.indexOf(v) === -1) { values.push(v); }
+                                        });
+                                        props.setAttributes({ product_attributes: values });
+                                    }
+                                })
+                            );
+                        })() : null
                     )
                 )
             );

@@ -3,6 +3,7 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
+import Select2Control from "../../components/Select2Control";
 
 registerBlockType('filter-plus/woo-filter', {
     title: __('Woo Product Filter', 'filter-plus'),
@@ -408,8 +409,7 @@ registerBlockType('filter-plus/woo-filter', {
                             onChange={(value) => setAttributes({ pagination_style: value })}
                         />
 
-                        <SelectControl
-                            multiple
+                        <Select2Control
                             label={__('Filter Order', 'filter-plus') + (isDisabled() ? ' (Pro)' : '')}
                             value={attributes.filter_order}
                             options={[
@@ -654,8 +654,7 @@ registerBlockType('filter-plus/woo-filter', {
                                     placeholder={__('Place Tag Label Here', 'filter-plus')}
                                 />
 
-                                <SelectControl
-                                    multiple
+                                <Select2Control
                                     label={__('Tags', 'filter-plus')}
                                     value={attributes.tags}
                                     options={window.filterPlus?.tags || []}
@@ -699,8 +698,7 @@ registerBlockType('filter-plus/woo-filter', {
                                             placeholder={__('Brands', 'filter-plus')}
                                         />
 
-                                        <SelectControl
-                                            multiple
+                                        <Select2Control
                                             label={__('Include Brands', 'filter-plus')}
                                             help={(window.filterPlus?.brands || []).length ? __('Leave empty to show all brands.', 'filter-plus') : __('No brands found. Add brands under Products > Brands.', 'filter-plus')}
                                             value={attributes.brands}
@@ -750,8 +748,7 @@ registerBlockType('filter-plus/woo-filter', {
                                     placeholder={__('Place Attribute Label Here', 'filter-plus')}
                                 />
 
-                                <SelectControl
-                                    multiple
+                                <Select2Control
                                     label={__('Attributes', 'filter-plus')}
                                     value={attributes.attributes}
                                     options={window.filterPlus?.attributes || []}
