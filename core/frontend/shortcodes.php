@@ -357,12 +357,6 @@ class Shortcodes {
 			.product-style-3 .hpcc-image img{
 				width: 340px;
 			}
-			.post-grid-view-3{
-				display: grid;
-				grid-template-columns: 345px 345px 345px;
-				gap: 25px;
-				place-content: center;
-			}
 			.grid-view-1 {
 				display: grid;
 				grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -454,10 +448,6 @@ class Shortcodes {
 				}
 				.grid-view-3{
 				    grid-template-columns: repeat(2, 1fr);
-				}
-				.post-grid-view-3 .hpcc-image{
-				    display: inline-flex;
-    				align-items: center;
 				}
 			}
 			@media screen and (max-width: 425px) {

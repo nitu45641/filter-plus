@@ -4,8 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 ?>
 <div class="sidebar-row radio-wrap">
-	<h4 class="sidebar-label"><?php echo esc_html($title); ?></h4>
-	<div class="param-box param-box-<?php echo esc_attr($template);?>">
+	<?php
+	$filterplus_label = $title;
+	include \FilterPlus::locate_template( 'parts/filter-param-header.php' );
+	?>
+	<div class="panel param-box param-box-<?php echo esc_attr($template);?>">
 		<?php
 			foreach ($filterplus_get_attr as $filterplus_key => $filterplus_term_id) {
 				if (!empty( get_term( $filterplus_term_id ) ) ) {

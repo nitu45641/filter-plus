@@ -879,8 +879,8 @@
 
 		function filterCorosuel(params) {
 			// Destroy previous Swiper instance if exists
-			if (window.swiperInstance) {
-				window.swiperInstance.destroy(true, true);
+			if (window._swiperInstance && window._swiperInstance.destroy) {
+				window._swiperInstance.destroy(true, true);
 			}
 			// Only initialize if element exists
 			if ($(params.element).length > 0) {
@@ -893,17 +893,17 @@
 						el: '.swiper-pagination',
 						clickable: true,
 					},
-					slidesPerView: 3,
-					slidesPerGroup: 3,
-					spaceBetween: 10,
+					// Mobile first: Swiper breakpoints are min-width.
+					slidesPerView: 1,
+					slidesPerGroup: 1,
+					spaceBetween: 16,
 					paginationClickable: true,
 					autoplay: {
 						delay: 4000,
 					},
 					breakpoints: {
-						1024: {slidesPerView: 3},
-						768: {slidesPerView: 2},
-						425: { slidesPerView: 1},
+						600: { slidesPerView: 2, slidesPerGroup: 2 },
+						1024: { slidesPerView: 3, slidesPerGroup: 3 },
 					},
 				});
 			}
