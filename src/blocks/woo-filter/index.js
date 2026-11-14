@@ -942,6 +942,65 @@ registerBlockType('filter-plus/woo-filter', {
                         )}
 
                         <ToggleControl
+                            label={__('Rollover Image', 'filter-plus') + ' ' + isPro()}
+                            checked={attributes.rollover_image}
+                            onChange={(value) => setAttributes(value ? { rollover_image: true, gallery_slider: false } : { rollover_image: false })}
+                            disabled={isDisabled()}
+                            help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : __('Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time.', 'filter-plus')}
+                        />
+
+                        {attributes.rollover_image && !attributes.gallery_slider && (
+                            <>
+                                <TextControl
+                                    label={__('Hover Gallery Image (1-5)', 'filter-plus') + ' ' + isPro()}
+                                    type="number"
+                                    min={1}
+                                    max={5}
+                                    value={attributes.rollover_image_number}
+                                    onChange={(value) => setAttributes({ rollover_image_number: Math.max(1, Math.min(5, parseInt(value) || 1)) })}
+                                    disabled={isDisabled()}
+                                    help={__('Choose the gallery image shown on hover; the last available image is used when needed.', 'filter-plus')}
+                                />
+                                <SelectControl
+                                    label={__('Rollover Transition', 'filter-plus') + ' ' + isPro()}
+                                    value={attributes.rollover_effect}
+                                    options={[
+                                        { value: 'fade', label: __('Fade', 'filter-plus') },
+                                        { value: 'zoom', label: __('Fade + Zoom', 'filter-plus') },
+                                        { value: 'none', label: __('None', 'filter-plus') },
+                                    ]}
+                                    onChange={(value) => setAttributes({ rollover_effect: value })}
+                                    disabled={isDisabled()}
+                                />
+                            </>
+                        )}
+
+                        <ToggleControl
+                            label={__('Gallery Slider', 'filter-plus') + ' ' + isPro()}
+                            checked={attributes.gallery_slider}
+                            onChange={(value) => setAttributes(value ? { gallery_slider: true, rollover_image: false } : { gallery_slider: false })}
+                            disabled={isDisabled()}
+                            help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : __('Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time.', 'filter-plus')}
+                        />
+
+                        <ToggleControl
+                            label={__('Show Product Attributes', 'filter-plus') + ' ' + isPro()}
+                            checked={attributes.show_product_attributes}
+                            onChange={(value) => setAttributes({ show_product_attributes: value })}
+                            disabled={isDisabled()}
+                            help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : __('Show the selected attributes on each product card.', 'filter-plus')}
+                        />
+
+                        {attributes.show_product_attributes && (
+                            <Select2Control
+                                label={__('Attribute List', 'filter-plus') + ' ' + isPro()}
+                                value={attributes.product_attributes}
+                                options={window.filterPlus?.attributes || []}
+                                onChange={(value) => setAttributes({ product_attributes: value })}
+                            />
+                        )}
+
+                        <ToggleControl
                             label={__('Display Rating', 'filter-plus')}
                             checked={attributes.hide_prod_rating}
                             onChange={(value) => setAttributes({ hide_prod_rating: value })}
