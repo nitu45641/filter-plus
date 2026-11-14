@@ -320,6 +320,7 @@ function product_filter_callback( $settings ) {
     // Pre-render products into the grid/list divs so they show immediately.
     if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
         $rendered = [ 'grid' => '', 'list' => '' ];
+        $preview  = [];
         $template = ! empty( $settings['template'] ) ? $settings['template'] : '1';
 
         ob_start(); // capture any stray PHP warnings so they don't corrupt REST JSON
@@ -393,6 +394,21 @@ function product_filter_callback( $settings ) {
                 $html,
                 1
             );
+        }
+        // search-filter.js fills the result count and pagination on the
+        // frontend. Fill them here so the editor shows the same header/footer.
+        if ( ! empty( $preview ) && isset( $preview['total'] ) ) {
+            $shown = isset( $preview['products'] ) ? count( $preview['products'] ) : 0;
+            $html  = preg_replace( '/(<span class="total"[^>]*>)[^<]*(<\/span>)/', '${1}' . absint( $preview['total'] ) . '${2}', $html );
+            $html  = preg_replace( '/(<span class="pages"[^>]*>)[^<]*(<\/span>)/', '${1}' . absint( $shown ) . '${2}', $html );
+            if ( ! empty( $preview['pagination_markup'] ) ) {
+                $html = preg_replace(
+                    '/(<div class="naviation[^"]*"[^>]*>)/',
+                    '$1' . str_replace( array( '\\', '$' ), array( '\\\\', '\\$' ), $preview['pagination_markup'] ),
+                    $html,
+                    1
+                );
+            }
         }
         if ( ! empty( $rendered['list'] ) ) {
             $html = preg_replace(

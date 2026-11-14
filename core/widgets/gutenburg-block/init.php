@@ -93,18 +93,36 @@ add_action( 'enqueue_block_editor_assets', function() {
 add_action( 'enqueue_block_editor_assets', function() {
     wp_enqueue_style( 'filter-plus-public-css' );
     wp_enqueue_style( 'filter-plus-swiper-css' );
-    if ( class_exists( 'FilterPlusPro' ) ) {
-        wp_enqueue_style(
-            'filter-plus-pro-public-css',
-            \FilterPlusPro::assets_url() . 'css/public.css',
-            array( 'filter-plus-public-css' ),
-            \FilterPlusPro::asset_version( 'css/public.css' )
-        );
-    }
 
     $default_css = \FilterPlus\Core\Frontend\Shortcodes::instance()->custom_css( '1', 'content-filter', array( 'masonry_style' => 'no' ) );
     if ( ! empty( $default_css ) ) {
         wp_add_inline_style( 'filter-plus-public-css', $default_css );
+    }
+} );
+
+// The post editor canvas is an iframe. Styles added on
+// enqueue_block_editor_assets stay in the outer admin document, so Pro
+// template styles (templates 3-8) never reached the preview. Styles added on
+// enqueue_block_assets are copied into the iframe. Admin only: the frontend
+// already loads the Pro stylesheet through its own enqueue class.
+add_action( 'enqueue_block_assets', function() {
+    if ( ! is_admin() || ! class_exists( 'FilterPlusPro' ) ) {
+        return;
+    }
+    wp_enqueue_style(
+        'filter-plus-pro-public-css',
+        \FilterPlusPro::assets_url() . 'css/public.css',
+        array( 'filter-plus-public-css' ),
+        \FilterPlusPro::asset_version( 'css/public.css' )
+    );
+    // Cards render a quick-view trigger when the module is on; style it too.
+    if ( class_exists( '\FilterPlusPro\Core\Frontend\QuickView' ) && \FilterPlusPro\Core\Frontend\QuickView::is_enabled() ) {
+        wp_enqueue_style(
+            'filter-plus-pro-quick-view',
+            \FilterPlusPro::assets_url() . 'css/quick-view.css',
+            array( 'filter-plus-pro-public-css' ),
+            \FilterPlusPro::asset_version( 'css/quick-view.css' )
+        );
     }
 } );
 
