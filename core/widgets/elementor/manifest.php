@@ -15,6 +15,20 @@ Class Manifest {
     public function init() {
         add_action( 'elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories'] );
         add_action( 'elementor/widgets/register', [$this, 'register_widgets'] );
+        add_action( 'elementor/editor/after_enqueue_scripts', [$this, 'editor_scripts'] );
+    }
+
+    /**
+     * Editor-only helpers (Rollover Image / Gallery Slider switch each other off).
+     */
+    public function editor_scripts() {
+        wp_enqueue_script(
+            'filter-plus-elementor-editor',
+            \FilterPlus::assets_url() . 'js/elementor-editor.js',
+            array( 'jquery' ),
+            \FilterPlus::asset_version( 'js/elementor-editor.js' ),
+            true
+        );
     }
 
     public function get_input_widgets() {

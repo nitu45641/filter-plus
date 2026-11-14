@@ -224,7 +224,7 @@ class DataFactory {
 		};
 		$default_data['rollover_image']      = ( class_exists( 'FilterPlusPro' ) && isset( $settings['rollover_image'] ) && $image_mode_enabled( $settings['rollover_image'] ) ) ? 'yes' : 'no';
 		$default_data['rollover_image_number'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['rollover_image_number'] ) ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1;
-		$default_data['rollover_effect'] = ( class_exists( 'FilterPlusPro' ) && in_array( $settings['rollover_effect'] ?? 'fade', array( 'fade', 'zoom', 'none' ), true ) ) ? $settings['rollover_effect'] : 'fade';
+		$default_data['rollover_effect'] = ( class_exists( 'FilterPlusPro' ) && in_array( $settings['rollover_effect'] ?? 'fade', array( 'fade', 'zoom', 'none' ), true ) ) ? ( $settings['rollover_effect'] ?? 'fade' ) : 'fade';
 		$default_data['gallery_slider']      = ( class_exists( 'FilterPlusPro' ) && isset( $settings['gallery_slider'] ) && $image_mode_enabled( $settings['gallery_slider'] ) ) ? 'yes' : 'no';
 		$default_data['show_product_attributes'] = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['show_product_attributes'] ) && 'yes' === $settings['show_product_attributes'] ) ? 'yes' : 'no';
 		$product_attribute_ids = $settings['product_attributes'] ?? array();

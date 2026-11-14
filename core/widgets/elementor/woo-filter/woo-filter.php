@@ -636,10 +636,34 @@ class Woo_Filter extends Widget_Base {
 				'condition' => array( 'product_image_size' => 'custom' ),
 			)
 		);
-        $this->add_control( 'rollover_image', array( 'label' => esc_html__( 'Rollover Image', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '', 'disabled' => ! class_exists( 'FilterPlusPro' ), 'condition' => array( 'gallery_slider' => '' ), 'description' => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) ) );
+        $this->add_control( 'rollover_image', array( 'label' => esc_html__( 'Rollover Image', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '', 'disabled' => ! class_exists( 'FilterPlusPro' ), 'description' => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) ) );
         $this->add_control( 'rollover_image_number', array( 'label' => esc_html__( 'Hover Gallery Image (1-5)', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => Controls_Manager::NUMBER, 'min' => 1, 'max' => 5, 'default' => 1, 'disabled' => ! class_exists( 'FilterPlusPro' ), 'condition' => array( 'rollover_image' => 'yes', 'gallery_slider' => '' ), 'description' => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Choose the gallery image shown on hover; the last available image is used when needed.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) ) );
         $this->add_control( 'rollover_effect', array( 'label' => esc_html__( 'Rollover Transition', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => Controls_Manager::SELECT, 'options' => array( 'fade' => 'Fade', 'zoom' => 'Fade + Zoom', 'none' => 'None' ), 'default' => 'fade', 'disabled' => ! class_exists( 'FilterPlusPro' ), 'condition' => array( 'rollover_image' => 'yes', 'gallery_slider' => '' ), 'description' => class_exists( 'FilterPlusPro' ) ? '' : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) ) );
-        $this->add_control( 'gallery_slider', array( 'label' => esc_html__( 'Gallery Slider', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '', 'disabled' => ! class_exists( 'FilterPlusPro' ), 'condition' => array( 'rollover_image' => '' ), 'description' => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) ) );
+        $this->add_control( 'gallery_slider', array( 'label' => esc_html__( 'Gallery Slider', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '', 'disabled' => ! class_exists( 'FilterPlusPro' ), 'description' => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) ) );
+		$this->add_control(
+			'show_product_attributes',
+			array(
+				'label'        => esc_html__( 'Show Product Attributes', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'default'      => '',
+				'disabled'     => ! class_exists( 'FilterPlusPro' ),
+				'description'  => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Show the selected attributes on each product card.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
+			)
+		);
+		$this->add_control(
+			'product_attributes',
+			array(
+				'label'       => esc_html__( 'Attribute List', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
+				'type'        => Controls_Manager::SELECT2,
+				'options'     => Helper::woo_attribute_list( 'assoc' ),
+				'multiple'    => true,
+				'label_block' => true,
+				'disabled'    => ! class_exists( 'FilterPlusPro' ),
+				'condition'   => array( 'show_product_attributes' => 'yes' ),
+				'description' => empty( Helper::woo_attribute_list( 'assoc' ) ) ? esc_html__( 'No attributes found. Add them under Products > Attributes.', 'filter-plus' ) : '',
+			)
+		);
 		$this->add_control('hide_prod_title',
 			array(
 				'label' => esc_html__( 'Display Title', 'filter-plus' ),
@@ -2090,17 +2114,27 @@ class Woo_Filter extends Widget_Base {
 		if ( 'yes' === $masonry_style ) {
 			echo '<div class="grid-sizer"></div><div class="gutter-sizer"></div>';
 		}
-		foreach ( $products as $product ) {
-			call_user_func(
-				$render_fn,
-				$product,
-				$hide_prod_add_cart,
-				$hide_prod_title,
-				$hide_prod_desc,
-				$hide_prod_rating,
-				$hide_prod_price
-			);
-		}
+		// Same renderer as the frontend AJAX and the Gutenberg preview, so
+		// rollover, gallery slider and product attributes show here too.
+		$rendered = \FilterPlus\Core\Frontend\SearchFilter\Actions::instance()->render_products_html(
+			$products,
+			'product',
+			$template,
+			array(
+				'hide_prod_add_cart'      => $hide_prod_add_cart,
+				'hide_prod_title'         => $hide_prod_title,
+				'hide_prod_desc'          => $hide_prod_desc,
+				'hide_prod_rating'        => $hide_prod_rating,
+				'hide_prod_price'         => $hide_prod_price,
+				'rollover_image'          => ! empty( $data['rollover_image'] ) ? $data['rollover_image'] : 'no',
+				'rollover_image_number'   => ! empty( $data['rollover_image_number'] ) ? $data['rollover_image_number'] : 1,
+				'rollover_effect'         => ! empty( $data['rollover_effect'] ) ? $data['rollover_effect'] : 'fade',
+				'gallery_slider'          => ! empty( $data['gallery_slider'] ) ? $data['gallery_slider'] : 'no',
+				'show_product_attributes' => ! empty( $data['show_product_attributes'] ) ? $data['show_product_attributes'] : 'no',
+				'product_attributes'      => ! empty( $data['product_attributes'] ) ? $data['product_attributes'] : '',
+			)
+		);
+		echo $rendered['grid']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- template output
 		return ob_get_clean();
 	}
 
