@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Filter Plus – WordPress & WooCommerce AJAX Filter Plugin 1.1.40\n"
+"Project-Id-Version: Filter Plus – WordPress & WooCommerce AJAX Filter Plugin 1.1.45\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/filter-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-06T02:15:18+00:00\n"
+"POT-Creation-Date: 2026-11-14T02:17:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: filter-plus\n"
@@ -40,9 +40,9 @@ msgid "https://wpbens.com/"
 msgstr ""
 
 #: base/data-factory.php:28
-#: base/data-factory.php:109
-#: base/data-factory.php:128
-#: base/data-factory.php:371
+#: base/data-factory.php:117
+#: base/data-factory.php:136
+#: base/data-factory.php:404
 #: core/admin/settings/tab-content/short-codes.php:57
 #: core/admin/wp-filter.php:52
 #: core/widgets/bricks/components/woo-filter.php:104
@@ -55,11 +55,11 @@ msgid "Filters"
 msgstr ""
 
 #: base/data-factory.php:35
-#: base/data-factory.php:131
-#: base/data-factory.php:172
-#: base/data-factory.php:385
-#: base/data-factory.php:399
-#: base/data-factory.php:490
+#: base/data-factory.php:139
+#: base/data-factory.php:180
+#: base/data-factory.php:418
+#: base/data-factory.php:432
+#: base/data-factory.php:523
 #: core/widgets/bricks/components/wp-filter.php:180
 #: core/widgets/elementor/wp-filter/wp-filter.php:189
 #: core/widgets/gutenburg-block/blocks/wp-filter.php:59
@@ -76,8 +76,8 @@ msgid "Categories"
 msgstr ""
 
 #: base/data-factory.php:40
-#: base/data-factory.php:136
-#: base/data-factory.php:228
+#: base/data-factory.php:144
+#: base/data-factory.php:253
 #: core/admin/settings/tab-content/short-codes.php:32
 #: core/admin/wp-filter.php:27
 #: core/widgets/bricks/components/woo-filter.php:70
@@ -88,11 +88,11 @@ msgid "Apply"
 msgstr ""
 
 #: base/data-factory.php:41
-#: base/data-factory.php:137
-#: base/data-factory.php:229
+#: base/data-factory.php:145
+#: base/data-factory.php:254
 #: core/admin/settings/tab-content/short-codes.php:38
 #: core/admin/wp-filter.php:33
-#: core/frontend/shortcodes.php:130
+#: core/frontend/shortcodes.php:137
 #: core/widgets/bricks/components/woo-filter.php:79
 #: core/widgets/elementor/woo-filter/woo-filter.php:100
 #: templates/parts/top/categories.php:29
@@ -101,12 +101,12 @@ msgstr ""
 #: templates/woo-filter/parts/brand/brands-radio.php:39
 #: templates/woo-filter/parts/category/categories-checkbox.php:68
 #: templates/woo-filter/parts/category/categories-image.php:87
-#: templates/woo-filter/parts/category/categories-list.php:71
+#: templates/woo-filter/parts/category/categories-list.php:75
 #: templates/woo-filter/parts/category/categories-radio.php:69
 #: templates/woo-filter/parts/category/categories-select.php:50
 #: templates/woo-filter/parts/category/categories-text.php:52
 #: templates/woo-filter/parts/filter-buttons.php:15
-#: templates/woo-filter/parts/filter-color.php:56
+#: templates/woo-filter/parts/filter-color.php:58
 #: templates/woo-filter/parts/filter-layout-attr-grid.php:33
 #: templates/woo-filter/parts/filter-layout-grid.php:34
 #: templates/woo-filter/parts/price-range.php:31
@@ -129,22 +129,22 @@ msgid "Reset"
 msgstr ""
 
 #: base/data-factory.php:46
-#: base/data-factory.php:182
+#: base/data-factory.php:190
 #: build/index.js:1
 msgid "Colors"
 msgstr ""
 
 #: base/data-factory.php:48
-#: base/data-factory.php:190
+#: base/data-factory.php:198
 #: build/index.js:1
 msgid "Size"
 msgstr ""
 
 #: base/data-factory.php:50
-#: base/data-factory.php:142
-#: base/data-factory.php:181
-#: base/data-factory.php:387
-#: base/data-factory.php:404
+#: base/data-factory.php:150
+#: base/data-factory.php:189
+#: base/data-factory.php:420
+#: base/data-factory.php:437
 #: core/widgets/bricks/components/woo-filter.php:335
 #: core/widgets/bricks/components/wp-filter.php:238
 #: core/widgets/elementor/woo-filter/woo-filter.php:341
@@ -155,43 +155,43 @@ msgid "Tags"
 msgstr ""
 
 #: base/data-factory.php:55
-#: base/data-factory.php:196
-#: core/widgets/elementor/woo-filter/woo-filter.php:1108
+#: base/data-factory.php:204
+#: core/widgets/elementor/woo-filter/woo-filter.php:1156
 msgid "Review"
 msgstr ""
 
 #: base/data-factory.php:58
-#: base/data-factory.php:198
+#: base/data-factory.php:206
 #: templates/woo-filter/parts/price-range.php:10
 #: templates/woo-filter/template-1/left-side/price-range.php:10
 msgid "Price Range"
 msgstr ""
 
-#: base/data-factory.php:60
-#: base/data-factory.php:202
+#: base/data-factory.php:61
+#: base/data-factory.php:212
 msgid "Sale"
 msgstr ""
 
-#: base/data-factory.php:62
-#: base/data-factory.php:200
+#: base/data-factory.php:64
+#: base/data-factory.php:209
 #: templates/woo-filter/template-1/stock.php:5
 #: build/index.js:1
 msgid "Stock"
 msgstr ""
 
-#: base/data-factory.php:74
-#: base/data-factory.php:207
-#: core/admin/settings/tab-content/short-codes.php:401
+#: base/data-factory.php:76
+#: base/data-factory.php:217
+#: core/admin/settings/tab-content/short-codes.php:409
 #: core/frontend/search-filter/actions.php:591
-#: core/widgets/bricks/components/woo-filter.php:619
-#: core/widgets/elementor/woo-filter/woo-filter.php:663
+#: core/widgets/bricks/components/woo-filter.php:639
+#: core/widgets/elementor/woo-filter/woo-filter.php:711
 #: build/index.js:1
 msgid "Add to cart"
 msgstr ""
 
-#: base/data-factory.php:90
-#: base/data-factory.php:233
-#: base/data-factory.php:560
+#: base/data-factory.php:98
+#: base/data-factory.php:258
+#: base/data-factory.php:593
 #: core/admin/settings/tab-content/short-codes.php:163
 #: core/widgets/bricks/components/woo-filter.php:376
 #: core/widgets/elementor/woo-filter/woo-filter.php:378
@@ -199,18 +199,18 @@ msgstr ""
 msgid "Brands"
 msgstr ""
 
-#: base/data-factory.php:145
-#: base/data-factory.php:390
-#: base/data-factory.php:407
+#: base/data-factory.php:153
+#: base/data-factory.php:423
+#: base/data-factory.php:440
 #: core/widgets/gutenburg-block/blocks/wp-filter.php:67
 #: templates/wp-filter/template-1/template-1.php:67
 #: build/index.js:1
 msgid "Authors"
 msgstr ""
 
-#: base/data-factory.php:150
-#: base/data-factory.php:393
-#: base/data-factory.php:410
+#: base/data-factory.php:158
+#: base/data-factory.php:426
+#: base/data-factory.php:443
 #: core/admin/filter-options/add-options.php:28
 #: core/admin/settings/action.php:62
 #: core/widgets/gutenburg-block/blocks/wp-filter.php:70
@@ -219,65 +219,79 @@ msgstr ""
 msgid "Custom Field"
 msgstr ""
 
-#: base/data-factory.php:458
-#: base/data-factory.php:621
+#: base/data-factory.php:491
+#: base/data-factory.php:654
+#: base/data-factory.php:714
 #: base/input-fields.php:136
 #: base/input-fields.php:161
 #: core/widgets/elementor/wp-filter/wp-filter.php:71
-#: utils/helper.php:1182
+#: utils/helper.php:1186
+#: build/index.js:1
 msgid "Pro"
 msgstr ""
 
-#: base/data-factory.php:462
+#: base/data-factory.php:495
 #: build/index.js:1
 msgid "List"
 msgstr ""
 
-#: base/data-factory.php:463
-#: base/data-factory.php:536
+#: base/data-factory.php:496
+#: base/data-factory.php:569
 #: core/admin/filter-options/add-options.php:51
 #: build/index.js:1
 msgid "Checkbox"
 msgstr ""
 
-#: base/data-factory.php:464
+#: base/data-factory.php:497
 #: build/index.js:1
 msgid "Dropdown"
 msgstr ""
 
-#: base/data-factory.php:465
-#: base/data-factory.php:537
+#: base/data-factory.php:498
+#: base/data-factory.php:570
 #: core/admin/filter-options/add-options.php:52
 #: build/index.js:1
 msgid "Radio"
 msgstr ""
 
-#: base/data-factory.php:466
-#: base/data-factory.php:538
+#: base/data-factory.php:499
+#: base/data-factory.php:571
 #: build/index.js:1
 msgid "Image"
 msgstr ""
 
-#: base/data-factory.php:467
+#: base/data-factory.php:500
 #: build/index.js:1
 msgid "Text"
 msgstr ""
 
-#: base/data-factory.php:574
+#: base/data-factory.php:607
 msgid "Brand filter: no brands found. Add brands under Products > Brands."
 msgstr ""
 
-#: base/data-factory.php:575
+#: base/data-factory.php:608
 msgid "Brand filter: the selected brands have no products, so the section is hidden. Assign brands to products or turn off \"Hide Empty Brands\"."
 msgstr ""
 
 #. translators: %d: template number
-#: base/data-factory.php:627
+#: base/data-factory.php:660
 #: base/input-fields.php:138
-#: utils/helper.php:1188
-#: utils/helper.php:1371
+#: utils/helper.php:1192
+#: utils/helper.php:1375
 #, php-format
 msgid "Template %d"
+msgstr ""
+
+#: base/data-factory.php:716
+msgid "Layout 1"
+msgstr ""
+
+#: base/data-factory.php:717
+msgid "Layout 2"
+msgstr ""
+
+#: base/data-factory.php:718
+msgid "Layout 3"
 msgstr ""
 
 #: base/enqueue.php:188
@@ -289,18 +303,19 @@ msgid "and"
 msgstr ""
 
 #: base/enqueue.php:221
-#: core/widgets/elementor/woo-filter/woo-filter.php:1053
+#: core/widgets/elementor/woo-filter/woo-filter.php:1101
 #: build/index.js:1
 msgid "Price"
 msgstr ""
 
 #: base/enqueue.php:222
 #: templates/woo-filter/template-1/rating.php:17
+#: templates/woo-filter/template-2/template-2.php:70
 msgid "Rating"
 msgstr ""
 
 #: base/enqueue.php:223
-#: core/frontend/shortcodes.php:130
+#: core/frontend/shortcodes.php:137
 #: build/index.js:1
 msgid "Search"
 msgstr ""
@@ -314,11 +329,11 @@ msgstr ""
 #: base/sidebar-sections.php:114
 #: core/admin/header.php:53
 #: core/widgets/elementor/woo-filter/woo-filter.php:438
-#: core/widgets/elementor/woo-filter/woo-filter.php:737
-#: core/widgets/elementor/woo-filter/woo-filter.php:847
-#: core/widgets/elementor/woo-filter/woo-filter.php:976
-#: core/widgets/elementor/woo-filter/woo-filter.php:1824
-#: core/widgets/elementor/woo-filter/woo-filter.php:1888
+#: core/widgets/elementor/woo-filter/woo-filter.php:785
+#: core/widgets/elementor/woo-filter/woo-filter.php:895
+#: core/widgets/elementor/woo-filter/woo-filter.php:1024
+#: core/widgets/elementor/woo-filter/woo-filter.php:1872
+#: core/widgets/elementor/woo-filter/woo-filter.php:1936
 #: core/widgets/elementor/wp-filter/wp-filter.php:420
 #: core/widgets/elementor/wp-filter/wp-filter.php:530
 #: core/widgets/elementor/wp-filter/wp-filter.php:591
@@ -419,7 +434,7 @@ msgid "Stock Filter"
 msgstr ""
 
 #: base/sidebar-sections.php:72
-#: core/admin/settings/tab-content/short-codes.php:336
+#: core/admin/settings/tab-content/short-codes.php:340
 msgid "On Sale Filter"
 msgstr ""
 
@@ -584,8 +599,8 @@ msgstr ""
 msgid "Move to Trash"
 msgstr ""
 
-#: core/admin/filter-set.php:5
-#: core/admin/filter-set.php:21
+#: core/admin/filter-set.php:7
+#: core/admin/filter-set.php:29
 #: core/admin/filter-sets/helper.php:36
 #: core/admin/header.php:22
 #: core/admin/menus.php:100
@@ -593,55 +608,59 @@ msgstr ""
 msgid "Filter Sets"
 msgstr ""
 
-#: core/admin/filter-set.php:6
-#: core/admin/filter-set.php:39
+#: core/admin/filter-set.php:10
+#: core/admin/filter-set.php:47
 msgid "Add New Filter Set"
 msgstr ""
 
-#: core/admin/filter-set.php:15
+#: core/admin/filter-set.php:13
+msgid "Save and reuse product filter configurations with a shortcode."
+msgstr ""
+
+#: core/admin/filter-set.php:23
 msgid "Name"
 msgstr ""
 
-#: core/admin/filter-set.php:16
+#: core/admin/filter-set.php:24
 msgid "Shortcode"
 msgstr ""
 
-#: core/admin/filter-set.php:20
+#: core/admin/filter-set.php:28
 msgid "Filter Set"
 msgstr ""
 
-#: core/admin/filter-set.php:36
+#: core/admin/filter-set.php:44
 msgid "Back to Filter Sets"
 msgstr ""
 
-#: core/admin/filter-set.php:37
+#: core/admin/filter-set.php:45
 msgid "Back"
 msgstr ""
 
-#: core/admin/filter-set.php:43
+#: core/admin/filter-set.php:51
 msgid "Enter Filter Set Name"
 msgstr ""
 
-#: core/admin/filter-set.php:44
+#: core/admin/filter-set.php:52
 msgid "Save As Filter Set"
 msgstr ""
 
-#: core/admin/filter-set.php:49
+#: core/admin/filter-set.php:57
 msgid "Live Preview"
 msgstr ""
 
-#: core/admin/filter-set.php:53
+#: core/admin/filter-set.php:61
 msgid "Filter sidebar preview"
 msgstr ""
 
-#: core/admin/filter-set.php:75
+#: core/admin/filter-set.php:83
 #: core/admin/overview.php:280
 #: core/widgets/bricks/components/woo-filter.php:19
 #: core/widgets/elementor/woo-filter/woo-filter.php:28
 msgid "WooCommerce Product Filter"
 msgstr ""
 
-#: core/admin/filter-set.php:80
+#: core/admin/filter-set.php:88
 #: core/widgets/bricks/components/wp-filter.php:19
 msgid "Wordpress Filter"
 msgstr ""
@@ -690,6 +709,15 @@ msgstr ""
 
 #: core/admin/filter-sets/table.php:86
 msgid "Delete"
+msgstr ""
+
+#: core/admin/filter-sets/table.php:98
+#, php-format
+msgid "Shortcode for %s"
+msgstr ""
+
+#: core/admin/filter-sets/table.php:99
+msgid "Copy shortcode"
 msgstr ""
 
 #: core/admin/filter-sets/table.php:99
@@ -1100,7 +1128,7 @@ msgstr ""
 #: core/widgets/bricks/components/woo-filter.php:102
 #: core/widgets/bricks/components/wp-filter.php:68
 #: core/widgets/elementor/woo-filter/woo-filter.php:117
-#: core/widgets/elementor/woo-filter/woo-filter.php:984
+#: core/widgets/elementor/woo-filter/woo-filter.php:1032
 #: core/widgets/elementor/wp-filter/wp-filter.php:92
 #: build/index.js:1
 msgid "Title"
@@ -1111,7 +1139,7 @@ msgid "Header"
 msgstr ""
 
 #: core/admin/settings/tab-content/seo.php:44
-#: core/widgets/elementor/woo-filter/woo-filter.php:1029
+#: core/widgets/elementor/woo-filter/woo-filter.php:1077
 msgid "Description"
 msgstr ""
 
@@ -1434,7 +1462,7 @@ msgid "Place Size Label Here"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:251
-#: core/admin/settings/tab-content/short-codes.php:433
+#: core/admin/settings/tab-content/short-codes.php:465
 msgid "Show Tags:"
 msgstr ""
 
@@ -1459,6 +1487,7 @@ msgid "Tag List:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:272
+#: core/admin/settings/tab-content/short-codes.php:448
 msgid "Show Attributes:"
 msgstr ""
 
@@ -1474,6 +1503,7 @@ msgid "Place Attribute Label Here"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:283
+#: core/admin/settings/tab-content/short-codes.php:451
 msgid "Attribute List:"
 msgstr ""
 
@@ -1521,100 +1551,140 @@ msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:330
 #: core/widgets/bricks/components/woo-filter.php:549
-#: core/widgets/elementor/woo-filter/woo-filter.php:548
+#: core/widgets/elementor/woo-filter/woo-filter.php:558
 #: build/index.js:1
 msgid "Place Stock Label Here"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:338
-msgid "Filter By On Sale:"
-msgstr ""
-
-#: core/admin/settings/tab-content/short-codes.php:341
-msgid "On Sale Label:"
+#: core/admin/settings/tab-content/short-codes.php:333
+msgid "Stock Filter Layout:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:342
-#: core/widgets/bricks/components/woo-filter.php:570
-#: core/widgets/elementor/woo-filter/woo-filter.php:570
+msgid "Filter By On Sale:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:345
+msgid "On Sale Label:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:346
+#: core/widgets/bricks/components/woo-filter.php:580
+#: core/widgets/elementor/woo-filter/woo-filter.php:590
 #: build/index.js:1
 msgid "Place On Sale Label Here"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:353
-msgid "Filter Result Products"
-msgstr ""
-
-#: core/admin/settings/tab-content/short-codes.php:359
-msgid "Desktop"
-msgstr ""
-
-#: core/admin/settings/tab-content/short-codes.php:360
-msgid "Tablet"
+#: core/admin/settings/tab-content/short-codes.php:351
+msgid "On Sale Filter Layout:"
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:361
+msgid "Filter Result Products"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:367
+msgid "Desktop"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:368
+msgid "Tablet"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:369
 msgid "Mobile"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:365
+#: core/admin/settings/tab-content/short-codes.php:373
 msgid "Grid Columns:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:380
+#: core/admin/settings/tab-content/short-codes.php:388
 msgid "Show Title:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:385
+#: core/admin/settings/tab-content/short-codes.php:393
 msgid "Show Description:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:390
+#: core/admin/settings/tab-content/short-codes.php:398
 msgid "Show Price:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:395
+#: core/admin/settings/tab-content/short-codes.php:403
 msgid "Show Add to Cart:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:400
+#: core/admin/settings/tab-content/short-codes.php:408
 msgid "Add to Cart Text:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:405
+#: core/admin/settings/tab-content/short-codes.php:412
+msgid "Product Image Settings"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:414
 msgid "Image Size:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:411
+#: core/admin/settings/tab-content/short-codes.php:420
 msgid "Image Width (px):"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:412
-#: core/admin/settings/tab-content/short-codes.php:418
+#: core/admin/settings/tab-content/short-codes.php:421
+#: core/admin/settings/tab-content/short-codes.php:427
 msgid "300"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:417
+#: core/admin/settings/tab-content/short-codes.php:426
 msgid "Image Height (px):"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:424
-msgid "Show Rating:"
-msgstr ""
-
-#: core/admin/settings/tab-content/short-codes.php:429
-msgid "Show Sorting:"
+#: core/admin/settings/tab-content/short-codes.php:434
+#: core/widgets/bricks/components/woo-filter.php:673
+#: core/widgets/bricks/components/woo-filter.php:676
+#: core/widgets/elementor/woo-filter/woo-filter.php:639
+#: core/widgets/elementor/woo-filter/woo-filter.php:642
+msgid "Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time."
 msgstr ""
 
 #: core/admin/settings/tab-content/short-codes.php:436
+msgid "Rollover Image:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:439
+msgid "Hover Gallery Image (1-5):"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:441
+msgid "Rollover Transition:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:443
+msgid "Gallery Slider:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:447
+msgid "Product Attributes"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:456
+msgid "Show Rating:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:461
+msgid "Show Sorting:"
+msgstr ""
+
+#: core/admin/settings/tab-content/short-codes.php:468
 msgid "Show Categories:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:440
+#: core/admin/settings/tab-content/short-codes.php:472
 msgid "Show On Sale:"
 msgstr ""
 
-#: core/admin/settings/tab-content/short-codes.php:446
+#: core/admin/settings/tab-content/short-codes.php:478
 #: core/admin/wp-filter.php:221
 msgid "Copy Filter Shortcodes"
 msgstr ""
@@ -1777,24 +1847,24 @@ msgid "Add %s to your cart"
 msgstr ""
 
 #: core/frontend/search-filter/templates/templates.php:38
-#: utils/helper.php:1201
+#: utils/helper.php:1205
 #: build/index.js:1
 msgid "Load More"
 msgstr ""
 
-#: core/frontend/shortcodes.php:130
+#: core/frontend/shortcodes.php:137
 #: templates/woo-filter/parts/product-search.php:19
 msgid "Search here"
 msgstr ""
 
-#: core/frontend/shortcodes.php:227
-#: core/frontend/shortcodes.php:241
+#: core/frontend/shortcodes.php:234
+#: core/frontend/shortcodes.php:248
 msgid "Please Active FilterPlus Pro"
 msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:31
 #: core/widgets/bricks/components/wp-filter.php:31
-#: core/widgets/elementor/woo-filter/woo-filter.php:583
+#: core/widgets/elementor/woo-filter/woo-filter.php:603
 #: core/widgets/elementor/wp-filter/wp-filter.php:345
 #: build/index.js:1
 msgid "Filter Result Options"
@@ -1867,7 +1937,7 @@ msgstr ""
 #: core/widgets/bricks/components/woo-filter.php:135
 #: core/widgets/bricks/components/wp-filter.php:101
 #: core/widgets/elementor/woo-filter/woo-filter.php:147
-#: core/widgets/elementor/woo-filter/woo-filter.php:1815
+#: core/widgets/elementor/woo-filter/woo-filter.php:1863
 #: core/widgets/elementor/wp-filter/wp-filter.php:121
 #: build/index.js:1
 msgid "Pagination Style"
@@ -2116,123 +2186,174 @@ msgid "Filter By Stock"
 msgstr ""
 
 #: core/widgets/bricks/components/woo-filter.php:547
-#: core/widgets/elementor/woo-filter/woo-filter.php:546
+#: core/widgets/elementor/woo-filter/woo-filter.php:556
 #: build/index.js:1
 msgid "Stock Label"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:558
-#: core/widgets/elementor/woo-filter/woo-filter.php:556
+#: core/widgets/bricks/components/woo-filter.php:556
+#: core/widgets/elementor/woo-filter/woo-filter.php:546
+#: build/index.js:1
+msgid "Stock Filter Layout"
+msgstr ""
+
+#: core/widgets/bricks/components/woo-filter.php:568
+#: core/widgets/elementor/woo-filter/woo-filter.php:566
 #: templates/woo-filter/template-1/on-sale.php:5
 #: build/index.js:1
 msgid "Sales"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:568
-#: core/widgets/elementor/woo-filter/woo-filter.php:568
+#: core/widgets/bricks/components/woo-filter.php:578
+#: core/widgets/elementor/woo-filter/woo-filter.php:588
 #: build/index.js:1
 msgid "On Sale Label"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:579
-#: core/widgets/elementor/woo-filter/woo-filter.php:621
+#: core/widgets/bricks/components/woo-filter.php:587
+#: core/widgets/elementor/woo-filter/woo-filter.php:578
+#: build/index.js:1
+msgid "On Sale Filter Layout"
+msgstr ""
+
+#: core/widgets/bricks/components/woo-filter.php:599
+#: core/widgets/elementor/woo-filter/woo-filter.php:669
 #: build/index.js:1
 msgid "Display Title"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:589
-#: core/widgets/elementor/woo-filter/woo-filter.php:631
+#: core/widgets/bricks/components/woo-filter.php:609
+#: core/widgets/elementor/woo-filter/woo-filter.php:679
 msgid "Display Descrtiption"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:599
-#: core/widgets/elementor/woo-filter/woo-filter.php:641
+#: core/widgets/bricks/components/woo-filter.php:619
+#: core/widgets/elementor/woo-filter/woo-filter.php:689
 #: build/index.js:1
 msgid "Display Price"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:608
-#: core/widgets/elementor/woo-filter/woo-filter.php:651
+#: core/widgets/bricks/components/woo-filter.php:628
+#: core/widgets/elementor/woo-filter/woo-filter.php:699
 #: build/index.js:1
 msgid "Display Add to Cart"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:617
-#: core/widgets/elementor/woo-filter/woo-filter.php:661
+#: core/widgets/bricks/components/woo-filter.php:637
+#: core/widgets/elementor/woo-filter/woo-filter.php:709
 #: build/index.js:1
 msgid "Add to Cart Text"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:625
-#: core/widgets/elementor/woo-filter/woo-filter.php:591
+#: core/widgets/bricks/components/woo-filter.php:645
+#: core/widgets/elementor/woo-filter/woo-filter.php:611
 #: build/index.js:1
 msgid "Image Size"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:629
+#: core/widgets/bricks/components/woo-filter.php:649
 msgid "Select Image Size"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:638
-#: core/widgets/elementor/woo-filter/woo-filter.php:601
+#: core/widgets/bricks/components/woo-filter.php:658
+#: core/widgets/elementor/woo-filter/woo-filter.php:621
 #: build/index.js:1
 msgid "Image Width (px)"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:647
-#: core/widgets/elementor/woo-filter/woo-filter.php:611
+#: core/widgets/bricks/components/woo-filter.php:667
+#: core/widgets/elementor/woo-filter/woo-filter.php:631
 #: build/index.js:1
 msgid "Image Height (px)"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:656
-#: core/widgets/elementor/woo-filter/woo-filter.php:669
+#: core/widgets/bricks/components/woo-filter.php:673
+#: core/widgets/elementor/woo-filter/woo-filter.php:639
+msgid "Rollover Image"
+msgstr ""
+
+#: core/widgets/bricks/components/woo-filter.php:673
+#: core/widgets/bricks/components/woo-filter.php:674
+#: core/widgets/bricks/components/woo-filter.php:675
+#: core/widgets/bricks/components/woo-filter.php:676
+#: core/widgets/elementor/woo-filter/woo-filter.php:196
+#: core/widgets/elementor/woo-filter/woo-filter.php:616
+#: core/widgets/elementor/woo-filter/woo-filter.php:639
+#: core/widgets/elementor/woo-filter/woo-filter.php:640
+#: core/widgets/elementor/woo-filter/woo-filter.php:641
+#: core/widgets/elementor/woo-filter/woo-filter.php:642
+#: core/widgets/elementor/woo-filter/woo-filter.php:651
+#: build/index.js:1
+msgid "Upgrade to Pro to use this feature."
+msgstr ""
+
+#: core/widgets/bricks/components/woo-filter.php:674
+#: core/widgets/elementor/woo-filter/woo-filter.php:640
+msgid "Hover Gallery Image (1-5)"
+msgstr ""
+
+#: core/widgets/bricks/components/woo-filter.php:674
+msgid "Select the gallery image shown on hover; the last available image is used when needed."
+msgstr ""
+
+#: core/widgets/bricks/components/woo-filter.php:675
+#: core/widgets/elementor/woo-filter/woo-filter.php:641
+msgid "Rollover Transition"
+msgstr ""
+
+#: core/widgets/bricks/components/woo-filter.php:676
+#: core/widgets/elementor/woo-filter/woo-filter.php:642
+msgid "Gallery Slider"
+msgstr ""
+
+#: core/widgets/bricks/components/woo-filter.php:680
+#: core/widgets/elementor/woo-filter/woo-filter.php:717
 #: build/index.js:1
 msgid "Display Rating"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:665
-#: core/widgets/elementor/woo-filter/woo-filter.php:679
+#: core/widgets/bricks/components/woo-filter.php:689
+#: core/widgets/elementor/woo-filter/woo-filter.php:727
 #: build/index.js:1
 msgid "Display Sorting"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:675
+#: core/widgets/bricks/components/woo-filter.php:699
 #: core/widgets/bricks/components/wp-filter.php:147
 #: core/widgets/bricks/components/wp-filter.php:341
-#: core/widgets/elementor/woo-filter/woo-filter.php:690
+#: core/widgets/elementor/woo-filter/woo-filter.php:738
 #: core/widgets/elementor/wp-filter/wp-filter.php:169
 #: build/index.js:1
 msgid "Display Categories"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:685
-#: core/widgets/elementor/woo-filter/woo-filter.php:701
+#: core/widgets/bricks/components/woo-filter.php:709
+#: core/widgets/elementor/woo-filter/woo-filter.php:749
 #: build/index.js:1
 msgid "Display On Sale"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:695
+#: core/widgets/bricks/components/woo-filter.php:719
 #: core/widgets/bricks/components/wp-filter.php:351
-#: core/widgets/elementor/woo-filter/woo-filter.php:713
+#: core/widgets/elementor/woo-filter/woo-filter.php:761
 #: build/index.js:1
 msgid "Display Tags"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:705
-#: core/widgets/elementor/woo-filter/woo-filter.php:1778
+#: core/widgets/bricks/components/woo-filter.php:729
+#: core/widgets/elementor/woo-filter/woo-filter.php:1826
 #: build/index.js:1
 msgid "Desktop Columns"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:716
-#: core/widgets/elementor/woo-filter/woo-filter.php:1789
+#: core/widgets/bricks/components/woo-filter.php:740
+#: core/widgets/elementor/woo-filter/woo-filter.php:1837
 #: build/index.js:1
 msgid "Tablet Columns (≤1024px)"
 msgstr ""
 
-#: core/widgets/bricks/components/woo-filter.php:727
-#: core/widgets/elementor/woo-filter/woo-filter.php:1800
+#: core/widgets/bricks/components/woo-filter.php:751
+#: core/widgets/elementor/woo-filter/woo-filter.php:1848
 #: build/index.js:1
 msgid "Mobile Columns (≤480px)"
 msgstr ""
@@ -2330,16 +2451,16 @@ msgstr ""
 #: core/widgets/elementor/woo-filter/woo-filter.php:483
 #: core/widgets/elementor/woo-filter/woo-filter.php:505
 #: core/widgets/elementor/woo-filter/woo-filter.php:536
-#: core/widgets/elementor/woo-filter/woo-filter.php:558
-#: core/widgets/elementor/woo-filter/woo-filter.php:623
-#: core/widgets/elementor/woo-filter/woo-filter.php:633
-#: core/widgets/elementor/woo-filter/woo-filter.php:643
-#: core/widgets/elementor/woo-filter/woo-filter.php:653
+#: core/widgets/elementor/woo-filter/woo-filter.php:568
 #: core/widgets/elementor/woo-filter/woo-filter.php:671
 #: core/widgets/elementor/woo-filter/woo-filter.php:681
-#: core/widgets/elementor/woo-filter/woo-filter.php:692
-#: core/widgets/elementor/woo-filter/woo-filter.php:703
-#: core/widgets/elementor/woo-filter/woo-filter.php:715
+#: core/widgets/elementor/woo-filter/woo-filter.php:691
+#: core/widgets/elementor/woo-filter/woo-filter.php:701
+#: core/widgets/elementor/woo-filter/woo-filter.php:719
+#: core/widgets/elementor/woo-filter/woo-filter.php:729
+#: core/widgets/elementor/woo-filter/woo-filter.php:740
+#: core/widgets/elementor/woo-filter/woo-filter.php:751
+#: core/widgets/elementor/woo-filter/woo-filter.php:763
 #: core/widgets/elementor/wp-filter/wp-filter.php:62
 #: core/widgets/elementor/wp-filter/wp-filter.php:171
 #: core/widgets/elementor/wp-filter/wp-filter.php:201
@@ -2367,16 +2488,16 @@ msgstr ""
 #: core/widgets/elementor/woo-filter/woo-filter.php:484
 #: core/widgets/elementor/woo-filter/woo-filter.php:506
 #: core/widgets/elementor/woo-filter/woo-filter.php:537
-#: core/widgets/elementor/woo-filter/woo-filter.php:559
-#: core/widgets/elementor/woo-filter/woo-filter.php:624
-#: core/widgets/elementor/woo-filter/woo-filter.php:634
-#: core/widgets/elementor/woo-filter/woo-filter.php:644
-#: core/widgets/elementor/woo-filter/woo-filter.php:654
+#: core/widgets/elementor/woo-filter/woo-filter.php:569
 #: core/widgets/elementor/woo-filter/woo-filter.php:672
 #: core/widgets/elementor/woo-filter/woo-filter.php:682
-#: core/widgets/elementor/woo-filter/woo-filter.php:693
-#: core/widgets/elementor/woo-filter/woo-filter.php:704
-#: core/widgets/elementor/woo-filter/woo-filter.php:716
+#: core/widgets/elementor/woo-filter/woo-filter.php:692
+#: core/widgets/elementor/woo-filter/woo-filter.php:702
+#: core/widgets/elementor/woo-filter/woo-filter.php:720
+#: core/widgets/elementor/woo-filter/woo-filter.php:730
+#: core/widgets/elementor/woo-filter/woo-filter.php:741
+#: core/widgets/elementor/woo-filter/woo-filter.php:752
+#: core/widgets/elementor/woo-filter/woo-filter.php:764
 #: core/widgets/elementor/wp-filter/wp-filter.php:63
 #: core/widgets/elementor/wp-filter/wp-filter.php:172
 #: core/widgets/elementor/wp-filter/wp-filter.php:202
@@ -2394,12 +2515,6 @@ msgstr ""
 #: core/widgets/elementor/woo-filter/woo-filter.php:157
 #: core/widgets/elementor/wp-filter/wp-filter.php:152
 msgid "Category Settings"
-msgstr ""
-
-#: core/widgets/elementor/woo-filter/woo-filter.php:196
-#: core/widgets/elementor/woo-filter/woo-filter.php:596
-#: build/index.js:1
-msgid "Upgrade to Pro to use this feature."
 msgstr ""
 
 #: core/widgets/elementor/woo-filter/woo-filter.php:204
@@ -2431,512 +2546,532 @@ msgstr ""
 msgid "Brand filter with Checkbox, Radio and Image templates is a Pro feature."
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:727
+#: core/widgets/elementor/woo-filter/woo-filter.php:640
+msgid "Choose the gallery image shown on hover; the last available image is used when needed."
+msgstr ""
+
+#: core/widgets/elementor/woo-filter/woo-filter.php:646
+msgid "Show Product Attributes"
+msgstr ""
+
+#: core/widgets/elementor/woo-filter/woo-filter.php:651
+msgid "Show the selected attributes on each product card."
+msgstr ""
+
+#: core/widgets/elementor/woo-filter/woo-filter.php:657
+msgid "Attribute List"
+msgstr ""
+
+#: core/widgets/elementor/woo-filter/woo-filter.php:664
+msgid "No attributes found. Add them under Products > Attributes."
+msgstr ""
+
+#: core/widgets/elementor/woo-filter/woo-filter.php:775
 #: core/widgets/elementor/wp-filter/wp-filter.php:410
 msgid "Button Style"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:737
+#: core/widgets/elementor/woo-filter/woo-filter.php:785
 #: core/widgets/elementor/wp-filter/wp-filter.php:420
 msgid "Button Style controls are a Pro feature."
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:745
+#: core/widgets/elementor/woo-filter/woo-filter.php:793
 #: core/widgets/elementor/wp-filter/wp-filter.php:428
 msgid "Button Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:756
+#: core/widgets/elementor/woo-filter/woo-filter.php:804
 #: core/widgets/elementor/wp-filter/wp-filter.php:439
 msgid "Button Hover Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:767
+#: core/widgets/elementor/woo-filter/woo-filter.php:815
 #: core/widgets/elementor/wp-filter/wp-filter.php:451
 msgid "Button BG Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:777
+#: core/widgets/elementor/woo-filter/woo-filter.php:825
 #: core/widgets/elementor/wp-filter/wp-filter.php:461
 msgid "Button BG Hover Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:788
-#: core/widgets/elementor/woo-filter/woo-filter.php:871
-#: core/widgets/elementor/woo-filter/woo-filter.php:900
-#: core/widgets/elementor/woo-filter/woo-filter.php:1010
-#: core/widgets/elementor/woo-filter/woo-filter.php:1045
-#: core/widgets/elementor/woo-filter/woo-filter.php:1086
-#: core/widgets/elementor/woo-filter/woo-filter.php:1146
-#: core/widgets/elementor/woo-filter/woo-filter.php:1439
-#: core/widgets/elementor/woo-filter/woo-filter.php:1470
+#: core/widgets/elementor/woo-filter/woo-filter.php:836
+#: core/widgets/elementor/woo-filter/woo-filter.php:919
+#: core/widgets/elementor/woo-filter/woo-filter.php:948
+#: core/widgets/elementor/woo-filter/woo-filter.php:1058
+#: core/widgets/elementor/woo-filter/woo-filter.php:1093
+#: core/widgets/elementor/woo-filter/woo-filter.php:1134
+#: core/widgets/elementor/woo-filter/woo-filter.php:1194
+#: core/widgets/elementor/woo-filter/woo-filter.php:1487
+#: core/widgets/elementor/woo-filter/woo-filter.php:1518
 #: core/widgets/elementor/wp-filter/wp-filter.php:472
 #: core/widgets/elementor/wp-filter/wp-filter.php:679
 #: core/widgets/elementor/wp-filter/wp-filter.php:748
 msgid "Typography"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:795
-#: core/widgets/elementor/woo-filter/woo-filter.php:1275
+#: core/widgets/elementor/woo-filter/woo-filter.php:843
+#: core/widgets/elementor/woo-filter/woo-filter.php:1323
 #: core/widgets/elementor/wp-filter/wp-filter.php:479
 #: core/widgets/elementor/wp-filter/wp-filter.php:539
 msgid "Width"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:817
-#: core/widgets/elementor/woo-filter/woo-filter.php:1301
+#: core/widgets/elementor/woo-filter/woo-filter.php:865
+#: core/widgets/elementor/woo-filter/woo-filter.php:1349
 #: core/widgets/elementor/wp-filter/wp-filter.php:501
 #: core/widgets/elementor/wp-filter/wp-filter.php:562
 msgid "Height"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:838
+#: core/widgets/elementor/woo-filter/woo-filter.php:886
 #: core/widgets/elementor/wp-filter/wp-filter.php:651
 msgid "Filter Style (Left Side)"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:847
+#: core/widgets/elementor/woo-filter/woo-filter.php:895
 msgid "Left Side style controls are a Pro feature."
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:853
+#: core/widgets/elementor/woo-filter/woo-filter.php:901
 msgid "Filter Title"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:860
-#: core/widgets/elementor/woo-filter/woo-filter.php:889
-#: core/widgets/elementor/woo-filter/woo-filter.php:1034
-#: core/widgets/elementor/woo-filter/woo-filter.php:1383
-#: core/widgets/elementor/woo-filter/woo-filter.php:1459
-#: core/widgets/elementor/woo-filter/woo-filter.php:1835
+#: core/widgets/elementor/woo-filter/woo-filter.php:908
+#: core/widgets/elementor/woo-filter/woo-filter.php:937
+#: core/widgets/elementor/woo-filter/woo-filter.php:1082
+#: core/widgets/elementor/woo-filter/woo-filter.php:1431
+#: core/widgets/elementor/woo-filter/woo-filter.php:1507
+#: core/widgets/elementor/woo-filter/woo-filter.php:1883
 #: core/widgets/elementor/wp-filter/wp-filter.php:668
 #: core/widgets/elementor/wp-filter/wp-filter.php:737
 msgid "Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:865
-#: core/widgets/elementor/woo-filter/woo-filter.php:894
-#: core/widgets/elementor/woo-filter/woo-filter.php:999
+#: core/widgets/elementor/woo-filter/woo-filter.php:913
+#: core/widgets/elementor/woo-filter/woo-filter.php:942
+#: core/widgets/elementor/woo-filter/woo-filter.php:1047
 msgid "Hover Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:875
-#: core/widgets/elementor/woo-filter/woo-filter.php:904
+#: core/widgets/elementor/woo-filter/woo-filter.php:923
+#: core/widgets/elementor/woo-filter/woo-filter.php:952
 msgid "Font Size"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:882
+#: core/widgets/elementor/woo-filter/woo-filter.php:930
 msgid "Filter Options Title"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:911
+#: core/widgets/elementor/woo-filter/woo-filter.php:959
 msgid "Filter Wrapper"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:919
+#: core/widgets/elementor/woo-filter/woo-filter.php:967
 msgid "Wrapper Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:929
+#: core/widgets/elementor/woo-filter/woo-filter.php:977
 msgid "Gap Between Filters"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:941
-#: core/widgets/elementor/woo-filter/woo-filter.php:1018
-#: core/widgets/elementor/woo-filter/woo-filter.php:1095
-#: core/widgets/elementor/woo-filter/woo-filter.php:1153
-#: core/widgets/elementor/woo-filter/woo-filter.php:1477
-#: core/widgets/elementor/woo-filter/woo-filter.php:1932
+#: core/widgets/elementor/woo-filter/woo-filter.php:989
+#: core/widgets/elementor/woo-filter/woo-filter.php:1066
+#: core/widgets/elementor/woo-filter/woo-filter.php:1143
+#: core/widgets/elementor/woo-filter/woo-filter.php:1201
+#: core/widgets/elementor/woo-filter/woo-filter.php:1525
+#: core/widgets/elementor/woo-filter/woo-filter.php:1980
 #: core/widgets/elementor/wp-filter/wp-filter.php:636
 #: core/widgets/elementor/wp-filter/wp-filter.php:694
 #: core/widgets/elementor/wp-filter/wp-filter.php:763
 msgid "Margin"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:952
-#: core/widgets/elementor/woo-filter/woo-filter.php:1258
+#: core/widgets/elementor/woo-filter/woo-filter.php:1000
+#: core/widgets/elementor/woo-filter/woo-filter.php:1306
 #: core/widgets/elementor/wp-filter/wp-filter.php:705
 #: core/widgets/elementor/wp-filter/wp-filter.php:774
 msgid "Padding"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:967
+#: core/widgets/elementor/woo-filter/woo-filter.php:1015
 #: core/widgets/elementor/wp-filter/wp-filter.php:720
 msgid "Filter Result Style (Right Side)"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:976
+#: core/widgets/elementor/woo-filter/woo-filter.php:1024
 msgid "Right Side style controls are a Pro feature."
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:989
+#: core/widgets/elementor/woo-filter/woo-filter.php:1037
 msgid "Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1058
+#: core/widgets/elementor/woo-filter/woo-filter.php:1106
 msgid "Regular Price Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1074
+#: core/widgets/elementor/woo-filter/woo-filter.php:1122
 msgid "Sale Price Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1113
-#: core/widgets/elementor/woo-filter/woo-filter.php:1701
+#: core/widgets/elementor/woo-filter/woo-filter.php:1161
+#: core/widgets/elementor/woo-filter/woo-filter.php:1749
 msgid "Star Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1124
+#: core/widgets/elementor/woo-filter/woo-filter.php:1172
 msgid "Star Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1135
+#: core/widgets/elementor/woo-filter/woo-filter.php:1183
 msgid "Review Count Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1165
+#: core/widgets/elementor/woo-filter/woo-filter.php:1213
 msgid "Cart Icon"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1170
+#: core/widgets/elementor/woo-filter/woo-filter.php:1218
 msgid "Icon Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1183
+#: core/widgets/elementor/woo-filter/woo-filter.php:1231
 msgid "Icon Hover Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1194
+#: core/widgets/elementor/woo-filter/woo-filter.php:1242
 msgid "Icon Size"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1208
+#: core/widgets/elementor/woo-filter/woo-filter.php:1256
 msgid "Button Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1219
+#: core/widgets/elementor/woo-filter/woo-filter.php:1267
 msgid "Button Text Typography"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1226
+#: core/widgets/elementor/woo-filter/woo-filter.php:1274
 msgid "Button Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1240
+#: core/widgets/elementor/woo-filter/woo-filter.php:1288
 msgid "Button Hover Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1251
-#: core/widgets/elementor/woo-filter/woo-filter.php:1858
+#: core/widgets/elementor/woo-filter/woo-filter.php:1299
+#: core/widgets/elementor/woo-filter/woo-filter.php:1906
 #: core/widgets/elementor/wp-filter/wp-filter.php:687
 #: core/widgets/elementor/wp-filter/wp-filter.php:756
 msgid "Border"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1270
+#: core/widgets/elementor/woo-filter/woo-filter.php:1318
 msgid "Thumbnail"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1320
+#: core/widgets/elementor/woo-filter/woo-filter.php:1368
 msgid "Badge"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1325
+#: core/widgets/elementor/woo-filter/woo-filter.php:1373
 msgid "Badge Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1335
+#: core/widgets/elementor/woo-filter/woo-filter.php:1383
 msgid "Badge Hover Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1345
+#: core/widgets/elementor/woo-filter/woo-filter.php:1393
 msgid "Badge Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1355
+#: core/widgets/elementor/woo-filter/woo-filter.php:1403
 msgid "Badge Padding"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1366
+#: core/widgets/elementor/woo-filter/woo-filter.php:1414
 msgid "Badge Margin"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1378
+#: core/widgets/elementor/woo-filter/woo-filter.php:1426
 msgid "Selected Filters"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1391
-#: core/widgets/elementor/woo-filter/woo-filter.php:1844
+#: core/widgets/elementor/woo-filter/woo-filter.php:1439
+#: core/widgets/elementor/woo-filter/woo-filter.php:1892
 msgid "Hover Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1401
+#: core/widgets/elementor/woo-filter/woo-filter.php:1449
 msgid "Filter Tag Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1409
+#: core/widgets/elementor/woo-filter/woo-filter.php:1457
 msgid "Filter Tag Hover Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1419
+#: core/widgets/elementor/woo-filter/woo-filter.php:1467
 msgid "Filter Tag Border Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1427
+#: core/widgets/elementor/woo-filter/woo-filter.php:1475
 msgid "Filter Tag Border Width"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1446
+#: core/widgets/elementor/woo-filter/woo-filter.php:1494
 msgid "Filter Tag Padding"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1454
+#: core/widgets/elementor/woo-filter/woo-filter.php:1502
 msgid "Result Count"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1488
+#: core/widgets/elementor/woo-filter/woo-filter.php:1536
 msgid "Sort Bar"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1493
+#: core/widgets/elementor/woo-filter/woo-filter.php:1541
 msgid "Bar Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1503
+#: core/widgets/elementor/woo-filter/woo-filter.php:1551
 msgid "Bar Border Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1513
+#: core/widgets/elementor/woo-filter/woo-filter.php:1561
 msgid "Bar Border Width"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1524
+#: core/widgets/elementor/woo-filter/woo-filter.php:1572
 msgid "Bar Padding"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1535
+#: core/widgets/elementor/woo-filter/woo-filter.php:1583
 msgid "Bar Margin"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1546
+#: core/widgets/elementor/woo-filter/woo-filter.php:1594
 msgid "View Button Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1556
+#: core/widgets/elementor/woo-filter/woo-filter.php:1604
 msgid "View Button Border Width"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1567
+#: core/widgets/elementor/woo-filter/woo-filter.php:1615
 msgid "View Button Hover Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1577
+#: core/widgets/elementor/woo-filter/woo-filter.php:1625
 msgid "View Button Icon Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1587
+#: core/widgets/elementor/woo-filter/woo-filter.php:1635
 msgid "View Button Hover Icon Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1597
+#: core/widgets/elementor/woo-filter/woo-filter.php:1645
 msgid "View Button Icon Size"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1608
+#: core/widgets/elementor/woo-filter/woo-filter.php:1656
 msgid "Quick View"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1613
+#: core/widgets/elementor/woo-filter/woo-filter.php:1661
 msgid "Overlay Background"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1621
+#: core/widgets/elementor/woo-filter/woo-filter.php:1669
 msgid "Modal Background"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1629
+#: core/widgets/elementor/woo-filter/woo-filter.php:1677
 msgid "Gallery Background"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1637
+#: core/widgets/elementor/woo-filter/woo-filter.php:1685
 msgid "Close Button Background"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1645
+#: core/widgets/elementor/woo-filter/woo-filter.php:1693
 msgid "Close Icon Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1653
+#: core/widgets/elementor/woo-filter/woo-filter.php:1701
 msgid "Close Button Hover Background"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1661
+#: core/widgets/elementor/woo-filter/woo-filter.php:1709
 msgid "Close Icon Hover Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1668
+#: core/widgets/elementor/woo-filter/woo-filter.php:1716
 msgid "Close Button Border"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1673
+#: core/widgets/elementor/woo-filter/woo-filter.php:1721
 msgid "Close Button Radius"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1681
+#: core/widgets/elementor/woo-filter/woo-filter.php:1729
 msgid "Product Title Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1685
+#: core/widgets/elementor/woo-filter/woo-filter.php:1733
 msgid "Product Title Typography"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1689
+#: core/widgets/elementor/woo-filter/woo-filter.php:1737
 msgid "Category Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1693
+#: core/widgets/elementor/woo-filter/woo-filter.php:1741
 msgid "Category Typography"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1697
+#: core/widgets/elementor/woo-filter/woo-filter.php:1745
 msgid "Review Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1705
+#: core/widgets/elementor/woo-filter/woo-filter.php:1753
 msgid "Price Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1709
+#: core/widgets/elementor/woo-filter/woo-filter.php:1757
 msgid "Price Typography"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1713
+#: core/widgets/elementor/woo-filter/woo-filter.php:1761
 msgid "Description Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1717
+#: core/widgets/elementor/woo-filter/woo-filter.php:1765
 msgid "Description Typography"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1721
+#: core/widgets/elementor/woo-filter/woo-filter.php:1769
 msgid "Option Label Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1725
+#: core/widgets/elementor/woo-filter/woo-filter.php:1773
 msgid "Option and Quantity Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1729
+#: core/widgets/elementor/woo-filter/woo-filter.php:1777
 msgid "Option and Quantity Background"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1733
+#: core/widgets/elementor/woo-filter/woo-filter.php:1781
 msgid "Option and Quantity Border"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1737
+#: core/widgets/elementor/woo-filter/woo-filter.php:1785
 msgid "Option and Quantity Radius"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1741
+#: core/widgets/elementor/woo-filter/woo-filter.php:1789
 msgid "Add to Cart Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1745
+#: core/widgets/elementor/woo-filter/woo-filter.php:1793
 msgid "Add to Cart Background"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1749
+#: core/widgets/elementor/woo-filter/woo-filter.php:1797
 msgid "Add to Cart Hover Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1753
+#: core/widgets/elementor/woo-filter/woo-filter.php:1801
 msgid "Add to Cart Hover Background"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1757
+#: core/widgets/elementor/woo-filter/woo-filter.php:1805
 msgid "Add to Cart Typography"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1761
+#: core/widgets/elementor/woo-filter/woo-filter.php:1809
 msgid "Add to Cart Radius"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1765
+#: core/widgets/elementor/woo-filter/woo-filter.php:1813
 msgid "Details Link Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1769
+#: core/widgets/elementor/woo-filter/woo-filter.php:1817
 msgid "Details Link Hover Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1773
+#: core/widgets/elementor/woo-filter/woo-filter.php:1821
 msgid "Grid"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1783
+#: core/widgets/elementor/woo-filter/woo-filter.php:1831
 msgid "e.g. 3"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1794
+#: core/widgets/elementor/woo-filter/woo-filter.php:1842
 msgid "e.g. 2"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1805
+#: core/widgets/elementor/woo-filter/woo-filter.php:1853
 msgid "e.g. 1"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1824
+#: core/widgets/elementor/woo-filter/woo-filter.php:1872
 msgid "Pagination Style controls are a Pro feature."
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1831
+#: core/widgets/elementor/woo-filter/woo-filter.php:1879
 msgid "Pagination"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1839
+#: core/widgets/elementor/woo-filter/woo-filter.php:1887
 msgid "Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1854
+#: core/widgets/elementor/woo-filter/woo-filter.php:1902
 msgid "Hover Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1862
-#: core/widgets/elementor/woo-filter/woo-filter.php:1920
+#: core/widgets/elementor/woo-filter/woo-filter.php:1910
+#: core/widgets/elementor/woo-filter/woo-filter.php:1968
 #: core/widgets/elementor/wp-filter/wp-filter.php:624
 msgid "Border Radius"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1866
+#: core/widgets/elementor/woo-filter/woo-filter.php:1914
 msgid "Active Text Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1870
+#: core/widgets/elementor/woo-filter/woo-filter.php:1918
 msgid "Active Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1879
+#: core/widgets/elementor/woo-filter/woo-filter.php:1927
 #: core/widgets/elementor/wp-filter/wp-filter.php:582
 msgid "Advance Style"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1888
+#: core/widgets/elementor/woo-filter/woo-filter.php:1936
 #: core/widgets/elementor/wp-filter/wp-filter.php:591
 msgid "Advance Style controls are a Pro feature."
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1896
+#: core/widgets/elementor/woo-filter/woo-filter.php:1944
 msgid "Box Background Color"
 msgstr ""
 
-#: core/widgets/elementor/woo-filter/woo-filter.php:1908
+#: core/widgets/elementor/woo-filter/woo-filter.php:1956
 #: core/widgets/elementor/wp-filter/wp-filter.php:612
 msgid "Box Hover Bacground Color"
 msgstr ""
 
 #: core/widgets/elementor/wp-filter/wp-filter.php:75
-#: utils/helper.php:1184
+#: utils/helper.php:1188
 #: build/index.js:1
 msgid "Template 1"
 msgstr ""
@@ -3032,7 +3167,7 @@ msgid "Items"
 msgstr ""
 
 #: templates/woo-filter/parts/category/categories-checkbox.php:38
-#: templates/woo-filter/parts/category/categories-list.php:45
+#: templates/woo-filter/parts/category/categories-list.php:47
 #: templates/woo-filter/parts/category/categories-radio.php:39
 #: templates/woo-filter/parts/category/categories-select.php:26
 msgid "Toggle sub categories"
@@ -3132,11 +3267,11 @@ msgstr ""
 msgid "Products"
 msgstr ""
 
-#: templates/woo-filter/template-2/template-2.php:85
+#: templates/woo-filter/template-2/template-2.php:87
 msgid "Find Favorite Item"
 msgstr ""
 
-#: templates/woo-filter/template-2/template-2.php:138
+#: templates/woo-filter/template-2/template-2.php:140
 msgid "Filter and sort"
 msgstr ""
 
@@ -3164,40 +3299,40 @@ msgstr ""
 msgid "Security check failed"
 msgstr ""
 
-#: utils/helper.php:1147
+#: utils/helper.php:1151
 #: build/index.js:1
 msgid "OR"
 msgstr ""
 
-#: utils/helper.php:1147
+#: utils/helper.php:1151
 #: build/index.js:1
 msgid "AND"
 msgstr ""
 
-#: utils/helper.php:1156
+#: utils/helper.php:1160
 msgid "Please Active FilterPlus Pro. It is Premium feature."
 msgstr ""
 
-#: utils/helper.php:1200
+#: utils/helper.php:1204
 #: build/index.js:1
 msgid "Numbers"
 msgstr ""
 
-#: utils/helper.php:1210
+#: utils/helper.php:1214
 #: build/index.js:1
 msgid "Left"
 msgstr ""
 
-#: utils/helper.php:1211
+#: utils/helper.php:1215
 #: build/index.js:1
 msgid "Right"
 msgstr ""
 
-#: utils/helper.php:1235
+#: utils/helper.php:1239
 msgid "Full Size"
 msgstr ""
 
-#: utils/helper.php:1236
+#: utils/helper.php:1240
 msgid "Custom Size"
 msgstr ""
 
@@ -3235,6 +3370,10 @@ msgstr ""
 
 #: build/index.js:1
 msgid "Choose sections to reorder; unselected sections keep their default positions."
+msgstr ""
+
+#: build/index.js:1
+msgid "Layout"
 msgstr ""
 
 #: build/index.js:1

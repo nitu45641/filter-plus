@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.44
+Stable tag: 1.1.45
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -203,6 +203,16 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.45 (November 14, 2026) =
+* Fix: Gutenberg editor preview now loads the Pro stylesheet inside the editor canvas, so templates 3-8 look the same in the editor and on the frontend.
+* Fix: Gutenberg editor preview now shows the product count and pagination like the frontend.
+* Fix: Elementor widget now passes Product Attributes settings to the frontend, so colour dots and attribute chips show on product cards.
+* New: Elementor widget gets the Show Product Attributes and Attribute List options.
+* Fix: Elementor editor preview now shows Rollover Image, Gallery Slider and product attributes.
+* Tweak: Elementor Rollover Image and Gallery Slider switches stay visible; turning one on turns the other off.
+* Tweak: Gutenberg block multi-select options (Filter Order, Tags, Brands, Attributes, Attribute List) are now searchable select fields.
+* Fix: PHP warning for a missing rollover effect setting.
 
 = 1.1.44 (November 13, 2026) =
 * Fix: Product attributes now appear under the price in every template instead of inside image/hover overlays.
