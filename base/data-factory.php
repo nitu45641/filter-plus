@@ -319,6 +319,10 @@ class DataFactory {
 			'rollover_image_number' => $rollover_image_number,
 			'rollover_effect' => $rollover_effect,
 			'gallery_slider' => $gallery_slider,
+			// Product card attributes (Pro). Without these the Elementor/Bricks
+			// widgets never showed the selected attributes (e.g. color swatches).
+			'show_product_attributes' => $show_product_attributes,
+			'product_attributes' => $product_attributes,
 			'hide_prod_rating' => $hide_prod_rating,
 			'size_label' => $size_label,
 			'attribute_label' => $attribute_label,
