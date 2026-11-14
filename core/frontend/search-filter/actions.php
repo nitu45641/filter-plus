@@ -536,7 +536,12 @@ class Actions {
 					$image_url  = ( class_exists('WooCommerce') && $param['filter_type'] == "product") ? wc_placeholder_img_src( 'woocommerce_single' ) : get_post_meta($post->ID, 'featured_image', true);
 					$size_slug  = is_array( $size ) ? implode( 'x', $size ) : $size;
 					$image_class = ! empty( $size_slug ) ? 'attachment-' . $size_slug . ' size-' . $size_slug . ' wp-post-image' : 'wp-post-image';
-					$image = '<img class="'.esc_attr($image_class).'" src="'.esc_url($image_url).'" alt="'.esc_attr__('single image blank','filter-plus').'">';
+					// Posts without a featured image: neutral placeholder instead of a broken <img>.
+					if ( empty( $image_url ) ) {
+						$image_url    = \FilterPlus::assets_url() . 'images/post-placeholder.svg';
+						$image_class .= ' fp-placeholder-img';
+					}
+					$image = '<img class="'.esc_attr($image_class).'" src="'.esc_url($image_url).'" alt="'.esc_attr( get_the_title( $post->ID ) ).'" loading="lazy">';
 				}
 
 				$products[$key]['id'] 	= $post->ID;

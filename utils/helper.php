@@ -1039,9 +1039,17 @@ class Helper {
 			'include' => $user_ids,
 			'fields'  => [ 'ID', 'display_name'],
 		  ];
+		// No explicit list: only people who actually wrote published posts (not every customer/subscriber).
+		if ( empty( $user_ids ) ) {
+			$args['has_published_posts'] = true;
+		}
 		$users = get_users($args);
 		foreach ($users as $user) {
-			$full_name = get_user_meta($user->ID, 'first_name', true) .' '. get_user_meta($user->ID, 'last_name', true);
+			$full_name = trim( get_user_meta($user->ID, 'first_name', true) .' '. get_user_meta($user->ID, 'last_name', true) );
+			// Fall back to the display name so users without first/last name don't render as blank options.
+			if ( '' === $full_name ) {
+				$full_name = $user->display_name;
+			}
 			if ( $type == 'label_value' ) {
 				$user_list[] = array('label'=> $full_name , 'value'=>$user->ID);
 			} else {
