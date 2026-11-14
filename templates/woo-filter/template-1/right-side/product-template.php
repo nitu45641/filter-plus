@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Grid template for products
  */
 if (!function_exists('filterplus_render_grid_product')) {
-function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price, $rollover_image = 'no', $rollover_image_number = 1, $rollover_effect = 'fade') {
+function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_prod_title, $hide_prod_desc, $hide_prod_rating, $hide_prod_price, $rollover_image = 'no', $rollover_image_number = 1, $rollover_effect = 'fade', $gallery_slider = 'no') {
 	?>
 	<div class="product-style product-style-<?php echo esc_attr($product['template']); ?>">
 		<div class="product-thumbnail">
@@ -32,7 +32,7 @@ function filterplus_render_grid_product($product, $hide_prod_add_cart, $hide_pro
                     $fp_slider_markup = '';
                     if ( class_exists('FilterPlusPro') ) {
                         include_once \FilterPlusPro::locate_template( 'woo-filter/parts/rollover-image.php' );
-                        if ( function_exists('filterplus_pro_gallery_slider_enabled') && filterplus_pro_gallery_slider_enabled() ) {
+                        if ( function_exists('filterplus_pro_gallery_slider_markup') && ( 'yes' === $gallery_slider || ( function_exists('filterplus_pro_gallery_slider_enabled') && filterplus_pro_gallery_slider_enabled() ) ) ) {
                             $fp_slider_markup = filterplus_pro_gallery_slider_markup( $product );
                         }
                     }

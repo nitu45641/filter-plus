@@ -718,7 +718,7 @@ class Actions {
 	 * @param int $template
 	 * @return array
 	 */
-	public function render_products_html($products, $filter_type, $template) {
+	public function render_products_html($products, $filter_type, $template, $render_settings = null) {
 		$render_selected_attributes = static function ( $card_html, $product_data, $post_data ) {
 			// Only the attributes selected in "Attribute List" are shown.
 			if ( ! class_exists( 'FilterPlusPro' ) || 'yes' !== ( $post_data['show_product_attributes'] ?? 'no' ) || empty( $post_data['product_attributes'] ) || empty( $product_data['id'] ) || ! function_exists( 'wc_get_product' ) ) {
@@ -735,6 +735,11 @@ class Actions {
 			}
 			$selected = array_filter( $selected_keys );
 			if ( empty( $selected ) ) { return $card_html; }
+			// Template 7 draws its own color swatches unless the color attribute
+			// was present in the AJAX POST. Keep preview and live output aligned.
+			if ( in_array( 'color', $selected, true ) ) {
+				$card_html = preg_replace( '/<div class="t7-swatches">.*?<\/div>/s', '', $card_html );
+			}
 			$wc_product = wc_get_product( absint( $product_data['id'] ) );
 			if ( ! $wc_product ) { return $card_html; }
 			$items = '';
@@ -776,6 +781,18 @@ class Actions {
 			}
 			return $card_html;
 		};
+		$render_requested_slider = static function ( $card_html, $product_data, $template_number, $post_data ) {
+			if ( 'yes' !== ( $post_data['gallery_slider'] ?? 'no' ) || ! class_exists( 'FilterPlusPro' ) || ! function_exists( 'filterplus_pro_gallery_slider_markup' ) || ! in_array( (int) $template_number, array( 4, 5, 6, 7, 8 ), true ) ) {
+				return $card_html;
+			}
+			$slider = filterplus_pro_gallery_slider_markup( $product_data );
+			$primary_image = isset( $product_data['post_image'] ) ? (string) $product_data['post_image'] : '';
+			$position = '' !== $primary_image ? strpos( $card_html, $primary_image ) : false;
+			if ( '' === $slider || false === $position ) {
+				return $card_html;
+			}
+			return substr( $card_html, 0, $position ) . $slider . substr( $card_html, $position + strlen( $primary_image ) );
+		};
 		$html = array(
 			'grid' => '',
 			'list' => ''
@@ -806,7 +823,8 @@ class Actions {
 			include_once $template_path;
 
 			// Get template variables from POST data
-			$post_data = filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
+			$post_data = is_array( $render_settings ) ? $render_settings : filter_input_array( INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS );
+			$post_data = is_array( $post_data ) ? $post_data : array();
 
 			// Render each product using the new functions
 			foreach ($products as $product) {
@@ -834,6 +852,7 @@ class Actions {
 						);
 					}
 					$rendered_card = ob_get_clean();
+					$rendered_card = $render_requested_slider( $rendered_card, $product, $template, $post_data );
 					$html['grid'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
 				} elseif (function_exists('filterplus_render_grid_product')) {
 					ob_start();
@@ -847,7 +866,8 @@ class Actions {
 							isset($post_data['hide_prod_price']) ? $post_data['hide_prod_price'] : 'yes',
 							isset($post_data['rollover_image']) && 'yes' === $post_data['rollover_image'] && ( ! isset($post_data['gallery_slider']) || 'yes' !== $post_data['gallery_slider'] ) ? 'yes' : 'no',
 							isset($post_data['rollover_image_number']) ? max(1, min(5, absint($post_data['rollover_image_number']))) : 1,
-							isset($post_data['rollover_effect']) ? sanitize_key($post_data['rollover_effect']) : 'fade'
+							isset($post_data['rollover_effect']) ? sanitize_key($post_data['rollover_effect']) : 'fade',
+							isset($post_data['gallery_slider']) && 'yes' === $post_data['gallery_slider'] ? 'yes' : 'no'
 						);
 					} else {
 						filterplus_render_grid_product(
@@ -857,6 +877,7 @@ class Actions {
 						);
 					}
 					$rendered_card = ob_get_clean();
+					$rendered_card = $render_requested_slider( $rendered_card, $product, $template, $post_data );
 					$html['grid'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
 				}
 

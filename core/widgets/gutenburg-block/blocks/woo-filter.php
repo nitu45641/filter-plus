@@ -358,11 +358,30 @@ function product_filter_callback( $settings ) {
                 'hide_prod_price'    => ! empty( $settings['hide_prod_price'] ) ? 'yes' : 'no',
                 'hide_prod_add_cart' => ! empty( $settings['hide_prod_add_cart'] ) ? 'yes' : 'no',
                 'hide_prod_rating'   => ! empty( $settings['hide_prod_rating'] ) ? 'yes' : 'no',
+                'rollover_image'     => ! empty( $settings['rollover_image'] ) ? 'yes' : 'no',
+                'rollover_image_number' => isset( $settings['rollover_image_number'] ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1,
+                'rollover_effect'    => isset( $settings['rollover_effect'] ) ? sanitize_key( $settings['rollover_effect'] ) : 'fade',
+                'gallery_slider'     => ! empty( $settings['gallery_slider'] ) ? 'yes' : 'no',
+                'show_product_attributes' => ! empty( $settings['show_product_attributes'] ) ? 'yes' : 'no',
+                'product_attributes' => isset( $settings['product_attributes'] ) ? $settings['product_attributes'] : '',
             ] );
 
             // Use the selected template exactly as the front end does. A
             // template 1 fallback makes the editor misleading for Pro layouts.
-            $rendered = $actions->render_products_html( $preview['products'], 'product', $template );
+            $preview_render_settings = array(
+                'hide_prod_add_cart' => ! empty( $settings['hide_prod_add_cart'] ) ? 'yes' : 'no',
+                'hide_prod_title' => ! empty( $settings['hide_prod_title'] ) ? 'yes' : 'no',
+                'hide_prod_desc' => ! empty( $settings['hide_prod_desc'] ) ? 'yes' : 'no',
+                'hide_prod_rating' => ! empty( $settings['hide_prod_rating'] ) ? 'yes' : 'no',
+                'hide_prod_price' => ! empty( $settings['hide_prod_price'] ) ? 'yes' : 'no',
+                'rollover_image' => ! empty( $settings['rollover_image'] ) ? 'yes' : 'no',
+                'rollover_image_number' => isset( $settings['rollover_image_number'] ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1,
+                'rollover_effect' => isset( $settings['rollover_effect'] ) ? sanitize_key( $settings['rollover_effect'] ) : 'fade',
+                'gallery_slider' => ! empty( $settings['gallery_slider'] ) ? 'yes' : 'no',
+                'show_product_attributes' => ! empty( $settings['show_product_attributes'] ) ? 'yes' : 'no',
+                'product_attributes' => isset( $settings['product_attributes'] ) ? $settings['product_attributes'] : '',
+            );
+            $rendered = $actions->render_products_html( $preview['products'], 'product', $template, $preview_render_settings );
         } catch ( \Throwable $e ) { // phpcs:ignore -- silently skip on any error
         }
         ob_end_clean(); // discard any PHP warnings / notices
