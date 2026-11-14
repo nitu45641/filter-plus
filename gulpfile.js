@@ -5,7 +5,6 @@ const paths = {
     '**/*',
     '!node_modules/**',
     '!vendor/**',
-    '!build/**',
     '!dist/**',
     '!scripts/**',
     '!src/**',          // Exclude source files (used by webpack)

@@ -229,6 +229,30 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'number',
             default: 0
         },
+        rollover_image: {
+            type: 'boolean',
+            default: false
+        },
+        rollover_image_number: {
+            type: 'number',
+            default: 1
+        },
+        rollover_effect: {
+            type: 'string',
+            default: 'fade'
+        },
+        gallery_slider: {
+            type: 'boolean',
+            default: false
+        },
+        show_product_attributes: {
+            type: 'boolean',
+            default: false
+        },
+        product_attributes: {
+            type: 'array',
+            default: []
+        },
         hide_prod_rating: {
             type: 'boolean',
             default: true

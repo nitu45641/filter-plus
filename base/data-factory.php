@@ -219,10 +219,13 @@ class DataFactory {
 		$default_data['product_image_size'] = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['product_image_size'] ) ) ? sanitize_text_field( $settings['product_image_size'] ) : 'woocommerce_thumbnail';
 		$default_data['image_width']        = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['image_width'] ) )  ? intval( $settings['image_width'] )  : '';
 		$default_data['image_height']       = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['image_height'] ) ) ? intval( $settings['image_height'] ) : '';
-		$default_data['rollover_image']      = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['rollover_image'] ) ) ? 'yes' : 'no';
+		$image_mode_enabled = static function ( $value ) {
+			return true === $value || 1 === $value || '1' === $value || 'yes' === $value;
+		};
+		$default_data['rollover_image']      = ( class_exists( 'FilterPlusPro' ) && isset( $settings['rollover_image'] ) && $image_mode_enabled( $settings['rollover_image'] ) ) ? 'yes' : 'no';
 		$default_data['rollover_image_number'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['rollover_image_number'] ) ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1;
 		$default_data['rollover_effect'] = ( class_exists( 'FilterPlusPro' ) && in_array( $settings['rollover_effect'] ?? 'fade', array( 'fade', 'zoom', 'none' ), true ) ) ? $settings['rollover_effect'] : 'fade';
-		$default_data['gallery_slider']      = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['gallery_slider'] ) ) ? 'yes' : 'no';
+		$default_data['gallery_slider']      = ( class_exists( 'FilterPlusPro' ) && isset( $settings['gallery_slider'] ) && $image_mode_enabled( $settings['gallery_slider'] ) ) ? 'yes' : 'no';
 		$default_data['show_product_attributes'] = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['show_product_attributes'] ) && 'yes' === $settings['show_product_attributes'] ) ? 'yes' : 'no';
 		$product_attribute_ids = $settings['product_attributes'] ?? array();
 		$product_attribute_ids = is_array( $product_attribute_ids ) ? $product_attribute_ids : explode( ',', (string) $product_attribute_ids );
