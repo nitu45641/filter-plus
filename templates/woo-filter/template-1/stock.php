@@ -2,11 +2,8 @@
 
 <!-- stock -->
 <div class="sidebar-row">
-	<?php
-	$filterplus_label = ! empty( $stock_label ) ? $stock_label : esc_html__( 'Stock','filter-plus' );
-	include \FilterPlus::locate_template( 'parts/filter-param-header.php' );
-	?>
-	<div class="panel param-box">
+    <h4 class="sidebar-label"><?php echo !empty( $stock_label ) ? esc_html( $stock_label ) : esc_html__('Stock','filter-plus');?></h4>
+	<div class="param-box">
         <label class="stock checkbox-item checkbox-item-<?php echo esc_html($template);?>">
             <input type="checkbox" data-stock_text="<?php esc_html_e('In Stock','filter-plus');?>"
             value="<?php echo esc_attr('instock');?>"/>

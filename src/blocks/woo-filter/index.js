@@ -811,7 +811,7 @@ registerBlockType('filter-plus/woo-filter', {
                                 <SelectControl
                                     label={__('Stock Filter Layout', 'filter-plus')}
                                     value={attributes.stock_template}
-                                    options={[1, ...(window.filterPlus?.is_pro_active === 0 ? [2, 3] : [])].map((n) => ({ value: String(n), label: `${__('Layout', 'filter-plus')} ${n}${n > 1 ? ` (${__('Pro', 'filter-plus')})` : ''}` }))}
+                                    options={[1, ...(window.filterPlus?.is_pro_active === 0 ? [2, 3, 4] : [])].map((n) => ({ value: String(n), label: `${n === 4 ? __('List', 'filter-plus') : `${__('Layout', 'filter-plus')} ${n}`}${n > 1 ? ` (${__('Pro', 'filter-plus')})` : ''}` }))}
                                     onChange={(value) => setAttributes({ stock_template: value })}
                                 />
                                 <TextControl
@@ -834,7 +834,7 @@ registerBlockType('filter-plus/woo-filter', {
                                 <SelectControl
                                     label={__('On Sale Filter Layout', 'filter-plus')}
                                     value={attributes.on_sale_template}
-                                    options={[1, ...(window.filterPlus?.is_pro_active === 0 ? [2, 3] : [])].map((n) => ({ value: String(n), label: `${__('Layout', 'filter-plus')} ${n}${n > 1 ? ` (${__('Pro', 'filter-plus')})` : ''}` }))}
+                                    options={[1, ...(window.filterPlus?.is_pro_active === 0 ? [2, 3, 4] : [])].map((n) => ({ value: String(n), label: `${n === 4 ? __('List', 'filter-plus') : `${__('Layout', 'filter-plus')} ${n}`}${n > 1 ? ` (${__('Pro', 'filter-plus')})` : ''}` }))}
                                     onChange={(value) => setAttributes({ on_sale_template: value })}
                                 />
                                 <TextControl

@@ -1520,48 +1520,50 @@
 		/**
 		 * Slider
 		 */
-		$('.up-arrow').css('display', 'none');
+		// Accordion state comes from the panel's real visibility, so open
+		// sections show the "up" (collapse) arrow and closed ones the "down"
+		// (expand) arrow — on load and after every toggle.
+		function sidebar_panel($handle) {
+			// .dropdown-box too — Stock's box has no .panel class.
+			return $handle.parent().find('.panel, .dropdown-box').first();
+		}
+		function sidebar_panel_is_open($panel) {
+			return $panel.length && !$panel.hasClass('d-none') && $panel.css('display') !== 'none';
+		}
+		function sidebar_sync_arrows($handle, isOpen) {
+			$handle.find('.down-arrow').toggle(!isOpen);
+			$handle.find('.up-arrow').toggle(!!isOpen);
+			$handle.toggleClass('open', !!isOpen).toggleClass('closed', !isOpen)
+				.attr('aria-expanded', isOpen ? 'true' : 'false');
+		}
+		$('.heading-wrap, .dropdown-label').each(function () {
+			const $handle = $(this);
+			sidebar_sync_arrows($handle, sidebar_panel_is_open(sidebar_panel($handle)));
+		});
 		sidebar_slider($('.heading-wrap'));
 		sidebar_slider($('.dropdown-label'));
 		function sidebar_slider($handle) {
 			$handle.on('click', function () {
-				const _this = $(this);
-				// Find the closest heading-wrap and toggle arrows and panel
-				let headingWrap = _this.closest('.heading-wrap');
+				let headingWrap = $(this).closest('.heading-wrap');
 				if (headingWrap.length === 0) {
-					headingWrap = _this.closest('.dropdown-label');
+					headingWrap = $(this).closest('.dropdown-label');
 				}
-				const downArrow = headingWrap.find('.down-arrow');
-				const upArrow = headingWrap.find('.up-arrow');
-				// .dropdown-box too — Stock's box has no .panel class, so it
-				// was never found here and its trigger never opened it.
-				const panel = headingWrap.parent().find('.panel, .dropdown-box').first();
-
-				// Always hide both arrows initially
-				downArrow.hide();
-				upArrow.hide();
-
-				downArrow.slideToggle();
-				upArrow.slideToggle();
-				// Show/hide arrows based on open/close state
-				if (_this.hasClass('closed')) {
-					downArrow.show();
-					upArrow.hide();
-				} else {
-					downArrow.hide();
-					upArrow.show();
+				const panel = sidebar_panel(headingWrap);
+				if (!panel.length) {
+					return;
 				}
+				const willOpen = !sidebar_panel_is_open(panel);
+				sidebar_sync_arrows(headingWrap, willOpen);
 
-				panel.slideToggle(700, function () {
-					if (_this.hasClass('closed')) {
-						if (panel.hasClass('d-none')) {
-							panel.removeClass('d-none');
-						}
-						_this.removeClass('closed').addClass('open');
-					} else {
-						_this.removeClass('open').addClass('closed');
+				panel.stop(true, true);
+				if (willOpen) {
+					if (panel.hasClass('d-none')) {
+						panel.hide().removeClass('d-none');
 					}
-				});
+					panel.slideDown(300);
+				} else {
+					panel.slideUp(300);
+				}
 			});
 		}
 

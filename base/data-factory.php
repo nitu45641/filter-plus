@@ -716,6 +716,7 @@ class DataFactory {
 			1 => esc_html__( 'Layout 1', 'filter-plus' ),
 			2 => esc_html__( 'Layout 2', 'filter-plus' ) . $pro,
 			3 => esc_html__( 'Layout 3', 'filter-plus' ) . $pro,
+			4 => esc_html__( 'List', 'filter-plus' ) . $pro,
 		);
 		if ( 'elementor' === $type ) {
 			return array( 'template' => $options, 'template_disable' => class_exists( 'FilterPlusPro' ) ? '' : 1 );
@@ -726,7 +727,7 @@ class DataFactory {
 	/** Keep unsupported Pro layouts from being stored by the free plugin. */
 	private function normalize_filter_layout( $layout ) {
 		$layout = absint( $layout );
-		if ( ! class_exists( 'FilterPlusPro' ) || ! in_array( $layout, array( 1, 2, 3 ), true ) ) {
+		if ( ! class_exists( 'FilterPlusPro' ) || ! in_array( $layout, array( 1, 2, 3, 4 ), true ) ) {
 			return '1';
 		}
 		return (string) $layout;
@@ -743,6 +744,9 @@ class DataFactory {
 		}
 		if ( 3 === $layout ) {
 			$path = \FilterPlusPro::locate_template( 'woo-filter/template-3/' . $filter . '.php' );
+		} elseif ( 4 === $layout ) {
+			// Pro "List" layout: visible checkbox rows, works in every template.
+			$path = \FilterPlusPro::locate_template( 'woo-filter/parts/' . $filter . '-list.php' );
 		} else {
 			$path = \FilterPlusPro::locate_template( 'woo-filter/parts/' . $filter . '.php' );
 		}
