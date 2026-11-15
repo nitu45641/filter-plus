@@ -210,6 +210,9 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 * Tweak: Post Filter template 1 sidebar sections have even spacing with dividers, consistent headings, and a clearer Reset link.
 * Tweak: Post Filter template 1 cards: the whole card is clickable and links open in the same tab, category and tag badges are styled differently, titles are limited to 2 lines, and the post date is shown.
 * Tweak: Post Filter template 1 results: active-filter chips with a remove button, a clearer "Clear all" link, a styled empty message, and a dimmed grid while loading.
+* Fix: Gutenberg editor no longer crashes after clicking a post in the Post Filter preview; links in the preview are disabled so the click selects the block instead.
+* Fix: Elementor editor now shows posts in the Post Filter widget preview (all templates).
+* Fix: Elementor editor preview of Post Filter template 1 shows posts in a 3-column grid instead of one per row.
 
 = 1.1.46 (November 14, 2026) =
 * New: "List" layout option for the Stock and On Sale filters (Pro).

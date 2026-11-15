@@ -4254,3 +4254,36 @@ ul.fp-brand-list-image .fp-brand-count {
 		transform: none !important;
 	}
 }
+
+/* Gutenberg editor canvas: links in the server-rendered preview must not
+   navigate. A click on a post card would load the post inside the editor
+   iframe, and the next preview re-render then crashes the editor. Clicks
+   fall through to the block so it can be selected. */
+.editor-styles-wrapper .shopContainer a,
+.editor-styles-wrapper .shopContainer a::before,
+.editor-styles-wrapper .shopContainer a::after {
+	pointer-events: none !important;
+}
+
+/* Elementor editor: the widget is rendered after the frontend script runs,
+   so Isotope never lays out the pre-rendered post grid. Use a CSS grid for
+   the preview instead (frontend keeps Isotope). */
+.elementor-editor-active .post-grid-view-1[data-editor-products] {
+	display: grid !important;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+	height: auto !important;
+}
+.elementor-editor-active .post-grid-view-1[data-editor-products] > * {
+	position: relative !important;
+	left: auto !important;
+	top: auto !important;
+	width: auto !important;
+	margin: 0 !important;
+}
+@media (max-width: 1024px) {
+	.elementor-editor-active .post-grid-view-1[data-editor-products] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+	.elementor-editor-active .post-grid-view-1[data-editor-products] { grid-template-columns: minmax(0, 1fr); }
+}
