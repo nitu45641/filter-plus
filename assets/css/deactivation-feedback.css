@@ -33,7 +33,36 @@
 }
 
 .filter-plus-deactivation-modal-header {
-    padding: 24px 24px 0;
+    position: relative;
+    padding: 24px 56px 0 24px;
+}
+
+.filter-plus-deactivation-modal .filter-plus-deactivation-close {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    font-size: 24px;
+    line-height: 1;
+    color: #787c82;
+    cursor: pointer;
+}
+
+.filter-plus-deactivation-modal .filter-plus-deactivation-close:hover,
+.filter-plus-deactivation-modal .filter-plus-deactivation-close:focus {
+    background: #f0f0f1;
+    color: #1d2327;
+    outline: none;
 }
 
 .filter-plus-deactivation-modal-header h3 {
@@ -76,7 +105,13 @@
 }
 
 .filter-plus-deactivation-reasons label:hover {
-    background: #f0f0f1;
+    background: #f6f7f7;
+}
+
+.filter-plus-deactivation-reasons li.is-selected label {
+    background: #f0f6fc;
+    color: #2271b1;
+    font-weight: 500;
 }
 
 .filter-plus-deactivation-reasons input[type="radio"] {
@@ -84,17 +119,36 @@
     flex-shrink: 0;
 }
 
-.filter-plus-deactivation-detail {
-    width: calc(100% - 32px);
-    margin: 6px 0 4px 32px;
+.filter-plus-deactivation-manual {
+    display: block;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f1;
+}
+
+.filter-plus-deactivation-modal .filter-plus-deactivation-manual label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.filter-plus-deactivation-modal textarea.filter-plus-deactivation-message {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 80px;
+    margin: 0;
     padding: 8px 10px;
     border: 1px solid #c3c4c7;
     border-radius: 4px;
     font-size: 13px;
-    transition: border-color 0.15s;
+    resize: vertical;
+    box-sizing: border-box;
 }
 
-.filter-plus-deactivation-detail:focus {
+.filter-plus-deactivation-modal textarea.filter-plus-deactivation-message:focus {
     border-color: #2271b1;
     outline: none;
     box-shadow: 0 0 0 1px #2271b1;
@@ -102,7 +156,8 @@
 
 .filter-plus-deactivation-modal-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
     padding: 16px 24px;
     border-top: 1px solid #e0e0e0;
@@ -114,5 +169,16 @@
 }
 
 .filter-plus-deactivation-skip {
-    color: #50575e !important;
+    color: #787c82 !important;
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+.filter-plus-deactivation-skip:hover {
+    color: #1d2327 !important;
+}
+
+.filter-plus-deactivation-modal-footer button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }

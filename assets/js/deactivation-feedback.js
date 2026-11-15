@@ -18,68 +18,71 @@
       $modal.fadeIn(200);
     });
 
-    // Close modal on overlay click
+    // Close modal: overlay, X button, or Esc key
+    function closeModal() {
+      $modal.fadeOut(200);
+    }
     $modal
-      .find(".filter-plus-deactivation-modal-overlay")
-      .on("click", function () {
-        $modal.fadeOut(200);
-      });
+      .find(".filter-plus-deactivation-modal-overlay, .filter-plus-deactivation-close")
+      .on("click", closeModal);
+    $(document).on("keydown", function (e) {
+      if (e.key === "Escape" && $modal.is(":visible")) {
+        closeModal();
+      }
+    });
 
-    // Show/hide detail input based on selected reason
+    // Highlight selected row
     $modal
       .find('input[name="filter_plus_deactivation_reason"]')
       .on("change", function () {
-        $modal.find(".filter-plus-deactivation-detail").slideUp(150);
+        $modal.find(".filter-plus-deactivation-reasons li").removeClass("is-selected");
+        $(this).closest("li").addClass("is-selected");
 
-        var $detail = $(this)
-          .closest("li")
-          .find(".filter-plus-deactivation-detail");
-        if ($detail.length) {
-          $detail.slideDown(150).focus();
-        }
-
-        $modal
-          .find(".filter-plus-deactivation-submit")
-          .prop("disabled", false);
+        // Enable submit button
+        $modal.find(".filter-plus-deactivation-submit").prop("disabled", false);
       });
 
-    // Skip & Deactivate
-    $modal.find(".filter-plus-deactivation-skip").on("click", function () {
-      window.location.href = deactivateUrl;
+    // Enable submit when user types in the manual box
+    $modal.find(".filter-plus-deactivation-message").on("input", function () {
+      var hasReason = $modal.find('input[name="filter_plus_deactivation_reason"]:checked').length > 0;
+      var hasText = $.trim($(this).val()) !== "";
+      $modal.find(".filter-plus-deactivation-submit").prop("disabled", !(hasReason || hasText));
     });
 
-    // Submit & Deactivate
-    $modal.find(".filter-plus-deactivation-submit").on("click", function () {
-      var $btn = $(this);
-      var reason = $modal
-        .find('input[name="filter_plus_deactivation_reason"]:checked')
-        .val();
-      var detail = $modal
-        .find('input[name="filter_plus_deactivation_reason"]:checked')
-        .closest("li")
-        .find(".filter-plus-deactivation-detail")
-        .val();
+    // Send feedback to API, then deactivate (always deactivates, even on error)
+    function sendAndDeactivate(reason, $btn) {
+      var message = $.trim($modal.find(".filter-plus-deactivation-message").val() || "");
 
-      if (!reason) {
-        window.location.href = deactivateUrl;
-        return;
-      }
-
-      $btn.text("Submitting...").prop("disabled", true);
+      $modal.find(".filter-plus-deactivation-modal-footer button").prop("disabled", true);
+      $btn.text("Deactivating...");
 
       $.ajax({
         url: filter_plus_deactivation.ajax_url,
         type: "POST",
+        timeout: 8000,
         data: {
           action: "filter_plus_deactivation_feedback",
           nonce: filter_plus_deactivation.nonce,
-          reason: reason,
-          detail: detail || "",
+          reason: reason || "",
+          message: message,
         },
         complete: function () {
           window.location.href = deactivateUrl;
         },
       });
+    }
+
+    // Skip & Deactivate — still send data (reason "skipped" + any manual text)
+    $modal.find(".filter-plus-deactivation-skip").on("click", function () {
+      sendAndDeactivate("skipped", $(this));
+    });
+
+    // Submit & Deactivate — send selected reason + manual text
+    $modal.find(".filter-plus-deactivation-submit").on("click", function () {
+      var reason = $modal
+        .find('input[name="filter_plus_deactivation_reason"]:checked')
+        .val();
+      sendAndDeactivate(reason || "", $(this));
     });
   });
 })(jQuery);
