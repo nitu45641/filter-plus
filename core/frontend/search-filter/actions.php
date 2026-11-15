@@ -935,14 +935,16 @@ class Actions {
 	}
 
 	/**
-	 * Pre-render the product grid for the Gutenberg editor (REST context).
+	 * Pre-render the post grid for builder previews (Gutenberg REST render,
+	 * Elementor editor, Bricks builder), where the frontend AJAX load either
+	 * doesn't run or runs before the widget exists.
 	 * Call from wp-filter template files; returns empty string on the frontend.
 	 *
 	 * @param array $vars  Pass get_defined_vars() from the template scope.
-	 * @return string  Rendered grid HTML (empty string when not REST).
+	 * @return string  Rendered grid HTML (empty string outside a builder preview).
 	 */
 	public static function editor_preview_grid( array $vars ): string {
-		if ( ! ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+		if ( ! \FilterPlus\Base\DataFactory::is_builder_preview() ) {
 			return '';
 		}
 
