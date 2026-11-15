@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.46
+Stable tag: 1.1.47
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -203,6 +203,13 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.47 (November 15, 2026) =
+* Fix: Post Filter template 1 search box now shows its full placeholder text ("Search posts…").
+* Tweak: Post Filter template 1 sidebar: categories show a radio marker for the selected item, tags are pill buttons that no longer shift when selected, and author/custom-field options are stacked with larger click areas.
+* Tweak: Post Filter template 1 sidebar sections have even spacing with dividers, consistent headings, and a clearer Reset link.
+* Tweak: Post Filter template 1 cards: the whole card is clickable and links open in the same tab, category and tag badges are styled differently, titles are limited to 2 lines, and the post date is shown.
+* Tweak: Post Filter template 1 results: active-filter chips with a remove button, a clearer "Clear all" link, a styled empty message, and a dimmed grid while loading.
 
 = 1.1.46 (November 14, 2026) =
 * New: "List" layout option for the Stock and On Sale filters (Pro).
