@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 use FilterPlus\Base\DataFactory;
 
 ?>
-<div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?>">
+<div class="shop-sidebar sidebar-style-<?php echo esc_attr($template);?> fp-post-sidebar-1">
 <?php \FilterPlus\Base\SidebarSections::begin( isset( $filter_order ) ? $filter_order : '' ); ?>
 	<?php if ( ! empty( $title ) ) : ?>
 	<h3 class="shop-sidebar-title"><?php echo esc_html( $title ); ?></h3>
@@ -72,7 +72,7 @@ use FilterPlus\Base\DataFactory;
 	?>
 </div>
 <?php \FilterPlus\Base\SidebarSections::render(); ?>
-<div class="row products-wrap">
+<div class="row products-wrap fp-post-results-1">
 	<div class="filter-mb-search"></div>
 	<?php
 		$_fp_tpl = \FilterPlus::locate_template( 'parts/filter-top.php' );

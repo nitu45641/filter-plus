@@ -10,7 +10,7 @@ function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc)
 	?>
 	<div class="horizontal-wp-card product-style product-style-<?php echo esc_attr($product['template']); ?>">
 		<div class="hpcc-image">
-			<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" class="hpcc-name">
+			<a href="<?php echo esc_url($product['post_permalink']); ?>" class="hpcc-name" tabindex="-1" aria-hidden="true">
 				<?php echo wp_kses_post( $product['post_image'] ); ?>
 			</a>
 			<div class="filter-meta-wrapper">
@@ -29,10 +29,10 @@ function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc)
 					<div class="filter-cat-links">
 						<?php if ($fp_first_cat): ?>
 							<?php $fp_cat_link = is_object($fp_first_cat) ? (isset($fp_first_cat->link) ? $fp_first_cat->link : '#') : (isset($fp_first_cat['link']) ? $fp_first_cat['link'] : '#'); ?>
-							<a href="<?php echo esc_url($fp_cat_link); ?>" target="_blank" class="fp-cat-link"><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></a>
+							<a href="<?php echo esc_url($fp_cat_link); ?>" class="fp-cat-link"><?php echo esc_html(is_object($fp_first_cat) ? $fp_first_cat->name : $fp_first_cat['name']); ?></a>
 						<?php endif; ?>
 						<?php if (!empty($fp_first_tag_name)): ?>
-							<a href="<?php echo esc_url($fp_first_tag_link); ?>" target="_blank"><span><?php echo esc_html($fp_first_tag_name); ?></span></a>
+							<a href="<?php echo esc_url($fp_first_tag_link); ?>" class="fp-tag-link"><span><?php echo esc_html($fp_first_tag_name); ?></span></a>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
@@ -41,14 +41,19 @@ function filterplus_render_grid_product($product, $hide_wp_title, $hide_wp_desc)
 		<div class="hpcc-content">
 			<?php if( $hide_wp_title == 'yes' ): ?>
 			<div class="filter-wp-title">
-				<a href="<?php echo esc_url($product['post_permalink']); ?>" target="_blank" class="hpcc-name"><h2><?php echo esc_html( $product['post_title'] ); ?></h2></a>
+				<a href="<?php echo esc_url($product['post_permalink']); ?>" class="hpcc-name fp-card-link"><h2><?php echo esc_html( $product['post_title'] ); ?></h2></a>
 			</div>
 			<?php endif; ?>
 
-			<?php if (!empty($product['author'])): ?>
+			<?php if ( ! empty( $product['author'] ) || ! empty( $product['post_date'] ) ) : ?>
 			<div class="meta-section">
-				<span><?php echo esc_html__('By','filter-plus'); ?></span>
-				<a href="<?php echo esc_url($product['posts_author_link']); ?>" target="_blank" class="author"><?php echo esc_html($product['author']); ?></a>
+				<?php if ( ! empty( $product['author'] ) ) : ?>
+				<span><?php echo esc_html__( 'By', 'filter-plus' ); ?></span>
+				<a href="<?php echo esc_url( $product['posts_author_link'] ); ?>" class="author"><?php echo esc_html( $product['author'] ); ?></a>
+				<?php endif; ?>
+				<?php if ( ! empty( $product['post_date'] ) ) : ?>
+				<time class="fp-post-date"><?php echo esc_html( $product['post_date'] ); ?></time>
+				<?php endif; ?>
 			</div>
 			<?php endif; ?>
 			<?php if( $hide_wp_desc == 'yes' ): ?>

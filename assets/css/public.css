@@ -3843,3 +3843,414 @@ ul.fp-brand-list-image .fp-brand-count {
 	margin-top: 0 !important;
 	padding-top: 12px;
 }
+
+/* =========================================================================
+   Post filter template 1 — UX polish (sidebar + results).
+   Scoped to .fp-post-sidebar-1 / .fp-post-results-1 so woo template 1 is untouched.
+   ========================================================================= */
+.fp-post-sidebar-1,
+.fp-post-results-1 {
+	--fp1-accent: var(--filter-secondary-color, #2d73e7);
+	--fp1-text: #1f2937;
+	--fp1-muted: #6b7280;
+	--fp1-line: #e5e7eb;
+	--fp1-soft: color-mix(in srgb, var(--fp1-accent) 8%, #fff);
+}
+
+/* ---- Sidebar shell: sections divided evenly ---- */
+.fp-post-sidebar-1 .shop-sidebar-title {
+	margin: 0 0 16px;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: -.01em;
+	color: var(--fp1-text);
+}
+.shop-sidebar.fp-post-sidebar-1 .sidebar-row {
+	margin: 0;
+	padding: 18px 0;
+	border-top: 1px solid var(--fp1-line);
+}
+.shop-sidebar.fp-post-sidebar-1 .sidebar-row.search-wrap {
+	padding-top: 0;
+	border-top: 0;
+}
+
+/* ---- Section headings: full-width toggle, rotating chevron ---- */
+.fp-post-sidebar-1 .heading-wrap {
+	min-height: 28px;
+	user-select: none;
+}
+.shop-sidebar.fp-post-sidebar-1 .sidebar-label {
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--fp1-text);
+}
+.fp-post-sidebar-1 .heading-wrap .arrows {
+	width: 24px;
+	height: 24px;
+	justify-content: center;
+	border-radius: 6px;
+	transition: background-color .15s ease;
+}
+.fp-post-sidebar-1 .heading-wrap:hover .arrows {
+	background: #f3f4f6;
+}
+.fp-post-sidebar-1 .down-arrow svg,
+.fp-post-sidebar-1 .up-arrow svg {
+	width: 11px;
+	height: 11px;
+	fill: var(--fp1-muted);
+}
+.fp-post-sidebar-1 .heading-wrap:focus-visible {
+	outline: 2px solid var(--fp1-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* ---- Search ---- */
+.fp-post-sidebar-1 .search-form .sidebar-input {
+	height: 42px;
+	padding: 0 46px 0 14px !important;
+	border: 1px solid #d1d5db !important;
+	border-radius: 8px;
+	color: var(--fp1-text);
+	transition: border-color .15s ease, box-shadow .15s ease;
+}
+.fp-post-sidebar-1 .search-form .sidebar-input::-webkit-search-cancel-button {
+	cursor: pointer;
+}
+.fp-post-sidebar-1 .search-form .sidebar-input:focus {
+	border-color: var(--fp1-accent) !important;
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--fp1-accent) 18%, transparent) !important;
+}
+.fp-post-sidebar-1 .search-form button {
+	width: 32px;
+	height: 32px;
+	right: 5px;
+	border: 0;
+	border-radius: 6px;
+	background: var(--fp1-accent);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.fp-post-sidebar-1 .search-form button svg {
+	width: 14px;
+	height: 14px;
+	fill: #fff;
+}
+
+/* ---- Categories (single-select list): radio indicator + clear active state ---- */
+.shop-sidebar.fp-post-sidebar-1 ul.category-list:not(.filter-tab-pane) > li,
+.shop-sidebar.fp-post-sidebar-1 ul.sub_categories > li {
+	min-height: 36px;
+	margin: 0 0 2px;
+	padding: 7px 10px 7px 8px;
+	gap: 10px;
+	font-size: 14px;
+	color: #374151;
+}
+.shop-sidebar.fp-post-sidebar-1 ul.category-list:not(.filter-tab-pane) > li:not(:has(input))::before {
+	content: '';
+	flex: 0 0 16px;
+	width: 16px;
+	height: 16px;
+	box-sizing: border-box;
+	border: 1.5px solid #c4c9d2;
+	border-radius: 50%;
+	background: #fff;
+	transition: border-color .15s ease, box-shadow .15s ease;
+}
+.shop-sidebar.fp-post-sidebar-1 ul.category-list:not(.filter-tab-pane) > li:hover::before {
+	border-color: var(--fp1-accent);
+}
+.shop-sidebar.fp-post-sidebar-1 ul.category-list:not(.filter-tab-pane) > li.active::before {
+	border: 5px solid var(--fp1-accent);
+}
+.shop-sidebar.fp-post-sidebar-1 ul.category-list:not(.filter-tab-pane) > li.active {
+	font-weight: 600;
+}
+.fp-post-sidebar-1 .fp-category-count {
+	margin-left: auto;
+}
+
+/* ---- Tags: pills with no layout shift on select ---- */
+.fp-post-sidebar-1 .param-box-1 {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.fp-post-sidebar-1 .radio-wrap .taxonomy-item-1 {
+	margin: 0;
+	padding: 6px 12px;
+	border: 1px solid var(--fp1-line);
+	outline: 0;
+	border-radius: 999px;
+	background: #fff;
+	color: #374151;
+	font-size: 13px;
+	line-height: 1.3;
+	cursor: pointer;
+	transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.shop-sidebar.fp-post-sidebar-1 .radio-wrap .taxonomy-item-1:hover {
+	background: var(--fp1-soft);
+	border-color: color-mix(in srgb, var(--fp1-accent) 40%, transparent);
+	color: var(--fp1-accent) !important;
+}
+.fp-post-sidebar-1 .radio-wrap .taxonomy-item-1.active,
+.shop-sidebar.fp-post-sidebar-1 .radio-wrap .taxonomy-item-1.active:hover {
+	background: var(--fp1-accent);
+	border: 1px solid var(--fp1-accent);
+	outline: 0;
+	color: #fff !important;
+}
+
+/* ---- Checkbox / radio lists (authors, custom fields): stacked, full-row targets ---- */
+.fp-post-sidebar-1 .param-box:has(> .checkbox-item),
+.fp-post-sidebar-1 .custom-field-1 {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+.fp-post-sidebar-1 .checkbox-item-1 {
+	margin: 0;
+	padding: 7px 8px;
+	gap: 10px;
+	border-radius: 7px;
+	color: #374151;
+	font-size: 14px;
+	transition: background-color .15s ease;
+}
+.fp-post-sidebar-1 .checkbox-item-1:hover {
+	background: #f6f7f9;
+}
+.fp-post-sidebar-1 .checkbox-item-1 input {
+	width: 16px;
+	height: 16px;
+	margin: 0;
+	accent-color: var(--fp1-accent);
+	cursor: pointer;
+}
+.fp-post-sidebar-1 .checkbox-item-1:has(input:checked) {
+	color: var(--fp1-accent);
+	font-weight: 600;
+}
+.fp-post-sidebar-1 select.custom-field {
+	width: 100%;
+	height: 40px;
+	padding: 0 12px;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	background-color: #fff;
+	font-size: 14px;
+}
+
+/* ---- Per-section reset link ---- */
+.fp-post-sidebar-1 .sidebar-row .reset {
+	align-self: flex-start;
+	margin-top: 10px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--fp1-accent);
+	cursor: pointer;
+}
+.fp-post-sidebar-1 .sidebar-row .reset:hover {
+	text-decoration: underline;
+}
+
+/* ---- Results header ---- */
+.fp-post-results-1 .filter-top {
+	margin: 0 0 18px;
+	min-height: 32px;
+	gap: 12px;
+}
+.fp-post-results-1 .showing p {
+	margin: 0;
+	font-size: 13px;
+	color: var(--fp1-muted);
+}
+.fp-post-results-1 .showing p span {
+	font-weight: 600;
+	color: var(--fp1-text);
+}
+
+/* Active filter chips */
+.fp-post-results-1 .selected-filter {
+	gap: 6px;
+	color: var(--fp1-text);
+}
+.fp-post-results-1 .selected-filter .filter-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 6px 4px 11px;
+	border: 1px solid color-mix(in srgb, var(--fp1-accent) 30%, transparent);
+	border-radius: 999px;
+	background: var(--fp1-soft);
+	color: var(--fp1-accent);
+	font-size: 12.5px;
+	font-weight: 600;
+	line-height: 1.2;
+	transition: background-color .15s ease;
+}
+.fp-post-results-1 .selected-filter .filter-tag span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	border-radius: 50%;
+	font-size: 0;
+	background: color-mix(in srgb, var(--fp1-accent) 15%, transparent);
+}
+.fp-post-results-1 .selected-filter .filter-tag span::before {
+	content: '\00d7';
+	font-size: 13px;
+	line-height: 1;
+}
+.fp-post-results-1 .selected-filter .filter-tag:hover {
+	background: color-mix(in srgb, var(--fp1-accent) 14%, #fff);
+}
+.fp-post-results-1 .selected-filter .clear-filter {
+	margin: 0 0 0 4px;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--fp1-muted);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.fp-post-results-1 .selected-filter .clear-filter:hover {
+	color: var(--fp1-text);
+}
+
+/* ---- Cards: whole card is one link, clean meta, stable height ---- */
+.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card {
+	position: relative;
+	border-color: var(--fp1-line);
+	border-radius: 14px;
+	box-shadow: none;
+	transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card:hover {
+	transform: translateY(-2px);
+	border-color: color-mix(in srgb, var(--fp1-accent) 35%, var(--fp1-line));
+	box-shadow: 0 10px 28px rgba(15, 23, 42, .08);
+}
+.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card:focus-within {
+	border-color: var(--fp1-accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--fp1-accent) 20%, transparent);
+}
+/* Stretched link: title link covers the whole card. */
+.fp-post-results-1 .post-grid-view-1 .fp-card-link::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+.fp-post-results-1 .post-grid-view-1 .fp-card-link:focus {
+	outline: none;
+}
+.fp-post-results-1 .meta-section a,
+.fp-post-results-1 .hpcc-description a {
+	position: relative;
+	z-index: 2;
+}
+.fp-post-results-1 .filter-meta-wrapper {
+	z-index: 2;
+	left: 12px;
+	top: 12px;
+}
+.fp-post-results-1 .filter-cat-links {
+	gap: 6px;
+	margin: 0;
+}
+.fp-post-results-1 .filter-meta-wrapper a {
+	padding: 3px 9px;
+	font-size: 10.5px;
+	letter-spacing: .04em;
+	line-height: 16px;
+	text-decoration: none;
+	background: var(--filter-price-color, #e3106e);
+	color: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+}
+.fp-post-results-1 .filter-meta-wrapper a.fp-tag-link {
+	background: rgba(255, 255, 255, .92);
+	color: #111827;
+	backdrop-filter: blur(4px);
+}
+.fp-post-results-1 .filter-meta-wrapper a:hover {
+	filter: brightness(.95);
+	text-decoration: none;
+}
+.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card .hpcc-content {
+	gap: 8px;
+	padding: 16px 18px 18px;
+}
+.fp-post-results-1 .post-grid-view-1 .filter-wp-title > a > h2,
+.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card .filter-wp-title > a > h2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	margin: 0;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.4;
+	color: var(--fp1-text);
+	transition: color .15s ease;
+}
+.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card:hover .filter-wp-title h2 {
+	color: var(--fp1-accent) !important;
+}
+.fp-post-results-1 .meta-section {
+	flex-wrap: wrap;
+	gap: 4px;
+	font-size: 12.5px;
+	color: var(--fp1-muted);
+}
+.fp-post-results-1 .meta-section .author {
+	font-weight: 600;
+	color: #374151;
+}
+.fp-post-results-1 .meta-section .author + .fp-post-date::before {
+	content: '·';
+	margin: 0 6px 0 2px;
+}
+.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card .hpcc-description {
+	margin-top: 2px;
+	padding-top: 0;
+	border-top: 0;
+	font-size: 13.5px;
+	line-height: 1.6;
+	max-height: calc(1.6em * 3);
+	color: var(--fp1-muted);
+}
+.fp-post-results-1 .hpcc-description .wp-read-more {
+	color: var(--fp1-accent);
+	text-decoration: none;
+}
+
+/* ---- Empty / loading ---- */
+.fp-post-results-1 .message:not(:empty) {
+	padding: 40px 20px;
+	border: 1px dashed var(--fp1-line);
+	border-radius: 14px;
+	text-align: center;
+	color: var(--fp1-muted);
+}
+.fp-post-results-1.loader_box .prods-grid-view {
+	opacity: .55;
+	transition: opacity .2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card,
+	.fp-post-results-1 .post-grid-view-1 .horizontal-wp-card .hpcc-image img {
+		transition: none;
+		transform: none !important;
+	}
+}
