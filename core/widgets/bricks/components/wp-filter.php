@@ -67,7 +67,7 @@ class Wp_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Title', 'filter-plus' ),
 			'type' => 'text',
-			'default' => esc_html__( 'Place Title Here', 'filter-plus' ),
+			'default' => esc_html__( 'Filters', 'filter-plus' ),
 		);
 
 		//limit

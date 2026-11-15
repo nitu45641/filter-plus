@@ -91,6 +91,7 @@ class Wp_Filter extends Widget_Base {
 			array(
 				'label'     => esc_html__( 'Title', 'filter-plus' ),
 				'type'      => Controls_Manager::TEXT,
+				'default'   => esc_html__( 'Filters', 'filter-plus' ),
 				'placeholder' => esc_html__( 'Place Title', 'filter-plus' ),
 			)
 		);

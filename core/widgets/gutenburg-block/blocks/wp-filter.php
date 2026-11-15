@@ -14,7 +14,7 @@ function content_filter_block() {
                 'filter_type'        => array( 'type' => 'string',  'default' => 'post' ),
                 'custom_post'        => array( 'type' => 'string',  'default' => '' ),
                 'template'           => array( 'type' => 'string',  'default' => '1' ),
-                'title'              => array( 'type' => 'string',  'default' => '' ),
+                'title'              => array( 'type' => 'string',  'default' => __( 'Filters', 'filter-plus' ) ),
                 'no_of_items'        => array( 'type' => 'number',  'default' => 9 ),
                 'masonry_style'      => array( 'type' => 'boolean', 'default' => false ),
                 'pagination_style'   => array( 'type' => 'string',  'default' => 'numbers' ),
@@ -75,7 +75,7 @@ function content_filter_callback( $settings ) {
     $post_author        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
     $hide_wp_title      = !empty($settings['hide_wp_title']) && $settings['hide_wp_title'] == true ? 'yes' : 'no';
     $hide_wp_desc       = !empty($settings['hide_wp_desc']) && $settings['hide_wp_desc'] == true ? 'yes' : 'no';
-    $title           	= !empty($settings['title']) ? $settings['title'] : esc_html__('Filters','filter-plus');
+    $title           	= isset( $settings['title'] ) ? sanitize_text_field( $settings['title'] ) : esc_html__('Filters','filter-plus');
     $no_of_items 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
 
     if ( is_array($custom_field_list) ) {

@@ -401,7 +401,7 @@ class DataFactory {
 		$default_data['filter_type']        = !empty($settings['filter_type']) ? $settings['filter_type'] : 'post';
 		$default_data['custom_post']        = !empty($settings['custom_post']) ? $settings['custom_post'] : '';
 		$default_data['template']           = !empty($settings['template']) ? $settings['template'] : '1';
-		$default_data['title']           	= !empty($settings['title']) ? $settings['title'] : esc_html__('Filters','filter-plus');
+		$default_data['title']           	= array_key_exists( 'title', $settings ) ? sanitize_text_field( (string) $settings['title'] ) : esc_html__('Filters','filter-plus');
 		$default_data['no_of_items'] 		= ! empty( $settings['no_of_items'] ) ? $settings['no_of_items'] : 9;
 		// Normalize boolean-like settings to 'yes' / 'no' when provided
 		$bool_keys = array(
