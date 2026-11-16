@@ -308,7 +308,7 @@ registerBlockType('filter-plus/woo-filter', {
             let options = [
                 { value: '1', label: __('Template-1', 'filter-plus') }
             ];
-            for (let i = 2; i <= 8; i++) {
+            for (let i = 2; i <= 9; i++) {
                 options.push({
                     value: i.toString(),
                     label: __('Template-' + i, 'filter-plus') + ' ' + isPro(),

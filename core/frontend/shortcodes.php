@@ -228,7 +228,7 @@ class Shortcodes {
 	 * @param [type] $template
 	 */
 	public function pro_template_check($template) {
-		$pro_template 	= [2,3,8];
+		$pro_template 	= [2,3,8,9];
 		$html 			= '';
 		if ( in_array((int)$template,$pro_template) && !class_exists('FilterPlusPro') ) {
 			$html = '<div class="row"><div class="woocommerce-error">'.esc_html__('Please Active FilterPlus Pro','filter-plus').'</div></div>';
@@ -307,7 +307,14 @@ class Shortcodes {
 			$price_color =  $badge_bg = '#b3af54'; 
 			$filter_border_color = '#eaeaea';
 			$rating_color = '#007bff'; 
-			$secondary_color = '#000'; 
+			$secondary_color = '#000';
+		}
+		else if ( $template == "9" ) {
+			// Template 9: antique gold accents, dark neutral prices.
+			$price_color  = '#2b2b2b';
+			$badge_bg     = '#b8964f';
+			$price_range  = '#b8964f';
+			$cart_content = '#b8964f';
 		}
 
 		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();

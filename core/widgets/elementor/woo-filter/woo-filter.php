@@ -108,7 +108,7 @@ class Woo_Filter extends Widget_Base {
 				'label' => esc_html__( 'Select Template', 'filter-plus' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
-				'options' => Helper::widgets_templates(8),
+				'options' => Helper::widgets_templates(9),
 			)
 		);
 		$this->add_control(

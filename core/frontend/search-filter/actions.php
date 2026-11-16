@@ -51,7 +51,7 @@ class Actions {
 		$min          = ! empty( $post_arr['min'] ) ? $post_arr['min'] : '';
 		$filter_param = ! empty( $post_arr['filter_param'] ) ? $post_arr['filter_param'] : array();
 		$template     = ! empty( $post_data['template'] ) ? absint( $post_data['template'] ) : 1;
-		if ( ! in_array( $template, [ 1, 2, 3, 4, 5, 6, 7, 8 ], true ) ) {
+		if ( ! in_array( $template, [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ], true ) ) {
 			$template = 1;
 		}
 		$product_categories = ! empty( $post_data['product_categories'] ) ? $post_data['product_categories'] : 'yes';
@@ -787,7 +787,7 @@ class Actions {
 			return $card_html;
 		};
 		$render_requested_slider = static function ( $card_html, $product_data, $template_number, $post_data ) {
-			if ( 'yes' !== ( $post_data['gallery_slider'] ?? 'no' ) || ! class_exists( 'FilterPlusPro' ) || ! function_exists( 'filterplus_pro_gallery_slider_markup' ) || ! in_array( (int) $template_number, array( 4, 5, 6, 7, 8 ), true ) ) {
+			if ( 'yes' !== ( $post_data['gallery_slider'] ?? 'no' ) || ! class_exists( 'FilterPlusPro' ) || ! function_exists( 'filterplus_pro_gallery_slider_markup' ) || ! in_array( (int) $template_number, array( 4, 5, 6, 7, 8, 9 ), true ) ) {
 				return $card_html;
 			}
 			$slider = filterplus_pro_gallery_slider_markup( $product_data );
@@ -809,7 +809,7 @@ class Actions {
 
 		if ($filter_type == 'product') {
 			$template_path = \FilterPlus::locate_template( "woo-filter/template-{$template}/right-side/product-template.php" );
-			if ( !file_exists($template_path) && in_array($template, [2, 3, 4, 5, 6, 7, 8]) && class_exists('FilterPlusPro') ) {
+			if ( !file_exists($template_path) && in_array($template, [2, 3, 4, 5, 6, 7, 8, 9]) && class_exists('FilterPlusPro') ) {
 				// Templates 5, 7 and 8 use bottom folder, others use right-side
 				$folder = in_array($template, [5, 7, 8]) ? 'bottom' : 'right-side';
 				$template_path = \FilterPlusPro::locate_template( "woo-filter/template-{$template}/{$folder}/product-template.php" );
