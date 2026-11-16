@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.47
+Stable tag: 1.1.48
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -203,6 +203,11 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.48 (November 16, 2026) =
+* New: Template 9 "Variation Cards" (Pro): variable products show their options as buttons on the card (e.g. Weight: 100g / 500g / 1kg), the price updates when an option is picked, and shoppers set a quantity and add the chosen variation to the cart with the cart icon.
+* New: Template 9 is available in the [filter_products] shortcode, Elementor, Gutenberg and Bricks, and in the Product Archive / Category Layout settings.
+* New: Template 9 sidebar uses the standard filters with its own gold-and-cream style, plus a styled "Sort by" dropdown above the product grid.
 
 = 1.1.47 (November 15, 2026) =
 * Fix: Post Filter template 1 search box now shows its full placeholder text ("Search posts…").
