@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.49
+Stable tag: 1.1.50
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -203,6 +203,16 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 5. Elementor widget settings for layout, filters and styling.
 
 == Changelog ==
+
+= 1.1.50 (November 20, 2026) =
+* New: Gutenberg blocks get a drag & drop "Filter Order" list (Pro), like the Elementor widget: drag rows or use the arrow buttons, with "Reset to default order". Without Pro the panel shows an upgrade notice.
+* New: Show several custom fields at once: enter comma separated field names (free) or pick several Filter Options (Pro) in the Gutenberg block. Each field gets its own section.
+* Tweak: Custom field section titles now come from Filter Options; the separate "Custom Field Label" setting was removed from the block, Elementor widget and shortcode builder.
+* Tweak: Values of one custom field match with the block's Meta Condition (OR by default); different custom fields must all match.
+* Tweak: Price Range histogram is smoothed so a few posts still show a readable price spread.
+* Fix: Gutenberg "Filter Order" showed a plain list box instead of a select box.
+* Fix: Price Range min handle could get stuck under the max handle at the top of the range.
+* Fix: Star Rating buttons took the theme's button color on hover and focus.
 
 = 1.1.49 (November 20, 2026) =
 * New: Post Filter Template 4 "Listing" (Pro): card grid with a filter panel, grid / list view, sort menu, active-filter chips and a bottom-sheet filter panel on phones. Available in the [wp_filter_plus] shortcode, Elementor, Gutenberg and Bricks.

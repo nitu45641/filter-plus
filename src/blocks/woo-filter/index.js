@@ -4,6 +4,7 @@ import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl }
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
 import Select2Control from "../../components/Select2Control";
+import SortableOrderControl from "../../components/SortableOrderControl";
 
 registerBlockType('filter-plus/woo-filter', {
     title: __('Woo Product Filter', 'filter-plus'),
@@ -413,7 +414,7 @@ registerBlockType('filter-plus/woo-filter', {
                             onChange={(value) => setAttributes({ pagination_style: value })}
                         />
 
-                        <Select2Control
+                        <SortableOrderControl
                             label={__('Filter Order', 'filter-plus') + (isDisabled() ? ' (Pro)' : '')}
                             value={attributes.filter_order}
                             options={[
@@ -431,7 +432,7 @@ registerBlockType('filter-plus/woo-filter', {
                             ]}
                             onChange={(value) => setAttributes({ filter_order: value })}
                             disabled={isDisabled()}
-                            help={isDisabled() ? __('Upgrade to Pro to reorder filter sections.', 'filter-plus') : __('Choose sections to reorder; unselected sections keep their default positions.', 'filter-plus')}
+                            help={isDisabled() ? __('Upgrade to Pro to reorder filter sections.', 'filter-plus') : __('Drag rows (or use the arrows) to set the order of the sidebar filters.', 'filter-plus')}
                         />
 
                         <SelectControl

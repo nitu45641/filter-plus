@@ -4,6 +4,7 @@ import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl }
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
 import Select2Control from "../../components/Select2Control";
+import SortableOrderControl from "../../components/SortableOrderControl";
 
 registerBlockType('filter-plus/wp-filter', {
     title: __('WP Content Filter', 'filter-plus'),
@@ -257,7 +258,7 @@ registerBlockType('filter-plus/wp-filter', {
                             onChange={(value) => setAttributes({ category_template: value })}
                         />
 
-                        <Select2Control
+                        <SortableOrderControl
                             label={__('Filter Order', 'filter-plus') + (isDisabled() ? ' (Pro)' : '')}
                             value={attributes.filter_order}
                             options={[
@@ -269,7 +270,7 @@ registerBlockType('filter-plus/wp-filter', {
                             ]}
                             onChange={(value) => setAttributes({ filter_order: value })}
                             disabled={isDisabled()}
-                            help={isDisabled() ? __('Upgrade to Pro to reorder filter sections.', 'filter-plus') : __('Choose sections to reorder; unselected sections keep their default positions.', 'filter-plus')}
+                            help={isDisabled() ? __('Upgrade to Pro to reorder filter sections.', 'filter-plus') : __('Drag rows (or use the arrows) to set the order of the sidebar filters.', 'filter-plus')}
                         />
 
                         <ToggleControl
@@ -401,19 +402,12 @@ registerBlockType('filter-plus/wp-filter', {
 
                         {attributes.custom_field && (
                             <>
-                                <TextControl
-                                    label={__('Custom Field Label', 'filter-plus')}
-                                    value={attributes.custom_field_label}
-                                    onChange={(value) => setAttributes({ custom_field_label: value })}
-                                    placeholder={__('Custom Field Label', 'filter-plus')}
-                                />
-
                                 {isDisabled() ? (
                                     <TextControl
                                         label={__('Custom Field Name', 'filter-plus')}
                                         value={attributes.custom_field_list}
                                         onChange={(value) => setAttributes({ custom_field_list: value })}
-                                        help={__('Enter exact custom field (meta key) name. Separate multiple fields with commas; use commas in the label too to name each one.', 'filter-plus')}
+                                        help={__('Enter exact custom field (meta key) name. Separate multiple fields with commas. Labels come from Filter Options.', 'filter-plus')}
                                     />
                                 ) : (
                                     <Select2Control

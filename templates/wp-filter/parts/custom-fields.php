@@ -8,18 +8,20 @@
     }
     $filterplus_lists = array();
     if ( !class_exists('FilterPlusPro') ) {
-        // Comma separated meta keys -> one section per key. Labels may be comma separated in the same order.
-        $filterplus_keys   = array_values( array_filter( array_map( 'trim', explode( ',', (string) $custom_field_list ) ), 'strlen' ) );
-        $filterplus_labels = array_map( 'trim', explode( ',', (string) $custom_field_label ) );
-
-        foreach ( $filterplus_keys as $filterplus_i => $filterplus_meta_key ) {
-            if ( ! empty( $filterplus_labels[ $filterplus_i ] ) ) {
-                $filterplus_label = $filterplus_labels[ $filterplus_i ];
-            } elseif ( 1 === count( $filterplus_keys ) && '' !== trim( (string) $custom_field_label ) ) {
-                $filterplus_label = $custom_field_label;
-            } else {
-                $filterplus_label = ucwords( str_replace( array( '_', '-' ), ' ', ltrim( $filterplus_meta_key, '_' ) ) );
+        // Comma separated meta keys -> one section per key. The label comes from the
+        // Filter Option set up for that meta key, else from the key itself.
+        $filterplus_keys         = array_values( array_filter( array_map( 'trim', explode( ',', (string) $custom_field_list ) ), 'strlen' ) );
+        $filterplus_option_label = array();
+        foreach ( OptionHelper::instance()->get_filter_options( -1 ) as $filterplus_option ) {
+            if ( ! empty( $filterplus_option['custom_field_list'] ) && ! empty( $filterplus_option['label'] ) && ! isset( $filterplus_option_label[ $filterplus_option['custom_field_list'] ] ) ) {
+                $filterplus_option_label[ $filterplus_option['custom_field_list'] ] = $filterplus_option['label'];
             }
+        }
+
+        foreach ( $filterplus_keys as $filterplus_meta_key ) {
+            $filterplus_label = isset( $filterplus_option_label[ $filterplus_meta_key ] )
+                ? $filterplus_option_label[ $filterplus_meta_key ]
+                : ucwords( str_replace( array( '_', '-' ), ' ', ltrim( $filterplus_meta_key, '_' ) ) );
             $filterplus_lists[] = array( 'label' => $filterplus_label, 'style' => 'checkbox', 'custom_field_list' => $filterplus_meta_key );
         }
     }

@@ -90,6 +90,27 @@ add_action( 'enqueue_block_editor_assets', function() {
     );
 } );
 
+// Block sidebar controls (Filter Order drag & drop list).
+add_action( 'enqueue_block_editor_assets', function() {
+    wp_register_style( 'filter-plus-block-editor', false, array( 'wp-components' ), \FilterPlus::get_version() );
+    wp_enqueue_style( 'filter-plus-block-editor' );
+    wp_add_inline_style( 'filter-plus-block-editor', '
+.fp-sortable-order{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.fp-sortable-order__item{display:flex;align-items:center;gap:6px;margin:0;padding:2px 2px 2px 6px;min-height:36px;background:#fff;border:1px solid #ddd;border-radius:4px;cursor:grab;user-select:none}
+.fp-sortable-order__item:hover{border-color:#949494}
+.fp-sortable-order__item.is-dragging{opacity:.4}
+.fp-sortable-order__item.is-over-before{box-shadow:inset 0 2px 0 var(--wp-admin-theme-color,#3858e9)}
+.fp-sortable-order__item.is-over-after{box-shadow:inset 0 -2px 0 var(--wp-admin-theme-color,#3858e9)}
+.fp-sortable-order__handle{display:flex;color:#757575}
+.fp-sortable-order__label{flex:1 1 auto;min-width:0;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fp-sortable-order__actions{display:flex}
+.fp-sortable-order__actions .components-button{min-width:28px;width:28px;height:28px;padding:0;justify-content:center}
+.fp-sortable-order.is-disabled .fp-sortable-order__item{cursor:not-allowed;opacity:.6}
+.fp-sortable-order__reset{margin-top:8px}
+.fp-sortable-order__pro{margin:0;padding:10px 12px;border-radius:4px;background:#f0f0f0;font-size:12px;color:#1e1e1e}
+' );
+} );
+
 // Enqueue frontend styles in the block editor so previews match the frontend.
 add_action( 'enqueue_block_editor_assets', function() {
     wp_enqueue_style( 'filter-plus-public-css' );

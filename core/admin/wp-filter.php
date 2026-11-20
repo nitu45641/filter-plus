@@ -163,11 +163,6 @@
 			$filterplus_args = array( 'label'=>esc_html__('Show Custom Field:','filter-plus'),'id' => 'custom_field','data_label' => 'custom_field');
 			filterplus_checkbox_field($filterplus_args);
 			if ( !class_exists('FilterPlusPro') ) {
-				$filterplus_args = array('label'=>esc_html__('Custom Field Label:','filter-plus'),'id' => 'custom_field_label',
-				'data_label' => 'custom_field_label','condition_class' => "custom_field d-none",
-				'placeholder'=>esc_html__('Place Custom Field Here','filter-plus'));
-				filterplus_number_input_field($filterplus_args);
-
 				$filterplus_args = array('label'=>esc_html__("Custom Field List:","filter-plus"),'id' => 'custom_field_list',
 				'data_label' => 'custom_field_list','options'=>$filterplus_meta_keys , 'type' => 'random',
 				'select_type' => 'single',  'condition_class' => "custom_field d-none");

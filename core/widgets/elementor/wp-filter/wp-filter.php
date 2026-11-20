@@ -297,16 +297,6 @@ class Wp_Filter extends Widget_Base {
 			]
 		);
 		if ( !class_exists('FilterPlusPro') ) {
-			$this->add_control(
-				'custom_field_label',
-				[
-					'label' 	=> esc_html__('Custom Field Label', 'filter-plus'),
-					'type' 		=> Controls_Manager::TEXT,
-					'placeholder' => esc_html__('Place Custom Field Label', 'filter-plus'),
-					'desc' 		=> esc_html__('Enter Exact Custom Field Name', 'filter-plus'),
-					'condition' => ['custom_field' => 'yes']
-				]
-			);
 	
 			$this->add_control(
 				'custom_field_list',
