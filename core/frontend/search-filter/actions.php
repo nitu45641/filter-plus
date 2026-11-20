@@ -66,6 +66,8 @@ class Actions {
 		$author  	  = ! empty( $post_arr['author'] ) ? $post_arr['author'] : '';
 		$cf_list  	  = ! empty( $post_arr['cf_list'] ) ? $post_arr['cf_list'] : [];
 		$date_ranges  = ! empty( $post_arr['date_ranges'] ) && is_array( $post_arr['date_ranges'] ) ? $post_arr['date_ranges'] : [];
+		$number_ranges = ! empty( $post_arr['number_ranges'] ) && is_array( $post_arr['number_ranges'] ) ? $post_arr['number_ranges'] : [];
+		$star_ratings  = ! empty( $post_arr['star_ratings'] ) && is_array( $post_arr['star_ratings'] ) ? $post_arr['star_ratings'] : [];
 		$masonry_style  = ! empty( $post_data['masonry_style'] ) ? $post_data['masonry_style'] : 'no';
 		$exclude_cat_id = ! empty( $post_data['exclude_cat_id'] ) ? $post_data['exclude_cat_id'] : '';
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
@@ -103,6 +105,8 @@ class Actions {
 			'on_sale'  		=> $on_sale,
 			'cf_list'		=> $cf_list,
 			'date_ranges'	=> $date_ranges,
+			'number_ranges'	=> $number_ranges,
+			'star_ratings'	=> $star_ratings,
 			'masonry_style' => $masonry_style,
 			'exclude_cat_id'=> $exclude_cat_id,
 			'taxonomy'  	=> $taxonomy,
@@ -276,7 +280,11 @@ class Actions {
 			}
 		}
 
-		$date_clauses = $this->date_range_clauses( isset( $param['date_ranges'] ) ? $param['date_ranges'] : array() );
+		$date_clauses = array_merge(
+			$this->date_range_clauses( isset( $param['date_ranges'] ) ? $param['date_ranges'] : array() ),
+			$this->number_range_clauses( isset( $param['number_ranges'] ) ? $param['number_ranges'] : array() ),
+			$this->star_rating_clauses( isset( $param['star_ratings'] ) ? $param['star_ratings'] : array() )
+		);
 		if ( ! empty( $date_clauses ) ) {
 			$existing = isset( $args['meta_query'] ) && is_array( $args['meta_query'] ) ? $args['meta_query'] : array();
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for date range filtering
@@ -284,6 +292,62 @@ class Actions {
 		}
 
 		return $args;
+	}
+
+	/**
+	 * Meta query clauses for "Price Range" filter options: { key, min, max }.
+	 *
+	 * @param array $ranges Ranges sent by the filter.
+	 * @return array
+	 */
+	public function number_range_clauses( $ranges ) {
+		$clauses = array();
+		$allowed = \FilterPlus\Core\Admin\FilterOptions\Helper::keys_with_style( 'price_range' );
+
+		foreach ( (array) $ranges as $range ) {
+			$key = isset( $range['key'] ) ? sanitize_text_field( wp_unslash( $range['key'] ) ) : '';
+			$min = isset( $range['min'] ) && is_numeric( $range['min'] ) ? (float) $range['min'] : null;
+			$max = isset( $range['max'] ) && is_numeric( $range['max'] ) ? (float) $range['max'] : null;
+			if ( '' === $key || ! in_array( $key, $allowed, true ) || ( null === $min && null === $max ) ) {
+				continue;
+			}
+			if ( null !== $min && null !== $max && $min > $max ) {
+				list( $min, $max ) = array( $max, $min );
+			}
+			// DECIMAL keeps cents (NUMERIC would round 5.50 down to 5).
+			$type = 'DECIMAL(12,2)';
+			if ( null !== $min && null !== $max ) {
+				$clauses[] = array( 'key' => $key, 'value' => array( $min, $max ), 'compare' => 'BETWEEN', 'type' => $type );
+			} elseif ( null !== $min ) {
+				$clauses[] = array( 'key' => $key, 'value' => $min, 'compare' => '>=', 'type' => $type );
+			} else {
+				$clauses[] = array( 'key' => $key, 'value' => $max, 'compare' => '<=', 'type' => $type );
+			}
+		}
+
+		return $clauses;
+	}
+
+	/**
+	 * Meta query clauses for "Star Rating" filter options: { key, min } → rating ≥ min.
+	 *
+	 * @param array $ratings Ratings sent by the filter.
+	 * @return array
+	 */
+	public function star_rating_clauses( $ratings ) {
+		$clauses = array();
+		$allowed = \FilterPlus\Core\Admin\FilterOptions\Helper::keys_with_style( 'rating' );
+
+		foreach ( (array) $ratings as $rating ) {
+			$key = isset( $rating['key'] ) ? sanitize_text_field( wp_unslash( $rating['key'] ) ) : '';
+			$min = isset( $rating['min'] ) ? absint( $rating['min'] ) : 0;
+			if ( '' === $key || ! in_array( $key, $allowed, true ) || $min < 1 || $min > 5 ) {
+				continue;
+			}
+			$clauses[] = array( 'key' => $key, 'value' => $min, 'compare' => '>=', 'type' => 'DECIMAL(3,1)' );
+		}
+
+		return $clauses;
 	}
 
 	/**

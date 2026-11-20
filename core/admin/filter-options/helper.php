@@ -162,6 +162,74 @@ class Helper {
 		);
 	}
 
+	/**
+	 * Numeric spread of a custom field across published content: rounded
+	 * min / max and a 20-bar histogram, for the Price Range filter.
+	 *
+	 * @param string $key Meta key.
+	 * @return array{min:float,max:float,step:float,bars:int[]}
+	 */
+	public static function get_number_stats( $key ) {
+		$cache_key = 'filterplus_num_' . md5( $key );
+		$stats     = wp_cache_get( $cache_key, 'filterplus' );
+		if ( false !== $stats ) {
+			return $stats;
+		}
+
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- aggregate over one meta key, cached above
+		$rows = $wpdb->get_col( $wpdb->prepare(
+			"SELECT pm.meta_value FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+			 WHERE pm.meta_key = %s AND p.post_status = 'publish' AND pm.meta_value <> ''",
+			$key
+		) );
+
+		$values = array();
+		foreach ( (array) $rows as $raw ) {
+			$num = str_replace( array( ',', ' ' ), '', (string) $raw );
+			if ( is_numeric( $num ) ) {
+				$values[] = (float) $num;
+			}
+		}
+
+		$stats = array( 'min' => 0, 'max' => 0, 'step' => 1, 'bars' => array() );
+		if ( $values ) {
+			$min  = floor( min( $values ) );
+			$max  = ceil( max( $values ) );
+			$max  = $max > $min ? $max : $min + 1;
+			$bars = array_fill( 0, 20, 0 );
+			foreach ( $values as $v ) {
+				$i = (int) floor( ( $v - $min ) / ( $max - $min ) * 20 );
+				++$bars[ min( 19, max( 0, $i ) ) ];
+			}
+			$stats = array(
+				'min'  => $min,
+				'max'  => $max,
+				'step' => ( $max - $min ) > 200 ? 5 : 1,
+				'bars' => $bars,
+			);
+		}
+
+		wp_cache_set( $cache_key, $stats, 'filterplus', HOUR_IN_SECONDS );
+		return $stats;
+	}
+
+	/**
+	 * Meta keys of filter options that use a given style.
+	 *
+	 * @param string $style e.g. 'date_range', 'price_range', 'rating'.
+	 * @return string[]
+	 */
+	public static function keys_with_style( $style ) {
+		$keys = array();
+		foreach ( self::get_filter_options( -1 ) as $option ) {
+			if ( isset( $option['style'] ) && $style === $option['style'] && ! empty( $option['custom_field_list'] ) ) {
+				$keys[] = $option['custom_field_list'];
+			}
+		}
+		return $keys;
+	}
+
 	public static function get_filter_option_list($keys,$filter_type='custom_field') {
 		$result_arr = array();
 		$fields	= self::get_filter_options(-1);
