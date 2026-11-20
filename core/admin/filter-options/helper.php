@@ -71,6 +71,8 @@ class Helper {
 			$arr['type'] 	= get_post_meta(  $value->ID , 'type' , true );
 			$arr['style'] 	= get_post_meta(  $value->ID , 'style' , true );
 			$arr['custom_field_list'] 	= get_post_meta(  $value->ID , 'custom_field_list' , true );
+			$tpl                        = get_post_meta( $value->ID, 'style_template', true );
+			$arr['style_template']      = in_array( (string) $tpl, array( '1', '2' ), true ) ? (string) $tpl : '1';
 		}
 
 		return $arr;
@@ -212,6 +214,24 @@ class Helper {
 
 		wp_cache_set( $cache_key, $stats, 'filterplus', HOUR_IN_SECONDS );
 		return $stats;
+	}
+
+	/**
+	 * Display templates available per style.
+	 *
+	 * @return array<string,array<string,string>>
+	 */
+	public static function style_templates() {
+		return array(
+			'price_range' => array(
+				'1' => __( 'Histogram slider', 'filter-plus' ),
+				'2' => __( 'Min / Max boxes', 'filter-plus' ),
+			),
+			'rating'      => array(
+				'1' => __( 'Star buttons', 'filter-plus' ),
+				'2' => __( 'Star list', 'filter-plus' ),
+			),
+		);
 	}
 
 	/**

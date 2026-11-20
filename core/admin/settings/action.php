@@ -85,7 +85,10 @@ class Action {
 
 		if (!empty( $id ) ) {
 		  // Only the option's own fields; ignore anything else posted.
-		  foreach ( array( 'label', 'type', 'style', 'custom_field_list' ) as $meta_key ) {
+		  if ( isset( $params['style_template'] ) && ! in_array( (string) $params['style_template'], array( '1', '2' ), true ) ) {
+			$params['style_template'] = '1';
+		  }
+		  foreach ( array( 'label', 'type', 'style', 'custom_field_list', 'style_template' ) as $meta_key ) {
 			if ( isset( $params[ $meta_key ] ) ) {
 			  update_post_meta( $id, $meta_key, sanitize_text_field( $params[ $meta_key ] ) );
 			}

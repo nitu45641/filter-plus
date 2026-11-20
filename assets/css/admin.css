@@ -2703,7 +2703,7 @@ button.loading::after{
 
 .filter-option-form .fo-styles {
 	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 8px;
 }
 .filter-option-form .fo-style {
@@ -2852,3 +2852,24 @@ button.loading::after{
 #filter-set-list-wrap .tablenav.top br.clear { display: none; }
 /* empty list: no bulk controls, so no divider */
 .tablenav.top > .fp-import-export:first-child { margin-left: 0; padding-left: 0 !important; border-left: 0; }
+
+.fo-style__icon--price_range { --fo-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M3 15h30'/%3E%3Ccircle cx='11' cy='15' r='3.5' fill='%23fff'/%3E%3Ccircle cx='25' cy='15' r='3.5' fill='%23fff'/%3E%3Cpath d='M8 4v5M13 6v3M18 3v6M23 5v4M28 7v2'/%3E%3C/svg%3E"); }
+.fo-style__icon--rating { --fo-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 24'%3E%3Cpath fill='%23000' d='M18 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L18 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z'/%3E%3C/svg%3E"); }
+
+/* Filter Option form: template picker for Price Range / Star Rating */
+.filter-option-form .fo-templates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.filter-option-form .fo-tpl {
+	position: relative; display: flex; flex-direction: column; gap: 10px; padding: 12px;
+	border: 1px solid #dcdcde; border-radius: 8px; background: #fff; color: #50575e;
+	font-size: 12.5px; font-weight: 600; cursor: pointer;
+}
+.filter-option-form .fo-tpl input { position: absolute; opacity: 0; pointer-events: none; }
+.filter-option-form .fo-tpl:hover { border-color: #8c8f94; }
+.filter-option-form .fo-tpl:has(input:checked) { border-color: var(--filter-primary-bg, #0D6EFD); background: #f0f6ff; color: var(--filter-primary-bg, #0D6EFD); box-shadow: 0 0 0 1px var(--filter-primary-bg, #0D6EFD); }
+.filter-option-form .fo-tpl:has(input:focus-visible) { outline: 2px solid var(--filter-primary-bg, #0D6EFD); outline-offset: 2px; }
+.filter-option-form .fo-tpl__preview { display: block; height: 46px; border-radius: 6px; background: #f6f7f7 center / 88% auto no-repeat; }
+.fo-tpl__preview--price_range-1 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Cg fill='%2394a3b8'%3E%3Crect x='14' y='14' width='6' height='10'/%3E%3Crect x='22' y='9' width='6' height='15'/%3E%3Crect x='30' y='4' width='6' height='20' fill='%230d6efd'/%3E%3Crect x='38' y='7' width='6' height='17' fill='%230d6efd'/%3E%3Crect x='46' y='10' width='6' height='14' fill='%230d6efd'/%3E%3Crect x='54' y='12' width='6' height='12' fill='%230d6efd'/%3E%3Crect x='62' y='15' width='6' height='9'/%3E%3Crect x='70' y='18' width='6' height='6'/%3E%3C/g%3E%3Crect x='10' y='28' width='100' height='2' fill='%23cbd5e1'/%3E%3Crect x='32' y='28' width='30' height='2' fill='%230d6efd'/%3E%3Ccircle cx='32' cy='29' r='4' fill='%23fff' stroke='%230d6efd' stroke-width='1.5'/%3E%3Ccircle cx='62' cy='29' r='4' fill='%23fff' stroke='%230d6efd' stroke-width='1.5'/%3E%3C/svg%3E"); }
+.fo-tpl__preview--price_range-2 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Crect x='8' y='10' width='46' height='20' rx='4' fill='%23fff' stroke='%23cbd5e1'/%3E%3Crect x='66' y='10' width='46' height='20' rx='4' fill='%23fff' stroke='%23cbd5e1'/%3E%3Crect x='14' y='14' width='12' height='3' fill='%2394a3b8'/%3E%3Crect x='14' y='21' width='20' height='4' fill='%23334155'/%3E%3Crect x='72' y='14' width='12' height='3' fill='%2394a3b8'/%3E%3Crect x='72' y='21' width='20' height='4' fill='%23334155'/%3E%3Crect x='57' y='19' width='6' height='2' fill='%2394a3b8'/%3E%3C/svg%3E"); }
+.fo-tpl__preview--rating-1 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Cg fill='%23fff' stroke='%23cbd5e1'%3E%3Crect x='4' y='12' width='20' height='16' rx='8'/%3E%3Crect x='27' y='12' width='20' height='16' rx='8'/%3E%3Crect x='50' y='12' width='20' height='16' rx='8'/%3E%3Crect x='96' y='12' width='20' height='16' rx='8'/%3E%3C/g%3E%3Crect x='73' y='12' width='20' height='16' rx='8' fill='%230d6efd'/%3E%3Cg fill='%23b7791f'%3E%3Ccircle cx='17' cy='20' r='2.5'/%3E%3Ccircle cx='40' cy='20' r='2.5'/%3E%3Ccircle cx='63' cy='20' r='2.5'/%3E%3Ccircle cx='109' cy='20' r='2.5'/%3E%3C/g%3E%3Ccircle cx='86' cy='20' r='2.5' fill='%23fff'/%3E%3C/svg%3E"); }
+.fo-tpl__preview--rating-2 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Cg fill='%23b7791f'%3E%3Ccircle cx='12' cy='9' r='3'/%3E%3Ccircle cx='20' cy='9' r='3'/%3E%3Ccircle cx='28' cy='9' r='3'/%3E%3Ccircle cx='36' cy='9' r='3'/%3E%3Ccircle cx='12' cy='20' r='3'/%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3Ccircle cx='28' cy='20' r='3'/%3E%3Ccircle cx='12' cy='31' r='3'/%3E%3Ccircle cx='20' cy='31' r='3'/%3E%3C/g%3E%3Cg fill='%23cbd5e1'%3E%3Ccircle cx='44' cy='9' r='3'/%3E%3Ccircle cx='36' cy='20' r='3'/%3E%3Ccircle cx='44' cy='20' r='3'/%3E%3Ccircle cx='28' cy='31' r='3'/%3E%3Ccircle cx='36' cy='31' r='3'/%3E%3Ccircle cx='44' cy='31' r='3'/%3E%3Crect x='54' y='7' width='22' height='4' rx='2'/%3E%3Crect x='54' y='18' width='22' height='4' rx='2'/%3E%3Crect x='54' y='29' width='22' height='4' rx='2'/%3E%3C/g%3E%3C/svg%3E"); }
+#filter-options-list-wrap .filter-option-sub { margin-left: 4px; color: #646970; font-size: 12px; }

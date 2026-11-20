@@ -208,6 +208,8 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 * New: Post Filter Template 4 "Listing" (Pro): card grid with a filter panel, grid / list view, sort menu, active-filter chips and a bottom-sheet filter panel on phones. Available in the [wp_filter_plus] shortcode, Elementor, Gutenberg and Bricks.
 * New: Wishlist (Pro): "Enable Wishlist" adds a save (heart) button to every Product Filter and Post Filter card. Logged-in visitors keep saves on their account; guests keep them in the browser.
 * New: Date Range filter style for custom fields: visitors pick From / To dates. Works with ACF date fields and dates saved as 2026-11-20 or timestamps.
+* New: Price Range filter style for numeric custom fields (e.g. price per night): Template 1 histogram + two-handle slider + Min / Max boxes, Template 2 Min / Max boxes only.
+* New: Star Rating filter style for rating custom fields: Template 1 "N ★" buttons, Template 2 rows of stars with "& up". Shows posts rated N or more.
 * New: Post Filter can be sorted (Newest, Oldest, Title A–Z / Z–A, Most discussed).
 * New: Import / Export for Filter Options and Filter Sets as a JSON file; existing items are skipped on import.
 * Tweak: Filter Options page: add / edit in an inline form instead of a popup, Label first with Edit | Delete row actions, readable type and style labels, and a clear empty state.

@@ -6,7 +6,9 @@
 		'select'     => __( 'Dropdown', 'filter-plus' ),
 		'checkbox'   => __( 'Checkbox', 'filter-plus' ),
 		'radio'      => __( 'Radio', 'filter-plus' ),
-		'date_range' => __( 'Date Range', 'filter-plus' ),
+		'date_range'  => __( 'Date Range', 'filter-plus' ),
+		'price_range' => __( 'Price Range', 'filter-plus' ),
+		'rating'      => __( 'Star Rating', 'filter-plus' ),
 	);
 ?>
 <div id="filter-options-form-wrap" class="d-none mt-2">
@@ -67,6 +69,25 @@
 					<?php endforeach; ?>
 				</div>
 			</fieldset>
+
+			<?php
+			// Template choice, shown only for styles that have more than one look.
+			foreach ( \FilterPlus\Core\Admin\FilterOptions\Helper::style_templates() as $filterplus_style => $filterplus_tpls ) :
+			?>
+			<fieldset class="fo-field fo-template" data-for-style="<?php echo esc_attr( $filterplus_style ); ?>" hidden>
+				<legend class="fo-label"><?php echo 'price_range' === $filterplus_style ? esc_html__( 'Price Range template', 'filter-plus' ) : esc_html__( 'Star Rating template', 'filter-plus' ); ?></legend>
+				<div class="fo-templates" role="radiogroup">
+					<?php foreach ( $filterplus_tpls as $filterplus_tpl => $filterplus_name ) : ?>
+						<label class="fo-tpl">
+							<input type="radio" name="fo_tpl_<?php echo esc_attr( $filterplus_style ); ?>" value="<?php echo esc_attr( $filterplus_tpl ); ?>" <?php checked( '1', $filterplus_tpl ); ?> />
+							<span class="fo-tpl__preview fo-tpl__preview--<?php echo esc_attr( $filterplus_style . '-' . $filterplus_tpl ); ?>" aria-hidden="true"></span>
+							<span class="fo-tpl__name"><?php /* translators: 1: template number, 2: template name */ echo esc_html( sprintf( __( 'Template %1$s · %2$s', 'filter-plus' ), $filterplus_tpl, $filterplus_name ) ); ?></span>
+						</label>
+					<?php endforeach; ?>
+				</div>
+			</fieldset>
+			<?php endforeach; ?>
+			<input type="hidden" name="style_template" id="style_template" value="1" />
 
 			<div class="filter-option-form-actions">
 				<?php if ( ! $filterplus_is_pro ) : ?>

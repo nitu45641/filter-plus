@@ -733,14 +733,35 @@
 
 		// Style cards drive the (visually hidden) style select the save code reads.
 		const $style_select = fo_field('style');
+		const $tpl_input = fo_field('style_template');
+		// Template picker only for styles that have one (Price Range, Star Rating).
+		function sync_template_picker() {
+			const style = $style_select.val() || 'select';
+			const tpl = $tpl_input.val() || '1';
+			$option_form_wrap.find('.fo-template').each(function () {
+				const show = $(this).data('for-style') === style;
+				$(this).prop('hidden', !show);
+				if (show) {
+					$(this).find('input[type="radio"]').each(function () {
+						$(this).prop('checked', this.value === tpl);
+					});
+				}
+			});
+		}
 		function sync_style_cards() {
 			const value = $style_select.val() || 'select';
 			$option_form_wrap.find('input[name="fo_style_choice"]').each(function () {
 				$(this).prop('checked', this.value === value);
 			});
+			sync_template_picker();
 		}
 		$option_form_wrap.on('change', 'input[name="fo_style_choice"]', function () {
 			$style_select.val(this.value);
+			$tpl_input.val('1');
+			sync_template_picker();
+		});
+		$option_form_wrap.on('change', '.fo-template input[type="radio"]', function () {
+			$tpl_input.val(this.value);
 		});
 
 		const $label_input = fo_field('label');
@@ -766,6 +787,7 @@
 			}
 			fo_field('id').val('');
 			fo_field('type').val('custom_field');
+			fo_field('style_template').val('1');
 			$label_error.prop('hidden', true);
 			$label_input.removeClass('fo-invalid').attr('aria-invalid', 'false');
 			$option_form_title.text(is_edit ? edit_title_text : add_title_text);
@@ -776,6 +798,7 @@
 					style : $this.data("style"),
 					label : $this.data("label"),
 					custom_field_list : $this.data("custom_field_list"),
+					style_template : String($this.data("style_template") || '1'),
 				}
 				$.each($data, function (key, valueObj) {
 					if (fo_field(key).length) {
@@ -837,7 +860,7 @@
 			let form_data 	= $(this).serializeArray();
 			let obj 		= {};
 			form_data.map(function (x, item) {
-				if (x.name !== 'fo_style_choice') {
+				if (x.name.indexOf('fo_') !== 0) {
 					obj[x.name] = x.value;
 				}
 			});

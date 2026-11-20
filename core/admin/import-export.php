@@ -93,6 +93,7 @@ class ImportExport {
 					'type'              => (string) $option['type'],
 					'style'             => (string) $option['style'],
 					'custom_field_list' => (string) $option['custom_field_list'],
+					'style_template'    => isset( $option['style_template'] ) ? (string) $option['style_template'] : '1',
 				);
 			}
 		} else {
@@ -158,7 +159,7 @@ class ImportExport {
 	private function import_options( $rows ) {
 		$added    = 0;
 		$skipped  = 0;
-		$styles   = array( 'select', 'checkbox', 'radio', 'date_range' );
+		$styles   = array( 'select', 'checkbox', 'radio', 'date_range', 'price_range', 'rating' );
 		$existing = array();
 		foreach ( OptionHelper::get_filter_options( -1 ) as $option ) {
 			$existing[] = strtolower( $option['label'] ) . '|' . $option['custom_field_list'];
@@ -184,6 +185,7 @@ class ImportExport {
 			update_post_meta( $id, 'type', 'custom_field' );
 			update_post_meta( $id, 'style', $style );
 			update_post_meta( $id, 'custom_field_list', $field );
+			update_post_meta( $id, 'style_template', isset( $row['style_template'] ) && '2' === (string) $row['style_template'] ? '2' : '1' );
 			$existing[] = $sig;
 			++$added;
 		}

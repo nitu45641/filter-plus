@@ -152,6 +152,24 @@ var filterOption = {
 			return { key: $box.data('meta_key'), from: from, to: to, label: $box.data('label') };
 		}).get();
 
+		// Price Range: only send when narrowed from the full range.
+		params.number_ranges = $('.fp-num-range').map(function () {
+			const $box = $(this);
+			const lo = parseFloat($box.find('.fp-num-lo').val());
+			const hi = parseFloat($box.find('.fp-num-hi').val());
+			if (lo <= parseFloat($box.data('min')) && hi >= parseFloat($box.data('max'))) {
+				return null;
+			}
+			return { key: $box.data('meta_key'), min: lo, max: hi, label: $box.data('label') };
+		}).get();
+
+		// Star Rating: "N+ stars".
+		params.star_ratings = $('.fp-star-pills').map(function () {
+			const $box = $(this);
+			const value = $box.find('.fp-star-pill[aria-pressed="true"]').data('value');
+			return value ? { key: $box.data('meta_key'), min: value, label: $box.data('label') } : null;
+		}).get();
+
 		return params;
 	}
 };

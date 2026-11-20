@@ -271,6 +271,94 @@
 			get_products();
 		});
 
+		// Price Range: two sliders + Min / Max boxes kept in sync.
+		function num_range_paint($box) {
+			const min = parseFloat($box.data('min'));
+			const max = parseFloat($box.data('max'));
+			const lo = parseFloat($box.find('.fp-num-lo').val());
+			const hi = parseFloat($box.find('.fp-num-hi').val());
+			const span = (max - min) || 1;
+			$box.find('.fp-num-fill').css({ left: ((lo - min) / span * 100) + '%', right: ((max - hi) / span * 100) + '%' });
+			const bars = $box.find('.fp-num-hist span');
+			bars.each(function (i) {
+				const from = min + span * (i / bars.length);
+				const to = min + span * ((i + 1) / bars.length);
+				$(this).toggleClass('is-in', to > lo && from < hi);
+			});
+			$box.closest('.fp-num-range-row').find('.fp-range-clear').prop('hidden', lo <= min && hi >= max);
+		}
+		function num_range_refilter() {
+			if (!isApplyMode) {
+				get_products();
+			} else {
+				show_selected_data(selected_param({}));
+			}
+		}
+		$('.fp-num-range').each(function () { num_range_paint($(this)); });
+		$(document).on('input', '.fp-num-range input[type="range"]', function () {
+			const $box = $(this).closest('.fp-num-range');
+			const $lo = $box.find('.fp-num-lo');
+			const $hi = $box.find('.fp-num-hi');
+			// handles never cross
+			if (parseFloat($lo.val()) > parseFloat($hi.val())) {
+				if ($(this).hasClass('fp-num-lo')) { $lo.val($hi.val()); } else { $hi.val($lo.val()); }
+			}
+			$box.find('.fp-num-min').val($lo.val());
+			$box.find('.fp-num-max').val($hi.val());
+			num_range_paint($box);
+		});
+		$(document).on('change', '.fp-num-range input[type="range"]', num_range_refilter);
+		$(document).on('change', '.fp-num-range input[type="number"]', function () {
+			const $box = $(this).closest('.fp-num-range');
+			const min = parseFloat($box.data('min'));
+			const max = parseFloat($box.data('max'));
+			let lo = parseFloat($box.find('.fp-num-min').val());
+			let hi = parseFloat($box.find('.fp-num-max').val());
+			lo = isNaN(lo) ? min : Math.min(Math.max(lo, min), max);
+			hi = isNaN(hi) ? max : Math.min(Math.max(hi, min), max);
+			if (lo > hi) { const t = lo; lo = hi; hi = t; }
+			$box.find('.fp-num-lo').val(lo); $box.find('.fp-num-min').val(lo);
+			$box.find('.fp-num-hi').val(hi); $box.find('.fp-num-max').val(hi);
+			num_range_paint($box);
+			num_range_refilter();
+		});
+		function clear_num_range($box) {
+			$box.find('.fp-num-lo, .fp-num-min').val($box.data('min'));
+			$box.find('.fp-num-hi, .fp-num-max').val($box.data('max'));
+			num_range_paint($box);
+		}
+		$(document).on('click', '.fp-range-clear', function (e) {
+			e.preventDefault();
+			clear_num_range($(this).closest('.fp-num-range-row').find('.fp-num-range'));
+			num_range_refilter();
+		});
+
+		// Star Rating: one "N+ stars" choice; clicking the active one clears it.
+		$(document).on('click', '.fp-star-pill', function (e) {
+			e.preventDefault();
+			const on = $(this).attr('aria-pressed') === 'true';
+			$(this).closest('.fp-star-pills').find('.fp-star-pill').attr('aria-pressed', 'false');
+			$(this).attr('aria-pressed', on ? 'false' : 'true');
+			num_range_refilter();
+		});
+
+		// Chips for both.
+		$(document).on('click', '.selected-filter .fp-num-tag, .selected-filter .fp-star-tag', function (e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			const key = $(this).data('meta_key');
+			if ($(this).hasClass('fp-num-tag')) {
+				clear_num_range($('.fp-num-range').filter(function () { return $(this).data('meta_key') === key; }));
+			} else {
+				$('.fp-star-pills').filter(function () { return $(this).data('meta_key') === key; }).find('.fp-star-pill').attr('aria-pressed', 'false');
+			}
+			get_products();
+		});
+		function clear_custom_ranges() {
+			$('.fp-num-range').each(function () { clear_num_range($(this)); });
+			$('.fp-star-pill').attr('aria-pressed', 'false');
+		}
+
 		//search product
 		$('.sidebar-input').on('keyup', function () {
 			const _this = $(this);
@@ -1025,6 +1113,18 @@
 							selected_html += `<div class='filter-tag fp-date-tag' data-node='.fp-date-range' data-meta_key='${esc(range.key)}'>${esc(range.label)}: ${esc(text)}${cross}</div>`;
 						});
 					}
+					if (key == 'number_ranges' && Array.isArray(value)) {
+						value.forEach(function (range) {
+							const esc = (s) => $('<div>').text(s == null ? '' : s).html();
+							selected_html += `<div class='filter-tag fp-num-tag' data-node='.fp-num-range' data-meta_key='${esc(range.key)}'>${esc(range.label)}: ${esc(range.min)} – ${esc(range.max)}${cross}</div>`;
+						});
+					}
+					if (key == 'star_ratings' && Array.isArray(value)) {
+						value.forEach(function (rating) {
+							const esc = (s) => $('<div>').text(s == null ? '' : s).html();
+							selected_html += `<div class='filter-tag fp-star-tag' data-node='.fp-star-pills' data-meta_key='${esc(rating.key)}'>${esc(rating.label)}: ${esc(rating.min)}+ ★${cross}</div>`;
+						});
+					}
 					if (key == 'custom_field_value' && value !== '') {
 						selected_html += `<div class='filter-tag' data-node='custom-field'>${selected_data.custom_field_value}${cross}</div>`;
 					}
@@ -1472,7 +1572,7 @@
 				e.preventDefault();
 				const $this = $(this);
 				const parent = '';
-				if ($this.hasClass('fp-brand-tag') || $this.hasClass('fp-date-tag')) {
+				if ($this.hasClass('fp-brand-tag') || $this.hasClass('fp-date-tag') || $this.hasClass('fp-num-tag') || $this.hasClass('fp-star-tag')) {
 					return; // handled by their own handlers
 				}
 				if (element == filter_tag) {
@@ -1554,6 +1654,7 @@
 				$('input[type=checkbox]').removeAttr('checked');
 				$('.fp-date-range input').val('');
 				$('.fp-date-clear').prop('hidden', true);
+				clear_custom_ranges();
 				// FIX: Also uncheck radio inputs on clear all
 				$('input[type=radio]').prop('checked', false);
 				sidebar.find('.reset').fadeOut();
@@ -1704,6 +1805,7 @@
 			search.val('');
 			$('.fp-date-range input').val('');
 			$('.fp-date-clear').prop('hidden', true);
+			clear_custom_ranges();
 
 			// Reset attribute/tag selections
 			param_box.find('.radio-item').removeClass('active');

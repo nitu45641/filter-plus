@@ -69,6 +69,8 @@ class Table extends \WP_List_Table{
                 'checkbox'   => esc_html__( 'Checkbox', 'filter-plus' ),
                 'radio'      => esc_html__( 'Radio', 'filter-plus' ),
                 'date_range' => esc_html__( 'Date Range', 'filter-plus' ),
+                'price_range' => esc_html__( 'Price Range', 'filter-plus' ),
+                'rating'     => esc_html__( 'Star Rating', 'filter-plus' ),
             ),
         );
         $value = isset( $item[ $column_name ] ) ? $item[ $column_name ] : '';
@@ -77,7 +79,13 @@ class Table extends \WP_List_Table{
             return $value; // pre-built, escaped button markup
         }
         if ( isset( $labels[ $column_name ][ $value ] ) ) {
-            return '<span class="filter-option-badge">' . $labels[ $column_name ][ $value ] . '</span>';
+            $extra = '';
+            if ( 'style' === $column_name && in_array( $value, array( 'price_range', 'rating' ), true ) ) {
+                $names = \FilterPlus\Core\Admin\FilterOptions\Helper::style_templates();
+                $tpl   = isset( $item['style_template'] ) ? $item['style_template'] : '1';
+                $extra = isset( $names[ $value ][ $tpl ] ) ? ' <span class="filter-option-sub">' . esc_html( $names[ $value ][ $tpl ] ) . '</span>' : '';
+            }
+            return '<span class="filter-option-badge">' . $labels[ $column_name ][ $value ] . '</span>' . $extra;
         }
 
         return esc_html( $value );
@@ -96,7 +104,7 @@ class Table extends \WP_List_Table{
 
         // The Edit button carries the data the inline form is filled from.
         $edit = sprintf(
-            '<button type="button" class="button-link update-filter-option" data-id="%1$s" data-label="%2$s" data-type="%3$s" data-style="%4$s" data-custom_field_list="%5$s" aria-label="%6$s">%7$s</button>',
+            '<button type="button" class="button-link update-filter-option" data-id="%1$s" data-label="%2$s" data-type="%3$s" data-style="%4$s" data-custom_field_list="%5$s" data-style_template="%8$s" aria-label="%6$s">%7$s</button>',
             esc_attr( $id ),
             esc_attr( $item['label'] ),
             esc_attr( $item['type'] ),
@@ -104,7 +112,8 @@ class Table extends \WP_List_Table{
             esc_attr( $item['custom_field_list'] ),
             /* translators: %s: filter option label */
             esc_attr( sprintf( __( 'Edit %s', 'filter-plus' ), $label ) ),
-            esc_html__( 'Edit', 'filter-plus' )
+            esc_html__( 'Edit', 'filter-plus' ),
+            esc_attr( isset( $item['style_template'] ) ? $item['style_template'] : '1' )
         );
         $del = sprintf(
             '<a href="%1$s" class="submitdelete filter-option-delete" aria-label="%2$s">%3$s</a>',

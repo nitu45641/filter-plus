@@ -4335,3 +4335,64 @@ ul.fp-brand-list-image .fp-brand-count {
 	cursor: pointer;
 }
 .fp-date-clear:hover { text-decoration: underline; }
+
+/* Price Range custom field filter */
+.fp-num-range { margin-top: 12px; --fp-num-accent: var(--filter-secondary-color, #2d73e7); }
+.fp-num-hist { display: flex; align-items: flex-end; gap: 3px; height: 44px; padding: 0 9px; }
+.fp-num-hist span { flex: 1 1 0; border-radius: 2px 2px 0 0; background: #d6d3cc; transition: background-color .15s ease; }
+.fp-num-hist span.is-in { background: var(--fp-num-accent); }
+.fp-num-slider { position: relative; height: 22px; margin: -6px 0 0; }
+.fp-num-track { position: absolute; top: 9px; left: 11px; right: 11px; height: 3px; border-radius: 2px; background: #e3e1dc; }
+.fp-num-fill { position: absolute; top: 0; bottom: 0; left: 0; right: 0; border-radius: 2px; background: var(--fp-num-accent); }
+.fp-num-slider input[type="range"] {
+	position: absolute; inset: 0; width: 100%; height: 22px; margin: 0; padding: 0;
+	background: none; pointer-events: none; -webkit-appearance: none; appearance: none;
+}
+.fp-num-slider input[type="range"]::-webkit-slider-runnable-track { background: none; border: 0; }
+.fp-num-slider input[type="range"]::-moz-range-track { background: none; border: 0; }
+.fp-num-slider input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none; pointer-events: auto; width: 22px; height: 22px; border-radius: 50%;
+	background: #fff; border: 2px solid var(--fp-num-accent); box-shadow: 0 1px 3px rgba(0,0,0,.15); cursor: grab;
+}
+.fp-num-slider input[type="range"]::-moz-range-thumb {
+	pointer-events: auto; width: 18px; height: 18px; border-radius: 50%;
+	background: #fff; border: 2px solid var(--fp-num-accent); box-shadow: 0 1px 3px rgba(0,0,0,.15); cursor: grab;
+}
+.fp-num-slider input[type="range"]:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--fp-num-accent); outline-offset: 2px; }
+.fp-num-boxes { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.fp-num-box { display: flex; flex: 1 1 0; flex-direction: column; gap: 2px; min-width: 0; margin: 0; padding: 6px 10px; border: 1px solid #d6d3cc; border-radius: 10px; font-size: 12px; color: #5b6168; }
+.fp-num-box:focus-within { border-color: var(--fp-num-accent); }
+.fp-num-box input[type="number"] { width: 100%; height: auto; margin: 0; padding: 0; border: 0 !important; outline: none; box-shadow: none !important; background: transparent; font-size: 15px; font-weight: 600; color: #16191d; -moz-appearance: textfield; }
+.fp-num-box input::-webkit-outer-spin-button, .fp-num-box input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.fp-num-dash { color: #5b6168; }
+.fp-range-clear { align-self: flex-start; margin: 8px 0 0; padding: 0; border: 0; background: none; color: var(--filter-secondary-color, #2d73e7); font-size: 13px; font-weight: 600; cursor: pointer; }
+
+/* Star Rating custom field filter */
+.fp-star-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.fp-star-pill {
+	display: inline-flex; align-items: center; gap: 4px; min-height: 38px; margin: 0; padding: 0 13px;
+	border: 1px solid #d6d3cc; border-radius: 999px; background: #fff; color: #16191d;
+	font-size: 14px; font-weight: 600; line-height: 1; cursor: pointer;
+}
+.fp-star-pill svg { color: #b7791f; }
+.fp-star-pill:hover { border-color: var(--filter-secondary-color, #2d73e7); }
+.fp-star-pill[aria-pressed="true"] { background: var(--filter-secondary-color, #2d73e7); border-color: var(--filter-secondary-color, #2d73e7); color: #fff; }
+.fp-star-pill[aria-pressed="true"] svg { color: currentColor; }
+/* Price Range template 2: Min / Max boxes only */
+.fp-num-tpl-2 .fp-num-boxes { margin-top: 0; }
+/* Star Rating template 2: rows of stars */
+.fp-star-list { flex-direction: column; gap: 2px; }
+.fp-star-line {
+	justify-content: flex-start; gap: 10px; width: 100%; min-height: 36px; padding: 0 10px;
+	border: 0; border-radius: 8px; background: transparent; font-weight: 500;
+}
+.fp-star-line:hover { background: #f1efea; }
+.fp-star-line[aria-pressed="true"] { background: #fef3c7; color: #16191d; }
+.fp-star-icons { display: inline-flex; gap: 1px; }
+.fp-star-icons .is-on { color: #b7791f; }
+.fp-star-icons .is-off { color: #d6d3cc; }
+.fp-star-line[aria-pressed="true"] .fp-star-icons .is-on { color: #b7791f; }
+.fp-star-line svg { display: block; }
+.fp-star-up { font-size: 13px; color: #5b6168; }
+.fp-star-line .fp-star-icons .is-on svg { color: #b7791f; }
+.fp-star-line .fp-star-icons .is-off svg { color: #d6d3cc; }
