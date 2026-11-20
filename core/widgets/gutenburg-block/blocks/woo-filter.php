@@ -215,6 +215,7 @@ function product_filter_block() {
                 'rollover_image_number' => array( 'type' => 'number', 'default' => 1 ),
                 'rollover_effect' => array( 'type' => 'string', 'default' => 'fade' ),
                 'gallery_slider' => array( 'type' => 'boolean', 'default' => false ),
+                'wishlist' => array( 'type' => 'boolean', 'default' => false ),
                 'show_product_attributes' => array( 'type' => 'boolean', 'default' => false ),
                 'product_attributes' => array( 'type' => 'array', 'default' => array() ),
                 'hide_prod_rating' => array(
@@ -295,7 +296,7 @@ function product_filter_callback( $settings ) {
         'colors', 'size', 'show_tags', 'show_attributes', 'show_price_range',
         'show_reviews', 'stock', 'on_sale', 'hide_prod_title', 'hide_prod_desc',
         'hide_prod_price', 'hide_prod_add_cart', 'hide_prod_rating', 'sorting',
-        'rollover_image', 'gallery_slider', 'show_product_attributes',
+        'rollover_image', 'gallery_slider', 'wishlist', 'show_product_attributes',
         'product_categories', 'show_sale_badge', 'product_tags', 'apply_button_mode',
         'show_brands', 'hide_empty_brand', 'brand_count'
     ];
@@ -363,6 +364,7 @@ function product_filter_callback( $settings ) {
                 'rollover_image_number' => isset( $settings['rollover_image_number'] ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1,
                 'rollover_effect'    => isset( $settings['rollover_effect'] ) ? sanitize_key( $settings['rollover_effect'] ) : 'fade',
                 'gallery_slider'     => ( isset( $settings['gallery_slider'] ) && 'yes' === $settings['gallery_slider'] ) ? 'yes' : 'no',
+                'wishlist'           => ( isset( $settings['wishlist'] ) && 'yes' === $settings['wishlist'] ) ? 'yes' : 'no',
                 'show_product_attributes' => ( isset( $settings['show_product_attributes'] ) && 'yes' === $settings['show_product_attributes'] ) ? 'yes' : 'no',
                 'product_attributes' => isset( $settings['product_attributes'] ) ? $settings['product_attributes'] : '',
             ] );
@@ -379,6 +381,7 @@ function product_filter_callback( $settings ) {
                 'rollover_image_number' => isset( $settings['rollover_image_number'] ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1,
                 'rollover_effect' => isset( $settings['rollover_effect'] ) ? sanitize_key( $settings['rollover_effect'] ) : 'fade',
                 'gallery_slider' => ( isset( $settings['gallery_slider'] ) && 'yes' === $settings['gallery_slider'] ) ? 'yes' : 'no',
+                'wishlist' => ( isset( $settings['wishlist'] ) && 'yes' === $settings['wishlist'] ) ? 'yes' : 'no',
                 'show_product_attributes' => ( isset( $settings['show_product_attributes'] ) && 'yes' === $settings['show_product_attributes'] ) ? 'yes' : 'no',
                 'product_attributes' => isset( $settings['product_attributes'] ) ? $settings['product_attributes'] : '',
             );

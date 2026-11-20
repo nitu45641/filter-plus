@@ -412,7 +412,6 @@ class Wp_Filter extends Widget_Base {
 				'return_value' => 'yes',
 				'default'      => '',
 				'disabled'     => ! class_exists( 'FilterPlusPro' ),
-				'condition'    => array( 'template' => '4' ),
 				'description'  => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Show a save (heart) button on each card. Logged-in visitors keep saves on their account; guests keep them in the browser.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
 			)
 		);

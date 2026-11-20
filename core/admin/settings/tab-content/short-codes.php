@@ -443,6 +443,9 @@ use \FilterPlus\Utils\Helper as Helper;
 			$filterplus_args = array('label'=>esc_html__("Gallery Slider:","filter-plus"),'id' => 'gallery_slider',
 			'data_label' => 'gallery_slider','disable' => ! class_exists('FilterPlusPro'));
 			filterplus_checkbox_field($filterplus_args);
+			$filterplus_args = array('label'=>esc_html__("Enable Wishlist:","filter-plus"),'id' => 'woo_wishlist',
+			'data_label' => 'wishlist','disable' => ! class_exists('FilterPlusPro'));
+			filterplus_checkbox_field($filterplus_args);
 			filterplus_field_group_end();
 			filterplus_field_group_start( 'woo_product_attributes', esc_html__( 'Product Attributes', 'filter-plus' ), true, false );
 			$filterplus_args = array('label'=>esc_html__("Show Attributes:","filter-plus"),'id' => 'show_product_attributes','data_label' => 'show_product_attributes','disable' => ! class_exists('FilterPlusPro'));

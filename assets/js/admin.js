@@ -56,8 +56,8 @@
 		});
 
 		function tab_slide($this,content,index) {
-			handel.removeClass('active')
-			$this.addClass('active');
+			handel.removeClass('active').attr('aria-selected', 'false');
+			$this.addClass('active').attr('aria-selected', 'true');
 			$(`.${content}`).hide();
 			$('.'+content+':eq(' + index + ')').show();
 		}
@@ -726,6 +726,32 @@
 			$option_list_wrap.removeClass('d-none');
 		}
 
+		// Style cards drive the (visually hidden) #style select the save code reads.
+		const $style_select = $('#style');
+		function sync_style_cards() {
+			const value = $style_select.val() || 'select';
+			$option_form_wrap.find('input[name="fo_style_choice"]').each(function () {
+				$(this).prop('checked', this.value === value);
+			});
+		}
+		$option_form_wrap.on('change', 'input[name="fo_style_choice"]', function () {
+			$style_select.val(this.value);
+		});
+
+		const $label_input = $('#label');
+		const $label_error = $('#label-error');
+		function label_is_valid() {
+			const ok = $.trim($label_input.val() || '') !== '';
+			$label_error.prop('hidden', ok);
+			$label_input.attr('aria-invalid', ok ? 'false' : 'true').toggleClass('fo-invalid', !ok);
+			return ok;
+		}
+		$label_input.on('input', function () {
+			if ($label_input.hasClass('fo-invalid')) {
+				label_is_valid();
+			}
+		});
+
 		$('.add-filter-opt,.update-filter-option').on('click', function (e) {
 			e.preventDefault();
 			const $this = $(this);
@@ -734,6 +760,9 @@
 				$('#add-filter-option')[0].reset();
 			}
 			$('#id').val('');
+			$('#type').val('custom_field');
+			$label_error.prop('hidden', true);
+			$label_input.removeClass('fo-invalid').attr('aria-invalid', 'false');
 			$option_form_title.text(is_edit ? edit_title_text : add_title_text);
 			if (is_edit) {
 				let $data = {
@@ -749,6 +778,11 @@
 					}
 				});
 			}
+			if (!$('#type').val()) {
+				$('#type').val('custom_field');
+			}
+			$('#custom_field_list').trigger('change'); // refresh select2 display
+			sync_style_cards();
 			show_filter_option_form();
 		});
 
@@ -765,10 +799,19 @@
 
 		new_filter_opt.on('submit',function(e){
 			e.preventDefault();
+			if (new_filter_submit.prop('disabled') || new_filter_submit.hasClass('loading')) {
+				return;
+			}
+			if (!label_is_valid()) {
+				$label_input.trigger('focus');
+				return;
+			}
 			let form_data 	= $(this).serializeArray();
 			let obj 		= {};
 			form_data.map(function (x, item) {
-				obj[x.name] = x.value;
+				if (x.name !== 'fo_style_choice') {
+					obj[x.name] = x.value;
+				}
 			});
 			const data = {
 				action: 'add_filter_options',
@@ -782,7 +825,11 @@
 				data,
 				dataType: 'json',
 				beforeSend() {
-					new_filter_submit.addClass('loading');
+					new_filter_submit.addClass('loading').prop('disabled', true).attr('aria-busy', 'true');
+				},
+				error() {
+					new_filter_submit.removeClass('loading').prop('disabled', false).removeAttr('aria-busy');
+					$label_error.text('Could not save. Please try again.').prop('hidden', false);
 				},
 				success(response) {
 					message

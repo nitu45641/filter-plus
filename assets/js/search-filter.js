@@ -760,6 +760,7 @@
 				rollover_image_number: $('#shopContainer').data('rollover_image_number') || 1,
 				rollover_effect: $('#shopContainer').data('rollover_effect') || 'fade',
 				gallery_slider: $('#shopContainer').data('gallery_slider') || 'no',
+				wishlist: $('#shopContainer').data('wishlist') || 'no',
 				hide_prod_title,
 				hide_prod_desc,
 				hide_prod_price,

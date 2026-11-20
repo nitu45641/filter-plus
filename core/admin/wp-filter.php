@@ -216,10 +216,9 @@
 			$filterplus_args = array('label'=>esc_html__("Display Author:","filter-plus"),'id' => 'post_author',
 			'data_label' => 'post_author');
 			filterplus_checkbox_field($filterplus_args);
-			// wishlist (Pro): heart button on Template 4 cards
+			// wishlist (Pro): heart button on every card
 			$filterplus_args = array('label'=>esc_html__("Enable Wishlist:","filter-plus"),'id' => 'wp_wishlist',
-			'data_label' => 'wishlist','disable' => ! class_exists('FilterPlusPro'),
-			'checkbox_label' => esc_html__("Template 4","filter-plus"));
+			'data_label' => 'wishlist','disable' => ! class_exists('FilterPlusPro'));
 			filterplus_checkbox_field($filterplus_args);
 		?>
 		<div class="single-block">

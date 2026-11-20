@@ -102,6 +102,7 @@ class Shortcodes {
 			data-rollover_image_number="<?php echo esc_attr($rollover_image_number)?>"
 			data-rollover_effect="<?php echo esc_attr($rollover_effect)?>"
 			data-gallery_slider="<?php echo esc_attr($gallery_slider)?>"
+			data-wishlist="<?php echo esc_attr( class_exists( 'FilterPlusPro' ) && 'yes' === $wishlist ? 'yes' : 'no' )?>"
 			data-hide_prod_title="<?php echo esc_attr($hide_prod_title)?>"
 			data-hide_prod_desc="<?php echo esc_attr($hide_prod_desc)?>"
 			data-hide_prod_price="<?php echo esc_attr($hide_prod_price)?>"
@@ -194,6 +195,7 @@ class Shortcodes {
 				data-product_categories="<?php echo esc_html($post_categories) ?>"
 				data-product_tags="<?php echo esc_html($post_tags)?>"
 				data-post_author="<?php echo esc_html($post_author)?>"
+				data-wishlist="<?php echo esc_attr( class_exists( 'FilterPlusPro' ) && 'yes' === $wishlist ? 'yes' : 'no' )?>"
 			>
 				<?php $this->wp_filter_file($template, $data );?>
 			</div>

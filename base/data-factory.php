@@ -81,6 +81,7 @@ class DataFactory {
             'rollover_image_number'  => '1',
             'rollover_effect'        => 'fade',
             'gallery_slider'         => 'no',
+            'wishlist'               => 'no',
             'show_product_attributes' => 'no',
             'product_attributes' => '',
             'hide_prod_rating'       => 'yes',
@@ -227,6 +228,7 @@ class DataFactory {
 		$default_data['rollover_image_number'] = ( class_exists( 'FilterPlusPro' ) && isset( $settings['rollover_image_number'] ) ) ? max( 1, min( 5, absint( $settings['rollover_image_number'] ) ) ) : 1;
 		$default_data['rollover_effect'] = ( class_exists( 'FilterPlusPro' ) && in_array( $settings['rollover_effect'] ?? 'fade', array( 'fade', 'zoom', 'none' ), true ) ) ? ( $settings['rollover_effect'] ?? 'fade' ) : 'fade';
 		$default_data['gallery_slider']      = ( class_exists( 'FilterPlusPro' ) && isset( $settings['gallery_slider'] ) && $image_mode_enabled( $settings['gallery_slider'] ) ) ? 'yes' : 'no';
+		$default_data['wishlist']            = ( class_exists( 'FilterPlusPro' ) && isset( $settings['wishlist'] ) && $image_mode_enabled( $settings['wishlist'] ) ) ? 'yes' : 'no';
 		$default_data['show_product_attributes'] = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['show_product_attributes'] ) && 'yes' === $settings['show_product_attributes'] ) ? 'yes' : 'no';
 		$product_attribute_ids = $settings['product_attributes'] ?? array();
 		$product_attribute_ids = is_array( $product_attribute_ids ) ? $product_attribute_ids : explode( ',', (string) $product_attribute_ids );
@@ -320,6 +322,7 @@ class DataFactory {
 			'rollover_image_number' => $rollover_image_number,
 			'rollover_effect' => $rollover_effect,
 			'gallery_slider' => $gallery_slider,
+			'wishlist' => $wishlist,
 			// Product card attributes (Pro). Without these the Elementor/Bricks
 			// widgets never showed the selected attributes (e.g. color swatches).
 			'show_product_attributes' => $show_product_attributes,
@@ -450,7 +453,7 @@ class DataFactory {
 		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
 		$default_data['pagination_style'] 	= ! empty( $pagination_style ) ? $pagination_style : 'numbers';
 		// Wishlist heart on post cards (Pro, Template 4).
-		$default_data['wishlist']           = ( ! empty( $settings['wishlist'] ) && ( $settings['wishlist'] === true || 'yes' === $settings['wishlist'] ) ) ? 'yes' : 'no';
+		$default_data['wishlist']           = ( class_exists( 'FilterPlusPro' ) && ! empty( $settings['wishlist'] ) && ( $settings['wishlist'] === true || 'yes' === $settings['wishlist'] ) ) ? 'yes' : 'no';
 
         return $default_data;
     }

@@ -48,7 +48,10 @@
   </div>
   <div class="single-block save-filter-set-block">
     <input type="hidden" class="filter-set-id-input" value="">
-    <input type="text" class="full_input filter-set-name-input" placeholder="<?php esc_attr_e( 'Enter Filter Set Name', 'filter-plus' ); ?>">
+    <label class="filter-set-name-field" for="filter-set-name">
+      <span class="filter-set-name-label"><?php esc_html_e( 'Filter set name', 'filter-plus' ); ?></span>
+      <input type="text" id="filter-set-name" class="full_input filter-set-name-input" placeholder="<?php esc_attr_e( 'e.g. Shop sidebar, Blog filters', 'filter-plus' ); ?>">
+    </label>
     <button type="button" class="button button-primary save-filter-set"><?php esc_html_e( 'Save As Filter Set', 'filter-plus' ); ?></button>
   </div>
   <div class="filter-set-layout">
@@ -67,7 +70,9 @@
   </aside>
   <div class="filter-set-settings">
   <section class="accordion">
-    <div class="accordion-list">
+    <div class="filter-set-type">
+      <span class="filter-set-type-label" id="filter-set-type-label"><?php esc_html_e( 'Filter for', 'filter-plus' ); ?></span>
+    <div class="accordion-list" role="tablist" aria-labelledby="filter-set-type-label">
       <?php
 
         if ( file_exists( \FilterPlus::base_dir().'input-fields.php' ) ) {
@@ -80,12 +85,12 @@
       $filterplus_tabs = array(
           array(
             'name'  => 'filter_products',
-            'label' => esc_html__("WooCommerce Product Filter","filter-plus"),
+            'label' => esc_html__("WooCommerce Products","filter-plus"),
             'path' => \FilterPlus::core_dir()."admin/settings/tab-content/short-codes.php"
           ),
           array(
             'name'  => 'wp_filter_plus',
-            'label' => esc_html__("Wordpress Filter","filter-plus"),
+            'label' => esc_html__("Posts & Pages (WordPress)","filter-plus"),
             'path' => \FilterPlus::core_dir()."admin/wp-filter.php"
           )
       );
@@ -93,13 +98,13 @@
       foreach ($filterplus_tabs as $filterplus_key => $filterplus_value) {
         $filterplus_active_class = $filterplus_key == 0 ? 'active' : '';
         ?>
-          <div class="accordion-item <?php echo esc_attr($filterplus_active_class);?>" data-name="<?php echo esc_attr($filterplus_value['name']);?>">
-              <div class="title"><?php echo esc_html($filterplus_value['label']);?></div>
-            </label>
-          </div>
+          <button type="button" role="tab" aria-selected="<?php echo $filterplus_key == 0 ? 'true' : 'false'; ?>" class="accordion-item <?php echo esc_attr($filterplus_active_class);?>" data-name="<?php echo esc_attr($filterplus_value['name']);?>">
+              <span class="title"><?php echo esc_html($filterplus_value['label']);?></span>
+          </button>
       <?php
       }
       ?>
+    </div>
     </div>
     <?php foreach ($filterplus_tabs as $filterplus_key => $filterplus_value) {
       $filterplus_active_class = $filterplus_key == 0 ? 'active' : '';

@@ -212,15 +212,13 @@ registerBlockType('filter-plus/wp-filter', {
                             onChange={(value) => setAttributes({ masonry_style: value })}
                         />
 
-                        {attributes.template === '4' && (
-                            <ToggleControl
-                                label={__('Enable Wishlist', 'filter-plus') + ' ' + isPro()}
-                                checked={attributes.wishlist}
-                                onChange={(value) => setAttributes({ wishlist: value })}
-                                disabled={isDisabled()}
-                                help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : __('Show a save (heart) button on each card.', 'filter-plus')}
-                            />
-                        )}
+                        <ToggleControl
+                            label={__('Enable Wishlist', 'filter-plus') + ' ' + isPro()}
+                            checked={attributes.wishlist}
+                            onChange={(value) => setAttributes({ wishlist: value })}
+                            disabled={isDisabled()}
+                            help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : __('Show a save (heart) button on each card.', 'filter-plus')}
+                        />
 
                         <SelectControl
                             label={__('Filter Position', 'filter-plus')}

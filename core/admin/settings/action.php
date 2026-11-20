@@ -41,7 +41,7 @@ class Action {
 		FilterPlus\Utils\Helper::instance()->verify_nonce( 'filter_plus_nonce', $post_data['filter_plus_nonce'] );
 		if (!empty($post_data['params'])) {
 			$this->insert_filter_options( $post_data['params'] );
-			$message = esc_html__( 'New Filter Options Added', 'filter-plus' );
+			$message = esc_html__( 'Filter option saved', 'filter-plus' );
 		}else{
 			$message = esc_html__( 'Data missing', 'filter-plus' );
 		}
@@ -60,7 +60,11 @@ class Action {
      */
     public function insert_filter_options( $params ) {
 		$label = !empty( $params['label'] ) ? $params['label'] : esc_html__('Custom Field','filter-plus');
-		$ID = !empty( $params['id'] ) ? $params['id'] : '';
+		$ID = !empty( $params['id'] ) ? absint( $params['id'] ) : '';
+		// Edits may only touch filter options, never other posts.
+		if ( $ID && 'filter_plus_option' !== get_post_type( $ID ) ) {
+			$ID = '';
+		}
 
 		if ( $ID == "" ) {
 		  $id = wp_insert_post(array(
@@ -80,8 +84,11 @@ class Action {
 		}
 
 		if (!empty( $id ) ) {
-		  foreach ($params as $meta_key => $value) {
-			update_post_meta( $id, $meta_key, $value );
+		  // Only the option's own fields; ignore anything else posted.
+		  foreach ( array( 'label', 'type', 'style', 'custom_field_list' ) as $meta_key ) {
+			if ( isset( $params[ $meta_key ] ) ) {
+			  update_post_meta( $id, $meta_key, sanitize_text_field( $params[ $meta_key ] ) );
+			}
 		  }
 		}
 	}

@@ -890,7 +890,18 @@ class Actions {
 					}
 					$rendered_card = ob_get_clean();
 					$rendered_card = $render_requested_slider( $rendered_card, $product, $template, $post_data );
-					$html['grid'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
+					$rendered_card = $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
+					/**
+					 * Filter one rendered result card (Pro adds the wishlist heart here).
+					 *
+					 * @param string $card_html  Card markup.
+					 * @param array  $product    Card data (id, title, …).
+					 * @param string $template   Template number.
+					 * @param array  $post_data  Render settings (wishlist, hide_*, …).
+					 * @param string $filter_type 'product' or post type.
+					 * @param string $view       'grid' or 'list'.
+					 */
+					$html['grid'] .= apply_filters( 'filterplus_result_card_html', $rendered_card, $product, $template, $post_data, $filter_type, 'grid' );
 				} elseif (function_exists('filterplus_render_grid_product')) {
 					ob_start();
 					if ($filter_type == 'product') {
@@ -915,7 +926,18 @@ class Actions {
 					}
 					$rendered_card = ob_get_clean();
 					$rendered_card = $render_requested_slider( $rendered_card, $product, $template, $post_data );
-					$html['grid'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
+					$rendered_card = $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
+					/**
+					 * Filter one rendered result card (Pro adds the wishlist heart here).
+					 *
+					 * @param string $card_html  Card markup.
+					 * @param array  $product    Card data (id, title, …).
+					 * @param string $template   Template number.
+					 * @param array  $post_data  Render settings (wishlist, hide_*, …).
+					 * @param string $filter_type 'product' or post type.
+					 * @param string $view       'grid' or 'list'.
+					 */
+					$html['grid'] .= apply_filters( 'filterplus_result_card_html', $rendered_card, $product, $template, $post_data, $filter_type, 'grid' );
 				}
 
 				// List template
@@ -938,7 +960,8 @@ class Actions {
 						);
 					}
 					$rendered_card = ob_get_clean();
-					$html['list'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
+					$rendered_card = $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
+					$html['list'] .= apply_filters( 'filterplus_result_card_html', $rendered_card, $product, $template, $post_data, $filter_type, 'list' );
 				} elseif (function_exists('filterplus_render_list_product')) {
 					ob_start();
 					if ($filter_type == 'product') {
@@ -958,7 +981,8 @@ class Actions {
 						);
 					}
 					$rendered_card = ob_get_clean();
-					$html['list'] .= $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
+					$rendered_card = $filter_type === 'product' ? $render_selected_attributes( $rendered_card, $product, $post_data ) : $rendered_card;
+					$html['list'] .= apply_filters( 'filterplus_result_card_html', $rendered_card, $product, $template, $post_data, $filter_type, 'list' );
 				}
 			}
 		}
@@ -1015,7 +1039,11 @@ class Actions {
 			'hide_wp_desc'       => isset( $vars['hide_wp_desc'] ) ? $vars['hide_wp_desc'] : 'yes',
 		) );
 
-		$rendered = $actions->render_products_html( $result['products'], $actual_type, $template );
+		$rendered = $actions->render_products_html( $result['products'], $actual_type, $template, array(
+			'hide_wp_title' => isset( $vars['hide_wp_title'] ) ? $vars['hide_wp_title'] : 'yes',
+			'hide_wp_desc'  => isset( $vars['hide_wp_desc'] ) ? $vars['hide_wp_desc'] : 'yes',
+			'wishlist'      => isset( $vars['wishlist'] ) ? $vars['wishlist'] : 'no',
+		) );
 		return $rendered['grid'];
 	}
 

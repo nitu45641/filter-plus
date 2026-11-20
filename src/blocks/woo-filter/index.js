@@ -246,6 +246,10 @@ registerBlockType('filter-plus/woo-filter', {
             type: 'boolean',
             default: false
         },
+        wishlist: {
+            type: 'boolean',
+            default: false
+        },
         show_product_attributes: {
             type: 'boolean',
             default: false
@@ -981,6 +985,14 @@ registerBlockType('filter-plus/woo-filter', {
                             onChange={(value) => setAttributes(value ? { gallery_slider: true, rollover_image: false } : { gallery_slider: false })}
                             disabled={isDisabled()}
                             help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : __('Choose one image mode: Rollover Image or Gallery Slider. They cannot be enabled at the same time.', 'filter-plus')}
+                        />
+
+                        <ToggleControl
+                            label={__('Enable Wishlist', 'filter-plus') + ' ' + isPro()}
+                            checked={attributes.wishlist}
+                            onChange={(value) => setAttributes({ wishlist: value })}
+                            disabled={isDisabled()}
+                            help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : __('Show a save (heart) button on each card.', 'filter-plus')}
                         />
 
                         <ToggleControl
