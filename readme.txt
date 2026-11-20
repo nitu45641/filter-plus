@@ -4,7 +4,7 @@ Donate link: https://wpbens.com/plugins/filter-plus/
 Tags: woocommerce product filter, product filter, ajax product filter, post filter, woocommerce filter
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.1.48
+Stable tag: 1.1.49
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -204,11 +204,24 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 
 == Changelog ==
 
+= 1.1.49 (November 20, 2026) =
+* New: Post Filter Template 4 "Listing" (Pro): card grid with a filter panel, grid / list view, sort menu, active-filter chips and a bottom-sheet filter panel on phones. Available in the [wp_filter_plus] shortcode, Elementor, Gutenberg and Bricks.
+* New: Wishlist (Pro): "Enable Wishlist" adds a save (heart) button to every Product Filter and Post Filter card. Logged-in visitors keep saves on their account; guests keep them in the browser.
+* New: Date Range filter style for custom fields: visitors pick From / To dates. Works with ACF date fields and dates saved as 2026-11-20 or timestamps.
+* New: Post Filter can be sorted (Newest, Oldest, Title A–Z / Z–A, Most discussed).
+* New: Import / Export for Filter Options and Filter Sets as a JSON file; existing items are skipped on import.
+* Tweak: Filter Options page: add / edit in an inline form instead of a popup, Label first with Edit | Delete row actions, readable type and style labels, and a clear empty state.
+* Tweak: Filter Option form: stacked fields with help text, Display style picked from cards, required label check and a saving state.
+* Tweak: Filter Set editor: labelled name field and a "WooCommerce Products / Posts & Custom Posts" switch instead of two accordion bars.
+* Fix: Editing a filter option filled the wrong fields because the table headers used the same ids as the form.
+* Fix: Quick filter changes (e.g. typing in search, two date fields) could finish out of order and show results for an older filter.
+* Fix: Price filter now compares prices with cents, so a $5.50 product no longer shows when the maximum is $5.
+* Security: Saving a filter option stores only its own fields and can no longer update other posts.
+
 = 1.1.48 (November 16, 2026) =
 * New: Template 9 "Variation Cards" (Pro): variable products show their options as buttons on the card (e.g. Weight: 100g / 500g / 1kg), the price updates when an option is picked, and shoppers set a quantity and add the chosen variation to the cart with the cart icon.
 * New: Template 9 is available in the [filter_products] shortcode, Elementor, Gutenberg and Bricks, and in the Product Archive / Category Layout settings.
 * New: Template 9 sidebar uses the standard filters with its own gold-and-cream style, plus a styled "Sort by" dropdown above the product grid.
-* Fix: Price filter now compares prices with cents, so a $5.50 product no longer shows when the maximum is $5.
 
 = 1.1.47 (November 15, 2026) =
 * Fix: Post Filter template 1 search box now shows its full placeholder text ("Search posts…").
