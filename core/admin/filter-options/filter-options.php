@@ -20,14 +20,14 @@
         </div>
     </div>
 
+    <?php \FilterPlus\Core\Admin\ImportExport::import_form( 'options' ); ?>
     <section class="filter-options-saved">
     <?php
         $filterplus_columns = array(
             'cb'        => '<input name="bulk-delete[]" type="checkbox" />',
+            'label'     => esc_html__( 'Label', 'filter-plus' ),
             'type'      => esc_html__( 'Filter Type', 'filter-plus' ),
             'style'     => esc_html__( 'Style', 'filter-plus' ),
-            'label'     => esc_html__( 'Label', 'filter-plus' ),
-            'actions'   => esc_html__( 'Action', 'filter-plus' )
         );
 
         $filterplus_rules_list = array(

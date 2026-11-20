@@ -739,6 +739,10 @@
 		 * @param {*} params
 		 */
 		function get_products(params = {}) {
+			// Only the newest request may paint results: quick successive changes
+			// (typing, two date fields) can otherwise finish out of order.
+			get_products.latest = (get_products.latest || 0) + 1;
+			const request_id = get_products.latest;
 			let products_wrap 	= $('.products-wrap');
 			let prod_grid_wrap 	= $('.prods-grid-view');
 			let prod_list_wrap 	= $('.prods-list-view');
@@ -811,6 +815,9 @@
 					products_wrap.addClass('loader_box');
 				},
 				success(response) {
+					if (request_id !== get_products.latest) {
+						return; // a newer filter request is on its way
+					}
 					if (response?.success) {
 						$('.naviation').html('');
 						const products 	= response?.data?.data?.products;

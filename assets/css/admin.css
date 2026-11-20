@@ -2503,6 +2503,15 @@ button.loading::after{
 #filter-options-list-wrap .no-items td {
 	padding: 0 !important;
 }
+#filter-options-list-wrap .row-actions .update-filter-option {
+	padding: 0;
+	color: #2271b1;
+	font-size: 13px;
+	text-decoration: none;
+	cursor: pointer;
+}
+#filter-options-list-wrap .row-actions .update-filter-option:hover { color: #135e96; text-decoration: underline; }
+#filter-options-list-wrap .wp-list-table th.column-label { width: auto; }
 .filter-options-empty {
 	padding: 40px 20px;
 	text-align: center;
@@ -2747,3 +2756,36 @@ button.loading::after{
 	.filter-option-form .fo-styles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .filter-option-form .select2-container { width: 100% !important; }
+/* Filter Options table: tight checkbox column, one bulk bar */
+#filter-options-list-wrap .wp-list-table thead .check-column,
+#filter-options-list-wrap .wp-list-table tbody .check-column {
+	width: 30px !important;
+	padding: 12px 0 12px 14px !important;
+}
+#filter-options-list-wrap .wp-list-table .column-label { padding-left: 6px !important; }
+#filter-options-list-wrap .wp-list-table .check-column input { margin: 0; }
+#filter-options-list-wrap .tablenav.bottom { display: none; }
+
+/* Import / Export buttons in the Filter Options / Filter Sets headers */
+.fp-import-export { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; padding-right: 0 !important; }
+.tablenav .fp-import-export { margin-left: 4px; }
+.fp-import-form { margin: 0; }
+.fp-import-export .fp-ie-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 32px;
+	padding: 0 12px;
+	border-radius: 6px;
+	font-weight: 500;
+}
+.fp-import-export .fp-ie-btn .dashicons { width: 16px; height: 16px; font-size: 16px; }
+@media (max-width: 782px) { .filter-set-page-head { flex-wrap: wrap; } }
+#filter-set-list-wrap .wp-list-table thead .check-column,
+#filter-set-list-wrap .wp-list-table tbody .check-column {
+	width: 30px !important;
+	padding: 12px 0 12px 14px !important;
+}
+#filter-set-list-wrap .wp-list-table .check-column input { margin: 0; }
+#filter-set-list-wrap .wp-list-table .column-name { padding-left: 6px !important; }
+#filter-set-list-wrap .tablenav.bottom { display: none; }

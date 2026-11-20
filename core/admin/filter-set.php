@@ -14,6 +14,7 @@
     </div>
   </div>
 
+  <?php \FilterPlus\Core\Admin\ImportExport::import_form( 'sets' ); ?>
   <section class="filter-sets-saved">
     <div class="filter-options-list">
       <form method="POST">

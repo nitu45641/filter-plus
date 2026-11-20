@@ -167,4 +167,28 @@ class Table extends \WP_List_Table {
 
 		$this->items = $get_data;
 	}
+
+	/**
+	 * Export / Import beside Bulk actions.
+	 */
+	protected function extra_tablenav( $which ) {
+		if ( 'top' === $which ) {
+			\FilterPlus\Core\Admin\ImportExport::buttons( 'sets' );
+		}
+	}
+
+	/**
+	 * Keep the top bar (Export / Import) when there are no sets yet.
+	 */
+	protected function display_tablenav( $which ) {
+		if ( ! $this->has_items() ) {
+			if ( 'top' === $which ) {
+				echo '<div class="tablenav top">';
+				$this->extra_tablenav( $which );
+				echo '<br class="clear" /></div>';
+			}
+			return;
+		}
+		parent::display_tablenav( $which );
+	}
 }

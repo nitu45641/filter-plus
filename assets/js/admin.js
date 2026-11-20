@@ -726,8 +726,13 @@
 			$option_list_wrap.removeClass('d-none');
 		}
 
-		// Style cards drive the (visually hidden) #style select the save code reads.
-		const $style_select = $('#style');
+		// Form fields are looked up inside the form: the list table's column
+		// headers use the same ids (label, type, style).
+		const $fo = $('#add-filter-option');
+		const fo_field = (name) => $fo.find(`[name="${name}"]`);
+
+		// Style cards drive the (visually hidden) style select the save code reads.
+		const $style_select = fo_field('style');
 		function sync_style_cards() {
 			const value = $style_select.val() || 'select';
 			$option_form_wrap.find('input[name="fo_style_choice"]').each(function () {
@@ -738,7 +743,7 @@
 			$style_select.val(this.value);
 		});
 
-		const $label_input = $('#label');
+		const $label_input = fo_field('label');
 		const $label_error = $('#label-error');
 		function label_is_valid() {
 			const ok = $.trim($label_input.val() || '') !== '';
@@ -756,11 +761,11 @@
 			e.preventDefault();
 			const $this = $(this);
 			const is_edit = typeof $this.data('id') !== 'undefined';
-			if ($('#add-filter-option').length) {
-				$('#add-filter-option')[0].reset();
+			if ($fo.length) {
+				$fo[0].reset();
 			}
-			$('#id').val('');
-			$('#type').val('custom_field');
+			fo_field('id').val('');
+			fo_field('type').val('custom_field');
 			$label_error.prop('hidden', true);
 			$label_input.removeClass('fo-invalid').attr('aria-invalid', 'false');
 			$option_form_title.text(is_edit ? edit_title_text : add_title_text);
@@ -773,17 +778,40 @@
 					custom_field_list : $this.data("custom_field_list"),
 				}
 				$.each($data, function (key, valueObj) {
-					if ($(`#${key}`)) {
-						set_value($, $(`#${key}`), valueObj);
+					if (fo_field(key).length) {
+						set_value($, fo_field(key), valueObj);
 					}
 				});
 			}
-			if (!$('#type').val()) {
-				$('#type').val('custom_field');
+			if (!fo_field('type').val()) {
+				fo_field('type').val('custom_field');
 			}
-			$('#custom_field_list').trigger('change'); // refresh select2 display
+			fo_field('custom_field_list').trigger('change'); // refresh select2 display
 			sync_style_cards();
 			show_filter_option_form();
+		});
+
+		// Import button (in the bulk bar) opens the hidden form's file picker.
+		$(document).on('click', '.fp-import-trigger', function () {
+			const input = document.getElementById($(this).data('input'));
+			if (input) {
+				input.value = '';
+				input.click();
+			}
+		});
+		// Import: picking a file submits it straight away.
+		$(document).on('change', '.fp-import-file', function () {
+			if (this.files && this.files.length) {
+				$(this).closest('form').trigger('submit');
+			}
+		});
+
+		// Row action: deleting is permanent, so ask first.
+		$(document).on('click', '.filter-option-delete', function (e) {
+			const label = $(this).closest('tr').find('.filter-option-label').text().trim();
+			if (!window.confirm('Delete "' + label + '"? This cannot be undone.')) {
+				e.preventDefault();
+			}
 		});
 
 		// back / cancel: return to the list without saving

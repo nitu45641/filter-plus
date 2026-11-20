@@ -29,6 +29,8 @@ class Core {
         \FilterPlus\Core\Lib\Banner::instance()->init();
         // Load admin menus
         \FilterPlus\Core\Admin\Menus::instance()->init();
+        // Import / export Filter Options and Filter Sets (JSON)
+        \FilterPlus\Core\Admin\ImportExport::instance()->init();
         // Ajax submit
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
           \FilterPlus\Core\Admin\Settings\Action::instance()->init();
