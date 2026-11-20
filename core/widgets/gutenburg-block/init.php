@@ -61,6 +61,7 @@ function filterplus_block_assets() {
             'brands'            => array_values( \FilterPlus\Utils\Helper::get_brands( 'label_value', array( 'hide_empty' => 'no' ) ) ),
             'brand_templates'   => array_map( function( $value, $label ) { return array( 'value' => (string) $value, 'label' => $label ); }, array_keys( \FilterPlus\Base\DataFactory::brand_template()['template'] ), \FilterPlus\Base\DataFactory::brand_template()['template'] ),
             'has_brand_taxonomy' => '' !== \FilterPlus\Utils\Helper::brand_taxonomy(),
+            'custom_fields'     => array_map( function( $value, $label ) { return array( 'value' => (string) $value, 'label' => $label ); }, array_keys( \FilterPlus\Core\Admin\FilterOptions\Helper::get_filter_options( -1, 'custom_field' ) ), \FilterPlus\Core\Admin\FilterOptions\Helper::get_filter_options( -1, 'custom_field' ) ),
             'image_sizes'       => \FilterPlus\Utils\Helper::product_image_sizes('label_value'),
 			'is_pro_active'     => (( class_exists( 'FilterPlusPro' ) ) ? 0 : 1 ),
         ]

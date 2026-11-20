@@ -253,7 +253,7 @@ class Helper {
 	public static function get_filter_option_list($keys,$filter_type='custom_field') {
 		$result_arr = array();
 		$fields	= self::get_filter_options(-1);
-		$accepted_keys = explode(',',$keys);
+		$accepted_keys = array_map( 'trim', explode( ',', (string) $keys ) );
 
 		foreach ($fields as $index => $value ) {
 			if ( in_array($index,$accepted_keys)) {

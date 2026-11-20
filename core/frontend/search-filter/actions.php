@@ -262,16 +262,31 @@ class Actions {
 	 */
 	public function filter_by_custom_field( $param , $args ) {
 		if(!empty($param['cf_list'])){
-			$all_list = array();
-			foreach($param['cf_list'] as $item ){
-				if (!empty($item['custom_field_value'])) {
-					$single = array(
-						'key'     => $item['custom_field_key'],
-						'value'   => $item['custom_field_value'],
-						'compare' => 'LIKE'
-					);
-					array_push( $all_list , $single );
+			// Group values per meta key: values of one field use the meta condition (OR by default),
+			// different fields must all match (AND).
+			$groups = array();
+			foreach ( (array) $param['cf_list'] as $item ) {
+				if ( empty( $item['custom_field_value'] ) || empty( $item['custom_field_key'] ) ) {
+					continue;
 				}
+				$key = sanitize_text_field( wp_unslash( $item['custom_field_key'] ) );
+				if ( ! isset( $groups[ $key ] ) ) {
+					$relation       = isset( $item['meta_condition'] ) && 'AND' === strtoupper( (string) $item['meta_condition'] ) ? 'AND' : 'OR';
+					$groups[ $key ] = array( 'relation' => $relation );
+				}
+				$groups[ $key ][] = array(
+					'key'     => $key,
+					'value'   => sanitize_text_field( wp_unslash( $item['custom_field_value'] ) ),
+					'compare' => 'LIKE'
+				);
+			}
+
+			$all_list = array();
+			foreach ( $groups as $group ) {
+				$all_list[] = 2 === count( $group ) ? $group[0] : $group;
+			}
+			if ( count( $all_list ) > 1 ) {
+				$all_list = array_merge( array( 'relation' => 'AND' ), $all_list );
 			}
 
 			if (!empty($all_list)) {

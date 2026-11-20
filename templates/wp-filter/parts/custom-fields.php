@@ -8,9 +8,20 @@
     }
     $filterplus_lists = array();
     if ( !class_exists('FilterPlusPro') ) {
-        $custom_field_label == '' ? esc_html__('Custom Field','filter-plus'): esc_html($custom_field_label);
+        // Comma separated meta keys -> one section per key. Labels may be comma separated in the same order.
+        $filterplus_keys   = array_values( array_filter( array_map( 'trim', explode( ',', (string) $custom_field_list ) ), 'strlen' ) );
+        $filterplus_labels = array_map( 'trim', explode( ',', (string) $custom_field_label ) );
 
-        $filterplus_lists[] = array( 'label' => $custom_field_label , 'style'=> 'checkbox' , 'custom_field_list' => $custom_field_list );
+        foreach ( $filterplus_keys as $filterplus_i => $filterplus_meta_key ) {
+            if ( ! empty( $filterplus_labels[ $filterplus_i ] ) ) {
+                $filterplus_label = $filterplus_labels[ $filterplus_i ];
+            } elseif ( 1 === count( $filterplus_keys ) && '' !== trim( (string) $custom_field_label ) ) {
+                $filterplus_label = $custom_field_label;
+            } else {
+                $filterplus_label = ucwords( str_replace( array( '_', '-' ), ' ', ltrim( $filterplus_meta_key, '_' ) ) );
+            }
+            $filterplus_lists[] = array( 'label' => $filterplus_label, 'style' => 'checkbox', 'custom_field_list' => $filterplus_meta_key );
+        }
     }
     else{
         $filterplus_lists	= OptionHelper::instance()->get_filter_option_list($custom_field_list);

@@ -312,6 +312,7 @@ class Wp_Filter extends Widget_Base {
 				'custom_field_list',
 				[
 					'label' => esc_html__('Custom Field Name', 'filter-plus'),
+					'description' => esc_html__('Separate multiple custom fields with commas.', 'filter-plus'),
 					'type' => Controls_Manager::TEXT,
 					'condition' => ['custom_field' => 'yes']
 				]

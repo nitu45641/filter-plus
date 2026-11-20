@@ -3,6 +3,7 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, TextControl, ToggleControl, CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
+import Select2Control from "../../components/Select2Control";
 
 registerBlockType('filter-plus/wp-filter', {
     title: __('WP Content Filter', 'filter-plus'),
@@ -256,8 +257,7 @@ registerBlockType('filter-plus/wp-filter', {
                             onChange={(value) => setAttributes({ category_template: value })}
                         />
 
-                        <SelectControl
-                            multiple
+                        <Select2Control
                             label={__('Filter Order', 'filter-plus') + (isDisabled() ? ' (Pro)' : '')}
                             value={attributes.filter_order}
                             options={[
@@ -408,12 +408,22 @@ registerBlockType('filter-plus/wp-filter', {
                                     placeholder={__('Custom Field Label', 'filter-plus')}
                                 />
 
-                                <TextControl
-                                    label={__('Custom Field Name', 'filter-plus')}
-                                    value={attributes.custom_field_list}
-                                    onChange={(value) => setAttributes({ custom_field_list: value })}
-                                    help={__('Enter Exact Custom Field Name', 'filter-plus')}
-                                />
+                                {isDisabled() ? (
+                                    <TextControl
+                                        label={__('Custom Field Name', 'filter-plus')}
+                                        value={attributes.custom_field_list}
+                                        onChange={(value) => setAttributes({ custom_field_list: value })}
+                                        help={__('Enter exact custom field (meta key) name. Separate multiple fields with commas; use commas in the label too to name each one.', 'filter-plus')}
+                                    />
+                                ) : (
+                                    <Select2Control
+                                        label={__('Custom Field List', 'filter-plus')}
+                                        value={String(attributes.custom_field_list || '').split(',').map((v) => v.trim()).filter(Boolean)}
+                                        options={window.filterPlus?.custom_fields || []}
+                                        onChange={(value) => setAttributes({ custom_field_list: value.join(',') })}
+                                        help={(window.filterPlus?.custom_fields || []).length ? __('Select one or more custom fields.', 'filter-plus') : __('Create custom fields from FilterPlus > Filter Options.', 'filter-plus')}
+                                    />
+                                )}
 
                                 <SelectControl
                                     label={__('Meta Condition', 'filter-plus')}
