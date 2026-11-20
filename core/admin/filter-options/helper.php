@@ -204,11 +204,25 @@ class Helper {
 				$i = (int) floor( ( $v - $min ) / ( $max - $min ) * 20 );
 				++$bars[ min( 19, max( 0, $i ) ) ];
 			}
+			// Few posts spread over 20 buckets give a spiky 0/1 comb. Smooth the counts
+			// so the histogram reads as a price distribution.
+			$kernel   = array( 1, 2, 3, 2, 1 );
+			$smoothed = array();
+			for ( $b = 0; $b < 20; $b++ ) {
+				$sum = 0;
+				foreach ( $kernel as $k => $weight ) {
+					$j = $b + $k - 2;
+					if ( $j >= 0 && $j < 20 ) {
+						$sum += $bars[ $j ] * $weight;
+					}
+				}
+				$smoothed[] = round( $sum, 2 );
+			}
 			$stats = array(
 				'min'  => $min,
 				'max'  => $max,
 				'step' => ( $max - $min ) > 200 ? 5 : 1,
-				'bars' => $bars,
+				'bars' => $smoothed,
 			);
 		}
 

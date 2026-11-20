@@ -77,7 +77,7 @@
                     <?php if ( '1' === $filterplus_tpl ) : // Template 1: histogram + slider + boxes ?>
                     <div class="fp-num-hist" aria-hidden="true">
                         <?php foreach ( $filterplus_stats['bars'] as $filterplus_bar ) : ?>
-                            <span class="is-in" style="height:<?php echo esc_attr( max( 6, round( $filterplus_bar / $filterplus_peak * 100 ) ) ); ?>%"></span>
+                            <span class="is-in" style="height:<?php echo esc_attr( max( 8, round( $filterplus_bar / $filterplus_peak * 100 ) ) ); ?>%"></span>
                         <?php endforeach; ?>
                     </div>
                     <div class="fp-num-slider">

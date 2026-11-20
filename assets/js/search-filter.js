@@ -286,6 +286,8 @@
 				$(this).toggleClass('is-in', to > lo && from < hi);
 			});
 			$box.closest('.fp-num-range-row').find('.fp-range-clear').prop('hidden', lo <= min && hi >= max);
+			// Both handles at the top end: lift the min handle so it can still be dragged down.
+			$box.find('.fp-num-lo').css('z-index', lo >= max - span * 0.02 ? 3 : '');
 		}
 		function num_range_refilter() {
 			if (!isApplyMode) {
