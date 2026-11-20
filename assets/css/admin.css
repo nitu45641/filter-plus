@@ -2789,3 +2789,65 @@ button.loading::after{
 #filter-set-list-wrap .wp-list-table .check-column input { margin: 0; }
 #filter-set-list-wrap .wp-list-table .column-name { padding-left: 6px !important; }
 #filter-set-list-wrap .tablenav.bottom { display: none; }
+
+/* Export / Import in the bulk bar: same height as Bulk actions + Apply,
+   vertically centred, quieter secondary style, divided from the bulk controls. */
+.tablenav .fp-import-export {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	height: 40px;
+	margin: 0 0 0 4px;
+	padding: 0 0 0 12px !important;
+	border-left: 1px solid #dcdcde;
+}
+.tablenav .fp-import-export .fp-ie-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: 40px;
+	min-height: 40px;
+	margin: 0;
+	padding: 0 14px;
+	border: 1px solid #c3c4c7;
+	border-radius: 6px;
+	background: #fff;
+	color: #1d2327;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	vertical-align: middle;
+	box-shadow: none;
+	transition: border-color .12s ease, color .12s ease, background-color .12s ease;
+}
+.tablenav .fp-import-export .fp-ie-btn .dashicons {
+	width: 16px;
+	height: 16px;
+	margin: 0;
+	font-size: 16px;
+	line-height: 16px;
+	color: #50575e;
+}
+.tablenav .fp-import-export .fp-ie-btn:hover {
+	border-color: var(--filter-primary-bg, #0D6EFD);
+	background: #f6f9ff;
+	color: var(--filter-primary-bg, #0D6EFD);
+}
+.tablenav .fp-import-export .fp-ie-btn:hover .dashicons { color: inherit; }
+.tablenav .fp-import-export .fp-ie-btn:focus-visible {
+	outline: 2px solid var(--filter-primary-bg, #0D6EFD);
+	outline-offset: 1px;
+	box-shadow: none;
+}
+/* keep the bulk select / Apply on the same line and centre */
+#filter-options-list-wrap .tablenav.top,
+#filter-set-list-wrap .tablenav.top { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 0; height: auto; }
+#filter-options-list-wrap .tablenav.top .bulkactions,
+#filter-set-list-wrap .tablenav.top .bulkactions { display: flex; align-items: center; gap: 6px; padding-right: 8px; }
+#filter-options-list-wrap .tablenav.top .tablenav-pages,
+#filter-set-list-wrap .tablenav.top .tablenav-pages { margin-left: auto; }
+#filter-options-list-wrap .tablenav.top br.clear,
+#filter-set-list-wrap .tablenav.top br.clear { display: none; }
+/* empty list: no bulk controls, so no divider */
+.tablenav.top > .fp-import-export:first-child { margin-left: 0; padding-left: 0 !important; border-left: 0; }
