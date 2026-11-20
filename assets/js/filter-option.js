@@ -138,8 +138,19 @@ var filterOption = {
 				};
 			}).get();
 		}
-		get_cf_list = $.merge(input_data,get_cf_list_select);
-		params.cf_list = get_cf_list; 
+ 		get_cf_list = $.merge(input_data,get_cf_list_select);
+		params.cf_list = get_cf_list;
+
+		// Date Range filter options: { key, from, to, label } (Y-m-d; either side optional)
+		params.date_ranges = $('.fp-date-range').map(function () {
+			const $box = $(this);
+			const from = $box.find('.fp-date-from').val() || '';
+			const to   = $box.find('.fp-date-to').val() || '';
+			if (!from && !to) {
+				return null;
+			}
+			return { key: $box.data('meta_key'), from: from, to: to, label: $box.data('label') };
+		}).get();
 
 		return params;
 	}

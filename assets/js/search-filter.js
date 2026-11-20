@@ -239,6 +239,38 @@
 			reset_block(_this, _this.parents('.sidebar-row'));
 		});
 
+		// Date Range filter: refilter when either date changes.
+		$(document).on('change', '.fp-date-range input[type="date"]', function () {
+			const $row = $(this).closest('.fp-date-range-row');
+			const has_value = $row.find('.fp-date-range input').filter(function () { return this.value; }).length > 0;
+			$row.find('.fp-date-clear').prop('hidden', !has_value);
+			if (!isApplyMode) {
+				get_products();
+			} else {
+				show_selected_data(selected_param({}));
+			}
+		});
+		function clear_date_range($row) {
+			$row.find('.fp-date-range input').val('');
+			$row.find('.fp-date-clear').prop('hidden', true);
+		}
+		$(document).on('click', '.fp-date-clear', function (e) {
+			e.preventDefault();
+			clear_date_range($(this).closest('.fp-date-range-row'));
+			if (!isApplyMode) {
+				get_products();
+			} else {
+				show_selected_data(selected_param({}));
+			}
+		});
+		$(document).on('click', '.selected-filter .fp-date-tag', function (e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			const key = $(this).data('meta_key');
+			clear_date_range($('.fp-date-range').filter(function () { return $(this).data('meta_key') === key; }).closest('.fp-date-range-row'));
+			get_products();
+		});
+
 		//search product
 		$('.sidebar-input').on('keyup', function () {
 			const _this = $(this);
@@ -979,6 +1011,13 @@
 					if (key == 'on_sale' && value !== '') {
 						selected_html += `<div class='filter-tag' data-node='on_sale'>${selected_data.on_sale_text}${cross}</div>`;
 					}
+					if (key == 'date_ranges' && Array.isArray(value)) {
+						value.forEach(function (range) {
+							const esc = (s) => $('<div>').text(s || '').html();
+							const text = range.from && range.to ? `${range.from} – ${range.to}` : (range.from ? `≥ ${range.from}` : `≤ ${range.to}`);
+							selected_html += `<div class='filter-tag fp-date-tag' data-node='.fp-date-range' data-meta_key='${esc(range.key)}'>${esc(range.label)}: ${esc(text)}${cross}</div>`;
+						});
+					}
 					if (key == 'custom_field_value' && value !== '') {
 						selected_html += `<div class='filter-tag' data-node='custom-field'>${selected_data.custom_field_value}${cross}</div>`;
 					}
@@ -1426,8 +1465,8 @@
 				e.preventDefault();
 				const $this = $(this);
 				const parent = '';
-				if ($this.hasClass('fp-brand-tag')) {
-					return; // handled by the brand tag handler
+				if ($this.hasClass('fp-brand-tag') || $this.hasClass('fp-date-tag')) {
+					return; // handled by their own handlers
 				}
 				if (element == filter_tag) {
 					const node = $this.data('node');
@@ -1506,6 +1545,8 @@
 					}
 				}
 				$('input[type=checkbox]').removeAttr('checked');
+				$('.fp-date-range input').val('');
+				$('.fp-date-clear').prop('hidden', true);
 				// FIX: Also uncheck radio inputs on clear all
 				$('input[type=radio]').prop('checked', false);
 				sidebar.find('.reset').fadeOut();
@@ -1654,6 +1695,8 @@
 
 			// Clear search
 			search.val('');
+			$('.fp-date-range input').val('');
+			$('.fp-date-clear').prop('hidden', true);
 
 			// Reset attribute/tag selections
 			param_box.find('.radio-item').removeClass('active');

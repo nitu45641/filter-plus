@@ -4287,3 +4287,51 @@ ul.fp-brand-list-image .fp-brand-count {
 @media (max-width: 600px) {
 	.elementor-editor-active .post-grid-view-1[data-editor-products] { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Date Range custom field filter */
+.fp-date-range {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+	margin-top: 12px;
+}
+.fp-date-range__field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+	margin: 0;
+	font-size: 12px;
+	font-weight: 600;
+	color: #5b6168;
+}
+.fp-date-range__field input[type="date"] {
+	width: 100%;
+	min-width: 0;
+	height: 40px;
+	margin: 0;
+	padding: 0 8px;
+	border: 1px solid #d6d3cc;
+	border-radius: 8px;
+	background: #fff;
+	color: #16191d;
+	font-size: 14px;
+	box-sizing: border-box;
+}
+.fp-date-range__field input[type="date"]:focus {
+	border-color: var(--filter-secondary-color, #2d73e7);
+	outline: none;
+	box-shadow: 0 0 0 1px var(--filter-secondary-color, #2d73e7);
+}
+.fp-date-clear {
+	align-self: flex-start;
+	margin: 8px 0 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--filter-secondary-color, #2d73e7);
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.fp-date-clear:hover { text-decoration: underline; }

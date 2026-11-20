@@ -90,7 +90,7 @@
           ),
           array(
             'name'  => 'wp_filter_plus',
-            'label' => esc_html__("Posts & Pages (WordPress)","filter-plus"),
+            'label' => esc_html__("Posts & Custom Posts","filter-plus"),
             'path' => \FilterPlus::core_dir()."admin/wp-filter.php"
           )
       );

@@ -21,6 +21,31 @@
 
     foreach( $filterplus_lists as $filterplus_item ):
 
+        // Date Range style: From / To date pickers instead of one input per stored value.
+        if ( isset( $filterplus_item['style'] ) && 'date_range' === $filterplus_item['style'] ) {
+            $filterplus_bounds = OptionHelper::instance()->get_date_bounds( $filterplus_item['custom_field_list'] );
+            $filterplus_dr_id  = wp_unique_id( 'fp-date-range-' );
+            ?>
+            <div class="sidebar-row fp-date-range-row">
+                <h4 class="sidebar-label" id="<?php echo esc_attr( $filterplus_dr_id ); ?>-label"><?php echo esc_html( $filterplus_item['label'] ); ?></h4>
+                <div class="fp-date-range" role="group" aria-labelledby="<?php echo esc_attr( $filterplus_dr_id ); ?>-label"
+                    data-meta_key="<?php echo esc_attr( $filterplus_item['custom_field_list'] ); ?>"
+                    data-label="<?php echo esc_attr( $filterplus_item['label'] ); ?>">
+                    <label class="fp-date-range__field">
+                        <span><?php esc_html_e( 'From', 'filter-plus' ); ?></span>
+                        <input type="date" class="fp-date-from" min="<?php echo esc_attr( $filterplus_bounds['min'] ); ?>" max="<?php echo esc_attr( $filterplus_bounds['max'] ); ?>" />
+                    </label>
+                    <label class="fp-date-range__field">
+                        <span><?php esc_html_e( 'To', 'filter-plus' ); ?></span>
+                        <input type="date" class="fp-date-to" min="<?php echo esc_attr( $filterplus_bounds['min'] ); ?>" max="<?php echo esc_attr( $filterplus_bounds['max'] ); ?>" />
+                    </label>
+                </div>
+                <button type="button" class="fp-date-clear" hidden><?php esc_html_e( 'Clear dates', 'filter-plus' ); ?></button>
+            </div>
+            <?php
+            continue;
+        }
+
     ?>
     <div class="sidebar-row radio-wrap">
         <h4 class="sidebar-label"><?php echo esc_html($filterplus_item['label']) ?></h4>

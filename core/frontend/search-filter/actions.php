@@ -65,6 +65,7 @@ class Actions {
 		$filter_type  = ! empty( $post_arr['filter_type'] ) ? $post_arr['filter_type'] : 'woo-filter';
 		$author  	  = ! empty( $post_arr['author'] ) ? $post_arr['author'] : '';
 		$cf_list  	  = ! empty( $post_arr['cf_list'] ) ? $post_arr['cf_list'] : [];
+		$date_ranges  = ! empty( $post_arr['date_ranges'] ) && is_array( $post_arr['date_ranges'] ) ? $post_arr['date_ranges'] : [];
 		$masonry_style  = ! empty( $post_data['masonry_style'] ) ? $post_data['masonry_style'] : 'no';
 		$exclude_cat_id = ! empty( $post_data['exclude_cat_id'] ) ? $post_data['exclude_cat_id'] : '';
 		$taxonomy	  = $filter_type == 'product' ? 'product_cat' : 'category';
@@ -101,6 +102,7 @@ class Actions {
 			'stock'  		=> $stock,
 			'on_sale'  		=> $on_sale,
 			'cf_list'		=> $cf_list,
+			'date_ranges'	=> $date_ranges,
 			'masonry_style' => $masonry_style,
 			'exclude_cat_id'=> $exclude_cat_id,
 			'taxonomy'  	=> $taxonomy,
@@ -274,7 +276,72 @@ class Actions {
 			}
 		}
 
+		$date_clauses = $this->date_range_clauses( isset( $param['date_ranges'] ) ? $param['date_ranges'] : array() );
+		if ( ! empty( $date_clauses ) ) {
+			$existing = isset( $args['meta_query'] ) && is_array( $args['meta_query'] ) ? $args['meta_query'] : array();
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for date range filtering
+			$args['meta_query'] = array_merge( array( 'relation' => 'AND' ), $existing, $date_clauses );
+		}
+
 		return $args;
+	}
+
+	/**
+	 * Meta query clauses for "Date Range" filter options.
+	 *
+	 * Each range is { key, from, to } with Y-m-d dates (either side may be empty).
+	 * The comparison matches how the field is stored (ACF Ymd, Y-m-d, timestamp).
+	 *
+	 * @param array $ranges Ranges sent by the filter.
+	 * @return array
+	 */
+	public function date_range_clauses( $ranges ) {
+		$clauses = array();
+		$allowed = array();
+		foreach ( \FilterPlus\Core\Admin\FilterOptions\Helper::get_filter_options( -1 ) as $option ) {
+			if ( isset( $option['style'] ) && 'date_range' === $option['style'] && ! empty( $option['custom_field_list'] ) ) {
+				$allowed[] = $option['custom_field_list'];
+			}
+		}
+
+		foreach ( (array) $ranges as $range ) {
+			$key  = isset( $range['key'] ) ? sanitize_text_field( wp_unslash( $range['key'] ) ) : '';
+			$from = isset( $range['from'] ) && preg_match( '/^\d{4}-\d{2}-\d{2}$/', $range['from'] ) ? $range['from'] : '';
+			$to   = isset( $range['to'] ) && preg_match( '/^\d{4}-\d{2}-\d{2}$/', $range['to'] ) ? $range['to'] : '';
+			// Only keys set up as Date Range filter options; never arbitrary meta.
+			if ( '' === $key || ! in_array( $key, $allowed, true ) || ( '' === $from && '' === $to ) ) {
+				continue;
+			}
+			if ( '' !== $from && '' !== $to && $from > $to ) {
+				list( $from, $to ) = array( $to, $from );
+			}
+
+			$format = \FilterPlus\Core\Admin\FilterOptions\Helper::date_storage_format( $key );
+			if ( 'ymd' === $format ) {
+				$conv = static function ( $d ) { return str_replace( '-', '', $d ); };
+				$type = 'NUMERIC';
+				$from = '' !== $from ? $conv( $from ) : '';
+				$to   = '' !== $to ? $conv( $to ) : '';
+			} elseif ( 'timestamp' === $format ) {
+				$type = 'NUMERIC';
+				$from = '' !== $from ? (string) strtotime( $from . ' 00:00:00 UTC' ) : '';
+				$to   = '' !== $to ? (string) strtotime( $to . ' 23:59:59 UTC' ) : '';
+			} else {
+				// Y-m-d or Y-m-d H:i:s stored as text: compare as strings so times on the "to" day still match.
+				$type = 'CHAR';
+				$to   = '' !== $to ? $to . ' 23:59:59' : '';
+			}
+
+			if ( '' !== $from && '' !== $to ) {
+				$clauses[] = array( 'key' => $key, 'value' => array( $from, $to ), 'compare' => 'BETWEEN', 'type' => $type );
+			} elseif ( '' !== $from ) {
+				$clauses[] = array( 'key' => $key, 'value' => $from, 'compare' => '>=', 'type' => $type );
+			} else {
+				$clauses[] = array( 'key' => $key, 'value' => $to, 'compare' => '<=', 'type' => $type );
+			}
+		}
+
+		return $clauses;
 	}
 
 	/**

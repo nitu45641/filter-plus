@@ -95,6 +95,73 @@ class Helper {
 		return $meta_values;
 	}
 
+	/**
+	 * Convert a stored date meta value to Y-m-d. Handles the formats ACF and
+	 * most plugins save: Ymd (ACF date picker), Y-m-d[ H:i:s] and Unix timestamps.
+	 *
+	 * @param string $value Raw meta value.
+	 * @return string Y-m-d, or '' when it isn't a date.
+	 */
+	public static function normalize_date( $value ) {
+		$value = trim( (string) $value );
+		if ( preg_match( '/^(\d{4})(\d{2})(\d{2})$/', $value, $m ) && checkdate( (int) $m[2], (int) $m[3], (int) $m[1] ) ) {
+			return $m[1] . '-' . $m[2] . '-' . $m[3];
+		}
+		if ( preg_match( '/^(\d{4})-(\d{2})-(\d{2})/', $value, $m ) && checkdate( (int) $m[2], (int) $m[3], (int) $m[1] ) ) {
+			return $m[1] . '-' . $m[2] . '-' . $m[3];
+		}
+		if ( preg_match( '/^\d{9,11}$/', $value ) ) {
+			return gmdate( 'Y-m-d', (int) $value );
+		}
+		return '';
+	}
+
+	/**
+	 * How a date custom field is stored: 'ymd' (20261120), 'date' (2026-11-20…)
+	 * or 'timestamp'. Detected from the stored values.
+	 *
+	 * @param string $key Meta key.
+	 * @return string
+	 */
+	public static function date_storage_format( $key ) {
+		foreach ( (array) self::get_custom_fields_values( $key ) as $row ) {
+			$value = trim( (string) $row->meta_value );
+			if ( preg_match( '/^\d{8}$/', $value ) ) {
+				return 'ymd';
+			}
+			if ( preg_match( '/^\d{4}-\d{2}-\d{2}/', $value ) ) {
+				return 'date';
+			}
+			if ( preg_match( '/^\d{9,11}$/', $value ) ) {
+				return 'timestamp';
+			}
+		}
+		return 'date';
+	}
+
+	/**
+	 * Earliest and latest date stored in a custom field (Y-m-d), for the
+	 * date pickers' min/max.
+	 *
+	 * @param string $key Meta key.
+	 * @return array{min:string,max:string}
+	 */
+	public static function get_date_bounds( $key ) {
+		$dates = array();
+		foreach ( (array) self::get_custom_fields_values( $key ) as $row ) {
+			$date = self::normalize_date( $row->meta_value );
+			if ( '' !== $date ) {
+				$dates[] = $date;
+			}
+		}
+		sort( $dates );
+
+		return array(
+			'min' => $dates ? reset( $dates ) : '',
+			'max' => $dates ? end( $dates ) : '',
+		);
+	}
+
 	public static function get_filter_option_list($keys,$filter_type='custom_field') {
 		$result_arr = array();
 		$fields	= self::get_filter_options(-1);
