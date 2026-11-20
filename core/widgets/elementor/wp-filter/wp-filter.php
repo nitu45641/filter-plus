@@ -76,6 +76,7 @@ class Wp_Filter extends Widget_Base {
 		];
 		$templates[2] = esc_html__('Template 2', 'filter-plus').' '.$pro;
 		$templates[3] = esc_html__('Template 3', 'filter-plus').' '.$pro;
+		$templates[4] = esc_html__('Template 4', 'filter-plus').' '.$pro;
 		
 		$this->add_control(
 			'template',
@@ -402,6 +403,18 @@ class Wp_Filter extends Widget_Base {
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
+		);
+		$this->add_control(
+			'wishlist',
+			array(
+				'label'        => esc_html__( 'Enable Wishlist', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'default'      => '',
+				'disabled'     => ! class_exists( 'FilterPlusPro' ),
+				'condition'    => array( 'template' => '4' ),
+				'description'  => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Show a save (heart) button on each card. Logged-in visitors keep saves on their account; guests keep them in the browser.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ),
+			)
 		);
 		$this->end_controls_section();
 

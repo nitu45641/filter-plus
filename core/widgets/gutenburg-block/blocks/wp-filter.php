@@ -17,6 +17,7 @@ function content_filter_block() {
                 'title'              => array( 'type' => 'string',  'default' => __( 'Filters', 'filter-plus' ) ),
                 'no_of_items'        => array( 'type' => 'number',  'default' => 9 ),
                 'masonry_style'      => array( 'type' => 'boolean', 'default' => false ),
+                'wishlist'           => array( 'type' => 'boolean', 'default' => false ),
                 'pagination_style'   => array( 'type' => 'string',  'default' => 'numbers' ),
                 'category_template'  => array( 'type' => 'string',  'default' => '1' ),
                 'filter_order'      => array( 'type' => 'array',   'default' => array(), 'items' => array( 'type' => 'string' ) ),
@@ -128,6 +129,7 @@ function content_filter_callback( $settings ) {
             'post_author' => $post_author,
             'hide_wp_title' => $hide_wp_title,
             'hide_wp_desc' => $hide_wp_desc,
+            'wishlist' => ! empty( $settings['wishlist'] ) && class_exists( 'FilterPlusPro' ) ? 'yes' : 'no',
         );
 
         $shortcode_parts = array();

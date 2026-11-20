@@ -40,7 +40,7 @@
 
 			// templates
 			$filterplus_args = array('label'=>esc_html__("Select Template:","filter-plus"),'id' => 'post_template',                               
-			'data_label' => 'template','options'=>[1,2,3],'type'=>'template' );                                                                   
+			'data_label' => 'template','options'=>[1,2,3,4],'type'=>'template' );                                                                   
 			if ( isset( $filterplus_disable ) && $filterplus_disable ) {
 				$filterplus_args['template_disable'] = 1;
 			}
@@ -215,6 +215,11 @@
 			// show post author
 			$filterplus_args = array('label'=>esc_html__("Display Author:","filter-plus"),'id' => 'post_author',
 			'data_label' => 'post_author');
+			filterplus_checkbox_field($filterplus_args);
+			// wishlist (Pro): heart button on Template 4 cards
+			$filterplus_args = array('label'=>esc_html__("Enable Wishlist:","filter-plus"),'id' => 'wp_wishlist',
+			'data_label' => 'wishlist','disable' => ! class_exists('FilterPlusPro'),
+			'checkbox_label' => esc_html__("Template 4","filter-plus"));
 			filterplus_checkbox_field($filterplus_args);
 		?>
 		<div class="single-block">

@@ -709,11 +709,33 @@
 		/**
 		 * Add new checkout field
 		 */
-		const $modal_content = '#filter-options-modal';
+		const $option_form_wrap = $('#filter-options-form-wrap');
+		const $option_list_wrap = $('#filter-options-list-wrap');
+		const $option_form_title = $option_form_wrap.find('.filter-option-form-title');
+		const add_title_text = $option_form_title.text();
+		const edit_title_text = 'Edit Filter Option';
+
+		function show_filter_option_form() {
+			$option_list_wrap.addClass('d-none');
+			$option_form_wrap.removeClass('d-none');
+			window.scrollTo(0, 0);
+			$option_form_wrap.find('input:not([type="hidden"]), select').filter(':visible').first().trigger('focus');
+		}
+		function hide_filter_option_form() {
+			$option_form_wrap.addClass('d-none');
+			$option_list_wrap.removeClass('d-none');
+		}
+
 		$('.add-filter-opt,.update-filter-option').on('click', function (e) {
 			e.preventDefault();
-			if ( typeof ( $(this).data("id") ) !== 'undefined' ) {
-				let $this = $(this);
+			const $this = $(this);
+			const is_edit = typeof $this.data('id') !== 'undefined';
+			if ($('#add-filter-option').length) {
+				$('#add-filter-option')[0].reset();
+			}
+			$('#id').val('');
+			$option_form_title.text(is_edit ? edit_title_text : add_title_text);
+			if (is_edit) {
 				let $data = {
 					id : $this.data("id"),
 					type : $this.data("type"),
@@ -727,19 +749,13 @@
 					}
 				});
 			}
-			$($modal_content).show();
+			show_filter_option_form();
 		});
 
-		// closing
-		const $modal_close = $('.modal-close');
-		$modal_close.on('click', function () {
-			$($modal_content).fadeOut(500);
-		});
-
-		$(document).click(function (e) {
-			if ($(e.target).is($modal_content)) {
-				$($modal_content).fadeOut(500);
-			}
+		// back / cancel: return to the list without saving
+		$('.close-filter-option-form').on('click', function (e) {
+			e.preventDefault();
+			hide_filter_option_form();
 		});
 
 		//Add filter options

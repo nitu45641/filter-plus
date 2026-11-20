@@ -54,13 +54,54 @@ class Table extends \WP_List_Table{
      * Display all row function
      */
     protected function column_default( $item , $column_name ){
-        switch( $column_name ) { 
-			case $column_name:
-				return  $item[$column_name];
-            default:
-                isset( $item[$column_name] ) ? $item[$column_name] : '';
-            break;
+        $labels = array(
+            'type'  => array(
+                'custom_field' => esc_html__( 'Custom Field', 'filter-plus' ),
+                'date_range'   => esc_html__( 'Date Range', 'filter-plus' ),
+            ),
+            'style' => array(
+                'select'     => esc_html__( 'Select', 'filter-plus' ),
+                'checkbox'   => esc_html__( 'Checkbox', 'filter-plus' ),
+                'radio'      => esc_html__( 'Radio', 'filter-plus' ),
+                'date_range' => esc_html__( 'Date Range', 'filter-plus' ),
+            ),
+        );
+        $value = isset( $item[ $column_name ] ) ? $item[ $column_name ] : '';
+
+        if ( 'actions' === $column_name ) {
+            return $value; // pre-built, escaped button markup
         }
+        if ( isset( $labels[ $column_name ][ $value ] ) ) {
+            return '<span class="filter-option-badge">' . $labels[ $column_name ][ $value ] . '</span>';
+        }
+        if ( 'label' === $column_name ) {
+            return '<strong>' . esc_html( $value ) . '</strong>';
+        }
+
+        return esc_html( $value );
+    }
+
+    /**
+     * Hide the bulk-action bar while the list is empty (it only adds blank space).
+     */
+    protected function display_tablenav( $which ) {
+        if ( ! $this->has_items() ) {
+            return;
+        }
+        parent::display_tablenav( $which );
+    }
+
+    /**
+     * Empty state with a direct way to create the first option.
+     */
+    public function no_items() {
+        ?>
+        <div class="filter-options-empty">
+            <p class="filter-options-empty__title"><?php esc_html_e( 'No filter options yet', 'filter-plus' ); ?></p>
+            <p class="filter-options-empty__text"><?php esc_html_e( 'Add a custom field filter, then pick it in the Custom Field Filter section of your filter set.', 'filter-plus' ); ?></p>
+            <button type="button" class="button button-primary add-filter-opt"><?php esc_html_e( 'Add Filter Option', 'filter-plus' ); ?></button>
+        </div>
+        <?php
     }
 
     /**

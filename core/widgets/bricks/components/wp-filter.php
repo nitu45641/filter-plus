@@ -51,7 +51,7 @@ class Wp_Filter extends \Bricks\Element {
 			'group' => 'filter_options',
 			'label' => esc_html__( 'Style', 'filter-plus' ),
 			'type' => 'select',
-			'options' => \FilterPlus\Utils\Helper::widgets_templates(3),
+			'options' => \FilterPlus\Utils\Helper::widgets_templates(4),
 			'inline' => true,
 			'placeholder' => esc_html__( 'Select Template', 'filter-plus' ),
 			'single' => true,
@@ -364,6 +364,7 @@ class Wp_Filter extends \Bricks\Element {
 			'small' => true,
 			'default' => true,
 		);
+		$this->controls['wishlist'] = array( 'tab' => 'content', 'group' => 'filter-result', 'label' => esc_html__( 'Enable Wishlist', 'filter-plus' ) . ( class_exists( 'FilterPlusPro' ) ? '' : ' (Pro)' ), 'type' => 'checkbox', 'default' => false, 'disabled' => ! class_exists( 'FilterPlusPro' ), 'required' => array( 'template', '=', '4' ), 'description' => class_exists( 'FilterPlusPro' ) ? esc_html__( 'Show a save (heart) button on each card. Logged-in visitors keep saves on their account; guests keep them in the browser.', 'filter-plus' ) : esc_html__( 'Upgrade to Pro to use this feature.', 'filter-plus' ) );
 	}
 
 	// Enqueue element styles and scripts

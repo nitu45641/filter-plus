@@ -1,12 +1,12 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
-<div class="popup-modal" id="filter-options-modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <div class="content-header">
-                <div class="title"><?php esc_html_e('Add Filter Options','filter-plus'); ?></div>
-            </div>
-            <span class="modal-close">&times;</span>
-        </div>
+<div id="filter-options-form-wrap" class="d-none mt-2">
+    <div class="content-header flp-form-header mb-2">
+        <button type="button" class="close-filter-option-form flp-back-btn" aria-label="<?php esc_attr_e( 'Back to Filter Options', 'filter-plus' ); ?>">
+            <span aria-hidden="true">&larr;</span> <?php esc_html_e( 'Back', 'filter-plus' ); ?>
+        </button>
+        <div class="title filter-option-form-title"><?php esc_html_e( 'Add New Filter Option', 'filter-plus' ); ?></div>
+    </div>
+    <section class="filter-option-form-card">
         <form method="POST" id="add-filter-option" class="fields">
             <?php
 			    $filterplus_meta_keys = \FilterPlus\Utils\Helper::instance()->get_custom_fields_keys();
@@ -50,6 +50,7 @@
                         'select'    =>__('Select','filter-plus'),
                         'checkbox'  =>__('Checkbox','filter-plus'),
                         'radio'     =>__('Radio','filter-plus'),
+                        'date_range'=>__('Date Range','filter-plus'),
                     ),
                     'selected'      =>'Select'
                 );
@@ -67,7 +68,10 @@
                 filterplus_select_field($filterplus_args);
 
             ?>
-            <button type="submit" class="button button-primary add-filter-option mt-3 <?php echo class_exists('FilterPlusPro') ? '': 'disable'?>"><?php esc_html_e('Save Changes','filter-plus'); ?></button>
+            <div class="filter-option-form-actions">
+                <button type="button" class="button close-filter-option-form"><?php esc_html_e( 'Cancel', 'filter-plus' ); ?></button>
+                <button type="submit" class="button button-primary add-filter-option <?php echo class_exists('FilterPlusPro') ? '': 'disable'?>"><?php esc_html_e( 'Save Filter Option', 'filter-plus' ); ?></button>
+            </div>
         </form>
-    </div>
+    </section>
 </div>

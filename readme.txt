@@ -208,6 +208,7 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/f
 * New: Template 9 "Variation Cards" (Pro): variable products show their options as buttons on the card (e.g. Weight: 100g / 500g / 1kg), the price updates when an option is picked, and shoppers set a quantity and add the chosen variation to the cart with the cart icon.
 * New: Template 9 is available in the [filter_products] shortcode, Elementor, Gutenberg and Bricks, and in the Product Archive / Category Layout settings.
 * New: Template 9 sidebar uses the standard filters with its own gold-and-cream style, plus a styled "Sort by" dropdown above the product grid.
+* Fix: Price filter now compares prices with cents, so a $5.50 product no longer shows when the maximum is $5.
 
 = 1.1.47 (November 15, 2026) =
 * Fix: Post Filter template 1 search box now shows its full placeholder text ("Search posts…").

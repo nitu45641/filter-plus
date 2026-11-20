@@ -160,7 +160,8 @@ class DataFactory {
             'meta_condition'     	=> 'OR',
             'custom_field_list'     => '',
             'filter_position'   => 'left',
-            'pagination_style'  => 'numbers'
+            'pagination_style'  => 'numbers',
+            'wishlist'          => 'no'
         );
     }
 
@@ -448,6 +449,8 @@ class DataFactory {
 		$default_data['post_author']        = !empty($settings['post_author']) && $settings['post_author'] == true ? 'yes' : 'no';
 		$default_data['filter_position'] 	= ! empty( $filter_position ) ? $filter_position : 'left';
 		$default_data['pagination_style'] 	= ! empty( $pagination_style ) ? $pagination_style : 'numbers';
+		// Wishlist heart on post cards (Pro, Template 4).
+		$default_data['wishlist']           = ( ! empty( $settings['wishlist'] ) && ( $settings['wishlist'] === true || 'yes' === $settings['wishlist'] ) ) ? 'yes' : 'no';
 
         return $default_data;
     }
@@ -478,7 +481,7 @@ class DataFactory {
         custom_field_list='{$custom_fields}' post_tags='{$post_tags}'
         filter_position='{$filter_position}' pagination_style='{$pagination_style}'
         post_categories='{$post_categories}' post_author='{$post_author}'
-        filter_order='{$filter_order}' show_search='{$show_search}']"); 
+        filter_order='{$filter_order}' show_search='{$show_search}' wishlist='{$wishlist}']"); 
     }
 
     /**

@@ -175,6 +175,10 @@ class Shortcodes {
 		extract( $data );
 
 		$filtering_type = $filter_type == 'post' ? 'post' : $custom_post;
+		// Post Template 4 has its own fixed card grid; masonry doesn't apply.
+		if ( '4' === (string) $template ) {
+			$masonry_style = 'no';
+		}
 		$main_wrapper   = 'shopContainer';
 		$_fp_custom_css = $this->custom_css($template,'content-filter', array( 'masonry_style' => $masonry_style ) );
 		?>
@@ -315,6 +319,14 @@ class Shortcodes {
 			$badge_bg     = '#b8964f';
 			$price_range  = '#b8964f';
 			$cart_content = '#b8964f';
+		}
+		if ( $filter_type !== "product" && $template == "4" ) {
+			// Post Template 4: deep teal listing layout.
+			$primary_color = $secondary_color = $price_range = $cart_content = '#0E6B63';
+			$readmore_color = $hover_color = '#0A504A';
+			$blog_header = '#16191D';
+			$tag_color = '#0E6B63';
+			$rating_color = '#B7791F';
 		}
 
 		$settings = \FilterPlus\Utils\Helper::instance()->get_settings();

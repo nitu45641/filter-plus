@@ -179,6 +179,8 @@ class Actions {
 			$args = $this->product_on_stock( $param , $args );
 			$args = $this->product_on_sale( $param , $args );
 			$args = $this->product_order_by( $param , $args );
+		} else {
+			$args = $this->post_order_by( $param , $args );
 		}
 
 		$args = $this->filter_by_custom_field( $param , $args );
@@ -314,10 +316,36 @@ class Actions {
 	}
 
 	/**
-	 * Product order by
+	 * Post order by (non-product filters)
 	 *
 	 * @param [type] $args
 	 * @param [type] $param
+	 * @return array
+	 */
+	public function post_order_by( $param , $args ) {
+		// Posts only sort on core columns; product-only keys (price, rating…) are ignored.
+		$map = array(
+			'date'       => array( 'date', 'DESC' ),
+			'date-asc'   => array( 'date', 'ASC' ),
+			'title'      => array( 'title', 'ASC' ),
+			'title-desc' => array( 'title', 'DESC' ),
+			'comments'   => array( 'comment_count', 'DESC' ),
+			'modified'   => array( 'modified', 'DESC' ),
+		);
+		$key = ! empty( $param['order_by'] ) ? sanitize_key( $param['order_by'] ) : '';
+		if ( isset( $map[ $key ] ) ) {
+			$args['orderby'] = $map[ $key ][0];
+			$args['order']   = $map[ $key ][1];
+		}
+
+		return $args;
+	}
+
+	/**
+	 * Product order by
+	 *
+	 * @param [type] $param
+	 * @param [type] $args
 	 * @return array
 	 */
 	public function product_order_by( $param , $args ) {
@@ -424,7 +452,8 @@ class Actions {
 					'key'       => '_price',
 					'value'     => array( $param['min'], $param['max'] ),
 					'compare'   => 'BETWEEN',
-					'type'      => 'NUMERIC'
+					// DECIMAL keeps cents: NUMERIC casts to a whole number, so 5.50 matched a max of 5.
+					'type'      => 'DECIMAL(10,2)'
 				),
 			);
 		}
@@ -699,6 +728,9 @@ class Actions {
 				// Fix: add template 2 and 3 for non-product types
 		else if ( $filter_type !== 'product' && ( $template == '2' ) ) {
 			$size = array(380, 210);
+		}
+		else if ( $filter_type !== 'product' && $template == '4' ) {
+			$size = array(600, 380);
 		}
 		else if ( $filter_type == 'product' && $template == '3') {
 			$size = array(340, 210 );

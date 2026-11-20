@@ -38,15 +38,17 @@ class Helper {
 				$single_options = self::get_filter_opt($value);
 
                 if (empty($type)) {
-                    $single_options['actions'] = '
-                        <span class="filter-action update-filter-option"
-                        data-id="'.$value->ID.'"
-                        data-label="'.$value->label.'"
-                        data-type="'.$value->type.'"
-                        data-style="'.$value->style.'"
-                        data-custom_field_list="'.$value->custom_field_list.'"
-                        ><span class="union-edit"></span></span></span>
-				    ';
+                    $single_options['actions'] = sprintf(
+                        '<button type="button" class="button button-small filter-action update-filter-option" data-id="%1$s" data-label="%2$s" data-type="%3$s" data-style="%4$s" data-custom_field_list="%5$s" aria-label="%6$s"><span class="union-edit" aria-hidden="true"></span>%7$s</button>',
+                        esc_attr( $value->ID ),
+                        esc_attr( $single_options['label'] ),
+                        esc_attr( $single_options['type'] ),
+                        esc_attr( $single_options['style'] ),
+                        esc_attr( $single_options['custom_field_list'] ),
+                        /* translators: %s: filter option label */
+                        esc_attr( sprintf( __( 'Edit %s', 'filter-plus' ), $single_options['label'] ) ),
+                        esc_html__( 'Edit', 'filter-plus' )
+                    );
                     
                     array_push($filter_opt,$single_options);
                 }

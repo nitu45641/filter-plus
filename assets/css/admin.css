@@ -1089,50 +1089,6 @@ a.pro-link:focus{
 }
 /* Accordion css end */
 
-/* Modal css start */
-
-/* The Modal (background) */
-.popup-modal {
-	display: none; 
-	position: fixed; 
-	z-index: 1; 
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: rgb(0,0,0); 
-	background-color: rgba(0,0,0,0.4);
-}
-
-/* Modal Content */
-.modal-header{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 2%;
-}
-.modal-content {
-	background-color: #fefefe;
-	margin: 5% auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 42%;
-}
-
-/* The Close Button */
-.modal-close {
-	font-size: 20px;
-	color: #121212;
-	cursor: pointer;
-}
-.modal-close:hover,
-.modal-close:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
-}
-/* Modal css end */
 
 /* wp list table css start */
 .union-edit{
@@ -1225,18 +1181,6 @@ tfoot > tr
 	height: 40px;
 	border: 1px solid #81B4FE;
 	color: #0D6EFD;
-}
-.add-filter-opt.button,.add-filter-opt.button:hover{
-	background: #0D6EFD;
-	color: #FAFAFB;
-	font-size: 14px;
-	font-weight: 600;
-	height: 40px;
-}
-.add-filter-opt::before{
-	content: '+';
-	font-size: 15px;
-	padding-right: 5px;
 }
 /* wp list table css end */
 
@@ -2454,3 +2398,159 @@ button.loading::after{
 #filter-set-form-wrap .flp-image-mode-notice p { font-weight: 500; }
 
 #filter-set-form-wrap .flp-image-mode-notice { width: fit-content; max-width: 100%; margin-left: auto !important; box-sizing: border-box; }
+
+/* =============================================
+   Filter Options page — list + inline form (mirrors Filter Sets)
+   ============================================= */
+#filter-options-list-wrap,
+#filter-options-form-wrap {
+	max-width: 1440px;
+	margin: 24px 20px 40px 0;
+}
+#filter-options-list-wrap .add-filter-opt {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 40px;
+	margin: 0;
+	padding: 0 14px;
+	white-space: nowrap;
+	font-weight: 600;
+}
+#filter-options-list-wrap .filter-options-saved,
+#filter-options-form-wrap .filter-option-form-card {
+	margin: 0;
+	padding: 20px 22px;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+}
+#filter-options-list-wrap .filter-options-list,
+#filter-options-list-wrap form {
+	margin: 0;
+}
+#filter-options-list-wrap .tablenav {
+	min-height: 40px;
+	margin: 8px 0 12px;
+}
+#filter-options-list-wrap .tablenav.top {
+	margin-top: 0;
+}
+#filter-options-list-wrap .wp-list-table {
+	border: 1px solid #e2e4e7;
+	border-radius: 6px;
+	border-spacing: 0;
+	box-shadow: none;
+	overflow: hidden;
+}
+#filter-options-list-wrap .wp-list-table thead tr {
+	height: 48px;
+	background: #f6f7f7;
+}
+#filter-options-list-wrap .wp-list-table tfoot {
+	display: none;
+}
+#filter-options-list-wrap .wp-list-table th,
+#filter-options-list-wrap .wp-list-table td {
+	padding: 12px 14px;
+	vertical-align: middle;
+}
+#filter-options-list-wrap .wp-list-table .check-column {
+	width: 42px;
+	padding-right: 0;
+	padding-left: 12px;
+}
+#filter-options-list-wrap .wp-list-table tbody tr {
+	background: #fff;
+}
+#filter-options-list-wrap .wp-list-table tbody tr:hover {
+	background: #fbfcfd;
+}
+#filter-options-list-wrap .wp-list-table .column-actions {
+	width: 110px;
+	text-align: right;
+}
+#filter-options-list-wrap .wp-list-table th.column-type,
+#filter-options-list-wrap .wp-list-table th.column-style {
+	width: 22%;
+}
+#filter-options-list-wrap .tablenav.bottom {
+	margin-bottom: 0;
+}
+#filter-options-list-wrap .filter-option-badge {
+	display: inline-block;
+	padding: 3px 9px;
+	border-radius: 999px;
+	background: #f0f6fc;
+	color: #2271b1;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+#filter-options-list-wrap .update-filter-option {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+#filter-options-list-wrap .update-filter-option .union-edit {
+	width: 14px;
+	height: 14px;
+	margin: 0;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#filter-options-list-wrap .no-items td {
+	padding: 0 !important;
+}
+.filter-options-empty {
+	padding: 40px 20px;
+	text-align: center;
+}
+.filter-options-empty__title {
+	margin: 0 0 6px;
+	color: #1d2327;
+	font-size: 15px;
+	font-weight: 600;
+}
+.filter-options-empty__text {
+	margin: 0 auto 16px !important;
+	max-width: 420px;
+	float: none !important;
+	text-align: center;
+	color: #646970;
+	font-size: 13px;
+}
+#filter-options-form-wrap .filter-option-form-card {
+	max-width: 640px;
+	padding: 24px;
+}
+.filter-option-form-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin: 20px 0 14px;
+	padding-top: 16px;
+	border-top: 1px solid #f0f0f1;
+}
+.filter-option-form-actions .button {
+	min-height: 36px;
+	padding: 0 14px;
+}
+.filter-option-form-actions .button-primary {
+	font-weight: 600;
+}
+@media (max-width: 782px) {
+	#filter-options-list-wrap,
+	#filter-options-form-wrap {
+		margin: 18px 10px 30px 0;
+	}
+	#filter-options-list-wrap .filter-options-saved,
+	#filter-options-form-wrap .filter-option-form-card {
+		padding: 16px 12px 8px;
+	}
+	#filter-options-list-wrap .wp-list-table th,
+	#filter-options-list-wrap .wp-list-table td {
+		padding: 10px 8px;
+	}
+}

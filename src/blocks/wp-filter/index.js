@@ -33,6 +33,10 @@ registerBlockType('filter-plus/wp-filter', {
             type: 'boolean',
             default: false
         },
+        wishlist: {
+            type: 'boolean',
+            default: false
+        },
         pagination_style: {
             type: 'string',
             default: 'numbers'
@@ -147,7 +151,7 @@ registerBlockType('filter-plus/wp-filter', {
             let options = [
                 { value: '1', label: __('Template-1', 'filter-plus') }
             ];
-            for (let i = 2; i <= 3; i++) {
+            for (let i = 2; i <= 4; i++) {
                 options.push({
                     value: i.toString(),
                     label: __('Template-' + i, 'filter-plus') + ' ' + isPro(),
@@ -207,6 +211,16 @@ registerBlockType('filter-plus/wp-filter', {
                             checked={attributes.masonry_style}
                             onChange={(value) => setAttributes({ masonry_style: value })}
                         />
+
+                        {attributes.template === '4' && (
+                            <ToggleControl
+                                label={__('Enable Wishlist', 'filter-plus') + ' ' + isPro()}
+                                checked={attributes.wishlist}
+                                onChange={(value) => setAttributes({ wishlist: value })}
+                                disabled={isDisabled()}
+                                help={isDisabled() ? __('Upgrade to Pro to use this feature.', 'filter-plus') : __('Show a save (heart) button on each card.', 'filter-plus')}
+                            />
+                        )}
 
                         <SelectControl
                             label={__('Filter Position', 'filter-plus')}
